@@ -653,10 +653,10 @@
             // infoTab
             // 
             this.infoTab.Controls.Add(this.tableLayoutPanel1Info);
-            this.infoTab.Location = new System.Drawing.Point(4, 22);
+            this.infoTab.Location = new System.Drawing.Point(4, 27);
             this.infoTab.Name = "infoTab";
             this.infoTab.Padding = new System.Windows.Forms.Padding(3);
-            this.infoTab.Size = new System.Drawing.Size(460, 307);
+            this.infoTab.Size = new System.Drawing.Size(460, 302);
             this.infoTab.TabIndex = 2;
             this.infoTab.Text = "Info";
             this.infoTab.UseVisualStyleBackColor = true;
@@ -674,14 +674,14 @@
             this.tableLayoutPanel1Info.RowCount = 2;
             this.tableLayoutPanel1Info.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1Info.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1Info.Size = new System.Drawing.Size(454, 301);
+            this.tableLayoutPanel1Info.Size = new System.Drawing.Size(454, 296);
             this.tableLayoutPanel1Info.TabIndex = 0;
             // 
             // infoText
             // 
             this.infoText.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.infoText.AutoSize = true;
-            this.infoText.Location = new System.Drawing.Point(32, 67);
+            this.infoText.Location = new System.Drawing.Point(32, 65);
             this.infoText.Margin = new System.Windows.Forms.Padding(0);
             this.infoText.Name = "infoText";
             this.infoText.Size = new System.Drawing.Size(390, 126);
@@ -696,7 +696,7 @@
             this.tableLayoutPanel2Info.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2Info.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2Info.Controls.Add(this.gitHub, 1, 0);
-            this.tableLayoutPanel2Info.Location = new System.Drawing.Point(0, 261);
+            this.tableLayoutPanel2Info.Location = new System.Drawing.Point(0, 256);
             this.tableLayoutPanel2Info.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2Info.Name = "tableLayoutPanel2Info";
             this.tableLayoutPanel2Info.RowCount = 1;
@@ -712,6 +712,7 @@
             this.gitHub.TabIndex = 3;
             this.gitHub.Text = "GitHub page";
             this.gitHub.UseVisualStyleBackColor = true;
+            this.gitHub.Click += new System.EventHandler(this.gitHub_Click);
             // 
             // Form1
             // 

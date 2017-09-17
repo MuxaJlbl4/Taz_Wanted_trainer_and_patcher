@@ -7,12 +7,3 @@ c:\users\muxajlbl4\documents\visual studio 2015\Projects\Taz trainer\Taz trainer
 c:\users\muxajlbl4\documents\visual studio 2015\Projects\Taz trainer\Taz trainer\obj\Debug\Taz trainer.csproj.GenerateResource.Cache
 c:\users\muxajlbl4\documents\visual studio 2015\Projects\Taz trainer\Taz trainer\obj\Debug\Taz trainer.exe
 c:\users\muxajlbl4\documents\visual studio 2015\Projects\Taz trainer\Taz trainer\obj\Debug\Taz trainer.pdb
-C:\Users\MuxaJlbl4\Documents\Visual Studio 2015\Projects\Taz_Wanted_trainer_and_patcher\Taz trainer\bin\Debug\Taz trainer.exe.config
-C:\Users\MuxaJlbl4\Documents\Visual Studio 2015\Projects\Taz_Wanted_trainer_and_patcher\Taz trainer\obj\Debug\Taz trainer.exe
-C:\Users\MuxaJlbl4\Documents\Visual Studio 2015\Projects\Taz_Wanted_trainer_and_patcher\Taz trainer\obj\Debug\Taz trainer.pdb
-C:\Users\MuxaJlbl4\Documents\Visual Studio 2015\Projects\Taz_Wanted_trainer_and_patcher\Taz trainer\bin\Debug\Taz trainer.exe
-C:\Users\MuxaJlbl4\Documents\Visual Studio 2015\Projects\Taz_Wanted_trainer_and_patcher\Taz trainer\bin\Debug\Taz trainer.pdb
-C:\Users\MuxaJlbl4\Documents\Visual Studio 2015\Projects\Taz_Wanted_trainer_and_patcher\Taz trainer\obj\Debug\Taz trainer.csprojResolveAssemblyReference.cache
-C:\Users\MuxaJlbl4\Documents\Visual Studio 2015\Projects\Taz_Wanted_trainer_and_patcher\Taz trainer\obj\Debug\Taz_trainer.Form1.resources
-C:\Users\MuxaJlbl4\Documents\Visual Studio 2015\Projects\Taz_Wanted_trainer_and_patcher\Taz trainer\obj\Debug\Taz_trainer.Properties.Resources.resources
-C:\Users\MuxaJlbl4\Documents\Visual Studio 2015\Projects\Taz_Wanted_trainer_and_patcher\Taz trainer\obj\Debug\Taz trainer.csproj.GenerateResource.Cache

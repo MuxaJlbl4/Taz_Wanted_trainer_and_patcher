@@ -1172,5 +1172,10 @@ namespace Taz_trainer
                 this.aspectRatio.Checked = true;
             }
         }
+
+        private void gitHub_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/MuxaJlbl4/Taz_Wanted_trainer_and_patcher");
+        }
     }
 }
