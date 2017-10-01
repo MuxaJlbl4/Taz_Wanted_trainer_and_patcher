@@ -76,6 +76,8 @@
             this.infoText = new System.Windows.Forms.Label();
             this.tableLayoutPanel2Info = new System.Windows.Forms.TableLayoutPanel();
             this.gitHub = new System.Windows.Forms.Button();
+            this.debugMenu = new System.Windows.Forms.CheckBox();
+            this.dbgMenuOff = new System.Windows.Forms.Timer(this.components);
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericJump)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericSpeed)).BeginInit();
@@ -277,16 +279,18 @@
             this.tableLayoutPanel2Trainer.Controls.Add(this.superBelchCan, 0, 1);
             this.tableLayoutPanel2Trainer.Controls.Add(this.invisibility, 0, 0);
             this.tableLayoutPanel2Trainer.Controls.Add(this.flyMode, 0, 2);
-            this.tableLayoutPanel2Trainer.Controls.Add(this.tableLayoutPanel4Trainer, 0, 7);
-            this.tableLayoutPanel2Trainer.Controls.Add(this.tableLayoutPanel3Trainer, 0, 6);
             this.tableLayoutPanel2Trainer.Controls.Add(this.smoothLight, 0, 5);
             this.tableLayoutPanel2Trainer.Controls.Add(this.drawDistance, 0, 4);
             this.tableLayoutPanel2Trainer.Controls.Add(this.freezeLevelTimer, 0, 3);
+            this.tableLayoutPanel2Trainer.Controls.Add(this.tableLayoutPanel4Trainer, 0, 8);
+            this.tableLayoutPanel2Trainer.Controls.Add(this.tableLayoutPanel3Trainer, 0, 7);
+            this.tableLayoutPanel2Trainer.Controls.Add(this.debugMenu, 0, 6);
             this.tableLayoutPanel2Trainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2Trainer.Location = new System.Drawing.Point(165, 0);
             this.tableLayoutPanel2Trainer.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2Trainer.Name = "tableLayoutPanel2Trainer";
-            this.tableLayoutPanel2Trainer.RowCount = 9;
+            this.tableLayoutPanel2Trainer.RowCount = 10;
+            this.tableLayoutPanel2Trainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2Trainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2Trainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2Trainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
@@ -306,7 +310,7 @@
             this.tableLayoutPanel4Trainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 324F));
             this.tableLayoutPanel4Trainer.Controls.Add(this.numericSpeed, 0, 0);
             this.tableLayoutPanel4Trainer.Controls.Add(this.speedLabel, 1, 0);
-            this.tableLayoutPanel4Trainer.Location = new System.Drawing.Point(0, 210);
+            this.tableLayoutPanel4Trainer.Location = new System.Drawing.Point(0, 240);
             this.tableLayoutPanel4Trainer.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel4Trainer.Name = "tableLayoutPanel4Trainer";
             this.tableLayoutPanel4Trainer.RowCount = 1;
@@ -321,8 +325,7 @@
             this.tableLayoutPanel3Trainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 324F));
             this.tableLayoutPanel3Trainer.Controls.Add(this.jumpLabel, 1, 0);
             this.tableLayoutPanel3Trainer.Controls.Add(this.numericJump, 0, 0);
-            this.tableLayoutPanel3Trainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3Trainer.Location = new System.Drawing.Point(0, 180);
+            this.tableLayoutPanel3Trainer.Location = new System.Drawing.Point(0, 210);
             this.tableLayoutPanel3Trainer.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel3Trainer.Name = "tableLayoutPanel3Trainer";
             this.tableLayoutPanel3Trainer.RowCount = 1;
@@ -381,10 +384,10 @@
             // patcherTab
             // 
             this.patcherTab.Controls.Add(this.tableLayoutPanel1Patcher);
-            this.patcherTab.Location = new System.Drawing.Point(4, 22);
+            this.patcherTab.Location = new System.Drawing.Point(4, 27);
             this.patcherTab.Margin = new System.Windows.Forms.Padding(0);
             this.patcherTab.Name = "patcherTab";
-            this.patcherTab.Size = new System.Drawing.Size(460, 307);
+            this.patcherTab.Size = new System.Drawing.Size(460, 302);
             this.patcherTab.TabIndex = 1;
             this.patcherTab.Text = "Patcher";
             this.patcherTab.UseVisualStyleBackColor = true;
@@ -413,7 +416,7 @@
             this.tableLayoutPanel1Patcher.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1Patcher.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1Patcher.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1Patcher.Size = new System.Drawing.Size(460, 307);
+            this.tableLayoutPanel1Patcher.Size = new System.Drawing.Size(460, 302);
             this.tableLayoutPanel1Patcher.TabIndex = 4;
             // 
             // tableLayoutPanel4Patcher
@@ -426,7 +429,7 @@
             this.tableLayoutPanel4Patcher.Controls.Add(this.restore, 2, 0);
             this.tableLayoutPanel4Patcher.Controls.Add(this.restoreBackup, 1, 0);
             this.tableLayoutPanel4Patcher.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4Patcher.Location = new System.Drawing.Point(0, 267);
+            this.tableLayoutPanel4Patcher.Location = new System.Drawing.Point(0, 262);
             this.tableLayoutPanel4Patcher.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel4Patcher.Name = "tableLayoutPanel4Patcher";
             this.tableLayoutPanel4Patcher.RowCount = 1;
@@ -714,6 +717,22 @@
             this.gitHub.UseVisualStyleBackColor = true;
             this.gitHub.Click += new System.EventHandler(this.gitHub_Click);
             // 
+            // debugMenu
+            // 
+            this.debugMenu.AutoSize = true;
+            this.debugMenu.Location = new System.Drawing.Point(3, 184);
+            this.debugMenu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.debugMenu.Name = "debugMenu";
+            this.debugMenu.Size = new System.Drawing.Size(129, 22);
+            this.debugMenu.TabIndex = 1;
+            this.debugMenu.Text = "Debug menu (F7)";
+            this.debugMenu.UseVisualStyleBackColor = true;
+            this.debugMenu.CheckedChanged += new System.EventHandler(this.debugMenu_CheckedChanged);
+            // 
+            // dbgMenuOff
+            // 
+            this.dbgMenuOff.Tick += new System.EventHandler(this.dbgMenuOff_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -729,7 +748,7 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Taz Wanted trainer and patcher v1.0";
+            this.Text = "Taz Wanted trainer and patcher v1.1";
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericJump)).EndInit();
@@ -808,6 +827,8 @@
         private System.Windows.Forms.Button gitHub;
         private System.Windows.Forms.Button restoreBackup;
         private System.Windows.Forms.CheckBox freezeLevelTimer;
+        private System.Windows.Forms.CheckBox debugMenu;
+        private System.Windows.Forms.Timer dbgMenuOff;
     }
 }
 

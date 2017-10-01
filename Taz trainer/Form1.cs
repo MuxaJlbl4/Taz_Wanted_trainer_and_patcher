@@ -42,6 +42,7 @@ namespace Taz_trainer
             gkh.HookedKeys.Add(Keys.F4);
             gkh.HookedKeys.Add(Keys.F5);
             gkh.HookedKeys.Add(Keys.F6);
+            gkh.HookedKeys.Add(Keys.F7);
             gkh.HookedKeys.Add(Keys.PageDown);
             gkh.HookedKeys.Add(Keys.PageUp);
             gkh.HookedKeys.Add(Keys.Subtract);
@@ -101,6 +102,10 @@ namespace Taz_trainer
             if (e.KeyCode == Keys.F6)
             {
                 this.smoothLight.Checked = !this.smoothLight.Checked;
+            }
+            if (e.KeyCode == Keys.F7)
+            {
+                this.debugMenu.Checked = !this.debugMenu.Checked;
             }
             if (e.KeyCode == Keys.PageUp)
             {
@@ -676,6 +681,26 @@ namespace Taz_trainer
             }
         }
 
+        private void debugMenu_CheckedChanged(object sender, EventArgs e)
+        {
+            /*
+             * 00642038 - bckg text
+             * 004A7867 - DBG MENU!!!!!!!!!!!!!!!!
+            */
+            //Read debug menu state offset
+            byte[] bytes = { 0x00, 0x00, 0x00, 0x00 };
+            bytes = checkAndRead((IntPtr)0x006C80EC, bytes, 4, new IntPtr());
+            int adress = BitConverter.ToInt32(bytes, 0);
+            adress += 0x14;
+
+            //Write debug menu state to 1
+            byte[] bytes2 = { 0x01 };
+            checkAndWrite((IntPtr)adress, bytes2, bytes2.Length, new IntPtr());
+
+            this.dbgMenuOff.Start();
+
+            message("Call debug menu");
+        }
 
         private void message(string message)
         {
@@ -793,6 +818,22 @@ namespace Taz_trainer
             var mem = new IntPtr();
             checkAndWrite((IntPtr)adress, bytes, size, mem);
             */
+        }
+
+
+        private void dbgMenuOff_Tick(object sender, EventArgs e)
+        {
+            this.dbgMenuOff.Stop();
+
+            //Read debug menu state offset
+            byte[] bytes = { 0x00, 0x00, 0x00, 0x00 };
+            bytes = checkAndRead((IntPtr)0x006C80EC, bytes, 4, new IntPtr());
+            int adress = BitConverter.ToInt32(bytes, 0);
+            adress += 0x14;
+
+            //Write debug menu state to 0
+            byte[] bytes2 = { 0x00 };
+            checkAndWrite((IntPtr)adress, bytes2, bytes2.Length, new IntPtr());
         }
 
 
