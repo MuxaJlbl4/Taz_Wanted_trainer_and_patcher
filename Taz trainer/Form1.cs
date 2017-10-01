@@ -846,7 +846,7 @@ namespace Taz_trainer
             try
             {
                 //Check checkboxes
-                if (this.noCD.Checked == false && this.disableDrawDistance.Checked == false && this.disableVideos.Checked == false && this.changeResolution.Checked == false && this.aspectRatio.Checked == false)
+                if (this.noCD.Checked == false && this.disableDrawDistance.Checked == false && this.disableVideos.Checked == false && this.changeResolution.Checked == false && this.aspectRatio.Checked == false && this.warningBanner.Checked == false)
                 {
                     MessageBox.Show("Select at least one option", "No options selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -987,8 +987,20 @@ namespace Taz_trainer
                     }
                 }
 
-                //end
-                this.statusField.Text = "Patched successfully (" + TazGameFolder + ")";
+                if (this.warningBanner.Checked == true)
+                {
+                    using (var file = new FileStream(TazGameFolder + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        //warning banner time
+                        file.Position = 0x1F73F6;
+                        file.WriteByte(0x00);
+                        file.WriteByte(0x00);
+                        file.Close();
+                    }
+                }
+
+                    //end
+                    this.statusField.Text = "Patched successfully (" + TazGameFolder + ")";
                 if (backuped == true)
                 {
                     this.statusField.Text += " and created backup of taz.exe";
@@ -1008,7 +1020,7 @@ namespace Taz_trainer
         {
             try
             {
-                var result = MessageBox.Show("This will restore CD check, draw distance, logo videos and set video mode to 1024x768 (4:3 fullscreen). Continue?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var result = MessageBox.Show("This will restore: CD check, draw distance, logo videos, warning banner and set video mode to 1024x768 (4:3 fullscreen). Continue?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
                     //Read path from registry
@@ -1094,6 +1106,14 @@ namespace Taz_trainer
                         file.WriteByte(0x04);
                         file.Position = 0x8FD7D;
                         file.WriteByte(0x03);
+                        file.Close();
+                    }
+                    //restore warning banner time
+                    using (var file = new FileStream(TazGameFolder + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        file.Position = 0x1F73F6;
+                        file.WriteByte(0xA0);
+                        file.WriteByte(0x40);
                         file.Close();
                     }
                     //restore end
