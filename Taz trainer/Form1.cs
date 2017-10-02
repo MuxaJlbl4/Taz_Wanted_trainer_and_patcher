@@ -992,9 +992,10 @@ namespace Taz_trainer
                     using (var file = new FileStream(TazGameFolder + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
                     {
                         //warning banner time
-                        file.Position = 0x1F73F6;
+                        file.Position = 0x8F07D;
+                        file.WriteByte(0x20);
                         file.WriteByte(0x00);
-                        file.WriteByte(0x00);
+                        file.WriteByte(0x40);
                         file.Close();
                     }
                 }
@@ -1111,9 +1112,10 @@ namespace Taz_trainer
                     //restore warning banner time
                     using (var file = new FileStream(TazGameFolder + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
                     {
-                        file.Position = 0x1F73F6;
-                        file.WriteByte(0xA0);
-                        file.WriteByte(0x40);
+                        file.Position = 0x8F07D;
+                        file.WriteByte(0xF4);
+                        file.WriteByte(0x73);
+                        file.WriteByte(0x5F);
                         file.Close();
                     }
                     //restore end

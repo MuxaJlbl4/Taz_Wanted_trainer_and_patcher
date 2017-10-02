@@ -78,6 +78,7 @@
             this.tableLayoutPanel2Info = new System.Windows.Forms.TableLayoutPanel();
             this.gitHub = new System.Windows.Forms.Button();
             this.infoText = new System.Windows.Forms.Label();
+            this.tabsIcons = new System.Windows.Forms.ImageList(this.components);
             this.dbgMenuOff = new System.Windows.Forms.Timer(this.components);
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericJump)).BeginInit();
@@ -375,6 +376,7 @@
             this.tabs.Controls.Add(this.patcherTab);
             this.tabs.Controls.Add(this.infoTab);
             this.tabs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabs.ImageList = this.tabsIcons;
             this.tabs.Location = new System.Drawing.Point(0, 0);
             this.tabs.Margin = new System.Windows.Forms.Padding(0);
             this.tabs.Name = "tabs";
@@ -386,6 +388,7 @@
             // trainerTab
             // 
             this.trainerTab.Controls.Add(this.tableLayoutPanel1Trainer);
+            this.trainerTab.ImageKey = "trainer.ico";
             this.trainerTab.Location = new System.Drawing.Point(4, 27);
             this.trainerTab.Margin = new System.Windows.Forms.Padding(0);
             this.trainerTab.Name = "trainerTab";
@@ -397,6 +400,7 @@
             // patcherTab
             // 
             this.patcherTab.Controls.Add(this.tableLayoutPanel1Patcher);
+            this.patcherTab.ImageKey = "patcher.ico";
             this.patcherTab.Location = new System.Drawing.Point(4, 27);
             this.patcherTab.Margin = new System.Windows.Forms.Padding(0);
             this.patcherTab.Name = "patcherTab";
@@ -683,10 +687,11 @@
             // infoTab
             // 
             this.infoTab.Controls.Add(this.tableLayoutPanel1Info);
-            this.infoTab.Location = new System.Drawing.Point(4, 27);
+            this.infoTab.ImageKey = "info.ico";
+            this.infoTab.Location = new System.Drawing.Point(4, 23);
             this.infoTab.Margin = new System.Windows.Forms.Padding(0);
             this.infoTab.Name = "infoTab";
-            this.infoTab.Size = new System.Drawing.Size(460, 302);
+            this.infoTab.Size = new System.Drawing.Size(460, 306);
             this.infoTab.TabIndex = 2;
             this.infoTab.Text = "Info";
             this.infoTab.UseVisualStyleBackColor = true;
@@ -704,7 +709,7 @@
             this.tableLayoutPanel1Info.RowCount = 2;
             this.tableLayoutPanel1Info.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1Info.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1Info.Size = new System.Drawing.Size(460, 302);
+            this.tableLayoutPanel1Info.Size = new System.Drawing.Size(460, 306);
             this.tableLayoutPanel1Info.TabIndex = 0;
             // 
             // tableLayoutPanel2Info
@@ -714,7 +719,7 @@
             this.tableLayoutPanel2Info.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2Info.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel2Info.Controls.Add(this.gitHub, 1, 0);
-            this.tableLayoutPanel2Info.Location = new System.Drawing.Point(0, 262);
+            this.tableLayoutPanel2Info.Location = new System.Drawing.Point(0, 266);
             this.tableLayoutPanel2Info.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2Info.Name = "tableLayoutPanel2Info";
             this.tableLayoutPanel2Info.RowCount = 1;
@@ -742,6 +747,14 @@
             this.infoText.Size = new System.Drawing.Size(459, 144);
             this.infoText.TabIndex = 8;
             this.infoText.Text = resources.GetString("infoText.Text");
+            // 
+            // tabsIcons
+            // 
+            this.tabsIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("tabsIcons.ImageStream")));
+            this.tabsIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.tabsIcons.Images.SetKeyName(0, "trainer.ico");
+            this.tabsIcons.Images.SetKeyName(1, "patcher.ico");
+            this.tabsIcons.Images.SetKeyName(2, "info.ico");
             // 
             // dbgMenuOff
             // 
@@ -844,6 +857,7 @@
         private System.Windows.Forms.CheckBox debugMenu;
         private System.Windows.Forms.Timer dbgMenuOff;
         private System.Windows.Forms.CheckBox warningBanner;
+        private System.Windows.Forms.ImageList tabsIcons;
     }
 }
 
