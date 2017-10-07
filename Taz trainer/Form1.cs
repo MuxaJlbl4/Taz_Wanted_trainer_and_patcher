@@ -45,8 +45,6 @@ namespace Taz_trainer
             gkh.HookedKeys.Add(Keys.F7);
             gkh.HookedKeys.Add(Keys.PageDown);
             gkh.HookedKeys.Add(Keys.PageUp);
-            gkh.HookedKeys.Add(Keys.Subtract);
-            gkh.HookedKeys.Add(Keys.Add);
 
             gkh.HookedKeys.Add(Keys.NumPad9);
             gkh.HookedKeys.Add(Keys.NumPad8);
@@ -89,7 +87,7 @@ namespace Taz_trainer
             }
             if (e.KeyCode == Keys.F3)
             {
-                this.flyMode.Checked = !this.flyMode.Checked;
+                this.superJump.Checked = !this.superJump.Checked;
             }
             if (e.KeyCode == Keys.F4)
             {
@@ -114,14 +112,6 @@ namespace Taz_trainer
             if (e.KeyCode == Keys.PageDown)
             {
                 this.numericSpeed.DownButton();
-            }
-            if (e.KeyCode == Keys.Add)
-            {
-                this.numericJump.UpButton();
-            }
-            if (e.KeyCode == Keys.Subtract)
-            {
-                this.numericJump.DownButton();
             }
 
 
@@ -300,13 +290,27 @@ namespace Taz_trainer
             }
         }
 
-        private void numericJump_ValueChanged(object sender, EventArgs e)
+        private void superJump_CheckedChanged(object sender, EventArgs e)
         {
-            float impulse = 1750;
-            impulse *= (float)numericJump.Value;
-            checkAndWrite((IntPtr)0x0048129F, BitConverter.GetBytes(impulse), BitConverter.GetBytes(impulse).Length, new IntPtr());
+            //code injection
+            byte[] bytes = { 0x51, 0x50, 0x8B, 0x0D, 0x90, 0x83, 0x6C, 0x00, 0x8B, 0x49, 0x20, 0x81, 0xF9, 0x00, 0x00, 0x00, 0x00, 0x74, 0x17, 0x8B, 0x0D, 0xC0, 0x8B, 0x6C, 0x00, 0x8B, 0x89, 0xC0, 0x01, 0x00, 0x00, 0xB8, 0x00, 0xC0, 0xDA, 0x44, 0x89, 0x81, 0x98, 0x00, 0x00, 0x00, 0x58, 0x59, 0xD9, 0x44, 0x24, 0x58, 0xD8, 0x63, 0x08, 0xD9, 0x9F, 0xC8, 0x00, 0x00, 0x00, 0xE9, 0x82, 0xBB, 0xE6, 0xFF };
+            checkAndWrite((IntPtr)0x005F6692, bytes, bytes.Length, new IntPtr());
+            
+            //Inject jmp
+            if (this.superJump.Checked == true)
+            {
+                byte[] bytes2 = { 0xE9, 0x48, 0x44, 0x19, 0x00, 0x90, 0x90 };
+                checkAndWrite((IntPtr)0x00462245, bytes2, bytes2.Length, new IntPtr());
 
-            message("Jump impulse: x" + numericJump.Value.ToString());
+                message("Super jump: on (hold jump)");
+            }
+            else
+            {
+                byte[] bytes2 = { 0xD9, 0x44, 0x24, 0x58, 0xD8, 0x63, 0x08 };
+                checkAndWrite((IntPtr)0x00462245, bytes2, bytes2.Length, new IntPtr());
+
+                message("Super jump: off");
+            }
         }
 
         private void numericSpeed_ValueChanged(object sender, EventArgs e)
@@ -407,8 +411,6 @@ namespace Taz_trainer
             */
 
             //Change instruction for gravity
-
-
             if (this.flyMode.Checked == true)
             {
                 byte[] bytes2 = { 0xE9, 0x33, 0x44, 0x19, 0x00, 0x90, 0x90 };
@@ -656,18 +658,17 @@ namespace Taz_trainer
         private void smoothLight_CheckedChanged(object sender, EventArgs e)
         {
             //Code injection
-            byte[] bytes = { 0x50, 0xB8, 0x05, 0x00, 0x00, 0x00, 0x89, 0x87, 0x44, 0x01, 0x00, 0x00, 0x58, 0xD8, 0x1D, 0x3C, 0x73, 0x5F, 0x00, 0xE9, 0xA7, 0xBB, 0xE6, 0xFF };
-            checkAndWrite((IntPtr)0x005F66A0, bytes, bytes.Length, new IntPtr());
+            byte[] bytes = { 0x50, 0xB8, 0x05, 0x00, 0x00, 0x00, 0x89, 0x87, 0x44, 0x01, 0x00, 0x00, 0x58, 0xD8, 0x1D, 0x3C, 0x73, 0x5F, 0x00, 0xE9, 0x77, 0xBB, 0xE6, 0xFF };
+            checkAndWrite((IntPtr)0x005F66D0, bytes, bytes.Length, new IntPtr());
             //Jump to injection
-            byte[] bytes2 = { 0xE9, 0x42, 0x44, 0x19, 0x00, 0x90 };
+            byte[] bytes2 = { 0xE9, 0x72, 0x44, 0x19, 0x00, 0x90 };
             checkAndWrite((IntPtr)0x00462259, bytes2, bytes2.Length, new IntPtr());
 
             if (this.smoothLight.Checked == true)
             {
-
                 //Lighting mode 5
                 byte[] bytes3 = { 0x05 };
-                checkAndWrite((IntPtr)0x005F66A2, bytes3, bytes3.Length, new IntPtr());
+                checkAndWrite((IntPtr)0x005F66D2, bytes3, bytes3.Length, new IntPtr());
 
                 message("Smooth lighting: on");
             }
@@ -675,7 +676,7 @@ namespace Taz_trainer
             {
                 //Lighting mode 4
                 byte[] bytes3 = { 0x04 };
-                checkAndWrite((IntPtr)0x005F66A2, bytes3, bytes3.Length, new IntPtr());
+                checkAndWrite((IntPtr)0x005F66D2, bytes3, bytes3.Length, new IntPtr());
 
                 message("Smooth lighting: off");
             }
@@ -683,10 +684,6 @@ namespace Taz_trainer
 
         private void debugMenu_CheckedChanged(object sender, EventArgs e)
         {
-            /*
-             * 00642038 - bckg text
-             * 004A7867 - DBG MENU!!!!!!!!!!!!!!!!
-            */
             //Read debug menu state offset
             byte[] bytes = { 0x00, 0x00, 0x00, 0x00 };
             bytes = checkAndRead((IntPtr)0x006C80EC, bytes, 4, new IntPtr());
@@ -704,120 +701,49 @@ namespace Taz_trainer
 
         private void message(string message)
         {
-            //Jmp to show text
-            var adress = 0x004A9AED;
-            byte[] bytes = { 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 };
-            int size = 6;
-            var mem = new IntPtr();
-            checkAndWrite((IntPtr)adress, bytes, size, mem);
+            //Check text length
+            if (message.Length > 33)
+            {
+                message = "To looooooooooooooooooong message";
+            }
 
-            //Push text
-            adress = 0x004A9B0A;
-            bytes[0] = 0x00;
-            bytes[1] = 0xC4;
-            bytes[2] = 0x58;
-            bytes[3] = 0x00;
-            size = 4;
-            mem = new IntPtr();
-            checkAndWrite((IntPtr)adress, bytes, size, mem);
-
-            //Hide additional info 1
-            adress = 0x00643030;
-            bytes[0] = 0x00;
-            size = 1;
-            mem = new IntPtr();
-            checkAndWrite((IntPtr)adress, bytes, size, mem);
-
-            //Hide additional info 2
-            adress = 0x00643038;
-            bytes[0] = 0x00;
-            size = 1;
-            mem = new IntPtr();
-            checkAndWrite((IntPtr)adress, bytes, size, mem);
-
-            //Text
-            adress = 0x0058C400; //Cave for text adress
+            //Copy text to dbg string 2 + 0 at end
             byte[] bytes2 = Encoding.ASCII.GetBytes(message);
-            size = bytes2.Length + 1; // +1 adds zero at end
-            mem = new IntPtr();
-            checkAndWrite((IntPtr)adress, bytes2, size, mem);
+            checkAndWrite((IntPtr)0x00642A94, bytes2, bytes2.Length + 1, new IntPtr());
 
+            //Hide dbg string 2
+            byte[] bytes3 = { 0x00 };
+            checkAndWrite((IntPtr)0x00642A78, bytes3, bytes3.Length, new IntPtr());
+
+            //Remove jump to show dbg text
+            byte[] bytes = { 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 };
+            checkAndWrite((IntPtr)0x004A3557, bytes, 6, new IntPtr());
+
+            //Restart timer
             timer.Stop();
             timer.Start();
-
-            /*
-            //Jmp to show text
-            var adress = 0x004A9D5C; //Base adress
-            byte[] bytes = { 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x68, 0x00, 0xC4, 0x58, 0x00 };
-            //byte[] bytes = { 0x0F, 0x85, 0x93, 0x00, 0x00, 0x00, 0x68, 0x24, 0x30, 0x64, 0x00 };
-            int size = 11;
-            var mem = new IntPtr();
-            checkAndWrite((IntPtr)adress, bytes, size, mem);
-
-            //Text
-            adress = 0x0058C400; //Cave for text adress
-            byte[] bytes2 = Encoding.ASCII.GetBytes(message);
-            size = bytes2.Length + 1; //Add zero
-            mem = new IntPtr();
-            checkAndWrite((IntPtr)adress, bytes2, size, mem);
-
-            timer.Stop();
-            timer.Enabled = true;
-            */
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
             timer.Stop();
 
-            //Return original instructions of show text
-            var adress = 0x004A9AED;
-            byte[] bytes = { 0x0F, 0x84, 0x56, 0x02, 0x00, 0x00 };
-            int size = 6;
-            var mem = new IntPtr();
-            checkAndWrite((IntPtr)adress, bytes, size, mem);
+            //Restore original instructions of show dbg text
+            byte[] bytes = { 0x0F, 0x84, 0x17, 0x02, 0x00, 0x00 };
+            checkAndWrite((IntPtr)0x004A3557, bytes, bytes.Length, new IntPtr());
 
-            //Restore to original push
-            adress = 0x004A9B0A;
-            bytes[0] = 0x2C;
-            bytes[1] = 0x12;
-            bytes[2] = 0x64;
-            bytes[3] = 0x00;
-            size = 4;
-            mem = new IntPtr();
-            checkAndWrite((IntPtr)adress, bytes, size, mem);
+            //Restore show time of dbg text
+            byte[] bytes4 = { 0x00, 0x00, 0x20, 0x41 }; // 10.00
+            checkAndWrite((IntPtr)0x00642038, bytes4, bytes4.Length, new IntPtr());
 
-            //Restore to original text 1
-            adress = 0x00643030;
-            bytes[0] = 0x25;
-            size = 1;
-            mem = new IntPtr();
-            checkAndWrite((IntPtr)adress, bytes, size, mem);
+            //Restore original dbg  text string 2
+            byte[] bytes2 = { 0x46, 0x6F, 0x67, 0x3A, 0x6D, 0x69, 0x6E, 0x20, 0x25, 0x64, 0x2C, 0x20, 0x6D, 0x61, 0x78, 0x20, 0x25, 0x64, 0x2C, 0x20, 0x52, 0x47, 0x42, 0x28, 0x25, 0x64, 0x2C, 0x25, 0x64, 0x2C, 0x25, 0x64, 0x29, 0x00 };
+            checkAndWrite((IntPtr)0x00642A94, bytes2, bytes2.Length, new IntPtr());
 
-            //Restore to original text 2
-            adress = 0x00643038;
-            bytes[0] = 0x28;
-            size = 1;
-            mem = new IntPtr();
-            checkAndWrite((IntPtr)adress, bytes, size, mem);
-
-            /*
-            //Original push
-            adress = 0x004A9B09; //Base adress
-            byte[] bytes2 = { 0x68, 0x2C, 0x12, 0x64, 0x00 };
-            size = 5;
-            mem = new IntPtr();
-            checkAndWrite((IntPtr)adress, bytes, size, mem);
-            */
-            /*
-            timer.Enabled = false;
-            //Return original instructions of show text
-            var adress = 0x004A9D5C; //Base adress
-            byte[] bytes = { 0x0F, 0x85, 0x93, 0x00, 0x00, 0x00, 0x68, 0x24, 0x30, 0x64, 0x00 };
-            int size = 11;
-            var mem = new IntPtr();
-            checkAndWrite((IntPtr)adress, bytes, size, mem);
-            */
+            //Restore original dbg  text string 1
+            byte[] bytes3 = { 0x42 };
+            checkAndWrite((IntPtr)0x00642A78, bytes3, bytes3.Length, new IntPtr());
+            
         }
 
 

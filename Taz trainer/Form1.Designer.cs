@@ -31,10 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.drawDistance = new System.Windows.Forms.CheckBox();
+            this.buttonsIcons = new System.Windows.Forms.ImageList(this.components);
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.statusField = new System.Windows.Forms.ToolStripStatusLabel();
-            this.numericJump = new System.Windows.Forms.NumericUpDown();
-            this.jumpLabel = new System.Windows.Forms.Label();
             this.numericSpeed = new System.Windows.Forms.NumericUpDown();
             this.speedLabel = new System.Windows.Forms.Label();
             this.superBelchCan = new System.Windows.Forms.CheckBox();
@@ -46,7 +45,6 @@
             this.tableLayoutPanel2Trainer = new System.Windows.Forms.TableLayoutPanel();
             this.freezeLevelTimer = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel4Trainer = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel3Trainer = new System.Windows.Forms.TableLayoutPanel();
             this.debugMenu = new System.Windows.Forms.CheckBox();
             this.pictureTaz = new System.Windows.Forms.PictureBox();
             this.tabs = new System.Windows.Forms.TabControl();
@@ -80,13 +78,12 @@
             this.infoText = new System.Windows.Forms.Label();
             this.tabsIcons = new System.Windows.Forms.ImageList(this.components);
             this.dbgMenuOff = new System.Windows.Forms.Timer(this.components);
+            this.superJump = new System.Windows.Forms.CheckBox();
             this.statusStrip.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericJump)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericSpeed)).BeginInit();
             this.tableLayoutPanel1Trainer.SuspendLayout();
             this.tableLayoutPanel2Trainer.SuspendLayout();
             this.tableLayoutPanel4Trainer.SuspendLayout();
-            this.tableLayoutPanel3Trainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureTaz)).BeginInit();
             this.tabs.SuspendLayout();
             this.trainerTab.SuspendLayout();
@@ -102,15 +99,32 @@
             // 
             // drawDistance
             // 
+            this.drawDistance.Appearance = System.Windows.Forms.Appearance.Button;
             this.drawDistance.AutoSize = true;
-            this.drawDistance.Location = new System.Drawing.Point(3, 124);
+            this.drawDistance.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.drawDistance.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.drawDistance.ImageIndex = 4;
+            this.drawDistance.ImageList = this.buttonsIcons;
+            this.drawDistance.Location = new System.Drawing.Point(3, 140);
             this.drawDistance.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.drawDistance.Name = "drawDistance";
-            this.drawDistance.Size = new System.Drawing.Size(195, 22);
+            this.drawDistance.Size = new System.Drawing.Size(289, 26);
             this.drawDistance.TabIndex = 1;
-            this.drawDistance.Text = "Infinity draw distance (F5)";
+            this.drawDistance.Text = "     F5 - Infinity draw distance";
             this.drawDistance.UseVisualStyleBackColor = true;
             this.drawDistance.CheckedChanged += new System.EventHandler(this.drawDistance_CheckedChanged);
+            // 
+            // buttonsIcons
+            // 
+            this.buttonsIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("buttonsIcons.ImageStream")));
+            this.buttonsIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.buttonsIcons.Images.SetKeyName(0, "invisibility.ico");
+            this.buttonsIcons.Images.SetKeyName(1, "burp.ico");
+            this.buttonsIcons.Images.SetKeyName(2, "fly.ico");
+            this.buttonsIcons.Images.SetKeyName(3, "time.ico");
+            this.buttonsIcons.Images.SetKeyName(4, "draw.ico");
+            this.buttonsIcons.Images.SetKeyName(5, "light.ico");
+            this.buttonsIcons.Images.SetKeyName(6, "debug.ico");
             // 
             // statusStrip
             // 
@@ -129,43 +143,6 @@
             this.statusField.Name = "statusField";
             this.statusField.Size = new System.Drawing.Size(137, 17);
             this.statusField.Text = "Welcome to Taz Hacked!";
-            // 
-            // numericJump
-            // 
-            this.numericJump.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.numericJump.Location = new System.Drawing.Point(1, 1);
-            this.numericJump.Margin = new System.Windows.Forms.Padding(1);
-            this.numericJump.Maximum = new decimal(new int[] {
-            8,
-            0,
-            0,
-            0});
-            this.numericJump.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericJump.Name = "numericJump";
-            this.numericJump.Size = new System.Drawing.Size(48, 26);
-            this.numericJump.TabIndex = 3;
-            this.numericJump.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.numericJump.UpDownAlign = System.Windows.Forms.LeftRightAlignment.Left;
-            this.numericJump.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericJump.ValueChanged += new System.EventHandler(this.numericJump_ValueChanged);
-            // 
-            // jumpLabel
-            // 
-            this.jumpLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.jumpLabel.AutoSize = true;
-            this.jumpLabel.Location = new System.Drawing.Point(53, 6);
-            this.jumpLabel.Name = "jumpLabel";
-            this.jumpLabel.Size = new System.Drawing.Size(170, 18);
-            this.jumpLabel.TabIndex = 4;
-            this.jumpLabel.Text = "x jump force (Num+/Num-)";
             // 
             // numericSpeed
             // 
@@ -207,25 +184,35 @@
             // 
             // superBelchCan
             // 
+            this.superBelchCan.Appearance = System.Windows.Forms.Appearance.Button;
             this.superBelchCan.AutoSize = true;
-            this.superBelchCan.Location = new System.Drawing.Point(3, 34);
+            this.superBelchCan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superBelchCan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.superBelchCan.ImageIndex = 1;
+            this.superBelchCan.ImageList = this.buttonsIcons;
+            this.superBelchCan.Location = new System.Drawing.Point(3, 38);
             this.superBelchCan.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.superBelchCan.Name = "superBelchCan";
-            this.superBelchCan.Size = new System.Drawing.Size(150, 22);
+            this.superBelchCan.Size = new System.Drawing.Size(289, 26);
             this.superBelchCan.TabIndex = 1;
-            this.superBelchCan.Text = "Super burp can (F2)";
+            this.superBelchCan.Text = "     F2 - Super burp can";
             this.superBelchCan.UseVisualStyleBackColor = true;
             this.superBelchCan.CheckedChanged += new System.EventHandler(this.superBelchCan_CheckedChanged);
             // 
             // flyMode
             // 
+            this.flyMode.Appearance = System.Windows.Forms.Appearance.Button;
             this.flyMode.AutoSize = true;
-            this.flyMode.Location = new System.Drawing.Point(3, 64);
+            this.flyMode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flyMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.flyMode.ImageIndex = 2;
+            this.flyMode.ImageList = this.buttonsIcons;
+            this.flyMode.Location = new System.Drawing.Point(3, 242);
             this.flyMode.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.flyMode.Name = "flyMode";
-            this.flyMode.Size = new System.Drawing.Size(261, 22);
+            this.flyMode.Size = new System.Drawing.Size(289, 26);
             this.flyMode.TabIndex = 1;
-            this.flyMode.Text = "Fly mode (F3/Num5 and NumPad keys)";
+            this.flyMode.Text = "     Num5 and NumPad keys - Fly mode";
             this.flyMode.UseVisualStyleBackColor = true;
             this.flyMode.CheckedChanged += new System.EventHandler(this.flyMode_CheckedChanged);
             // 
@@ -236,25 +223,35 @@
             // 
             // smoothLight
             // 
+            this.smoothLight.Appearance = System.Windows.Forms.Appearance.Button;
             this.smoothLight.AutoSize = true;
-            this.smoothLight.Location = new System.Drawing.Point(3, 154);
+            this.smoothLight.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.smoothLight.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.smoothLight.ImageIndex = 5;
+            this.smoothLight.ImageList = this.buttonsIcons;
+            this.smoothLight.Location = new System.Drawing.Point(3, 174);
             this.smoothLight.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.smoothLight.Name = "smoothLight";
-            this.smoothLight.Size = new System.Drawing.Size(150, 22);
+            this.smoothLight.Size = new System.Drawing.Size(289, 26);
             this.smoothLight.TabIndex = 1;
-            this.smoothLight.Text = "Smooth lighting (F6)";
+            this.smoothLight.Text = "     F6 - Smooth lighting";
             this.smoothLight.UseVisualStyleBackColor = true;
             this.smoothLight.CheckedChanged += new System.EventHandler(this.smoothLight_CheckedChanged);
             // 
             // invisibility
             // 
+            this.invisibility.Appearance = System.Windows.Forms.Appearance.Button;
             this.invisibility.AutoSize = true;
+            this.invisibility.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.invisibility.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.invisibility.ImageIndex = 0;
+            this.invisibility.ImageList = this.buttonsIcons;
             this.invisibility.Location = new System.Drawing.Point(3, 4);
             this.invisibility.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.invisibility.Name = "invisibility";
-            this.invisibility.Size = new System.Drawing.Size(121, 22);
+            this.invisibility.Size = new System.Drawing.Size(289, 26);
             this.invisibility.TabIndex = 1;
-            this.invisibility.Text = "Invisibility (F1)";
+            this.invisibility.Text = "     F1 - Invisibility";
             this.invisibility.UseVisualStyleBackColor = true;
             this.invisibility.CheckedChanged += new System.EventHandler(this.invisibility_CheckedChanged);
             // 
@@ -280,40 +277,45 @@
             this.tableLayoutPanel2Trainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2Trainer.Controls.Add(this.superBelchCan, 0, 1);
             this.tableLayoutPanel2Trainer.Controls.Add(this.invisibility, 0, 0);
-            this.tableLayoutPanel2Trainer.Controls.Add(this.flyMode, 0, 2);
             this.tableLayoutPanel2Trainer.Controls.Add(this.smoothLight, 0, 5);
             this.tableLayoutPanel2Trainer.Controls.Add(this.drawDistance, 0, 4);
             this.tableLayoutPanel2Trainer.Controls.Add(this.freezeLevelTimer, 0, 3);
             this.tableLayoutPanel2Trainer.Controls.Add(this.tableLayoutPanel4Trainer, 0, 8);
-            this.tableLayoutPanel2Trainer.Controls.Add(this.tableLayoutPanel3Trainer, 0, 7);
             this.tableLayoutPanel2Trainer.Controls.Add(this.debugMenu, 0, 6);
+            this.tableLayoutPanel2Trainer.Controls.Add(this.flyMode, 0, 7);
+            this.tableLayoutPanel2Trainer.Controls.Add(this.superJump, 0, 2);
             this.tableLayoutPanel2Trainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2Trainer.Location = new System.Drawing.Point(165, 0);
             this.tableLayoutPanel2Trainer.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2Trainer.Name = "tableLayoutPanel2Trainer";
             this.tableLayoutPanel2Trainer.RowCount = 10;
-            this.tableLayoutPanel2Trainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2Trainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2Trainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2Trainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2Trainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2Trainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2Trainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2Trainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2Trainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel2Trainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2Trainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel2Trainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel2Trainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel2Trainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel2Trainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel2Trainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel2Trainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel2Trainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel2Trainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tableLayoutPanel2Trainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2Trainer.Size = new System.Drawing.Size(295, 302);
             this.tableLayoutPanel2Trainer.TabIndex = 0;
             // 
             // freezeLevelTimer
             // 
+            this.freezeLevelTimer.Appearance = System.Windows.Forms.Appearance.Button;
             this.freezeLevelTimer.AutoSize = true;
-            this.freezeLevelTimer.Location = new System.Drawing.Point(3, 94);
+            this.freezeLevelTimer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.freezeLevelTimer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.freezeLevelTimer.ImageIndex = 3;
+            this.freezeLevelTimer.ImageList = this.buttonsIcons;
+            this.freezeLevelTimer.Location = new System.Drawing.Point(3, 106);
             this.freezeLevelTimer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.freezeLevelTimer.Name = "freezeLevelTimer";
-            this.freezeLevelTimer.Size = new System.Drawing.Size(166, 22);
+            this.freezeLevelTimer.Size = new System.Drawing.Size(289, 26);
             this.freezeLevelTimer.TabIndex = 8;
-            this.freezeLevelTimer.Text = "Freeze level timer (F4)";
+            this.freezeLevelTimer.Text = "     F4 - Freeze level timer";
             this.freezeLevelTimer.UseVisualStyleBackColor = true;
             this.freezeLevelTimer.CheckedChanged += new System.EventHandler(this.freezeLevelTimer_CheckedChanged);
             // 
@@ -324,7 +326,7 @@
             this.tableLayoutPanel4Trainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 324F));
             this.tableLayoutPanel4Trainer.Controls.Add(this.numericSpeed, 0, 0);
             this.tableLayoutPanel4Trainer.Controls.Add(this.speedLabel, 1, 0);
-            this.tableLayoutPanel4Trainer.Location = new System.Drawing.Point(0, 240);
+            this.tableLayoutPanel4Trainer.Location = new System.Drawing.Point(0, 272);
             this.tableLayoutPanel4Trainer.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel4Trainer.Name = "tableLayoutPanel4Trainer";
             this.tableLayoutPanel4Trainer.RowCount = 1;
@@ -332,30 +334,20 @@
             this.tableLayoutPanel4Trainer.Size = new System.Drawing.Size(295, 30);
             this.tableLayoutPanel4Trainer.TabIndex = 7;
             // 
-            // tableLayoutPanel3Trainer
-            // 
-            this.tableLayoutPanel3Trainer.ColumnCount = 2;
-            this.tableLayoutPanel3Trainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanel3Trainer.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 324F));
-            this.tableLayoutPanel3Trainer.Controls.Add(this.jumpLabel, 1, 0);
-            this.tableLayoutPanel3Trainer.Controls.Add(this.numericJump, 0, 0);
-            this.tableLayoutPanel3Trainer.Location = new System.Drawing.Point(0, 210);
-            this.tableLayoutPanel3Trainer.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel3Trainer.Name = "tableLayoutPanel3Trainer";
-            this.tableLayoutPanel3Trainer.RowCount = 1;
-            this.tableLayoutPanel3Trainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3Trainer.Size = new System.Drawing.Size(295, 30);
-            this.tableLayoutPanel3Trainer.TabIndex = 6;
-            // 
             // debugMenu
             // 
+            this.debugMenu.Appearance = System.Windows.Forms.Appearance.Button;
             this.debugMenu.AutoSize = true;
-            this.debugMenu.Location = new System.Drawing.Point(3, 184);
+            this.debugMenu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.debugMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.debugMenu.ImageIndex = 6;
+            this.debugMenu.ImageList = this.buttonsIcons;
+            this.debugMenu.Location = new System.Drawing.Point(3, 208);
             this.debugMenu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.debugMenu.Name = "debugMenu";
-            this.debugMenu.Size = new System.Drawing.Size(129, 22);
+            this.debugMenu.Size = new System.Drawing.Size(289, 26);
             this.debugMenu.TabIndex = 1;
-            this.debugMenu.Text = "Debug menu (F7)";
+            this.debugMenu.Text = "     F7 - Debug menu";
             this.debugMenu.UseVisualStyleBackColor = true;
             this.debugMenu.CheckedChanged += new System.EventHandler(this.debugMenu_CheckedChanged);
             // 
@@ -401,10 +393,10 @@
             // 
             this.patcherTab.Controls.Add(this.tableLayoutPanel1Patcher);
             this.patcherTab.ImageKey = "patcher.ico";
-            this.patcherTab.Location = new System.Drawing.Point(4, 27);
+            this.patcherTab.Location = new System.Drawing.Point(4, 23);
             this.patcherTab.Margin = new System.Windows.Forms.Padding(0);
             this.patcherTab.Name = "patcherTab";
-            this.patcherTab.Size = new System.Drawing.Size(460, 302);
+            this.patcherTab.Size = new System.Drawing.Size(460, 306);
             this.patcherTab.TabIndex = 1;
             this.patcherTab.Text = "Patcher";
             this.patcherTab.UseVisualStyleBackColor = true;
@@ -435,7 +427,7 @@
             this.tableLayoutPanel1Patcher.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1Patcher.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1Patcher.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1Patcher.Size = new System.Drawing.Size(460, 302);
+            this.tableLayoutPanel1Patcher.Size = new System.Drawing.Size(460, 306);
             this.tableLayoutPanel1Patcher.TabIndex = 4;
             // 
             // trainerTitle
@@ -496,7 +488,7 @@
             this.tableLayoutPanel4Patcher.Controls.Add(this.patch, 0, 0);
             this.tableLayoutPanel4Patcher.Controls.Add(this.restore, 2, 0);
             this.tableLayoutPanel4Patcher.Controls.Add(this.restoreBackup, 1, 0);
-            this.tableLayoutPanel4Patcher.Location = new System.Drawing.Point(0, 262);
+            this.tableLayoutPanel4Patcher.Location = new System.Drawing.Point(0, 266);
             this.tableLayoutPanel4Patcher.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel4Patcher.Name = "tableLayoutPanel4Patcher";
             this.tableLayoutPanel4Patcher.RowCount = 1;
@@ -760,6 +752,22 @@
             // 
             this.dbgMenuOff.Tick += new System.EventHandler(this.dbgMenuOff_Tick);
             // 
+            // superJump
+            // 
+            this.superJump.Appearance = System.Windows.Forms.Appearance.Button;
+            this.superJump.AutoSize = true;
+            this.superJump.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.superJump.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.superJump.ImageIndex = 2;
+            this.superJump.Location = new System.Drawing.Point(3, 72);
+            this.superJump.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.superJump.Name = "superJump";
+            this.superJump.Size = new System.Drawing.Size(289, 26);
+            this.superJump.TabIndex = 1;
+            this.superJump.Text = "     F3 - Super jump";
+            this.superJump.UseVisualStyleBackColor = true;
+            this.superJump.CheckedChanged += new System.EventHandler(this.superJump_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -778,15 +786,12 @@
             this.Text = "Taz Wanted trainer and patcher v1.1";
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericJump)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericSpeed)).EndInit();
             this.tableLayoutPanel1Trainer.ResumeLayout(false);
             this.tableLayoutPanel2Trainer.ResumeLayout(false);
             this.tableLayoutPanel2Trainer.PerformLayout();
             this.tableLayoutPanel4Trainer.ResumeLayout(false);
             this.tableLayoutPanel4Trainer.PerformLayout();
-            this.tableLayoutPanel3Trainer.ResumeLayout(false);
-            this.tableLayoutPanel3Trainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureTaz)).EndInit();
             this.tabs.ResumeLayout(false);
             this.trainerTab.ResumeLayout(false);
@@ -809,8 +814,6 @@
 
         #endregion
         private System.Windows.Forms.CheckBox drawDistance;
-        private System.Windows.Forms.NumericUpDown numericJump;
-        private System.Windows.Forms.Label jumpLabel;
         public System.Windows.Forms.ToolStripStatusLabel statusField;
         private System.Windows.Forms.Label speedLabel;
         private System.Windows.Forms.NumericUpDown numericSpeed;
@@ -823,7 +826,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1Trainer;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2Trainer;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4Trainer;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3Trainer;
         private System.Windows.Forms.PictureBox pictureTaz;
         private System.Windows.Forms.TabControl tabs;
         private System.Windows.Forms.TabPage trainerTab;
@@ -858,6 +860,8 @@
         private System.Windows.Forms.Timer dbgMenuOff;
         private System.Windows.Forms.CheckBox warningBanner;
         private System.Windows.Forms.ImageList tabsIcons;
+        private System.Windows.Forms.ImageList buttonsIcons;
+        private System.Windows.Forms.CheckBox superJump;
     }
 }
 
