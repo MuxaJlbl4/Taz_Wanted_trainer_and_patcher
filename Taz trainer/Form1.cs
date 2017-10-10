@@ -43,8 +43,8 @@ namespace Taz_trainer
             gkh.HookedKeys.Add(Keys.F5);
             gkh.HookedKeys.Add(Keys.F6);
             gkh.HookedKeys.Add(Keys.F7);
-            gkh.HookedKeys.Add(Keys.PageDown);
-            gkh.HookedKeys.Add(Keys.PageUp);
+            gkh.HookedKeys.Add(Keys.OemMinus);
+            gkh.HookedKeys.Add(Keys.Oemplus);
 
             gkh.HookedKeys.Add(Keys.NumPad9);
             gkh.HookedKeys.Add(Keys.NumPad8);
@@ -79,49 +79,60 @@ namespace Taz_trainer
         {
             if (e.KeyCode == Keys.F1)
             {
+                SendKeys.Send("{F1}");
                 this.invisibility.Checked = !this.invisibility.Checked;
             }
             if (e.KeyCode == Keys.F2)
             {
+                SendKeys.Send("{F2}");
                 this.superBelchCan.Checked = !this.superBelchCan.Checked;
             }
             if (e.KeyCode == Keys.F3)
             {
+                SendKeys.Send("{F3}");
                 this.superJump.Checked = !this.superJump.Checked;
             }
             if (e.KeyCode == Keys.F4)
             {
+                SendKeys.Send("{F4}");
                 this.freezeLevelTimer.Checked = !this.freezeLevelTimer.Checked;
             }
             if (e.KeyCode == Keys.F5)
             {
+                SendKeys.Send("{F5}");
                 this.drawDistance.Checked = !this.drawDistance.Checked;
             }
             if (e.KeyCode == Keys.F6)
             {
+                SendKeys.Send("{F6}");
                 this.smoothLight.Checked = !this.smoothLight.Checked;
             }
             if (e.KeyCode == Keys.F7)
             {
+                SendKeys.Send("{F7}");
                 this.debugMenu.Checked = !this.debugMenu.Checked;
             }
-            if (e.KeyCode == Keys.PageUp)
+            if (e.KeyCode == Keys.OemMinus)
             {
-                this.numericSpeed.UpButton();
+                SendKeys.Send("{-}");
+                //this.numericSpeed.UpButton();
             }
-            if (e.KeyCode == Keys.PageDown)
+            if (e.KeyCode == Keys.Oemplus)
             {
-                this.numericSpeed.DownButton();
+                SendKeys.Send("{=}");
+                //this.numericSpeed.DownButton();
             }
 
 
             if (e.KeyCode == Keys.NumPad5)
             {
                 //if (e.IsRepeat) return;
+                SendKeys.Send("{5}");
                 this.flyMode.Checked = !this.flyMode.Checked;
             }
             if (e.KeyCode == Keys.NumPad9)
             {
+                SendKeys.Send("{9}");
                 if (this.flyMode.Checked == true)
                 {
                     movement(0); //Z+
@@ -129,6 +140,7 @@ namespace Taz_trainer
             }
             if (e.KeyCode == Keys.NumPad8)
             {
+                SendKeys.Send("{8}");
                 if (this.flyMode.Checked == true)
                 {
                     movement(4); //Y+
@@ -136,6 +148,7 @@ namespace Taz_trainer
             }
             if (e.KeyCode == Keys.NumPad7)
             {
+                SendKeys.Send("{7}");
                 if (this.flyMode.Checked == true)
                 {
                     movement(1); //Z-
@@ -143,6 +156,7 @@ namespace Taz_trainer
             }
             if (e.KeyCode == Keys.NumPad6)
             {
+                SendKeys.Send("{6}");
                 if (this.flyMode.Checked == true)
                 {
                     movement(2); //X+
@@ -150,6 +164,7 @@ namespace Taz_trainer
             }
             if (e.KeyCode == Keys.NumPad4)
             {
+                SendKeys.Send("{4}");
                 if (this.flyMode.Checked == true)
                 {
                     movement(3); //X-
@@ -157,6 +172,7 @@ namespace Taz_trainer
             }
             if (e.KeyCode == Keys.NumPad2)
             {
+                SendKeys.Send("{2}");
                 if (this.flyMode.Checked == true)
                 {
                     movement(5); //Y-
@@ -292,27 +308,9 @@ namespace Taz_trainer
 
         private void superJump_CheckedChanged(object sender, EventArgs e)
         {
-            //code injection
-            byte[] bytes = { 0x51, 0x50, 0x8B, 0x0D, 0x90, 0x83, 0x6C, 0x00, 0x8B, 0x49, 0x20, 0x81, 0xF9, 0x00, 0x00, 0x00, 0x00, 0x74, 0x17, 0x8B, 0x0D, 0xC0, 0x8B, 0x6C, 0x00, 0x8B, 0x89, 0xC0, 0x01, 0x00, 0x00, 0xB8, 0x00, 0xC0, 0xDA, 0x44, 0x89, 0x81, 0x98, 0x00, 0x00, 0x00, 0x58, 0x59, 0xD9, 0x44, 0x24, 0x58, 0xD8, 0x63, 0x08, 0xD9, 0x9F, 0xC8, 0x00, 0x00, 0x00, 0xE9, 0x82, 0xBB, 0xE6, 0xFF };
-            checkAndWrite((IntPtr)0x005F6692, bytes, bytes.Length, new IntPtr());
-            
-            //Inject jmp
-            if (this.superJump.Checked == true)
-            {
-                byte[] bytes2 = { 0xE9, 0x48, 0x44, 0x19, 0x00, 0x90, 0x90 };
-                checkAndWrite((IntPtr)0x00462245, bytes2, bytes2.Length, new IntPtr());
 
-                message("Super jump: on (hold jump)");
-            }
-            else
-            {
-                byte[] bytes2 = { 0xD9, 0x44, 0x24, 0x58, 0xD8, 0x63, 0x08 };
-                checkAndWrite((IntPtr)0x00462245, bytes2, bytes2.Length, new IntPtr());
-
-                message("Super jump: off");
-            }
         }
-
+        /*
         private void numericSpeed_ValueChanged(object sender, EventArgs e)
         {
             float val = 1;
@@ -329,7 +327,7 @@ namespace Taz_trainer
             checkAndWrite((IntPtr)0x006F4A3C, BitConverter.GetBytes(val), BitConverter.GetBytes((float)numericSpeed.Value).Length, new IntPtr());
             message("Game speed: x" + val.ToString());
         }
-
+        */
         private void superBelchCan_CheckedChanged(object sender, EventArgs e)
         {
             if (this.superBelchCan.Checked == true)
