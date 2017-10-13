@@ -115,12 +115,12 @@ namespace Taz_trainer
             if (e.KeyCode == Keys.OemMinus)
             {
                 SendKeys.Send("{-}");
-                //this.numericSpeed.UpButton();
+                changeGameSpeed(0);
             }
             if (e.KeyCode == Keys.Oemplus)
             {
                 SendKeys.Send("{=}");
-                //this.numericSpeed.DownButton();
+                changeGameSpeed(1);
             }
 
 
@@ -308,26 +308,67 @@ namespace Taz_trainer
 
         private void superJump_CheckedChanged(object sender, EventArgs e)
         {
+            //code injection
+            byte[] bytes = { 0x51, 0x50, 0x8B, 0x0D, 0x90, 0x83, 0x6C, 0x00, 0x8B, 0x49, 0x20, 0x81, 0xF9, 0x00, 0x00, 0x00, 0x00, 0x74, 0x17, 0x8B, 0x0D, 0xC0, 0x8B, 0x6C, 0x00, 0x8B, 0x89, 0xC0, 0x01, 0x00, 0x00, 0xB8, 0x00, 0xC0, 0xDA, 0x44, 0x89, 0x81, 0x98, 0x00, 0x00, 0x00, 0x58, 0x59, 0xD9, 0x44, 0x24, 0x58, 0xD8, 0x63, 0x08, 0xD9, 0x9F, 0xC8, 0x00, 0x00, 0x00, 0xE9, 0x82, 0xBB, 0xE6, 0xFF };
+            checkAndWrite((IntPtr)0x005F6692, bytes, bytes.Length, new IntPtr());
 
-        }
-        /*
-        private void numericSpeed_ValueChanged(object sender, EventArgs e)
-        {
-            float val = 1;
-            //correction to 0.1
-            if ((float)numericSpeed.Value == 0)
+            //Inject jmp
+            if (this.superJump.Checked == true)
             {
-                val = (float)0.1;
+                byte[] bytes2 = { 0xE9, 0x48, 0x44, 0x19, 0x00, 0x90, 0x90 };
+                checkAndWrite((IntPtr)0x00462245, bytes2, bytes2.Length, new IntPtr());
+
+                message("Super jump: on (hold jump)");
             }
             else
             {
-                val = (float)numericSpeed.Value;
-            }
+                byte[] bytes2 = { 0xD9, 0x44, 0x24, 0x58, 0xD8, 0x63, 0x08 };
+                checkAndWrite((IntPtr)0x00462245, bytes2, bytes2.Length, new IntPtr());
 
-            checkAndWrite((IntPtr)0x006F4A3C, BitConverter.GetBytes(val), BitConverter.GetBytes((float)numericSpeed.Value).Length, new IntPtr());
-            message("Game speed: x" + val.ToString());
+                message("Super jump: off");
+            }
         }
-        */
+
+
+        private void changeGameSpeed(byte ch)
+        {
+            //read current speed
+            byte[] bytes = { 0x00, 0x00, 0x00, 0x00 };
+            bytes = checkAndRead((IntPtr)0x006F4A3C, bytes, bytes.Length, new IntPtr());
+            float current = BitConverter.ToSingle(bytes,0);
+
+            if ((current < 0.2f && ch == 0) || (current > 3.9f && ch == 1))
+            {
+                //nothing
+            }
+            else
+            {
+                //inc or dec speed
+                if (ch == 1)
+                {
+                    current += 0.5f;
+                    //correction
+                    if (current == 0.6f)
+                    {
+                        current = 0.5f;
+                    }
+                }
+                else
+                {
+                    current -= 0.5f;
+                    //correction
+                    if (current == 0f)
+                    {
+                        current = 0.1f;
+                    }
+                }
+
+            }
+            checkAndWrite((IntPtr)0x006F4A3C, BitConverter.GetBytes(current), BitConverter.GetBytes(current).Length, new IntPtr());
+            message("Game speed: x" + current.ToString());
+        }
+
+
         private void superBelchCan_CheckedChanged(object sender, EventArgs e)
         {
             if (this.superBelchCan.Checked == true)
@@ -705,6 +746,10 @@ namespace Taz_trainer
                 message = "To looooooooooooooooooong message";
             }
 
+            //Correct position of dbg text
+            byte[] bytes = { 0xD1, 0xF8, 0x68, 0x80, 0x00, 0x00, 0x00, 0x83, 0xE8, 0x40, 0x90 };
+            checkAndWrite((IntPtr)0x004A362B, bytes, bytes.Length, new IntPtr());
+
             //Copy text to dbg string 2 + 0 at end
             byte[] bytes2 = Encoding.ASCII.GetBytes(message);
             checkAndWrite((IntPtr)0x00642A94, bytes2, bytes2.Length + 1, new IntPtr());
@@ -712,10 +757,14 @@ namespace Taz_trainer
             //Hide dbg string 2
             byte[] bytes3 = { 0x00 };
             checkAndWrite((IntPtr)0x00642A78, bytes3, bytes3.Length, new IntPtr());
-
+            /*
             //Remove jump to show dbg text
             byte[] bytes = { 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 };
             checkAndWrite((IntPtr)0x004A3557, bytes, 6, new IntPtr());
+            */
+            //Show time of dbg text (3.0)
+            byte[] bytes4 = { 0x00, 0x00, 0xE0, 0x40 }; // 7.00
+            checkAndWrite((IntPtr)0x00642038, bytes4, bytes4.Length, new IntPtr());
 
             //Restart timer
             timer.Stop();
@@ -725,15 +774,20 @@ namespace Taz_trainer
         private void timer_Tick(object sender, EventArgs e)
         {
             timer.Stop();
-
+            /*
             //Restore original instructions of show dbg text
             byte[] bytes = { 0x0F, 0x84, 0x17, 0x02, 0x00, 0x00 };
             checkAndWrite((IntPtr)0x004A3557, bytes, bytes.Length, new IntPtr());
+            */
+
+            //Restore position of dbg text
+            byte[] bytes = { 0x2B, 0xC2, 0x68, 0x80, 0x00, 0x00, 0x00, 0xD1, 0xF8, 0xF7, 0xD8 };
+            checkAndWrite((IntPtr)0x004A362B, bytes, bytes.Length, new IntPtr());
 
             //Restore show time of dbg text
             byte[] bytes4 = { 0x00, 0x00, 0x20, 0x41 }; // 10.00
             checkAndWrite((IntPtr)0x00642038, bytes4, bytes4.Length, new IntPtr());
-
+            
             //Restore original dbg  text string 2
             byte[] bytes2 = { 0x46, 0x6F, 0x67, 0x3A, 0x6D, 0x69, 0x6E, 0x20, 0x25, 0x64, 0x2C, 0x20, 0x6D, 0x61, 0x78, 0x20, 0x25, 0x64, 0x2C, 0x20, 0x52, 0x47, 0x42, 0x28, 0x25, 0x64, 0x2C, 0x25, 0x64, 0x2C, 0x25, 0x64, 0x29, 0x00 };
             checkAndWrite((IntPtr)0x00642A94, bytes2, bytes2.Length, new IntPtr());
@@ -1163,6 +1217,11 @@ namespace Taz_trainer
         private void gitHub_Click(object sender, EventArgs e)
         {
             Process.Start("https://github.com/MuxaJlbl4/Taz_Wanted_trainer_and_patcher");
+        }
+
+        private void res_Click(object sender, EventArgs e)
+        {
+            //
         }
     }
 }

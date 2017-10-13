@@ -54,10 +54,6 @@
             this.disableVideos = new System.Windows.Forms.CheckBox();
             this.disableDrawDistance = new System.Windows.Forms.CheckBox();
             this.noCD = new System.Windows.Forms.CheckBox();
-            this.tableLayoutPanel4Patcher = new System.Windows.Forms.TableLayoutPanel();
-            this.patch = new System.Windows.Forms.Button();
-            this.restore = new System.Windows.Forms.Button();
-            this.restoreBackup = new System.Windows.Forms.Button();
             this.tableLayoutPanel2Patcher = new System.Windows.Forms.TableLayoutPanel();
             this.changeResolution = new System.Windows.Forms.CheckBox();
             this.height = new System.Windows.Forms.TextBox();
@@ -70,14 +66,19 @@
             this.aspect1 = new System.Windows.Forms.TextBox();
             this.aspectRatio = new System.Windows.Forms.CheckBox();
             this.pointsLabel = new System.Windows.Forms.Label();
+            this.tableLayoutPanel4Patcher = new System.Windows.Forms.TableLayoutPanel();
+            this.patch = new System.Windows.Forms.Button();
+            this.buttonIcons = new System.Windows.Forms.ImageList(this.components);
+            this.restore = new System.Windows.Forms.Button();
+            this.restoreBackup = new System.Windows.Forms.Button();
             this.infoTab = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1Info = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2Info = new System.Windows.Forms.TableLayoutPanel();
             this.gitHub = new System.Windows.Forms.Button();
+            this.res = new System.Windows.Forms.Button();
             this.infoText = new System.Windows.Forms.Label();
             this.tabsIcons = new System.Windows.Forms.ImageList(this.components);
             this.dbgMenuOff = new System.Windows.Forms.Timer(this.components);
-            this.res = new System.Windows.Forms.Button();
             this.statusStrip.SuspendLayout();
             this.tableLayoutPanel1Trainer.SuspendLayout();
             this.tableLayoutPanel2Trainer.SuspendLayout();
@@ -86,9 +87,9 @@
             this.trainerTab.SuspendLayout();
             this.patcherTab.SuspendLayout();
             this.tableLayoutPanel1Patcher.SuspendLayout();
-            this.tableLayoutPanel4Patcher.SuspendLayout();
             this.tableLayoutPanel2Patcher.SuspendLayout();
             this.tableLayoutPanel3Patcher.SuspendLayout();
+            this.tableLayoutPanel4Patcher.SuspendLayout();
             this.infoTab.SuspendLayout();
             this.tableLayoutPanel1Info.SuspendLayout();
             this.tableLayoutPanel2Info.SuspendLayout();
@@ -320,6 +321,7 @@
             this.superJump.TabIndex = 1;
             this.superJump.Text = "       F3 - Super jump";
             this.superJump.UseVisualStyleBackColor = true;
+            this.superJump.CheckedChanged += new System.EventHandler(this.superJump_CheckedChanged);
             // 
             // gameSpeed
             // 
@@ -469,59 +471,6 @@
             this.noCD.TabIndex = 2;
             this.noCD.Text = "NoCD patch";
             this.noCD.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel4Patcher
-            // 
-            this.tableLayoutPanel4Patcher.ColumnCount = 3;
-            this.tableLayoutPanel4Patcher.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel4Patcher.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel4Patcher.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel4Patcher.Controls.Add(this.patch, 0, 0);
-            this.tableLayoutPanel4Patcher.Controls.Add(this.restore, 2, 0);
-            this.tableLayoutPanel4Patcher.Controls.Add(this.restoreBackup, 1, 0);
-            this.tableLayoutPanel4Patcher.Location = new System.Drawing.Point(0, 265);
-            this.tableLayoutPanel4Patcher.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel4Patcher.Name = "tableLayoutPanel4Patcher";
-            this.tableLayoutPanel4Patcher.RowCount = 1;
-            this.tableLayoutPanel4Patcher.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4Patcher.Size = new System.Drawing.Size(460, 33);
-            this.tableLayoutPanel4Patcher.TabIndex = 6;
-            // 
-            // patch
-            // 
-            this.patch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.patch.Location = new System.Drawing.Point(1, 1);
-            this.patch.Margin = new System.Windows.Forms.Padding(1);
-            this.patch.Name = "patch";
-            this.patch.Size = new System.Drawing.Size(151, 31);
-            this.patch.TabIndex = 3;
-            this.patch.Text = "Patch!";
-            this.patch.UseVisualStyleBackColor = true;
-            this.patch.Click += new System.EventHandler(this.patch_Click);
-            // 
-            // restore
-            // 
-            this.restore.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.restore.Location = new System.Drawing.Point(307, 1);
-            this.restore.Margin = new System.Windows.Forms.Padding(1);
-            this.restore.Name = "restore";
-            this.restore.Size = new System.Drawing.Size(152, 31);
-            this.restore.TabIndex = 3;
-            this.restore.Text = "Restore all";
-            this.restore.UseVisualStyleBackColor = true;
-            this.restore.Click += new System.EventHandler(this.restore_Click);
-            // 
-            // restoreBackup
-            // 
-            this.restoreBackup.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.restoreBackup.Location = new System.Drawing.Point(154, 1);
-            this.restoreBackup.Margin = new System.Windows.Forms.Padding(1);
-            this.restoreBackup.Name = "restoreBackup";
-            this.restoreBackup.Size = new System.Drawing.Size(151, 31);
-            this.restoreBackup.TabIndex = 3;
-            this.restoreBackup.Text = "Restore .exe";
-            this.restoreBackup.UseVisualStyleBackColor = true;
-            this.restoreBackup.Click += new System.EventHandler(this.restoreBackup_Click);
             // 
             // tableLayoutPanel2Patcher
             // 
@@ -674,6 +623,78 @@
             this.pointsLabel.TabIndex = 5;
             this.pointsLabel.Text = ":";
             // 
+            // tableLayoutPanel4Patcher
+            // 
+            this.tableLayoutPanel4Patcher.ColumnCount = 3;
+            this.tableLayoutPanel4Patcher.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel4Patcher.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel4Patcher.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel4Patcher.Controls.Add(this.patch, 0, 0);
+            this.tableLayoutPanel4Patcher.Controls.Add(this.restore, 2, 0);
+            this.tableLayoutPanel4Patcher.Controls.Add(this.restoreBackup, 1, 0);
+            this.tableLayoutPanel4Patcher.Location = new System.Drawing.Point(0, 265);
+            this.tableLayoutPanel4Patcher.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel4Patcher.Name = "tableLayoutPanel4Patcher";
+            this.tableLayoutPanel4Patcher.RowCount = 1;
+            this.tableLayoutPanel4Patcher.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4Patcher.Size = new System.Drawing.Size(460, 33);
+            this.tableLayoutPanel4Patcher.TabIndex = 6;
+            // 
+            // patch
+            // 
+            this.patch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.patch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.patch.ImageIndex = 0;
+            this.patch.ImageList = this.buttonIcons;
+            this.patch.Location = new System.Drawing.Point(1, 1);
+            this.patch.Margin = new System.Windows.Forms.Padding(1);
+            this.patch.Name = "patch";
+            this.patch.Size = new System.Drawing.Size(151, 31);
+            this.patch.TabIndex = 3;
+            this.patch.Text = "Patch!";
+            this.patch.UseVisualStyleBackColor = true;
+            this.patch.Click += new System.EventHandler(this.patch_Click);
+            // 
+            // buttonIcons
+            // 
+            this.buttonIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("buttonIcons.ImageStream")));
+            this.buttonIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.buttonIcons.Images.SetKeyName(0, "bonus.png");
+            this.buttonIcons.Images.SetKeyName(1, "restoreexe.png");
+            this.buttonIcons.Images.SetKeyName(2, "restoreall.png");
+            this.buttonIcons.Images.SetKeyName(3, "github.png");
+            this.buttonIcons.Images.SetKeyName(4, "music.png");
+            // 
+            // restore
+            // 
+            this.restore.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.restore.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.restore.ImageIndex = 2;
+            this.restore.ImageList = this.buttonIcons;
+            this.restore.Location = new System.Drawing.Point(307, 1);
+            this.restore.Margin = new System.Windows.Forms.Padding(1);
+            this.restore.Name = "restore";
+            this.restore.Size = new System.Drawing.Size(152, 31);
+            this.restore.TabIndex = 3;
+            this.restore.Text = "Restore all";
+            this.restore.UseVisualStyleBackColor = true;
+            this.restore.Click += new System.EventHandler(this.restore_Click);
+            // 
+            // restoreBackup
+            // 
+            this.restoreBackup.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.restoreBackup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.restoreBackup.ImageIndex = 1;
+            this.restoreBackup.ImageList = this.buttonIcons;
+            this.restoreBackup.Location = new System.Drawing.Point(154, 1);
+            this.restoreBackup.Margin = new System.Windows.Forms.Padding(1);
+            this.restoreBackup.Name = "restoreBackup";
+            this.restoreBackup.Size = new System.Drawing.Size(151, 31);
+            this.restoreBackup.TabIndex = 3;
+            this.restoreBackup.Text = "Restore .exe";
+            this.restoreBackup.UseVisualStyleBackColor = true;
+            this.restoreBackup.Click += new System.EventHandler(this.restoreBackup_Click);
+            // 
             // infoTab
             // 
             this.infoTab.Controls.Add(this.tableLayoutPanel1Info);
@@ -720,6 +741,9 @@
             // 
             // gitHub
             // 
+            this.gitHub.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gitHub.ImageIndex = 3;
+            this.gitHub.ImageList = this.buttonIcons;
             this.gitHub.Location = new System.Drawing.Point(1, 1);
             this.gitHub.Margin = new System.Windows.Forms.Padding(1);
             this.gitHub.Name = "gitHub";
@@ -729,13 +753,27 @@
             this.gitHub.UseVisualStyleBackColor = true;
             this.gitHub.Click += new System.EventHandler(this.gitHub_Click);
             // 
+            // res
+            // 
+            this.res.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.res.ImageIndex = 4;
+            this.res.ImageList = this.buttonIcons;
+            this.res.Location = new System.Drawing.Point(307, 1);
+            this.res.Margin = new System.Windows.Forms.Padding(1);
+            this.res.Name = "res";
+            this.res.Size = new System.Drawing.Size(151, 31);
+            this.res.TabIndex = 3;
+            this.res.Text = "Game music";
+            this.res.UseVisualStyleBackColor = true;
+            this.res.Click += new System.EventHandler(this.res_Click);
+            // 
             // infoText
             // 
             this.infoText.AutoSize = true;
             this.infoText.Location = new System.Drawing.Point(0, 0);
             this.infoText.Margin = new System.Windows.Forms.Padding(0);
             this.infoText.Name = "infoText";
-            this.infoText.Size = new System.Drawing.Size(456, 184);
+            this.infoText.Size = new System.Drawing.Size(456, 230);
             this.infoText.TabIndex = 8;
             this.infoText.Text = resources.GetString("infoText.Text");
             // 
@@ -750,17 +788,6 @@
             // dbgMenuOff
             // 
             this.dbgMenuOff.Tick += new System.EventHandler(this.dbgMenuOff_Tick);
-            // 
-            // res
-            // 
-            this.res.Location = new System.Drawing.Point(307, 1);
-            this.res.Margin = new System.Windows.Forms.Padding(1);
-            this.res.Name = "res";
-            this.res.Size = new System.Drawing.Size(151, 31);
-            this.res.TabIndex = 3;
-            this.res.Text = "Unpacked music";
-            this.res.UseVisualStyleBackColor = true;
-            this.res.Click += new System.EventHandler(this.gitHub_Click);
             // 
             // Form1
             // 
@@ -789,11 +816,11 @@
             this.patcherTab.ResumeLayout(false);
             this.tableLayoutPanel1Patcher.ResumeLayout(false);
             this.tableLayoutPanel1Patcher.PerformLayout();
-            this.tableLayoutPanel4Patcher.ResumeLayout(false);
             this.tableLayoutPanel2Patcher.ResumeLayout(false);
             this.tableLayoutPanel2Patcher.PerformLayout();
             this.tableLayoutPanel3Patcher.ResumeLayout(false);
             this.tableLayoutPanel3Patcher.PerformLayout();
+            this.tableLayoutPanel4Patcher.ResumeLayout(false);
             this.infoTab.ResumeLayout(false);
             this.tableLayoutPanel1Info.ResumeLayout(false);
             this.tableLayoutPanel1Info.PerformLayout();
@@ -852,6 +879,7 @@
         private System.Windows.Forms.CheckBox superJump;
         private System.Windows.Forms.CheckBox gameSpeed;
         private System.Windows.Forms.Button res;
+        private System.Windows.Forms.ImageList buttonIcons;
     }
 }
 
