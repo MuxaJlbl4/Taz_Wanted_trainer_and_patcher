@@ -277,13 +277,6 @@ namespace Taz_trainer
 
         //#######################################################################################################################
         //Cheats
-        private void memoryEdit(int adress, byte[] bytes)
-        {
-            int size = bytes.Length;
-            var mem = new IntPtr();
-            checkAndWrite((IntPtr)adress, bytes, size, mem);
-        }
-
         private void drawDistance_CheckedChanged(object sender, EventArgs e)
         {
             if (this.drawDistance.Checked == true)
@@ -824,7 +817,7 @@ namespace Taz_trainer
             try
             {
                 //Check checkboxes
-                if (this.noCD.Checked == false && this.disableDrawDistance.Checked == false && this.disableVideos.Checked == false && this.changeResolution.Checked == false && this.aspectRatio.Checked == false && this.warningBanner.Checked == false)
+                if (this.noCD.Checked == false && this.disableDrawDistance.Checked == false && this.disableVideos.Checked == false && this.changeResolution.Checked == false && this.aspectRatio.Checked == false && this.warningBanner.Checked == false && this.d3d8to9.Checked == false)
                 {
                     MessageBox.Show("Select at least one option", "No options selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -978,6 +971,11 @@ namespace Taz_trainer
                     }
                 }
 
+                if (this.d3d8to9.Checked == true)
+                {
+                    File.WriteAllBytes(TazGameFolder + "\\d3d8.dll", Properties.Resources.D3D8dll);
+                }
+
                     //end
                     this.statusField.Text = "Patched successfully (" + TazGameFolder + ")";
                 if (backuped == true)
@@ -1095,6 +1093,11 @@ namespace Taz_trainer
                         file.WriteByte(0x73);
                         file.WriteByte(0x5F);
                         file.Close();
+                    }
+                    //restore d3d8
+                    if (File.Exists(TazGameFolder + "\\d3d8.dll"))
+                    {
+                        File.Delete(TazGameFolder + "\\d3d8.dll");
                     }
                     //restore end
                     this.statusField.Text = "Restored successfully (" + TazGameFolder + ")";
@@ -1217,6 +1220,11 @@ namespace Taz_trainer
         private void gitHub_Click(object sender, EventArgs e)
         {
             Process.Start("https://github.com/MuxaJlbl4/Taz_Wanted_trainer_and_patcher");
+        }
+
+        private void d3d_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/crosire/d3d8to9");
         }
 
         private void res_Click(object sender, EventArgs e)
