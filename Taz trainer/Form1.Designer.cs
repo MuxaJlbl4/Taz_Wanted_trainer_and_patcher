@@ -110,7 +110,7 @@
             this.drawDistance.Name = "drawDistance";
             this.drawDistance.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.drawDistance.Size = new System.Drawing.Size(293, 32);
-            this.drawDistance.TabIndex = 1;
+            this.drawDistance.TabIndex = 5;
             this.drawDistance.Text = "       F5 - Infinity draw distance";
             this.drawDistance.UseVisualStyleBackColor = true;
             this.drawDistance.CheckedChanged += new System.EventHandler(this.drawDistance_CheckedChanged);
@@ -138,7 +138,7 @@
             this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 18, 0);
             this.statusStrip.Size = new System.Drawing.Size(468, 22);
             this.statusStrip.SizingGrip = false;
-            this.statusStrip.TabIndex = 2;
+            this.statusStrip.TabIndex = 0;
             // 
             // statusField
             // 
@@ -160,7 +160,7 @@
             this.superBelchCan.Name = "superBelchCan";
             this.superBelchCan.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.superBelchCan.Size = new System.Drawing.Size(293, 32);
-            this.superBelchCan.TabIndex = 1;
+            this.superBelchCan.TabIndex = 2;
             this.superBelchCan.Text = "       F2 - Super burp can";
             this.superBelchCan.UseVisualStyleBackColor = true;
             this.superBelchCan.CheckedChanged += new System.EventHandler(this.superBelchCan_CheckedChanged);
@@ -178,7 +178,7 @@
             this.flyMode.Name = "flyMode";
             this.flyMode.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.flyMode.Size = new System.Drawing.Size(293, 32);
-            this.flyMode.TabIndex = 1;
+            this.flyMode.TabIndex = 8;
             this.flyMode.Text = "       Num5/NumPad keys - Fly mode";
             this.flyMode.UseVisualStyleBackColor = true;
             this.flyMode.CheckedChanged += new System.EventHandler(this.flyMode_CheckedChanged);
@@ -201,7 +201,7 @@
             this.smoothLight.Name = "smoothLight";
             this.smoothLight.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.smoothLight.Size = new System.Drawing.Size(293, 32);
-            this.smoothLight.TabIndex = 1;
+            this.smoothLight.TabIndex = 6;
             this.smoothLight.Text = "       F6 - Smooth lighting";
             this.smoothLight.UseVisualStyleBackColor = true;
             this.smoothLight.CheckedChanged += new System.EventHandler(this.smoothLight_CheckedChanged);
@@ -238,7 +238,7 @@
             this.tableLayoutPanel1Trainer.RowCount = 1;
             this.tableLayoutPanel1Trainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1Trainer.Size = new System.Drawing.Size(460, 298);
-            this.tableLayoutPanel1Trainer.TabIndex = 7;
+            this.tableLayoutPanel1Trainer.TabIndex = 1;
             // 
             // tableLayoutPanel2Trainer
             // 
@@ -269,7 +269,7 @@
             this.tableLayoutPanel2Trainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.tableLayoutPanel2Trainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2Trainer.Size = new System.Drawing.Size(295, 298);
-            this.tableLayoutPanel2Trainer.TabIndex = 0;
+            this.tableLayoutPanel2Trainer.TabIndex = 1;
             // 
             // freezeLevelTimer
             // 
@@ -284,7 +284,7 @@
             this.freezeLevelTimer.Name = "freezeLevelTimer";
             this.freezeLevelTimer.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.freezeLevelTimer.Size = new System.Drawing.Size(293, 32);
-            this.freezeLevelTimer.TabIndex = 8;
+            this.freezeLevelTimer.TabIndex = 4;
             this.freezeLevelTimer.Text = "       F4 - Freeze level timer";
             this.freezeLevelTimer.UseVisualStyleBackColor = true;
             this.freezeLevelTimer.CheckedChanged += new System.EventHandler(this.freezeLevelTimer_CheckedChanged);
@@ -302,7 +302,7 @@
             this.debugMenu.Name = "debugMenu";
             this.debugMenu.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.debugMenu.Size = new System.Drawing.Size(293, 32);
-            this.debugMenu.TabIndex = 1;
+            this.debugMenu.TabIndex = 7;
             this.debugMenu.Text = "       F7 - Debug menu";
             this.debugMenu.UseVisualStyleBackColor = true;
             this.debugMenu.CheckedChanged += new System.EventHandler(this.debugMenu_CheckedChanged);
@@ -320,7 +320,7 @@
             this.superJump.Name = "superJump";
             this.superJump.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.superJump.Size = new System.Drawing.Size(293, 32);
-            this.superJump.TabIndex = 1;
+            this.superJump.TabIndex = 3;
             this.superJump.Text = "       F3 - Super jump";
             this.superJump.UseVisualStyleBackColor = true;
             this.superJump.CheckedChanged += new System.EventHandler(this.superJump_CheckedChanged);
@@ -338,7 +338,7 @@
             this.gameSpeed.Name = "gameSpeed";
             this.gameSpeed.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.gameSpeed.Size = new System.Drawing.Size(293, 32);
-            this.gameSpeed.TabIndex = 1;
+            this.gameSpeed.TabIndex = 9;
             this.gameSpeed.Text = "       -/= - Change game speed";
             this.gameSpeed.UseVisualStyleBackColor = true;
             // 
@@ -369,7 +369,7 @@
             this.tabs.SelectedIndex = 0;
             this.tabs.Size = new System.Drawing.Size(468, 333);
             this.tabs.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.tabs.TabIndex = 8;
+            this.tabs.TabIndex = 0;
             // 
             // trainerTab
             // 
@@ -401,14 +401,14 @@
             this.tableLayoutPanel1Patcher.ColumnCount = 1;
             this.tableLayoutPanel1Patcher.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1Patcher.Controls.Add(this.trainerTitle, 0, 0);
-            this.tableLayoutPanel1Patcher.Controls.Add(this.disableVideos, 0, 3);
-            this.tableLayoutPanel1Patcher.Controls.Add(this.disableDrawDistance, 0, 2);
             this.tableLayoutPanel1Patcher.Controls.Add(this.noCD, 0, 1);
+            this.tableLayoutPanel1Patcher.Controls.Add(this.disableDrawDistance, 0, 3);
+            this.tableLayoutPanel1Patcher.Controls.Add(this.tableLayoutPanel2Patcher, 0, 7);
             this.tableLayoutPanel1Patcher.Controls.Add(this.d3d8to9, 0, 5);
             this.tableLayoutPanel1Patcher.Controls.Add(this.warningBanner, 0, 4);
             this.tableLayoutPanel1Patcher.Controls.Add(this.tableLayoutPanel4Patcher, 0, 8);
-            this.tableLayoutPanel1Patcher.Controls.Add(this.tableLayoutPanel3Patcher, 0, 7);
-            this.tableLayoutPanel1Patcher.Controls.Add(this.tableLayoutPanel2Patcher, 0, 6);
+            this.tableLayoutPanel1Patcher.Controls.Add(this.tableLayoutPanel3Patcher, 0, 6);
+            this.tableLayoutPanel1Patcher.Controls.Add(this.disableVideos, 0, 2);
             this.tableLayoutPanel1Patcher.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1Patcher.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1Patcher.Margin = new System.Windows.Forms.Padding(0);
@@ -424,7 +424,7 @@
             this.tableLayoutPanel1Patcher.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1Patcher.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.tableLayoutPanel1Patcher.Size = new System.Drawing.Size(460, 298);
-            this.tableLayoutPanel1Patcher.TabIndex = 4;
+            this.tableLayoutPanel1Patcher.TabIndex = 1;
             // 
             // trainerTitle
             // 
@@ -433,7 +433,7 @@
             this.trainerTitle.Location = new System.Drawing.Point(3, 5);
             this.trainerTitle.Name = "trainerTitle";
             this.trainerTitle.Size = new System.Drawing.Size(195, 23);
-            this.trainerTitle.TabIndex = 5;
+            this.trainerTitle.TabIndex = 1;
             this.trainerTitle.Text = "Choose options for patch:";
             // 
             // disableVideos
@@ -441,11 +441,11 @@
             this.disableVideos.AutoSize = true;
             this.disableVideos.Checked = true;
             this.disableVideos.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.disableVideos.Location = new System.Drawing.Point(1, 100);
+            this.disableVideos.Location = new System.Drawing.Point(1, 67);
             this.disableVideos.Margin = new System.Windows.Forms.Padding(1);
             this.disableVideos.Name = "disableVideos";
             this.disableVideos.Size = new System.Drawing.Size(168, 27);
-            this.disableVideos.TabIndex = 2;
+            this.disableVideos.TabIndex = 3;
             this.disableVideos.Text = "Disable logo videos";
             this.disableVideos.UseVisualStyleBackColor = true;
             // 
@@ -454,11 +454,11 @@
             this.disableDrawDistance.AutoSize = true;
             this.disableDrawDistance.Checked = true;
             this.disableDrawDistance.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.disableDrawDistance.Location = new System.Drawing.Point(1, 67);
+            this.disableDrawDistance.Location = new System.Drawing.Point(1, 100);
             this.disableDrawDistance.Margin = new System.Windows.Forms.Padding(1);
             this.disableDrawDistance.Name = "disableDrawDistance";
             this.disableDrawDistance.Size = new System.Drawing.Size(190, 27);
-            this.disableDrawDistance.TabIndex = 2;
+            this.disableDrawDistance.TabIndex = 4;
             this.disableDrawDistance.Text = "Disable draw distance";
             this.disableDrawDistance.UseVisualStyleBackColor = true;
             // 
@@ -484,7 +484,7 @@
             this.d3d8to9.Margin = new System.Windows.Forms.Padding(1);
             this.d3d8to9.Name = "d3d8to9";
             this.d3d8to9.Size = new System.Drawing.Size(235, 27);
-            this.d3d8to9.TabIndex = 2;
+            this.d3d8to9.TabIndex = 6;
             this.d3d8to9.Text = "Convert DirectX 8 API to 9";
             this.d3d8to9.UseVisualStyleBackColor = true;
             // 
@@ -497,7 +497,7 @@
             this.warningBanner.Margin = new System.Windows.Forms.Padding(1);
             this.warningBanner.Name = "warningBanner";
             this.warningBanner.Size = new System.Drawing.Size(200, 27);
-            this.warningBanner.TabIndex = 2;
+            this.warningBanner.TabIndex = 5;
             this.warningBanner.Text = "Disable warning banner";
             this.warningBanner.UseVisualStyleBackColor = true;
             // 
@@ -516,7 +516,7 @@
             this.tableLayoutPanel4Patcher.RowCount = 1;
             this.tableLayoutPanel4Patcher.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4Patcher.Size = new System.Drawing.Size(460, 33);
-            this.tableLayoutPanel4Patcher.TabIndex = 6;
+            this.tableLayoutPanel4Patcher.TabIndex = 16;
             // 
             // patch
             // 
@@ -528,7 +528,7 @@
             this.patch.Margin = new System.Windows.Forms.Padding(1);
             this.patch.Name = "patch";
             this.patch.Size = new System.Drawing.Size(151, 31);
-            this.patch.TabIndex = 3;
+            this.patch.TabIndex = 16;
             this.patch.Text = "Patch!";
             this.patch.UseVisualStyleBackColor = true;
             this.patch.Click += new System.EventHandler(this.patch_Click);
@@ -554,7 +554,7 @@
             this.restore.Margin = new System.Windows.Forms.Padding(1);
             this.restore.Name = "restore";
             this.restore.Size = new System.Drawing.Size(152, 31);
-            this.restore.TabIndex = 3;
+            this.restore.TabIndex = 18;
             this.restore.Text = "Restore all";
             this.restore.UseVisualStyleBackColor = true;
             this.restore.Click += new System.EventHandler(this.restore_Click);
@@ -569,7 +569,7 @@
             this.restoreBackup.Margin = new System.Windows.Forms.Padding(1);
             this.restoreBackup.Name = "restoreBackup";
             this.restoreBackup.Size = new System.Drawing.Size(151, 31);
-            this.restoreBackup.TabIndex = 3;
+            this.restoreBackup.TabIndex = 17;
             this.restoreBackup.Text = "Restore exe";
             this.restoreBackup.UseVisualStyleBackColor = true;
             this.restoreBackup.Click += new System.EventHandler(this.restoreBackup_Click);
@@ -586,13 +586,13 @@
             this.tableLayoutPanel3Patcher.Controls.Add(this.aspect1, 1, 0);
             this.tableLayoutPanel3Patcher.Controls.Add(this.aspectRatio, 0, 0);
             this.tableLayoutPanel3Patcher.Controls.Add(this.pointsLabel, 2, 0);
-            this.tableLayoutPanel3Patcher.Location = new System.Drawing.Point(0, 231);
+            this.tableLayoutPanel3Patcher.Location = new System.Drawing.Point(0, 198);
             this.tableLayoutPanel3Patcher.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel3Patcher.Name = "tableLayoutPanel3Patcher";
             this.tableLayoutPanel3Patcher.RowCount = 1;
             this.tableLayoutPanel3Patcher.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3Patcher.Size = new System.Drawing.Size(460, 30);
-            this.tableLayoutPanel3Patcher.TabIndex = 5;
+            this.tableLayoutPanel3Patcher.TabIndex = 7;
             // 
             // aspect2
             // 
@@ -601,7 +601,7 @@
             this.aspect2.Margin = new System.Windows.Forms.Padding(0);
             this.aspect2.Name = "aspect2";
             this.aspect2.Size = new System.Drawing.Size(35, 30);
-            this.aspect2.TabIndex = 6;
+            this.aspect2.TabIndex = 10;
             // 
             // aspect1
             // 
@@ -610,7 +610,7 @@
             this.aspect1.Margin = new System.Windows.Forms.Padding(0);
             this.aspect1.Name = "aspect1";
             this.aspect1.Size = new System.Drawing.Size(35, 30);
-            this.aspect1.TabIndex = 4;
+            this.aspect1.TabIndex = 8;
             // 
             // aspectRatio
             // 
@@ -621,7 +621,7 @@
             this.aspectRatio.Margin = new System.Windows.Forms.Padding(1);
             this.aspectRatio.Name = "aspectRatio";
             this.aspectRatio.Size = new System.Drawing.Size(172, 27);
-            this.aspectRatio.TabIndex = 2;
+            this.aspectRatio.TabIndex = 7;
             this.aspectRatio.Text = "Change aspect ratio";
             this.aspectRatio.UseVisualStyleBackColor = true;
             this.aspectRatio.CheckedChanged += new System.EventHandler(this.aspectRatio_CheckedChanged);
@@ -633,7 +633,7 @@
             this.pointsLabel.Location = new System.Drawing.Point(218, 3);
             this.pointsLabel.Name = "pointsLabel";
             this.pointsLabel.Size = new System.Drawing.Size(14, 23);
-            this.pointsLabel.TabIndex = 5;
+            this.pointsLabel.TabIndex = 9;
             this.pointsLabel.Text = ":";
             // 
             // tableLayoutPanel2Patcher
@@ -643,20 +643,20 @@
             this.tableLayoutPanel2Patcher.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.tableLayoutPanel2Patcher.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.tableLayoutPanel2Patcher.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanel2Patcher.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2Patcher.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2Patcher.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
             this.tableLayoutPanel2Patcher.Controls.Add(this.changeResolution, 0, 0);
             this.tableLayoutPanel2Patcher.Controls.Add(this.height, 3, 0);
             this.tableLayoutPanel2Patcher.Controls.Add(this.xLabel, 2, 0);
             this.tableLayoutPanel2Patcher.Controls.Add(this.windowed, 5, 0);
             this.tableLayoutPanel2Patcher.Controls.Add(this.width, 1, 0);
-            this.tableLayoutPanel2Patcher.Location = new System.Drawing.Point(0, 198);
+            this.tableLayoutPanel2Patcher.Location = new System.Drawing.Point(0, 231);
             this.tableLayoutPanel2Patcher.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2Patcher.Name = "tableLayoutPanel2Patcher";
             this.tableLayoutPanel2Patcher.RowCount = 1;
             this.tableLayoutPanel2Patcher.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2Patcher.Size = new System.Drawing.Size(460, 30);
-            this.tableLayoutPanel2Patcher.TabIndex = 4;
+            this.tableLayoutPanel2Patcher.TabIndex = 11;
             // 
             // changeResolution
             // 
@@ -667,7 +667,7 @@
             this.changeResolution.Margin = new System.Windows.Forms.Padding(1);
             this.changeResolution.Name = "changeResolution";
             this.changeResolution.Size = new System.Drawing.Size(156, 27);
-            this.changeResolution.TabIndex = 2;
+            this.changeResolution.TabIndex = 11;
             this.changeResolution.Text = "Change resolution";
             this.changeResolution.UseVisualStyleBackColor = true;
             this.changeResolution.CheckedChanged += new System.EventHandler(this.changeResolution_CheckedChanged);
@@ -679,7 +679,7 @@
             this.height.Margin = new System.Windows.Forms.Padding(0);
             this.height.Name = "height";
             this.height.Size = new System.Drawing.Size(60, 30);
-            this.height.TabIndex = 3;
+            this.height.TabIndex = 14;
             // 
             // xLabel
             // 
@@ -688,17 +688,17 @@
             this.xLabel.Location = new System.Drawing.Point(243, 3);
             this.xLabel.Name = "xLabel";
             this.xLabel.Size = new System.Drawing.Size(18, 23);
-            this.xLabel.TabIndex = 5;
+            this.xLabel.TabIndex = 13;
             this.xLabel.Text = "x";
             // 
             // windowed
             // 
             this.windowed.AutoSize = true;
-            this.windowed.Location = new System.Drawing.Point(347, 4);
+            this.windowed.Location = new System.Drawing.Point(353, 4);
             this.windowed.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.windowed.Name = "windowed";
             this.windowed.Size = new System.Drawing.Size(104, 22);
-            this.windowed.TabIndex = 2;
+            this.windowed.TabIndex = 15;
             this.windowed.Text = "Windowed";
             this.windowed.UseVisualStyleBackColor = true;
             this.windowed.CheckedChanged += new System.EventHandler(this.windowed_CheckedChanged);
@@ -710,7 +710,7 @@
             this.width.Margin = new System.Windows.Forms.Padding(0);
             this.width.Name = "width";
             this.width.Size = new System.Drawing.Size(60, 30);
-            this.width.TabIndex = 4;
+            this.width.TabIndex = 12;
             // 
             // infoTab
             // 
@@ -755,7 +755,7 @@
             this.tableLayoutPanel2Info.RowCount = 1;
             this.tableLayoutPanel2Info.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2Info.Size = new System.Drawing.Size(460, 33);
-            this.tableLayoutPanel2Info.TabIndex = 7;
+            this.tableLayoutPanel2Info.TabIndex = 1;
             // 
             // gitHub
             // 
@@ -766,7 +766,7 @@
             this.gitHub.Margin = new System.Windows.Forms.Padding(1);
             this.gitHub.Name = "gitHub";
             this.gitHub.Size = new System.Drawing.Size(151, 31);
-            this.gitHub.TabIndex = 3;
+            this.gitHub.TabIndex = 1;
             this.gitHub.Text = "Source code";
             this.gitHub.UseVisualStyleBackColor = true;
             this.gitHub.Click += new System.EventHandler(this.gitHub_Click);
@@ -794,7 +794,7 @@
             this.d3d.Margin = new System.Windows.Forms.Padding(1);
             this.d3d.Name = "d3d";
             this.d3d.Size = new System.Drawing.Size(151, 31);
-            this.d3d.TabIndex = 3;
+            this.d3d.TabIndex = 2;
             this.d3d.Text = "D3D8to9";
             this.d3d.UseVisualStyleBackColor = true;
             this.d3d.Click += new System.EventHandler(this.d3d_Click);
