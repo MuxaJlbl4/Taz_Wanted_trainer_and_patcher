@@ -63,10 +63,19 @@ namespace Taz_trainer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        public static byte[] D3D8dll {
+        public static byte[] d3d8 {
             get {
-                object obj = ResourceManager.GetObject("D3D8dll", resourceCulture);
+                object obj = ResourceManager.GetObject("d3d8", resourceCulture);
                 return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        public static System.IO.UnmanagedMemoryStream moveselection {
+            get {
+                return ResourceManager.GetStream("moveselection", resourceCulture);
             }
         }
         

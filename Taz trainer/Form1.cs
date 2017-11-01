@@ -274,6 +274,15 @@ namespace Taz_trainer
             this.aspect2.Text = aspect2.ToString();
         }
 
+        private void playSound(System.IO.Stream stream)
+        {
+            if (trainerSound.Checked == true)
+            {
+                System.Media.SoundPlayer player = new System.Media.SoundPlayer(stream);
+                player.Play();
+            }
+
+        }
 
         //#######################################################################################################################
         //Cheats
@@ -762,6 +771,7 @@ namespace Taz_trainer
             //Restart timer
             timer.Stop();
             timer.Start();
+            playSound(Properties.Resources.moveselection);
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -973,7 +983,8 @@ namespace Taz_trainer
 
                 if (this.d3d8to9.Checked == true)
                 {
-                    File.WriteAllBytes(TazGameFolder + "\\d3d8.dll", Properties.Resources.D3D8dll);
+                    //d3d8to9
+                    File.WriteAllBytes(TazGameFolder + "\\d3d8.dll", Properties.Resources.d3d8);
                 }
 
                     //end
