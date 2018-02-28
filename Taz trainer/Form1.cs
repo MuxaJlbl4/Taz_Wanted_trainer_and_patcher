@@ -43,6 +43,7 @@ namespace Taz_trainer
             gkh.HookedKeys.Add(Keys.F5);
             gkh.HookedKeys.Add(Keys.F6);
             gkh.HookedKeys.Add(Keys.F7);
+            gkh.HookedKeys.Add(Keys.F8);
             gkh.HookedKeys.Add(Keys.OemMinus);
             gkh.HookedKeys.Add(Keys.Oemplus);
 
@@ -52,13 +53,16 @@ namespace Taz_trainer
             gkh.HookedKeys.Add(Keys.NumPad6);
             gkh.HookedKeys.Add(Keys.NumPad5);
             gkh.HookedKeys.Add(Keys.NumPad4);
+            gkh.HookedKeys.Add(Keys.NumPad3);
             gkh.HookedKeys.Add(Keys.NumPad2);
+            gkh.HookedKeys.Add(Keys.NumPad1);
 
             gkh.KeyDown += new KeyEventHandler(gkh_KeyDown);
             gkh.KeyUp += new KeyEventHandler(gkh_KeyUp);
 
             autoFillVideo(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
 
+            langComboBox.SelectedIndex = 0;
         }
 
 
@@ -100,17 +104,22 @@ namespace Taz_trainer
             if (e.KeyCode == Keys.F5)
             {
                 SendKeys.Send("{F5}");
-                this.drawDistance.Checked = !this.drawDistance.Checked;
+                this.debugMenu.Checked = !this.debugMenu.Checked;
             }
             if (e.KeyCode == Keys.F6)
             {
                 SendKeys.Send("{F6}");
-                this.smoothLight.Checked = !this.smoothLight.Checked;
+                this.drawDistance.Checked = !this.drawDistance.Checked;
             }
             if (e.KeyCode == Keys.F7)
             {
                 SendKeys.Send("{F7}");
-                this.debugMenu.Checked = !this.debugMenu.Checked;
+                this.smoothLight.Checked = !this.smoothLight.Checked;
+            }
+            if (e.KeyCode == Keys.F8)
+            {
+                SendKeys.Send("{F8}");
+                this.disallowJump.Checked = !this.disallowJump.Checked;
             }
             if (e.KeyCode == Keys.OemMinus)
             {
@@ -122,8 +131,6 @@ namespace Taz_trainer
                 SendKeys.Send("{=}");
                 changeGameSpeed(1);
             }
-
-
             if (e.KeyCode == Keys.NumPad5)
             {
                 //if (e.IsRepeat) return;
@@ -170,6 +177,11 @@ namespace Taz_trainer
                     movement(3); //X-
                 }
             }
+            if (e.KeyCode == Keys.NumPad3)
+            {
+                SendKeys.Send("{3}");
+                loadPosition();
+            }
             if (e.KeyCode == Keys.NumPad2)
             {
                 SendKeys.Send("{2}");
@@ -177,6 +189,11 @@ namespace Taz_trainer
                 {
                     movement(5); //Y-
                 }
+            }
+            if (e.KeyCode == Keys.NumPad1)
+            {
+                SendKeys.Send("{1}");
+                savePosition();
             }
 
             e.Handled = true;
@@ -284,25 +301,42 @@ namespace Taz_trainer
 
         }
 
+
         //#######################################################################################################################
         //Cheats
         private void drawDistance_CheckedChanged(object sender, EventArgs e)
         {
             if (this.drawDistance.Checked == true)
             {
+                //enviroment
                 byte[] bytes = { 0xFF };
                 checkAndWrite((IntPtr)0x00474FC4, bytes, bytes.Length, new IntPtr());
                 byte[] bytes2 = { 0x74 };
                 checkAndWrite((IntPtr)0x00474FD0, bytes2, bytes2.Length, new IntPtr());
 
+                //bonuses and effects
+                byte[] bytes3 = { 0x00, 0x00, 0x80, 0x7F }; // Code
+                checkAndWrite((IntPtr)0x005F66E8, bytes3, bytes3.Length, new IntPtr());
+                byte[] bytes4 = { 0xE8, 0x66, 0x5F, 0x00 }; // Code
+                checkAndWrite((IntPtr)0x0047E00B, bytes4, bytes4.Length, new IntPtr());
+                byte[] bytes5 = { 0xD9, 0xE8, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 }; // Code
+                checkAndWrite((IntPtr)0x0047E016, bytes5, bytes5.Length, new IntPtr());
+
                 message("Infinity draw distance: on");
             }
             else
             {
+                //enviroment
                 byte[] bytes = { 0x00 };
                 checkAndWrite((IntPtr)0x00474FC4, bytes, bytes.Length, new IntPtr());
                 byte[] bytes2 = { 0x75 };
                 checkAndWrite((IntPtr)0x00474FD0, bytes2, bytes2.Length, new IntPtr());
+
+                //bonuses and effects
+                byte[] bytes4 = { 0xF4, 0x75, 0x5F, 0x00 }; // Code
+                checkAndWrite((IntPtr)0x0047E00B, bytes4, bytes4.Length, new IntPtr());
+                byte[] bytes5 = { 0xD9, 0x46, 0x3C, 0xD8, 0x0D, 0xE4, 0x7E, 0x5F, 0x00, 0xD9, 0xFE }; // Code
+                checkAndWrite((IntPtr)0x0047E016, bytes5, bytes5.Length, new IntPtr());
 
                 message("Infinity draw distance: off");
             }
@@ -650,6 +684,58 @@ namespace Taz_trainer
             }
         }
 
+        float X = 0;
+        float Y = 0;
+        float Z = 0;
+
+        private void savePosition()
+        {
+            //Read taz structure coordinates offset
+            float value;
+            var adress = 0x006C8BC0; //Base adress
+            byte[] bytes = { 0x00, 0x00, 0x00, 0x00 };
+            int size = bytes.Length;
+            var mem = new IntPtr();
+            bytes = checkAndRead((IntPtr)adress, bytes, size, mem);
+            adress = BitConverter.ToInt32(bytes, 0);
+            adress += 0xC0;
+            bytes = checkAndRead((IntPtr)adress, bytes, size, mem);
+            value = BitConverter.ToSingle(bytes, 0);
+            X = value;
+            adress += 0x4;
+            bytes = checkAndRead((IntPtr)adress, bytes, size, mem);
+            value = BitConverter.ToSingle(bytes, 0);
+            Z = value;
+            adress += 0x4;
+            bytes = checkAndRead((IntPtr)adress, bytes, size, mem);
+            value = BitConverter.ToSingle(bytes, 0);
+            Y = value;
+
+            message("Position saved");
+        }
+
+        private void loadPosition()
+        {
+            //Read taz structure coordinates offset
+            var adress = 0x006C8BC0; //Base adress
+            byte[] bytes = { 0x00, 0x00, 0x00, 0x00 };
+            int size = bytes.Length;
+            var mem = new IntPtr();
+            bytes = checkAndRead((IntPtr)adress, bytes, size, mem);
+            adress = BitConverter.ToInt32(bytes, 0);
+            adress += 0xC0;
+            bytes = BitConverter.GetBytes(X);
+            checkAndWrite((IntPtr)adress, bytes, size, mem);
+            adress += 0x4;
+            bytes = BitConverter.GetBytes(Z);
+            checkAndWrite((IntPtr)adress, bytes, size, mem);
+            adress += 0x4;
+            bytes = BitConverter.GetBytes(Y);
+            checkAndWrite((IntPtr)adress, bytes, size, mem);
+
+            message("Position loaded");
+        }
+
 
         private void freezeLevelTimer_CheckedChanged(object sender, EventArgs e)
         {
@@ -740,6 +826,36 @@ namespace Taz_trainer
             message("Call debug menu");
         }
 
+        private void disallowJump_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.disallowJump.Checked == true)
+            {
+                byte[] bytes = { 0xE9, 0x97, 0x01, 0x00, 0x00, 0x90 };
+                checkAndWrite((IntPtr)0x00481207, bytes, bytes.Length, new IntPtr());
+
+                byte[] bytes2 = { 0xE9, 0x69, 0x01, 0x00, 0x00, 0x90 };
+                checkAndWrite((IntPtr)0x004825CB, bytes2, bytes2.Length, new IntPtr());
+
+                byte[] bytes3 = { 0xE9, 0xAF, 0x01, 0x00, 0x00, 0x90 };
+                checkAndWrite((IntPtr)0x004842E9, bytes3, bytes3.Length, new IntPtr());
+
+                message("Disallow jumps: on");
+            }
+            else
+            {
+                byte[] bytes = { 0x0F, 0x84, 0x96, 0x01, 0x00, 0x00 };
+                checkAndWrite((IntPtr)0x00481207, bytes, bytes.Length, new IntPtr());
+
+                byte[] bytes2 = { 0x0F, 0x84, 0x68, 0x01, 0x00, 0x00 };
+                checkAndWrite((IntPtr)0x004825CB, bytes2, bytes2.Length, new IntPtr());
+
+                byte[] bytes3 = { 0x0F, 0x84, 0xAE, 0x01, 0x00, 0x00 };
+                checkAndWrite((IntPtr)0x004842E9, bytes3, bytes3.Length, new IntPtr());
+
+                message("Disallow jumps: off");
+            }
+        }
+
         private void message(string message)
         {
             //Check text length
@@ -821,25 +937,32 @@ namespace Taz_trainer
 
         //#######################################################################################################################
         //Patcher
+        private string getPathFromRegistry()
+        {
+            //Read path from registry
+            string TazGameFolder = (string)Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Infogrames Interactive\TazWanted\Release", "Location", null);
+            if (TazGameFolder == null)
+            {
+                // Search in x86 registry
+                TazGameFolder = (string)Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Infogrames Interactive\TazWanted\Release", "Location", null);
+            }
+            return TazGameFolder;
+        }
+
+
 
         private void patch_Click(object sender, EventArgs e)
         {
             try
             {
                 //Check checkboxes
-                if (this.noCD.Checked == false && this.disableDrawDistance.Checked == false && this.disableVideos.Checked == false && this.changeResolution.Checked == false && this.aspectRatio.Checked == false && this.warningBanner.Checked == false && this.d3d8to9.Checked == false)
+                if (this.noCD.Checked == false && this.disableDrawDistance.Checked == false && this.disableVideos.Checked == false && this.changeResolution.Checked == false && this.aspectRatio.Checked == false && this.warningBanner.Checked == false )
                 {
                     MessageBox.Show("Select at least one option", "No options selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                //Read path from registry
-                string TazGameFolder = (string)Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Infogrames Interactive\TazWanted\Release", "Location", null);
-                if (TazGameFolder == null)
-                {
-                    // Search in x86 registry
-                    TazGameFolder = (string)Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Infogrames Interactive\TazWanted\Release", "Location", null);
-                }
+                string TazGameFolder = getPathFromRegistry();
 
                 bool backuped = false;
 
@@ -869,6 +992,7 @@ namespace Taz_trainer
                 //disable draw distance
                 if (this.disableDrawDistance.Checked == true)
                 {
+                    //enviroment
                     using (var file = new FileStream(TazGameFolder + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
                     {
                         byte[] bytes = new byte[] { 0xFF, 0xFF, 0x74 }; // 00 00 75
@@ -877,6 +1001,18 @@ namespace Taz_trainer
                         file.WriteByte(bytes[1]);
                         file.Position = 0x74FD0;
                         file.WriteByte(bytes[2]);
+                        //file.Close();
+
+
+                        byte[] bytes0 = { 0x00, 0x00, 0x80, 0x7F };
+                        byte[] bytes1 = { 0xE8, 0x66, 0x5F, 0x00 };
+                        byte[] bytes2 = { 0xD9, 0xE8, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 };
+                        file.Position = 0x1F66E8;
+                        file.Write(bytes0, 0, bytes0.Length);
+                        file.Position = 0x7E00B;
+                        file.Write(bytes1, 0, bytes1.Length);
+                        file.Position = 0x7E016;
+                        file.Write(bytes2, 0, bytes2.Length);
                         file.Close();
                     }
 
@@ -968,11 +1104,11 @@ namespace Taz_trainer
                     }
                 }
 
+                //warning banner time
                 if (this.warningBanner.Checked == true)
                 {
                     using (var file = new FileStream(TazGameFolder + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
                     {
-                        //warning banner time
                         file.Position = 0x8F07D;
                         file.WriteByte(0x20);
                         file.WriteByte(0x00);
@@ -981,14 +1117,16 @@ namespace Taz_trainer
                     }
                 }
 
-                if (this.d3d8to9.Checked == true)
+                //language
+                using (var file = new FileStream(TazGameFolder + "\\taz.dat", FileMode.Open, FileAccess.ReadWrite))
                 {
-                    //d3d8to9
-                    File.WriteAllBytes(TazGameFolder + "\\d3d8.dll", Properties.Resources.d3d8);
+                    file.Position = 0x168;
+                    file.WriteByte((Byte)langComboBox.SelectedIndex);
+                    file.Close();
                 }
 
-                    //end
-                    this.statusField.Text = "Patched successfully (" + TazGameFolder + ")";
+                //end
+                this.statusField.Text = "Patched successfully (" + TazGameFolder + ")";
                 if (backuped == true)
                 {
                     this.statusField.Text += " and created backup of taz.exe";
@@ -1008,16 +1146,10 @@ namespace Taz_trainer
         {
             try
             {
-                var result = MessageBox.Show("This will restore: CD check, draw distance, logo videos, warning banner and set video mode to 1024x768 (4:3 fullscreen). Continue?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var result = MessageBox.Show("This will restore all options and mods to default. Continue?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    //Read path from registry
-                    string TazGameFolder = (string)Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Infogrames Interactive\TazWanted\Release", "Location", null);
-                    if (TazGameFolder == null)
-                    {
-                        // Search in x86 registry
-                        TazGameFolder = (string)Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Infogrames Interactive\TazWanted\Release", "Location", null);
-                    }
+                    string TazGameFolder = getPathFromRegistry();
 
                     //restore CD check
                     using (var file = new FileStream(TazGameFolder + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
@@ -1041,6 +1173,20 @@ namespace Taz_trainer
                         file.WriteByte(bytes[2]);
                         file.Close();
                     }
+                    //effects
+                    using (var file = new FileStream(TazGameFolder + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        byte[] bytes0 = { 0x00, 0x00, 0x00, 0x00 };
+                        byte[] bytes1 = { 0xF4, 0x75, 0x5F, 0x00 };
+                        byte[] bytes2 = { 0xD9, 0x46, 0x3C, 0xD8, 0x0D, 0xE4, 0x7E, 0x5F, 0x00, 0xD9, 0xFE };
+                        file.Position = 0x1F66E8;
+                        file.Write(bytes0, 0, bytes0.Length);
+                        file.Position = 0x7E00B;
+                        file.Write(bytes1, 0, bytes1.Length);
+                        file.Position = 0x7E016;
+                        file.Write(bytes2, 0, bytes2.Length);
+                        file.Close();
+                    }
                     using (var file = new FileStream(TazGameFolder + "\\taz.dat", FileMode.Open, FileAccess.ReadWrite))
                     {
                         //max default
@@ -1049,6 +1195,7 @@ namespace Taz_trainer
                         file.WriteByte(0x02);
                         file.Close();
                     }
+
                     //restore videos
                     if (Directory.Exists(TazGameFolder + "\\Videos") == false)
                     {
@@ -1105,15 +1252,9 @@ namespace Taz_trainer
                         file.WriteByte(0x5F);
                         file.Close();
                     }
-                    //restore d3d8
-                    if (File.Exists(TazGameFolder + "\\d3d8.dll"))
-                    {
-                        File.Delete(TazGameFolder + "\\d3d8.dll");
-                    }
                     //restore end
                     this.statusField.Text = "Restored successfully (" + TazGameFolder + ")";
                     this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
-                    MessageBox.Show("Restored successfully", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
@@ -1122,42 +1263,27 @@ namespace Taz_trainer
                 this.statusField.ForeColor = System.Drawing.Color.DarkRed;
             }
 
-        }
-
-
-        private void restoreBackup_Click(object sender, EventArgs e)
-        {
+            //restore exe backup
             try
             {
-                var result = MessageBox.Show("This will restore previously created backup of taz.exe file. Continue?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    //Read path from registry
-                    string TazGameFolder = (string)Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Infogrames Interactive\TazWanted\Release", "Location", null);
-                    if (TazGameFolder == null)
-                    {
-                        // Search in x86 registry
-                        TazGameFolder = (string)Registry.GetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Infogrames Interactive\TazWanted\Release", "Location", null);
-                    }
+                string TazGameFolder = getPathFromRegistry();
 
-                    //Check backup
-                    if (File.Exists(TazGameFolder + "\\Taz.exe.backup") == true)
-                    {
-                        //Replace
-                        File.Delete(TazGameFolder + "\\Taz.exe");
-                        File.Copy(TazGameFolder + "\\Taz.exe.backup", TazGameFolder + "\\Taz.exe");
-                    }
-                    else
-                    {
-                        this.statusField.Text = "Taz.exe.backup not found!";
-                        this.statusField.ForeColor = System.Drawing.Color.DarkRed;
-                        return;
-                    }
-                    //restore end
-                    this.statusField.Text = "Restored successfully (" + TazGameFolder + ")";
-                    this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
-                    MessageBox.Show("Restored successfully", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //Check backup
+                if (File.Exists(TazGameFolder + "\\Taz.exe.backup") == true)
+                {
+                    //Replace
+                    File.Delete(TazGameFolder + "\\Taz.exe");
+                    File.Copy(TazGameFolder + "\\Taz.exe.backup", TazGameFolder + "\\Taz.exe");
                 }
+                else
+                {
+                    this.statusField.Text = "Taz.exe.backup not found!";
+                    this.statusField.ForeColor = System.Drawing.Color.DarkRed;
+                    return;
+                }
+                //restore end
+                this.statusField.Text = "Restored successfully (" + TazGameFolder + ")";
+                this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
             }
             catch (Exception ex)
             {
@@ -1233,14 +1359,80 @@ namespace Taz_trainer
             Process.Start("https://github.com/MuxaJlbl4/Taz_Wanted_trainer_and_patcher");
         }
 
-        private void d3d_Click(object sender, EventArgs e)
+
+        private void button1_Click(object sender, EventArgs e)
         {
-            Process.Start("https://github.com/crosire/d3d8to9");
+            try
+            {
+                string TazPath = getPathFromRegistry();
+                TazPath = '"' + TazPath + "\\TazLauncher.exe" + '"' /*+ "Forced"*/;
+                Process.Start(TazPath, "Forced");
+            }
+            catch (Exception ex)
+            {
+                this.statusField.Text = ex.Message.ToString();
+                this.statusField.ForeColor = System.Drawing.Color.DarkRed;
+            }
         }
 
-        private void res_Click(object sender, EventArgs e)
+        private void video_Click(object sender, EventArgs e)
         {
-            //
+            try
+            {
+                string TazPath = getPathFromRegistry();
+                TazPath = TazPath + "\\config.exe";
+                Process.Start(TazPath, "graphics " + langComboBox.SelectedIndex.ToString());
+            }
+            catch (Exception ex)
+            {
+                this.statusField.Text = ex.Message.ToString();
+                this.statusField.ForeColor = System.Drawing.Color.DarkRed;
+            }
+        }
+
+        private void audio_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string TazPath = getPathFromRegistry();
+                TazPath = TazPath + "\\config.exe";
+                Process.Start(TazPath, "sound " + langComboBox.SelectedIndex.ToString());
+            }
+            catch (Exception ex)
+            {
+                this.statusField.Text = ex.Message.ToString();
+                this.statusField.ForeColor = System.Drawing.Color.DarkRed;
+            }
+        }
+
+        private void controls_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string TazPath = getPathFromRegistry();
+                TazPath = TazPath + "\\config.exe";
+                Process.Start(TazPath, "control " + langComboBox.SelectedIndex.ToString());
+            }
+            catch (Exception ex)
+            {
+                this.statusField.Text = ex.Message.ToString();
+                this.statusField.ForeColor = System.Drawing.Color.DarkRed;
+            }
+        }
+
+        private void play_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string TazPath = getPathFromRegistry();
+                TazPath = TazPath + "\\taz.exe";
+                Process.Start(TazPath, "Launched");
+            }
+            catch (Exception ex)
+            {
+                this.statusField.Text = ex.Message.ToString();
+                this.statusField.ForeColor = System.Drawing.Color.DarkRed;
+            }
         }
     }
 }

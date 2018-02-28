@@ -89,7 +89,6 @@
     <None Include="Resources\TAZ.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\d3d8.dll" />
     <None Include="Resources\moveselection.wav" />
     <Content Include="TAZLOGO.ico" />
   </ItemGroup>
