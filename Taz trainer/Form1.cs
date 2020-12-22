@@ -83,52 +83,52 @@ namespace Taz_trainer
         {
             if (e.KeyCode == Keys.F1)
             {
-                SendKeys.Send("{F1}");
+                //SendKeys.Send("{F1}");
                 this.invisibility.Checked = !this.invisibility.Checked;
             }
             if (e.KeyCode == Keys.F2)
             {
-                SendKeys.Send("{F2}");
+                //SendKeys.Send("{F2}");
                 this.superBelchCan.Checked = !this.superBelchCan.Checked;
             }
             if (e.KeyCode == Keys.F3)
             {
-                SendKeys.Send("{F3}");
+                //SendKeys.Send("{F3}");
                 this.superJump.Checked = !this.superJump.Checked;
             }
             if (e.KeyCode == Keys.F4)
             {
-                SendKeys.Send("{F4}");
+                //SendKeys.Send("{F4}");
                 this.freezeLevelTimer.Checked = !this.freezeLevelTimer.Checked;
             }
             if (e.KeyCode == Keys.F5)
             {
-                SendKeys.Send("{F5}");
+                //SendKeys.Send("{F5}");
                 this.debugMenu.Checked = !this.debugMenu.Checked;
             }
             if (e.KeyCode == Keys.F6)
             {
-                SendKeys.Send("{F6}");
+                //SendKeys.Send("{F6}");
                 this.drawDistance.Checked = !this.drawDistance.Checked;
             }
             if (e.KeyCode == Keys.F7)
             {
-                SendKeys.Send("{F7}");
+                //SendKeys.Send("{F7}");
                 this.smoothLight.Checked = !this.smoothLight.Checked;
             }
             if (e.KeyCode == Keys.F8)
             {
-                SendKeys.Send("{F8}");
+                //SendKeys.Send("{F8}");
                 this.disallowJump.Checked = !this.disallowJump.Checked;
             }
             if (e.KeyCode == Keys.OemMinus)
             {
-                SendKeys.Send("{-}");
+                //SendKeys.Send("{-}");
                 changeGameSpeed(0);
             }
             if (e.KeyCode == Keys.Oemplus)
             {
-                SendKeys.Send("{=}");
+                //SendKeys.Send("{=}");
                 changeGameSpeed(1);
             }
             if (e.KeyCode == Keys.NumPad5)
@@ -268,18 +268,26 @@ namespace Taz_trainer
             //fill resolution
             this.width.Text = width.ToString();
             this.height.Text = height.ToString();
+        }
 
+        private void autoAspect(int width, int height)
+        {
             //calculate aspect ratio
             int a = width;
             int b = height;
+            int aspect1 = 0;
+            int aspect2 = 0;
             while (b != 0)
             {
                 int temp = b;
                 b = a % b;
                 a = temp;
             }
-            int aspect1 = width / a;
-            int aspect2 = height / a;
+            if (a != 0)
+            {
+                aspect1 = width / a;
+                aspect2 = height / a;
+            }
             //if long
             while (aspect1 > 255 || aspect2 > 255)
             {
@@ -290,6 +298,42 @@ namespace Taz_trainer
             this.aspect1.Text = aspect1.ToString();
             this.aspect2.Text = aspect2.ToString();
         }
+        private void width_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string width = this.width.Text;
+                string height = this.height.Text;
+                if (width == "")
+                    width = "0";
+                if (height == "")
+                    height = "0";
+                autoAspect(UInt16.Parse(width), UInt16.Parse(height));
+            }
+            catch (Exception ex)
+            {
+                this.statusField.Text = ex.Message.ToString();
+                this.statusField.ForeColor = System.Drawing.Color.DarkRed;
+            }
+        }
+        private void height_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                string width = this.width.Text;
+                string height = this.height.Text;
+                if (width == "")
+                    width = "0";
+                if (height == "")
+                    height = "0";
+                autoAspect(UInt16.Parse(width), UInt16.Parse(height));
+            }
+            catch (Exception ex)
+            {
+                this.statusField.Text = ex.Message.ToString();
+                this.statusField.ForeColor = System.Drawing.Color.DarkRed;
+            }
+}
 
         private void playSound(System.IO.Stream stream)
         {
@@ -1038,11 +1082,11 @@ namespace Taz_trainer
                 //resolution
                 if (this.changeResolution.Checked == true)
                 {
+                    byte[] width = BitConverter.GetBytes(UInt32.Parse(this.width.Text));
+                    byte[] height = BitConverter.GetBytes(UInt32.Parse(this.height.Text));
+
                     if (this.windowed.Checked == false)
                     {
-                        byte[] width = BitConverter.GetBytes(UInt32.Parse(this.width.Text));
-                        byte[] height = BitConverter.GetBytes(UInt32.Parse(this.height.Text));
-
                         using (var file = new FileStream(TazGameFolder + "\\taz.dat", FileMode.Open, FileAccess.ReadWrite))
                         {
                             //width
@@ -1084,6 +1128,21 @@ namespace Taz_trainer
                             file.WriteByte(0x01);
                             file.Close();
                         }
+                            using (var file = new FileStream(TazGameFolder + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                        {
+                            //resolution in Taz.exe
+                            file.Position = 0x8F134;
+                            file.WriteByte(width[0]);
+                            file.WriteByte(width[1]);
+                            file.WriteByte(width[2]);
+                            file.WriteByte(width[3]);
+                            file.Position = 0x8F13E;
+                            file.WriteByte(height[0]);
+                            file.WriteByte(height[1]);
+                            file.WriteByte(height[2]);
+                            file.WriteByte(height[3]);
+                            file.Close();
+                        }
                     }
                 }
 
@@ -1095,7 +1154,6 @@ namespace Taz_trainer
 
                     using (var file = new FileStream(TazGameFolder + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
                     {
-                        //windowed
                         file.Position = 0x8FD76;
                         file.WriteByte(aspect1);
                         file.Position = 0x8FD7D;
@@ -1233,6 +1291,24 @@ namespace Taz_trainer
                         file.WriteByte(0x00);
                         file.Close();
                     }
+
+                    //restore resolution in Taz.exe
+                    using (var file = new FileStream(TazGameFolder + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        file.Position = 0x8F134;
+                        file.WriteByte(0x80);
+                        file.WriteByte(0x02);
+                        file.WriteByte(0x00);
+                        file.WriteByte(0x00);
+                        file.Position = 0x8F13E;
+                        file.WriteByte(0xE0);
+                        file.WriteByte(0x01);
+                        file.WriteByte(0x00);
+                        file.WriteByte(0x00);
+                        file.Close();
+                    }
+
+
                     //restore aspect ratio
                     using (var file = new FileStream(TazGameFolder + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
                     {
@@ -1338,21 +1414,14 @@ namespace Taz_trainer
         {
             if (this.windowed.Checked == true)
             {
-                this.height.Enabled = false;
-                this.xLabel.Enabled = false;
-                this.width.Enabled = false;
-                autoFillVideo(640, 480);
-                this.aspectRatio.Checked = true;
+
             }
             else
             {
-                this.height.Enabled = true;
-                this.xLabel.Enabled = true;
-                this.width.Enabled = true;
                 autoFillVideo(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
-                this.aspectRatio.Checked = true;
             }
         }
+
 
         private void gitHub_Click(object sender, EventArgs e)
         {
@@ -1420,6 +1489,20 @@ namespace Taz_trainer
             }
         }
 
+        private void gameFolder_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string TazPath = getPathFromRegistry();
+                Process.Start("explorer.exe", TazPath);
+            }
+            catch (Exception ex)
+            {
+                this.statusField.Text = ex.Message.ToString();
+                this.statusField.ForeColor = System.Drawing.Color.DarkRed;
+            }
+        }
+
         private void play_Click(object sender, EventArgs e)
         {
             try
@@ -1433,6 +1516,17 @@ namespace Taz_trainer
                 this.statusField.Text = ex.Message.ToString();
                 this.statusField.ForeColor = System.Drawing.Color.DarkRed;
             }
+        }
+
+        private void tabs_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            TabPage page = tabs.TabPages[e.Index];
+            e.Graphics.FillRectangle(new SolidBrush(page.BackColor), e.Bounds);
+
+            Rectangle paddedBounds = e.Bounds;
+            int yOffset = (e.State == DrawItemState.Selected) ? -2 : 1;
+            paddedBounds.Offset(1, yOffset);
+            TextRenderer.DrawText(e.Graphics, page.Text, Font, paddedBounds, page.ForeColor);
         }
     }
 }
