@@ -155,8 +155,8 @@
             // 
             this.statusField.ForeColor = System.Drawing.SystemColors.ControlText;
             this.statusField.Name = "statusField";
-            this.statusField.Size = new System.Drawing.Size(137, 17);
-            this.statusField.Text = "Welcome to Taz Hacked!";
+            this.statusField.Size = new System.Drawing.Size(168, 17);
+            this.statusField.Text = "Welcome to Taz Wanted t \'n p!";
             // 
             // timer
             // 
@@ -931,7 +931,7 @@
             "German",
             "Italian",
             "Spanish"});
-            this.langComboBox.Location = new System.Drawing.Point(112, 5);
+            this.langComboBox.Location = new System.Drawing.Point(112, 12);
             this.langComboBox.Name = "langComboBox";
             this.langComboBox.Size = new System.Drawing.Size(103, 34);
             this.langComboBox.TabIndex = 23;
@@ -1026,7 +1026,7 @@
             this.play.Name = "play";
             this.play.Size = new System.Drawing.Size(222, 40);
             this.play.TabIndex = 32;
-            this.play.Text = "Play";
+            this.play.Text = "Patch and Play!";
             this.play.UseVisualStyleBackColor = false;
             this.play.Click += new System.EventHandler(this.play_Click);
             // 
@@ -1129,7 +1129,7 @@
             this.gitHub.Name = "gitHub";
             this.gitHub.Size = new System.Drawing.Size(222, 40);
             this.gitHub.TabIndex = 3;
-            this.gitHub.Text = "Source code";
+            this.gitHub.Text = "GitHub";
             this.gitHub.UseVisualStyleBackColor = false;
             this.gitHub.Click += new System.EventHandler(this.gitHub_Click);
             // 
@@ -1173,7 +1173,7 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Taz Wanted trainer and patcher v1.1";
+            this.Text = "Taz Wanted trainer and patcher 2.0";
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.tableLayoutPanel11.ResumeLayout(false);

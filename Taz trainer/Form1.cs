@@ -1190,7 +1190,7 @@ namespace Taz_trainer
                     this.statusField.Text += " and created backup of taz.exe";
                 }
                 this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
-                MessageBox.Show("Patched successfully", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //MessageBox.Show("Patched successfully", "Success!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
@@ -1507,6 +1507,7 @@ namespace Taz_trainer
         {
             try
             {
+                this.patch.PerformClick();
                 string TazPath = getPathFromRegistry();
                 TazPath = TazPath + "\\taz.exe";
                 Process.Start(TazPath, "Launched");
