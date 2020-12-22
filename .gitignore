@@ -1,3 +1,4 @@
-#/.vs
-#/Taz trainer/bin
-#/Taz trainer/obj
+/.gitattributes
+/.vs
+/Taz trainer/bin
+/Taz trainer/obj
