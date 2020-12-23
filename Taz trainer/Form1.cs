@@ -83,7 +83,7 @@ namespace Taz_trainer
         {
             if (e.KeyCode == Keys.F1)
             {
-                //SendKeys.Send("{F1}");
+                //SendKeys.Send("{F1}"); // Causes timer crashes
                 this.invisibility.Checked = !this.invisibility.Checked;
             }
             if (e.KeyCode == Keys.F2)
@@ -1422,13 +1422,6 @@ namespace Taz_trainer
             }
         }
 
-
-        private void gitHub_Click(object sender, EventArgs e)
-        {
-            Process.Start("https://github.com/MuxaJlbl4/Taz_Wanted_trainer_and_patcher");
-        }
-
-
         private void button1_Click(object sender, EventArgs e)
         {
             try
@@ -1528,6 +1521,26 @@ namespace Taz_trainer
             int yOffset = (e.State == DrawItemState.Selected) ? -2 : 1;
             paddedBounds.Offset(1, yOffset);
             TextRenderer.DrawText(e.Graphics, page.Text, Font, paddedBounds, page.ForeColor);
+        }
+
+        private void linkLabelUsage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://github.com/MuxaJlbl4/Taz_Wanted_trainer_and_patcher#usage");
+        }
+
+        private void linkLabelGKH_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://github.com/jparnell8839/globalKeyboardHook");
+        }
+
+        private void linkLabelD3d_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://github.com/crosire/d3d8to9");
+        }
+
+        private void linkLabelQuickBms_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("http://aluigi.altervista.org/quickbms.htm");
         }
     }
 }

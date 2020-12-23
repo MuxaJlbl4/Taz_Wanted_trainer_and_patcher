@@ -93,10 +93,13 @@
             this.tableLayoutPanel31 = new System.Windows.Forms.TableLayoutPanel();
             this.infoText = new System.Windows.Forms.Label();
             this.tableLayoutPanel32 = new System.Windows.Forms.TableLayoutPanel();
-            this.gitHub = new System.Windows.Forms.Button();
             this.trainerSound = new System.Windows.Forms.CheckBox();
             this.tabsIcons = new System.Windows.Forms.ImageList(this.components);
             this.dbgMenuOff = new System.Windows.Forms.Timer(this.components);
+            this.linkLabelUsage = new System.Windows.Forms.LinkLabel();
+            this.linkLabelGKH = new System.Windows.Forms.LinkLabel();
+            this.linkLabelD3d = new System.Windows.Forms.LinkLabel();
+            this.linkLabelQuickBms = new System.Windows.Forms.LinkLabel();
             this.statusStrip.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
@@ -1078,13 +1081,21 @@
             // 
             this.tableLayoutPanel31.ColumnCount = 1;
             this.tableLayoutPanel31.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel31.Controls.Add(this.infoText, 0, 0);
-            this.tableLayoutPanel31.Controls.Add(this.tableLayoutPanel32, 0, 1);
+            this.tableLayoutPanel31.Controls.Add(this.linkLabelUsage, 0, 0);
+            this.tableLayoutPanel31.Controls.Add(this.linkLabelGKH, 0, 1);
+            this.tableLayoutPanel31.Controls.Add(this.tableLayoutPanel32, 0, 5);
+            this.tableLayoutPanel31.Controls.Add(this.linkLabelD3d, 0, 2);
+            this.tableLayoutPanel31.Controls.Add(this.infoText, 0, 4);
+            this.tableLayoutPanel31.Controls.Add(this.linkLabelQuickBms, 0, 3);
             this.tableLayoutPanel31.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel31.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel31.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel31.Name = "tableLayoutPanel31";
-            this.tableLayoutPanel31.RowCount = 2;
+            this.tableLayoutPanel31.RowCount = 6;
+            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.tableLayoutPanel31.Size = new System.Drawing.Size(672, 290);
@@ -1093,12 +1104,11 @@
             // infoText
             // 
             this.infoText.AutoSize = true;
-            this.infoText.Location = new System.Drawing.Point(0, 0);
+            this.infoText.Location = new System.Drawing.Point(0, 168);
             this.infoText.Margin = new System.Windows.Forms.Padding(0);
             this.infoText.Name = "infoText";
-            this.infoText.Size = new System.Drawing.Size(663, 156);
+            this.infoText.Size = new System.Drawing.Size(0, 26);
             this.infoText.TabIndex = 1;
-            this.infoText.Text = resources.GetString("infoText.Text");
             // 
             // tableLayoutPanel32
             // 
@@ -1106,9 +1116,7 @@
             this.tableLayoutPanel32.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel32.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel32.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel32.Controls.Add(this.gitHub, 2, 0);
             this.tableLayoutPanel32.Controls.Add(this.trainerSound, 0, 0);
-            this.tableLayoutPanel32.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel32.Location = new System.Drawing.Point(0, 248);
             this.tableLayoutPanel32.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel32.Name = "tableLayoutPanel32";
@@ -1116,22 +1124,6 @@
             this.tableLayoutPanel32.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel32.Size = new System.Drawing.Size(672, 42);
             this.tableLayoutPanel32.TabIndex = 2;
-            // 
-            // gitHub
-            // 
-            this.gitHub.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gitHub.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.gitHub.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.gitHub.ImageIndex = 2;
-            this.gitHub.ImageList = this.buttonIcons;
-            this.gitHub.Location = new System.Drawing.Point(449, 1);
-            this.gitHub.Margin = new System.Windows.Forms.Padding(1);
-            this.gitHub.Name = "gitHub";
-            this.gitHub.Size = new System.Drawing.Size(222, 40);
-            this.gitHub.TabIndex = 3;
-            this.gitHub.Text = "GitHub";
-            this.gitHub.UseVisualStyleBackColor = false;
-            this.gitHub.Click += new System.EventHandler(this.gitHub_Click);
             // 
             // trainerSound
             // 
@@ -1157,6 +1149,54 @@
             // dbgMenuOff
             // 
             this.dbgMenuOff.Tick += new System.EventHandler(this.dbgMenuOff_Tick);
+            // 
+            // linkLabelUsage
+            // 
+            this.linkLabelUsage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.linkLabelUsage.AutoSize = true;
+            this.linkLabelUsage.Location = new System.Drawing.Point(280, 8);
+            this.linkLabelUsage.Name = "linkLabelUsage";
+            this.linkLabelUsage.Size = new System.Drawing.Size(111, 26);
+            this.linkLabelUsage.TabIndex = 3;
+            this.linkLabelUsage.TabStop = true;
+            this.linkLabelUsage.Text = "Usage Info";
+            this.linkLabelUsage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelUsage_LinkClicked);
+            // 
+            // linkLabelGKH
+            // 
+            this.linkLabelGKH.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.linkLabelGKH.AutoSize = true;
+            this.linkLabelGKH.Location = new System.Drawing.Point(239, 50);
+            this.linkLabelGKH.Name = "linkLabelGKH";
+            this.linkLabelGKH.Size = new System.Drawing.Size(194, 26);
+            this.linkLabelGKH.TabIndex = 3;
+            this.linkLabelGKH.TabStop = true;
+            this.linkLabelGKH.Text = "GlobalKeyboardHook";
+            this.linkLabelGKH.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelGKH_LinkClicked);
+            // 
+            // linkLabelD3d
+            // 
+            this.linkLabelD3d.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.linkLabelD3d.AutoSize = true;
+            this.linkLabelD3d.Location = new System.Drawing.Point(289, 92);
+            this.linkLabelD3d.Name = "linkLabelD3d";
+            this.linkLabelD3d.Size = new System.Drawing.Size(94, 26);
+            this.linkLabelD3d.TabIndex = 3;
+            this.linkLabelD3d.TabStop = true;
+            this.linkLabelD3d.Text = "D3D8to9";
+            this.linkLabelD3d.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelD3d_LinkClicked);
+            // 
+            // linkLabelQuickBms
+            // 
+            this.linkLabelQuickBms.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.linkLabelQuickBms.AutoSize = true;
+            this.linkLabelQuickBms.Location = new System.Drawing.Point(283, 134);
+            this.linkLabelQuickBms.Name = "linkLabelQuickBms";
+            this.linkLabelQuickBms.Size = new System.Drawing.Size(105, 26);
+            this.linkLabelQuickBms.TabIndex = 3;
+            this.linkLabelQuickBms.TabStop = true;
+            this.linkLabelQuickBms.Text = "QuickBMS";
+            this.linkLabelQuickBms.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelQuickBms_LinkClicked);
             // 
             // Form1
             // 
@@ -1231,7 +1271,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel31;
         private System.Windows.Forms.Label infoText;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel32;
-        private System.Windows.Forms.Button gitHub;
         private System.Windows.Forms.CheckBox freezeLevelTimer;
         private System.Windows.Forms.CheckBox debugMenu;
         private System.Windows.Forms.Timer dbgMenuOff;
@@ -1280,6 +1319,10 @@
         private System.Windows.Forms.Button play;
         private System.Windows.Forms.ComboBox langComboBox;
         private System.Windows.Forms.Button gameFolder;
+        private System.Windows.Forms.LinkLabel linkLabelUsage;
+        private System.Windows.Forms.LinkLabel linkLabelGKH;
+        private System.Windows.Forms.LinkLabel linkLabelD3d;
+        private System.Windows.Forms.LinkLabel linkLabelQuickBms;
     }
 }
 

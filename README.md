@@ -1,8 +1,10 @@
 # Taz Wanted Trainer & Patcher
+![1](https://user-images.githubusercontent.com/20092823/103023795-a78a4b00-455f-11eb-8a0b-5cc30d4b49b1.png)  
+![2](https://user-images.githubusercontent.com/20092823/103023800-a8bb7800-455f-11eb-8efa-32f29f1c434e.png)  
 
-## Screenshots
-
-## **[Download](https://github.com/MuxaJlbl4/Taz_Wanted_trainer_and_patcher/releases)**
+<br>
+## **[🠗 Download 🠗](https://github.com/MuxaJlbl4/Taz_Wanted_trainer_and_patcher/releases)**
+<br>
 
 ## Requirements
 - **Taz: Wanted PC Game (Version 1.0)**
@@ -10,7 +12,7 @@
 
 ## Usage
 ### Trainer
-While game is running use keys to activate/deactivate cheats:
+While game is running, use keys to activate/deactivate cheats:
 - **F1 - Invisibility** - Timeless test tube effect
 - **F2 - Always burp** - Timeless super burp soda can effect
 - **F3 - Super jump** - Hold jump to move up
@@ -44,10 +46,14 @@ Select necessary patches and click **Patch** or **Patch and Play!** All needed b
 - **Audio** - Launches native audio setup
 - **Controls** - Launches native controls setup
 - **Game folder** - Opens game folder in explorer
-
+8
 ## Game screenshots
 ![screens](https://user-images.githubusercontent.com/20092823/30523732-30c460a4-9bef-11e7-8b69-e0b33f27a09c.png)
 
 ## Used repos:
-- **[GlobalKeyboardHook](https://github.com/jparnell8839/globalKeyboardHook)**
-- **[d3d8to9](https://github.com/crosire/d3d8to9)**
+- **[GlobalKeyboardHook](https://github.com/jparnell8839/globalKeyboardHook)** - Key hooking functionality
+- **[d3d8to9](https://github.com/crosire/d3d8to9)** - Converting Direct3D 8 API to Direct3D 9
+- **[QuickBMS](http://aluigi.altervista.org/quickbms.htm)** - Game resource unpacking
+
+## Known issues:
+- Functional and other hooked keys not work in other apps, when program is running
