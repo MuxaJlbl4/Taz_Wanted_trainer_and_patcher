@@ -44,7 +44,7 @@ Select necessary patches and click **Patch** or **Patch and Play!** All needed b
 - **Audio** - Launches native audio setup
 - **Controls** - Launches native controls setup
 - **Game folder** - Opens game folder in explorer
-8
+
 ## Game screenshots
 ![screens](https://user-images.githubusercontent.com/20092823/30523732-30c460a4-9bef-11e7-8b69-e0b33f27a09c.png)
 
@@ -55,3 +55,6 @@ Select necessary patches and click **Patch** or **Patch and Play!** All needed b
 
 ## Known issues:
 - Functional and other hooked keys not work in other apps, when program is running
+- Custom resolution and windowed mode may not work without [d3d8to9](https://github.com/crosire/d3d8to9) converter
+- Some non standard resolutions may crash game on startup in fullscreen mode
+- Smooth lighting may crash game in some scenes
