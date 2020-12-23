@@ -3,7 +3,7 @@
 ![2](https://user-images.githubusercontent.com/20092823/103023800-a8bb7800-455f-11eb-8efa-32f29f1c434e.png)  
 
 <br>
-## [🠗 Download 🠗](https://github.com/MuxaJlbl4/Taz_Wanted_trainer_and_patcher/releases/download/v2.0/Taz.Wanted.Trainer.Patcher.exe)
+**[🠗 Download 🠗](https://github.com/MuxaJlbl4/Taz_Wanted_trainer_and_patcher/releases/download/v2.0/Taz.Wanted.Trainer.Patcher.exe)**
 <br>
 
 ## Requirements
