@@ -55,7 +55,7 @@ Select necessary patches and click **Patch** or **Patch and Play!** All needed b
 - **[QuickBMS](http://aluigi.altervista.org/quickbms.htm)** - Game resource unpacking
 
 ## Known issues:
-- Functional and other hooked keys not work in other apps, when program is running
-- Custom resolution and windowed mode may not work without [d3d8to9](https://github.com/crosire/d3d8to9) converter
-- Some non standard resolutions may crash game on startup in fullscreen mode
-- Smooth lighting may crash game in some scenes
+- Functional and other hooked keys (F1-F8, -, =) doesn't respond in other apps, when program is running
+- Custom resolution and windowed mode may not work without [d3d8to9](https://github.com/crosire/d3d8to9) API converter
+- Some non standard resolutions with fullscreen mode may crash game on startup
+- Enabled smooth lighting crashes game in some scenes
