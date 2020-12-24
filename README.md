@@ -5,8 +5,9 @@
 ## **[🠗 Download 🠗](https://github.com/MuxaJlbl4/Taz_Wanted_trainer_and_patcher/releases/download/v2.0/Taz.Wanted.Trainer.Patcher.exe)**
 
 ## Requirements
-- **Taz: Wanted PC Game (Version 1.0)**
-- **[Microsoft .NET Framework 4](https://www.microsoft.com/download/confirmation.aspx?id=17718)**
+- **Taz: Wanted PC Game** - Version 1.0
+- **[Microsoft .NET Framework 4](https://www.microsoft.com/download/confirmation.aspx?id=17718)** - Already preinstalled on Windows 8/10
+- **[d3d8to9](https://github.com/crosire/d3d8to9/releases)** - Put d3d8.dll to game folder (optional)
 
 ## Usage
 ### Trainer
