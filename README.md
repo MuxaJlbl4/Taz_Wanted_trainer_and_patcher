@@ -21,7 +21,7 @@ While game is running, use keys to activate/deactivate cheats:
 - **F7 - Smooth lighting** - Toggles smooth lighting feature (very buggy and unstable)
 - **F8 - Disallow jumps** - Toggles ability to jump for more challenging gameplay
 - **-/= - Game speed** - Decrease/Increase in game time speed
-- **Num1/3 - Save position** - Stores/Restores current Taz coordinates position
+- **Num1/3 - Save/Load position** - Stores/Restores current Taz coordinates position
 - **Num5 - Fly mode** - Toggles fly mode:
 	- **Num2/8** - Move in X coordinates
 	- **Num4/6** - Move in Y coordinates
