@@ -52,9 +52,10 @@ Select necessary patches and click **Patch** or **Patch and Play!** All needed b
 ## Used repos:
 - **[GlobalKeyboardHook](https://github.com/jparnell8839/globalKeyboardHook)** - Key hooking functionality
 - **[d3d8to9](https://github.com/crosire/d3d8to9)** - Converting Direct3D 8 API to Direct3D 9
-- **[QuickBMS](http://aluigi.altervista.org/quickbms.htm)** - Game resource unpacking
+- **[QuickBMS](http://aluigi.altervista.org/quickbms.htm)** - Game resource unpacking  
+**Thanks for your hard work, guys!**
 
-## Known issues:
+## Known bugs:
 - Functional and other hooked keys (F1-F8, -, =) doesn't respond in other apps, when program is running
 - Custom resolution and windowed mode may not work without [d3d8to9](https://github.com/crosire/d3d8to9) API converter
 - Some non standard resolutions with fullscreen mode may crash game on startup
