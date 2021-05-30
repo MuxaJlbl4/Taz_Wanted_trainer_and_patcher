@@ -417,6 +417,7 @@ namespace Taz_trainer
             bytes = checkAndRead((IntPtr)0x006F4A3C, bytes, bytes.Length, new IntPtr());
             float current = BitConverter.ToSingle(bytes,0);
 
+            //PositiveInfinity stops game, all other commented values crashes
             float[] values = { /* 0, Single.Epsilon, */ 0.0000001f, 0.1f, 0.5f, 1, 2, 4 /*, Single.MaxValue, Single.PositiveInfinity*/ };
             int index = Array.FindIndex(values, x => x == current);
 
