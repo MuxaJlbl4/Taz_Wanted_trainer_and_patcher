@@ -83,120 +83,128 @@ namespace Taz_trainer
         {
             if (e.KeyCode == Keys.F1)
             {
-                //SendKeys.Send("{F1}"); // Causes timer crashes
                 this.invisibility.Checked = !this.invisibility.Checked;
+                sendKey(Keys.F1, "{F1}");
             }
             if (e.KeyCode == Keys.F2)
             {
-                //SendKeys.Send("{F2}");
                 this.superBelchCan.Checked = !this.superBelchCan.Checked;
+                sendKey(Keys.F2, "{F2}");
             }
             if (e.KeyCode == Keys.F3)
             {
-                //SendKeys.Send("{F3}");
                 this.superJump.Checked = !this.superJump.Checked;
+                sendKey(Keys.F3, "{F3}");
             }
             if (e.KeyCode == Keys.F4)
             {
-                //SendKeys.Send("{F4}");
                 this.freezeLevelTimer.Checked = !this.freezeLevelTimer.Checked;
+                sendKey(Keys.F4, "{F4}");
             }
             if (e.KeyCode == Keys.F5)
             {
-                //SendKeys.Send("{F5}");
                 this.debugMenu.Checked = !this.debugMenu.Checked;
+                sendKey(Keys.F5, "{F5}");
             }
             if (e.KeyCode == Keys.F6)
             {
-                //SendKeys.Send("{F6}");
                 this.drawDistance.Checked = !this.drawDistance.Checked;
+                sendKey(Keys.F6, "{F6}");
             }
             if (e.KeyCode == Keys.F7)
             {
-                //SendKeys.Send("{F7}");
                 this.smoothLight.Checked = !this.smoothLight.Checked;
+                sendKey(Keys.F7, "{F7}");
             }
             if (e.KeyCode == Keys.F8)
             {
-                //SendKeys.Send("{F8}");
                 this.disallowJump.Checked = !this.disallowJump.Checked;
+                sendKey(Keys.F8, "{F8}");
             }
             if (e.KeyCode == Keys.OemMinus)
             {
-                //SendKeys.Send("{-}");
                 changeGameSpeed(0);
+                sendKey(Keys.OemMinus, "{-}");
             }
             if (e.KeyCode == Keys.Oemplus)
             {
-                //SendKeys.Send("{=}");
                 changeGameSpeed(1);
+                sendKey(Keys.Oemplus, "{=}");
             }
             if (e.KeyCode == Keys.NumPad5)
             {
                 //if (e.IsRepeat) return;
-                SendKeys.Send("{5}");
                 this.flyMode.Checked = !this.flyMode.Checked;
+                sendKey(Keys.NumPad5, "{5}");
             }
             if (e.KeyCode == Keys.NumPad9)
             {
-                SendKeys.Send("{9}");
                 if (this.flyMode.Checked == true)
                 {
                     movement(0); //Z+
                 }
+                sendKey(Keys.NumPad9, "{9}");
             }
             if (e.KeyCode == Keys.NumPad8)
             {
-                SendKeys.Send("{8}");
                 if (this.flyMode.Checked == true)
                 {
                     movement(4); //Y+
                 }
+                sendKey(Keys.NumPad8, "{8}");
             }
             if (e.KeyCode == Keys.NumPad7)
             {
-                SendKeys.Send("{7}");
                 if (this.flyMode.Checked == true)
                 {
                     movement(1); //Z-
                 }
+                sendKey(Keys.NumPad7, "{7}");
             }
             if (e.KeyCode == Keys.NumPad6)
             {
-                SendKeys.Send("{6}");
                 if (this.flyMode.Checked == true)
                 {
                     movement(2); //X+
                 }
+                sendKey(Keys.NumPad6, "{6}");
             }
             if (e.KeyCode == Keys.NumPad4)
             {
-                SendKeys.Send("{4}");
                 if (this.flyMode.Checked == true)
                 {
                     movement(3); //X-
                 }
+                sendKey(Keys.NumPad4, "{4}");
             }
             if (e.KeyCode == Keys.NumPad3)
             {
-                SendKeys.Send("{3}");
                 loadPosition();
+                sendKey(Keys.NumPad3, "{3}");
             }
             if (e.KeyCode == Keys.NumPad2)
             {
-                SendKeys.Send("{2}");
                 if (this.flyMode.Checked == true)
                 {
                     movement(5); //Y-
                 }
+                sendKey(Keys.NumPad2, "{2}");
             }
             if (e.KeyCode == Keys.NumPad1)
             {
-                SendKeys.Send("{1}");
                 savePosition();
+                sendKey(Keys.NumPad1, "{1}");
             }
 
             e.Handled = true;
+        }
+
+        private void sendKey(System.Windows.Forms.Keys item, String key)
+        {
+            //sends keycode for another apps without hooking
+            gkh.HookedKeys.Remove(item);
+            SendKeys.Send(key);
+            gkh.HookedKeys.Add(item);
         }
 
         //#######################################################################################################################

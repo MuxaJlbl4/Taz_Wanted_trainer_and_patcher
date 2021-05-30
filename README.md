@@ -56,7 +56,6 @@ Select necessary patches and click **Patch** or **Patch and Play!** All needed b
 **Thanks for your hard work, guys!**
 
 ## Known bugs:
-- Functional and other hooked keys (F1-F8, -, =) doesn't respond in other apps, when program is running
 - Custom resolution and windowed mode may not work without [d3d8to9](https://github.com/crosire/d3d8to9) API converter
 - Some non standard resolutions with fullscreen mode may crash game on startup
 - Enabled smooth lighting crashes game in some scenes
