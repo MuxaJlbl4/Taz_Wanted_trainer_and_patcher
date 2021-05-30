@@ -417,35 +417,21 @@ namespace Taz_trainer
             bytes = checkAndRead((IntPtr)0x006F4A3C, bytes, bytes.Length, new IntPtr());
             float current = BitConverter.ToSingle(bytes,0);
 
-            if ((current < 0.2f && ch == 0) || (current > 3.9f && ch == 1))
-            {
-                //nothing
-            }
-            else
+            float[] values = { /* 0, Single.Epsilon, */ 0.0000001f, 0.1f, 0.5f, 1, 2, 4 /*, Single.MaxValue, Single.PositiveInfinity*/ };
+            int index = Array.FindIndex(values, x => x == current);
+
+            if (index == -1) index = Array.FindIndex(values, x => x == 1);
+
+            if (!((index == 0 && ch == 0) || (index == values.Length - 1 && ch == 1)))
             {
                 //inc or dec speed
-                if (ch == 1)
-                {
-                    current += 0.5f;
-                    //correction
-                    if (current == 0.6f)
-                    {
-                        current = 0.5f;
-                    }
-                }
-                else
-                {
-                    current -= 0.5f;
-                    //correction
-                    if (current == 0f)
-                    {
-                        current = 0.1f;
-                    }
-                }
-
+                if (ch == 1) index++;
+                else index--;
             }
-            checkAndWrite((IntPtr)0x006F4A3C, BitConverter.GetBytes(current), BitConverter.GetBytes(current).Length, new IntPtr());
-            message("Game speed: x" + current.ToString());
+            checkAndWrite((IntPtr)0x006F4A3C, BitConverter.GetBytes(values[index]), BitConverter.GetBytes(values[index]).Length, new IntPtr());
+            string num = values[index].ToString();
+            if (index == 0) num = "0.0000001";
+            message("Game speed: x" + num);
         }
 
 
