@@ -91,15 +91,15 @@
             this.restore = new System.Windows.Forms.Button();
             this.infoTab = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel31 = new System.Windows.Forms.TableLayoutPanel();
-            this.infoText = new System.Windows.Forms.Label();
-            this.tableLayoutPanel32 = new System.Windows.Forms.TableLayoutPanel();
-            this.trainerSound = new System.Windows.Forms.CheckBox();
-            this.tabsIcons = new System.Windows.Forms.ImageList(this.components);
-            this.dbgMenuOff = new System.Windows.Forms.Timer(this.components);
             this.linkLabelUsage = new System.Windows.Forms.LinkLabel();
             this.linkLabelGKH = new System.Windows.Forms.LinkLabel();
+            this.tableLayoutPanel32 = new System.Windows.Forms.TableLayoutPanel();
+            this.trainerSound = new System.Windows.Forms.CheckBox();
             this.linkLabelD3d = new System.Windows.Forms.LinkLabel();
+            this.infoText = new System.Windows.Forms.Label();
             this.linkLabelQuickBms = new System.Windows.Forms.LinkLabel();
+            this.tabsIcons = new System.Windows.Forms.ImageList(this.components);
+            this.dbgMenuOff = new System.Windows.Forms.Timer(this.components);
             this.statusStrip.SuspendLayout();
             this.tableLayoutPanel11.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
@@ -1101,14 +1101,29 @@
             this.tableLayoutPanel31.Size = new System.Drawing.Size(672, 290);
             this.tableLayoutPanel31.TabIndex = 0;
             // 
-            // infoText
+            // linkLabelUsage
             // 
-            this.infoText.AutoSize = true;
-            this.infoText.Location = new System.Drawing.Point(0, 168);
-            this.infoText.Margin = new System.Windows.Forms.Padding(0);
-            this.infoText.Name = "infoText";
-            this.infoText.Size = new System.Drawing.Size(0, 26);
-            this.infoText.TabIndex = 1;
+            this.linkLabelUsage.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.linkLabelUsage.AutoSize = true;
+            this.linkLabelUsage.Location = new System.Drawing.Point(280, 8);
+            this.linkLabelUsage.Name = "linkLabelUsage";
+            this.linkLabelUsage.Size = new System.Drawing.Size(111, 26);
+            this.linkLabelUsage.TabIndex = 3;
+            this.linkLabelUsage.TabStop = true;
+            this.linkLabelUsage.Text = "Usage Info";
+            this.linkLabelUsage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelUsage_LinkClicked);
+            // 
+            // linkLabelGKH
+            // 
+            this.linkLabelGKH.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.linkLabelGKH.AutoSize = true;
+            this.linkLabelGKH.Location = new System.Drawing.Point(239, 50);
+            this.linkLabelGKH.Name = "linkLabelGKH";
+            this.linkLabelGKH.Size = new System.Drawing.Size(194, 26);
+            this.linkLabelGKH.TabIndex = 3;
+            this.linkLabelGKH.TabStop = true;
+            this.linkLabelGKH.Text = "GlobalKeyboardHook";
+            this.linkLabelGKH.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelGKH_LinkClicked);
             // 
             // tableLayoutPanel32
             // 
@@ -1138,42 +1153,6 @@
             this.trainerSound.Text = "Sound notifications";
             this.trainerSound.UseVisualStyleBackColor = true;
             // 
-            // tabsIcons
-            // 
-            this.tabsIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("tabsIcons.ImageStream")));
-            this.tabsIcons.TransparentColor = System.Drawing.Color.Transparent;
-            this.tabsIcons.Images.SetKeyName(0, "dollar.png");
-            this.tabsIcons.Images.SetKeyName(1, "screw.png");
-            this.tabsIcons.Images.SetKeyName(2, "caution.png");
-            // 
-            // dbgMenuOff
-            // 
-            this.dbgMenuOff.Tick += new System.EventHandler(this.dbgMenuOff_Tick);
-            // 
-            // linkLabelUsage
-            // 
-            this.linkLabelUsage.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.linkLabelUsage.AutoSize = true;
-            this.linkLabelUsage.Location = new System.Drawing.Point(280, 8);
-            this.linkLabelUsage.Name = "linkLabelUsage";
-            this.linkLabelUsage.Size = new System.Drawing.Size(111, 26);
-            this.linkLabelUsage.TabIndex = 3;
-            this.linkLabelUsage.TabStop = true;
-            this.linkLabelUsage.Text = "Usage Info";
-            this.linkLabelUsage.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelUsage_LinkClicked);
-            // 
-            // linkLabelGKH
-            // 
-            this.linkLabelGKH.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.linkLabelGKH.AutoSize = true;
-            this.linkLabelGKH.Location = new System.Drawing.Point(239, 50);
-            this.linkLabelGKH.Name = "linkLabelGKH";
-            this.linkLabelGKH.Size = new System.Drawing.Size(194, 26);
-            this.linkLabelGKH.TabIndex = 3;
-            this.linkLabelGKH.TabStop = true;
-            this.linkLabelGKH.Text = "GlobalKeyboardHook";
-            this.linkLabelGKH.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelGKH_LinkClicked);
-            // 
             // linkLabelD3d
             // 
             this.linkLabelD3d.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -1186,6 +1165,15 @@
             this.linkLabelD3d.Text = "D3D8to9";
             this.linkLabelD3d.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelD3d_LinkClicked);
             // 
+            // infoText
+            // 
+            this.infoText.AutoSize = true;
+            this.infoText.Location = new System.Drawing.Point(0, 168);
+            this.infoText.Margin = new System.Windows.Forms.Padding(0);
+            this.infoText.Name = "infoText";
+            this.infoText.Size = new System.Drawing.Size(0, 26);
+            this.infoText.TabIndex = 1;
+            // 
             // linkLabelQuickBms
             // 
             this.linkLabelQuickBms.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -1197,6 +1185,18 @@
             this.linkLabelQuickBms.TabStop = true;
             this.linkLabelQuickBms.Text = "QuickBMS";
             this.linkLabelQuickBms.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelQuickBms_LinkClicked);
+            // 
+            // tabsIcons
+            // 
+            this.tabsIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("tabsIcons.ImageStream")));
+            this.tabsIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.tabsIcons.Images.SetKeyName(0, "dollar.png");
+            this.tabsIcons.Images.SetKeyName(1, "screw.png");
+            this.tabsIcons.Images.SetKeyName(2, "caution.png");
+            // 
+            // dbgMenuOff
+            // 
+            this.dbgMenuOff.Tick += new System.EventHandler(this.dbgMenuOff_Tick);
             // 
             // Form1
             // 
