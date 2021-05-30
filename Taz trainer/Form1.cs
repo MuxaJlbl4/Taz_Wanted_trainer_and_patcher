@@ -929,22 +929,22 @@ namespace Taz_trainer
             checkAndWrite((IntPtr)0x004A3557, bytes, bytes.Length, new IntPtr());
             */
 
-            //Restore position of dbg text
-            byte[] bytes = { 0x2B, 0xC2, 0x68, 0x80, 0x00, 0x00, 0x00, 0xD1, 0xF8, 0xF7, 0xD8 };
-            checkAndWrite((IntPtr)0x004A362B, bytes, bytes.Length, new IntPtr());
-
             //Restore show time of dbg text
             byte[] bytes4 = { 0x00, 0x00, 0x20, 0x41 }; // 10.00
             checkAndWrite((IntPtr)0x00642038, bytes4, bytes4.Length, new IntPtr());
+
+            //Restore position of dbg text
+            byte[] bytes = { 0x2B, 0xC2, 0x68, 0x80, 0x00, 0x00, 0x00, 0xD1, 0xF8, 0xF7, 0xD8 };
+            checkAndWrite((IntPtr)0x004A362B, bytes, bytes.Length, new IntPtr());
             
+            //Restore original dbg  text string 1
+            byte[] bytes3 = { 0x42 };
+            checkAndWrite((IntPtr)0x00642A78, bytes3, bytes3.Length, new IntPtr());
+
             //Restore original dbg  text string 2
             byte[] bytes2 = { 0x46, 0x6F, 0x67, 0x3A, 0x6D, 0x69, 0x6E, 0x20, 0x25, 0x64, 0x2C, 0x20, 0x6D, 0x61, 0x78, 0x20, 0x25, 0x64, 0x2C, 0x20, 0x52, 0x47, 0x42, 0x28, 0x25, 0x64, 0x2C, 0x25, 0x64, 0x2C, 0x25, 0x64, 0x29, 0x00 };
             checkAndWrite((IntPtr)0x00642A94, bytes2, bytes2.Length, new IntPtr());
 
-            //Restore original dbg  text string 1
-            byte[] bytes3 = { 0x42 };
-            checkAndWrite((IntPtr)0x00642A78, bytes3, bytes3.Length, new IntPtr());
-            
         }
 
 
