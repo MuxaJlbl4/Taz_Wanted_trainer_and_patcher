@@ -60,3 +60,4 @@ Select necessary patches and click **Patch** or **Patch and Play!** All needed b
 - Custom resolution and windowed mode may not work without [d3d8to9](https://github.com/crosire/d3d8to9) API converter
 - Some non standard resolutions with fullscreen mode may crash game on startup
 - Enabled smooth lighting crashes game in some scenes
+- Game version with russian sound cause crashes in cheats debug menu
