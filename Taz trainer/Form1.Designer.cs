@@ -91,6 +91,7 @@
             this.restore = new System.Windows.Forms.Button();
             this.trainerTab = new System.Windows.Forms.TabPage();
             this.challengesTab = new System.Windows.Forms.TabPage();
+            this.undestructibleWorld = new System.Windows.Forms.CheckBox();
             this.disallowJump = new System.Windows.Forms.CheckBox();
             this.settingsTab = new System.Windows.Forms.TabPage();
             this.infoTab = new System.Windows.Forms.TabPage();
@@ -1087,6 +1088,7 @@
             // 
             // challengesTab
             // 
+            this.challengesTab.Controls.Add(this.undestructibleWorld);
             this.challengesTab.Controls.Add(this.disallowJump);
             this.challengesTab.ImageIndex = 2;
             this.challengesTab.Location = new System.Drawing.Point(4, 41);
@@ -1097,21 +1099,36 @@
             this.challengesTab.Text = "Challenges";
             this.challengesTab.UseVisualStyleBackColor = true;
             // 
+            // undestructibleWorld
+            // 
+            this.undestructibleWorld.Appearance = System.Windows.Forms.Appearance.Button;
+            this.undestructibleWorld.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.undestructibleWorld.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.undestructibleWorld.ImageIndex = 7;
+            this.undestructibleWorld.Location = new System.Drawing.Point(81, 103);
+            this.undestructibleWorld.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
+            this.undestructibleWorld.Name = "undestructibleWorld";
+            this.undestructibleWorld.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.undestructibleWorld.Size = new System.Drawing.Size(304, 38);
+            this.undestructibleWorld.TabIndex = 9;
+            this.undestructibleWorld.Text = "      F10 - Undestructible world";
+            this.undestructibleWorld.UseVisualStyleBackColor = false;
+            this.undestructibleWorld.CheckedChanged += new System.EventHandler(this.undestructibleWorld_CheckedChanged);
+            // 
             // disallowJump
             // 
             this.disallowJump.Appearance = System.Windows.Forms.Appearance.Button;
-            this.disallowJump.AutoSize = true;
             this.disallowJump.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.disallowJump.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.disallowJump.ImageIndex = 7;
             this.disallowJump.ImageList = this.checkIcons;
-            this.disallowJump.Location = new System.Drawing.Point(6, 70);
+            this.disallowJump.Location = new System.Drawing.Point(81, 55);
             this.disallowJump.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.disallowJump.Name = "disallowJump";
             this.disallowJump.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.disallowJump.Size = new System.Drawing.Size(222, 38);
+            this.disallowJump.Size = new System.Drawing.Size(304, 38);
             this.disallowJump.TabIndex = 9;
-            this.disallowJump.Text = "      F8 - Disallow jump";
+            this.disallowJump.Text = "      F9 - Disallow jump";
             this.disallowJump.UseVisualStyleBackColor = false;
             this.disallowJump.CheckedChanged += new System.EventHandler(this.disallowJump_CheckedChanged);
             // 
@@ -1303,7 +1320,6 @@
             this.tableLayoutPanel26.ResumeLayout(false);
             this.trainerTab.ResumeLayout(false);
             this.challengesTab.ResumeLayout(false);
-            this.challengesTab.PerformLayout();
             this.infoTab.ResumeLayout(false);
             this.tableLayoutPanel31.ResumeLayout(false);
             this.tableLayoutPanel31.PerformLayout();
@@ -1389,6 +1405,7 @@
         private System.Windows.Forms.TabPage settingsTab;
         private System.Windows.Forms.TabPage challengesTab;
         private System.Windows.Forms.CheckBox disallowJump;
+        private System.Windows.Forms.CheckBox undestructibleWorld;
     }
 }
 

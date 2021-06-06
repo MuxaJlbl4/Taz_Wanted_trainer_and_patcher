@@ -44,6 +44,8 @@ namespace Taz_trainer
             gkh.HookedKeys.Add(Keys.F6);
             gkh.HookedKeys.Add(Keys.F7);
             gkh.HookedKeys.Add(Keys.F8);
+            gkh.HookedKeys.Add(Keys.F9);
+            gkh.HookedKeys.Add(Keys.F10);
             gkh.HookedKeys.Add(Keys.OemMinus);
             gkh.HookedKeys.Add(Keys.Oemplus);
 
@@ -121,13 +123,16 @@ namespace Taz_trainer
                 this.textureAlpha.Checked = !this.textureAlpha.Checked;
                 sendKey(Keys.F8, "{F8}");
             }
-            /*
-            if (e.KeyCode == Keys.F8)
+            if (e.KeyCode == Keys.F9)
             {
                 this.disallowJump.Checked = !this.disallowJump.Checked;
-                sendKey(Keys.F8, "{F8}");
+                sendKey(Keys.F9, "{F9}");
             }
-            */
+            if (e.KeyCode == Keys.F10)
+            {
+                this.undestructibleWorld.Checked = !this.undestructibleWorld.Checked;
+                sendKey(Keys.F10, "{F10}");
+            }
             if (e.KeyCode == Keys.OemMinus)
             {
                 changeGameSpeed(0);
@@ -914,7 +919,7 @@ namespace Taz_trainer
                 byte[] bytes3 = { 0xE9, 0xAF, 0x01, 0x00, 0x00, 0x90 };
                 checkAndWrite((IntPtr)0x004842E9, bytes3, bytes3.Length, new IntPtr());
 
-                message("Disallow jumps: On");
+                message("No jumps mode: On");
             }
             else
             {
@@ -927,11 +932,27 @@ namespace Taz_trainer
                 byte[] bytes3 = { 0x0F, 0x84, 0xAE, 0x01, 0x00, 0x00 };
                 checkAndWrite((IntPtr)0x004842E9, bytes3, bytes3.Length, new IntPtr());
 
-                message("Disallow jumps: Off");
+                message("No jumps mode: Off");
             }
         }
+        private void undestructibleWorld_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.undestructibleWorld.Checked == true)
+            {
+                byte[] bytes = { 0xEB, 0x0D };
+                checkAndWrite((IntPtr)0x0041B87B, bytes, bytes.Length, new IntPtr());
 
-        private void message(string message)
+                message("Undestructible world mode: On");
+            }
+            else
+            {
+                byte[] bytes = { 0x75, 0x16 };
+                checkAndWrite((IntPtr)0x0041B87B, bytes, bytes.Length, new IntPtr());
+
+                message("Undestructible world mode: Off");
+            }
+        }
+            private void message(string message)
         {
             //Check text length
             if (message.Length > 33)
