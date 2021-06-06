@@ -807,7 +807,14 @@ namespace Taz_trainer
                 byte[] bytes4 = { 0x0F, 0xBE, 0x0D, 0x30, 0x4C, 0x70, 0x00, 0x51, 0xEB, 0x10 };
                 checkAndWrite((IntPtr)0x004A7543, bytes4, bytes4.Length, new IntPtr());
 
-                message("Freeze level timer: on");
+                //security boxes
+                byte[] bytes5 = { 0xE9, 0xC1, 0x00, 0x00, 0x00 };
+                checkAndWrite((IntPtr)0x0044B7C7, bytes5, bytes5.Length, new IntPtr());
+                byte[] bytes6 = { 0xC7, 0x44, 0x24, 0x08, 0xCD, 0xCC, 0xCC, 0x3D, 0xEB, 0x1A };
+                checkAndWrite((IntPtr)0x0044B8BE, bytes6, bytes6.Length, new IntPtr());
+
+
+                message("Freeze timers: on");
             }
             else
             {
@@ -827,7 +834,13 @@ namespace Taz_trainer
                 byte[] bytes4 = { 0xD9, 0x05, 0xB8, 0x8B, 0x6C, 0x00, 0x0F, 0xBE, 0x0D, 0x30 };
                 checkAndWrite((IntPtr)0x004A7543, bytes4, bytes4.Length, new IntPtr());
 
-                message("Freeze level timer: off");
+                //security boxes
+                byte[] bytes5 = { 0x0F, 0x85, 0x2C, 0x02, 0x00 };
+                checkAndWrite((IntPtr)0x0044B7C7, bytes5, bytes5.Length, new IntPtr());
+                byte[] bytes6 = { 0x74, 0x1A, 0x48, 0x74, 0x0D, 0x48, 0x75, 0x1C, 0xC7, 0x44 };
+                checkAndWrite((IntPtr)0x0044B8BE, bytes6, bytes6.Length, new IntPtr());
+
+                message("Freeze timers: off");
             }
         }
 
