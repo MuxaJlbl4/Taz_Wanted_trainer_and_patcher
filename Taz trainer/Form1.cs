@@ -384,7 +384,7 @@ namespace Taz_trainer
                 byte[] bytes5 = { 0xD9, 0xE8, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 }; // Code
                 checkAndWrite((IntPtr)0x0047E016, bytes5, bytes5.Length, new IntPtr());
 
-                message("Infinity draw distance: on");
+                message("Infinity draw distance: On");
             }
             else
             {
@@ -400,7 +400,7 @@ namespace Taz_trainer
                 byte[] bytes5 = { 0xD9, 0x46, 0x3C, 0xD8, 0x0D, 0xE4, 0x7E, 0x5F, 0x00, 0xD9, 0xFE }; // Code
                 checkAndWrite((IntPtr)0x0047E016, bytes5, bytes5.Length, new IntPtr());
 
-                message("Infinity draw distance: off");
+                message("Infinity draw distance: Off");
             }
         }
 
@@ -416,14 +416,14 @@ namespace Taz_trainer
                 byte[] bytes2 = { 0xE9, 0x48, 0x44, 0x19, 0x00, 0x90, 0x90 };
                 checkAndWrite((IntPtr)0x00462245, bytes2, bytes2.Length, new IntPtr());
 
-                message("Super jump: on (hold jump)");
+                message("Super jump: On (Hold jump)");
             }
             else
             {
                 byte[] bytes2 = { 0xD9, 0x44, 0x24, 0x58, 0xD8, 0x63, 0x08 };
                 checkAndWrite((IntPtr)0x00462245, bytes2, bytes2.Length, new IntPtr());
 
-                message("Super jump: off");
+                message("Super jump: Off");
             }
         }
 
@@ -461,14 +461,14 @@ namespace Taz_trainer
                 byte[] bytes = { 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 };
                 checkAndWrite((IntPtr)0x00482FE2, bytes, bytes.Length, new IntPtr());
 
-                message("Always super burp: on");
+                message("Always super burp: On");
             }
             else
             {
                 byte[] bytes = { 0x0F, 0x85, 0x95, 0x00, 0x00, 0x00 };
                 checkAndWrite((IntPtr)0x00482FE2, bytes, bytes.Length, new IntPtr());
 
-                message("Always super burp: off");
+                message("Always super burp: Off");
             }
         }
 
@@ -493,7 +493,7 @@ namespace Taz_trainer
                 //bytes2[0] = 0x01;
                 checkAndWrite((IntPtr)adress, bytes2, bytes2.Length, new IntPtr());
 
-                message("Invisibility: on");
+                message("Invisibility: On");
             }
             else
             {
@@ -504,7 +504,7 @@ namespace Taz_trainer
                 //bytes2[0] = 0x00;
                 checkAndWrite((IntPtr)adress, bytes2, bytes2.Length, new IntPtr());
 
-                message("Invisibility: off");
+                message("Invisibility: Off");
             }
         }
 
@@ -540,7 +540,7 @@ namespace Taz_trainer
                 byte[] bytes2 = { 0xE9, 0x33, 0x44, 0x19, 0x00, 0x90, 0x90 };
                 checkAndWrite((IntPtr)0x00462238, bytes2, bytes2.Length, new IntPtr());
 
-                message("Fly mode: on (use numpad)");
+                message("Fly mode: On (Use numpad)");
             }
             else
             {
@@ -558,7 +558,7 @@ namespace Taz_trainer
                 byte[] bytes2 = { 0xD9, 0x44, 0x24, 0x54, 0xD8, 0x63, 0x04 };
                 checkAndWrite((IntPtr)0x00462238, bytes2, bytes2.Length, new IntPtr());
 
-                message("Fly mode: off");
+                message("Fly mode: Off");
             }
         }
 
@@ -814,7 +814,7 @@ namespace Taz_trainer
                 checkAndWrite((IntPtr)0x0044B8BE, bytes6, bytes6.Length, new IntPtr());
 
 
-                message("Freeze timers: on");
+                message("Freeze timers: On");
             }
             else
             {
@@ -840,7 +840,7 @@ namespace Taz_trainer
                 byte[] bytes6 = { 0x74, 0x1A, 0x48, 0x74, 0x0D, 0x48, 0x75, 0x1C, 0xC7, 0x44 };
                 checkAndWrite((IntPtr)0x0044B8BE, bytes6, bytes6.Length, new IntPtr());
 
-                message("Freeze timers: off");
+                message("Freeze timers: Off");
             }
         }
 
@@ -872,7 +872,7 @@ namespace Taz_trainer
                 byte[] bytes = { 0x0D };
                 checkAndWrite((IntPtr)0x0057384C, bytes, bytes.Length, new IntPtr());
 
-                message("Show alpha textures: on");
+                message("Show alpha textures: On");
             }
             else
             {
@@ -880,7 +880,7 @@ namespace Taz_trainer
                 byte[] bytes = { 0x05 };
                 checkAndWrite((IntPtr)0x0057384C, bytes, bytes.Length, new IntPtr());
 
-                message("Show alpha textures: off");
+                message("Show alpha textures: Off");
             }
         }
 
@@ -898,7 +898,7 @@ namespace Taz_trainer
 
             this.dbgMenuOff.Start();
 
-            message("Call debug menu");
+            //message("Call debug menu");
         }
 
         private void disallowJump_CheckedChanged(object sender, EventArgs e)
@@ -914,7 +914,7 @@ namespace Taz_trainer
                 byte[] bytes3 = { 0xE9, 0xAF, 0x01, 0x00, 0x00, 0x90 };
                 checkAndWrite((IntPtr)0x004842E9, bytes3, bytes3.Length, new IntPtr());
 
-                message("Disallow jumps: on");
+                message("Disallow jumps: On");
             }
             else
             {
@@ -927,7 +927,7 @@ namespace Taz_trainer
                 byte[] bytes3 = { 0x0F, 0x84, 0xAE, 0x01, 0x00, 0x00 };
                 checkAndWrite((IntPtr)0x004842E9, bytes3, bytes3.Length, new IntPtr());
 
-                message("Disallow jumps: off");
+                message("Disallow jumps: Off");
             }
         }
 
