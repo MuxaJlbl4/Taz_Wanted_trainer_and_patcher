@@ -113,14 +113,21 @@ namespace Taz_trainer
             }
             if (e.KeyCode == Keys.F7)
             {
-                this.smoothLight.Checked = !this.smoothLight.Checked;
+                this.textureFilter.Checked = !this.textureFilter.Checked;
                 sendKey(Keys.F7, "{F7}");
             }
+            if (e.KeyCode == Keys.F8)
+            {
+                this.textureAlpha.Checked = !this.textureAlpha.Checked;
+                sendKey(Keys.F8, "{F8}");
+            }
+            /*
             if (e.KeyCode == Keys.F8)
             {
                 this.disallowJump.Checked = !this.disallowJump.Checked;
                 sendKey(Keys.F8, "{F8}");
             }
+            */
             if (e.KeyCode == Keys.OemMinus)
             {
                 changeGameSpeed(0);
@@ -276,6 +283,7 @@ namespace Taz_trainer
             //fill resolution
             this.width.Text = width.ToString();
             this.height.Text = height.ToString();
+            this.windowed.Checked = false;
         }
 
         private void autoAspect(int width, int height)
@@ -317,6 +325,7 @@ namespace Taz_trainer
                 if (height == "")
                     height = "0";
                 autoAspect(UInt16.Parse(width), UInt16.Parse(height));
+                windowed.Checked = true;
             }
             catch (Exception ex)
             {
@@ -335,6 +344,7 @@ namespace Taz_trainer
                 if (height == "")
                     height = "0";
                 autoAspect(UInt16.Parse(width), UInt16.Parse(height));
+                windowed.Checked = true;
             }
             catch (Exception ex)
             {
@@ -821,30 +831,43 @@ namespace Taz_trainer
             }
         }
 
-        private void smoothLight_CheckedChanged(object sender, EventArgs e)
+        private void textureFilter_CheckedChanged(object sender, EventArgs e)
         {
-            //Code injection
-            byte[] bytes = { 0x50, 0xB8, 0x05, 0x00, 0x00, 0x00, 0x89, 0x87, 0x44, 0x01, 0x00, 0x00, 0x58, 0xD8, 0x1D, 0x3C, 0x73, 0x5F, 0x00, 0xE9, 0x77, 0xBB, 0xE6, 0xFF };
-            checkAndWrite((IntPtr)0x005F66D0, bytes, bytes.Length, new IntPtr());
-            //Jump to injection
-            byte[] bytes2 = { 0xE9, 0x72, 0x44, 0x19, 0x00, 0x90 };
-            checkAndWrite((IntPtr)0x00462259, bytes2, bytes2.Length, new IntPtr());
-
-            if (this.smoothLight.Checked == true)
+            if (this.textureFilter.Checked == true)
             {
-                //Lighting mode 5
-                byte[] bytes3 = { 0x05 };
-                checkAndWrite((IntPtr)0x005F66D2, bytes3, bytes3.Length, new IntPtr());
+                //set D3DTSS_MAGFILTER filtering value to D3DTEXF_POINT (Stage 0 + Stage 1)
+                byte[] bytes = { 0x01, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00 };
+                checkAndWrite((IntPtr)0x00655E00, bytes, bytes.Length, new IntPtr());
 
-                message("Smooth lighting: on");
+                message("Texture filter: Nearest-Neighbour");
             }
             else
             {
-                //Lighting mode 4
-                byte[] bytes3 = { 0x04 };
-                checkAndWrite((IntPtr)0x005F66D2, bytes3, bytes3.Length, new IntPtr());
+                //set D3DTSS_MAGFILTER filtering value to D3DTEXF_LINEAR (Original)
+                byte[] bytes = { 0x02, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00 };
+                checkAndWrite((IntPtr)0x00655E00, bytes, bytes.Length, new IntPtr());
 
-                message("Smooth lighting: off");
+                message("Texture filter: Linear");
+            }
+        }
+
+        private void textureAlpha_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.textureAlpha.Checked == true)
+            {
+                //set D3DTSS_ALPHAOP value to D3DTOP_BLENDTEXTUREALPHA
+                byte[] bytes = { 0x0D };
+                checkAndWrite((IntPtr)0x0057384C, bytes, bytes.Length, new IntPtr());
+
+                message("Show alpha textures: on");
+            }
+            else
+            {
+                //set D3DTSS_ALPHAOP value to D3DTOP_MODULATE2X (Original)
+                byte[] bytes = { 0x05 };
+                checkAndWrite((IntPtr)0x0057384C, bytes, bytes.Length, new IntPtr());
+
+                message("Show alpha textures: off");
             }
         }
 
@@ -995,7 +1018,7 @@ namespace Taz_trainer
             try
             {
                 //Check checkboxes
-                if (this.noCD.Checked == false && this.disableDrawDistance.Checked == false && this.disableVideos.Checked == false && this.changeResolution.Checked == false && this.aspectRatio.Checked == false && this.warningBanner.Checked == false )
+                if (this.noCD.Checked == false && this.disableDrawDistance.Checked == false && this.disableVideos.Checked == false && this.changeResolution.Checked == false && this.aspectRatio.Checked == false && this.warningBanner.Checked == false && this.fitering.Checked == false)
                 {
                     MessageBox.Show("Select at least one option", "No options selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -1387,17 +1410,15 @@ namespace Taz_trainer
             if (this.changeResolution.Checked == true)
             {
                 this.windowed.Enabled = true;
-                if (this.windowed.Checked == false)
-                {
-                    this.height.Enabled = true;
-                    this.xLabel.Enabled = true;
-                    this.width.Enabled = true;
-                }
+                this.height.Enabled = true;
+                this.xLabel.Enabled = true;
+                this.width.Enabled = true;
                 this.aspectRatio.Checked = true;
             }
             else
             {
                 this.windowed.Enabled = false;
+                this.windowed.Checked = false;
                 this.height.Enabled = false;
                 this.xLabel.Enabled = false;
                 this.width.Enabled = false;
@@ -1407,11 +1428,7 @@ namespace Taz_trainer
 
         private void windowed_CheckedChanged(object sender, EventArgs e)
         {
-            if (this.windowed.Checked == true)
-            {
-
-            }
-            else
+            if (this.windowed.Checked == false)
             {
                 autoFillVideo(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
             }
