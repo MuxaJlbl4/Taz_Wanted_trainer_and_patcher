@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using Utilities;
 using Microsoft.Win32;
 using System.IO;
+using FormSerialisation;
 
 namespace Taz_trainer
 {
@@ -68,10 +69,31 @@ namespace Taz_trainer
             gkh.KeyDown += new KeyEventHandler(gkh_KeyDown);
             gkh.KeyUp += new KeyEventHandler(gkh_KeyUp);
 
-            autoFillVideo(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
-            TazFolderPath = getPathFromRegistry();
-            textBoxRegistry.Text = TazFolderPath;
-            langComboBox.SelectedIndex = 0;
+            if (File.Exists(Application.StartupPath + @"\Patcher.xml"))
+            {
+                try
+                {
+                    // Load form element states
+                    FormSerialisor.Deserialise(this, Application.StartupPath + @"\Patcher.xml");
+                }
+                catch (Exception ex)
+                {
+                    this.statusField.Text = ex.Message.ToString();
+                    this.statusField.ForeColor = System.Drawing.Color.DarkRed;
+                    // Default form element states
+                    autoFillVideo(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+                    textBoxRegistry.Text = getPathFromRegistry();
+                    langComboBox.SelectedIndex = 0;
+                }
+            }
+            else
+            {
+                // Default form element states
+                autoFillVideo(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+                textBoxRegistry.Text = getPathFromRegistry();
+                langComboBox.SelectedIndex = 0;
+            }
+            TazFolderPath = textBoxRegistry.Text;
         }
 
 
@@ -1127,7 +1149,7 @@ namespace Taz_trainer
             try
             {
                 //Check checkboxes
-                if (this.noCD.Checked == false && this.disableDrawDistance.Checked == false && this.disableVideos.Checked == false && this.changeResolution.Checked == false && this.aspectRatio.Checked == false && this.warningBanner.Checked == false && this.fitering.Checked == false)
+                if (this.noCD.Checked == false && this.disableDrawDistance.Checked == false && this.disableVideos.Checked == false && this.changeResolution.Checked == false && this.aspectRatio.Checked == false && this.warningBanner.Checked == false && this.filtering.Checked == false)
                 {
                     MessageBox.Show("Select at least one option", "No options selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -1287,6 +1309,19 @@ namespace Taz_trainer
                     }
                 }
 
+                //texture filtering
+                if (this.filtering.Checked == true)
+                {
+                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        file.Position = 0x255E00;
+                        file.WriteByte(0x01);
+                        file.Position = 0x255E04;
+                        file.WriteByte(0x01);
+                        file.Close();
+                    }
+                }
+
                 //warning banner time
                 if (this.warningBanner.Checked == true)
                 {
@@ -1301,11 +1336,47 @@ namespace Taz_trainer
                 }
 
                 //language
-                using (var file = new FileStream(TazFolderPath + "\\taz.dat", FileMode.Open, FileAccess.ReadWrite))
+                // If language not Russian
+                if (langComboBox.SelectedIndex >= 0 && langComboBox.SelectedIndex <= 4)
                 {
-                    file.Position = 0x168;
-                    file.WriteByte((Byte)langComboBox.SelectedIndex);
-                    file.Close();
+                    // Check lang files
+                    if (File.Exists(TazFolderPath + "\\Paks\\text.pc.backup") == true && File.Exists(TazFolderPath + "\\Paks\\resTex.pc.backup") == true && File.Exists(TazFolderPath + "\\Paks\\text.pc") == true && File.Exists(TazFolderPath + "\\Paks\\resTex.pc") == true)
+                    {
+                        //Restore to original
+                        File.Delete(TazFolderPath + "\\Paks\\text.pc");
+                        File.Delete(TazFolderPath + "\\Paks\\resTex.pc");
+                        File.Copy(TazFolderPath + "\\Paks\\text.pc.backup", TazFolderPath + "\\Paks\\text.pc");
+                        File.Copy(TazFolderPath + "\\Paks\\resTex.pc.backup", TazFolderPath + "\\Paks\\resTex.pc");
+                        File.Delete(TazFolderPath + "\\Paks\\text.pc.backup");
+                        File.Delete(TazFolderPath + "\\Paks\\resTex.pc.backup");
+                    }
+                    using (var file = new FileStream(TazFolderPath + "\\taz.dat", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        file.Position = 0x168;
+                        file.WriteByte((Byte)langComboBox.SelectedIndex);
+                        file.Close();
+                    }
+                }
+                // If language is Russian
+                else if (langComboBox.SelectedIndex == 5)
+                {
+                    // Check files
+                    if (File.Exists(TazFolderPath + "\\Paks\\text.pc") == true && File.Exists(TazFolderPath + "\\Paks\\resTex.pc") == true && !File.Exists(TazFolderPath + "\\Paks\\text.pc.backup") == true && !File.Exists(TazFolderPath + "\\Paks\\resTex.pc.backup") == true)
+                    {
+                        // Backup files
+                        File.Copy(TazFolderPath + "\\Paks\\text.pc", TazFolderPath + "\\Paks\\text.pc.backup");
+                        File.Copy(TazFolderPath + "\\Paks\\resTex.pc", TazFolderPath + "\\Paks\\resTex.pc.backup");
+                        // Replace files
+                        File.WriteAllBytes(TazFolderPath + "\\Paks\\text.pc", Properties.Resources.text);
+                        File.WriteAllBytes(TazFolderPath + "\\Paks\\resTex.pc", Properties.Resources.resTex);
+                        // Force modded english lang
+                        using (var file = new FileStream(TazFolderPath + "\\taz.dat", FileMode.Open, FileAccess.ReadWrite))
+                        {
+                            file.Position = 0x168;
+                            file.WriteByte(0x0);
+                            file.Close();
+                        }
+                    }
                 }
 
                 //end
@@ -1332,7 +1403,7 @@ namespace Taz_trainer
                 var result = MessageBox.Show("This will restore all options and mods to default. Continue?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-
+                    /*
                     //restore CD check
                     using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
                     {
@@ -1369,6 +1440,7 @@ namespace Taz_trainer
                         file.Write(bytes2, 0, bytes2.Length);
                         file.Close();
                     }
+                    */
                     using (var file = new FileStream(TazFolderPath + "\\taz.dat", FileMode.Open, FileAccess.ReadWrite))
                     {
                         //max default
@@ -1413,9 +1485,12 @@ namespace Taz_trainer
                         //no voodoo
                         file.Position = 0x40;
                         file.WriteByte(0x00);
+                        //language
+                        file.Position = 0x168;
+                        file.WriteByte(0x0);
                         file.Close();
                     }
-
+                    /*
                     //restore resolution in Taz.exe
                     using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
                     {
@@ -1452,6 +1527,7 @@ namespace Taz_trainer
                         file.WriteByte(0x5F);
                         file.Close();
                     }
+                    */
                     //restore end
                     this.statusField.Text = "Restored successfully (" + TazFolderPath + ")";
                     this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
@@ -1488,6 +1564,17 @@ namespace Taz_trainer
             {
                 this.statusField.Text = ex.Message.ToString();
                 this.statusField.ForeColor = System.Drawing.Color.DarkRed;
+            }
+            //check and restore language backup
+            if (File.Exists(TazFolderPath + "\\Paks\\text.pc.backup") == true && File.Exists(TazFolderPath + "\\Paks\\resTex.pc.backup") == true && File.Exists(TazFolderPath + "\\Paks\\text.pc") == true && File.Exists(TazFolderPath + "\\Paks\\resTex.pc") == true)
+            {
+                //Restore to original
+                File.Delete(TazFolderPath + "\\Paks\\text.pc");
+                File.Delete(TazFolderPath + "\\Paks\\resTex.pc");
+                File.Copy(TazFolderPath + "\\Paks\\text.pc.backup", TazFolderPath + "\\Paks\\text.pc");
+                File.Copy(TazFolderPath + "\\Paks\\resTex.pc.backup", TazFolderPath + "\\Paks\\resTex.pc");
+                File.Delete(TazFolderPath + "\\Paks\\text.pc.backup");
+                File.Delete(TazFolderPath + "\\Paks\\resTex.pc.backup");
             }
         }
 
@@ -1558,7 +1645,7 @@ namespace Taz_trainer
             try
             {
                 string TazConfigPath = TazFolderPath + "\\config.exe";
-                Process.Start(TazConfigPath, "graphics " + langComboBox.SelectedIndex.ToString());
+                Process.Start(TazConfigPath, "graphics " + "0"); //langComboBox.SelectedIndex.ToString());
             }
             catch (Exception ex)
             {
@@ -1572,7 +1659,7 @@ namespace Taz_trainer
             try
             {
                 string TazAudioPath = TazFolderPath + "\\config.exe";
-                Process.Start(TazAudioPath, "sound " + langComboBox.SelectedIndex.ToString());
+                Process.Start(TazAudioPath, "sound " + "0"); //langComboBox.SelectedIndex.ToString());
             }
             catch (Exception ex)
             {
@@ -1586,7 +1673,7 @@ namespace Taz_trainer
             try
             {
                 string TazControlsPath = TazFolderPath + "\\config.exe";
-                Process.Start(TazControlsPath, "control " + langComboBox.SelectedIndex.ToString());
+                Process.Start(TazControlsPath, "control " + "0"); //langComboBox.SelectedIndex.ToString());
             }
             catch (Exception ex)
             {
@@ -1660,7 +1747,7 @@ namespace Taz_trainer
                 // Set registry value for x86 (needs admin privilegies)
                 Registry.SetValue(@"HKEY_LOCAL_MACHINE\SOFTWARE\Infogrames Interactive\TazWanted\Release", "Location", TazFolderPath);
 
-                this.statusField.Text = "Registry game path successfuly set to: " + TazFolderPath;
+                this.statusField.Text = "Registry game path successfully set to: " + TazFolderPath;
                 this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
             }
             catch (Exception ex)
@@ -1719,6 +1806,25 @@ namespace Taz_trainer
         private void qbmsLink_Click(object sender, EventArgs e)
         {
             Process.Start("http://aluigi.altervista.org/quickbms.htm");
+        }
+        private void fsLink_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/Skkay/FormSerialisor");
+        }
+
+        private void savePatcherSettings_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                FormSerialisor.Serialise(this, Application.StartupPath + @"\Patcher.xml");
+                this.statusField.Text = "App settings successfully saved to: " + Application.StartupPath + @"\Patcher.xml";
+                this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
+            }
+            catch (Exception ex)
+            {
+                this.statusField.Text = ex.Message.ToString();
+                this.statusField.ForeColor = System.Drawing.Color.DarkRed;
+            }
         }
     }
 }

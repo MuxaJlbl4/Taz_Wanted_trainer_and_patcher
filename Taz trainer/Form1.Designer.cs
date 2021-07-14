@@ -69,7 +69,7 @@
             this.videoOptions = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel24 = new System.Windows.Forms.TableLayoutPanel();
             this.windowed = new System.Windows.Forms.CheckBox();
-            this.fitering = new System.Windows.Forms.CheckBox();
+            this.filtering = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel29 = new System.Windows.Forms.TableLayoutPanel();
             this.height = new System.Windows.Forms.TextBox();
             this.width = new System.Windows.Forms.TextBox();
@@ -97,6 +97,7 @@
             this.play = new System.Windows.Forms.Button();
             this.trainerTab = new System.Windows.Forms.TabPage();
             this.infoTab = new System.Windows.Forms.TabPage();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.settingsTab = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBoxRegistry = new System.Windows.Forms.GroupBox();
@@ -117,9 +118,10 @@
             this.extLinks = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel31 = new System.Windows.Forms.TableLayoutPanel();
             this.githubLink = new System.Windows.Forms.Button();
-            this.gkhLink = new System.Windows.Forms.Button();
             this.d3d8to9Link = new System.Windows.Forms.Button();
+            this.fsLink = new System.Windows.Forms.Button();
             this.qbmsLink = new System.Windows.Forms.Button();
+            this.gkhLink = new System.Windows.Forms.Button();
             this.nativeOptions = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel25 = new System.Windows.Forms.TableLayoutPanel();
             this.launcher = new System.Windows.Forms.Button();
@@ -154,6 +156,7 @@
             this.tableLayoutPanel26.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
             this.trainerTab.SuspendLayout();
+            this.infoTab.SuspendLayout();
             this.settingsTab.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.groupBoxRegistry.SuspendLayout();
@@ -211,8 +214,8 @@
             // 
             this.statusField.ForeColor = System.Drawing.SystemColors.ControlText;
             this.statusField.Name = "statusField";
-            this.statusField.Size = new System.Drawing.Size(243, 17);
-            this.statusField.Text = "Welcome to Taz Wanted Trainer and Patcher!";
+            this.statusField.Size = new System.Drawing.Size(248, 17);
+            this.statusField.Text = "Welcome to Taz Wanted Trainer && Patcher 3.0";
             // 
             // timer
             // 
@@ -809,7 +812,7 @@
             this.tableLayoutPanel24.ColumnCount = 1;
             this.tableLayoutPanel24.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel24.Controls.Add(this.windowed, 0, 4);
-            this.tableLayoutPanel24.Controls.Add(this.fitering, 0, 5);
+            this.tableLayoutPanel24.Controls.Add(this.filtering, 0, 5);
             this.tableLayoutPanel24.Controls.Add(this.tableLayoutPanel29, 0, 1);
             this.tableLayoutPanel24.Controls.Add(this.tableLayoutPanel28, 0, 3);
             this.tableLayoutPanel24.Controls.Add(this.aspectRatio, 0, 2);
@@ -843,20 +846,19 @@
             this.windowed.UseVisualStyleBackColor = false;
             this.windowed.CheckedChanged += new System.EventHandler(this.windowed_CheckedChanged);
             // 
-            // fitering
+            // filtering
             // 
-            this.fitering.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.fitering.AutoSize = true;
-            this.fitering.Enabled = false;
-            this.fitering.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.fitering.Location = new System.Drawing.Point(3, 206);
-            this.fitering.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.fitering.Name = "fitering";
-            this.fitering.Size = new System.Drawing.Size(225, 30);
-            this.fitering.TabIndex = 15;
-            this.fitering.Text = "Point Texture Filtering";
-            this.fitering.UseVisualStyleBackColor = false;
-            this.fitering.CheckedChanged += new System.EventHandler(this.windowed_CheckedChanged);
+            this.filtering.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.filtering.AutoSize = true;
+            this.filtering.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.filtering.Location = new System.Drawing.Point(3, 206);
+            this.filtering.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.filtering.Name = "filtering";
+            this.filtering.Size = new System.Drawing.Size(225, 30);
+            this.filtering.TabIndex = 15;
+            this.filtering.Text = "Point Texture Filtering";
+            this.filtering.UseVisualStyleBackColor = false;
+            this.filtering.CheckedChanged += new System.EventHandler(this.windowed_CheckedChanged);
             // 
             // tableLayoutPanel29
             // 
@@ -1044,7 +1046,8 @@
             "French",
             "German",
             "Italian",
-            "Spanish"});
+            "Spanish",
+            "Russian"});
             this.langComboBox.Location = new System.Drawing.Point(1, 201);
             this.langComboBox.Margin = new System.Windows.Forms.Padding(1);
             this.langComboBox.Name = "langComboBox";
@@ -1187,13 +1190,14 @@
             this.buttonIcons.Images.SetKeyName(7, "destructibles.png");
             this.buttonIcons.Images.SetKeyName(8, "tazwanted.png");
             this.buttonIcons.Images.SetKeyName(9, "bonusbox.png");
-            this.buttonIcons.Images.SetKeyName(10, "checkboxtick32.png");
+            this.buttonIcons.Images.SetKeyName(10, "yellowtick.png");
             this.buttonIcons.Images.SetKeyName(11, "icon_rant.png");
             this.buttonIcons.Images.SetKeyName(12, "icon_selectmap.png");
             this.buttonIcons.Images.SetKeyName(13, "playbrick.png");
             this.buttonIcons.Images.SetKeyName(14, "secrets.png");
             this.buttonIcons.Images.SetKeyName(15, "space01.png");
             this.buttonIcons.Images.SetKeyName(16, "datatapes.png");
+            this.buttonIcons.Images.SetKeyName(17, "memcard.png");
             // 
             // patch
             // 
@@ -1242,6 +1246,7 @@
             // 
             // infoTab
             // 
+            this.infoTab.Controls.Add(this.webBrowser1);
             this.infoTab.ImageIndex = 2;
             this.infoTab.Location = new System.Drawing.Point(4, 41);
             this.infoTab.Margin = new System.Windows.Forms.Padding(0);
@@ -1249,6 +1254,15 @@
             this.infoTab.Size = new System.Drawing.Size(656, 449);
             this.infoTab.TabIndex = 2;
             this.infoTab.Text = "Usage";
+            // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.Size = new System.Drawing.Size(656, 449);
+            this.webBrowser1.TabIndex = 0;
             // 
             // settingsTab
             // 
@@ -1501,10 +1515,9 @@
             // savePatcherSettings
             // 
             this.savePatcherSettings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.savePatcherSettings.Enabled = false;
             this.savePatcherSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.savePatcherSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.savePatcherSettings.ImageIndex = 16;
+            this.savePatcherSettings.ImageIndex = 17;
             this.savePatcherSettings.ImageList = this.buttonIcons;
             this.savePatcherSettings.Location = new System.Drawing.Point(1, 166);
             this.savePatcherSettings.Margin = new System.Windows.Forms.Padding(1);
@@ -1512,7 +1525,8 @@
             this.savePatcherSettings.Size = new System.Drawing.Size(206, 111);
             this.savePatcherSettings.TabIndex = 6;
             this.savePatcherSettings.Text = "Save Patcher Settings";
-            this.savePatcherSettings.UseVisualStyleBackColor = true;
+            this.savePatcherSettings.UseVisualStyleBackColor = false;
+            this.savePatcherSettings.Click += new System.EventHandler(this.savePatcherSettings_Click);
             // 
             // extLinks
             // 
@@ -1533,9 +1547,10 @@
             this.tableLayoutPanel31.ColumnCount = 1;
             this.tableLayoutPanel31.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel31.Controls.Add(this.githubLink, 0, 0);
-            this.tableLayoutPanel31.Controls.Add(this.gkhLink, 0, 1);
             this.tableLayoutPanel31.Controls.Add(this.d3d8to9Link, 0, 2);
+            this.tableLayoutPanel31.Controls.Add(this.fsLink, 0, 4);
             this.tableLayoutPanel31.Controls.Add(this.qbmsLink, 0, 3);
+            this.tableLayoutPanel31.Controls.Add(this.gkhLink, 0, 1);
             this.tableLayoutPanel31.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel31.Location = new System.Drawing.Point(2, 29);
             this.tableLayoutPanel31.Margin = new System.Windows.Forms.Padding(0);
@@ -1565,22 +1580,6 @@
             this.githubLink.UseVisualStyleBackColor = false;
             this.githubLink.Click += new System.EventHandler(this.githubLink_Click);
             // 
-            // gkhLink
-            // 
-            this.gkhLink.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gkhLink.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.gkhLink.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.gkhLink.ImageIndex = 11;
-            this.gkhLink.ImageList = this.buttonIcons;
-            this.gkhLink.Location = new System.Drawing.Point(1, 56);
-            this.gkhLink.Margin = new System.Windows.Forms.Padding(1);
-            this.gkhLink.Name = "gkhLink";
-            this.gkhLink.Size = new System.Drawing.Size(208, 53);
-            this.gkhLink.TabIndex = 19;
-            this.gkhLink.Text = "GKH";
-            this.gkhLink.UseVisualStyleBackColor = false;
-            this.gkhLink.Click += new System.EventHandler(this.gkhLink_Click);
-            // 
             // d3d8to9Link
             // 
             this.d3d8to9Link.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1597,6 +1596,22 @@
             this.d3d8to9Link.UseVisualStyleBackColor = false;
             this.d3d8to9Link.Click += new System.EventHandler(this.d3d8to9Link_Click);
             // 
+            // fsLink
+            // 
+            this.fsLink.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fsLink.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.fsLink.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.fsLink.ImageIndex = 16;
+            this.fsLink.ImageList = this.buttonIcons;
+            this.fsLink.Location = new System.Drawing.Point(1, 221);
+            this.fsLink.Margin = new System.Windows.Forms.Padding(1);
+            this.fsLink.Name = "fsLink";
+            this.fsLink.Size = new System.Drawing.Size(208, 56);
+            this.fsLink.TabIndex = 19;
+            this.fsLink.Text = "FS";
+            this.fsLink.UseVisualStyleBackColor = false;
+            this.fsLink.Click += new System.EventHandler(this.fsLink_Click);
+            // 
             // qbmsLink
             // 
             this.qbmsLink.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1612,6 +1627,22 @@
             this.qbmsLink.Text = "QuickBMS";
             this.qbmsLink.UseVisualStyleBackColor = false;
             this.qbmsLink.Click += new System.EventHandler(this.qbmsLink_Click);
+            // 
+            // gkhLink
+            // 
+            this.gkhLink.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gkhLink.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.gkhLink.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.gkhLink.ImageIndex = 11;
+            this.gkhLink.ImageList = this.buttonIcons;
+            this.gkhLink.Location = new System.Drawing.Point(1, 56);
+            this.gkhLink.Margin = new System.Windows.Forms.Padding(1);
+            this.gkhLink.Name = "gkhLink";
+            this.gkhLink.Size = new System.Drawing.Size(208, 53);
+            this.gkhLink.TabIndex = 19;
+            this.gkhLink.Text = "GKH";
+            this.gkhLink.UseVisualStyleBackColor = false;
+            this.gkhLink.Click += new System.EventHandler(this.gkhLink_Click);
             // 
             // nativeOptions
             // 
@@ -1724,6 +1755,7 @@
             this.gameFolder.TabIndex = 23;
             this.gameFolder.Text = "Game Path";
             this.gameFolder.UseVisualStyleBackColor = false;
+            this.gameFolder.Click += new System.EventHandler(this.gameFolder_Click);
             // 
             // tabsIcons
             // 
@@ -1784,6 +1816,7 @@
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel8.PerformLayout();
             this.trainerTab.ResumeLayout(false);
+            this.infoTab.ResumeLayout(false);
             this.settingsTab.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.groupBoxRegistry.ResumeLayout(false);
@@ -1849,7 +1882,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel29;
         private System.Windows.Forms.Label language;
         private System.Windows.Forms.ComboBox langComboBox;
-        private System.Windows.Forms.CheckBox fitering;
+        private System.Windows.Forms.CheckBox filtering;
         private System.Windows.Forms.TabPage settingsTab;
         private System.Windows.Forms.GroupBox Challenges;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -1907,6 +1940,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         private System.Windows.Forms.Label labelFpsCap;
         private System.Windows.Forms.NumericUpDown numericFpsCap;
+        private System.Windows.Forms.Button fsLink;
+        private System.Windows.Forms.WebBrowser webBrowser1;
     }
 }
 
