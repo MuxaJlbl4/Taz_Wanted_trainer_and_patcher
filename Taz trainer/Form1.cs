@@ -1148,12 +1148,14 @@ namespace Taz_trainer
         {
             try
             {
+                /*
                 //Check checkboxes
                 if (this.noCD.Checked == false && this.disableDrawDistance.Checked == false && this.disableVideos.Checked == false && this.changeResolution.Checked == false && this.aspectRatio.Checked == false && this.warningBanner.Checked == false && this.filtering.Checked == false)
                 {
                     MessageBox.Show("Select at least one option", "No options selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+                */
 
                 bool backuped = false;
 
@@ -1161,6 +1163,14 @@ namespace Taz_trainer
                 if (File.Exists(TazFolderPath + "\\Taz.exe.backup") == false)
                 {
                     File.Copy(TazFolderPath + "\\Taz.exe", TazFolderPath + "\\Taz.exe.backup");
+                    backuped = true;
+                }
+
+                //backup Taz.exe
+                if (File.Exists(TazFolderPath + "\\taz.dat.backup") == false)
+                {
+
+                    File.Copy(TazFolderPath + "\\taz.dat", TazFolderPath + "\\taz.dat.backup");
                     backuped = true;
                 }
 
@@ -1626,7 +1636,7 @@ namespace Taz_trainer
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void launcher_Click(object sender, EventArgs e)
         {
             try
             {
@@ -1693,6 +1703,12 @@ namespace Taz_trainer
                 this.statusField.Text = ex.Message.ToString();
                 this.statusField.ForeColor = System.Drawing.Color.DarkRed;
             }
+        }
+
+        private void executable_Click(object sender, EventArgs e)
+        {
+            string TazExecPath = TazFolderPath + "\\Taz.exe";
+            Process.Start(TazExecPath, "Launched");
         }
 
         private void play_Click(object sender, EventArgs e)

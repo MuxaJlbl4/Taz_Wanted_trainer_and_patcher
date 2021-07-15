@@ -95,6 +95,7 @@
             this.buttonIcons = new System.Windows.Forms.ImageList(this.components);
             this.patch = new System.Windows.Forms.Button();
             this.play = new System.Windows.Forms.Button();
+            this.bigButtonIcons = new System.Windows.Forms.ImageList(this.components);
             this.trainerTab = new System.Windows.Forms.TabPage();
             this.infoTab = new System.Windows.Forms.TabPage();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
@@ -122,13 +123,15 @@
             this.fsLink = new System.Windows.Forms.Button();
             this.qbmsLink = new System.Windows.Forms.Button();
             this.gkhLink = new System.Windows.Forms.Button();
+            this.symbols = new System.Windows.Forms.Button();
             this.nativeOptions = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel25 = new System.Windows.Forms.TableLayoutPanel();
-            this.launcher = new System.Windows.Forms.Button();
-            this.video = new System.Windows.Forms.Button();
-            this.audio = new System.Windows.Forms.Button();
-            this.controls = new System.Windows.Forms.Button();
             this.gameFolder = new System.Windows.Forms.Button();
+            this.controls = new System.Windows.Forms.Button();
+            this.audio = new System.Windows.Forms.Button();
+            this.video = new System.Windows.Forms.Button();
+            this.executable = new System.Windows.Forms.Button();
+            this.launcher = new System.Windows.Forms.Button();
             this.tabsIcons = new System.Windows.Forms.ImageList(this.components);
             this.dbgMenuOff = new System.Windows.Forms.Timer(this.components);
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
@@ -1164,6 +1167,7 @@
             this.restore.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.restore.Dock = System.Windows.Forms.DockStyle.Fill;
             this.restore.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.restore.Font = new System.Drawing.Font("Comic Sans MS", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.restore.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.restore.ImageIndex = 1;
             this.restore.ImageList = this.buttonIcons;
@@ -1198,12 +1202,14 @@
             this.buttonIcons.Images.SetKeyName(15, "space01.png");
             this.buttonIcons.Images.SetKeyName(16, "datatapes.png");
             this.buttonIcons.Images.SetKeyName(17, "memcard.png");
+            this.buttonIcons.Images.SetKeyName(18, "compkey.png");
             // 
             // patch
             // 
             this.patch.AutoSize = true;
             this.patch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.patch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.patch.Font = new System.Drawing.Font("Comic Sans MS", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.patch.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.patch.ImageIndex = 0;
             this.patch.ImageList = this.buttonIcons;
@@ -1221,17 +1227,24 @@
             this.play.AutoSize = true;
             this.play.Dock = System.Windows.Forms.DockStyle.Fill;
             this.play.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.play.Font = new System.Drawing.Font("Comic Sans MS", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.play.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.play.ImageIndex = 8;
-            this.play.ImageList = this.buttonIcons;
+            this.play.ImageIndex = 0;
+            this.play.ImageList = this.bigButtonIcons;
             this.play.Location = new System.Drawing.Point(329, 1);
             this.play.Margin = new System.Windows.Forms.Padding(1);
             this.play.Name = "play";
             this.play.Size = new System.Drawing.Size(326, 147);
             this.play.TabIndex = 32;
-            this.play.Text = "Patch && Play";
+            this.play.Text = "             Patch && Play";
             this.play.UseVisualStyleBackColor = false;
             this.play.Click += new System.EventHandler(this.play_Click);
+            // 
+            // bigButtonIcons
+            // 
+            this.bigButtonIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("bigButtonIcons.ImageStream")));
+            this.bigButtonIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.bigButtonIcons.Images.SetKeyName(0, "wantedlogomagenta.png");
             // 
             // trainerTab
             // 
@@ -1551,16 +1564,20 @@
             this.tableLayoutPanel31.Controls.Add(this.fsLink, 0, 4);
             this.tableLayoutPanel31.Controls.Add(this.qbmsLink, 0, 3);
             this.tableLayoutPanel31.Controls.Add(this.gkhLink, 0, 1);
+            this.tableLayoutPanel31.Controls.Add(this.symbols, 0, 5);
             this.tableLayoutPanel31.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel31.Location = new System.Drawing.Point(2, 29);
             this.tableLayoutPanel31.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel31.Name = "tableLayoutPanel31";
-            this.tableLayoutPanel31.RowCount = 5;
-            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel31.RowCount = 6;
+            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel31.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel31.Size = new System.Drawing.Size(210, 278);
             this.tableLayoutPanel31.TabIndex = 1;
             // 
@@ -1574,7 +1591,7 @@
             this.githubLink.Location = new System.Drawing.Point(1, 1);
             this.githubLink.Margin = new System.Windows.Forms.Padding(1);
             this.githubLink.Name = "githubLink";
-            this.githubLink.Size = new System.Drawing.Size(208, 53);
+            this.githubLink.Size = new System.Drawing.Size(208, 44);
             this.githubLink.TabIndex = 19;
             this.githubLink.Text = "GitHub";
             this.githubLink.UseVisualStyleBackColor = false;
@@ -1587,10 +1604,10 @@
             this.d3d8to9Link.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.d3d8to9Link.ImageIndex = 9;
             this.d3d8to9Link.ImageList = this.buttonIcons;
-            this.d3d8to9Link.Location = new System.Drawing.Point(1, 111);
+            this.d3d8to9Link.Location = new System.Drawing.Point(1, 93);
             this.d3d8to9Link.Margin = new System.Windows.Forms.Padding(1);
             this.d3d8to9Link.Name = "d3d8to9Link";
-            this.d3d8to9Link.Size = new System.Drawing.Size(208, 53);
+            this.d3d8to9Link.Size = new System.Drawing.Size(208, 44);
             this.d3d8to9Link.TabIndex = 19;
             this.d3d8to9Link.Text = "D3d8to9";
             this.d3d8to9Link.UseVisualStyleBackColor = false;
@@ -1598,17 +1615,16 @@
             // 
             // fsLink
             // 
-            this.fsLink.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fsLink.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fsLink.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.fsLink.ImageIndex = 16;
             this.fsLink.ImageList = this.buttonIcons;
-            this.fsLink.Location = new System.Drawing.Point(1, 221);
+            this.fsLink.Location = new System.Drawing.Point(1, 185);
             this.fsLink.Margin = new System.Windows.Forms.Padding(1);
             this.fsLink.Name = "fsLink";
-            this.fsLink.Size = new System.Drawing.Size(208, 56);
+            this.fsLink.Size = new System.Drawing.Size(208, 44);
             this.fsLink.TabIndex = 19;
-            this.fsLink.Text = "FS";
+            this.fsLink.Text = "FormSerialisor";
             this.fsLink.UseVisualStyleBackColor = false;
             this.fsLink.Click += new System.EventHandler(this.fsLink_Click);
             // 
@@ -1619,10 +1635,10 @@
             this.qbmsLink.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.qbmsLink.ImageIndex = 13;
             this.qbmsLink.ImageList = this.buttonIcons;
-            this.qbmsLink.Location = new System.Drawing.Point(1, 166);
+            this.qbmsLink.Location = new System.Drawing.Point(1, 139);
             this.qbmsLink.Margin = new System.Windows.Forms.Padding(1);
             this.qbmsLink.Name = "qbmsLink";
-            this.qbmsLink.Size = new System.Drawing.Size(208, 53);
+            this.qbmsLink.Size = new System.Drawing.Size(208, 44);
             this.qbmsLink.TabIndex = 19;
             this.qbmsLink.Text = "QuickBMS";
             this.qbmsLink.UseVisualStyleBackColor = false;
@@ -1633,16 +1649,30 @@
             this.gkhLink.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gkhLink.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.gkhLink.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.gkhLink.ImageIndex = 11;
+            this.gkhLink.ImageIndex = 18;
             this.gkhLink.ImageList = this.buttonIcons;
-            this.gkhLink.Location = new System.Drawing.Point(1, 56);
+            this.gkhLink.Location = new System.Drawing.Point(1, 47);
             this.gkhLink.Margin = new System.Windows.Forms.Padding(1);
             this.gkhLink.Name = "gkhLink";
-            this.gkhLink.Size = new System.Drawing.Size(208, 53);
+            this.gkhLink.Size = new System.Drawing.Size(208, 44);
             this.gkhLink.TabIndex = 19;
             this.gkhLink.Text = "GKH";
             this.gkhLink.UseVisualStyleBackColor = false;
             this.gkhLink.Click += new System.EventHandler(this.gkhLink_Click);
+            // 
+            // symbols
+            // 
+            this.symbols.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.symbols.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.symbols.ImageIndex = 11;
+            this.symbols.ImageList = this.buttonIcons;
+            this.symbols.Location = new System.Drawing.Point(1, 231);
+            this.symbols.Margin = new System.Windows.Forms.Padding(1);
+            this.symbols.Name = "symbols";
+            this.symbols.Size = new System.Drawing.Size(208, 44);
+            this.symbols.TabIndex = 19;
+            this.symbols.Text = "Debug Symbols";
+            this.symbols.UseVisualStyleBackColor = false;
             // 
             // nativeOptions
             // 
@@ -1662,100 +1692,114 @@
             // 
             this.tableLayoutPanel25.ColumnCount = 1;
             this.tableLayoutPanel25.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel25.Controls.Add(this.launcher, 0, 0);
-            this.tableLayoutPanel25.Controls.Add(this.video, 0, 1);
-            this.tableLayoutPanel25.Controls.Add(this.audio, 0, 2);
-            this.tableLayoutPanel25.Controls.Add(this.controls, 0, 3);
-            this.tableLayoutPanel25.Controls.Add(this.gameFolder, 0, 4);
+            this.tableLayoutPanel25.Controls.Add(this.gameFolder, 0, 5);
+            this.tableLayoutPanel25.Controls.Add(this.controls, 0, 4);
+            this.tableLayoutPanel25.Controls.Add(this.audio, 0, 3);
+            this.tableLayoutPanel25.Controls.Add(this.video, 0, 2);
+            this.tableLayoutPanel25.Controls.Add(this.executable, 0, 0);
+            this.tableLayoutPanel25.Controls.Add(this.launcher, 0, 1);
             this.tableLayoutPanel25.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel25.Location = new System.Drawing.Point(2, 29);
             this.tableLayoutPanel25.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel25.Name = "tableLayoutPanel25";
-            this.tableLayoutPanel25.RowCount = 5;
-            this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel25.RowCount = 6;
+            this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanel25.Size = new System.Drawing.Size(208, 278);
             this.tableLayoutPanel25.TabIndex = 19;
             // 
-            // launcher
-            // 
-            this.launcher.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.launcher.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.launcher.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.launcher.ImageIndex = 3;
-            this.launcher.ImageList = this.buttonIcons;
-            this.launcher.Location = new System.Drawing.Point(1, 1);
-            this.launcher.Margin = new System.Windows.Forms.Padding(1);
-            this.launcher.Name = "launcher";
-            this.launcher.Size = new System.Drawing.Size(206, 53);
-            this.launcher.TabIndex = 19;
-            this.launcher.Text = "Launcher";
-            this.launcher.UseVisualStyleBackColor = false;
-            // 
-            // video
-            // 
-            this.video.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.video.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.video.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.video.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.video.ImageIndex = 4;
-            this.video.ImageList = this.buttonIcons;
-            this.video.Location = new System.Drawing.Point(1, 56);
-            this.video.Margin = new System.Windows.Forms.Padding(1);
-            this.video.Name = "video";
-            this.video.Size = new System.Drawing.Size(206, 53);
-            this.video.TabIndex = 20;
-            this.video.Text = "Video";
-            this.video.UseVisualStyleBackColor = false;
-            // 
-            // audio
-            // 
-            this.audio.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.audio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.audio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.audio.ImageIndex = 5;
-            this.audio.ImageList = this.buttonIcons;
-            this.audio.Location = new System.Drawing.Point(1, 111);
-            this.audio.Margin = new System.Windows.Forms.Padding(1);
-            this.audio.Name = "audio";
-            this.audio.Size = new System.Drawing.Size(206, 53);
-            this.audio.TabIndex = 21;
-            this.audio.Text = "Audio";
-            this.audio.UseVisualStyleBackColor = false;
-            // 
-            // controls
-            // 
-            this.controls.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.controls.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.controls.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.controls.ImageIndex = 6;
-            this.controls.ImageList = this.buttonIcons;
-            this.controls.Location = new System.Drawing.Point(1, 166);
-            this.controls.Margin = new System.Windows.Forms.Padding(1);
-            this.controls.Name = "controls";
-            this.controls.Size = new System.Drawing.Size(206, 53);
-            this.controls.TabIndex = 22;
-            this.controls.Text = "Controls";
-            this.controls.UseVisualStyleBackColor = false;
-            // 
             // gameFolder
             // 
-            this.gameFolder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gameFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.gameFolder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.gameFolder.ImageIndex = 14;
             this.gameFolder.ImageList = this.buttonIcons;
-            this.gameFolder.Location = new System.Drawing.Point(1, 221);
+            this.gameFolder.Location = new System.Drawing.Point(1, 231);
             this.gameFolder.Margin = new System.Windows.Forms.Padding(1);
             this.gameFolder.Name = "gameFolder";
-            this.gameFolder.Size = new System.Drawing.Size(206, 56);
+            this.gameFolder.Size = new System.Drawing.Size(206, 46);
             this.gameFolder.TabIndex = 23;
             this.gameFolder.Text = "Game Path";
             this.gameFolder.UseVisualStyleBackColor = false;
             this.gameFolder.Click += new System.EventHandler(this.gameFolder_Click);
+            // 
+            // controls
+            // 
+            this.controls.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.controls.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.controls.ImageIndex = 6;
+            this.controls.ImageList = this.buttonIcons;
+            this.controls.Location = new System.Drawing.Point(1, 185);
+            this.controls.Margin = new System.Windows.Forms.Padding(1);
+            this.controls.Name = "controls";
+            this.controls.Size = new System.Drawing.Size(206, 44);
+            this.controls.TabIndex = 22;
+            this.controls.Text = "Controls";
+            this.controls.UseVisualStyleBackColor = false;
+            // 
+            // audio
+            // 
+            this.audio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.audio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.audio.ImageIndex = 5;
+            this.audio.ImageList = this.buttonIcons;
+            this.audio.Location = new System.Drawing.Point(1, 139);
+            this.audio.Margin = new System.Windows.Forms.Padding(1);
+            this.audio.Name = "audio";
+            this.audio.Size = new System.Drawing.Size(206, 44);
+            this.audio.TabIndex = 21;
+            this.audio.Text = "Audio";
+            this.audio.UseVisualStyleBackColor = false;
+            // 
+            // video
+            // 
+            this.video.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.video.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.video.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.video.ImageIndex = 4;
+            this.video.ImageList = this.buttonIcons;
+            this.video.Location = new System.Drawing.Point(1, 93);
+            this.video.Margin = new System.Windows.Forms.Padding(1);
+            this.video.Name = "video";
+            this.video.Size = new System.Drawing.Size(206, 44);
+            this.video.TabIndex = 20;
+            this.video.Text = "Video";
+            this.video.UseVisualStyleBackColor = false;
+            this.video.Click += new System.EventHandler(this.video_Click);
+            // 
+            // executable
+            // 
+            this.executable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.executable.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.executable.ImageIndex = 8;
+            this.executable.ImageList = this.buttonIcons;
+            this.executable.Location = new System.Drawing.Point(1, 1);
+            this.executable.Margin = new System.Windows.Forms.Padding(1);
+            this.executable.Name = "executable";
+            this.executable.Size = new System.Drawing.Size(206, 44);
+            this.executable.TabIndex = 23;
+            this.executable.Text = "Play";
+            this.executable.UseVisualStyleBackColor = false;
+            this.executable.Click += new System.EventHandler(this.executable_Click);
+            // 
+            // launcher
+            // 
+            this.launcher.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.launcher.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.launcher.ImageIndex = 3;
+            this.launcher.ImageList = this.buttonIcons;
+            this.launcher.Location = new System.Drawing.Point(1, 47);
+            this.launcher.Margin = new System.Windows.Forms.Padding(1);
+            this.launcher.Name = "launcher";
+            this.launcher.Size = new System.Drawing.Size(206, 44);
+            this.launcher.TabIndex = 19;
+            this.launcher.Text = "Launcher";
+            this.launcher.UseVisualStyleBackColor = false;
+            this.launcher.Click += new System.EventHandler(this.launcher_Click);
             // 
             // tabsIcons
             // 
@@ -1942,6 +1986,9 @@
         private System.Windows.Forms.NumericUpDown numericFpsCap;
         private System.Windows.Forms.Button fsLink;
         private System.Windows.Forms.WebBrowser webBrowser1;
+        private System.Windows.Forms.Button executable;
+        private System.Windows.Forms.Button symbols;
+        private System.Windows.Forms.ImageList bigButtonIcons;
     }
 }
 
