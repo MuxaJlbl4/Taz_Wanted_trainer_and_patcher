@@ -4,6 +4,8 @@ using System.Windows.Forms;
 using System.Reflection;
 using System.Xml;
 using System.Diagnostics;
+// Taz Trainer & Patcher
+using System.Collections.Generic;
 
 namespace FormSerialisation
 {
@@ -37,8 +39,15 @@ namespace FormSerialisation
 
         private static void AddChildControls(XmlTextWriter xmlSerialisedForm, Control c)
         {
+            // Taz Trainer & Patcher
+            List <String> Excluded = new List<String> { "", "tableLayoutPanelPatcher2", "trainerTab", "pictureTaz", "trainerTab", "infoTab", "tableLayoutPanelSettings11", "labelFpsCap", "savePatcherSettings", "tableLayoutPanelSettings22", "tableLayoutPanelSettings23", "extLinks", "nativeOptions", "statusStrip" };
+
             foreach (Control childCtrl in c.Controls)
             {
+                // Taz Trainer & Patcher
+                if (Excluded.Contains(childCtrl.Name))
+                    continue;
+
                 if (!(childCtrl is Label))
                 {
                     // serialise this control
@@ -72,13 +81,10 @@ namespace FormSerialisation
                     }
                     else if (childCtrl is CheckBox)
                     {
-                        // Special for Taz Trainer & Patcher
-                        if (((CheckBox)childCtrl).Appearance == System.Windows.Forms.Appearance.Button)
-                            xmlSerialisedForm.WriteElementString("Checked", false.ToString());
-                        xmlSerialisedForm.WriteElementString("Checked", ((CheckBox)childCtrl).Checked.ToString());
+                            xmlSerialisedForm.WriteElementString("Checked", ((CheckBox)childCtrl).Checked.ToString());
                     }
 
-                    // Special for Taz Trainer & Patcher
+                    // Taz Trainer & Patcher
                     else if (childCtrl is NumericUpDown)
                     {
                         xmlSerialisedForm.WriteElementString("Value", ((NumericUpDown)childCtrl).Value.ToString());
@@ -95,8 +101,9 @@ namespace FormSerialisation
                     // this next line was taken from http://stackoverflow.com/questions/391888/how-to-get-the-real-value-of-the-visible-property
                     // which dicusses the problem of child controls claiming to have Visible=false even when they haven't, based on the parent
                     // having Visible=true
-                    bool visible = (bool)typeof(Control).GetMethod("GetState", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(childCtrl, new object[] { 2 });
-                    xmlSerialisedForm.WriteElementString("Visible", visible.ToString());
+                    // Taz Trainer & Patcher
+                    // bool visible = (bool)typeof(Control).GetMethod("GetState", BindingFlags.Instance | BindingFlags.NonPublic).Invoke(childCtrl, new object[] { 2 });
+                    // xmlSerialisedForm.WriteElementString("Visible", visible.ToString());
                     // see if this control has any children, and if so, serialise them
                     if (childCtrl.HasChildren)
                     {
@@ -135,7 +142,7 @@ namespace FormSerialisation
             // get the control's name and type
             string controlName = n.Attributes["Name"].Value;
             string controlType = n.Attributes["Type"].Value;
-            // Special for Taz Trainer & Patcher
+            // Taz Trainer & Patcher
             if (controlName == "")
                 return;
             // find the control
@@ -174,7 +181,7 @@ namespace FormSerialisation
                                 ((System.Windows.Forms.CheckBox)ctrlToSet).Checked = Convert.ToBoolean(n["Checked"].InnerText);
                                 break;
 
-                            // Special for Taz Trainer & Patcher
+                            // Taz Trainer & Patcher
                             case "System.Windows.Forms.NumericUpDown":
                                 ((System.Windows.Forms.NumericUpDown)ctrlToSet).Value = Convert.ToDecimal(n["Value"].InnerText);
                                 break;
@@ -183,7 +190,8 @@ namespace FormSerialisation
                                 ((System.Windows.Forms.DateTimePicker)ctrlToSet).Text = n["Text"].InnerText;
                                 break;
                         }
-                        ctrlToSet.Visible = Convert.ToBoolean(n["Visible"].InnerText);
+                        // Taz Trainer & Patcher
+                        //ctrlToSet.Visible = Convert.ToBoolean(n["Visible"].InnerText);
                         // if n has any children that are controls, deserialise them as well
                         if (n.HasChildNodes && ctrlToSet.HasChildren)
                         {

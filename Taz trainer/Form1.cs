@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Utilities;
@@ -16,7 +17,7 @@ using FormSerialisation;
 
 namespace Taz_trainer
 {
-    public partial class Form1 : Form
+    public partial class form : System.Windows.Forms.Form
     {
         // dll import (pinvoke.net)
         [DllImport("kernel32.dll", SetLastError = true)]
@@ -34,7 +35,7 @@ namespace Taz_trainer
 
         string TazFolderPath = "";
 
-        public Form1()
+        public form()
         {
             InitializeComponent();
 
@@ -169,7 +170,7 @@ namespace Taz_trainer
             }
             if (e.KeyCode == Keys.F12)
             {
-                this.unstopableMode.Checked = !this.unstopableMode.Checked;
+                this.unstoppableMode.Checked = !this.unstoppableMode.Checked;
                 sendKey(Keys.F12, "{F12}");
             }
             if (e.KeyCode == Keys.Insert)
@@ -240,7 +241,7 @@ namespace Taz_trainer
             }
             if (e.KeyCode == Keys.NumPad3)
             {
-                loadPosition();
+                this.loadPos.Checked = !this.loadPos.Checked;
                 sendKey(Keys.NumPad3, "{3}");
             }
             if (e.KeyCode == Keys.NumPad2)
@@ -253,7 +254,7 @@ namespace Taz_trainer
             }
             if (e.KeyCode == Keys.NumPad1)
             {
-                savePosition();
+                this.savePos.Checked = !this.savePos.Checked;
                 sendKey(Keys.NumPad1, "{1}");
             }
             if (e.KeyCode == Keys.NumPad0)
@@ -495,7 +496,7 @@ namespace Taz_trainer
             float current = BitConverter.ToSingle(bytes,0);
 
             //PositiveInfinity stops game, all other commented values crashes
-            float[] values = { /* 0, Single.Epsilon, */ 0.0000001f, 0.1f, 0.5f, 1, 2, 4 /*, Single.MaxValue, Single.PositiveInfinity*/ };
+            float[] values = { /* 0, Single.Epsilon, 0.0000001f, */ 0.000001f, 0.1f, 0.5f, 1, 2, 4 /*, Single.MaxValue, Single.PositiveInfinity*/ };
             int index = Array.FindIndex(values, x => x == current);
 
             if (index == -1) index = Array.FindIndex(values, x => x == 1);
@@ -507,9 +508,9 @@ namespace Taz_trainer
                 else index--;
             }
             checkAndWrite((IntPtr)0x006F4A3C, BitConverter.GetBytes(values[index]), BitConverter.GetBytes(values[index]).Length, new IntPtr());
-            string num = values[index].ToString();
-            if (index == 0) num = "0.0000001";
-            message("Game Speed: x" + num);
+            //string num = values[index].ToString();
+            //if (index == 0) num = "0.0000001";
+            message("Game Speed: x" + values[index].ToString());
         }
 
 
@@ -796,7 +797,7 @@ namespace Taz_trainer
         float Y = 0;
         float Z = 0;
 
-        private void savePosition()
+        private void savePos_CheckedChanged(object sender, EventArgs e)
         {
             //Read taz structure coordinates offset
             float value;
@@ -822,7 +823,7 @@ namespace Taz_trainer
             message("Taz Position Saved");
         }
 
-        private void loadPosition()
+        private void loadPos_CheckedChanged(object sender, EventArgs e)
         {
             //Read taz structure coordinates offset
             var adress = 0x006C8BC0; //Base adress
@@ -873,10 +874,12 @@ namespace Taz_trainer
                 checkAndWrite((IntPtr)0x004A7543, bytes4, bytes4.Length, new IntPtr());
 
                 //security boxes
-                byte[] bytes5 = { 0xE9, 0xC1, 0x00, 0x00, 0x00 };
-                checkAndWrite((IntPtr)0x0044B7C7, bytes5, bytes5.Length, new IntPtr());
-                byte[] bytes6 = { 0xC7, 0x44, 0x24, 0x08, 0xCD, 0xCC, 0xCC, 0x3D, 0xEB, 0x1A };
-                checkAndWrite((IntPtr)0x0044B8BE, bytes6, bytes6.Length, new IntPtr());
+                //byte[] bytes5 = { 0xE9, 0xC1, 0x00, 0x00, 0x00 };
+                //checkAndWrite((IntPtr)0x0044B7C7, bytes5, bytes5.Length, new IntPtr());
+                //byte[] bytes6 = { 0xC7, 0x44, 0x24, 0x08, 0xCD, 0xCC, 0xCC, 0x3D, 0xEB, 0x1A };
+                //checkAndWrite((IntPtr)0x0044B8BE, bytes6, bytes6.Length, new IntPtr());
+                byte[] bytes5 = { 0x90, 0x90, 0x90, 0x90, 0x90 };
+                checkAndWrite((IntPtr)0x0044AE2B, bytes5, bytes5.Length, new IntPtr());
 
 
                 message("Freeze Timers & Sam Boxes: On");
@@ -900,10 +903,12 @@ namespace Taz_trainer
                 checkAndWrite((IntPtr)0x004A7543, bytes4, bytes4.Length, new IntPtr());
 
                 //security boxes
-                byte[] bytes5 = { 0x0F, 0x85, 0x2C, 0x02, 0x00 };
-                checkAndWrite((IntPtr)0x0044B7C7, bytes5, bytes5.Length, new IntPtr());
-                byte[] bytes6 = { 0x74, 0x1A, 0x48, 0x74, 0x0D, 0x48, 0x75, 0x1C, 0xC7, 0x44 };
-                checkAndWrite((IntPtr)0x0044B8BE, bytes6, bytes6.Length, new IntPtr());
+                //byte[] bytes5 = { 0x0F, 0x85, 0x2C, 0x02, 0x00 };
+                //checkAndWrite((IntPtr)0x0044B7C7, bytes5, bytes5.Length, new IntPtr());
+                //byte[] bytes6 = { 0x74, 0x1A, 0x48, 0x74, 0x0D, 0x48, 0x75, 0x1C, 0xC7, 0x44 };
+                //checkAndWrite((IntPtr)0x0044B8BE, bytes6, bytes6.Length, new IntPtr());
+                byte[] bytes5 = { 0xE8, 0x50, 0xEC, 0xFF, 0xFF };
+                checkAndWrite((IntPtr)0x0044AE2B, bytes5, bytes5.Length, new IntPtr());
 
                 message("Freeze Timers & Sam Boxes: Off");
             }
@@ -1040,7 +1045,85 @@ namespace Taz_trainer
             }
         }
 
+        private void fpsCap_CheckedChanged(object sender, EventArgs e)
+        {
+            /*
+            label(returnhere)
+            label(exit)
 
+            "Taz.exe"+1F6700:
+            // DrawFrame
+            call Taz.exe+90100
+
+            sleep1:
+            // bkTimerRead__Fv
+            call 005785F0
+            push edx
+            push eax
+
+            mov edx,[00010558]
+            mov eax,[00010554]
+            push edx
+            push eax
+
+            // bkTimerDelta__FUiUi
+            call 00578700
+            push 0x1
+            push 0x1
+            push edx
+            push eax
+            // bkTimerToScanlines__FUiii
+            call 005786B0
+            add esp,0x20
+            fcomp [00010550]
+            fnstsw ax
+            test ah,1
+            jne sleep1
+
+            exit:
+            // bkTimerRead__Fv
+            call 005785F0
+            mov [00010558],edx
+            mov [00010554],eax
+
+            jmp returnhere
+
+            "Taz.exe"+A77EC:
+            jmp "Taz.exe"+1F6700
+            returnhere:
+            */
+
+            byte[] bytes = { 0xE8, 0xFB, 0x99, 0xE9, 0xFF, 0xE8, 0xE6, 0x1E, 0xF8, 0xFF, 0x52, 0x50, 0x8B, 0x15, 0x58, 0x05, 0x01, 0x00, 0xA1, 0x54, 0x05, 0x01, 0x00, 0x52, 0x50, 0xE8, 0xE2, 0x1F, 0xF8, 0xFF, 0x68, 0x01, 0x00, 0x00, 0x00, 0x68, 0x01, 0x00, 0x00, 0x00, 0x52, 0x50, 0xE8, 0x81, 0x1F, 0xF8, 0xFF, 0x83, 0xC4, 0x20, 0xD8, 0x1D, 0x50, 0x05, 0x01, 0x00, 0xDF, 0xE0, 0xF6, 0xC4, 0x01, 0x75, 0xC6, 0xE8, 0xAC, 0x1E, 0xF8, 0xFF, 0x89, 0x15, 0x58, 0x05, 0x01, 0x00, 0xA3, 0x54, 0x05, 0x01, 0x00, 0xE9, 0x9D, 0x10, 0xEB, 0xFF };
+            checkAndWrite((IntPtr)0x005F6700, bytes, bytes.Length, new IntPtr());
+
+            /*
+            "Taz.exe" + A77EC:
+            jmp "Taz.exe" + 1F6700
+            returnhere:
+            */
+            byte[] bytes2 = { 0xE9, 0x0F, 0xEF, 0x14, 0x00 };
+            checkAndWrite((IntPtr)0x004A77EC, bytes2, bytes2.Length, new IntPtr());
+            
+            if (this.fpsCap.Checked == true)
+            {
+                float miliseconds = (1000/(float)numericFpsCap.Value)/1000;
+
+                // Float delay in seconds
+                byte[] bytes3 = BitConverter.GetBytes(miliseconds);
+                checkAndWrite((IntPtr)0x00010550, bytes3, bytes3.Length, new IntPtr());
+
+                message("FPS Cap: " + numericFpsCap.Value.ToString() + " Hz");
+            }
+            else
+            {
+                // 0,00
+                byte[] bytes3 = { 0x00, 0x00, 0x00, 0x00 };
+                checkAndWrite((IntPtr)0x00010550, bytes3, bytes3.Length, new IntPtr());
+
+                message("FPS Cap: Unlimited");
+            }
+            
+        }
 
         private void message(string message)
         {
@@ -1148,14 +1231,6 @@ namespace Taz_trainer
         {
             try
             {
-                /*
-                //Check checkboxes
-                if (this.noCD.Checked == false && this.disableDrawDistance.Checked == false && this.disableVideos.Checked == false && this.changeResolution.Checked == false && this.aspectRatio.Checked == false && this.warningBanner.Checked == false && this.filtering.Checked == false)
-                {
-                    MessageBox.Show("Select at least one option", "No options selected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                */
 
                 bool backuped = false;
 
@@ -1169,7 +1244,6 @@ namespace Taz_trainer
                 //backup Taz.exe
                 if (File.Exists(TazFolderPath + "\\taz.dat.backup") == false)
                 {
-
                     File.Copy(TazFolderPath + "\\taz.dat", TazFolderPath + "\\taz.dat.backup");
                     backuped = true;
                 }
@@ -1181,6 +1255,19 @@ namespace Taz_trainer
                     {
 
                         byte[] bytes = new byte[] { 0x33, 0xC0, 0x40, 0xC3 };
+                        file.Position = 0xA1F10;
+                        file.WriteByte(bytes[0]);
+                        file.WriteByte(bytes[1]);
+                        file.WriteByte(bytes[2]);
+                        file.WriteByte(bytes[3]);
+                        file.Close();
+                    }
+                }
+                else
+                {
+                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        byte[] bytes = new byte[] { 0x81, 0xEC, 0x38, 0x01 };
                         file.Position = 0xA1F10;
                         file.WriteByte(bytes[0]);
                         file.WriteByte(bytes[1]);
@@ -1226,13 +1313,57 @@ namespace Taz_trainer
                         file.Close();
                     }
                 }
+                else
+                {
+                    //restore draw distace
+                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        byte[] bytes = new byte[] { 0x00, 0x00, 0x75 };
+                        file.Position = 0x74FC4;
+                        file.WriteByte(bytes[0]);
+                        file.WriteByte(bytes[1]);
+                        file.Position = 0x74FD0;
+                        file.WriteByte(bytes[2]);
+                        file.Close();
+                    }
+                    //restore effects draw distace
+                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        byte[] bytes0 = { 0x00, 0x00, 0x00, 0x00 };
+                        byte[] bytes1 = { 0xF4, 0x75, 0x5F, 0x00 };
+                        byte[] bytes2 = { 0xD9, 0x46, 0x3C, 0xD8, 0x0D, 0xE4, 0x7E, 0x5F, 0x00, 0xD9, 0xFE };
+                        file.Position = 0x1F66E8;
+                        file.Write(bytes0, 0, bytes0.Length);
+                        file.Position = 0x7E00B;
+                        file.Write(bytes1, 0, bytes1.Length);
+                        file.Position = 0x7E016;
+                        file.Write(bytes2, 0, bytes2.Length);
+                        file.Close();
+                    }
+                    //taz.dat distance max default
+                    using (var file = new FileStream(TazFolderPath + "\\taz.dat", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        file.Position = 0x44;
+                        file.WriteByte(0x30);
+                        file.WriteByte(0x02);
+                        file.Close();
+                    }
+                }
 
                 //disable videos
                 if (this.disableVideos.Checked == true)
                 {
-                    if (Directory.Exists(TazFolderPath + "\\DISABLED Videos") == false)
+                    if (Directory.Exists(TazFolderPath + "\\!Videos") == false && Directory.Exists(TazFolderPath + "\\Videos") == true)
                     {
-                        Directory.Move(TazFolderPath + "\\Videos", TazFolderPath + "\\DISABLED Videos");
+                        Directory.Move(TazFolderPath + "\\Videos", TazFolderPath + "\\!Videos");
+                    }
+                }
+                else
+                {
+                    //restore videos
+                    if (Directory.Exists(TazFolderPath + "\\Videos") == false && Directory.Exists(TazFolderPath + "\\!Videos") == true)
+                    {
+                        Directory.Move(TazFolderPath + "\\!Videos", TazFolderPath + "/Videos");
                     }
                 }
 
@@ -1271,9 +1402,9 @@ namespace Taz_trainer
                             file.Position = 0x3C;
                             file.WriteByte(0x01);
                             //no voodoo
-                            file.Position = 0x40;
-                            file.WriteByte(0x00);
-                            file.Close();
+                            //file.Position = 0x40;
+                            //file.WriteByte(0x00);
+                            //file.Close();
                         }
                     }
                     else
@@ -1285,7 +1416,7 @@ namespace Taz_trainer
                             file.WriteByte(0x01);
                             file.Close();
                         }
-                            using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                        using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
                         {
                             //resolution in Taz.exe
                             file.Position = 0x8F134;
@@ -1301,6 +1432,68 @@ namespace Taz_trainer
                             file.Close();
                         }
                     }
+                }
+                else
+                {
+                    //restore resolution
+                    using (var file = new FileStream(TazFolderPath + "\\taz.dat", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        //width
+                        file.Position = 0x24;
+                        file.WriteByte(0x00);
+                        file.WriteByte(0x04);
+                        file.WriteByte(0x00);
+                        file.WriteByte(0x00);
+                        //height
+                        file.Position = 0x28;
+                        file.WriteByte(0x00);
+                        file.WriteByte(0x03);
+                        file.WriteByte(0x00);
+                        file.WriteByte(0x00);
+                        //32 bits on color
+                        file.Position = 0x30;
+                        file.WriteByte(0x20);
+                        //fullscreen
+                        file.Position = 0x34;
+                        file.WriteByte(0x00);
+                        //lighting
+                        file.Position = 0x38;
+                        file.WriteByte(0x01);
+                        //outlines
+                        file.Position = 0x3C;
+                        file.WriteByte(0x01);
+                        //no voodoo
+                        //file.Position = 0x40;
+                        //file.WriteByte(0x00);
+                        //language
+                        //file.Position = 0x168;
+                        //file.WriteByte(0x0);
+                        file.Close();
+                    }
+                    //restore resolution in Taz.exe
+                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        file.Position = 0x8F134;
+                        file.WriteByte(0x80);
+                        file.WriteByte(0x02);
+                        file.WriteByte(0x00);
+                        file.WriteByte(0x00);
+                        file.Position = 0x8F13E;
+                        file.WriteByte(0xE0);
+                        file.WriteByte(0x01);
+                        file.WriteByte(0x00);
+                        file.WriteByte(0x00);
+                        file.Close();
+                    }
+                    // restore windowed mode
+                    using (var file = new FileStream(TazFolderPath + "\\taz.dat", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        //windowed
+                        file.Position = 0x34;
+                        file.WriteByte(0x00);
+                        file.Close();
+                    }
+
                 }
 
                 //aspect ratio
@@ -1318,6 +1511,19 @@ namespace Taz_trainer
                         file.Close();
                     }
                 }
+                else
+                {
+                    //restore aspect ratio
+                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        //windowed
+                        file.Position = 0x8FD76;
+                        file.WriteByte(0x04);
+                        file.Position = 0x8FD7D;
+                        file.WriteByte(0x03);
+                        file.Close();
+                    }
+                }
 
                 //texture filtering
                 if (this.filtering.Checked == true)
@@ -1328,6 +1534,18 @@ namespace Taz_trainer
                         file.WriteByte(0x01);
                         file.Position = 0x255E04;
                         file.WriteByte(0x01);
+                        file.Close();
+                    }
+                }
+                else
+                {
+                    //restore linear filtering
+                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        file.Position = 0x255E00;
+                        file.WriteByte(0x02);
+                        file.Position = 0x255E04;
+                        file.WriteByte(0x02);
                         file.Close();
                     }
                 }
@@ -1344,9 +1562,43 @@ namespace Taz_trainer
                         file.Close();
                     }
                 }
+                else
+                {
+                    //restore warning banner time
+                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        file.Position = 0x8F07D;
+                        file.WriteByte(0xF4);
+                        file.WriteByte(0x73);
+                        file.WriteByte(0x5F);
+                        file.Close();
+                    }
+                }
 
-                //language
-                // If language not Russian
+                //voodoo
+                if (this.voodoo.Checked == true)
+                {
+                    using (var file = new FileStream(TazFolderPath + "\\taz.dat", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        //voodoo
+                        file.Position = 0x40;
+                        file.WriteByte(0x01);
+                        file.Close();
+                    }
+                }
+                else 
+                {
+                    using (var file = new FileStream(TazFolderPath + "\\taz.dat", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        //restore voodoo
+                        file.Position = 0x40;
+                        file.WriteByte(0x00);
+                        file.Close();
+                    }
+                }
+
+                    //language
+                    // If language not Russian
                 if (langComboBox.SelectedIndex >= 0 && langComboBox.SelectedIndex <= 4)
                 {
                     // Check lang files
@@ -1410,134 +1662,47 @@ namespace Taz_trainer
         {
             try
             {
-                var result = MessageBox.Show("This will restore all options and mods to default. Continue?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var result = MessageBox.Show("This will restore all game options and mods to default. Continue?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    /*
-                    //restore CD check
-                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    //Check backup
+                    if (File.Exists(TazFolderPath + "\\Taz.exe.backup") == true)
                     {
-                        byte[] bytes = new byte[] { 0x81, 0xEC, 0x38, 0x01 };
-                        file.Position = 0xA1F10;
-                        file.WriteByte(bytes[0]);
-                        file.WriteByte(bytes[1]);
-                        file.WriteByte(bytes[2]);
-                        file.WriteByte(bytes[3]);
-                        file.Close();
+                        //Replace
+                        File.Delete(TazFolderPath + "\\Taz.exe");
+                        File.Copy(TazFolderPath + "\\Taz.exe.backup", TazFolderPath + "\\Taz.exe");
                     }
-                    //restore draw distace
-                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    else
                     {
-                        byte[] bytes = new byte[] { 0x00, 0x00, 0x75 };
-                        file.Position = 0x74FC4;
-                        file.WriteByte(bytes[0]);
-                        file.WriteByte(bytes[1]);
-                        file.Position = 0x74FD0;
-                        file.WriteByte(bytes[2]);
-                        file.Close();
-                    }
-                    //effects
-                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
-                    {
-                        byte[] bytes0 = { 0x00, 0x00, 0x00, 0x00 };
-                        byte[] bytes1 = { 0xF4, 0x75, 0x5F, 0x00 };
-                        byte[] bytes2 = { 0xD9, 0x46, 0x3C, 0xD8, 0x0D, 0xE4, 0x7E, 0x5F, 0x00, 0xD9, 0xFE };
-                        file.Position = 0x1F66E8;
-                        file.Write(bytes0, 0, bytes0.Length);
-                        file.Position = 0x7E00B;
-                        file.Write(bytes1, 0, bytes1.Length);
-                        file.Position = 0x7E016;
-                        file.Write(bytes2, 0, bytes2.Length);
-                        file.Close();
-                    }
-                    */
-                    using (var file = new FileStream(TazFolderPath + "\\taz.dat", FileMode.Open, FileAccess.ReadWrite))
-                    {
-                        //max default
-                        file.Position = 0x44;
-                        file.WriteByte(0x30);
-                        file.WriteByte(0x02);
-                        file.Close();
+                        this.statusField.Text = "Taz.exe.backup not found!";
+                        this.statusField.ForeColor = System.Drawing.Color.DarkRed;
                     }
 
-                    //restore videos
-                    if (Directory.Exists(TazFolderPath + "\\Videos") == false)
+                    //Check and restore language backup
+                    if (File.Exists(TazFolderPath + "\\Paks\\text.pc.backup") == true && File.Exists(TazFolderPath + "\\Paks\\resTex.pc.backup") == true && File.Exists(TazFolderPath + "\\Paks\\text.pc") == true && File.Exists(TazFolderPath + "\\Paks\\resTex.pc") == true)
                     {
-                        Directory.Move(TazFolderPath + "\\DISABLED Videos", TazFolderPath + "/Videos");
-                    }
-                    //restore resolution
-                    using (var file = new FileStream(TazFolderPath + "\\taz.dat", FileMode.Open, FileAccess.ReadWrite))
-                    {
-                        //width
-                        file.Position = 0x24;
-                        file.WriteByte(0x00);
-                        file.WriteByte(0x04);
-                        file.WriteByte(0x00);
-                        file.WriteByte(0x00);
-                        //height
-                        file.Position = 0x28;
-                        file.WriteByte(0x00);
-                        file.WriteByte(0x03);
-                        file.WriteByte(0x00);
-                        file.WriteByte(0x00);
-                        //32 bits on color
-                        file.Position = 0x30;
-                        file.WriteByte(0x20);
-                        //fullscreen
-                        file.Position = 0x34;
-                        file.WriteByte(0x00);
-                        //lighting
-                        file.Position = 0x38;
-                        file.WriteByte(0x01);
-                        //outlines
-                        file.Position = 0x3C;
-                        file.WriteByte(0x01);
-                        //no voodoo
-                        file.Position = 0x40;
-                        file.WriteByte(0x00);
-                        //language
-                        file.Position = 0x168;
-                        file.WriteByte(0x0);
-                        file.Close();
-                    }
-                    /*
-                    //restore resolution in Taz.exe
-                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
-                    {
-                        file.Position = 0x8F134;
-                        file.WriteByte(0x80);
-                        file.WriteByte(0x02);
-                        file.WriteByte(0x00);
-                        file.WriteByte(0x00);
-                        file.Position = 0x8F13E;
-                        file.WriteByte(0xE0);
-                        file.WriteByte(0x01);
-                        file.WriteByte(0x00);
-                        file.WriteByte(0x00);
-                        file.Close();
+                        //Restore to original
+                        File.Delete(TazFolderPath + "\\Paks\\text.pc");
+                        File.Delete(TazFolderPath + "\\Paks\\resTex.pc");
+                        File.Copy(TazFolderPath + "\\Paks\\text.pc.backup", TazFolderPath + "\\Paks\\text.pc");
+                        File.Copy(TazFolderPath + "\\Paks\\resTex.pc.backup", TazFolderPath + "\\Paks\\resTex.pc");
+                        File.Delete(TazFolderPath + "\\Paks\\text.pc.backup");
+                        File.Delete(TazFolderPath + "\\Paks\\resTex.pc.backup");
                     }
 
+                    //Check and restore taz.dat backup
+                    if (File.Exists(TazFolderPath + "\\taz.dat.backup") == true)
+                    {
+                        //Replace
+                        File.Delete(TazFolderPath + "\\taz.dat");
+                        File.Copy(TazFolderPath + "\\taz.dat.backup", TazFolderPath + "\\taz.dat");
+                    }
+                    else
+                    {
+                        this.statusField.Text = "taz.dat.backup not found!";
+                        this.statusField.ForeColor = System.Drawing.Color.DarkRed;
+                    }
 
-                    //restore aspect ratio
-                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
-                    {
-                        //windowed
-                        file.Position = 0x8FD76;
-                        file.WriteByte(0x04);
-                        file.Position = 0x8FD7D;
-                        file.WriteByte(0x03);
-                        file.Close();
-                    }
-                    //restore warning banner time
-                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
-                    {
-                        file.Position = 0x8F07D;
-                        file.WriteByte(0xF4);
-                        file.WriteByte(0x73);
-                        file.WriteByte(0x5F);
-                        file.Close();
-                    }
-                    */
                     //restore end
                     this.statusField.Text = "Restored successfully (" + TazFolderPath + ")";
                     this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
@@ -1547,44 +1712,6 @@ namespace Taz_trainer
             {
                 this.statusField.Text = ex.Message.ToString();
                 this.statusField.ForeColor = System.Drawing.Color.DarkRed;
-            }
-
-            //restore exe backup
-            try
-            {
-
-                //Check backup
-                if (File.Exists(TazFolderPath + "\\Taz.exe.backup") == true)
-                {
-                    //Replace
-                    File.Delete(TazFolderPath + "\\Taz.exe");
-                    File.Copy(TazFolderPath + "\\Taz.exe.backup", TazFolderPath + "\\Taz.exe");
-                }
-                else
-                {
-                    this.statusField.Text = "Taz.exe.backup not found!";
-                    this.statusField.ForeColor = System.Drawing.Color.DarkRed;
-                    return;
-                }
-                //restore end
-                this.statusField.Text = "Restored successfully (" + TazFolderPath + ")";
-                this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
-            }
-            catch (Exception ex)
-            {
-                this.statusField.Text = ex.Message.ToString();
-                this.statusField.ForeColor = System.Drawing.Color.DarkRed;
-            }
-            //check and restore language backup
-            if (File.Exists(TazFolderPath + "\\Paks\\text.pc.backup") == true && File.Exists(TazFolderPath + "\\Paks\\resTex.pc.backup") == true && File.Exists(TazFolderPath + "\\Paks\\text.pc") == true && File.Exists(TazFolderPath + "\\Paks\\resTex.pc") == true)
-            {
-                //Restore to original
-                File.Delete(TazFolderPath + "\\Paks\\text.pc");
-                File.Delete(TazFolderPath + "\\Paks\\resTex.pc");
-                File.Copy(TazFolderPath + "\\Paks\\text.pc.backup", TazFolderPath + "\\Paks\\text.pc");
-                File.Copy(TazFolderPath + "\\Paks\\resTex.pc.backup", TazFolderPath + "\\Paks\\resTex.pc");
-                File.Delete(TazFolderPath + "\\Paks\\text.pc.backup");
-                File.Delete(TazFolderPath + "\\Paks\\resTex.pc.backup");
             }
         }
 
@@ -1633,6 +1760,12 @@ namespace Taz_trainer
             if (this.windowed.Checked == false)
             {
                 autoFillVideo(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+                this.voodoo.Enabled = true;
+            }
+            else
+            {
+                this.voodoo.Enabled = false;
+                this.voodoo.Checked = false;
             }
         }
 
@@ -1666,16 +1799,7 @@ namespace Taz_trainer
 
         private void audio_Click(object sender, EventArgs e)
         {
-            try
-            {
-                string TazAudioPath = TazFolderPath + "\\config.exe";
-                Process.Start(TazAudioPath, "sound " + "0"); //langComboBox.SelectedIndex.ToString());
-            }
-            catch (Exception ex)
-            {
-                this.statusField.Text = ex.Message.ToString();
-                this.statusField.ForeColor = System.Drawing.Color.DarkRed;
-            }
+
         }
 
         private void controls_Click(object sender, EventArgs e)
@@ -1715,9 +1839,11 @@ namespace Taz_trainer
         {
             try
             {
-                this.patch.PerformClick();
-                string TazExecPath = TazFolderPath + "\\Taz.exe";
-                Process.Start(TazExecPath, "Launched");
+                patch_Click(sender, e);
+                if (statusField.Text.Contains("taz.dat") == false)
+                    executable_Click(sender, e);
+                else
+                    MessageBox.Show("Game config file not found. Launch game via native launcher (Settings -> Taz Shortcuts -> Launcher) to create config, then restart game via patcher.", "File taz.dat not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (Exception ex)
             {
@@ -1826,6 +1952,10 @@ namespace Taz_trainer
         private void fsLink_Click(object sender, EventArgs e)
         {
             Process.Start("https://github.com/Skkay/FormSerialisor");
+        }
+        private void symbols_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://www.retroreversing.com/ps2-demos/#list-of-games-available-with-debug-symbols");
         }
 
         private void savePatcherSettings_Click(object sender, EventArgs e)
