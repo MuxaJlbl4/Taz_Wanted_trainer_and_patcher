@@ -58,8 +58,8 @@
             this.smoothLighting = new System.Windows.Forms.CheckBox();
             this.Challenges = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanelTrainer4 = new System.Windows.Forms.TableLayoutPanel();
-            this.fragileWorld = new System.Windows.Forms.CheckBox();
-            this.unstoppableMode = new System.Windows.Forms.CheckBox();
+            this.ballMode = new System.Windows.Forms.CheckBox();
+            this.ballMouseTazMode = new System.Windows.Forms.CheckBox();
             this.undestructibleWorld = new System.Windows.Forms.CheckBox();
             this.disallowJump = new System.Windows.Forms.CheckBox();
             this.tabs = new System.Windows.Forms.TabControl();
@@ -297,7 +297,7 @@
             this.gameSpeed.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.gameSpeed.Size = new System.Drawing.Size(320, 40);
             this.gameSpeed.TabIndex = 10;
-            this.gameSpeed.Text = "      -/= - Change Game Speed";
+            this.gameSpeed.Text = "      - = - Change Game Speed";
             this.gameSpeed.UseVisualStyleBackColor = false;
             // 
             // invisibility
@@ -360,7 +360,7 @@
             this.superJump.Dock = System.Windows.Forms.DockStyle.Fill;
             this.superJump.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.superJump.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.superJump.ImageIndex = 19;
+            this.superJump.ImageIndex = 2;
             this.superJump.ImageList = this.checkIcons;
             this.superJump.Location = new System.Drawing.Point(1, 79);
             this.superJump.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
@@ -604,7 +604,7 @@
             this.fpsCap.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
             this.fpsCap.Size = new System.Drawing.Size(320, 38);
             this.fpsCap.TabIndex = 8;
-            this.fpsCap.Text = "      F9 - FPS Cap";
+            this.fpsCap.Text = "      F9 - FPS Cap; / * - Adjust";
             this.fpsCap.UseVisualStyleBackColor = false;
             this.fpsCap.CheckedChanged += new System.EventHandler(this.fpsCap_CheckedChanged);
             // 
@@ -644,8 +644,8 @@
             // 
             this.tableLayoutPanelTrainer4.ColumnCount = 1;
             this.tableLayoutPanelTrainer4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelTrainer4.Controls.Add(this.fragileWorld, 0, 2);
-            this.tableLayoutPanelTrainer4.Controls.Add(this.unstoppableMode, 0, 1);
+            this.tableLayoutPanelTrainer4.Controls.Add(this.ballMode, 0, 2);
+            this.tableLayoutPanelTrainer4.Controls.Add(this.ballMouseTazMode, 0, 1);
             this.tableLayoutPanelTrainer4.Controls.Add(this.undestructibleWorld, 0, 3);
             this.tableLayoutPanelTrainer4.Controls.Add(this.disallowJump, 0, 0);
             this.tableLayoutPanelTrainer4.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -662,41 +662,40 @@
             this.tableLayoutPanelTrainer4.Size = new System.Drawing.Size(322, 198);
             this.tableLayoutPanelTrainer4.TabIndex = 2;
             // 
-            // fragileWorld
+            // ballMode
             // 
-            this.fragileWorld.Appearance = System.Windows.Forms.Appearance.Button;
-            this.fragileWorld.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fragileWorld.Enabled = false;
-            this.fragileWorld.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.fragileWorld.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.fragileWorld.ImageIndex = 13;
-            this.fragileWorld.ImageList = this.checkIcons;
-            this.fragileWorld.Location = new System.Drawing.Point(1, 79);
-            this.fragileWorld.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
-            this.fragileWorld.Name = "fragileWorld";
-            this.fragileWorld.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.fragileWorld.Size = new System.Drawing.Size(320, 38);
-            this.fragileWorld.TabIndex = 11;
-            this.fragileWorld.Text = "      Ins - Fragile World Mode";
-            this.fragileWorld.UseVisualStyleBackColor = false;
+            this.ballMode.Appearance = System.Windows.Forms.Appearance.Button;
+            this.ballMode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ballMode.Enabled = false;
+            this.ballMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ballMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ballMode.ImageList = this.checkIcons;
+            this.ballMode.Location = new System.Drawing.Point(1, 79);
+            this.ballMode.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
+            this.ballMode.Name = "ballMode";
+            this.ballMode.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.ballMode.Size = new System.Drawing.Size(320, 38);
+            this.ballMode.TabIndex = 11;
+            this.ballMode.Text = "      ?";
+            this.ballMode.UseVisualStyleBackColor = false;
             // 
-            // unstoppableMode
+            // ballMouseTazMode
             // 
-            this.unstoppableMode.Appearance = System.Windows.Forms.Appearance.Button;
-            this.unstoppableMode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.unstoppableMode.Enabled = false;
-            this.unstoppableMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.unstoppableMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.unstoppableMode.ImageIndex = 12;
-            this.unstoppableMode.ImageList = this.checkIcons;
-            this.unstoppableMode.Location = new System.Drawing.Point(1, 40);
-            this.unstoppableMode.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
-            this.unstoppableMode.Name = "unstoppableMode";
-            this.unstoppableMode.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.unstoppableMode.Size = new System.Drawing.Size(320, 38);
-            this.unstoppableMode.TabIndex = 11;
-            this.unstoppableMode.Text = "      F12 - Unstoppable Mode";
-            this.unstoppableMode.UseVisualStyleBackColor = false;
+            this.ballMouseTazMode.Appearance = System.Windows.Forms.Appearance.Button;
+            this.ballMouseTazMode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ballMouseTazMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ballMouseTazMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ballMouseTazMode.ImageIndex = 19;
+            this.ballMouseTazMode.ImageList = this.checkIcons;
+            this.ballMouseTazMode.Location = new System.Drawing.Point(1, 40);
+            this.ballMouseTazMode.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
+            this.ballMouseTazMode.Name = "ballMouseTazMode";
+            this.ballMouseTazMode.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.ballMouseTazMode.Size = new System.Drawing.Size(320, 38);
+            this.ballMouseTazMode.TabIndex = 11;
+            this.ballMouseTazMode.Text = "      F12 -Ball/Mouse/Taz(Ghost)";
+            this.ballMouseTazMode.UseVisualStyleBackColor = false;
+            this.ballMouseTazMode.CheckedChanged += new System.EventHandler(this.ballMouseTazMode_CheckedChanged);
             // 
             // undestructibleWorld
             // 
@@ -1527,12 +1526,12 @@
             this.numericFpsCap.Location = new System.Drawing.Point(93, 6);
             this.numericFpsCap.Margin = new System.Windows.Forms.Padding(1);
             this.numericFpsCap.Maximum = new decimal(new int[] {
-            500,
+            1000,
             0,
             0,
             0});
             this.numericFpsCap.Minimum = new decimal(new int[] {
-            5,
+            1,
             0,
             0,
             0});
@@ -1540,10 +1539,11 @@
             this.numericFpsCap.Size = new System.Drawing.Size(65, 34);
             this.numericFpsCap.TabIndex = 1;
             this.numericFpsCap.Value = new decimal(new int[] {
-            22,
+            20,
             0,
             0,
             0});
+            this.numericFpsCap.ValueChanged += new System.EventHandler(this.numericFpsCap_ValueChanged);
             // 
             // trainerSound
             // 
@@ -1974,8 +1974,8 @@
         private System.Windows.Forms.CheckBox flyCamera;
         private System.Windows.Forms.CheckBox smoothLighting;
         private System.Windows.Forms.CheckBox fpsCap;
-        private System.Windows.Forms.CheckBox fragileWorld;
-        private System.Windows.Forms.CheckBox unstoppableMode;
+        private System.Windows.Forms.CheckBox ballMode;
+        private System.Windows.Forms.CheckBox ballMouseTazMode;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelSettings1;
         private System.Windows.Forms.TextBox textBoxRegistry;
         private System.Windows.Forms.Button browseGame;

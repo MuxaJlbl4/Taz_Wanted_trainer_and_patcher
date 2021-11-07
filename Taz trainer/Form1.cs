@@ -14,6 +14,7 @@ using Utilities;
 using Microsoft.Win32;
 using System.IO;
 using FormSerialisation;
+using System.Reflection;
 
 namespace Taz_trainer
 {
@@ -51,8 +52,9 @@ namespace Taz_trainer
             gkh.HookedKeys.Add(Keys.F10);
             gkh.HookedKeys.Add(Keys.F11);
             gkh.HookedKeys.Add(Keys.F12);
-            gkh.HookedKeys.Add(Keys.Insert);
+            //gkh.HookedKeys.Add(Keys.Insert);
             gkh.HookedKeys.Add(Keys.Home);
+            gkh.HookedKeys.Add(Keys.End);
             gkh.HookedKeys.Add(Keys.OemMinus);
             gkh.HookedKeys.Add(Keys.Oemplus);
 
@@ -66,6 +68,9 @@ namespace Taz_trainer
             gkh.HookedKeys.Add(Keys.NumPad2);
             gkh.HookedKeys.Add(Keys.NumPad1);
             gkh.HookedKeys.Add(Keys.NumPad0);
+            gkh.HookedKeys.Add(Keys.Multiply);
+            gkh.HookedKeys.Add(Keys.Divide);
+
 
             gkh.KeyDown += new KeyEventHandler(gkh_KeyDown);
             gkh.KeyUp += new KeyEventHandler(gkh_KeyUp);
@@ -95,6 +100,13 @@ namespace Taz_trainer
                 langComboBox.SelectedIndex = 0;
             }
             TazFolderPath = textBoxRegistry.Text;
+
+
+            //FileStream readme = new FileStream(Properties.Resources.README, FileMode.Open, FileAccess.Read);
+            var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("README.html");
+            webBrowser.DocumentStream = stream;
+
+            //webBrowser.DocumentStream = Properties.Resources.README;
         }
 
 
@@ -170,19 +182,26 @@ namespace Taz_trainer
             }
             if (e.KeyCode == Keys.F12)
             {
-                this.unstoppableMode.Checked = !this.unstoppableMode.Checked;
+                BallMouseTazSwitch();
                 sendKey(Keys.F12, "{F12}");
             }
-            if (e.KeyCode == Keys.Insert)
+            /*if (e.KeyCode == Keys.Insert)
             {
                 this.fragileWorld.Checked = !this.fragileWorld.Checked;
                 sendKey(Keys.Insert, "{Insert}");
-            }
+            }*/
             if (e.KeyCode == Keys.Home)
             {
                 this.undestructibleWorld.Checked = !this.undestructibleWorld.Checked;
                 sendKey(Keys.Home, "{Home}");
             }
+            /*
+            if (e.KeyCode == Keys.End)
+            {
+
+                sendKey(Keys.End, "{End}");
+            }
+            */
             if (e.KeyCode == Keys.OemMinus)
             {
                 changeGameSpeed(0);
@@ -261,6 +280,16 @@ namespace Taz_trainer
             {
                 this.flyCamera.Checked = !this.flyCamera.Checked;
                 sendKey(Keys.NumPad0, "{0}");
+            }
+            if (e.KeyCode == Keys.Multiply)
+            {
+                incFPScap();
+                sendKey(Keys.Multiply, "{*}");
+            }
+            if (e.KeyCode == Keys.Divide)
+            {
+                decFPScap();
+                sendKey(Keys.Divide, "{/}");
             }
 
             e.Handled = true;
@@ -496,7 +525,7 @@ namespace Taz_trainer
             float current = BitConverter.ToSingle(bytes,0);
 
             //PositiveInfinity stops game, all other commented values crashes
-            float[] values = { /* 0, Single.Epsilon, 0.0000001f, */ 0.000001f, 0.1f, 0.5f, 1, 2, 4 /*, Single.MaxValue, Single.PositiveInfinity*/ };
+            float[] values = { /* 0, Single.Epsilon, 0.0000001f, */ 0.000001f, 0.001f, 0.01f, 0.1f, 1, 2, 4, 8, 16 /*, Single.MaxValue, Single.PositiveInfinity*/ };
             int index = Array.FindIndex(values, x => x == current);
 
             if (index == -1) index = Array.FindIndex(values, x => x == 1);
@@ -508,9 +537,9 @@ namespace Taz_trainer
                 else index--;
             }
             checkAndWrite((IntPtr)0x006F4A3C, BitConverter.GetBytes(values[index]), BitConverter.GetBytes(values[index]).Length, new IntPtr());
-            //string num = values[index].ToString();
-            //if (index == 0) num = "0.0000001";
-            message("Game Speed: x" + values[index].ToString());
+            string num = values[index].ToString();
+            if (index == 0) num = "0,000001";
+            message("Game Speed: x" + num);
         }
 
 
@@ -552,6 +581,7 @@ namespace Taz_trainer
                 checkAndWrite((IntPtr)0x0051F47E, bytes2, bytes2.Length, new IntPtr());
                 //bytes2[0] = 0x01;
                 checkAndWrite((IntPtr)adress, bytes2, bytes2.Length, new IntPtr());
+
 
                 message("Invisibility Mode: On");
             }
@@ -1125,7 +1155,101 @@ namespace Taz_trainer
             
         }
 
-        private void message(string message)
+        private void numericFpsCap_ValueChanged(object sender, EventArgs e)
+        {
+                fpsCap_CheckedChanged(sender, e);
+        }
+
+        private void incFPScap()
+        {
+            if (this.fpsCap.Checked == true)
+                numericFpsCap.UpButton();
+            else
+                message("FPS Cap: Unlimited (F9 to Toggle)");
+        }
+
+        private void decFPScap()
+        {
+            if (this.fpsCap.Checked == true)
+                numericFpsCap.DownButton();
+            else
+                message("FPS Cap: Unlimited (F9 to Toggle)");
+        }
+        /*
+        private void mouseMode_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.mouseMode.Checked == true)
+            {
+                byte[] bytes = { 0xEB, 0x4E, 0x90, 0x90, 0x90, 0x90 };
+                checkAndWrite((IntPtr)0x0042E1B2, bytes, bytes.Length, new IntPtr());
+                message("Tiny Mouse (Ghost): On");
+            }
+            else
+            {
+                byte[] bytes = { 0x0F, 0x84, 0x86, 0x00, 0x00, 0x00 };
+                checkAndWrite((IntPtr)0x0042E1B2, bytes, bytes.Length, new IntPtr());
+                message("Tiny Mouse (Ghost): Off");
+            }
+        }
+
+        private void ballMode_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.ballMode.Checked == true)
+            {
+                byte[] bytes2 = { 0x75, 0x05, 0xEB, 0x3E, 0x90 };
+                checkAndWrite((IntPtr)0x0042E1F2, bytes2, bytes2.Length, new IntPtr());
+                byte[] bytes = { 0xEB, 0x2A, 0x90, 0x90, 0x90, 0x90 };
+                checkAndWrite((IntPtr)0x0042E1B2, bytes, bytes.Length, new IntPtr());
+
+                message("Bouncy Ball (Ghost): On");
+            }
+            else
+            {
+                byte[] bytes2 = { 0x74, 0x40, 0x83, 0xF8, 0x51 };
+                checkAndWrite((IntPtr)0x0042E1F2, bytes2, bytes2.Length, new IntPtr());
+                byte[] bytes = { 0x0F, 0x84, 0x86, 0x00, 0x00, 0x00 };
+                checkAndWrite((IntPtr)0x0042E1B2, bytes, bytes.Length, new IntPtr());
+
+                message("Bouncy Ball (Ghost): Off");
+            }
+        }
+        */
+
+
+        private void ballMouseTazMode_CheckedChanged(object sender, EventArgs e)
+        {
+            BallMouseTazSwitch();
+        }
+
+        private void BallMouseTazSwitch()
+        {
+            byte[] bytes = { 0x00 };
+            bytes = checkAndRead((IntPtr)0x0042E1B3, bytes, 1, new IntPtr());
+
+            if (bytes[0] == 0x2A) // From Ball to Mouse
+            {
+                byte[] bytes2 = { 0xEB, 0x4E, 0x90, 0x90, 0x90, 0x90 };
+                checkAndWrite((IntPtr)0x0042E1B2, bytes2, bytes2.Length, new IntPtr());
+                message("Tiny Mouse (Ghost)");
+            }
+            else if (bytes[0] == 0x4E) // From Mouse to Taz
+            {
+                byte[] bytes2 = { 0xEB, 0x12, 0x90, 0x90, 0x90, 0x90 };
+                checkAndWrite((IntPtr)0x0042E1B2, bytes2, bytes2.Length, new IntPtr());
+                message("Taz (Ghost)");
+            }
+            else // From Taz to Ball
+            {
+                byte[] bytes2 = { 0x75, 0x05, 0xEB, 0x3E, 0x90 };
+                checkAndWrite((IntPtr)0x0042E1F2, bytes2, bytes2.Length, new IntPtr());
+                byte[] bytes3 = { 0xEB, 0x2A, 0x90, 0x90, 0x90, 0x90 };
+                checkAndWrite((IntPtr)0x0042E1B2, bytes3, bytes3.Length, new IntPtr());
+                message("Bouncy Ball (Ghost)");
+            }
+
+        }
+
+            private void message(string message)
         {
             if (trainerText.Checked == true)
             {
