@@ -134,7 +134,6 @@
             this.executable = new System.Windows.Forms.Button();
             this.launcher = new System.Windows.Forms.Button();
             this.repackTab = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanelRepacker1 = new System.Windows.Forms.TableLayoutPanel();
             this.unpack = new System.Windows.Forms.Button();
             this.pack = new System.Windows.Forms.Button();
             this.unpackingRichTextBox = new System.Windows.Forms.RichTextBox();
@@ -144,6 +143,8 @@
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.openPakFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveUnpackedFilesDialog = new System.Windows.Forms.SaveFileDialog();
+            this.tableLayoutPanelRepacker1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanelRepacker2 = new System.Windows.Forms.TableLayoutPanel();
             this.statusStrip.SuspendLayout();
             this.tableLayoutPanelTrainer.SuspendLayout();
             this.Cheats.SuspendLayout();
@@ -185,6 +186,7 @@
             this.tableLayoutPanelSettings22.SuspendLayout();
             this.repackTab.SuspendLayout();
             this.tableLayoutPanelRepacker1.SuspendLayout();
+            this.tableLayoutPanelRepacker2.SuspendLayout();
             this.SuspendLayout();
             // 
             // checkIcons
@@ -1843,63 +1845,50 @@
             // repackTab
             // 
             this.repackTab.Controls.Add(this.tableLayoutPanelRepacker1);
-            this.repackTab.Controls.Add(this.unpackingRichTextBox);
-            this.repackTab.Controls.Add(this.progressBar);
             this.repackTab.Location = new System.Drawing.Point(4, 41);
             this.repackTab.Name = "repackTab";
             this.repackTab.Padding = new System.Windows.Forms.Padding(3);
             this.repackTab.Size = new System.Drawing.Size(656, 449);
             this.repackTab.TabIndex = 4;
             this.repackTab.Text = "Repacker";
-            this.repackTab.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanelRepacker1
-            // 
-            this.tableLayoutPanelRepacker1.ColumnCount = 2;
-            this.tableLayoutPanelRepacker1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelRepacker1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelRepacker1.Controls.Add(this.unpack, 0, 0);
-            this.tableLayoutPanelRepacker1.Controls.Add(this.pack, 1, 0);
-            this.tableLayoutPanelRepacker1.Location = new System.Drawing.Point(153, 288);
-            this.tableLayoutPanelRepacker1.Name = "tableLayoutPanelRepacker1";
-            this.tableLayoutPanelRepacker1.RowCount = 2;
-            this.tableLayoutPanelRepacker1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 77.38095F));
-            this.tableLayoutPanelRepacker1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.61905F));
-            this.tableLayoutPanelRepacker1.Size = new System.Drawing.Size(351, 84);
-            this.tableLayoutPanelRepacker1.TabIndex = 0;
             // 
             // unpack
             // 
+            this.unpack.Dock = System.Windows.Forms.DockStyle.Fill;
             this.unpack.Location = new System.Drawing.Point(3, 3);
             this.unpack.Name = "unpack";
-            this.unpack.Size = new System.Drawing.Size(129, 58);
+            this.unpack.Size = new System.Drawing.Size(319, 60);
             this.unpack.TabIndex = 0;
-            this.unpack.Text = "unpack";
+            this.unpack.Text = "Unpack Game Resources";
             this.unpack.UseVisualStyleBackColor = true;
             this.unpack.Click += new System.EventHandler(this.unpack_Click);
             // 
             // pack
             // 
-            this.pack.Location = new System.Drawing.Point(178, 3);
+            this.pack.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pack.Location = new System.Drawing.Point(328, 3);
             this.pack.Name = "pack";
-            this.pack.Size = new System.Drawing.Size(129, 58);
+            this.pack.Size = new System.Drawing.Size(319, 60);
             this.pack.TabIndex = 1;
-            this.pack.Text = "pack";
+            this.pack.Text = "Repack Game Resources";
             this.pack.UseVisualStyleBackColor = true;
+            this.pack.Click += new System.EventHandler(this.pack_Click);
             // 
             // unpackingRichTextBox
             // 
-            this.unpackingRichTextBox.Location = new System.Drawing.Point(8, 32);
+            this.unpackingRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.unpackingRichTextBox.Location = new System.Drawing.Point(3, 3);
             this.unpackingRichTextBox.Name = "unpackingRichTextBox";
-            this.unpackingRichTextBox.Size = new System.Drawing.Size(640, 238);
+            this.unpackingRichTextBox.Size = new System.Drawing.Size(644, 348);
             this.unpackingRichTextBox.TabIndex = 2;
             this.unpackingRichTextBox.Text = resources.GetString("unpackingRichTextBox.Text");
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(8, 408);
+            this.progressBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.progressBar.Location = new System.Drawing.Point(3, 423);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(640, 35);
+            this.progressBar.Size = new System.Drawing.Size(644, 17);
             this.progressBar.TabIndex = 3;
             // 
             // tabsIcons
@@ -1923,6 +1912,41 @@
             // saveUnpackedFilesDialog
             // 
             this.saveUnpackedFilesDialog.FileName = "Save Here as New Folders";
+            // 
+            // tableLayoutPanelRepacker1
+            // 
+            this.tableLayoutPanelRepacker1.ColumnCount = 1;
+            this.tableLayoutPanelRepacker1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelRepacker1.Controls.Add(this.tableLayoutPanelRepacker2, 0, 1);
+            this.tableLayoutPanelRepacker1.Controls.Add(this.unpackingRichTextBox, 0, 0);
+            this.tableLayoutPanelRepacker1.Controls.Add(this.progressBar, 0, 2);
+            this.tableLayoutPanelRepacker1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelRepacker1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanelRepacker1.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanelRepacker1.Name = "tableLayoutPanelRepacker1";
+            this.tableLayoutPanelRepacker1.RowCount = 3;
+            this.tableLayoutPanelRepacker1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanelRepacker1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanelRepacker1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanelRepacker1.Size = new System.Drawing.Size(650, 443);
+            this.tableLayoutPanelRepacker1.TabIndex = 4;
+            // 
+            // tableLayoutPanelRepacker2
+            // 
+            this.tableLayoutPanelRepacker2.ColumnCount = 3;
+            this.tableLayoutPanelRepacker2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanelRepacker2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanelRepacker2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanelRepacker2.Controls.Add(this.unpack, 1, 0);
+            this.tableLayoutPanelRepacker2.Controls.Add(this.pack, 2, 0);
+            this.tableLayoutPanelRepacker2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelRepacker2.Location = new System.Drawing.Point(0, 354);
+            this.tableLayoutPanelRepacker2.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanelRepacker2.Name = "tableLayoutPanelRepacker2";
+            this.tableLayoutPanelRepacker2.RowCount = 1;
+            this.tableLayoutPanelRepacker2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelRepacker2.Size = new System.Drawing.Size(650, 66);
+            this.tableLayoutPanelRepacker2.TabIndex = 7;
             // 
             // form
             // 
@@ -1990,6 +2014,7 @@
             this.tableLayoutPanelSettings22.ResumeLayout(false);
             this.repackTab.ResumeLayout(false);
             this.tableLayoutPanelRepacker1.ResumeLayout(false);
+            this.tableLayoutPanelRepacker2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2103,13 +2128,14 @@
         private System.Windows.Forms.ImageList bigButtonIcons;
         private System.Windows.Forms.CheckBox voodoo;
         private System.Windows.Forms.TabPage repackTab;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelRepacker1;
         private System.Windows.Forms.Button unpack;
         private System.Windows.Forms.Button pack;
         private System.Windows.Forms.OpenFileDialog openPakFileDialog;
         private System.Windows.Forms.SaveFileDialog saveUnpackedFilesDialog;
         private System.Windows.Forms.RichTextBox unpackingRichTextBox;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelRepacker1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelRepacker2;
     }
 }
 

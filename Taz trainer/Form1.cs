@@ -2099,7 +2099,6 @@ namespace Taz_trainer
 
         private void UnpackPak(String fileName, String OutputPath)
         {
-
             // Create New Folder
             OutputPath = Path.Combine(OutputPath, Path.GetFileNameWithoutExtension(fileName));
             Directory.CreateDirectory(OutputPath);
@@ -2108,29 +2107,27 @@ namespace Taz_trainer
             //Parse Header
             //Int32 TimeStamp =       BitConverter.ToInt32(pakFile, 0x00);
             Int32 PakAlign =        BitConverter.ToInt32(pakFile, 0x04);
-            Int32 Dummy1 =          BitConverter.ToInt32(pakFile, 0x08);
+            //Int32 Dummy1 =          BitConverter.ToInt32(pakFile, 0x08);
             Int32 FilesCount =      BitConverter.ToInt32(pakFile, 0x0C);
             Int32 InfoOffset =      BitConverter.ToInt32(pakFile, 0x10) * PakAlign;
-            Int32 TagOffset =       BitConverter.ToInt32(pakFile, 0x14) * PakAlign;
+            //Int32 TagOffset =       BitConverter.ToInt32(pakFile, 0x14) * PakAlign;
             //Int32 Zero1 =           BitConverter.ToInt32(pakFile, 0x18);
             //Int32 Dummy2 =          BitConverter.ToInt32(pakFile, 0x1C);
-            Int32 FootOffset =      BitConverter.ToInt32(pakFile, 0x20) * PakAlign;
+            //Int32 FootOffset =      BitConverter.ToInt32(pakFile, 0x20) * PakAlign;
             //Int32 Dummy3 =          BitConverter.ToInt32(pakFile, 0x24);
             Int32 NamesOffset =     BitConverter.ToInt32(pakFile, 0x28) * PakAlign;
             Int32 NamesSize =       BitConverter.ToInt32(pakFile, 0x2C);
-            Int32 InfoSize =        BitConverter.ToInt32(pakFile, 0x30);
+            //Int32 InfoSize =        BitConverter.ToInt32(pakFile, 0x30);
             //Int32 Zero =            BitConverter.ToInt32(pakFile, 0x34);
             //Int32 SixtyFour =       BitConverter.ToInt32(pakFile, 0x38);
 
             //Parse Files
             for (Int32 i = 0; i < FilesCount; i++)
             {
-                //if (i == 0)
-                    //richTextBox1.Text = i.ToString();
                 Int32 Base = (i * 32) + InfoOffset;
                 // Parse File Info
                 Int32 Offset =      BitConverter.ToInt32(pakFile, Base + 0x00) * PakAlign;
-                Int32 Hash32 =      BitConverter.ToInt32(pakFile, Base + 0x04);
+                //Int32 Hash32 =      BitConverter.ToInt32(pakFile, Base + 0x04);
                 Int32 Size =        BitConverter.ToInt32(pakFile, Base + 0x08);
                 Int32 NameOffset =  BitConverter.ToInt32(pakFile, Base + 0x0C);
                 Int32 IsFile =      BitConverter.ToInt32(pakFile, Base + 0x10);
@@ -2138,7 +2135,7 @@ namespace Taz_trainer
                 //Int64 Hash64 =      BitConverter.ToInt64(pakFile, Base + 0x18);
 
                 // Is it file
-                if (Size == NameOffset)
+                if (IsFile == 0 && Size == NamesSize)
                     continue;
 
                 // Get Name
@@ -2189,6 +2186,11 @@ namespace Taz_trainer
                 this.statusField.ForeColor = System.Drawing.Color.DarkRed;
                 return;
             }
+        }
+
+        private void pack_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
