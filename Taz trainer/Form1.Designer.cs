@@ -134,6 +134,8 @@
             this.executable = new System.Windows.Forms.Button();
             this.launcher = new System.Windows.Forms.Button();
             this.repackTab = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanelRepacker1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanelRepacker2 = new System.Windows.Forms.TableLayoutPanel();
             this.unpack = new System.Windows.Forms.Button();
             this.pack = new System.Windows.Forms.Button();
             this.unpackingRichTextBox = new System.Windows.Forms.RichTextBox();
@@ -143,8 +145,6 @@
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.openPakFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveUnpackedFilesDialog = new System.Windows.Forms.SaveFileDialog();
-            this.tableLayoutPanelRepacker1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanelRepacker2 = new System.Windows.Forms.TableLayoutPanel();
             this.statusStrip.SuspendLayout();
             this.tableLayoutPanelTrainer.SuspendLayout();
             this.Cheats.SuspendLayout();
@@ -1852,6 +1852,41 @@
             this.repackTab.TabIndex = 4;
             this.repackTab.Text = "Repacker";
             // 
+            // tableLayoutPanelRepacker1
+            // 
+            this.tableLayoutPanelRepacker1.ColumnCount = 1;
+            this.tableLayoutPanelRepacker1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelRepacker1.Controls.Add(this.tableLayoutPanelRepacker2, 0, 1);
+            this.tableLayoutPanelRepacker1.Controls.Add(this.unpackingRichTextBox, 0, 0);
+            this.tableLayoutPanelRepacker1.Controls.Add(this.progressBar, 0, 2);
+            this.tableLayoutPanelRepacker1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelRepacker1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanelRepacker1.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanelRepacker1.Name = "tableLayoutPanelRepacker1";
+            this.tableLayoutPanelRepacker1.RowCount = 3;
+            this.tableLayoutPanelRepacker1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanelRepacker1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanelRepacker1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.tableLayoutPanelRepacker1.Size = new System.Drawing.Size(650, 443);
+            this.tableLayoutPanelRepacker1.TabIndex = 4;
+            // 
+            // tableLayoutPanelRepacker2
+            // 
+            this.tableLayoutPanelRepacker2.ColumnCount = 3;
+            this.tableLayoutPanelRepacker2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanelRepacker2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanelRepacker2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanelRepacker2.Controls.Add(this.unpack, 1, 0);
+            this.tableLayoutPanelRepacker2.Controls.Add(this.pack, 2, 0);
+            this.tableLayoutPanelRepacker2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelRepacker2.Location = new System.Drawing.Point(0, 354);
+            this.tableLayoutPanelRepacker2.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanelRepacker2.Name = "tableLayoutPanelRepacker2";
+            this.tableLayoutPanelRepacker2.RowCount = 1;
+            this.tableLayoutPanelRepacker2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelRepacker2.Size = new System.Drawing.Size(650, 66);
+            this.tableLayoutPanelRepacker2.TabIndex = 7;
+            // 
             // unpack
             // 
             this.unpack.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1912,41 +1947,6 @@
             // saveUnpackedFilesDialog
             // 
             this.saveUnpackedFilesDialog.FileName = "Save Here as New Folders";
-            // 
-            // tableLayoutPanelRepacker1
-            // 
-            this.tableLayoutPanelRepacker1.ColumnCount = 1;
-            this.tableLayoutPanelRepacker1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelRepacker1.Controls.Add(this.tableLayoutPanelRepacker2, 0, 1);
-            this.tableLayoutPanelRepacker1.Controls.Add(this.unpackingRichTextBox, 0, 0);
-            this.tableLayoutPanelRepacker1.Controls.Add(this.progressBar, 0, 2);
-            this.tableLayoutPanelRepacker1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelRepacker1.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanelRepacker1.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanelRepacker1.Name = "tableLayoutPanelRepacker1";
-            this.tableLayoutPanelRepacker1.RowCount = 3;
-            this.tableLayoutPanelRepacker1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanelRepacker1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanelRepacker1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.tableLayoutPanelRepacker1.Size = new System.Drawing.Size(650, 443);
-            this.tableLayoutPanelRepacker1.TabIndex = 4;
-            // 
-            // tableLayoutPanelRepacker2
-            // 
-            this.tableLayoutPanelRepacker2.ColumnCount = 3;
-            this.tableLayoutPanelRepacker2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelRepacker2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelRepacker2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelRepacker2.Controls.Add(this.unpack, 1, 0);
-            this.tableLayoutPanelRepacker2.Controls.Add(this.pack, 2, 0);
-            this.tableLayoutPanelRepacker2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelRepacker2.Location = new System.Drawing.Point(0, 354);
-            this.tableLayoutPanelRepacker2.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanelRepacker2.Name = "tableLayoutPanelRepacker2";
-            this.tableLayoutPanelRepacker2.RowCount = 1;
-            this.tableLayoutPanelRepacker2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelRepacker2.Size = new System.Drawing.Size(650, 66);
-            this.tableLayoutPanelRepacker2.TabIndex = 7;
             // 
             // form
             // 
