@@ -19,7 +19,7 @@ namespace Taz_trainer.Properties {
     // с помощью такого средства, как ResGen или Visual Studio.
     // Чтобы добавить или удалить член, измените файл .ResX и снова запустите ResGen
     // с параметром /str или перестройте свой проект VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -75,7 +75,7 @@ namespace Taz_trainer.Properties {
         ///&lt;head&gt;
         ///&lt;meta charset=&apos;UTF-8&apos;&gt;&lt;meta name=&apos;viewport&apos; content=&apos;width=device-width initial-scale=1&apos;&gt;
         ///
-        ///&lt;link href=&apos;https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos; /&gt;&lt;style type=&apos;text/css&apos;&gt;html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:&quot;Lucida Console&quot;,Consolas,&quot;Courier&quot;,monospace; --title-bar-hei [остаток строки не уместился]&quot;;.
+        ///&lt;link href=&apos;https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos; /&gt;&lt;style type=&apos;text/css&apos;&gt;html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:&quot;Lucida Console&quot;,Consolas,&quot;Courier&quot;,monospace; --title-ba [остаток строки не уместился]&quot;;.
         /// </summary>
         public static string README {
             get {
