@@ -99,7 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\moveselection.wav" />
-    <None Include="Resources\README.html" />
+    <Content Include="Resources\README.html" />
     <Content Include="TAZLOGO.ico" />
   </ItemGroup>
   <ItemGroup />

@@ -101,12 +101,9 @@ namespace Taz_trainer
             }
             TazFolderPath = textBoxRegistry.Text;
 
-
-            //FileStream readme = new FileStream(Properties.Resources.README, FileMode.Open, FileAccess.Read);
-            var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("README.html");
-            webBrowser.DocumentStream = stream;
-
-            //webBrowser.DocumentStream = Properties.Resources.README;
+            // Usage tab init
+            string html = Properties.Resources.README;
+            webBrowser.DocumentText = html;
         }
 
 
