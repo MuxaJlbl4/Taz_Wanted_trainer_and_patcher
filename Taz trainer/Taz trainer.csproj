@@ -93,6 +93,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Hashes.bin" />
     <None Include="Resources\Rus\resTex.pc" />
     <None Include="Resources\Rus\text.pc" />
     <None Include="Resources\TAZ.png" />

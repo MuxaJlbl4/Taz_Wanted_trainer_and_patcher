@@ -15,6 +15,8 @@ using Microsoft.Win32;
 using System.IO;
 using FormSerialisation;
 using System.Reflection;
+using System.Runtime.Serialization.Formatters.Binary;
+using Taz_trainer.Properties;
 
 namespace Taz_trainer
 {
@@ -35,6 +37,8 @@ namespace Taz_trainer
         static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, [Out] byte[] lpBuffer, int dwSize, out IntPtr lpNumberOfBytesRead);
 
         string TazFolderPath = "";
+
+        //Dictionary<string, Int32> Hashes = new Dictionary<string, Int32>();
 
         public form()
         {
@@ -2104,19 +2108,23 @@ namespace Taz_trainer
             //Parse Header
             //Int32 TimeStamp =       BitConverter.ToInt32(pakFile, 0x00);
             Int32 PakAlign =        BitConverter.ToInt32(pakFile, 0x04);
-            //Int32 Dummy1 =          BitConverter.ToInt32(pakFile, 0x08);
+            //Int32 Sound =          BitConverter.ToInt32(pakFile, 0x08);
             Int32 FilesCount =      BitConverter.ToInt32(pakFile, 0x0C);
             Int32 InfoOffset =      BitConverter.ToInt32(pakFile, 0x10) * PakAlign;
             //Int32 TagOffset =       BitConverter.ToInt32(pakFile, 0x14) * PakAlign;
-            //Int32 Zero1 =           BitConverter.ToInt32(pakFile, 0x18);
-            //Int32 Dummy2 =          BitConverter.ToInt32(pakFile, 0x1C);
+            //Int32 Zero0 =           BitConverter.ToInt32(pakFile, 0x18);
+            //Int32 TagCount =          BitConverter.ToInt32(pakFile, 0x1C);
             //Int32 FootOffset =      BitConverter.ToInt32(pakFile, 0x20) * PakAlign;
-            //Int32 Dummy3 =          BitConverter.ToInt32(pakFile, 0x24);
+            //Int32 Dummy =          BitConverter.ToInt32(pakFile, 0x24);
             Int32 NamesOffset =     BitConverter.ToInt32(pakFile, 0x28) * PakAlign;
             Int32 NamesSize =       BitConverter.ToInt32(pakFile, 0x2C);
             //Int32 InfoSize =        BitConverter.ToInt32(pakFile, 0x30);
-            //Int32 Zero =            BitConverter.ToInt32(pakFile, 0x34);
+            //Int32 Zero1 =            BitConverter.ToInt32(pakFile, 0x34);
             //Int32 SixtyFour =       BitConverter.ToInt32(pakFile, 0x38);
+
+            // Log Info to Desktop File
+            //ASCIIEncoding asciiTag = new ASCIIEncoding();
+            //File.AppendAllText(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Info"), TimeStamp.ToString() + "\t" + Sound.ToString() + "\t" + Zero0.ToString() + "\t" + TagCount.ToString() + "\t" + Dummy.ToString() + "\t" + Zero1.ToString() + "\t" + SixtyFour.ToString() + "\t" + asciiTag.GetString(pakFile, TagOffset, 16) + "\t" + Path.GetFileNameWithoutExtension(fileName) + "\n");
 
             //Parse Files
             for (Int32 i = 0; i < FilesCount; i++)
@@ -2141,6 +2149,11 @@ namespace Taz_trainer
                 Int32 StrLen = Array.IndexOf(pakFile, (byte)0, StrOffset) - StrOffset;
                 ASCIIEncoding ascii = new ASCIIEncoding();
                 FileName = ascii.GetString(pakFile, StrOffset, StrLen);
+
+                // Log Hashes to Desktop File
+                //File.AppendAllText(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Hashes"), FileName + "\t" + Hash32.ToString("X4") + "\n");
+                // Save Hashes to Dictionary
+                //if (!Hashes.ContainsKey(FileName)) Hashes.Add(FileName, Hash32);
 
                 // Check Subfolders
                 string FilePath = Path.Combine(OutputPath, Path.GetDirectoryName(FileName));
@@ -2187,6 +2200,24 @@ namespace Taz_trainer
 
         private void pack_Click(object sender, EventArgs e)
         {
+            /*
+            // Serialize Hashes
+            using (FileStream fs = new FileStream(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "Hashes.bin"), FileMode.Create))
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(fs, Hashes);
+            }
+            */
+
+            // Deserialize Hashes
+            Dictionary<string, Int32> Hashes = new Dictionary<string, Int32>();
+            byte[] hashbin = Properties.Resources.Hashes;
+            Stream hashstream = new MemoryStream(hashbin);
+            using (hashstream)
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                Hashes = (Dictionary<string, int>)formatter.Deserialize(hashstream);
+            }
 
         }
     }
