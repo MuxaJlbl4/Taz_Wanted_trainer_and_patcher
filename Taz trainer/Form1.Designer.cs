@@ -145,6 +145,7 @@
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.openPakFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveUnpackedFilesDialog = new System.Windows.Forms.SaveFileDialog();
+            this.folderResourceBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.statusStrip.SuspendLayout();
             this.tableLayoutPanelTrainer.SuspendLayout();
             this.Cheats.SuspendLayout();
@@ -2137,6 +2138,7 @@
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelRepacker1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelRepacker2;
+        private System.Windows.Forms.FolderBrowserDialog folderResourceBrowserDialog;
     }
 }
 

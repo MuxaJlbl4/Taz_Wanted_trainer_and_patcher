@@ -2219,6 +2219,48 @@ namespace Taz_trainer
                 Hashes = (Dictionary<string, int>)formatter.Deserialize(hashstream);
             }
 
+            // Choose Folder
+            try
+            {
+                if (true)//folderResourceBrowserDialog.ShowDialog() == DialogResult.OK)
+                {
+                    // Temp folder
+                    folderResourceBrowserDialog.SelectedPath = "X:\\Games\\Taz Wanted Unpacking\\HashCollect\\alligator";
+                    // Header Init (later)
+                    byte[] Header;
+
+                    // Init
+                    byte[] Contents = { };
+                    Dictionary<string, Int32> FileContentOffset = new Dictionary<string, Int32>();
+                    int FileOffset = 0;
+                    // Read files
+                    string[] Files = Directory.GetFiles(folderResourceBrowserDialog.SelectedPath, "*", SearchOption.AllDirectories);
+                    // Tags to end
+                    //string TagName = Path.Combine(folderResourceBrowserDialog.SelectedPath, "TagTable.pak.sys");
+                    //string[] Tags = { TagName };
+                    //Files = Files.Except(Tags);
+
+                    foreach (string FilePath in Files)
+                    {
+                        // RawContent
+                        byte[] FileContent = File.ReadAllBytes(FilePath);
+                        // + Alignment
+                        int Remainder = FileContent.Length % 16;
+                        if (Remainder > 0) for (int i = 0; i < 16 - Remainder; i++) FileContent = FileContent.Append((byte)0).ToArray();
+                        // Append
+                        Contents = Contents.Concat(FileContent).ToArray();
+                        // Add to Dictionary
+                        FileContentOffset.Add(FilePath.Replace(folderResourceBrowserDialog.SelectedPath + "\\", ""), FileOffset);
+                        FileOffset += FileContent.Length;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                this.statusField.Text = ex.Message.ToString();
+                this.statusField.ForeColor = System.Drawing.Color.DarkRed;
+                return;
+            }
         }
     }
 }
