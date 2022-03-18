@@ -2231,8 +2231,15 @@ namespace Taz_trainer
 
                     // Init
                     byte[] Contents = { };
-                    Dictionary<string, Int32> FileContentOffset = new Dictionary<string, Int32>();
-                    int FileOffset = 0;
+                    byte[] FileNames = { };
+                    byte[] FileInfos = { };
+                    Dictionary<string, Int32> FileContentLocalOffsets = new Dictionary<string, Int32>();
+                    Dictionary<string, Int32> FileNameLocalOffsets = new Dictionary<string, Int32>();
+                    int FileLocalOffset = 0;
+                    int NameLocalOffset = 0;
+                    int Remainder = 0;
+                    int FileSize = 0;
+                    int HeaderSize = 2048;
                     // Read files
                     string[] Files = Directory.GetFiles(folderResourceBrowserDialog.SelectedPath, "*", SearchOption.AllDirectories);
                     // Tags to end
@@ -2240,19 +2247,60 @@ namespace Taz_trainer
                     //string[] Tags = { TagName };
                     //Files = Files.Except(Tags);
 
+
+                    
                     foreach (string FilePath in Files)
                     {
+                        string ShortName = FilePath.Replace(folderResourceBrowserDialog.SelectedPath + "\\", "");
+
+
                         // RawContent
                         byte[] FileContent = File.ReadAllBytes(FilePath);
+                        FileSize = FileContent.Length;
                         // + Alignment
-                        int Remainder = FileContent.Length % 16;
+                        Remainder = FileContent.Length % 16;
                         if (Remainder > 0) for (int i = 0; i < 16 - Remainder; i++) FileContent = FileContent.Append((byte)0).ToArray();
-                        // Append
+                        // Append Content
                         Contents = Contents.Concat(FileContent).ToArray();
                         // Add to Dictionary
-                        FileContentOffset.Add(FilePath.Replace(folderResourceBrowserDialog.SelectedPath + "\\", ""), FileOffset);
-                        FileOffset += FileContent.Length;
+                        //FileContentLocalOffsets.Add(FilePath.Replace(folderResourceBrowserDialog.SelectedPath + "\\", ""), FileLocalOffset);
+                        
+
+                        // FileNames
+                        FileNames = FileNames.Concat(Encoding.ASCII.GetBytes(ShortName)).ToArray();
+                        FileNames = FileNames.Append((byte)0).ToArray();
+                        // Add to Dictionary
+                        //FileNameLocalOffsets.Add(ShortName, NameLocalOffset);
+
+
+                        // FileInfos
+                        // Global File Offset (\16)
+                        FileInfos = FileInfos.Concat(BitConverter.GetBytes((HeaderSize + FileLocalOffset) / 16)).ToArray();
+                        // Hash32
+                        FileInfos = FileInfos.Concat(BitConverter.GetBytes(Hashes[ShortName])).ToArray();
+                        // Size
+                        FileInfos = FileInfos.Concat(BitConverter.GetBytes(FileSize)).ToArray();
+                        // Local Name Offset
+                        FileInfos = FileInfos.Concat(BitConverter.GetBytes(NameLocalOffset)).ToArray();
+                        // Is File
+                        if (ShortName == "TagTable.pak.sys")
+                            FileInfos = FileInfos.Concat(BitConverter.GetBytes((Int32)0)).ToArray();
+                        else
+                            FileInfos = FileInfos.Concat(BitConverter.GetBytes((Int32)1)).ToArray();
+                        // Zeroes
+                        FileInfos = FileInfos.Concat(BitConverter.GetBytes((Int64)0)).ToArray();
+
+
+                        // Next Local Offsets
+                        FileLocalOffset += FileContent.Length;
+                        NameLocalOffset += ShortName.Length + 1;
                     }
+
+
+                    // + Alignment for FileNames
+                    Remainder = NameLocalOffset % 16;
+                    if(Remainder > 0) for (int i = 0; i < 16 - Remainder; i++) FileNames = FileNames.Append((byte)0).ToArray();
+
                 }
             }
             catch (Exception ex)
