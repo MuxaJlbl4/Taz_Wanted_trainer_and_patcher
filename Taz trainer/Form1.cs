@@ -2210,49 +2210,92 @@ namespace Taz_trainer
             */
 
             // Deserialize Hashes
-            Dictionary<string, Int32> Hashes = new Dictionary<string, Int32>();
+            Dictionary<string, UInt32> Hashes = new Dictionary<string, UInt32>();
             byte[] hashbin = Properties.Resources.Hashes;
             Stream hashstream = new MemoryStream(hashbin);
             using (hashstream)
             {
                 BinaryFormatter formatter = new BinaryFormatter();
-                Hashes = (Dictionary<string, int>)formatter.Deserialize(hashstream);
+                Hashes = (Dictionary<string, UInt32>)formatter.Deserialize(hashstream);
             }
+            /*
+            UInt32[] Hshs = { };
+            string[] Nms = { };
+            foreach (KeyValuePair<string, UInt32> Element in Hashes)
+            {
+                Hshs = Hshs.Append(Element.Value).ToArray();
+                Nms = Nms.Append(Element.Key).ToArray();
+            }
+            Array.Sort(Hshs, Nms);
+            Dictionary<string, UInt32> NewHashes = new Dictionary<string, UInt32>();
+            */
+
 
             // Choose Folder
-            try
+                try
             {
                 if (true)//folderResourceBrowserDialog.ShowDialog() == DialogResult.OK)
                 {
                     // Temp folder
                     folderResourceBrowserDialog.SelectedPath = "X:\\Games\\Taz Wanted Unpacking\\HashCollect\\alligator";
-                    // Header Init (later)
-                    byte[] Header;
 
                     // Init
+                    byte[] Header = { };
                     byte[] Contents = { };
                     byte[] FileNames = { };
                     byte[] FileInfos = { };
+                    byte[] Footer = { };
                     Dictionary<string, Int32> FileContentLocalOffsets = new Dictionary<string, Int32>();
                     Dictionary<string, Int32> FileNameLocalOffsets = new Dictionary<string, Int32>();
+                    int HiddenFileHash = 881391266;
                     int FileLocalOffset = 0;
                     int NameLocalOffset = 0;
+                    int TagLocalOffset = 0;
+                    int TagCount = 0;
                     int Remainder = 0;
                     int FileSize = 0;
+                    int NamesSize = 0;
+                    int NamesRealSize = 0;
+                    int HiddenFileInfoLocalIndex = 0;
                     int HeaderSize = 2048;
-                    // Read files
-                    string[] Files = Directory.GetFiles(folderResourceBrowserDialog.SelectedPath, "*", SearchOption.AllDirectories);
+                    int FooterSize = 32;
+                    // Read files (Exclude .pak.sys)
+                    //var Files = Directory.GetFiles(folderResourceBrowserDialog.SelectedPath, "*", SearchOption.AllDirectories).Where(name => !name.EndsWith(".pak.sys")).ToArray();
+                    // Sort Test
+                    //Files = Files.Reverse().ToArray();
                     // Tags to end
                     //string TagName = Path.Combine(folderResourceBrowserDialog.SelectedPath, "TagTable.pak.sys");
-                    //string[] Tags = { TagName };
-                    //Files = Files.Except(Tags);
+                    //Files = Files.Append(TagName).ToArray();
 
+                    string[] Files = Directory.GetFiles(folderResourceBrowserDialog.SelectedPath, "*", SearchOption.AllDirectories).ToArray();
+
+                    // Append Hidden File
+                    Files = Files.Append("").ToArray();
+                    // Sort by Hashes
+                    UInt32[] UsedHashes = { };
+                    foreach (string FullName in Files)
+                    {
+                        string ShortName = FullName.Replace(folderResourceBrowserDialog.SelectedPath + "\\", "");
+                        NamesSize += ShortName.Length + 1;
+                        UsedHashes = UsedHashes.Append(Hashes[ShortName]).ToArray();
+                    }
+                    Array.Sort(UsedHashes, Files);
 
                     
+                    // Content + Names + Infos
                     foreach (string FilePath in Files)
                     {
+                        // Get Short Name
                         string ShortName = FilePath.Replace(folderResourceBrowserDialog.SelectedPath + "\\", "");
 
+                        // Is Hidden
+                        if (ShortName == "")
+                        {
+                            HiddenFileInfoLocalIndex = FileInfos.Length;
+                            // Allocate Hidden FileNames File Info
+                            Array.Resize<byte>(ref FileInfos, FileInfos.Length+32);
+                            continue;
+                        }
 
                         // RawContent
                         byte[] FileContent = File.ReadAllBytes(FilePath);
@@ -2262,15 +2305,11 @@ namespace Taz_trainer
                         if (Remainder > 0) for (int i = 0; i < 16 - Remainder; i++) FileContent = FileContent.Append((byte)0).ToArray();
                         // Append Content
                         Contents = Contents.Concat(FileContent).ToArray();
-                        // Add to Dictionary
-                        //FileContentLocalOffsets.Add(FilePath.Replace(folderResourceBrowserDialog.SelectedPath + "\\", ""), FileLocalOffset);
-                        
+
 
                         // FileNames
                         FileNames = FileNames.Concat(Encoding.ASCII.GetBytes(ShortName)).ToArray();
                         FileNames = FileNames.Append((byte)0).ToArray();
-                        // Add to Dictionary
-                        //FileNameLocalOffsets.Add(ShortName, NameLocalOffset);
 
 
                         // FileInfos
@@ -2282,12 +2321,17 @@ namespace Taz_trainer
                         FileInfos = FileInfos.Concat(BitConverter.GetBytes(FileSize)).ToArray();
                         // Local Name Offset
                         FileInfos = FileInfos.Concat(BitConverter.GetBytes(NameLocalOffset)).ToArray();
-                        // Is File
+                        // Is File + Some Tag Info
                         if (ShortName == "TagTable.pak.sys")
+                        { 
                             FileInfos = FileInfos.Concat(BitConverter.GetBytes((Int32)0)).ToArray();
+                            TagLocalOffset = FileLocalOffset;
+                            TagCount = FileSize / 4;
+                        }
                         else
                             FileInfos = FileInfos.Concat(BitConverter.GetBytes((Int32)1)).ToArray();
                         // Zeroes
+                        FileInfos = FileInfos.Concat(BitConverter.GetBytes((Int32)0)).ToArray();
                         FileInfos = FileInfos.Concat(BitConverter.GetBytes((Int64)0)).ToArray();
 
 
@@ -2298,8 +2342,81 @@ namespace Taz_trainer
 
 
                     // + Alignment for FileNames
+                    NamesRealSize = NameLocalOffset;
                     Remainder = NameLocalOffset % 16;
                     if(Remainder > 0) for (int i = 0; i < 16 - Remainder; i++) FileNames = FileNames.Append((byte)0).ToArray();
+
+
+                    // Add Hidden FileNames File Info
+                    byte[] HiddenFileInfos = { };
+                    HiddenFileInfos = HiddenFileInfos.Concat(BitConverter.GetBytes((HeaderSize + Contents.Length) / 16)).ToArray(); // FileInfo
+                    HiddenFileInfos = HiddenFileInfos.Concat(BitConverter.GetBytes(HiddenFileHash)).ToArray(); // Hash32
+                    HiddenFileInfos = HiddenFileInfos.Concat(BitConverter.GetBytes(NameLocalOffset)).ToArray(); // Size
+                    HiddenFileInfos = HiddenFileInfos.Concat(BitConverter.GetBytes(NameLocalOffset)).ToArray(); // Local Name Offset
+                    HiddenFileInfos = HiddenFileInfos.Concat(BitConverter.GetBytes((Int32)0)).ToArray(); // Is File
+                    HiddenFileInfos = HiddenFileInfos.Concat(BitConverter.GetBytes((Int32)0)).ToArray(); // Zeroes
+                    HiddenFileInfos = HiddenFileInfos.Concat(BitConverter.GetBytes((Int64)0)).ToArray(); // Zeroes
+                    Array.Copy(HiddenFileInfos, 0, FileInfos, HiddenFileInfoLocalIndex, HiddenFileInfos.Length);
+
+
+                    // Footer
+                    // Offset
+                    Footer = Footer.Concat(BitConverter.GetBytes((Int32)0)).ToArray();
+                    // PakSize (\16)
+                    Footer = Footer.Concat(BitConverter.GetBytes((HeaderSize + Contents.Length + FileNames.Length + FileInfos.Length + FooterSize)/16)).ToArray();
+                    // One
+                    Footer = Footer.Concat(BitConverter.GetBytes((Int32)1)).ToArray();
+                    // Zeroes
+                    Footer = Footer.Concat(BitConverter.GetBytes((Int32)0)).ToArray();
+                    Footer = Footer.Concat(BitConverter.GetBytes((Int64)0)).ToArray();
+                    Footer = Footer.Concat(BitConverter.GetBytes((Int64)0)).ToArray();
+
+                    // Header
+                    // TimeStamp
+                    Header = Header.Concat(BitConverter.GetBytes((Int32)0)).ToArray();
+                    // Align
+                    Header = Header.Concat(BitConverter.GetBytes((Int32)16)).ToArray();
+                    // Sound
+                    if (Path.GetDirectoryName(folderResourceBrowserDialog.SelectedPath).Contains("ound"))
+                        Header = Header.Concat(BitConverter.GetBytes((Int32)1)).ToArray();
+                    else
+                        Header = Header.Concat(BitConverter.GetBytes((Int32)0)).ToArray();
+                    // Files Count (+1 Hidden)
+                    Header = Header.Concat(BitConverter.GetBytes(Files.Length)).ToArray();
+                    // Info Offset (/16)
+                    Header = Header.Concat(BitConverter.GetBytes((HeaderSize + Contents.Length + FileNames.Length)/16)).ToArray();
+                    // Tag Offset (/16)
+                    Header = Header.Concat(BitConverter.GetBytes((HeaderSize + TagLocalOffset)/16)).ToArray();
+                    // Zero0
+                    Header = Header.Concat(BitConverter.GetBytes((Int32)0)).ToArray();
+                    // TagCount
+                    Header = Header.Concat(BitConverter.GetBytes(TagCount)).ToArray();
+                    // FootOffset (/16)
+                    Header = Header.Concat(BitConverter.GetBytes((HeaderSize + Contents.Length + FileNames.Length + FileInfos.Length) / 16)).ToArray();
+                    // Dummy
+                    Header = Header.Concat(BitConverter.GetBytes((Int32)1)).ToArray();
+                    // Names Offset (/16)
+                    Header = Header.Concat(BitConverter.GetBytes((HeaderSize + Contents.Length) / 16)).ToArray();
+                    // Names Size
+                    Header = Header.Concat(BitConverter.GetBytes(NamesRealSize)).ToArray();
+                    // Info Size
+                    Header = Header.Concat(BitConverter.GetBytes(FileInfos.Length)).ToArray();
+                    // Zero1
+                    Header = Header.Concat(BitConverter.GetBytes((Int32)0)).ToArray();
+                    // 64
+                    Header = Header.Concat(BitConverter.GetBytes((Int32)64)).ToArray();
+                    // Zeroes
+                    Array.Resize<byte>(ref Header, 2048);
+
+
+                    // WriteOut
+                    byte[] RepackedFile = { };
+                    RepackedFile = RepackedFile.Concat(Header).ToArray();
+                    RepackedFile = RepackedFile.Concat(Contents).ToArray();
+                    RepackedFile = RepackedFile.Concat(FileNames).ToArray();
+                    RepackedFile = RepackedFile.Concat(FileInfos).ToArray();
+                    RepackedFile = RepackedFile.Concat(Footer).ToArray();
+                    File.WriteAllBytes(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "test.pc"), RepackedFile);
 
                 }
             }
