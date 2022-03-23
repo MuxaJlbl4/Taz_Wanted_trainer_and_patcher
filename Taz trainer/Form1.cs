@@ -364,6 +364,22 @@ namespace Taz_trainer
             CloseHandle(handle);
         }
 
+        //Kill process
+        private void killProcess()
+        {
+            int procId = findProcessId(procName);
+            if (procId == 0)
+            {
+                this.statusField.Text = "Kill process failed. " + procName + " process not found!";
+                this.statusField.ForeColor = System.Drawing.Color.DarkRed;
+            }
+            else
+            {
+                Process.GetProcessById(procId).Kill();
+                this.statusField.Text = procName + " process killed";
+                this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
+            }
+        }
 
         //#######################################################################################################################
         //Other
@@ -2431,6 +2447,11 @@ namespace Taz_trainer
                 this.statusField.ForeColor = System.Drawing.Color.DarkRed;
                 return;
             }
+        }
+
+        private void kill_Click(object sender, EventArgs e)
+        {
+            killProcess();
         }
     }
 }

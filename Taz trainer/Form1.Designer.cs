@@ -146,6 +146,7 @@
             this.openPakFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveUnpackedFilesDialog = new System.Windows.Forms.SaveFileDialog();
             this.folderResourceBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+            this.kill = new System.Windows.Forms.Button();
             this.statusStrip.SuspendLayout();
             this.tableLayoutPanelTrainer.SuspendLayout();
             this.Cheats.SuspendLayout();
@@ -1040,6 +1041,7 @@
             // 
             this.tableLayoutPanelPatcher11.ColumnCount = 1;
             this.tableLayoutPanelPatcher11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelPatcher11.Controls.Add(this.kill, 0, 6);
             this.tableLayoutPanelPatcher11.Controls.Add(this.language, 0, 4);
             this.tableLayoutPanelPatcher11.Controls.Add(this.langComboBox, 0, 5);
             this.tableLayoutPanelPatcher11.Controls.Add(this.noCD, 0, 0);
@@ -1950,6 +1952,24 @@
             // 
             this.saveUnpackedFilesDialog.FileName = "Save Here as New Folders";
             // 
+            // kill
+            // 
+            this.kill.AutoSize = true;
+            this.kill.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kill.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.kill.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.kill.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.kill.ImageIndex = 11;
+            this.kill.ImageList = this.buttonIcons;
+            this.kill.Location = new System.Drawing.Point(1, 241);
+            this.kill.Margin = new System.Windows.Forms.Padding(1);
+            this.kill.Name = "kill";
+            this.kill.Size = new System.Drawing.Size(237, 31);
+            this.kill.TabIndex = 31;
+            this.kill.Text = "Kill Taz.exe";
+            this.kill.UseVisualStyleBackColor = false;
+            this.kill.Click += new System.EventHandler(this.kill_Click);
+            // 
             // form
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -2139,6 +2159,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelRepacker1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelRepacker2;
         private System.Windows.Forms.FolderBrowserDialog folderResourceBrowserDialog;
+        private System.Windows.Forms.Button kill;
     }
 }
 
