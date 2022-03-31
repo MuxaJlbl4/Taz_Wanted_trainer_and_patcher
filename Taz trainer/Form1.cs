@@ -2233,7 +2233,7 @@ namespace Taz_trainer
                     // Append Hidden File Hash (Without Name)
                     UsedHashes = UsedHashes.Append((UInt32)HiddenFileHash).ToArray();
                 else
-                    UsedHashes = UsedHashes.Append(CRC32.Crc32(Encoding.ASCII.GetBytes(ShortName))).ToArray();
+                    UsedHashes = UsedHashes.Append(CRC32.Crc32(Encoding.ASCII.GetBytes(ShortName.ToLower()))).ToArray();
             }
 
 
@@ -2274,7 +2274,7 @@ namespace Taz_trainer
                 // Global File Offset (\16)
                 FileInfos = FileInfos.Concat(BitConverter.GetBytes((HeaderSize + FileLocalOffset) / 16)).ToArray();
                 // Hash32
-                FileInfos = FileInfos.Concat(BitConverter.GetBytes(CRC32.Crc32(Encoding.ASCII.GetBytes(ShortName)))).ToArray();
+                FileInfos = FileInfos.Concat(BitConverter.GetBytes(CRC32.Crc32(Encoding.ASCII.GetBytes(ShortName.ToLower())))).ToArray();
                 // Size
                 FileInfos = FileInfos.Concat(BitConverter.GetBytes(FileSize)).ToArray();
                 // Local Name Offset
