@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace Taz_trainer
 {
@@ -14,9 +12,29 @@ namespace Taz_trainer
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new form());
+            Mutex mutex = new System.Threading.Mutex(false, "TazWantedTrainerAndPatcher");
+            try
+            {
+                if (mutex.WaitOne(0, false))
+                {
+                    // Run the application
+                    Application.EnableVisualStyles();
+                    Application.SetCompatibleTextRenderingDefault(false);
+                    Application.Run(new form());
+                }
+                else
+                {
+                    MessageBox.Show("An instance of the application is already running.");
+                }
+            }
+            finally
+            {
+                if (mutex != null)
+                {
+                    mutex.Close();
+                    mutex = null;
+                }
+            }
         }
     }
 }
