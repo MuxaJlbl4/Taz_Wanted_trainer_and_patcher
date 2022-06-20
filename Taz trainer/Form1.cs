@@ -37,6 +37,7 @@ namespace Taz_trainer
         static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, [Out] byte[] lpBuffer, int dwSize, out IntPtr lpNumberOfBytesRead);
 
         string TazFolderPath = "";
+        float maxSpd = 4f;
 
         //Dictionary<string, Int32> Hashes = new Dictionary<string, Int32>();
 
@@ -78,6 +79,7 @@ namespace Taz_trainer
 
             gkh.KeyDown += new KeyEventHandler(gkh_KeyDown);
             gkh.KeyUp += new KeyEventHandler(gkh_KeyUp);
+
 
             if (File.Exists(Application.StartupPath + @"\Patcher.xml"))
             {
@@ -542,7 +544,7 @@ namespace Taz_trainer
             float current = BitConverter.ToSingle(bytes, 0);
 
             //PositiveInfinity stops game, all other commented values crashes
-            float[] values = { /* 0, Single.Epsilon, 0.0000001f, */ 0.000001f, 0.001f, 0.01f, 0.1f, 1, 2, 4, 8, 16 /*, Single.MaxValue, Single.PositiveInfinity*/ };
+            float[] values = { /* 0, Single.Epsilon, 0.0000001f, */ 0.000001f, 0.001f, 0.01f, 0.1f, 1, 2, maxSpd /*, Single.MaxValue, Single.PositiveInfinity*/ };
             int index = Array.FindIndex(values, x => x == current);
 
             if (index == -1) index = Array.FindIndex(values, x => x == 1);
@@ -2509,6 +2511,22 @@ namespace Taz_trainer
         private void kill_Click(object sender, EventArgs e)
         {
             killProcess();
+        }
+
+        private void maxSpeed_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                maxSpd = Convert.ToSingle(maxSpeed.Text);
+                this.statusField.Text = "Max Speed changed to " + maxSpd.ToString() + ". Update with -/= keys in game.";
+                this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
+            }
+            catch (Exception ex)
+            {
+                this.statusField.Text = ex.Message.ToString();
+                this.statusField.ForeColor = System.Drawing.Color.DarkRed;
+                return;
+            }
         }
     }
 }

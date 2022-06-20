@@ -40,7 +40,7 @@ namespace FormSerialisation
         private static void AddChildControls(XmlTextWriter xmlSerialisedForm, Control c)
         {
             // Taz Trainer & Patcher
-            List <String> Excluded = new List<String> { "", "tableLayoutPanelPatcher2", "trainerTab", "pictureTaz", "trainerTab", "infoTab", "tableLayoutPanelSettings11", "labelFpsCap", "savePatcherSettings", "tableLayoutPanelSettings22", "tableLayoutPanelSettings23", "extLinks", "nativeOptions", "statusStrip" };
+            List <String> Excluded = new List<String> { "", "tableLayoutPanelTrainer1", "tableLayoutPanelTrainer2", "tableLayoutPanelTrainer3", "disallowJump", "ballMouseTazMode", "undestructibleWorld" };
 
             foreach (Control childCtrl in c.Controls)
             {
