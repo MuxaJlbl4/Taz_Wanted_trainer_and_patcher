@@ -38,6 +38,9 @@ namespace Taz_trainer
 
         string TazFolderPath = "";
         float maxSpd = 4f;
+        float Xcoord = 0f;
+        float Ycoord = 0f;
+        float Zcoord = 0f;
 
         //Dictionary<string, Int32> Hashes = new Dictionary<string, Int32>();
 
@@ -57,9 +60,9 @@ namespace Taz_trainer
             gkh.HookedKeys.Add(Keys.F10);
             gkh.HookedKeys.Add(Keys.F11);
             gkh.HookedKeys.Add(Keys.F12);
-            //gkh.HookedKeys.Add(Keys.Insert);
+            gkh.HookedKeys.Add(Keys.Insert);
             gkh.HookedKeys.Add(Keys.Home);
-            gkh.HookedKeys.Add(Keys.End);
+            //gkh.HookedKeys.Add(Keys.End);
             gkh.HookedKeys.Add(Keys.OemMinus);
             gkh.HookedKeys.Add(Keys.Oemplus);
 
@@ -188,11 +191,11 @@ namespace Taz_trainer
                 BallMouseTazSwitch();
                 sendKey(Keys.F12, "{F12}");
             }
-            /*if (e.KeyCode == Keys.Insert)
+            if (e.KeyCode == Keys.Insert)
             {
-                this.fragileWorld.Checked = !this.fragileWorld.Checked;
+                this.debugInfo.Checked = !this.debugInfo.Checked;
                 sendKey(Keys.Insert, "{Insert}");
-            }*/
+            }
             if (e.KeyCode == Keys.Home)
             {
                 this.undestructibleWorld.Checked = !this.undestructibleWorld.Checked;
@@ -842,10 +845,6 @@ namespace Taz_trainer
             }
         }
 
-        float X = 0;
-        float Y = 0;
-        float Z = 0;
-
         private void savePos_CheckedChanged(object sender, EventArgs e)
         {
             //Read taz structure coordinates offset
@@ -859,15 +858,19 @@ namespace Taz_trainer
             adress += 0xC0;
             bytes = checkAndRead((IntPtr)adress, bytes, size, mem);
             value = BitConverter.ToSingle(bytes, 0);
-            X = value;
+            Xcoord = value;
             adress += 0x4;
             bytes = checkAndRead((IntPtr)adress, bytes, size, mem);
             value = BitConverter.ToSingle(bytes, 0);
-            Z = value;
+            Zcoord = value;
             adress += 0x4;
             bytes = checkAndRead((IntPtr)adress, bytes, size, mem);
             value = BitConverter.ToSingle(bytes, 0);
-            Y = value;
+            Ycoord = value;
+
+            savedCoordX.Text = Xcoord.ToString();
+            savedCoordY.Text = Ycoord.ToString();
+            savedCoordZ.Text = Zcoord.ToString();
 
             message("Taz Position Saved");
         }
@@ -882,13 +885,13 @@ namespace Taz_trainer
             bytes = checkAndRead((IntPtr)adress, bytes, size, mem);
             adress = BitConverter.ToInt32(bytes, 0);
             adress += 0xC0;
-            bytes = BitConverter.GetBytes(X);
+            bytes = BitConverter.GetBytes(Xcoord);
             checkAndWrite((IntPtr)adress, bytes, size, mem);
             adress += 0x4;
-            bytes = BitConverter.GetBytes(Z);
+            bytes = BitConverter.GetBytes(Zcoord);
             checkAndWrite((IntPtr)adress, bytes, size, mem);
             adress += 0x4;
-            bytes = BitConverter.GetBytes(Y);
+            bytes = BitConverter.GetBytes(Ycoord);
             checkAndWrite((IntPtr)adress, bytes, size, mem);
 
             message("Taz Position Loaded");
@@ -1018,6 +1021,26 @@ namespace Taz_trainer
             this.dbgMenuOff.Start();
 
             message("");
+        }
+
+        private void debugInfo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.debugInfo.Checked == true)
+            {
+                //debugTextOn_1929
+                byte[] bytes = { 0x01 };
+                checkAndWrite((IntPtr)0x006F4CAA, bytes, bytes.Length, new IntPtr());
+
+                message("Show Debug Info: On");
+            }
+            else
+            {
+                //debugTextOn_1929
+                byte[] bytes = { 0x00 };
+                checkAndWrite((IntPtr)0x006F4CAA, bytes, bytes.Length, new IntPtr());
+
+                message("Show Debug Info: Off");
+            }
         }
 
         private void disallowJump_CheckedChanged(object sender, EventArgs e)
@@ -1934,7 +1957,16 @@ namespace Taz_trainer
 
         private void audio_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                string TazControlsPath = TazFolderPath + "\\config.exe";
+                Process.Start(TazControlsPath, "sound " + "0"); //langComboBox.SelectedIndex.ToString());
+            }
+            catch (Exception ex)
+            {
+                this.statusField.Text = ex.Message.ToString();
+                this.statusField.ForeColor = System.Drawing.Color.DarkRed;
+            }
         }
 
         private void controls_Click(object sender, EventArgs e)
@@ -2069,7 +2101,7 @@ namespace Taz_trainer
         {
             Process.Start("https://github.com/MuxaJlbl4/Taz_Wanted_trainer_and_patcher");
         }
-
+        /*
         private void gkhLink_Click(object sender, EventArgs e)
         {
             Process.Start("https://github.com/jparnell8839/globalKeyboardHook");
@@ -2092,7 +2124,7 @@ namespace Taz_trainer
         {
             Process.Start("https://www.retroreversing.com/ps2-demos/#list-of-games-available-with-debug-symbols");
         }
-
+        */
         private void savePatcherSettings_Click(object sender, EventArgs e)
         {
             try
@@ -2517,8 +2549,54 @@ namespace Taz_trainer
         {
             try
             {
-                maxSpd = Convert.ToSingle(maxSpeed.Text);
+                maxSpd = Convert.ToSingle(maxSpeed.Text.Replace(".", ","));
                 this.statusField.Text = "Max Speed changed to " + maxSpd.ToString() + ". Update with -/= keys in game.";
+                this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
+            }
+            catch (Exception ex)
+            {
+                this.statusField.Text = ex.Message.ToString();
+                this.statusField.ForeColor = System.Drawing.Color.DarkRed;
+                return;
+            }
+        }
+
+        private void savedCoordX_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Xcoord = Convert.ToSingle(savedCoordX.Text.Replace(".", ","));
+                this.statusField.Text = "Saved X coord changed to " + Xcoord.ToString();
+                this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
+            }
+            catch (Exception ex)
+            {
+                this.statusField.Text = ex.Message.ToString();
+                this.statusField.ForeColor = System.Drawing.Color.DarkRed;
+                return;
+            }
+        }
+        private void savedCoordY_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Ycoord = Convert.ToSingle(savedCoordY.Text.Replace(".", ","));
+                this.statusField.Text = "Saved Y coord changed to " + Ycoord.ToString();
+                this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
+            }
+            catch (Exception ex)
+            {
+                this.statusField.Text = ex.Message.ToString();
+                this.statusField.ForeColor = System.Drawing.Color.DarkRed;
+                return;
+            }
+        }
+        private void savedCoordZ_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Zcoord = Convert.ToSingle(savedCoordZ.Text.Replace(".", ","));
+                this.statusField.Text = "Saved Z coord changed to " + Zcoord.ToString();
                 this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
             }
             catch (Exception ex)
