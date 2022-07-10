@@ -139,7 +139,7 @@
             this.labelFpsCap = new System.Windows.Forms.Label();
             this.numericFpsCap = new System.Windows.Forms.NumericUpDown();
             this.savePatcherSettings = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.resetSettings = new System.Windows.Forms.Button();
             this.kill = new System.Windows.Forms.Button();
             this.updateWrappers = new System.Windows.Forms.Button();
             this.nativeOptions = new System.Windows.Forms.GroupBox();
@@ -1389,7 +1389,8 @@
             this.buttonIcons.Images.SetKeyName(18, "compkey.png");
             this.buttonIcons.Images.SetKeyName(19, "electricwarning.png");
             this.buttonIcons.Images.SetKeyName(20, "spookhouse_skull_back.png");
-            this.buttonIcons.Images.SetKeyName(21, "subunkradar.png");
+            this.buttonIcons.Images.SetKeyName(21, "icon_forward.png");
+            this.buttonIcons.Images.SetKeyName(22, "icon_backward.png");
             // 
             // patch
             // 
@@ -1478,7 +1479,7 @@
             this.groupBoxRegistry.Size = new System.Drawing.Size(644, 114);
             this.groupBoxRegistry.TabIndex = 0;
             this.groupBoxRegistry.TabStop = false;
-            this.groupBoxRegistry.Text = "Game Path";
+            this.groupBoxRegistry.Text = "Game path";
             // 
             // tableLayoutPanelSettings1
             // 
@@ -1580,7 +1581,7 @@
             this.trainerOptions.Size = new System.Drawing.Size(481, 342);
             this.trainerOptions.TabIndex = 0;
             this.trainerOptions.TabStop = false;
-            this.trainerOptions.Text = "Trainer/Patcher Options";
+            this.trainerOptions.Text = "Trainer/Patcher options";
             // 
             // tableLayoutPanelSettings21
             // 
@@ -1594,7 +1595,7 @@
             this.tableLayoutPanelSettings21.Controls.Add(this.tableLayoutPanelSettings212, 0, 4);
             this.tableLayoutPanelSettings21.Controls.Add(this.tableLayoutPanelSettings211, 0, 3);
             this.tableLayoutPanelSettings21.Controls.Add(this.savePatcherSettings, 1, 0);
-            this.tableLayoutPanelSettings21.Controls.Add(this.button1, 1, 1);
+            this.tableLayoutPanelSettings21.Controls.Add(this.resetSettings, 1, 1);
             this.tableLayoutPanelSettings21.Controls.Add(this.kill, 1, 4);
             this.tableLayoutPanelSettings21.Controls.Add(this.updateWrappers, 1, 3);
             this.tableLayoutPanelSettings21.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1625,7 +1626,6 @@
             // trainerAutoSave
             // 
             this.trainerAutoSave.AutoSize = true;
-            this.trainerAutoSave.Enabled = false;
             this.trainerAutoSave.Location = new System.Drawing.Point(1, 45);
             this.trainerAutoSave.Margin = new System.Windows.Forms.Padding(1);
             this.trainerAutoSave.Name = "trainerAutoSave";
@@ -1633,6 +1633,7 @@
             this.trainerAutoSave.TabIndex = 0;
             this.trainerAutoSave.Text = "Auto save config on exit";
             this.trainerAutoSave.UseVisualStyleBackColor = true;
+            this.trainerAutoSave.CheckedChanged += new System.EventHandler(this.trainerAutoSave_CheckedChanged);
             // 
             // trainerText
             // 
@@ -1689,7 +1690,7 @@
             this.labelSavedCoords.Name = "labelSavedCoords";
             this.labelSavedCoords.Size = new System.Drawing.Size(106, 26);
             this.labelSavedCoords.TabIndex = 1;
-            this.labelSavedCoords.Text = "Saved Pos:";
+            this.labelSavedCoords.Text = "Saved pos:";
             this.labelSavedCoords.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tableLayoutPanelSettings2132
@@ -1833,9 +1834,9 @@
             this.labelMaxSpeed.Location = new System.Drawing.Point(1, 1);
             this.labelMaxSpeed.Margin = new System.Windows.Forms.Padding(1);
             this.labelMaxSpeed.Name = "labelMaxSpeed";
-            this.labelMaxSpeed.Size = new System.Drawing.Size(116, 26);
+            this.labelMaxSpeed.Size = new System.Drawing.Size(112, 26);
             this.labelMaxSpeed.TabIndex = 3;
-            this.labelMaxSpeed.Text = "Max Speed:";
+            this.labelMaxSpeed.Text = "Max speed:";
             // 
             // tableLayoutPanelSettings211
             // 
@@ -1860,9 +1861,9 @@
             this.labelFpsCap.Location = new System.Drawing.Point(1, 1);
             this.labelFpsCap.Margin = new System.Windows.Forms.Padding(1);
             this.labelFpsCap.Name = "labelFpsCap";
-            this.labelFpsCap.Size = new System.Drawing.Size(100, 26);
+            this.labelFpsCap.Size = new System.Drawing.Size(95, 26);
             this.labelFpsCap.TabIndex = 1;
-            this.labelFpsCap.Text = "FPS Limit:";
+            this.labelFpsCap.Text = "FPS limit:";
             // 
             // numericFpsCap
             // 
@@ -1906,22 +1907,22 @@
             this.savePatcherSettings.UseVisualStyleBackColor = true;
             this.savePatcherSettings.Click += new System.EventHandler(this.savePatcherSettings_Click);
             // 
-            // button1
+            // resetSettings
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.Enabled = false;
-            this.button1.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.ImageKey = "electricwarning.png";
-            this.button1.ImageList = this.buttonIcons;
-            this.button1.Location = new System.Drawing.Point(319, 45);
-            this.button1.Margin = new System.Windows.Forms.Padding(1);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(157, 42);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "       Reset Config";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = true;
+            this.resetSettings.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.resetSettings.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.resetSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.resetSettings.ImageKey = "electricwarning.png";
+            this.resetSettings.ImageList = this.buttonIcons;
+            this.resetSettings.Location = new System.Drawing.Point(319, 45);
+            this.resetSettings.Margin = new System.Windows.Forms.Padding(1);
+            this.resetSettings.Name = "resetSettings";
+            this.resetSettings.Size = new System.Drawing.Size(157, 42);
+            this.resetSettings.TabIndex = 8;
+            this.resetSettings.Text = "       Reset Config";
+            this.resetSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.resetSettings.UseVisualStyleBackColor = true;
+            this.resetSettings.Click += new System.EventHandler(this.resetSettings_Click);
             // 
             // kill
             // 
@@ -2135,8 +2136,8 @@
             this.tableLayoutPanelRepacker1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelRepacker1.Name = "tableLayoutPanelRepacker1";
             this.tableLayoutPanelRepacker1.RowCount = 3;
-            this.tableLayoutPanelRepacker1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanelRepacker1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanelRepacker1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.04273F));
+            this.tableLayoutPanelRepacker1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.82906F));
             this.tableLayoutPanelRepacker1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
             this.tableLayoutPanelRepacker1.Size = new System.Drawing.Size(650, 468);
             this.tableLayoutPanelRepacker1.TabIndex = 4;
@@ -2150,20 +2151,23 @@
             this.tableLayoutPanelRepacker2.Controls.Add(this.unpack, 1, 0);
             this.tableLayoutPanelRepacker2.Controls.Add(this.pack, 2, 0);
             this.tableLayoutPanelRepacker2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelRepacker2.Location = new System.Drawing.Point(0, 374);
+            this.tableLayoutPanelRepacker2.Location = new System.Drawing.Point(0, 398);
             this.tableLayoutPanelRepacker2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelRepacker2.Name = "tableLayoutPanelRepacker2";
             this.tableLayoutPanelRepacker2.RowCount = 1;
             this.tableLayoutPanelRepacker2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelRepacker2.Size = new System.Drawing.Size(650, 70);
+            this.tableLayoutPanelRepacker2.Size = new System.Drawing.Size(650, 46);
             this.tableLayoutPanelRepacker2.TabIndex = 7;
             // 
             // unpack
             // 
             this.unpack.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.unpack.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.unpack.ImageKey = "icon_forward.png";
+            this.unpack.ImageList = this.buttonIcons;
             this.unpack.Location = new System.Drawing.Point(3, 3);
             this.unpack.Name = "unpack";
-            this.unpack.Size = new System.Drawing.Size(319, 64);
+            this.unpack.Size = new System.Drawing.Size(319, 40);
             this.unpack.TabIndex = 0;
             this.unpack.Text = "Unpack Game Resources";
             this.unpack.UseVisualStyleBackColor = true;
@@ -2172,9 +2176,12 @@
             // pack
             // 
             this.pack.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pack.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.pack.ImageKey = "icon_backward.png";
+            this.pack.ImageList = this.buttonIcons;
             this.pack.Location = new System.Drawing.Point(328, 3);
             this.pack.Name = "pack";
-            this.pack.Size = new System.Drawing.Size(319, 64);
+            this.pack.Size = new System.Drawing.Size(319, 40);
             this.pack.TabIndex = 1;
             this.pack.Text = "Repack Game Resources";
             this.pack.UseVisualStyleBackColor = true;
@@ -2183,9 +2190,10 @@
             // unpackingRichTextBox
             // 
             this.unpackingRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.unpackingRichTextBox.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.unpackingRichTextBox.Location = new System.Drawing.Point(3, 3);
             this.unpackingRichTextBox.Name = "unpackingRichTextBox";
-            this.unpackingRichTextBox.Size = new System.Drawing.Size(644, 368);
+            this.unpackingRichTextBox.Size = new System.Drawing.Size(644, 392);
             this.unpackingRichTextBox.TabIndex = 2;
             this.unpackingRichTextBox.Text = resources.GetString("unpackingRichTextBox.Text");
             // 
@@ -2257,6 +2265,7 @@
             this.Name = "form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Taz Wanted Trainer & Patcher 3.0-dev";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.form_FormClosed);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.tableLayoutPanelTrainer.ResumeLayout(false);
@@ -2466,7 +2475,7 @@
         private System.Windows.Forms.Button kill;
         private System.Windows.Forms.Button savePatcherSettings;
         private System.Windows.Forms.CheckBox debugInfo;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button resetSettings;
         private System.Windows.Forms.Button updateWrappers;
     }
 }

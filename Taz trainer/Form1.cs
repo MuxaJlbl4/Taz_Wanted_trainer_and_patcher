@@ -2606,6 +2606,39 @@ namespace Taz_trainer
                 return;
             }
         }
+
+        private void resetSettings_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(Application.StartupPath + @"\Patcher.xml"))
+            {
+                try
+                {
+                    // Delete xml
+                    File.Delete(Application.StartupPath + @"\Patcher.xml");
+                }
+                catch (Exception ex)
+                {
+                    // Anyway it's cannot be seen
+                    this.statusField.Text = ex.Message.ToString();
+                    this.statusField.ForeColor = System.Drawing.Color.DarkRed;
+                }
+            }
+            Application.Restart();
+        }
+
+        private void trainerAutoSave_CheckedChanged(object sender, EventArgs e)
+        {
+            // Save AutoSave State
+            savePatcherSettings_Click(sender, e);
+        }
+
+        private void form_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (trainerAutoSave.Checked == true)
+            {
+                savePatcherSettings_Click(sender, e);
+            }
+        }
     }
 }
 
