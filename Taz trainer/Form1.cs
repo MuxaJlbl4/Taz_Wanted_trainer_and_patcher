@@ -37,7 +37,7 @@ namespace Taz_trainer
         static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, [Out] byte[] lpBuffer, int dwSize, out IntPtr lpNumberOfBytesRead);
 
         string TazFolderPath = "";
-        float maxSpd = 4f;
+        float maxSpd = 2f;
         float Xcoord = 0f;
         float Ycoord = 0f;
         float Zcoord = 0f;
@@ -547,7 +547,7 @@ namespace Taz_trainer
             float current = BitConverter.ToSingle(bytes, 0);
 
             //PositiveInfinity stops game, all other commented values crashes
-            float[] values = { /* 0, Single.Epsilon, 0.0000001f, */ 0.000001f, 0.001f, 0.01f, 0.1f, 1, 2, maxSpd /*, Single.MaxValue, Single.PositiveInfinity*/ };
+            float[] values = { /* 0, Single.Epsilon, 0.0000001f, */ 0.000001f, 0.001f, 0.01f, 0.1f, 1, maxSpd /*, Single.MaxValue, Single.PositiveInfinity*/ };
             int index = Array.FindIndex(values, x => x == current);
 
             if (index == -1) index = Array.FindIndex(values, x => x == 1);
@@ -899,10 +899,33 @@ namespace Taz_trainer
 
         private void flyCamera_CheckedChanged(object sender, EventArgs e)
         {
-            byte[] bytes = { 0x01 };
-            checkAndWrite((IntPtr)0x0071C4D4, bytes, bytes.Length, new IntPtr());
+            if (this.flyCamera.Checked == true)
+            {
+                // Hide messages
+                byte[] bytes2 = { 0x00 };
+                checkAndWrite((IntPtr)0x00643008, bytes2, bytes2.Length, new IntPtr());
+                byte[] bytes3 = { 0x00 };
+                checkAndWrite((IntPtr)0x0064301C, bytes3, bytes3.Length, new IntPtr());
+                // Fly camera state
+                byte[] bytes = { 0x01 };
+                checkAndWrite((IntPtr)0x0071C4D4, bytes, bytes.Length, new IntPtr());
 
-            message("Fly Camera: On (Bite to turn off)");
+                message("Fly Camera: On");
+            }
+            else
+            {
+                // Fly camera state
+                byte[] bytes = { 0x00 };
+                checkAndWrite((IntPtr)0x0071C4D4, bytes, bytes.Length, new IntPtr());
+                // Restore messages
+                byte[] bytes2 = { 0x74 };
+                checkAndWrite((IntPtr)0x00643008, bytes2, bytes2.Length, new IntPtr());
+                byte[] bytes3 = { 0x66 };
+                checkAndWrite((IntPtr)0x0064301C, bytes3, bytes3.Length, new IntPtr());
+
+                message("Fly Camera: Off");
+            }
+
         }
         private void freezeLevelTimer_CheckedChanged(object sender, EventArgs e)
         {
