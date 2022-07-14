@@ -790,7 +790,7 @@
             this.patcherTab.Name = "patcherTab";
             this.patcherTab.Size = new System.Drawing.Size(656, 474);
             this.patcherTab.TabIndex = 1;
-            this.patcherTab.Text = "Patcher";
+            this.patcherTab.Text = "Patches";
             // 
             // tableLayoutPanelPatcher
             // 
@@ -2122,7 +2122,7 @@
             this.repackTab.Padding = new System.Windows.Forms.Padding(3);
             this.repackTab.Size = new System.Drawing.Size(656, 474);
             this.repackTab.TabIndex = 4;
-            this.repackTab.Text = "Repacker";
+            this.repackTab.Text = "Repacking";
             // 
             // tableLayoutPanelRepacker1
             // 
@@ -2169,7 +2169,7 @@
             this.unpack.Name = "unpack";
             this.unpack.Size = new System.Drawing.Size(319, 40);
             this.unpack.TabIndex = 0;
-            this.unpack.Text = "Unpack Game Resources";
+            this.unpack.Text = "Unpack game resources";
             this.unpack.UseVisualStyleBackColor = true;
             this.unpack.Click += new System.EventHandler(this.unpack_Click);
             // 
@@ -2183,14 +2183,14 @@
             this.pack.Name = "pack";
             this.pack.Size = new System.Drawing.Size(319, 40);
             this.pack.TabIndex = 1;
-            this.pack.Text = "Repack Game Resources";
+            this.pack.Text = "Repack game resources";
             this.pack.UseVisualStyleBackColor = true;
             this.pack.Click += new System.EventHandler(this.pack_Click);
             // 
             // unpackingRichTextBox
             // 
             this.unpackingRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.unpackingRichTextBox.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.unpackingRichTextBox.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.unpackingRichTextBox.Location = new System.Drawing.Point(3, 3);
             this.unpackingRichTextBox.Name = "unpackingRichTextBox";
             this.unpackingRichTextBox.Size = new System.Drawing.Size(644, 392);
@@ -2214,7 +2214,7 @@
             this.infoTab.Name = "infoTab";
             this.infoTab.Size = new System.Drawing.Size(656, 474);
             this.infoTab.TabIndex = 2;
-            this.infoTab.Text = "Usage";
+            this.infoTab.Text = "Instructions";
             // 
             // webBrowser
             // 
