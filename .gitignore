@@ -1,4 +1,5 @@
 /.gitattributes
 /.vs
+/Taz trainer/.sonarqube
 /Taz trainer/bin
 /Taz trainer/obj

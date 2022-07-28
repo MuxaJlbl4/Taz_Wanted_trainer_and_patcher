@@ -94,10 +94,6 @@ namespace FormSerialisation
                     {
                         xmlSerialisedForm.WriteElementString("Text", ((DateTimePicker)childCtrl).Text);
                     }
-                    else if (childCtrl is DateTimePicker)
-                    {
-                        xmlSerialisedForm.WriteElementString("Text", ((DateTimePicker)childCtrl).Text);
-                    }
                     // this next line was taken from http://stackoverflow.com/questions/391888/how-to-get-the-real-value-of-the-visible-property
                     // which dicusses the problem of child controls claiming to have Visible=false even when they haven't, based on the parent
                     // having Visible=true
