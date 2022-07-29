@@ -14,9 +14,14 @@ using Utilities;
 using Microsoft.Win32;
 using System.IO;
 using FormSerialisation;
+using System.Net;
+using System.Text.RegularExpressions;
+using System.IO.Compression;
 using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
 using Taz_trainer.Properties;
+using TarExample;
+
 
 namespace Taz_trainer
 {
@@ -90,6 +95,7 @@ namespace Taz_trainer
                 {
                     // Load form element states
                     FormSerialisor.Deserialise(this, Application.StartupPath + @"\Patcher.xml");
+                    textBoxRegistry.Text = getPathFromRegistry();
                 }
                 catch (Exception ex)
                 {
@@ -99,6 +105,7 @@ namespace Taz_trainer
                     autoFillVideo(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
                     textBoxRegistry.Text = getPathFromRegistry();
                     langComboBox.SelectedIndex = 0;
+                    apiComboBox.SelectedIndex = 0;
                 }
             }
             else
@@ -107,6 +114,7 @@ namespace Taz_trainer
                 autoFillVideo(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
                 textBoxRegistry.Text = getPathFromRegistry();
                 langComboBox.SelectedIndex = 0;
+                apiComboBox.SelectedIndex = 0;
             }
             TazFolderPath = textBoxRegistry.Text;
 
@@ -1418,14 +1426,14 @@ namespace Taz_trainer
                 //backup Taz.exe
                 if (File.Exists(TazFolderPath + "\\Taz.exe.backup") == false)
                 {
-                    File.Copy(TazFolderPath + "\\Taz.exe", TazFolderPath + "\\Taz.exe.backup");
+                    File.Copy(TazFolderPath + "\\Taz.exe", TazFolderPath + "\\Taz.exe.backup", true);
                     backuped = true;
                 }
 
                 //backup Taz.exe
                 if (File.Exists(TazFolderPath + "\\taz.dat.backup") == false)
                 {
-                    File.Copy(TazFolderPath + "\\taz.dat", TazFolderPath + "\\taz.dat.backup");
+                    File.Copy(TazFolderPath + "\\taz.dat", TazFolderPath + "\\taz.dat.backup", true);
                     backuped = true;
                 }
 
@@ -1778,6 +1786,143 @@ namespace Taz_trainer
                     }
                 }
 
+                string gihubUrl = "https://github.com";
+
+                //api
+                //d3d8to9
+                if (apiComboBox.SelectedIndex == 1 || apiComboBox.SelectedIndex == 3)
+                {
+                    string d3d9Folder = Path.Combine(TazFolderPath, "Wrappers", "d3d8to9");
+                    string d3d9File = Path.Combine(d3d9Folder, "d3d8.dll");
+                    // Check downloaded files
+                    if (File.Exists(d3d9File) == false)
+                    {
+                        // Create folders
+                        if (!Directory.Exists(d3d9Folder))
+                            Directory.CreateDirectory(d3d9Folder);
+                        // Download
+                        using (WebClient web1 = new WebClient())
+                        {
+                            // Get Link
+                            string data = web1.DownloadString("https://github.com/crosire/d3d8to9/releases/latest");
+                            string dll9Url = gihubUrl + Regex.Match(data, "/crosire/d3d8to9/releases/download/.*/d3d8.dll").ToString();
+
+                            this.statusField.Text += "Downloading d3d8to9";
+                            this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
+
+                            // Downloading
+                            web1.DownloadFile(dll9Url, d3d9File);
+
+                            this.statusField.Text += "Downloading d3d8to9 - finished";
+                            this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
+                        }
+                    }
+                    // Replace dll
+                    File.Copy(d3d9File, Path.Combine(TazFolderPath, "d3d8.dll"), true);
+                    // Remove Vulkan's wrapper
+                    if (File.Exists(Path.Combine(TazFolderPath, "d3d9.dll")) && apiComboBox.SelectedIndex != 3)
+                        File.Delete(Path.Combine(TazFolderPath, "d3d9.dll"));
+                }
+                //dgVoodoo2
+                else if (apiComboBox.SelectedIndex == 2)
+                {
+                    string d3d11Folder = Path.Combine(TazFolderPath, "Wrappers", "dgVoodoo2");
+                    string d3d11File = Path.Combine(d3d11Folder, "d3d8.dll");
+                    string d3d11Zip = Path.Combine(d3d11Folder, "dgVoodoo2.zip");
+                    // Check downloaded files
+                    if (File.Exists(d3d11File) == false)
+                    {
+                        // Create folders
+                        if (!Directory.Exists(d3d11Folder))
+                            Directory.CreateDirectory(d3d11Folder);
+                        // Download
+                        using (WebClient web1 = new WebClient())
+                        {
+                            // Get Link
+                            string data = web1.DownloadString("https://github.com/dege-diosg/dgVoodoo2/releases/latest");
+                            string zip11Url = gihubUrl + Regex.Match(data, "/dege-diosg/dgVoodoo2/releases/download/.*.zip").ToString();
+
+                            this.statusField.Text += "Downloading dgVoodoo2";
+                            this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
+
+                            // Downloading
+                            web1.DownloadFile(zip11Url, d3d11Zip);
+
+                            this.statusField.Text += "Downloading dgVoodoo2 - finished";
+                            this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
+                        }
+                        // Unpack
+                        using (ZipArchive archive = ZipFile.OpenRead(d3d11Zip))
+                        {
+                            foreach (ZipArchiveEntry entry in archive.Entries)
+                            {
+                                if (entry.FullName.Contains("MS/x86/D3D8.dll"))
+                                    entry.ExtractToFile(Path.Combine(d3d11Folder, entry.Name), true);
+                            }
+                        }
+                        File.Delete(d3d11Zip);
+                    }
+                    // Replace dll
+                    File.Copy(d3d11File, Path.Combine(TazFolderPath, "d3d8.dll"), true);
+                    // Remove Vulkan's wrapper
+                    if (File.Exists(Path.Combine(TazFolderPath, "d3d9.dll")))
+                        File.Delete(Path.Combine(TazFolderPath, "d3d9.dll"));
+                }
+                //Vanilla
+                else
+                {
+                    // Remove d3d8 wrapper
+                    if (File.Exists(Path.Combine(TazFolderPath, "d3d8.dll")))
+                        File.Delete(Path.Combine(TazFolderPath, "d3d8.dll"));
+                    // Remove Vulkan's wrapper
+                    if (File.Exists(Path.Combine(TazFolderPath, "d3d9.dll")))
+                        File.Delete(Path.Combine(TazFolderPath, "d3d9.dll"));
+                }
+
+                //dxvk
+                if (apiComboBox.SelectedIndex == 3)
+                {
+                    string VulkanFolder = Path.Combine(TazFolderPath, "Wrappers", "dgVoodoo2");
+                    string VulkanFile = Path.Combine(VulkanFolder, "d3d9.dll");
+                    string VulkanTar = Path.Combine(VulkanFolder, "dxvk.tar.gz");
+                    // Check downloaded files
+                    if (File.Exists(VulkanFile) == false)
+                    {
+                        // Create folders
+                        if (!Directory.Exists(VulkanFolder))
+                            Directory.CreateDirectory(VulkanFolder);
+                        // Download
+                        using (WebClient web1 = new WebClient())
+                        {
+                            // Get Link
+                            string data = web1.DownloadString("https://github.com/doitsujin/dxvk/releases/latest");
+                            string zipVulUrl = gihubUrl + Regex.Match(data, "/doitsujin/dxvk/releases/download/.*.tar.gz").ToString();
+
+                            this.statusField.Text += "Downloading dxvk";
+                            this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
+
+                            // Downloading
+                            web1.DownloadFile(zipVulUrl, Path.Combine(VulkanFolder, "dxvk.tar.gz"));
+
+                            this.statusField.Text += "Downloading dxvk - finished";
+                            this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
+                        }
+                        // Unpack
+                        TarExample.Tar.ExtractTarGz(Path.Combine(VulkanFolder, "dxvk.tar.gz"), Path.Combine(VulkanFolder, "dxvk"));
+                        foreach (string file in Directory.GetFiles(Path.Combine(VulkanFolder, "dxvk"), "*.dll*", SearchOption.AllDirectories))
+                        {
+                            if (file.Contains("x32\\d3d9.dll"))
+                                File.Copy(file, VulkanFile, true);
+                        }
+                        Directory.Delete(Path.Combine(VulkanFolder, "dxvk"), true);
+                        File.Delete(Path.Combine(VulkanFolder, "dxvk.tar.gz"));
+                    }
+                    // Replace dll
+                    File.Copy(VulkanFile, Path.Combine(TazFolderPath, "d3d9.dll"), true);
+                }
+
+
+
                 //language
                 // If language not Russian
                 if (langComboBox.SelectedIndex >= 0 && langComboBox.SelectedIndex <= 4)
@@ -1788,8 +1933,8 @@ namespace Taz_trainer
                         //Restore to original
                         File.Delete(TazFolderPath + "\\Paks\\text.pc");
                         File.Delete(TazFolderPath + "\\Paks\\resTex.pc");
-                        File.Copy(TazFolderPath + "\\Paks\\text.pc.backup", TazFolderPath + "\\Paks\\text.pc");
-                        File.Copy(TazFolderPath + "\\Paks\\resTex.pc.backup", TazFolderPath + "\\Paks\\resTex.pc");
+                        File.Copy(TazFolderPath + "\\Paks\\text.pc.backup", TazFolderPath + "\\Paks\\text.pc", true);
+                        File.Copy(TazFolderPath + "\\Paks\\resTex.pc.backup", TazFolderPath + "\\Paks\\resTex.pc", true);
                         File.Delete(TazFolderPath + "\\Paks\\text.pc.backup");
                         File.Delete(TazFolderPath + "\\Paks\\resTex.pc.backup");
                     }
@@ -1807,8 +1952,8 @@ namespace Taz_trainer
                     if (File.Exists(TazFolderPath + "\\Paks\\text.pc") == true && File.Exists(TazFolderPath + "\\Paks\\resTex.pc") == true && !File.Exists(TazFolderPath + "\\Paks\\text.pc.backup") == true && !File.Exists(TazFolderPath + "\\Paks\\resTex.pc.backup") == true)
                     {
                         // Backup files
-                        File.Copy(TazFolderPath + "\\Paks\\text.pc", TazFolderPath + "\\Paks\\text.pc.backup");
-                        File.Copy(TazFolderPath + "\\Paks\\resTex.pc", TazFolderPath + "\\Paks\\resTex.pc.backup");
+                        File.Copy(TazFolderPath + "\\Paks\\text.pc", TazFolderPath + "\\Paks\\text.pc.backup", true);
+                        File.Copy(TazFolderPath + "\\Paks\\resTex.pc", TazFolderPath + "\\Paks\\resTex.pc.backup", true);
                         // Replace files
                         File.WriteAllBytes(TazFolderPath + "\\Paks\\text.pc", Properties.Resources.text);
                         File.WriteAllBytes(TazFolderPath + "\\Paks\\resTex.pc", Properties.Resources.resTex);
@@ -1851,7 +1996,7 @@ namespace Taz_trainer
                     {
                         //Replace
                         File.Delete(TazFolderPath + "\\Taz.exe");
-                        File.Copy(TazFolderPath + "\\Taz.exe.backup", TazFolderPath + "\\Taz.exe");
+                        File.Copy(TazFolderPath + "\\Taz.exe.backup", TazFolderPath + "\\Taz.exe", true);
                     }
                     else
                     {
@@ -1865,8 +2010,8 @@ namespace Taz_trainer
                         //Restore to original
                         File.Delete(TazFolderPath + "\\Paks\\text.pc");
                         File.Delete(TazFolderPath + "\\Paks\\resTex.pc");
-                        File.Copy(TazFolderPath + "\\Paks\\text.pc.backup", TazFolderPath + "\\Paks\\text.pc");
-                        File.Copy(TazFolderPath + "\\Paks\\resTex.pc.backup", TazFolderPath + "\\Paks\\resTex.pc");
+                        File.Copy(TazFolderPath + "\\Paks\\text.pc.backup", TazFolderPath + "\\Paks\\text.pc", true);
+                        File.Copy(TazFolderPath + "\\Paks\\resTex.pc.backup", TazFolderPath + "\\Paks\\resTex.pc", true);
                         File.Delete(TazFolderPath + "\\Paks\\text.pc.backup");
                         File.Delete(TazFolderPath + "\\Paks\\resTex.pc.backup");
                     }
@@ -1876,13 +2021,20 @@ namespace Taz_trainer
                     {
                         //Replace
                         File.Delete(TazFolderPath + "\\taz.dat");
-                        File.Copy(TazFolderPath + "\\taz.dat.backup", TazFolderPath + "\\taz.dat");
+                        File.Copy(TazFolderPath + "\\taz.dat.backup", TazFolderPath + "\\taz.dat", true);
                     }
                     else
                     {
                         this.statusField.Text = "taz.dat.backup not found!";
                         this.statusField.ForeColor = System.Drawing.Color.DarkRed;
                     }
+                    //Check and restore wrappers
+                    // Remove d3d8 wrapper
+                    if (File.Exists(Path.Combine(TazFolderPath, "d3d8.dll")))
+                        File.Delete(Path.Combine(TazFolderPath, "d3d8.dll"));
+                    // Remove Vulkan's wrapper
+                    if (File.Exists(Path.Combine(TazFolderPath, "d3d9.dll")))
+                        File.Delete(Path.Combine(TazFolderPath, "d3d9.dll"));
 
                     //restore end
                     this.statusField.Text = "Restored successfully (" + TazFolderPath + ")";
