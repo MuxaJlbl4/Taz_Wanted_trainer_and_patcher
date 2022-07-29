@@ -41,6 +41,7 @@ namespace Taz_trainer
         [DllImport("kernel32.dll", SetLastError = true)]
         static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, [Out] byte[] lpBuffer, int dwSize, out IntPtr lpNumberOfBytesRead);
 
+        string gihubUrl = "https://github.com";
         string TazFolderPath = "";
         float maxSpd = 2f;
         float Xcoord = 0f;
@@ -370,7 +371,8 @@ namespace Taz_trainer
             var handle = OpenProcess(0x001F0FFF, false, procId);
             this.statusField.Text = procName + " process found. Handle = " + handle;
             this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
-            if (WriteProcessMemory(handle, (IntPtr)adress, bytes, size, out mem) == false) {
+            if (WriteProcessMemory(handle, (IntPtr)adress, bytes, size, out mem) == false)
+            {
                 this.statusField.Text = "WriteProcessMemory failed! Handle = " + handle;
                 this.statusField.ForeColor = System.Drawing.Color.DarkRed;
             };
@@ -1199,7 +1201,7 @@ namespace Taz_trainer
             checkAndWrite((IntPtr)0x005F6700, bytes, bytes.Length, new IntPtr());
             byte[] bytes2 = { 0xE9, 0x0F, 0xEF, 0x14, 0x00 };
             checkAndWrite((IntPtr)0x004A77EC, bytes2, bytes2.Length, new IntPtr());
-            
+
             if (this.fpsCap.Checked == true)
             {
                 float miliseconds = (1000 / (float)numericFpsCap.Value) / 1000;
@@ -1410,6 +1412,10 @@ namespace Taz_trainer
             if (TazPath == null)
             {
                 MessageBox.Show("Unable to find Taz Wanted game path in registy. Make sure that game installed properly or select path manually in Settings tab.", "Game path not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            if (TazPath == "")
+            {
+                MessageBox.Show("Taz Wanted game path registy value is empty. Make sure that game installed properly or select path manually in Settings tab.", "Game path not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             return TazPath;
         }
@@ -1786,8 +1792,6 @@ namespace Taz_trainer
                     }
                 }
 
-                string gihubUrl = "https://github.com";
-
                 //api
                 //d3d8to9
                 if (apiComboBox.SelectedIndex == 1 || apiComboBox.SelectedIndex == 3)
@@ -1801,20 +1805,16 @@ namespace Taz_trainer
                         if (!Directory.Exists(d3d9Folder))
                             Directory.CreateDirectory(d3d9Folder);
                         // Download
+                        this.statusField.Text = "Downloading d3d8to9";
+                        this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
                         using (WebClient web1 = new WebClient())
                         {
                             // Get Link
                             string data = web1.DownloadString("https://github.com/crosire/d3d8to9/releases/latest");
                             string dll9Url = gihubUrl + Regex.Match(data, "/crosire/d3d8to9/releases/download/.*/d3d8.dll").ToString();
 
-                            this.statusField.Text += "Downloading d3d8to9";
-                            this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
-
                             // Downloading
                             web1.DownloadFile(dll9Url, d3d9File);
-
-                            this.statusField.Text += "Downloading d3d8to9 - finished";
-                            this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
                         }
                     }
                     // Replace dll
@@ -1836,20 +1836,16 @@ namespace Taz_trainer
                         if (!Directory.Exists(d3d11Folder))
                             Directory.CreateDirectory(d3d11Folder);
                         // Download
+                        this.statusField.Text = "Downloading dgVoodoo2";
+                        this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
                         using (WebClient web1 = new WebClient())
                         {
                             // Get Link
                             string data = web1.DownloadString("https://github.com/dege-diosg/dgVoodoo2/releases/latest");
                             string zip11Url = gihubUrl + Regex.Match(data, "/dege-diosg/dgVoodoo2/releases/download/.*.zip").ToString();
 
-                            this.statusField.Text += "Downloading dgVoodoo2";
-                            this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
-
                             // Downloading
                             web1.DownloadFile(zip11Url, d3d11Zip);
-
-                            this.statusField.Text += "Downloading dgVoodoo2 - finished";
-                            this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
                         }
                         // Unpack
                         using (ZipArchive archive = ZipFile.OpenRead(d3d11Zip))
@@ -1882,7 +1878,7 @@ namespace Taz_trainer
                 //dxvk
                 if (apiComboBox.SelectedIndex == 3)
                 {
-                    string VulkanFolder = Path.Combine(TazFolderPath, "Wrappers", "dgVoodoo2");
+                    string VulkanFolder = Path.Combine(TazFolderPath, "Wrappers", "dxvk");
                     string VulkanFile = Path.Combine(VulkanFolder, "d3d9.dll");
                     string VulkanTar = Path.Combine(VulkanFolder, "dxvk.tar.gz");
                     // Check downloaded files
@@ -1892,20 +1888,16 @@ namespace Taz_trainer
                         if (!Directory.Exists(VulkanFolder))
                             Directory.CreateDirectory(VulkanFolder);
                         // Download
+                        this.statusField.Text = "Downloading dxvk";
+                        this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
                         using (WebClient web1 = new WebClient())
                         {
                             // Get Link
                             string data = web1.DownloadString("https://github.com/doitsujin/dxvk/releases/latest");
                             string zipVulUrl = gihubUrl + Regex.Match(data, "/doitsujin/dxvk/releases/download/.*.tar.gz").ToString();
 
-                            this.statusField.Text += "Downloading dxvk";
-                            this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
-
                             // Downloading
                             web1.DownloadFile(zipVulUrl, Path.Combine(VulkanFolder, "dxvk.tar.gz"));
-
-                            this.statusField.Text += "Downloading dxvk - finished";
-                            this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
                         }
                         // Unpack
                         TarExample.Tar.ExtractTarGz(Path.Combine(VulkanFolder, "dxvk.tar.gz"), Path.Combine(VulkanFolder, "dxvk"));
@@ -2812,6 +2804,100 @@ namespace Taz_trainer
             if (trainerAutoSave.Checked == true)
             {
                 savePatcherSettings_Click(sender, e);
+            }
+        }
+
+        private void updateWrappers_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string d3d9Folder = Path.Combine(TazFolderPath, "Wrappers", "d3d8to9");
+                string d3d9File = Path.Combine(d3d9Folder, "d3d8.dll");
+                string d3d11Folder = Path.Combine(TazFolderPath, "Wrappers", "dgVoodoo2");
+                string d3d11File = Path.Combine(d3d11Folder, "d3d8.dll");
+                string d3d11Zip = Path.Combine(d3d11Folder, "dgVoodoo2.zip");
+                string VulkanFolder = Path.Combine(TazFolderPath, "Wrappers", "dxvk");
+                string VulkanFile = Path.Combine(VulkanFolder, "d3d9.dll");
+                string VulkanTar = Path.Combine(VulkanFolder, "dxvk.tar.gz");
+                string d3d9ver = "???";
+                string d3d11ver = "???";
+                string VulkanVer = "???";
+
+                this.statusField.Text = "Downloading Wrappers - Please Wait";
+                this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
+
+                // Create folders
+                if (!Directory.Exists(d3d9Folder))
+                    Directory.CreateDirectory(d3d9Folder);
+
+                // Download d3d8to9
+                using (WebClient web1 = new WebClient())
+                {
+                    // Get Link
+                    string data = web1.DownloadString("https://github.com/crosire/d3d8to9/releases/latest");
+                    string dll9Url = gihubUrl + Regex.Match(data, "/crosire/d3d8to9/releases/download/.*/d3d8.dll").ToString();
+                    // Downloading
+                    web1.DownloadFile(dll9Url, d3d9File);
+                    d3d9ver = Regex.Match(dll9Url, "v\\d.*(?=/)").ToString();
+                }
+
+                // Create folders
+                if (!Directory.Exists(d3d11Folder))
+                    Directory.CreateDirectory(d3d11Folder);
+
+                // Download dgVoodoo2
+                using (WebClient web1 = new WebClient())
+                {
+                    // Get Link
+                    string data = web1.DownloadString("https://github.com/dege-diosg/dgVoodoo2/releases/latest");
+                    string zip11Url = gihubUrl + Regex.Match(data, "/dege-diosg/dgVoodoo2/releases/download/.*.zip").ToString();
+
+                    // Downloading
+                    web1.DownloadFile(zip11Url, d3d11Zip);
+                    d3d11ver = Regex.Match(zip11Url, "v\\d.*(?=/)").ToString();
+                }
+                // Unpack
+                using (ZipArchive archive = ZipFile.OpenRead(d3d11Zip))
+                {
+                    foreach (ZipArchiveEntry entry in archive.Entries)
+                    {
+                        if (entry.FullName.Contains("MS/x86/D3D8.dll"))
+                            entry.ExtractToFile(Path.Combine(d3d11Folder, entry.Name), true);
+                    }
+                }
+                File.Delete(d3d11Zip);
+
+                // Create folders
+                if (!Directory.Exists(VulkanFolder))
+                    Directory.CreateDirectory(VulkanFolder);
+                // Download
+                using (WebClient web1 = new WebClient())
+                {
+                    // Get Link
+                    string data = web1.DownloadString("https://github.com/doitsujin/dxvk/releases/latest");
+                    string zipVulUrl = gihubUrl + Regex.Match(data, "/doitsujin/dxvk/releases/download/.*.tar.gz").ToString();
+                    // Downloading
+                    web1.DownloadFile(zipVulUrl, Path.Combine(VulkanFolder, "dxvk.tar.gz"));
+                    VulkanVer = Regex.Match(zipVulUrl, "v\\d.*(?=/)").ToString();
+                }
+                // Unpack
+                TarExample.Tar.ExtractTarGz(Path.Combine(VulkanFolder, "dxvk.tar.gz"), Path.Combine(VulkanFolder, "dxvk"));
+                foreach (string file in Directory.GetFiles(Path.Combine(VulkanFolder, "dxvk"), "*.dll*", SearchOption.AllDirectories))
+                {
+                    if (file.Contains("x32\\d3d9.dll"))
+                        File.Copy(file, VulkanFile, true);
+                }
+                Directory.Delete(Path.Combine(VulkanFolder, "dxvk"), true);
+                File.Delete(Path.Combine(VulkanFolder, "dxvk.tar.gz"));
+
+                this.statusField.Text = "Wrappers Downloaded.    d3d8to9: " + d3d9ver + "    dgVoodoo: " + d3d11ver + "    dxvk: " + VulkanVer;
+                this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
+            }
+            catch (Exception ex)
+            {
+                // Anyway it's cannot be seen
+                this.statusField.Text = ex.Message.ToString();
+                this.statusField.ForeColor = System.Drawing.Color.DarkRed;
             }
         }
     }
