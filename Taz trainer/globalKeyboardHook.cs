@@ -3,19 +3,23 @@ using System.Collections.Generic;
 using System.Text;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using System.ComponentModel;
 
-namespace Utilities {
+namespace Utilities
+{
 	/// <summary>
 	/// A class that manages a global low level keyboard hook
 	/// </summary>
-	class globalKeyboardHook {
+	class globalKeyboardHook
+	{
 		#region Constant, Structure and Delegate Definitions
 		/// <summary>
 		/// defines the callback type for the hook
 		/// </summary>
 		public delegate int keyboardHookProc(int code, int wParam, ref keyboardHookStruct lParam);
 
-		public struct keyboardHookStruct {
+		public struct keyboardHookStruct
+		{
 			public int vkCode;
 			public int scanCode;
 			public int flags;
@@ -28,6 +32,12 @@ namespace Utilities {
 		const int WM_KEYUP = 0x101;
 		const int WM_SYSKEYDOWN = 0x104;
 		const int WM_SYSKEYUP = 0x105;
+
+		//Modifier key vkCode constants
+		private const int VK_SHIFT = 0x10;
+		private const int VK_CONTROL = 0x11;
+		private const int VK_MENU = 0x12;
+		private const int VK_CAPITAL = 0x14;
 		#endregion
 
 		#region Instance Variables
@@ -39,14 +49,13 @@ namespace Utilities {
 		/// Handle to the hook, need this to unhook and call the next hook
 		/// </summary>
 		IntPtr hhook = IntPtr.Zero;
-        private keyboardHookProc hookProcDelegate;
-        #endregion
+		#endregion
 
-        #region Events
-        /// <summary>
-        /// Occurs when one of the hooked keys is pressed
-        /// </summary>
-        public event KeyEventHandler KeyDown;
+		#region Events
+		/// <summary>
+		/// Occurs when one of the hooked keys is pressed
+		/// </summary>
+		public event KeyEventHandler KeyDown;
 		/// <summary>
 		/// Occurs when one of the hooked keys is released
 		/// </summary>
@@ -57,16 +66,17 @@ namespace Utilities {
 		/// <summary>
 		/// Initializes a new instance of the <see cref="globalKeyboardHook"/> class and installs the keyboard hook.
 		/// </summary>
-		public globalKeyboardHook() {
-            hookProcDelegate = hookProc;
-            hook();
-        }
+		public globalKeyboardHook()
+		{
+			hook();
+		}
 
 		/// <summary>
 		/// Releases unmanaged resources and performs other cleanup operations before the
 		/// <see cref="globalKeyboardHook"/> is reclaimed by garbage collection and uninstalls the keyboard hook.
 		/// </summary>
-		~globalKeyboardHook() {
+		~globalKeyboardHook()
+		{
 			unhook();
 		}
 		#endregion
@@ -75,18 +85,24 @@ namespace Utilities {
 		/// <summary>
 		/// Installs the global hook
 		/// </summary>
-		public void hook() {
-            IntPtr hInstance = LoadLibrary("User32");
-            hhook = SetWindowsHookEx(WH_KEYBOARD_LL, hookProcDelegate, hInstance, 0);
-        }
+		private static keyboardHookProc callbackDelegate;
 
-		/// <summary>
-		/// Uninstalls the global hook
-		/// </summary>
-		public void unhook() {
-			UnhookWindowsHookEx(hhook);
+		public void hook()
+		{
+			if (callbackDelegate != null) throw new InvalidOperationException("Can't hook more than once");
+			IntPtr hInstance = LoadLibrary("User32");
+			callbackDelegate = new keyboardHookProc(hookProc);
+			hhook = SetWindowsHookEx(WH_KEYBOARD_LL, callbackDelegate, hInstance, 0);
+			if (hhook == IntPtr.Zero) throw new Win32Exception();
 		}
 
+		public void unhook()
+		{
+			if (callbackDelegate == null) return;
+			bool ok = UnhookWindowsHookEx(hhook);
+			if (!ok) throw new Win32Exception();
+			callbackDelegate = null;
+		}
 		/// <summary>
 		/// The callback for the keyboard hook
 		/// </summary>
@@ -94,14 +110,22 @@ namespace Utilities {
 		/// <param name="wParam">The event type</param>
 		/// <param name="lParam">The keyhook event information</param>
 		/// <returns></returns>
-		public int hookProc(int code, int wParam, ref keyboardHookStruct lParam) {
-			if (code >= 0) {
+		public int hookProc(int code, int wParam, ref keyboardHookStruct lParam)
+		{
+			if (code >= 0)
+			{
 				Keys key = (Keys)lParam.vkCode;
-				if (HookedKeys.Contains(key)) {
+				if (HookedKeys.Contains(key))
+				{
+					// Get Modifiers
+					key = AddModifiers(key);
 					KeyEventArgs kea = new KeyEventArgs(key);
-					if ((wParam == WM_KEYDOWN || wParam == WM_SYSKEYDOWN) && (KeyDown != null)) {
-						KeyDown(this, kea) ;
-					} else if ((wParam == WM_KEYUP || wParam == WM_SYSKEYUP) && (KeyUp != null)) {
+					if ((wParam == WM_KEYDOWN || wParam == WM_SYSKEYDOWN) && (KeyDown != null))
+					{
+						KeyDown(this, kea);
+					}
+					else if ((wParam == WM_KEYUP || wParam == WM_SYSKEYUP) && (KeyUp != null))
+					{
 						KeyUp(this, kea);
 					}
 					if (kea.Handled)
@@ -109,6 +133,28 @@ namespace Utilities {
 				}
 			}
 			return CallNextHookEx(hhook, code, wParam, ref lParam);
+		}
+
+		/// <summary>
+		/// Checks whether Alt, Shift, Control or CapsLock
+		/// is pressed at the same time as the hooked key.
+		/// Modifies the keyCode to include the pressed keys.
+		/// </summary>
+		private Keys AddModifiers(Keys key)
+		{
+			//CapsLock
+			if ((GetKeyState(VK_CAPITAL) & 0x0001) != 0) key = key | Keys.CapsLock;
+
+			//Shift
+			if ((GetKeyState(VK_SHIFT) & 0x8000) != 0) key = key | Keys.Shift;
+
+			//Ctrl
+			if ((GetKeyState(VK_CONTROL) & 0x8000) != 0) key = key | Keys.Control;
+
+			//Alt
+			if ((GetKeyState(VK_MENU) & 0x8000) != 0) key = key | Keys.Alt;
+
+			return key;
 		}
 		#endregion
 
@@ -150,6 +196,14 @@ namespace Utilities {
 		/// <returns>A handle to the library</returns>
 		[DllImport("kernel32.dll")]
 		static extern IntPtr LoadLibrary(string lpFileName);
+
+		/// <summary>
+		/// Gets the state of modifier keys for a given keycode.
+		/// </summary>
+		/// <param name="keyCode">The keyCode</param>
+		/// <returns></returns>
+		[DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true, CallingConvention = CallingConvention.Winapi)]
+		public static extern short GetKeyState(int keyCode);
 		#endregion
 	}
 }
