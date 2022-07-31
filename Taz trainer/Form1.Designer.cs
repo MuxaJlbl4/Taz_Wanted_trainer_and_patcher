@@ -1218,7 +1218,6 @@
             this.xInputPatch.AutoSize = true;
             this.xInputPatch.Checked = true;
             this.xInputPatch.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.xInputPatch.Enabled = false;
             this.xInputPatch.Location = new System.Drawing.Point(3, 205);
             this.xInputPatch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xInputPatch.Name = "xInputPatch";

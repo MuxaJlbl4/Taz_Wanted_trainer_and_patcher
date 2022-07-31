@@ -306,6 +306,10 @@ namespace Taz_trainer
                 decFPScap();
                 sendKey(Keys.Divide, "{/}");
             }
+            if (e.Modifiers == Keys.Alt && e.KeyCode == Keys.F4)
+            {
+                this.kill_Click(sender, e);
+            }
 
             e.Handled = true;
         }
@@ -1792,6 +1796,35 @@ namespace Taz_trainer
                     }
                 }
 
+                //xInputPatch
+                if (this.xInputPatch.Checked == true)
+                {
+                    using (var file = new FileStream(TazFolderPath + "\\taz.dat", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        // Player 1 Controller Pause to Key 8, Map to Key 7
+                        file.Position = 0xC8;
+                        file.WriteByte(0x08);
+                        file.WriteByte(0x00);
+                        file.WriteByte(0x00);
+                        file.WriteByte(0x00);
+                        file.WriteByte(0x07);
+                        file.WriteByte(0x00);
+                        file.WriteByte(0x00);
+                        file.WriteByte(0x00);
+                        // Player 2 Controller Pause to Key 8, Map to Key 7
+                        file.Position = 0x158;
+                        file.WriteByte(0x08);
+                        file.WriteByte(0x00);
+                        file.WriteByte(0x00);
+                        file.WriteByte(0x00);
+                        file.WriteByte(0x07);
+                        file.WriteByte(0x00);
+                        file.WriteByte(0x00);
+                        file.WriteByte(0x00);
+                        file.Close();
+                    }
+                }
+
                 //api
                 //d3d8to9
                 if (apiComboBox.SelectedIndex == 1 || apiComboBox.SelectedIndex == 3)
@@ -1805,7 +1838,7 @@ namespace Taz_trainer
                         if (!Directory.Exists(d3d9Folder))
                             Directory.CreateDirectory(d3d9Folder);
                         // Download
-                        this.statusField.Text = "Downloading d3d8to9";
+                        this.statusField.Text = "Downloading missing API wrapper (d3d8to9)";
                         this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
                         using (WebClient web1 = new WebClient())
                         {
@@ -1836,7 +1869,7 @@ namespace Taz_trainer
                         if (!Directory.Exists(d3d11Folder))
                             Directory.CreateDirectory(d3d11Folder);
                         // Download
-                        this.statusField.Text = "Downloading dgVoodoo2";
+                        this.statusField.Text = "Downloading missing API wrapper (dgVoodoo2)";
                         this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
                         using (WebClient web1 = new WebClient())
                         {
@@ -1852,7 +1885,7 @@ namespace Taz_trainer
                         {
                             foreach (ZipArchiveEntry entry in archive.Entries)
                             {
-                                if (entry.FullName.Contains("MS/x86/D3D8.dll"))
+                                if (entry.FullName == "MS/x86/D3D8.dll" || entry.FullName == "dgVoodooCpl.exe")
                                     entry.ExtractToFile(Path.Combine(d3d11Folder, entry.Name), true);
                             }
                         }
@@ -1888,7 +1921,7 @@ namespace Taz_trainer
                         if (!Directory.Exists(VulkanFolder))
                             Directory.CreateDirectory(VulkanFolder);
                         // Download
-                        this.statusField.Text = "Downloading dxvk";
+                        this.statusField.Text = "Downloading missing API wrapper (dxvk)";
                         this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
                         using (WebClient web1 = new WebClient())
                         {
@@ -2861,7 +2894,7 @@ namespace Taz_trainer
                 {
                     foreach (ZipArchiveEntry entry in archive.Entries)
                     {
-                        if (entry.FullName.Contains("MS/x86/D3D8.dll"))
+                        if (entry.FullName == "MS/x86/D3D8.dll" || entry.FullName == "dgVoodooCpl.exe")
                             entry.ExtractToFile(Path.Combine(d3d11Folder, entry.Name), true);
                     }
                 }
