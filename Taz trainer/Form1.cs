@@ -2210,7 +2210,7 @@ namespace Taz_trainer
                 if (statusField.Text.Contains("taz.dat") == false)
                     executable_Click(sender, e);
                 else
-                    MessageBox.Show("Game config file not found. Launch game via native launcher (Settings -> Taz Shortcuts -> Launcher) to create config, then restart game via patcher.", "File taz.dat not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Game config file not found. Launch game via native launcher (Settings -> Shortcuts -> Launcher) to create config, then restart game via patcher.", "File taz.dat not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             catch (Exception ex)
             {
@@ -2743,6 +2743,22 @@ namespace Taz_trainer
         private void kill_Click(object sender, EventArgs e)
         {
             killProcess();
+        }
+
+        private void deleteSav_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dialogResult = MessageBox.Show("TazWanted.sav will be deleted. Continue?", "Delete Savegame", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                    File.Delete(Path.Combine(TazFolderPath, "TazWanted.sav"));
+            }
+            catch (Exception ex)
+            {
+                this.statusField.Text = ex.Message.ToString();
+                this.statusField.ForeColor = System.Drawing.Color.DarkRed;
+                return;
+            }
         }
 
         private void maxSpeed_TextChanged(object sender, EventArgs e)

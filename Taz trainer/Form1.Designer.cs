@@ -142,6 +142,7 @@
             this.resetSettings = new System.Windows.Forms.Button();
             this.kill = new System.Windows.Forms.Button();
             this.updateWrappers = new System.Windows.Forms.Button();
+            this.deleteSav = new System.Windows.Forms.Button();
             this.nativeOptions = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanelSettings22 = new System.Windows.Forms.TableLayoutPanel();
             this.controls = new System.Windows.Forms.Button();
@@ -1586,8 +1587,8 @@
             // tableLayoutPanelSettings21
             // 
             this.tableLayoutPanelSettings21.ColumnCount = 2;
-            this.tableLayoutPanelSettings21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.66666F));
-            this.tableLayoutPanelSettings21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanelSettings21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55.55556F));
+            this.tableLayoutPanelSettings21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 44.44444F));
             this.tableLayoutPanelSettings21.Controls.Add(this.trainerSound, 0, 0);
             this.tableLayoutPanelSettings21.Controls.Add(this.trainerAutoSave, 0, 1);
             this.tableLayoutPanelSettings21.Controls.Add(this.trainerText, 0, 2);
@@ -1597,7 +1598,8 @@
             this.tableLayoutPanelSettings21.Controls.Add(this.savePatcherSettings, 1, 0);
             this.tableLayoutPanelSettings21.Controls.Add(this.resetSettings, 1, 1);
             this.tableLayoutPanelSettings21.Controls.Add(this.kill, 1, 4);
-            this.tableLayoutPanelSettings21.Controls.Add(this.updateWrappers, 1, 3);
+            this.tableLayoutPanelSettings21.Controls.Add(this.updateWrappers, 1, 2);
+            this.tableLayoutPanelSettings21.Controls.Add(this.deleteSav, 1, 3);
             this.tableLayoutPanelSettings21.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelSettings21.Location = new System.Drawing.Point(2, 29);
             this.tableLayoutPanelSettings21.Margin = new System.Windows.Forms.Padding(0);
@@ -1618,7 +1620,7 @@
             this.trainerSound.Location = new System.Drawing.Point(1, 1);
             this.trainerSound.Margin = new System.Windows.Forms.Padding(1);
             this.trainerSound.Name = "trainerSound";
-            this.trainerSound.Size = new System.Drawing.Size(274, 30);
+            this.trainerSound.Size = new System.Drawing.Size(263, 30);
             this.trainerSound.TabIndex = 0;
             this.trainerSound.Text = "Audio notify on trainer keys";
             this.trainerSound.UseVisualStyleBackColor = true;
@@ -1663,7 +1665,7 @@
             this.tableLayoutPanelSettings213.Name = "tableLayoutPanelSettings213";
             this.tableLayoutPanelSettings213.RowCount = 1;
             this.tableLayoutPanelSettings213.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSettings213.Size = new System.Drawing.Size(318, 91);
+            this.tableLayoutPanelSettings213.Size = new System.Drawing.Size(265, 91);
             this.tableLayoutPanelSettings213.TabIndex = 4;
             // 
             // tableLayoutPanelSettings2131
@@ -1814,7 +1816,7 @@
             this.tableLayoutPanelSettings212.Name = "tableLayoutPanelSettings212";
             this.tableLayoutPanelSettings212.RowCount = 1;
             this.tableLayoutPanelSettings212.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSettings212.Size = new System.Drawing.Size(318, 44);
+            this.tableLayoutPanelSettings212.Size = new System.Drawing.Size(265, 44);
             this.tableLayoutPanelSettings212.TabIndex = 5;
             // 
             // maxSpeed
@@ -1823,7 +1825,7 @@
             this.maxSpeed.Location = new System.Drawing.Point(140, 0);
             this.maxSpeed.Margin = new System.Windows.Forms.Padding(0);
             this.maxSpeed.Name = "maxSpeed";
-            this.maxSpeed.Size = new System.Drawing.Size(89, 34);
+            this.maxSpeed.Size = new System.Drawing.Size(62, 34);
             this.maxSpeed.TabIndex = 4;
             this.maxSpeed.Text = "2,0";
             this.maxSpeed.TextChanged += new System.EventHandler(this.maxSpeed_TextChanged);
@@ -1852,7 +1854,7 @@
             this.tableLayoutPanelSettings211.Name = "tableLayoutPanelSettings211";
             this.tableLayoutPanelSettings211.RowCount = 1;
             this.tableLayoutPanelSettings211.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSettings211.Size = new System.Drawing.Size(318, 44);
+            this.tableLayoutPanelSettings211.Size = new System.Drawing.Size(265, 44);
             this.tableLayoutPanelSettings211.TabIndex = 5;
             // 
             // labelFpsCap
@@ -1881,7 +1883,7 @@
             0,
             0});
             this.numericFpsCap.Name = "numericFpsCap";
-            this.numericFpsCap.Size = new System.Drawing.Size(89, 34);
+            this.numericFpsCap.Size = new System.Drawing.Size(62, 34);
             this.numericFpsCap.TabIndex = 2;
             this.numericFpsCap.Value = new decimal(new int[] {
             20,
@@ -1897,10 +1899,10 @@
             this.savePatcherSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.savePatcherSettings.ImageKey = "memcard.png";
             this.savePatcherSettings.ImageList = this.buttonIcons;
-            this.savePatcherSettings.Location = new System.Drawing.Point(319, 1);
+            this.savePatcherSettings.Location = new System.Drawing.Point(266, 1);
             this.savePatcherSettings.Margin = new System.Windows.Forms.Padding(1);
             this.savePatcherSettings.Name = "savePatcherSettings";
-            this.savePatcherSettings.Size = new System.Drawing.Size(157, 42);
+            this.savePatcherSettings.Size = new System.Drawing.Size(210, 42);
             this.savePatcherSettings.TabIndex = 8;
             this.savePatcherSettings.Text = "       Save Config";
             this.savePatcherSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1914,10 +1916,10 @@
             this.resetSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.resetSettings.ImageKey = "electricwarning.png";
             this.resetSettings.ImageList = this.buttonIcons;
-            this.resetSettings.Location = new System.Drawing.Point(319, 45);
+            this.resetSettings.Location = new System.Drawing.Point(266, 45);
             this.resetSettings.Margin = new System.Windows.Forms.Padding(1);
             this.resetSettings.Name = "resetSettings";
-            this.resetSettings.Size = new System.Drawing.Size(157, 42);
+            this.resetSettings.Size = new System.Drawing.Size(210, 42);
             this.resetSettings.TabIndex = 8;
             this.resetSettings.Text = "       Reset Config";
             this.resetSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1927,17 +1929,16 @@
             // kill
             // 
             this.kill.AutoSize = true;
-            this.kill.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kill.Font = new System.Drawing.Font("Comic Sans MS", 12F);
             this.kill.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.kill.ImageKey = "spookhouse_skull_back.png";
             this.kill.ImageList = this.buttonIcons;
-            this.kill.Location = new System.Drawing.Point(319, 177);
+            this.kill.Location = new System.Drawing.Point(266, 177);
             this.kill.Margin = new System.Windows.Forms.Padding(1);
             this.kill.Name = "kill";
-            this.kill.Size = new System.Drawing.Size(157, 42);
+            this.kill.Size = new System.Drawing.Size(210, 42);
             this.kill.TabIndex = 9;
-            this.kill.Text = "       Kill Taz.exe";
+            this.kill.Text = "       Kill Taz.exe (Alt+F4)";
             this.kill.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.kill.UseVisualStyleBackColor = true;
             this.kill.Click += new System.EventHandler(this.kill_Click);
@@ -1950,15 +1951,32 @@
             this.updateWrappers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.updateWrappers.ImageIndex = 9;
             this.updateWrappers.ImageList = this.buttonIcons;
-            this.updateWrappers.Location = new System.Drawing.Point(319, 133);
+            this.updateWrappers.Location = new System.Drawing.Point(266, 89);
             this.updateWrappers.Margin = new System.Windows.Forms.Padding(1);
             this.updateWrappers.Name = "updateWrappers";
-            this.updateWrappers.Size = new System.Drawing.Size(157, 42);
+            this.updateWrappers.Size = new System.Drawing.Size(210, 42);
             this.updateWrappers.TabIndex = 9;
             this.updateWrappers.Text = "       Update API\'s";
             this.updateWrappers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.updateWrappers.UseVisualStyleBackColor = true;
             this.updateWrappers.Click += new System.EventHandler(this.updateWrappers_Click);
+            // 
+            // deleteSav
+            // 
+            this.deleteSav.AutoSize = true;
+            this.deleteSav.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.deleteSav.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.deleteSav.ImageKey = "icon_rant.png";
+            this.deleteSav.ImageList = this.buttonIcons;
+            this.deleteSav.Location = new System.Drawing.Point(266, 133);
+            this.deleteSav.Margin = new System.Windows.Forms.Padding(1);
+            this.deleteSav.Name = "deleteSav";
+            this.deleteSav.Size = new System.Drawing.Size(210, 42);
+            this.deleteSav.TabIndex = 9;
+            this.deleteSav.Text = "       Delete Savegame";
+            this.deleteSav.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.deleteSav.UseVisualStyleBackColor = true;
+            this.deleteSav.Click += new System.EventHandler(this.deleteSav_Click);
             // 
             // nativeOptions
             // 
@@ -2477,6 +2495,7 @@
         private System.Windows.Forms.CheckBox debugInfo;
         private System.Windows.Forms.Button resetSettings;
         private System.Windows.Forms.Button updateWrappers;
+        private System.Windows.Forms.Button deleteSav;
     }
 }
 
