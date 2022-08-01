@@ -122,6 +122,10 @@ namespace Taz_trainer
             // Usage tab init
             string html = Properties.Resources.README;
             webBrowser.DocumentText = html;
+
+            // Welcome Message
+            this.statusField.Text = "v3.0-dev";
+            this.statusField.ForeColor = System.Drawing.Color.Black;
         }
 
 
@@ -496,9 +500,9 @@ namespace Taz_trainer
             if (this.drawDistance.Checked == true)
             {
                 //environment
-                byte[] bytes = { 0xFF }; // mov word ptr [esi+1E6h], 0FFFFh
+                byte[] bytes = { 0xFF, 0xFF }; // mov word ptr [esi+1E6h], 0FFFFh
                 checkAndWrite((IntPtr)0x00474FC4, bytes, bytes.Length, new IntPtr());
-                byte[] bytes2 = { 0x74 }; // jz
+                byte[] bytes2 = { 0xEB }; // jmp
                 checkAndWrite((IntPtr)0x00474FD0, bytes2, bytes2.Length, new IntPtr());
 
                 // CollectibleTwinkle
@@ -514,13 +518,13 @@ namespace Taz_trainer
             else
             {
                 //environment
-                byte[] bytes = { 0x00 }; // mov word ptr [esi+1E6h], 0h
+                byte[] bytes = { 0x00, 0x00 }; // mov word ptr [esi+1E6h], 0h
                 checkAndWrite((IntPtr)0x00474FC4, bytes, bytes.Length, new IntPtr());
                 byte[] bytes2 = { 0x75 }; // jnz
                 checkAndWrite((IntPtr)0x00474FD0, bytes2, bytes2.Length, new IntPtr());
 
                 // CollectibleTwinkle
-                //byte[] bytes3 = { 0x00, 0x00, 0x80, 0x7F }; // +Inf
+                //byte[] bytes3 = { 0x00, 0x00, 0x00, 0x00 }; // 00
                 //checkAndWrite((IntPtr)0x005F66E8, bytes3, bytes3.Length, new IntPtr());
                 byte[] bytes4 = { 0xF4, 0x75, 0x5F, 0x00 }; // fcomp [5000.0]
                 checkAndWrite((IntPtr)0x0047E00B, bytes4, bytes4.Length, new IntPtr());
@@ -1484,7 +1488,7 @@ namespace Taz_trainer
                     //enviroment
                     using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
                     {
-                        byte[] bytes = new byte[] { 0xFF, 0xFF, 0x74 }; // 00 00 75
+                        byte[] bytes = new byte[] { 0xFF, 0xFF, 0xEB }; // 00 00 75
                         file.Position = 0x74FC4;
                         file.WriteByte(bytes[0]);
                         file.WriteByte(bytes[1]);
@@ -1705,10 +1709,20 @@ namespace Taz_trainer
 
                     using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
                     {
+                        //aspect
                         file.Position = 0x8FD76;
                         file.WriteByte(aspect1);
                         file.Position = 0x8FD7D;
                         file.WriteByte(aspect2);
+                        //override widescreen
+                        file.Position = 0x8F860;
+                        file.WriteByte(0xB2); // mov dl,01
+                        file.WriteByte(0x01);
+                        file.WriteByte(0x90); // nops
+                        file.WriteByte(0x90);
+                        file.WriteByte(0x90);
+                        file.WriteByte(0x90);
+
                         file.Close();
                     }
                 }
@@ -1717,11 +1731,20 @@ namespace Taz_trainer
                     //restore aspect ratio
                     using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
                     {
-                        //windowed
+                        //4:3 aspect
                         file.Position = 0x8FD76;
                         file.WriteByte(0x04);
                         file.Position = 0x8FD7D;
                         file.WriteByte(0x03);
+                        //override widescreen
+                        file.Position = 0x8F860;
+                        file.WriteByte(0x8A); // mov dl, byte ptr dword_6F4A38
+                        file.WriteByte(0x15);
+                        file.WriteByte(0x38);
+                        file.WriteByte(0x4A);
+                        file.WriteByte(0x6F);
+                        file.WriteByte(0x00);
+
                         file.Close();
                     }
                 }

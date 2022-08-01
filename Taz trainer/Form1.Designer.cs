@@ -263,8 +263,8 @@
             // 
             this.statusField.ForeColor = System.Drawing.SystemColors.ControlText;
             this.statusField.Name = "statusField";
-            this.statusField.Size = new System.Drawing.Size(246, 17);
-            this.statusField.Text = "Welcome to Taz Wanted Trainer && Patcher 3.0";
+            this.statusField.Size = new System.Drawing.Size(52, 17);
+            this.statusField.Text = "v3.0-dev";
             // 
             // timer
             // 
@@ -335,11 +335,11 @@
             this.gameSpeed.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.gameSpeed.ImageIndex = 17;
             this.gameSpeed.ImageList = this.checkIcons;
-            this.gameSpeed.Location = new System.Drawing.Point(1, 165);
+            this.gameSpeed.Location = new System.Drawing.Point(1, 169);
             this.gameSpeed.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.gameSpeed.Name = "gameSpeed";
             this.gameSpeed.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.gameSpeed.Size = new System.Drawing.Size(320, 45);
+            this.gameSpeed.Size = new System.Drawing.Size(320, 41);
             this.gameSpeed.TabIndex = 4;
             this.gameSpeed.Text = "      - = - Change Game Speed";
             this.gameSpeed.UseVisualStyleBackColor = false;
@@ -355,7 +355,7 @@
             this.invisibility.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.invisibility.Name = "invisibility";
             this.invisibility.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.invisibility.Size = new System.Drawing.Size(320, 40);
+            this.invisibility.Size = new System.Drawing.Size(320, 41);
             this.invisibility.TabIndex = 0;
             this.invisibility.Text = "      F1 - Invisibility Mode";
             this.invisibility.UseVisualStyleBackColor = false;
@@ -368,11 +368,11 @@
             this.freezeLevelTimer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.freezeLevelTimer.ImageIndex = 3;
             this.freezeLevelTimer.ImageList = this.checkIcons;
-            this.freezeLevelTimer.Location = new System.Drawing.Point(1, 124);
+            this.freezeLevelTimer.Location = new System.Drawing.Point(1, 127);
             this.freezeLevelTimer.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.freezeLevelTimer.Name = "freezeLevelTimer";
             this.freezeLevelTimer.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.freezeLevelTimer.Size = new System.Drawing.Size(320, 40);
+            this.freezeLevelTimer.Size = new System.Drawing.Size(320, 41);
             this.freezeLevelTimer.TabIndex = 3;
             this.freezeLevelTimer.Text = "      F4 - Freeze Timers && Boxes";
             this.freezeLevelTimer.UseVisualStyleBackColor = false;
@@ -385,11 +385,11 @@
             this.superBelchCan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.superBelchCan.ImageIndex = 1;
             this.superBelchCan.ImageList = this.checkIcons;
-            this.superBelchCan.Location = new System.Drawing.Point(1, 42);
+            this.superBelchCan.Location = new System.Drawing.Point(1, 43);
             this.superBelchCan.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.superBelchCan.Name = "superBelchCan";
             this.superBelchCan.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.superBelchCan.Size = new System.Drawing.Size(320, 40);
+            this.superBelchCan.Size = new System.Drawing.Size(320, 41);
             this.superBelchCan.TabIndex = 1;
             this.superBelchCan.Text = "      F2 - Always Burp Mode";
             this.superBelchCan.UseVisualStyleBackColor = false;
@@ -402,11 +402,11 @@
             this.superJump.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.superJump.ImageIndex = 2;
             this.superJump.ImageList = this.checkIcons;
-            this.superJump.Location = new System.Drawing.Point(1, 83);
+            this.superJump.Location = new System.Drawing.Point(1, 85);
             this.superJump.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.superJump.Name = "superJump";
             this.superJump.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.superJump.Size = new System.Drawing.Size(320, 40);
+            this.superJump.Size = new System.Drawing.Size(320, 41);
             this.superJump.TabIndex = 2;
             this.superJump.Text = "      F3 - Super Jump Mode";
             this.superJump.UseVisualStyleBackColor = false;
@@ -460,7 +460,7 @@
             this.debugMenu.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.debugMenu.Name = "debugMenu";
             this.debugMenu.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.debugMenu.Size = new System.Drawing.Size(320, 40);
+            this.debugMenu.Size = new System.Drawing.Size(320, 41);
             this.debugMenu.TabIndex = 0;
             this.debugMenu.Text = "      F5 - Open Debug Menu";
             this.debugMenu.UseVisualStyleBackColor = false;
@@ -473,11 +473,11 @@
             this.loadPos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.loadPos.ImageIndex = 11;
             this.loadPos.ImageList = this.checkIcons;
-            this.loadPos.Location = new System.Drawing.Point(1, 124);
+            this.loadPos.Location = new System.Drawing.Point(1, 127);
             this.loadPos.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.loadPos.Name = "loadPos";
             this.loadPos.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.loadPos.Size = new System.Drawing.Size(320, 40);
+            this.loadPos.Size = new System.Drawing.Size(320, 41);
             this.loadPos.TabIndex = 3;
             this.loadPos.Text = "      Num3 - Load Taz Position";
             this.loadPos.UseVisualStyleBackColor = false;
@@ -490,11 +490,11 @@
             this.flyMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.flyMode.ImageIndex = 8;
             this.flyMode.ImageList = this.checkIcons;
-            this.flyMode.Location = new System.Drawing.Point(1, 165);
+            this.flyMode.Location = new System.Drawing.Point(1, 169);
             this.flyMode.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.flyMode.Name = "flyMode";
             this.flyMode.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.flyMode.Size = new System.Drawing.Size(320, 45);
+            this.flyMode.Size = new System.Drawing.Size(320, 41);
             this.flyMode.TabIndex = 4;
             this.flyMode.Text = "      Num5 - Fly Mode";
             this.flyMode.UseVisualStyleBackColor = false;
@@ -507,11 +507,11 @@
             this.savePos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.savePos.ImageIndex = 10;
             this.savePos.ImageList = this.checkIcons;
-            this.savePos.Location = new System.Drawing.Point(1, 83);
+            this.savePos.Location = new System.Drawing.Point(1, 85);
             this.savePos.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.savePos.Name = "savePos";
             this.savePos.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.savePos.Size = new System.Drawing.Size(320, 40);
+            this.savePos.Size = new System.Drawing.Size(320, 41);
             this.savePos.TabIndex = 2;
             this.savePos.Text = "      Num1 - Save Taz Position";
             this.savePos.UseVisualStyleBackColor = false;
@@ -524,11 +524,11 @@
             this.flyCamera.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.flyCamera.ImageIndex = 15;
             this.flyCamera.ImageList = this.checkIcons;
-            this.flyCamera.Location = new System.Drawing.Point(1, 42);
+            this.flyCamera.Location = new System.Drawing.Point(1, 43);
             this.flyCamera.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.flyCamera.Name = "flyCamera";
             this.flyCamera.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.flyCamera.Size = new System.Drawing.Size(320, 40);
+            this.flyCamera.Size = new System.Drawing.Size(320, 41);
             this.flyCamera.TabIndex = 1;
             this.flyCamera.Text = "      Num0 - Fly Camera Mode";
             this.flyCamera.UseVisualStyleBackColor = false;
@@ -582,7 +582,7 @@
             this.drawDistance.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.drawDistance.Name = "drawDistance";
             this.drawDistance.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.drawDistance.Size = new System.Drawing.Size(320, 40);
+            this.drawDistance.Size = new System.Drawing.Size(320, 41);
             this.drawDistance.TabIndex = 0;
             this.drawDistance.Text = "      F6 - ∞ Draw Distance";
             this.drawDistance.UseVisualStyleBackColor = false;
@@ -595,11 +595,11 @@
             this.textureAlpha.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.textureAlpha.ImageIndex = 14;
             this.textureAlpha.ImageList = this.checkIcons;
-            this.textureAlpha.Location = new System.Drawing.Point(1, 83);
+            this.textureAlpha.Location = new System.Drawing.Point(1, 85);
             this.textureAlpha.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.textureAlpha.Name = "textureAlpha";
             this.textureAlpha.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.textureAlpha.Size = new System.Drawing.Size(320, 40);
+            this.textureAlpha.Size = new System.Drawing.Size(320, 41);
             this.textureAlpha.TabIndex = 2;
             this.textureAlpha.Text = "      F8 - Show Alpha Textures";
             this.textureAlpha.UseVisualStyleBackColor = false;
@@ -612,11 +612,11 @@
             this.textureFilter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.textureFilter.ImageIndex = 16;
             this.textureFilter.ImageList = this.checkIcons;
-            this.textureFilter.Location = new System.Drawing.Point(1, 42);
+            this.textureFilter.Location = new System.Drawing.Point(1, 43);
             this.textureFilter.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.textureFilter.Name = "textureFilter";
             this.textureFilter.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.textureFilter.Size = new System.Drawing.Size(320, 40);
+            this.textureFilter.Size = new System.Drawing.Size(320, 41);
             this.textureFilter.TabIndex = 1;
             this.textureFilter.Text = "      F7 - Texture Filtering";
             this.textureFilter.UseVisualStyleBackColor = false;
@@ -629,11 +629,11 @@
             this.fpsCap.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.fpsCap.ImageIndex = 9;
             this.fpsCap.ImageList = this.checkIcons;
-            this.fpsCap.Location = new System.Drawing.Point(1, 124);
+            this.fpsCap.Location = new System.Drawing.Point(1, 127);
             this.fpsCap.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.fpsCap.Name = "fpsCap";
             this.fpsCap.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.fpsCap.Size = new System.Drawing.Size(320, 40);
+            this.fpsCap.Size = new System.Drawing.Size(320, 41);
             this.fpsCap.TabIndex = 3;
             this.fpsCap.Text = "      F9 - FPS Cap; / * - Adjust";
             this.fpsCap.UseVisualStyleBackColor = false;
@@ -646,11 +646,11 @@
             this.smoothLighting.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.smoothLighting.ImageIndex = 6;
             this.smoothLighting.ImageList = this.checkIcons;
-            this.smoothLighting.Location = new System.Drawing.Point(1, 165);
+            this.smoothLighting.Location = new System.Drawing.Point(1, 169);
             this.smoothLighting.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.smoothLighting.Name = "smoothLighting";
             this.smoothLighting.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.smoothLighting.Size = new System.Drawing.Size(320, 45);
+            this.smoothLighting.Size = new System.Drawing.Size(320, 41);
             this.smoothLighting.TabIndex = 4;
             this.smoothLighting.Text = "      F10 - Smooth Lighting";
             this.smoothLighting.UseVisualStyleBackColor = false;
@@ -699,11 +699,11 @@
             this.ballMouseTazMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ballMouseTazMode.ImageIndex = 19;
             this.ballMouseTazMode.ImageList = this.checkIcons;
-            this.ballMouseTazMode.Location = new System.Drawing.Point(1, 42);
+            this.ballMouseTazMode.Location = new System.Drawing.Point(1, 43);
             this.ballMouseTazMode.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.ballMouseTazMode.Name = "ballMouseTazMode";
             this.ballMouseTazMode.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.ballMouseTazMode.Size = new System.Drawing.Size(320, 40);
+            this.ballMouseTazMode.Size = new System.Drawing.Size(320, 41);
             this.ballMouseTazMode.TabIndex = 1;
             this.ballMouseTazMode.Text = "      F12 -Ball/Mouse/Taz(Ghost)";
             this.ballMouseTazMode.UseVisualStyleBackColor = false;
@@ -720,7 +720,7 @@
             this.disallowJump.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.disallowJump.Name = "disallowJump";
             this.disallowJump.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.disallowJump.Size = new System.Drawing.Size(320, 40);
+            this.disallowJump.Size = new System.Drawing.Size(320, 41);
             this.disallowJump.TabIndex = 0;
             this.disallowJump.Text = "      F11 - No Jumps Mode";
             this.disallowJump.UseVisualStyleBackColor = false;
@@ -733,11 +733,11 @@
             this.debugInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.debugInfo.ImageIndex = 20;
             this.debugInfo.ImageList = this.checkIcons;
-            this.debugInfo.Location = new System.Drawing.Point(1, 83);
+            this.debugInfo.Location = new System.Drawing.Point(1, 85);
             this.debugInfo.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.debugInfo.Name = "debugInfo";
             this.debugInfo.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.debugInfo.Size = new System.Drawing.Size(320, 40);
+            this.debugInfo.Size = new System.Drawing.Size(320, 41);
             this.debugInfo.TabIndex = 2;
             this.debugInfo.Text = "      Ins - Show Debug Info";
             this.debugInfo.UseVisualStyleBackColor = false;
@@ -750,11 +750,11 @@
             this.undestructibleWorld.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.undestructibleWorld.ImageIndex = 18;
             this.undestructibleWorld.ImageList = this.checkIcons;
-            this.undestructibleWorld.Location = new System.Drawing.Point(1, 124);
+            this.undestructibleWorld.Location = new System.Drawing.Point(1, 127);
             this.undestructibleWorld.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.undestructibleWorld.Name = "undestructibleWorld";
             this.undestructibleWorld.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.undestructibleWorld.Size = new System.Drawing.Size(320, 40);
+            this.undestructibleWorld.Size = new System.Drawing.Size(320, 41);
             this.undestructibleWorld.TabIndex = 2;
             this.undestructibleWorld.Text = "      Home - No Destructions";
             this.undestructibleWorld.UseVisualStyleBackColor = false;
@@ -1629,6 +1629,8 @@
             // trainerAutoSave
             // 
             this.trainerAutoSave.AutoSize = true;
+            this.trainerAutoSave.Checked = true;
+            this.trainerAutoSave.CheckState = System.Windows.Forms.CheckState.Checked;
             this.trainerAutoSave.Location = new System.Drawing.Point(1, 45);
             this.trainerAutoSave.Margin = new System.Windows.Forms.Padding(1);
             this.trainerAutoSave.Name = "trainerAutoSave";
@@ -2287,7 +2289,7 @@
             this.MinimumSize = new System.Drawing.Size(680, 580);
             this.Name = "form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Taz Wanted Trainer & Patcher 3.0-dev";
+            this.Text = "Taz: Wanted · Trainer & Patcher";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.form_FormClosed);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
