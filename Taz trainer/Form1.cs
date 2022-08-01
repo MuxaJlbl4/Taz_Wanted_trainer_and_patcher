@@ -495,34 +495,36 @@ namespace Taz_trainer
         {
             if (this.drawDistance.Checked == true)
             {
-                //enviroment
-                byte[] bytes = { 0xFF };
+                //environment
+                byte[] bytes = { 0xFF }; // mov word ptr [esi+1E6h], 0FFFFh
                 checkAndWrite((IntPtr)0x00474FC4, bytes, bytes.Length, new IntPtr());
-                byte[] bytes2 = { 0x74 };
+                byte[] bytes2 = { 0x74 }; // jz
                 checkAndWrite((IntPtr)0x00474FD0, bytes2, bytes2.Length, new IntPtr());
 
-                //bonuses and effects
-                byte[] bytes3 = { 0x00, 0x00, 0x80, 0x7F }; // Code
+                // CollectibleTwinkle
+                byte[] bytes3 = { 0x00, 0x00, 0x80, 0x7F }; // +Inf
                 checkAndWrite((IntPtr)0x005F66E8, bytes3, bytes3.Length, new IntPtr());
-                byte[] bytes4 = { 0xE8, 0x66, 0x5F, 0x00 }; // Code
+                byte[] bytes4 = { 0xE8, 0x66, 0x5F, 0x00 }; // fcomp +Inf
                 checkAndWrite((IntPtr)0x0047E00B, bytes4, bytes4.Length, new IntPtr());
-                byte[] bytes5 = { 0xD9, 0xE8, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 }; // Code
+                byte[] bytes5 = { 0xD9, 0xE8, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 }; // fld1; nops
                 checkAndWrite((IntPtr)0x0047E016, bytes5, bytes5.Length, new IntPtr());
 
                 message("Infinity Draw Distance: On");
             }
             else
             {
-                //enviroment
-                byte[] bytes = { 0x00 };
+                //environment
+                byte[] bytes = { 0x00 }; // mov word ptr [esi+1E6h], 0h
                 checkAndWrite((IntPtr)0x00474FC4, bytes, bytes.Length, new IntPtr());
-                byte[] bytes2 = { 0x75 };
+                byte[] bytes2 = { 0x75 }; // jnz
                 checkAndWrite((IntPtr)0x00474FD0, bytes2, bytes2.Length, new IntPtr());
 
-                //bonuses and effects
-                byte[] bytes4 = { 0xF4, 0x75, 0x5F, 0x00 }; // Code
+                // CollectibleTwinkle
+                //byte[] bytes3 = { 0x00, 0x00, 0x80, 0x7F }; // +Inf
+                //checkAndWrite((IntPtr)0x005F66E8, bytes3, bytes3.Length, new IntPtr());
+                byte[] bytes4 = { 0xF4, 0x75, 0x5F, 0x00 }; // fcomp [5000.0]
                 checkAndWrite((IntPtr)0x0047E00B, bytes4, bytes4.Length, new IntPtr());
-                byte[] bytes5 = { 0xD9, 0x46, 0x3C, 0xD8, 0x0D, 0xE4, 0x7E, 0x5F, 0x00, 0xD9, 0xFE }; // Code
+                byte[] bytes5 = { 0xD9, 0x46, 0x3C, 0xD8, 0x0D, 0xE4, 0x7E, 0x5F, 0x00, 0xD9, 0xFE }; // fld dword ptr [esi+3Ch]; fmul [0.00062831852]; fsin
                 checkAndWrite((IntPtr)0x0047E016, bytes5, bytes5.Length, new IntPtr());
 
                 message("Infinity Draw Distance: Off");
@@ -2670,7 +2672,7 @@ namespace Taz_trainer
             {
                 if (openPakFileDialog.ShowDialog() == DialogResult.OK && saveUnpackedFilesDialog.ShowDialog() == DialogResult.OK)
                 {
-                    this.statusField.Text = "Unpacking started";
+                    this.statusField.Text = "Unpacking started and can take much time. It's Ok if app looks like not responding";
                     this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
                     progressBar.Value = 0;
                     progressBar.Maximum = openPakFileDialog.FileNames.Length;
@@ -2723,13 +2725,23 @@ namespace Taz_trainer
                 // Choose Dir
                 if (folderResourceBrowserDialog.ShowDialog() == DialogResult.OK)
                 {
-                    string Output = Path.Combine(Application.StartupPath, "RepackedPaks");
-                    Output = Path.Combine(Output, Path.GetFileName(folderResourceBrowserDialog.SelectedPath) + ".pc");
+                    //string Output = Path.Combine(Application.StartupPath, "RepackedPaks");
+                    //Output = Path.Combine(Output, Path.GetFileName(folderResourceBrowserDialog.SelectedPath) + ".pc");
 
-                    PackPak(folderResourceBrowserDialog.SelectedPath, Output);
+                    saveRepackedFileDialog.FileName = Path.GetFileName(folderResourceBrowserDialog.SelectedPath) + ".pc";
 
-                    this.statusField.Text = "Repacking Finished. Created file: " + Output;
-                    this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
+                    if (saveRepackedFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string Output = saveRepackedFileDialog.FileName;
+
+                        this.statusField.Text = "Repacking started and can take much time. It's Ok if app looks like not responding";
+                        this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
+
+                        PackPak(folderResourceBrowserDialog.SelectedPath, Output);
+                        
+                        this.statusField.Text = "Repacking Finished. Created file: " + Output;
+                        this.statusField.ForeColor = System.Drawing.Color.DarkGreen; 
+                    }
                 }
             }
             catch (Exception ex)
