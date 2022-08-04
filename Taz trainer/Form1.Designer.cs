@@ -62,6 +62,7 @@
             this.disallowJump = new System.Windows.Forms.CheckBox();
             this.debugInfo = new System.Windows.Forms.CheckBox();
             this.undestructibleWorld = new System.Windows.Forms.CheckBox();
+            this.bulldozerMode = new System.Windows.Forms.CheckBox();
             this.tabs = new System.Windows.Forms.TabControl();
             this.patcherTab = new System.Windows.Forms.TabPage();
             this.tableLayoutPanelPatcher = new System.Windows.Forms.TableLayoutPanel();
@@ -678,6 +679,7 @@
             this.tableLayoutPanelTrainer4.Controls.Add(this.disallowJump, 0, 0);
             this.tableLayoutPanelTrainer4.Controls.Add(this.debugInfo, 0, 2);
             this.tableLayoutPanelTrainer4.Controls.Add(this.undestructibleWorld, 0, 3);
+            this.tableLayoutPanelTrainer4.Controls.Add(this.bulldozerMode, 0, 4);
             this.tableLayoutPanelTrainer4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelTrainer4.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tableLayoutPanelTrainer4.Location = new System.Drawing.Point(2, 27);
@@ -759,6 +761,23 @@
             this.undestructibleWorld.Text = "      Home - No Destructions";
             this.undestructibleWorld.UseVisualStyleBackColor = false;
             this.undestructibleWorld.CheckedChanged += new System.EventHandler(this.undestructibleWorld_CheckedChanged);
+            // 
+            // bulldozerMode
+            // 
+            this.bulldozerMode.Appearance = System.Windows.Forms.Appearance.Button;
+            this.bulldozerMode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bulldozerMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bulldozerMode.ImageIndex = 13;
+            this.bulldozerMode.ImageList = this.checkIcons;
+            this.bulldozerMode.Location = new System.Drawing.Point(1, 169);
+            this.bulldozerMode.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
+            this.bulldozerMode.Name = "bulldozerMode";
+            this.bulldozerMode.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.bulldozerMode.Size = new System.Drawing.Size(320, 41);
+            this.bulldozerMode.TabIndex = 2;
+            this.bulldozerMode.Text = "      End - Bulldozer Mode";
+            this.bulldozerMode.UseVisualStyleBackColor = false;
+            this.bulldozerMode.CheckedChanged += new System.EventHandler(this.bulldozerMode_CheckedChanged);
             // 
             // tabs
             // 
@@ -2504,6 +2523,7 @@
         private System.Windows.Forms.Button updateWrappers;
         private System.Windows.Forms.Button deleteSav;
         private System.Windows.Forms.SaveFileDialog saveRepackedFileDialog;
+        private System.Windows.Forms.CheckBox bulldozerMode;
     }
 }
 

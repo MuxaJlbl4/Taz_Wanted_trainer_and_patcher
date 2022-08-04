@@ -68,7 +68,7 @@ namespace Taz_trainer
             gkh.HookedKeys.Add(Keys.F12);
             gkh.HookedKeys.Add(Keys.Insert);
             gkh.HookedKeys.Add(Keys.Home);
-            //gkh.HookedKeys.Add(Keys.End);
+            gkh.HookedKeys.Add(Keys.End);
             gkh.HookedKeys.Add(Keys.OemMinus);
             gkh.HookedKeys.Add(Keys.Oemplus);
 
@@ -214,13 +214,11 @@ namespace Taz_trainer
                 this.undestructibleWorld.Checked = !this.undestructibleWorld.Checked;
                 sendKey(Keys.Home, "{Home}");
             }
-            /*
             if (e.KeyCode == Keys.End)
             {
-
+                this.bulldozerMode.Checked = !this.bulldozerMode.Checked;
                 sendKey(Keys.End, "{End}");
             }
-            */
             if (e.KeyCode == Keys.OemMinus)
             {
                 changeGameSpeed(0);
@@ -1119,17 +1117,39 @@ namespace Taz_trainer
         {
             if (this.undestructibleWorld.Checked == true)
             {
+                if (this.bulldozerMode.Checked == true)
+                    bulldozerMode.Checked = false;
                 byte[] bytes = { 0xEB, 0x0D };
                 checkAndWrite((IntPtr)0x0041B87B, bytes, bytes.Length, new IntPtr());
 
-                message("Solid World Mode: On");
+                message("No Destructions Mode: On");
             }
             else
             {
                 byte[] bytes = { 0x75, 0x16 };
                 checkAndWrite((IntPtr)0x0041B87B, bytes, bytes.Length, new IntPtr());
 
-                message("Solid World Mode: Off");
+                message("No Destructions Mode: Off");
+            }
+        }
+
+        private void bulldozerMode_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.bulldozerMode.Checked == true)
+            {
+                if (this.undestructibleWorld.Checked == true)
+                    undestructibleWorld.Checked = false;
+                byte[] bytes = { 0xB9, 0x01, 0x00, 0x00, 0x00, 0x90 }; // Alt Undestructible - 0xB9, 0x01, 0x00, 0x00, 0x00, 0x90
+                checkAndWrite((IntPtr)0x0041B93C, bytes, bytes.Length, new IntPtr()); // mov ecx,1; nop
+
+                message("Bulldozer Mode: On");
+            }
+            else
+            {
+                byte[] bytes = { 0x0F, 0x87, 0x48, 0xFF, 0xFF, 0xFF }; // Original
+                checkAndWrite((IntPtr)0x0041B93C, bytes, bytes.Length, new IntPtr()); // ja def_41B942 
+
+                message("Bulldozer Mode: Off");
             }
         }
 
