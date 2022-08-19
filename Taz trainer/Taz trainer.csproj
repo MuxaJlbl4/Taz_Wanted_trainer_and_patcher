@@ -113,11 +113,11 @@
   <ItemGroup>
     <None Include="Resources\Rus\resTex.pc" />
     <None Include="Resources\Rus\text.pc" />
-    <None Include="Resources\TAZ.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\moveselection.wav" />
     <Content Include="Resources\README.html" />
+    <None Include="Resources\TazTrainer.png" />
     <Content Include="TAZLOGO.ico" />
   </ItemGroup>
   <ItemGroup>

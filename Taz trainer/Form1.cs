@@ -545,14 +545,14 @@ namespace Taz_trainer
                 byte[] bytes2 = { 0xE9, 0x48, 0x44, 0x19, 0x00, 0x90, 0x90 };
                 checkAndWrite((IntPtr)0x00462245, bytes2, bytes2.Length, new IntPtr());
 
-                message("Super Jump Mode: On (Hold Jump)");
+                message("Moon Jump Mode: On (Hold Jump)");
             }
             else
             {
                 byte[] bytes2 = { 0xD9, 0x44, 0x24, 0x58, 0xD8, 0x63, 0x08 };
                 checkAndWrite((IntPtr)0x00462245, bytes2, bytes2.Length, new IntPtr());
 
-                message("Super Jump Mode: Off");
+                message("Moon Jump Mode: Off");
             }
         }
 
@@ -590,14 +590,14 @@ namespace Taz_trainer
                 byte[] bytes = { 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 };
                 checkAndWrite((IntPtr)0x00482FE2, bytes, bytes.Length, new IntPtr());
 
-                message("Always Burp Mode: On");
+                message("Burp Soda Mode: On (Press Rant)");
             }
             else
             {
                 byte[] bytes = { 0x0F, 0x85, 0x95, 0x00, 0x00, 0x00 };
                 checkAndWrite((IntPtr)0x00482FE2, bytes, bytes.Length, new IntPtr());
 
-                message("Always Burp Mode: Off");
+                message("Burp Soda Mode: Off");
             }
         }
 
@@ -928,7 +928,7 @@ namespace Taz_trainer
                 byte[] bytes = { 0x01 };
                 checkAndWrite((IntPtr)0x0071C4D4, bytes, bytes.Length, new IntPtr());
 
-                message("Fly Camera: On");
+                message("Photo Mode: On");
             }
             else
             {
@@ -941,7 +941,7 @@ namespace Taz_trainer
                 byte[] bytes3 = { 0x66 };
                 checkAndWrite((IntPtr)0x0064301C, bytes3, bytes3.Length, new IntPtr());
 
-                message("Fly Camera: Off");
+                message("Photo Mode: Off");
             }
 
         }
