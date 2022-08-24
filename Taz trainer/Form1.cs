@@ -506,7 +506,7 @@ namespace Taz_trainer
                 // CollectibleTwinkle
                 byte[] bytes3 = { 0x00, 0x00, 0x80, 0x7F }; // +Inf
                 checkAndWrite((IntPtr)0x005F66E8, bytes3, bytes3.Length, new IntPtr());
-                byte[] bytes4 = { 0xE8, 0x66, 0x5F, 0x00 }; // fcomp +Inf
+                byte[] bytes4 = { 0xE8, 0x66, 0x5F, 0x00 }; // fcomp [+Inf]
                 checkAndWrite((IntPtr)0x0047E00B, bytes4, bytes4.Length, new IntPtr());
                 byte[] bytes5 = { 0xD9, 0xE8, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 }; // fld1; nops
                 checkAndWrite((IntPtr)0x0047E016, bytes5, bytes5.Length, new IntPtr());
@@ -1168,7 +1168,7 @@ namespace Taz_trainer
                 byte[] bytes3 = { 0x05 };
                 checkAndWrite((IntPtr)0x005F66D2, bytes3, bytes3.Length, new IntPtr());
 
-                message("Smooth Lighting: On");
+                message("Smooth Actor Lighting: On");
             }
             else
             {
@@ -1176,7 +1176,7 @@ namespace Taz_trainer
                 byte[] bytes3 = { 0x04 };
                 checkAndWrite((IntPtr)0x005F66D2, bytes3, bytes3.Length, new IntPtr());
 
-                message("Smooth Lighting: Off");
+                message("Smooth Actor Lighting: Off");
             }
         }
 
