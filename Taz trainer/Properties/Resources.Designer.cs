@@ -75,11 +75,11 @@ namespace Taz_trainer.Properties {
         ///&lt;head&gt;
         ///&lt;meta charset=&apos;UTF-8&apos;&gt;&lt;meta name=&apos;viewport&apos; content=&apos;width=device-width initial-scale=1&apos;&gt;
         ///
-        ///&lt;link href=&apos;https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos; /&gt;&lt;style type=&apos;text/css&apos;&gt;html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:&quot;Lucida Console&quot;,Consolas,&quot;Courier&quot;,monospace; --title-ba [rest of string was truncated]&quot;;.
+        ///&lt;link href=&apos;https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos; /&gt;&lt;style type=&apos;text/css&apos;&gt;html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:&quot;Lucida Console&quot;,Consolas,&quot;Courier&quot;,monospace; --title-bar-hei [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string README {
+        public static string Repacking {
             get {
-                return ResourceManager.GetString("README", resourceCulture);
+                return ResourceManager.GetString("Repacking", resourceCulture);
             }
         }
         

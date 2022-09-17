@@ -130,8 +130,8 @@
             this.labelZ = new System.Windows.Forms.Label();
             this.labelY = new System.Windows.Forms.Label();
             this.tableLayoutPanelSettings2133 = new System.Windows.Forms.TableLayoutPanel();
-            this.savedCoordZ = new System.Windows.Forms.TextBox();
             this.savedCoordX = new System.Windows.Forms.TextBox();
+            this.savedCoordZ = new System.Windows.Forms.TextBox();
             this.savedCoordY = new System.Windows.Forms.TextBox();
             this.tableLayoutPanelSettings212 = new System.Windows.Forms.TableLayoutPanel();
             this.maxSpeed = new System.Windows.Forms.TextBox();
@@ -158,8 +158,8 @@
             this.tableLayoutPanelRepacker2 = new System.Windows.Forms.TableLayoutPanel();
             this.unpack = new System.Windows.Forms.Button();
             this.pack = new System.Windows.Forms.Button();
-            this.unpackingRichTextBox = new System.Windows.Forms.RichTextBox();
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.webBrowserRepacking = new System.Windows.Forms.WebBrowser();
             this.infoTab = new System.Windows.Forms.TabPage();
             this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.dbgMenuOff = new System.Windows.Forms.Timer(this.components);
@@ -237,8 +237,8 @@
             // 
             this.statusField.ForeColor = System.Drawing.SystemColors.ControlText;
             this.statusField.Name = "statusField";
-            this.statusField.Size = new System.Drawing.Size(52, 17);
-            this.statusField.Text = "v3.0-dev";
+            this.statusField.Size = new System.Drawing.Size(28, 17);
+            this.statusField.Text = "v3.0";
             // 
             // timer
             // 
@@ -309,11 +309,11 @@
             this.gameSpeed.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.gameSpeed.ImageKey = "station_clock.png";
             this.gameSpeed.ImageList = this.smallButtonIcons;
-            this.gameSpeed.Location = new System.Drawing.Point(1, 165);
+            this.gameSpeed.Location = new System.Drawing.Point(1, 169);
             this.gameSpeed.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.gameSpeed.Name = "gameSpeed";
             this.gameSpeed.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.gameSpeed.Size = new System.Drawing.Size(320, 45);
+            this.gameSpeed.Size = new System.Drawing.Size(320, 41);
             this.gameSpeed.TabIndex = 4;
             this.gameSpeed.Text = "      - = - Change Game Speed";
             this.gameSpeed.UseVisualStyleBackColor = false;
@@ -384,7 +384,7 @@
             this.invisibility.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.invisibility.Name = "invisibility";
             this.invisibility.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.invisibility.Size = new System.Drawing.Size(320, 40);
+            this.invisibility.Size = new System.Drawing.Size(320, 41);
             this.invisibility.TabIndex = 0;
             this.invisibility.Text = "      F1 - Invisibility Mode";
             this.invisibility.UseVisualStyleBackColor = false;
@@ -397,11 +397,11 @@
             this.freezeLevelTimer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.freezeLevelTimer.ImageKey = "clock.png";
             this.freezeLevelTimer.ImageList = this.smallButtonIcons;
-            this.freezeLevelTimer.Location = new System.Drawing.Point(1, 124);
+            this.freezeLevelTimer.Location = new System.Drawing.Point(1, 127);
             this.freezeLevelTimer.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.freezeLevelTimer.Name = "freezeLevelTimer";
             this.freezeLevelTimer.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.freezeLevelTimer.Size = new System.Drawing.Size(320, 40);
+            this.freezeLevelTimer.Size = new System.Drawing.Size(320, 41);
             this.freezeLevelTimer.TabIndex = 3;
             this.freezeLevelTimer.Text = "      F4 - Freeze Timers && Boxes";
             this.freezeLevelTimer.UseVisualStyleBackColor = false;
@@ -414,11 +414,11 @@
             this.superBelchCan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.superBelchCan.ImageKey = "greenbubble.png";
             this.superBelchCan.ImageList = this.smallButtonIcons;
-            this.superBelchCan.Location = new System.Drawing.Point(1, 42);
+            this.superBelchCan.Location = new System.Drawing.Point(1, 43);
             this.superBelchCan.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.superBelchCan.Name = "superBelchCan";
             this.superBelchCan.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.superBelchCan.Size = new System.Drawing.Size(320, 40);
+            this.superBelchCan.Size = new System.Drawing.Size(320, 41);
             this.superBelchCan.TabIndex = 1;
             this.superBelchCan.Text = "      F2 - Burp Soda Mode";
             this.superBelchCan.UseVisualStyleBackColor = false;
@@ -431,11 +431,11 @@
             this.superJump.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.superJump.ImageKey = "basketball.png";
             this.superJump.ImageList = this.smallButtonIcons;
-            this.superJump.Location = new System.Drawing.Point(1, 83);
+            this.superJump.Location = new System.Drawing.Point(1, 85);
             this.superJump.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.superJump.Name = "superJump";
             this.superJump.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.superJump.Size = new System.Drawing.Size(320, 40);
+            this.superJump.Size = new System.Drawing.Size(320, 41);
             this.superJump.TabIndex = 2;
             this.superJump.Text = "      F3 - Moon Jump Mode";
             this.superJump.UseVisualStyleBackColor = false;
@@ -489,7 +489,7 @@
             this.debugMenu.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.debugMenu.Name = "debugMenu";
             this.debugMenu.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.debugMenu.Size = new System.Drawing.Size(320, 40);
+            this.debugMenu.Size = new System.Drawing.Size(320, 41);
             this.debugMenu.TabIndex = 0;
             this.debugMenu.Text = "      F5 - Open Debug Menu";
             this.debugMenu.UseVisualStyleBackColor = false;
@@ -502,11 +502,11 @@
             this.loadPos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.loadPos.ImageKey = "flagexit.png";
             this.loadPos.ImageList = this.smallButtonIcons;
-            this.loadPos.Location = new System.Drawing.Point(1, 124);
+            this.loadPos.Location = new System.Drawing.Point(1, 127);
             this.loadPos.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.loadPos.Name = "loadPos";
             this.loadPos.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.loadPos.Size = new System.Drawing.Size(320, 40);
+            this.loadPos.Size = new System.Drawing.Size(320, 41);
             this.loadPos.TabIndex = 3;
             this.loadPos.Text = "      Num3 - Load Taz Position";
             this.loadPos.UseVisualStyleBackColor = false;
@@ -519,11 +519,11 @@
             this.flyMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.flyMode.ImageKey = "cloud.png";
             this.flyMode.ImageList = this.smallButtonIcons;
-            this.flyMode.Location = new System.Drawing.Point(1, 165);
+            this.flyMode.Location = new System.Drawing.Point(1, 169);
             this.flyMode.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.flyMode.Name = "flyMode";
             this.flyMode.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.flyMode.Size = new System.Drawing.Size(320, 45);
+            this.flyMode.Size = new System.Drawing.Size(320, 41);
             this.flyMode.TabIndex = 4;
             this.flyMode.Text = "      Num5 - Fly Mode";
             this.flyMode.UseVisualStyleBackColor = false;
@@ -536,11 +536,11 @@
             this.savePos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.savePos.ImageKey = "flag.png";
             this.savePos.ImageList = this.smallButtonIcons;
-            this.savePos.Location = new System.Drawing.Point(1, 83);
+            this.savePos.Location = new System.Drawing.Point(1, 85);
             this.savePos.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.savePos.Name = "savePos";
             this.savePos.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.savePos.Size = new System.Drawing.Size(320, 40);
+            this.savePos.Size = new System.Drawing.Size(320, 41);
             this.savePos.TabIndex = 2;
             this.savePos.Text = "      Num1 - Save Taz Position";
             this.savePos.UseVisualStyleBackColor = false;
@@ -553,11 +553,11 @@
             this.flyCamera.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.flyCamera.ImageKey = "whackbit.png";
             this.flyCamera.ImageList = this.smallButtonIcons;
-            this.flyCamera.Location = new System.Drawing.Point(1, 42);
+            this.flyCamera.Location = new System.Drawing.Point(1, 43);
             this.flyCamera.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.flyCamera.Name = "flyCamera";
             this.flyCamera.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.flyCamera.Size = new System.Drawing.Size(320, 40);
+            this.flyCamera.Size = new System.Drawing.Size(320, 41);
             this.flyCamera.TabIndex = 1;
             this.flyCamera.Text = "      Num0 - Photo Mode";
             this.flyCamera.UseVisualStyleBackColor = false;
@@ -611,7 +611,7 @@
             this.drawDistance.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.drawDistance.Name = "drawDistance";
             this.drawDistance.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.drawDistance.Size = new System.Drawing.Size(320, 40);
+            this.drawDistance.Size = new System.Drawing.Size(320, 41);
             this.drawDistance.TabIndex = 0;
             this.drawDistance.Text = "      F6 - Inf Draw Distance";
             this.drawDistance.UseVisualStyleBackColor = false;
@@ -624,11 +624,11 @@
             this.textureAlpha.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.textureAlpha.ImageKey = "ectoplasm.png";
             this.textureAlpha.ImageList = this.smallButtonIcons;
-            this.textureAlpha.Location = new System.Drawing.Point(1, 83);
+            this.textureAlpha.Location = new System.Drawing.Point(1, 85);
             this.textureAlpha.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.textureAlpha.Name = "textureAlpha";
             this.textureAlpha.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.textureAlpha.Size = new System.Drawing.Size(320, 40);
+            this.textureAlpha.Size = new System.Drawing.Size(320, 41);
             this.textureAlpha.TabIndex = 2;
             this.textureAlpha.Text = "      F8 - Show Alpha Textures";
             this.textureAlpha.UseVisualStyleBackColor = false;
@@ -641,11 +641,11 @@
             this.textureFilter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.textureFilter.ImageKey = "rubixcube.png";
             this.textureFilter.ImageList = this.smallButtonIcons;
-            this.textureFilter.Location = new System.Drawing.Point(1, 42);
+            this.textureFilter.Location = new System.Drawing.Point(1, 43);
             this.textureFilter.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.textureFilter.Name = "textureFilter";
             this.textureFilter.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.textureFilter.Size = new System.Drawing.Size(320, 40);
+            this.textureFilter.Size = new System.Drawing.Size(320, 41);
             this.textureFilter.TabIndex = 1;
             this.textureFilter.Text = "      F7 - Texture Filtering";
             this.textureFilter.UseVisualStyleBackColor = false;
@@ -658,11 +658,11 @@
             this.fpsCap.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.fpsCap.ImageKey = "dial.png";
             this.fpsCap.ImageList = this.smallButtonIcons;
-            this.fpsCap.Location = new System.Drawing.Point(1, 124);
+            this.fpsCap.Location = new System.Drawing.Point(1, 127);
             this.fpsCap.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.fpsCap.Name = "fpsCap";
             this.fpsCap.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.fpsCap.Size = new System.Drawing.Size(320, 40);
+            this.fpsCap.Size = new System.Drawing.Size(320, 41);
             this.fpsCap.TabIndex = 3;
             this.fpsCap.Text = "      F9 - FPS Cap; / * - Adjust";
             this.fpsCap.UseVisualStyleBackColor = false;
@@ -675,11 +675,11 @@
             this.smoothLighting.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.smoothLighting.ImageKey = "diamond.png";
             this.smoothLighting.ImageList = this.smallButtonIcons;
-            this.smoothLighting.Location = new System.Drawing.Point(1, 165);
+            this.smoothLighting.Location = new System.Drawing.Point(1, 169);
             this.smoothLighting.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.smoothLighting.Name = "smoothLighting";
             this.smoothLighting.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.smoothLighting.Size = new System.Drawing.Size(320, 45);
+            this.smoothLighting.Size = new System.Drawing.Size(320, 41);
             this.smoothLighting.TabIndex = 4;
             this.smoothLighting.Text = "      F10 - Smooth Actor Lighting";
             this.smoothLighting.UseVisualStyleBackColor = false;
@@ -729,11 +729,11 @@
             this.ballMouseTazMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.ballMouseTazMode.ImageKey = "target6.png";
             this.ballMouseTazMode.ImageList = this.smallButtonIcons;
-            this.ballMouseTazMode.Location = new System.Drawing.Point(1, 42);
+            this.ballMouseTazMode.Location = new System.Drawing.Point(1, 43);
             this.ballMouseTazMode.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.ballMouseTazMode.Name = "ballMouseTazMode";
             this.ballMouseTazMode.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.ballMouseTazMode.Size = new System.Drawing.Size(320, 40);
+            this.ballMouseTazMode.Size = new System.Drawing.Size(320, 41);
             this.ballMouseTazMode.TabIndex = 1;
             this.ballMouseTazMode.Text = "      F12 -Ball/Mouse/Taz(Ghost)";
             this.ballMouseTazMode.UseVisualStyleBackColor = false;
@@ -750,7 +750,7 @@
             this.disallowJump.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.disallowJump.Name = "disallowJump";
             this.disallowJump.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.disallowJump.Size = new System.Drawing.Size(320, 40);
+            this.disallowJump.Size = new System.Drawing.Size(320, 41);
             this.disallowJump.TabIndex = 0;
             this.disallowJump.Text = "      F11 - No Jumps Mode";
             this.disallowJump.UseVisualStyleBackColor = false;
@@ -763,11 +763,11 @@
             this.debugInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.debugInfo.ImageKey = "subunkradar.png";
             this.debugInfo.ImageList = this.smallButtonIcons;
-            this.debugInfo.Location = new System.Drawing.Point(1, 83);
+            this.debugInfo.Location = new System.Drawing.Point(1, 85);
             this.debugInfo.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.debugInfo.Name = "debugInfo";
             this.debugInfo.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.debugInfo.Size = new System.Drawing.Size(320, 40);
+            this.debugInfo.Size = new System.Drawing.Size(320, 41);
             this.debugInfo.TabIndex = 2;
             this.debugInfo.Text = "      Ins - Show Debug Info";
             this.debugInfo.UseVisualStyleBackColor = false;
@@ -780,11 +780,11 @@
             this.undestructibleWorld.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.undestructibleWorld.ImageKey = "goldnugget.png";
             this.undestructibleWorld.ImageList = this.smallButtonIcons;
-            this.undestructibleWorld.Location = new System.Drawing.Point(1, 124);
+            this.undestructibleWorld.Location = new System.Drawing.Point(1, 127);
             this.undestructibleWorld.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.undestructibleWorld.Name = "undestructibleWorld";
             this.undestructibleWorld.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.undestructibleWorld.Size = new System.Drawing.Size(320, 40);
+            this.undestructibleWorld.Size = new System.Drawing.Size(320, 41);
             this.undestructibleWorld.TabIndex = 2;
             this.undestructibleWorld.Text = "      Home - No Destructions";
             this.undestructibleWorld.UseVisualStyleBackColor = false;
@@ -797,11 +797,11 @@
             this.bulldozerMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bulldozerMode.ImageKey = "geniebottle.png";
             this.bulldozerMode.ImageList = this.smallButtonIcons;
-            this.bulldozerMode.Location = new System.Drawing.Point(1, 165);
+            this.bulldozerMode.Location = new System.Drawing.Point(1, 169);
             this.bulldozerMode.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.bulldozerMode.Name = "bulldozerMode";
             this.bulldozerMode.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.bulldozerMode.Size = new System.Drawing.Size(320, 45);
+            this.bulldozerMode.Size = new System.Drawing.Size(320, 41);
             this.bulldozerMode.TabIndex = 2;
             this.bulldozerMode.Text = "      End - Bulldozer Mode";
             this.bulldozerMode.UseVisualStyleBackColor = false;
@@ -1555,7 +1555,7 @@
             this.tableLayoutPanelSettings11.RowCount = 1;
             this.tableLayoutPanelSettings11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelSettings11.Size = new System.Drawing.Size(638, 45);
-            this.tableLayoutPanelSettings11.TabIndex = 5;
+            this.tableLayoutPanelSettings11.TabIndex = 0;
             // 
             // browseGame
             // 
@@ -1567,7 +1567,7 @@
             this.browseGame.Margin = new System.Windows.Forms.Padding(1);
             this.browseGame.Name = "browseGame";
             this.browseGame.Size = new System.Drawing.Size(157, 43);
-            this.browseGame.TabIndex = 0;
+            this.browseGame.TabIndex = 1;
             this.browseGame.Text = "Browse";
             this.browseGame.UseVisualStyleBackColor = true;
             this.browseGame.Click += new System.EventHandler(this.browseGame_Click);
@@ -1612,7 +1612,7 @@
             this.trainerOptions.Name = "trainerOptions";
             this.trainerOptions.Padding = new System.Windows.Forms.Padding(2);
             this.trainerOptions.Size = new System.Drawing.Size(481, 342);
-            this.trainerOptions.TabIndex = 0;
+            this.trainerOptions.TabIndex = 1;
             this.trainerOptions.TabStop = false;
             this.trainerOptions.Text = "Trainer/Patcher options";
             // 
@@ -1644,7 +1644,7 @@
             this.tableLayoutPanelSettings21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28625F));
             this.tableLayoutPanelSettings21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.57832F));
             this.tableLayoutPanelSettings21.Size = new System.Drawing.Size(477, 311);
-            this.tableLayoutPanelSettings21.TabIndex = 0;
+            this.tableLayoutPanelSettings21.TabIndex = 2;
             // 
             // trainerSound
             // 
@@ -1666,7 +1666,7 @@
             this.trainerAutoSave.Margin = new System.Windows.Forms.Padding(1);
             this.trainerAutoSave.Name = "trainerAutoSave";
             this.trainerAutoSave.Size = new System.Drawing.Size(241, 30);
-            this.trainerAutoSave.TabIndex = 0;
+            this.trainerAutoSave.TabIndex = 1;
             this.trainerAutoSave.Text = "Auto save config on exit";
             this.trainerAutoSave.UseVisualStyleBackColor = true;
             this.trainerAutoSave.CheckedChanged += new System.EventHandler(this.trainerAutoSave_CheckedChanged);
@@ -1680,7 +1680,7 @@
             this.trainerText.Margin = new System.Windows.Forms.Padding(1);
             this.trainerText.Name = "trainerText";
             this.trainerText.Size = new System.Drawing.Size(235, 30);
-            this.trainerText.TabIndex = 1;
+            this.trainerText.TabIndex = 2;
             this.trainerText.Text = "In-game text messages";
             this.trainerText.UseVisualStyleBackColor = true;
             // 
@@ -1700,7 +1700,7 @@
             this.tableLayoutPanelSettings213.RowCount = 1;
             this.tableLayoutPanelSettings213.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelSettings213.Size = new System.Drawing.Size(260, 91);
-            this.tableLayoutPanelSettings213.TabIndex = 4;
+            this.tableLayoutPanelSettings213.TabIndex = 5;
             // 
             // tableLayoutPanelSettings2131
             // 
@@ -1725,7 +1725,7 @@
             this.labelSavedCoords.Margin = new System.Windows.Forms.Padding(0);
             this.labelSavedCoords.Name = "labelSavedCoords";
             this.labelSavedCoords.Size = new System.Drawing.Size(106, 26);
-            this.labelSavedCoords.TabIndex = 1;
+            this.labelSavedCoords.TabIndex = 0;
             this.labelSavedCoords.Text = "Saved pos:";
             this.labelSavedCoords.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -1755,7 +1755,7 @@
             this.labelX.Margin = new System.Windows.Forms.Padding(0);
             this.labelX.Name = "labelX";
             this.labelX.Size = new System.Drawing.Size(23, 26);
-            this.labelX.TabIndex = 1;
+            this.labelX.TabIndex = 0;
             this.labelX.Text = "x";
             this.labelX.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -1766,7 +1766,7 @@
             this.labelZ.Margin = new System.Windows.Forms.Padding(0);
             this.labelZ.Name = "labelZ";
             this.labelZ.Size = new System.Drawing.Size(23, 26);
-            this.labelZ.TabIndex = 5;
+            this.labelZ.TabIndex = 2;
             this.labelZ.Text = "z";
             this.labelZ.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -1777,7 +1777,7 @@
             this.labelY.Margin = new System.Windows.Forms.Padding(0);
             this.labelY.Name = "labelY";
             this.labelY.Size = new System.Drawing.Size(22, 26);
-            this.labelY.TabIndex = 3;
+            this.labelY.TabIndex = 1;
             this.labelY.Text = "y";
             this.labelY.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
@@ -1786,9 +1786,9 @@
             this.tableLayoutPanelSettings2133.ColumnCount = 1;
             this.tableLayoutPanelSettings2133.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelSettings2133.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelSettings2133.Controls.Add(this.savedCoordZ, 0, 2);
             this.tableLayoutPanelSettings2133.Controls.Add(this.savedCoordX, 0, 0);
-            this.tableLayoutPanelSettings2133.Controls.Add(this.savedCoordY, 0, 1);
+            this.tableLayoutPanelSettings2133.Controls.Add(this.savedCoordZ, 0, 1);
+            this.tableLayoutPanelSettings2133.Controls.Add(this.savedCoordY, 0, 2);
             this.tableLayoutPanelSettings2133.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelSettings2133.Location = new System.Drawing.Point(140, 0);
             this.tableLayoutPanelSettings2133.Margin = new System.Windows.Forms.Padding(0);
@@ -1800,18 +1800,6 @@
             this.tableLayoutPanelSettings2133.Size = new System.Drawing.Size(120, 91);
             this.tableLayoutPanelSettings2133.TabIndex = 7;
             // 
-            // savedCoordZ
-            // 
-            this.savedCoordZ.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.savedCoordZ.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.savedCoordZ.Location = new System.Drawing.Point(0, 60);
-            this.savedCoordZ.Margin = new System.Windows.Forms.Padding(0);
-            this.savedCoordZ.Name = "savedCoordZ";
-            this.savedCoordZ.Size = new System.Drawing.Size(120, 30);
-            this.savedCoordZ.TabIndex = 6;
-            this.savedCoordZ.Text = "0,0";
-            this.savedCoordZ.TextChanged += new System.EventHandler(this.savedCoordZ_TextChanged);
-            // 
             // savedCoordX
             // 
             this.savedCoordX.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1820,19 +1808,31 @@
             this.savedCoordX.Margin = new System.Windows.Forms.Padding(0);
             this.savedCoordX.Name = "savedCoordX";
             this.savedCoordX.Size = new System.Drawing.Size(120, 30);
-            this.savedCoordX.TabIndex = 2;
+            this.savedCoordX.TabIndex = 0;
             this.savedCoordX.Text = "0,0";
             this.savedCoordX.TextChanged += new System.EventHandler(this.savedCoordX_TextChanged);
+            // 
+            // savedCoordZ
+            // 
+            this.savedCoordZ.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.savedCoordZ.Font = new System.Drawing.Font("Comic Sans MS", 12F);
+            this.savedCoordZ.Location = new System.Drawing.Point(0, 30);
+            this.savedCoordZ.Margin = new System.Windows.Forms.Padding(0);
+            this.savedCoordZ.Name = "savedCoordZ";
+            this.savedCoordZ.Size = new System.Drawing.Size(120, 30);
+            this.savedCoordZ.TabIndex = 1;
+            this.savedCoordZ.Text = "0,0";
+            this.savedCoordZ.TextChanged += new System.EventHandler(this.savedCoordZ_TextChanged);
             // 
             // savedCoordY
             // 
             this.savedCoordY.Dock = System.Windows.Forms.DockStyle.Fill;
             this.savedCoordY.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.savedCoordY.Location = new System.Drawing.Point(0, 30);
+            this.savedCoordY.Location = new System.Drawing.Point(0, 60);
             this.savedCoordY.Margin = new System.Windows.Forms.Padding(0);
             this.savedCoordY.Name = "savedCoordY";
             this.savedCoordY.Size = new System.Drawing.Size(120, 30);
-            this.savedCoordY.TabIndex = 4;
+            this.savedCoordY.TabIndex = 2;
             this.savedCoordY.Text = "0,0";
             this.savedCoordY.TextChanged += new System.EventHandler(this.savedCoordY_TextChanged);
             // 
@@ -1851,7 +1851,7 @@
             this.tableLayoutPanelSettings212.RowCount = 1;
             this.tableLayoutPanelSettings212.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelSettings212.Size = new System.Drawing.Size(260, 44);
-            this.tableLayoutPanelSettings212.TabIndex = 5;
+            this.tableLayoutPanelSettings212.TabIndex = 4;
             // 
             // maxSpeed
             // 
@@ -1860,7 +1860,7 @@
             this.maxSpeed.Margin = new System.Windows.Forms.Padding(0);
             this.maxSpeed.Name = "maxSpeed";
             this.maxSpeed.Size = new System.Drawing.Size(120, 34);
-            this.maxSpeed.TabIndex = 4;
+            this.maxSpeed.TabIndex = 1;
             this.maxSpeed.Text = "2,0";
             this.maxSpeed.TextChanged += new System.EventHandler(this.maxSpeed_TextChanged);
             // 
@@ -1871,7 +1871,7 @@
             this.labelMaxSpeed.Margin = new System.Windows.Forms.Padding(0);
             this.labelMaxSpeed.Name = "labelMaxSpeed";
             this.labelMaxSpeed.Size = new System.Drawing.Size(112, 26);
-            this.labelMaxSpeed.TabIndex = 3;
+            this.labelMaxSpeed.TabIndex = 0;
             this.labelMaxSpeed.Text = "Max speed:";
             // 
             // tableLayoutPanelSettings211
@@ -1889,7 +1889,7 @@
             this.tableLayoutPanelSettings211.RowCount = 1;
             this.tableLayoutPanelSettings211.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelSettings211.Size = new System.Drawing.Size(260, 44);
-            this.tableLayoutPanelSettings211.TabIndex = 5;
+            this.tableLayoutPanelSettings211.TabIndex = 3;
             // 
             // labelFpsCap
             // 
@@ -1898,7 +1898,7 @@
             this.labelFpsCap.Margin = new System.Windows.Forms.Padding(0);
             this.labelFpsCap.Name = "labelFpsCap";
             this.labelFpsCap.Size = new System.Drawing.Size(95, 26);
-            this.labelFpsCap.TabIndex = 1;
+            this.labelFpsCap.TabIndex = 0;
             this.labelFpsCap.Text = "FPS limit:";
             // 
             // numericFpsCap
@@ -1918,7 +1918,7 @@
             0});
             this.numericFpsCap.Name = "numericFpsCap";
             this.numericFpsCap.Size = new System.Drawing.Size(120, 34);
-            this.numericFpsCap.TabIndex = 2;
+            this.numericFpsCap.TabIndex = 0;
             this.numericFpsCap.Value = new decimal(new int[] {
             20,
             0,
@@ -1937,7 +1937,7 @@
             this.savePatcherSettings.Margin = new System.Windows.Forms.Padding(1);
             this.savePatcherSettings.Name = "savePatcherSettings";
             this.savePatcherSettings.Size = new System.Drawing.Size(215, 42);
-            this.savePatcherSettings.TabIndex = 8;
+            this.savePatcherSettings.TabIndex = 6;
             this.savePatcherSettings.Text = "       Save app config";
             this.savePatcherSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.savePatcherSettings.UseVisualStyleBackColor = true;
@@ -1954,7 +1954,7 @@
             this.resetSettings.Margin = new System.Windows.Forms.Padding(1);
             this.resetSettings.Name = "resetSettings";
             this.resetSettings.Size = new System.Drawing.Size(215, 42);
-            this.resetSettings.TabIndex = 8;
+            this.resetSettings.TabIndex = 7;
             this.resetSettings.Text = "       Reset app config";
             this.resetSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.resetSettings.UseVisualStyleBackColor = true;
@@ -1972,7 +1972,7 @@
             this.kill.Margin = new System.Windows.Forms.Padding(1);
             this.kill.Name = "kill";
             this.kill.Size = new System.Drawing.Size(215, 42);
-            this.kill.TabIndex = 9;
+            this.kill.TabIndex = 10;
             this.kill.Text = "       Kill Taz.exe (Alt+F4)";
             this.kill.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.kill.UseVisualStyleBackColor = true;
@@ -1990,7 +1990,7 @@
             this.updateWrappers.Margin = new System.Windows.Forms.Padding(1);
             this.updateWrappers.Name = "updateWrappers";
             this.updateWrappers.Size = new System.Drawing.Size(215, 42);
-            this.updateWrappers.TabIndex = 9;
+            this.updateWrappers.TabIndex = 8;
             this.updateWrappers.Text = "       Update graphic API\'s";
             this.updateWrappers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.updateWrappers.UseVisualStyleBackColor = true;
@@ -2025,7 +2025,7 @@
             this.nativeOptions.Name = "nativeOptions";
             this.nativeOptions.Padding = new System.Windows.Forms.Padding(2);
             this.nativeOptions.Size = new System.Drawing.Size(159, 342);
-            this.nativeOptions.TabIndex = 1;
+            this.nativeOptions.TabIndex = 3;
             this.nativeOptions.TabStop = false;
             this.nativeOptions.Text = "Shortcuts";
             // 
@@ -2146,7 +2146,7 @@
             this.githubLink.Margin = new System.Windows.Forms.Padding(1);
             this.githubLink.Name = "githubLink";
             this.githubLink.Size = new System.Drawing.Size(153, 45);
-            this.githubLink.TabIndex = 0;
+            this.githubLink.TabIndex = 6;
             this.githubLink.Text = "      GitHub";
             this.githubLink.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.githubLink.UseVisualStyleBackColor = false;
@@ -2184,8 +2184,8 @@
             this.tableLayoutPanelRepacker1.ColumnCount = 1;
             this.tableLayoutPanelRepacker1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelRepacker1.Controls.Add(this.tableLayoutPanelRepacker2, 0, 1);
-            this.tableLayoutPanelRepacker1.Controls.Add(this.unpackingRichTextBox, 0, 0);
             this.tableLayoutPanelRepacker1.Controls.Add(this.progressBar, 0, 2);
+            this.tableLayoutPanelRepacker1.Controls.Add(this.webBrowserRepacking, 0, 0);
             this.tableLayoutPanelRepacker1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelRepacker1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanelRepacker1.Margin = new System.Windows.Forms.Padding(0);
@@ -2246,16 +2246,6 @@
             this.pack.UseVisualStyleBackColor = true;
             this.pack.Click += new System.EventHandler(this.pack_Click);
             // 
-            // unpackingRichTextBox
-            // 
-            this.unpackingRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.unpackingRichTextBox.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.unpackingRichTextBox.Location = new System.Drawing.Point(3, 3);
-            this.unpackingRichTextBox.Name = "unpackingRichTextBox";
-            this.unpackingRichTextBox.Size = new System.Drawing.Size(644, 377);
-            this.unpackingRichTextBox.TabIndex = 2;
-            this.unpackingRichTextBox.Text = resources.GetString("unpackingRichTextBox.Text");
-            // 
             // progressBar
             // 
             this.progressBar.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -2263,6 +2253,15 @@
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(644, 19);
             this.progressBar.TabIndex = 3;
+            // 
+            // webBrowserRepacking
+            // 
+            this.webBrowserRepacking.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowserRepacking.Location = new System.Drawing.Point(3, 3);
+            this.webBrowserRepacking.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowserRepacking.Name = "webBrowserRepacking";
+            this.webBrowserRepacking.Size = new System.Drawing.Size(644, 377);
+            this.webBrowserRepacking.TabIndex = 8;
             // 
             // infoTab
             // 
@@ -2285,6 +2284,7 @@
             this.webBrowser.Name = "webBrowser";
             this.webBrowser.Size = new System.Drawing.Size(656, 474);
             this.webBrowser.TabIndex = 0;
+            this.webBrowser.Url = new System.Uri("https://gist.github.com/mattn/3002698", System.UriKind.Absolute);
             // 
             // dbgMenuOff
             // 
@@ -2485,7 +2485,6 @@
         private System.Windows.Forms.Button pack;
         private System.Windows.Forms.OpenFileDialog openPakFileDialog;
         private System.Windows.Forms.SaveFileDialog saveUnpackedFilesDialog;
-        private System.Windows.Forms.RichTextBox unpackingRichTextBox;
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelRepacker1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelRepacker2;
@@ -2532,6 +2531,7 @@
         private System.Windows.Forms.CheckBox bulldozerMode;
         private System.Windows.Forms.ImageList medButtonIcons;
         private System.Windows.Forms.ImageList smallButtonIcons;
+        private System.Windows.Forms.WebBrowser webBrowserRepacking;
     }
 }
 
