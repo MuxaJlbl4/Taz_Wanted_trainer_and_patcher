@@ -1,56 +1,59 @@
 <h1 align="center">
-<img align="center" src="./ReadMe/Screenshots/Png/Logo.png" width="50%"><br>
+<img align="center" src="./Screenshots/Png/Logo.png"><br>
 </h1>
 
 
 
 <p align="center">
+<font size="100">
 <a href="https://github.com/MuxaJlbl4/Taz_Wanted_trainer_and_patcher/releases/download/v3.0/Taz.Wanted.Trainer.Patcher.exe">Download</a>
 </p>
-Custom launcher, trainer and resource repacker for Taz: Wanted game
 
+
+
+Custom launcher, trainer and resource repacker for **Taz: Wanted** game
 
 ## 🖼 Screenshots
 
 ### 🍱 App Interface
 
-![UI](./ReadMe/Screenshots/Png/UI.png)
+![UI](./Screenshots/Png/UI.png)
 
 ### 👀 Enhanced Draw Distance
 
-![Zoo](./ReadMe/Screenshots/WebP/Zoo.webp)
+![Zoo](./Screenshots/WebP/Zoo.webp)
 
-![Construct](./ReadMe/Screenshots/WebP/Construct.webp)
+![Construct](./Screenshots/WebP/Construct.webp)
 
-![Canyon](./ReadMe/Screenshots/WebP/Canyon.webp)
+![Canyon](./Screenshots/WebP/Canyon.webp)
 
 ### ↔ Custom Resolution
 
-![Wide](./ReadMe/Screenshots/Png/Wide.png)
+![Wide](./Screenshots/WebP/Wide.webp)
 
 ### 💡 Smooth Lighting
 
-![Deptstr](./ReadMe/Screenshots/WebP/Deptstr.webp)
+![Deptstr](./Screenshots/WebP/Deptstr.webp)
 
-![Alligator](./ReadMe/Screenshots/WebP/Alligator.webp)
+![Alligator](./Screenshots/WebP/Alligator.webp)
 
 ### ☢ Texture Filtering
 
-![Map](./ReadMe/Screenshots/WebP/Map.webp)
+![Map](./Screenshots/WebP/Map.webp)
 
-![Museum](./ReadMe/Screenshots/WebP/Museum.webp)
+![Museum](./Screenshots/WebP/Museum.webp)
 
-![Intro](./ReadMe/Screenshots/WebP/Intro.webp)
+![Intro](./Screenshots/WebP/Intro.webp)
 
 ### 📦 Resource Repacking
 
-![Mod](./ReadMe/Screenshots/Png/Mod.png)
+![Mod](./Screenshots/WebP/Mod.webp)
 
 ### 👻 Visible Alpha Textures
 
-![Volcano](./ReadMe/Screenshots/WebP/Volcano.webp)
+![Volcano](./Screenshots/WebP/Volcano.webp)
 
-![City](./ReadMe/Screenshots/WebP/City.webp)
+![City](./Screenshots/WebP/City.webp)
 
 ## ✏ Requirements
 
@@ -116,7 +119,7 @@ While game is running, use keys to activate/deactivate hacks:
 - **F8 - Show Alpha Textures** - Toggle alpha textures visibility (allows to see invisible walls)(use Show Invisible hack in debug menu as addition)
 - **F9 - FPS Cap** - Toggle FPS limit (allows to use wall clipping glitches)
 	- **/ \* - Adjust** - Decrease/Increase max FPS value; See [Settings](#trainer/patcher-options) for manual input
-- **F10 - Smooth Lighting** - Toggle smooth lighting feature (unstable)
+- **F10 - Smooth Actor Lighting** - Toggle smooth lighting feature (unstable)
 
 ### 📎 Miscellaneous
 - **F11 - No Jumps Mode** - Toggle jump ability

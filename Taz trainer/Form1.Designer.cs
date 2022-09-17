@@ -2284,7 +2284,7 @@
             this.webBrowser.Name = "webBrowser";
             this.webBrowser.Size = new System.Drawing.Size(656, 474);
             this.webBrowser.TabIndex = 0;
-            this.webBrowser.Url = new System.Uri("https://gist.github.com/mattn/3002698", System.UriKind.Absolute);
+            this.webBrowser.Url = new System.Uri("https://github.com/MuxaJlbl4/Taz_Wanted_trainer_and_patcher", System.UriKind.Absolute);
             // 
             // dbgMenuOff
             // 
