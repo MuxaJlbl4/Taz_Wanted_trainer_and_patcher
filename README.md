@@ -2,13 +2,9 @@
 <img align="center" src="./Screenshots/Png/Logo.png"><br>
 </h1>
 
-
-
 <p align="center">
 <a href="https://github.com/MuxaJlbl4/Taz_Wanted_trainer_and_patcher/releases/download/v3.0/Taz.Wanted.Trainer.Patcher.exe">Download</a>
 </p>
-
-
 
 Custom launcher, trainer and resource repacker for **Taz: Wanted** game
 
@@ -58,7 +54,7 @@ Custom launcher, trainer and resource repacker for **Taz: Wanted** game
 
 - **Taz: Wanted PC Game** - Europe/US installed full version
 - **[Microsoft .NET Framework 4.8](https://go.microsoft.com/fwlink/?linkid=2088631)** - Already preinstalled on [Windows 1903 and newer](https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/versions-and-dependencies#net-framework-48)
-- **Internet access (Optional)** - for downloading custom graphics wrappers ([d3d8to9](https://github.com/crosire/d3d8to9), [dgVoodoo2](https://github.com/dege-diosg/dgVoodoo2) and [DXVK](https://github.com/doitsujin/dxvk)) and [ReadMe](https://muxajlbl4.github.io/Taz_Wanted_trainer_and_patcher)
+- **Internet access (Optional)** - for downloading custom graphics wrappers ([d3d8to9](https://github.com/crosire/d3d8to9), [dgVoodoo2](https://github.com/dege-diosg/dgVoodoo2) and [DXVK](https://github.com/doitsujin/dxvk)) and [ReadMe](https://muxajlbl4.github.io/Taz_Wanted_trainer_and_patcher) view
 
 
 ## 🔩 Patches
@@ -286,7 +282,7 @@ Level
 
 
 ## 📝 Notes
-- 👍 Thanks for these cool repos: [d3d8to9](https://github.com/crosire/d3d8to9), [dgVoodoo2](https://github.com/dege-diosg/dgVoodoo2), [DXVK](https://github.com/doitsujin/dxvk), [ExtractTarGz](https://gist.github.com/ForeverZer0/a2cd292bd2f3b5e114956c00bb6e872b), [FormSerialisor](https://github.com/Skkay/FormSerialisor), [GlobalKeyboardHook](https://github.com/jparnell8839/globalKeyboardHook)
+- 👍 Thanks for these cool repos: [d3d8to9](https://github.com/crosire/d3d8to9), [dgVoodoo2](https://github.com/dege-diosg/dgVoodoo2), [DXVK](https://github.com/doitsujin/dxvk), [ExtractTarGz](https://gist.github.com/ForeverZer0/a2cd292bd2f3b5e114956c00bb6e872b), [FormSerialisor](https://github.com/Skkay/FormSerialisor), [GlobalKeyboardHook](https://github.com/jparnell8839/globalKeyboardHook), [markdown-only](https://github.com/aleen42/markdown-only)
 - ⚠️ Be careful with storing personal files in game folder - it can be modified/deleted by patches
 - 🏆 This app is not allowed in competitive [speedrun.com](https://www.speedrun.com/taz_wanted) runs
 - 😎 Fell free to report any [Issues](https://github.com/MuxaJlbl4/Taz_Wanted_trainer_and_patcher/issues) and [Pull Requests](https://github.com/MuxaJlbl4/Taz_Wanted_trainer_and_patcher/pulls)
@@ -295,6 +291,4 @@ Level
 
 ## ❤ Special Thanks to:
 [Milk](https://www.youtube.com/channel/UC8ZrxS78M9TqB_2cMlIWJMA)[Games](https://github.com/MilkGames), [Cyclone](https://www.youtube.com/c/CycloneFN)[FN](https://pastebin.com/u/CycloneFN) and to the whole [Taz: Wanted Speedrunning Discord](https://discord.gg/asYMj2EDv9) Community
-
-
 
