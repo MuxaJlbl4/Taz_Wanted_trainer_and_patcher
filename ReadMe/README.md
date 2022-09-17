@@ -1,5 +1,5 @@
 <h1 align="center">
-<img align="center" src="./ReadMe/Screenshots/Png/Logo.png" width="50%"><br>
+<img align="center" src="./Screenshots/Png/Logo.png" width="50%"><br>
 </h1>
 
 
@@ -14,43 +14,43 @@ Custom launcher, trainer and resource repacker for Taz: Wanted game
 
 ### 🍱 App Interface
 
-![UI](./ReadMe/Screenshots/Png/UI.png)
+![UI](./Screenshots/Png/UI.png)
 
 ### 👀 Enhanced Draw Distance
 
-![Zoo](./ReadMe/Screenshots/WebP/Zoo.webp)
+![Zoo](./Screenshots/Gif/Zoo.gif)
 
-![Construct](./ReadMe/Screenshots/WebP/Construct.webp)
+![Construct](./Screenshots/Gif/Construct.gif)
 
-![Canyon](./ReadMe/Screenshots/WebP/Canyon.webp)
+![Canyon](./Screenshots/Gif/Canyon.gif)
 
 ### ↔ Custom Resolution
 
-![Wide](./ReadMe/Screenshots/Png/Wide.png)
+![Wide](./Screenshots/Png/Wide.png)
 
 ### 💡 Smooth Lighting
 
-![Deptstr](./ReadMe/Screenshots/WebP/Deptstr.webp)
+![Deptstr](./Screenshots/Gif/Deptstr.gif)
 
-![Alligator](./ReadMe/Screenshots/WebP/Alligator.webp)
+![Alligator](./Screenshots/Gif/Alligator.gif)
 
 ### ☢ Texture Filtering
 
-![Map](./ReadMe/Screenshots/WebP/Map.webp)
+![Map](./Screenshots/Gif/Map.gif)
 
-![Museum](./ReadMe/Screenshots/WebP/Museum.webp)
+![Museum](./Screenshots/Gif/Museum.gif)
 
-![Intro](./ReadMe/Screenshots/WebP/Intro.webp)
+![Intro](./Screenshots/Gif/Intro.gif)
 
 ### 📦 Resource Repacking
 
-![Mod](./ReadMe/Screenshots/Png/Mod.png)
+![Mod](./Screenshots/Png/Mod.png)
 
 ### 👻 Visible Alpha Textures
 
-![Volcano](./ReadMe/Screenshots/WebP/Volcano.webp)
+![Volcano](./Screenshots/Gif/Volcano.gif)
 
-![City](./ReadMe/Screenshots/WebP/City.webp)
+![City](./Screenshots/Gif/City.gif)
 
 ## ✏ Requirements
 
