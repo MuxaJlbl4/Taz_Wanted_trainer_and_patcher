@@ -5,7 +5,6 @@
 
 
 <p align="center">
-<font size="100">
 <a href="https://github.com/MuxaJlbl4/Taz_Wanted_trainer_and_patcher/releases/download/v3.0/Taz.Wanted.Trainer.Patcher.exe">Download</a>
 </p>
 
