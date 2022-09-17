@@ -1,4 +1,4 @@
-color-mode: "light"
+color-mode: "dark"
 
 kramdown:
   syntax_highlighter: rouge
