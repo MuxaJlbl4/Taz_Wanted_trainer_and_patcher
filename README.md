@@ -26,7 +26,7 @@ Custom launcher, trainer and resource repacker for **Taz: Wanted** game
 
 ![Wide](./Screenshots/WebP/Wide.webp)
 
-### 💡 Smooth Lighting
+### 💡 Smooth Actor Lighting
 
 ![Deptstr](./Screenshots/WebP/Deptstr.webp)
 
@@ -53,8 +53,9 @@ Custom launcher, trainer and resource repacker for **Taz: Wanted** game
 ## ✏ Requirements
 
 - **Taz: Wanted PC Game** - Europe/US installed full version
-- **[Microsoft .NET Framework 4.8](https://go.microsoft.com/fwlink/?linkid=2088631)** - Already preinstalled on [Windows 1903 and newer](https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/versions-and-dependencies#net-framework-48)
-- **Internet access (Optional)** - for downloading custom graphics wrappers ([d3d8to9](https://github.com/crosire/d3d8to9), [dgVoodoo2](https://github.com/dege-diosg/dgVoodoo2) and [DXVK](https://github.com/doitsujin/dxvk)) and [ReadMe](https://muxajlbl4.github.io/Taz_Wanted_trainer_and_patcher) view
+- **[Microsoft .NET Framework 4.8](https://go.microsoft.com/fwlink/?linkid=2088631) or newer** - Already preinstalled on [Windows 10 (version 1903) and newer](https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/versions-and-dependencies#net-framework-48)
+- **Internet Access (Optional)** - for downloading custom graphics wrappers ([d3d8to9](https://github.com/crosire/d3d8to9), [dgVoodoo2](https://github.com/dege-diosg/dgVoodoo2) and [DXVK](https://github.com/doitsujin/dxvk)) and [ReadMe](https://muxajlbl4.github.io/Taz_Wanted_trainer_and_patcher) view
+- **[DirectX® End-User Runtime](https://www.microsoft.com/en-us/download/details.aspx?id=35) (Optional)** - for some custom graphics wrappers
 
 
 ## 🔩 Patches
@@ -97,12 +98,12 @@ While game is running, use keys to activate/deactivate hacks:
 - **F2 - Burp Soda Mode** - Timeless super burp soda can effect
 - **F3 - Moon Jump Mode** - Hold jump to move up
 - **F4 - Freeze Timers & Boxes** - Freeze all level timers and Whack-in-the-boxes
-- **-/= - Change Game Speed** - Decrease/Increase in-game time speed; See [Settings](#trainer/patcher-options) for custom speed
+- **-/= - Change Game Speed** - Decrease/Increase in-game time speed; See [Settings](#-trainerpatcher-options) for custom speed
 
 ### 🐱‍💻 Hacks
 - **F5 - Open Debug Menu** - Open developer debug menu with cool features; Choose `File -> Exit` to close
 - **Num0 - Photo Mode** - Free look camera without text prompts; Press Bite button to teleport Taz in camera position
-- **Num1/3 - Save/Load Taz Position** - Store/Restore current Taz position; See [Settings](#trainer/patcher-options) for manual input
+- **Num1/3 - Save/Load Taz Position** - Store/Restore current Taz position; See [Settings](#-trainerpatcher-options) for manual input
 - **Num5 - Fly Mode** - Toggle fly mode:
 	- **Num4/6** - Move in X coordinates
 	- **Num2/8** - Move in Z coordinates
@@ -113,8 +114,8 @@ While game is running, use keys to activate/deactivate hacks:
 - **F7 - Texture Filtering** - Toggle Nearest-Neighbour/Bilinear texture filtering
 - **F8 - Show Alpha Textures** - Toggle alpha textures visibility (allows to see invisible walls)(use Show Invisible hack in debug menu as addition)
 - **F9 - FPS Cap** - Toggle FPS limit (allows to use wall clipping glitches)
-	- **/ \* - Adjust** - Decrease/Increase max FPS value; See [Settings](#trainer/patcher-options) for manual input
-- **F10 - Smooth Actor Lighting** - Toggle smooth lighting feature (unstable)
+	- **/ \* - Adjust** - Decrease/Increase max FPS value; See [Settings](#-trainerpatcher-options) for manual input
+- **F10 - Smooth Actor Lighting** - Toggle smooth lighting feature for actors (unstable)
 
 ### 📎 Miscellaneous
 - **F11 - No Jumps Mode** - Toggle jump ability
@@ -276,7 +277,7 @@ Level
 - Custom graphics API behavior may vary on different videoadapters and OSes: In case of possible problems: try launch game/patcher with integrated/discrete graphics in windowed/fullscreen mode or try debug (dbg) DLL version
 - dgVoodoo watermark can be disabled by `...\Taz Wanted\Wrappers\dgVoodoo2\dgVoodooCpl.exe` (DirectX Tab -> Miscellaneous -> dgVoodoo Watermark: Uncheck -> Apply)
 - Levels loaded from debug menu crashes on scoreboard - make sure you have created user on 3rd save slot
-- Once used Smooth Lighting tweak crashes game in some scenes - use with caution
+- Once used Smooth Actor Lighting tweak crashes game in some scenes - use with caution
 - Russian game version crashes in Cheats Debug Menu - use another language to avoid it
 - Unpacking doesn't support GameCube (.gc) files - use [QuickBMS](http://aluigi.altervista.org/quickbms.htm) with [blitz_games.bms](http://aluigi.altervista.org/bms/blitz_games.bms) script
 
