@@ -21,7 +21,7 @@ using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
 using Taz_trainer.Properties;
 using TarExample;
-
+using System.Globalization;
 
 namespace Taz_trainer
 {
@@ -883,11 +883,11 @@ namespace Taz_trainer
             adress += 0x4;
             bytes = checkAndRead((IntPtr)adress, bytes, size, mem);
             value = BitConverter.ToSingle(bytes, 0);
-            Zcoord = value;
+            Ycoord = value;
             adress += 0x4;
             bytes = checkAndRead((IntPtr)adress, bytes, size, mem);
             value = BitConverter.ToSingle(bytes, 0);
-            Ycoord = value;
+            Zcoord = value;
 
             savedCoordX.Text = Xcoord.ToString();
             savedCoordY.Text = Ycoord.ToString();
@@ -909,10 +909,10 @@ namespace Taz_trainer
             bytes = BitConverter.GetBytes(Xcoord);
             checkAndWrite((IntPtr)adress, bytes, size, mem);
             adress += 0x4;
-            bytes = BitConverter.GetBytes(Zcoord);
+            bytes = BitConverter.GetBytes(Ycoord);
             checkAndWrite((IntPtr)adress, bytes, size, mem);
             adress += 0x4;
-            bytes = BitConverter.GetBytes(Ycoord);
+            bytes = BitConverter.GetBytes(Zcoord);
             checkAndWrite((IntPtr)adress, bytes, size, mem);
 
             message("Taz Position Loaded");
@@ -2760,7 +2760,7 @@ namespace Taz_trainer
         {
             try
             {
-                maxSpd = Convert.ToSingle(maxSpeed.Text.Replace(".", ","));
+                maxSpd = Single.Parse(maxSpeed.Text.Replace(",", "."), NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture);
                 this.statusField.Text = "Max Speed changed to " + maxSpd.ToString() + ". Update with -/= keys in game.";
                 this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
             }
@@ -2776,7 +2776,7 @@ namespace Taz_trainer
         {
             try
             {
-                Xcoord = Convert.ToSingle(savedCoordX.Text.Replace(".", ","));
+                Xcoord = Single.Parse(savedCoordX.Text.Replace(",", "."), NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture);
                 this.statusField.Text = "Saved X coord changed to " + Xcoord.ToString();
                 this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
             }
@@ -2791,7 +2791,7 @@ namespace Taz_trainer
         {
             try
             {
-                Ycoord = Convert.ToSingle(savedCoordY.Text.Replace(".", ","));
+                Ycoord = Single.Parse(savedCoordY.Text.Replace(",", "."), NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture);
                 this.statusField.Text = "Saved Y coord changed to " + Ycoord.ToString();
                 this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
             }
@@ -2806,7 +2806,7 @@ namespace Taz_trainer
         {
             try
             {
-                Zcoord = Convert.ToSingle(savedCoordZ.Text.Replace(".", ","));
+                Zcoord = Single.Parse(savedCoordZ.Text.Replace(",", "."), NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture);
                 this.statusField.Text = "Saved Z coord changed to " + Zcoord.ToString();
                 this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
             }

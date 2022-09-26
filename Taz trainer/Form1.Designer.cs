@@ -1265,8 +1265,6 @@
             // 
             this.xInputPatch.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.xInputPatch.AutoSize = true;
-            this.xInputPatch.Checked = true;
-            this.xInputPatch.CheckState = System.Windows.Forms.CheckState.Checked;
             this.xInputPatch.Location = new System.Drawing.Point(3, 205);
             this.xInputPatch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xInputPatch.Name = "xInputPatch";
@@ -1787,8 +1785,8 @@
             this.tableLayoutPanelSettings2133.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelSettings2133.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelSettings2133.Controls.Add(this.savedCoordX, 0, 0);
-            this.tableLayoutPanelSettings2133.Controls.Add(this.savedCoordZ, 0, 1);
-            this.tableLayoutPanelSettings2133.Controls.Add(this.savedCoordY, 0, 2);
+            this.tableLayoutPanelSettings2133.Controls.Add(this.savedCoordZ, 0, 2);
+            this.tableLayoutPanelSettings2133.Controls.Add(this.savedCoordY, 0, 1);
             this.tableLayoutPanelSettings2133.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelSettings2133.Location = new System.Drawing.Point(140, 0);
             this.tableLayoutPanelSettings2133.Margin = new System.Windows.Forms.Padding(0);
@@ -1816,11 +1814,11 @@
             // 
             this.savedCoordZ.Dock = System.Windows.Forms.DockStyle.Fill;
             this.savedCoordZ.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.savedCoordZ.Location = new System.Drawing.Point(0, 30);
+            this.savedCoordZ.Location = new System.Drawing.Point(0, 60);
             this.savedCoordZ.Margin = new System.Windows.Forms.Padding(0);
             this.savedCoordZ.Name = "savedCoordZ";
             this.savedCoordZ.Size = new System.Drawing.Size(120, 30);
-            this.savedCoordZ.TabIndex = 1;
+            this.savedCoordZ.TabIndex = 2;
             this.savedCoordZ.Text = "0,0";
             this.savedCoordZ.TextChanged += new System.EventHandler(this.savedCoordZ_TextChanged);
             // 
@@ -1828,11 +1826,11 @@
             // 
             this.savedCoordY.Dock = System.Windows.Forms.DockStyle.Fill;
             this.savedCoordY.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.savedCoordY.Location = new System.Drawing.Point(0, 60);
+            this.savedCoordY.Location = new System.Drawing.Point(0, 30);
             this.savedCoordY.Margin = new System.Windows.Forms.Padding(0);
             this.savedCoordY.Name = "savedCoordY";
             this.savedCoordY.Size = new System.Drawing.Size(120, 30);
-            this.savedCoordY.TabIndex = 2;
+            this.savedCoordY.TabIndex = 1;
             this.savedCoordY.Text = "0,0";
             this.savedCoordY.TextChanged += new System.EventHandler(this.savedCoordY_TextChanged);
             // 
