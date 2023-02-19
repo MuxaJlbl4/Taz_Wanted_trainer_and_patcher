@@ -1595,44 +1595,70 @@ namespace Taz_trainer
                     }
                 }
 
-                //resolution
+                //resolution and windowed
                 if (this.changeResolution.Checked == true)
                 {
                     byte[] width = BitConverter.GetBytes(UInt32.Parse(this.width.Text));
                     byte[] height = BitConverter.GetBytes(UInt32.Parse(this.height.Text));
 
+                    // taz.dat
+                    using (var file = new FileStream(TazFolderPath + "\\taz.dat", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        //width
+                        file.Position = 0x24;
+                        file.WriteByte(width[0]);
+                        file.WriteByte(width[1]);
+                        file.WriteByte(width[2]);
+                        file.WriteByte(width[3]);
+                        //height
+                        file.Position = 0x28;
+                        file.WriteByte(height[0]);
+                        file.WriteByte(height[1]);
+                        file.WriteByte(height[2]);
+                        file.WriteByte(height[3]);
+                        //32 bits on color
+                        file.Position = 0x30;
+                        file.WriteByte(0x20);
+                        //fullscreen
+                        //file.Position = 0x34;
+                        //file.WriteByte(0x00);
+                        //lighting
+                        //file.Position = 0x38;
+                        //file.WriteByte(0x01);
+                        //outlines
+                        //file.Position = 0x3C;
+                        //file.WriteByte(0x01);
+                        //no voodoo
+                        //file.Position = 0x40;
+                        //file.WriteByte(0x00);
+                        file.Close();
+                    }
+
+                    // Taz.exe
+                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        //resolution in Taz.exe
+                        file.Position = 0x8F134;
+                        file.WriteByte(width[0]);
+                        file.WriteByte(width[1]);
+                        file.WriteByte(width[2]);
+                        file.WriteByte(width[3]);
+                        file.Position = 0x8F13E;
+                        file.WriteByte(height[0]);
+                        file.WriteByte(height[1]);
+                        file.WriteByte(height[2]);
+                        file.WriteByte(height[3]);
+                        file.Close();
+                    }
+                    // taz.dat
                     if (this.windowed.Checked == false)
                     {
                         using (var file = new FileStream(TazFolderPath + "\\taz.dat", FileMode.Open, FileAccess.ReadWrite))
                         {
-                            //width
-                            file.Position = 0x24;
-                            file.WriteByte(width[0]);
-                            file.WriteByte(width[1]);
-                            file.WriteByte(width[2]);
-                            file.WriteByte(width[3]);
-                            //height
-                            file.Position = 0x28;
-                            file.WriteByte(height[0]);
-                            file.WriteByte(height[1]);
-                            file.WriteByte(height[2]);
-                            file.WriteByte(height[3]);
-                            //32 bits on color
-                            file.Position = 0x30;
-                            file.WriteByte(0x20);
                             //fullscreen
                             file.Position = 0x34;
                             file.WriteByte(0x00);
-                            //lighting
-                            file.Position = 0x38;
-                            file.WriteByte(0x01);
-                            //outlines
-                            file.Position = 0x3C;
-                            file.WriteByte(0x01);
-                            //no voodoo
-                            //file.Position = 0x40;
-                            //file.WriteByte(0x00);
-                            //file.Close();
+                            file.Close();
                         }
                     }
                     else
@@ -1644,26 +1670,11 @@ namespace Taz_trainer
                             file.WriteByte(0x01);
                             file.Close();
                         }
-                        using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
-                        {
-                            //resolution in Taz.exe
-                            file.Position = 0x8F134;
-                            file.WriteByte(width[0]);
-                            file.WriteByte(width[1]);
-                            file.WriteByte(width[2]);
-                            file.WriteByte(width[3]);
-                            file.Position = 0x8F13E;
-                            file.WriteByte(height[0]);
-                            file.WriteByte(height[1]);
-                            file.WriteByte(height[2]);
-                            file.WriteByte(height[3]);
-                            file.Close();
-                        }
                     }
                 }
-                else
+                else // changeResolution.Checked == false
                 {
-                    //restore resolution
+                    //restore resolution in taz.dat
                     using (var file = new FileStream(TazFolderPath + "\\taz.dat", FileMode.Open, FileAccess.ReadWrite))
                     {
                         //width
@@ -1685,11 +1696,11 @@ namespace Taz_trainer
                         file.Position = 0x34;
                         file.WriteByte(0x00);
                         //lighting
-                        file.Position = 0x38;
-                        file.WriteByte(0x01);
+                        //file.Position = 0x38;
+                        //file.WriteByte(0x01);
                         //outlines
-                        file.Position = 0x3C;
-                        file.WriteByte(0x01);
+                        //file.Position = 0x3C;
+                        //file.WriteByte(0x01);
                         //no voodoo
                         //file.Position = 0x40;
                         //file.WriteByte(0x00);
@@ -1713,15 +1724,6 @@ namespace Taz_trainer
                         file.WriteByte(0x00);
                         file.Close();
                     }
-                    // restore windowed mode
-                    using (var file = new FileStream(TazFolderPath + "\\taz.dat", FileMode.Open, FileAccess.ReadWrite))
-                    {
-                        //windowed
-                        file.Position = 0x34;
-                        file.WriteByte(0x00);
-                        file.Close();
-                    }
-
                 }
 
                 //aspect ratio
