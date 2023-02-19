@@ -3015,6 +3015,66 @@ namespace Taz_trainer
                 return "???";
             }
         }
+
+        private void apiComboBox_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0) return;
+            var cbo = sender as ComboBox;
+            Color foreColor = e.ForeColor;
+
+            if (e.State.HasFlag(DrawItemState.Selected) && !(e.State.HasFlag(DrawItemState.ComboBoxEdit)))
+            {
+                e.DrawBackground();
+                e.DrawFocusRectangle(); // <= could be removed for a cleaner rendering
+            }
+            else
+            {
+                using (var brush = new SolidBrush(cbo.BackColor))
+                {
+                    var rect = e.Bounds;
+                    rect.Inflate(1, 1);
+                    e.Graphics.FillRectangle(brush, rect);
+                }
+                foreColor = cbo.ForeColor;
+            }
+            TextRenderer.DrawText(e.Graphics, cbo.GetItemText(cbo.Items[e.Index]), e.Font,
+                new Point(e.Bounds.Height + 2, e.Bounds.Y), foreColor);
+
+            //e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+            e.Graphics.DrawImage(apiComboIcons.Images[e.Index],
+                                 new Rectangle(e.Bounds.Location,
+                                 new Size(e.Bounds.Height, e.Bounds.Height)));
+        }
+
+        private void langComboBox_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0) return;
+            var cbo = sender as ComboBox;
+            Color foreColor = e.ForeColor;
+
+            if (e.State.HasFlag(DrawItemState.Selected) && !(e.State.HasFlag(DrawItemState.ComboBoxEdit)))
+            {
+                e.DrawBackground();
+                e.DrawFocusRectangle(); // <= could be removed for a cleaner rendering
+            }
+            else
+            {
+                using (var brush = new SolidBrush(cbo.BackColor))
+                {
+                    var rect = e.Bounds;
+                    rect.Inflate(1, 1);
+                    e.Graphics.FillRectangle(brush, rect);
+                }
+                foreColor = cbo.ForeColor;
+            }
+            TextRenderer.DrawText(e.Graphics, cbo.GetItemText(cbo.Items[e.Index]), e.Font,
+                new Point(e.Bounds.Height + 16, e.Bounds.Y), foreColor);
+
+            //e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+            e.Graphics.DrawImage(langComboIcons.Images[e.Index],
+                                 new Rectangle(e.Bounds.Location,
+                                 new Size(e.Bounds.Height + 14, e.Bounds.Height)));
+        }
     }
 }
 

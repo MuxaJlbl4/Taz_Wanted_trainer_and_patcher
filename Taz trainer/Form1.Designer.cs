@@ -92,11 +92,11 @@
             this.filtering = new System.Windows.Forms.CheckBox();
             this.loadOptions = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanelPatcher11 = new System.Windows.Forms.TableLayoutPanel();
-            this.warningBanner = new System.Windows.Forms.CheckBox();
-            this.xInputPatch = new System.Windows.Forms.CheckBox();
-            this.disableVideos = new System.Windows.Forms.CheckBox();
-            this.disableDrawDistance = new System.Windows.Forms.CheckBox();
             this.noCD = new System.Windows.Forms.CheckBox();
+            this.disableDrawDistance = new System.Windows.Forms.CheckBox();
+            this.warningBanner = new System.Windows.Forms.CheckBox();
+            this.disableVideos = new System.Windows.Forms.CheckBox();
+            this.xInputPatch = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanelPatcher111 = new System.Windows.Forms.TableLayoutPanel();
             this.langComboBox = new System.Windows.Forms.ComboBox();
             this.language = new System.Windows.Forms.Label();
@@ -168,6 +168,8 @@
             this.saveUnpackedFilesDialog = new System.Windows.Forms.SaveFileDialog();
             this.folderResourceBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.saveRepackedFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.apiComboIcons = new System.Windows.Forms.ImageList(this.components);
+            this.langComboIcons = new System.Windows.Forms.ImageList(this.components);
             this.statusStrip.SuspendLayout();
             this.tableLayoutPanelTrainer.SuspendLayout();
             this.Cheats.SuspendLayout();
@@ -1078,10 +1080,9 @@
             // 
             // tableLayoutPanelPatcher121
             // 
-            this.tableLayoutPanelPatcher121.ColumnCount = 3;
-            this.tableLayoutPanelPatcher121.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 52F));
-            this.tableLayoutPanelPatcher121.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 205F));
+            this.tableLayoutPanelPatcher121.ColumnCount = 2;
             this.tableLayoutPanelPatcher121.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanelPatcher121.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelPatcher121.Controls.Add(this.apiComboBox, 1, 0);
             this.tableLayoutPanelPatcher121.Controls.Add(this.videoApi, 0, 0);
             this.tableLayoutPanelPatcher121.Location = new System.Drawing.Point(0, 0);
@@ -1095,17 +1096,19 @@
             // apiComboBox
             // 
             this.apiComboBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.apiComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.apiComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.apiComboBox.Items.AddRange(new object[] {
             "D3d8 · vanilla",
             "D3d9 · d3d8to9",
             "D3d11 · dgVoodoo2",
             "Vulkan · dxvk"});
-            this.apiComboBox.Location = new System.Drawing.Point(53, 1);
+            this.apiComboBox.Location = new System.Drawing.Point(52, 1);
             this.apiComboBox.Margin = new System.Windows.Forms.Padding(1);
             this.apiComboBox.Name = "apiComboBox";
-            this.apiComboBox.Size = new System.Drawing.Size(203, 34);
+            this.apiComboBox.Size = new System.Drawing.Size(203, 35);
             this.apiComboBox.TabIndex = 1;
+            this.apiComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.apiComboBox_DrawItem);
             // 
             // videoApi
             // 
@@ -1224,12 +1227,12 @@
             // 
             this.tableLayoutPanelPatcher11.ColumnCount = 1;
             this.tableLayoutPanelPatcher11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelPatcher11.Controls.Add(this.warningBanner, 0, 3);
-            this.tableLayoutPanelPatcher11.Controls.Add(this.xInputPatch, 0, 5);
-            this.tableLayoutPanelPatcher11.Controls.Add(this.disableVideos, 0, 4);
-            this.tableLayoutPanelPatcher11.Controls.Add(this.disableDrawDistance, 0, 2);
-            this.tableLayoutPanelPatcher11.Controls.Add(this.noCD, 0, 1);
-            this.tableLayoutPanelPatcher11.Controls.Add(this.tableLayoutPanelPatcher111, 0, 0);
+            this.tableLayoutPanelPatcher11.Controls.Add(this.noCD, 0, 0);
+            this.tableLayoutPanelPatcher11.Controls.Add(this.disableDrawDistance, 0, 1);
+            this.tableLayoutPanelPatcher11.Controls.Add(this.warningBanner, 0, 2);
+            this.tableLayoutPanelPatcher11.Controls.Add(this.disableVideos, 0, 3);
+            this.tableLayoutPanelPatcher11.Controls.Add(this.xInputPatch, 0, 6);
+            this.tableLayoutPanelPatcher11.Controls.Add(this.tableLayoutPanelPatcher111, 0, 4);
             this.tableLayoutPanelPatcher11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelPatcher11.Location = new System.Drawing.Point(2, 27);
             this.tableLayoutPanelPatcher11.Margin = new System.Windows.Forms.Padding(0);
@@ -1247,67 +1250,13 @@
             this.tableLayoutPanelPatcher11.Size = new System.Drawing.Size(221, 337);
             this.tableLayoutPanelPatcher11.TabIndex = 0;
             // 
-            // warningBanner
-            // 
-            this.warningBanner.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.warningBanner.AutoSize = true;
-            this.warningBanner.Checked = true;
-            this.warningBanner.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.warningBanner.Location = new System.Drawing.Point(3, 125);
-            this.warningBanner.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.warningBanner.Name = "warningBanner";
-            this.warningBanner.Size = new System.Drawing.Size(201, 30);
-            this.warningBanner.TabIndex = 3;
-            this.warningBanner.Text = "No Warning Banner";
-            this.warningBanner.UseVisualStyleBackColor = false;
-            // 
-            // xInputPatch
-            // 
-            this.xInputPatch.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.xInputPatch.AutoSize = true;
-            this.xInputPatch.Location = new System.Drawing.Point(3, 205);
-            this.xInputPatch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.xInputPatch.Name = "xInputPatch";
-            this.xInputPatch.Size = new System.Drawing.Size(211, 30);
-            this.xInputPatch.TabIndex = 5;
-            this.xInputPatch.Text = "XInput Pause Remap";
-            this.xInputPatch.UseVisualStyleBackColor = false;
-            // 
-            // disableVideos
-            // 
-            this.disableVideos.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.disableVideos.AutoSize = true;
-            this.disableVideos.Checked = true;
-            this.disableVideos.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.disableVideos.Location = new System.Drawing.Point(3, 165);
-            this.disableVideos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.disableVideos.Name = "disableVideos";
-            this.disableVideos.Size = new System.Drawing.Size(202, 30);
-            this.disableVideos.TabIndex = 4;
-            this.disableVideos.Text = "Disable Logo Videos";
-            this.disableVideos.UseVisualStyleBackColor = false;
-            // 
-            // disableDrawDistance
-            // 
-            this.disableDrawDistance.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.disableDrawDistance.AutoSize = true;
-            this.disableDrawDistance.Checked = true;
-            this.disableDrawDistance.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.disableDrawDistance.Location = new System.Drawing.Point(3, 85);
-            this.disableDrawDistance.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.disableDrawDistance.Name = "disableDrawDistance";
-            this.disableDrawDistance.Size = new System.Drawing.Size(156, 30);
-            this.disableDrawDistance.TabIndex = 2;
-            this.disableDrawDistance.Text = "No Draw Limit";
-            this.disableDrawDistance.UseVisualStyleBackColor = false;
-            // 
             // noCD
             // 
             this.noCD.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.noCD.AutoSize = true;
             this.noCD.Checked = true;
             this.noCD.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.noCD.Location = new System.Drawing.Point(3, 45);
+            this.noCD.Location = new System.Drawing.Point(3, 5);
             this.noCD.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.noCD.Name = "noCD";
             this.noCD.Size = new System.Drawing.Size(135, 30);
@@ -1315,17 +1264,68 @@
             this.noCD.Text = "NoCD Patch";
             this.noCD.UseVisualStyleBackColor = false;
             // 
+            // disableDrawDistance
+            // 
+            this.disableDrawDistance.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.disableDrawDistance.AutoSize = true;
+            this.disableDrawDistance.Checked = true;
+            this.disableDrawDistance.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.disableDrawDistance.Location = new System.Drawing.Point(3, 45);
+            this.disableDrawDistance.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.disableDrawDistance.Name = "disableDrawDistance";
+            this.disableDrawDistance.Size = new System.Drawing.Size(156, 30);
+            this.disableDrawDistance.TabIndex = 2;
+            this.disableDrawDistance.Text = "No Draw Limit";
+            this.disableDrawDistance.UseVisualStyleBackColor = false;
+            // 
+            // warningBanner
+            // 
+            this.warningBanner.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.warningBanner.AutoSize = true;
+            this.warningBanner.Checked = true;
+            this.warningBanner.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.warningBanner.Location = new System.Drawing.Point(3, 85);
+            this.warningBanner.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.warningBanner.Name = "warningBanner";
+            this.warningBanner.Size = new System.Drawing.Size(201, 30);
+            this.warningBanner.TabIndex = 3;
+            this.warningBanner.Text = "No Warning Banner";
+            this.warningBanner.UseVisualStyleBackColor = false;
+            // 
+            // disableVideos
+            // 
+            this.disableVideos.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.disableVideos.AutoSize = true;
+            this.disableVideos.Checked = true;
+            this.disableVideos.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.disableVideos.Location = new System.Drawing.Point(3, 125);
+            this.disableVideos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.disableVideos.Name = "disableVideos";
+            this.disableVideos.Size = new System.Drawing.Size(202, 30);
+            this.disableVideos.TabIndex = 4;
+            this.disableVideos.Text = "Disable Logo Videos";
+            this.disableVideos.UseVisualStyleBackColor = false;
+            // 
+            // xInputPatch
+            // 
+            this.xInputPatch.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.xInputPatch.AutoSize = true;
+            this.xInputPatch.Location = new System.Drawing.Point(3, 245);
+            this.xInputPatch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.xInputPatch.Name = "xInputPatch";
+            this.xInputPatch.Size = new System.Drawing.Size(211, 30);
+            this.xInputPatch.TabIndex = 5;
+            this.xInputPatch.Text = "XInput Pause Remap";
+            this.xInputPatch.UseVisualStyleBackColor = false;
+            // 
             // tableLayoutPanelPatcher111
             // 
-            this.tableLayoutPanelPatcher111.ColumnCount = 3;
-            this.tableLayoutPanelPatcher111.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
-            this.tableLayoutPanelPatcher111.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 130F));
+            this.tableLayoutPanelPatcher111.ColumnCount = 2;
+            this.tableLayoutPanelPatcher111.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanelPatcher111.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelPatcher111.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelPatcher111.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelPatcher111.Controls.Add(this.langComboBox, 1, 0);
             this.tableLayoutPanelPatcher111.Controls.Add(this.language, 0, 0);
-            this.tableLayoutPanelPatcher111.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanelPatcher111.Location = new System.Drawing.Point(0, 160);
             this.tableLayoutPanelPatcher111.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelPatcher111.Name = "tableLayoutPanelPatcher111";
             this.tableLayoutPanelPatcher111.RowCount = 1;
@@ -1336,6 +1336,8 @@
             // langComboBox
             // 
             this.langComboBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.langComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.langComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.langComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.langComboBox.Items.AddRange(new object[] {
             "English",
@@ -1344,11 +1346,12 @@
             "Italian",
             "Spanish",
             "Russian"});
-            this.langComboBox.Location = new System.Drawing.Point(111, 1);
+            this.langComboBox.Location = new System.Drawing.Point(59, 1);
             this.langComboBox.Margin = new System.Windows.Forms.Padding(1);
             this.langComboBox.Name = "langComboBox";
-            this.langComboBox.Size = new System.Drawing.Size(109, 34);
+            this.langComboBox.Size = new System.Drawing.Size(161, 35);
             this.langComboBox.TabIndex = 1;
+            this.langComboBox.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.langComboBox_DrawItem);
             // 
             // language
             // 
@@ -1357,9 +1360,9 @@
             this.language.Location = new System.Drawing.Point(0, 7);
             this.language.Margin = new System.Windows.Forms.Padding(0);
             this.language.Name = "language";
-            this.language.Size = new System.Drawing.Size(98, 26);
+            this.language.Size = new System.Drawing.Size(58, 26);
             this.language.TabIndex = 0;
-            this.language.Text = "Language:";
+            this.language.Text = "Lang:";
             // 
             // tableLayoutPanelPatcher2
             // 
@@ -2301,6 +2304,28 @@
             // 
             this.saveRepackedFileDialog.Filter = "Pak Files|*.pc;*.xbp;*.ps2|All Files|*";
             // 
+            // apiComboIcons
+            // 
+            this.apiComboIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("apiComboIcons.ImageStream")));
+            this.apiComboIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.apiComboIcons.Images.SetKeyName(0, "dx8.png");
+            this.apiComboIcons.Images.SetKeyName(1, "dx9.png");
+            this.apiComboIcons.Images.SetKeyName(2, "dx11.png");
+            this.apiComboIcons.Images.SetKeyName(3, "vulkan.png");
+            this.apiComboIcons.Images.SetKeyName(4, "dx9.png");
+            this.apiComboIcons.Images.SetKeyName(5, "dx11.png");
+            // 
+            // langComboIcons
+            // 
+            this.langComboIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("langComboIcons.ImageStream")));
+            this.langComboIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.langComboIcons.Images.SetKeyName(0, "uk.png");
+            this.langComboIcons.Images.SetKeyName(1, "fr.png");
+            this.langComboIcons.Images.SetKeyName(2, "de.png");
+            this.langComboIcons.Images.SetKeyName(3, "it.png");
+            this.langComboIcons.Images.SetKeyName(4, "sp.png");
+            this.langComboIcons.Images.SetKeyName(5, "ru.png");
+            // 
             // form
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -2530,6 +2555,8 @@
         private System.Windows.Forms.ImageList medButtonIcons;
         private System.Windows.Forms.ImageList smallButtonIcons;
         private System.Windows.Forms.WebBrowser webBrowserRepacking;
+        private System.Windows.Forms.ImageList apiComboIcons;
+        private System.Windows.Forms.ImageList langComboIcons;
     }
 }
 
