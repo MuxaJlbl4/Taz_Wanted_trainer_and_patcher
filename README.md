@@ -16,39 +16,39 @@ Custom launcher, trainer and resource repacker for **Taz: Wanted** game
 
 ### 👀 Enhanced Draw Distance
 
-![Zoo](./Screenshots/WebP/Zoo.webp)
+<img src="Screenshots/WebP/Zoo.webp" onerror="this.onerror=null;this.src='Screenshots/Gif/Zoo.gif';">
 
-![Construct](./Screenshots/WebP/Construct.webp)
+<img src="Screenshots/WebP/Construct.webp" onerror="this.onerror=null;this.src='Screenshots/Gif/Construct.gif';">
 
-![Canyon](./Screenshots/WebP/Canyon.webp)
+<img src="Screenshots/WebP/Canyon.webp" onerror="this.onerror=null;this.src='Screenshots/Gif/Canyon.gif';">
 
 ### ↔ Custom Resolution
 
-![Wide](./Screenshots/WebP/Wide.webp)
+<img src="Screenshots/WebP/Wide.webp" onerror="this.onerror=null;this.src='Screenshots/Gif/Wide.gif';">
 
 ### 💡 Smooth Actor Lighting
 
-![Deptstr](./Screenshots/WebP/Deptstr.webp)
+<img src="Screenshots/WebP/Deptstr.webp" onerror="this.onerror=null;this.src='Screenshots/Gif/Deptstr.gif';">
 
-![Alligator](./Screenshots/WebP/Alligator.webp)
+<img src="Screenshots/WebP/Alligator.webp" onerror="this.onerror=null;this.src='Screenshots/Gif/Alligator.gif';">
 
 ### ☢ Texture Filtering
 
-![Map](./Screenshots/WebP/Map.webp)
+<img src="Screenshots/WebP/Map.webp" onerror="this.onerror=null;this.src='Screenshots/Gif/Map.gif';">
 
-![Museum](./Screenshots/WebP/Museum.webp)
+<img src="Screenshots/WebP/Museum.webp" onerror="this.onerror=null;this.src='Screenshots/Gif/Museum.gif';">
 
-![Intro](./Screenshots/WebP/Intro.webp)
+<img src="Screenshots/WebP/Intro.webp" onerror="this.onerror=null;this.src='Screenshots/Gif/Intro.gif';">
 
 ### 📦 Resource Repacking
 
-![Mod](./Screenshots/WebP/Mod.webp)
+<img src="Screenshots/WebP/Mod.webp" onerror="this.onerror=null;this.src='Screenshots/Gif/Mod.gif';">
 
 ### 👻 Visible Alpha Textures
 
-![Volcano](./Screenshots/WebP/Volcano.webp)
+<img src="Screenshots/WebP/Volcano.webp" onerror="this.onerror=null;this.src='Screenshots/Gif/Volcano.gif';">
 
-![City](./Screenshots/WebP/City.webp)
+<img src="Screenshots/WebP/City.webp" onerror="this.onerror=null;this.src='Screenshots/Gif/City.gif';">
 
 ## ✏ Requirements
 
