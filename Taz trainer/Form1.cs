@@ -107,6 +107,9 @@ namespace Taz_trainer
                     textBoxRegistry.Text = getPathFromRegistry();
                     langComboBox.SelectedIndex = 0;
                     apiComboBox.SelectedIndex = 0;
+                    glyphsComboBox.SelectedIndex = 0;
+                    layoutComboBox.SelectedIndex = 0;
+                    fogComboBox.SelectedIndex = 0;
                 }
             }
             else
@@ -116,6 +119,9 @@ namespace Taz_trainer
                 textBoxRegistry.Text = getPathFromRegistry();
                 langComboBox.SelectedIndex = 0;
                 apiComboBox.SelectedIndex = 0;
+                glyphsComboBox.SelectedIndex = 0;
+                layoutComboBox.SelectedIndex = 0;
+                fogComboBox.SelectedIndex = 0;
             }
             TazFolderPath = textBoxRegistry.Text;
 
@@ -1469,7 +1475,7 @@ namespace Taz_trainer
                     backuped = true;
                 }
 
-                //backup Taz.exe
+                //backup taz.dat
                 if (File.Exists(TazFolderPath + "\\taz.dat.backup") == false)
                 {
                     File.Copy(TazFolderPath + "\\taz.dat", TazFolderPath + "\\taz.dat.backup", true);
@@ -1501,6 +1507,28 @@ namespace Taz_trainer
                         file.WriteByte(bytes[1]);
                         file.WriteByte(bytes[2]);
                         file.WriteByte(bytes[3]);
+                        file.Close();
+                    }
+                }
+
+                //4gb
+                if (this.patch4gb.Checked == true)
+                {
+                    //4gb patch
+                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        file.Position = 0x12E;
+                        file.WriteByte(0x2F);
+                        file.Close();
+                    }
+                }
+                else
+                {
+                    //restore 2gb
+                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        file.Position = 0x12E;
+                        file.WriteByte(0x0F);
                         file.Close();
                     }
                 }
@@ -1574,6 +1602,75 @@ namespace Taz_trainer
                         file.Position = 0x44;
                         file.WriteByte(0x30);
                         file.WriteByte(0x02);
+                        file.Close();
+                    }
+                }
+
+                // Fog
+                // No fog
+                if (this.fogComboBox.SelectedIndex == 0)
+                {
+                    // Restore fstp instructions
+                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        byte[] stock = new byte[] { 0xD9, 0x1D, 0xBC, 0x4C, 0x70, 0x00, 0xD9, 0x1D, 0xC4, 0x4C, 0x70, 0x00 };
+                        file.Position = 0x8F464;
+                        file.Write(stock, 0, stock.Length);
+                        file.Close();
+                    }
+                }
+                // Xbox/GameCube fog
+                else if (this.fogComboBox.SelectedIndex == 1)
+                {
+                    // Skip fstp instructions
+                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        byte[] nops = new byte[] { 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 };
+                        file.Position = 0x8F464;
+                        file.Write(nops, 0, nops.Length);
+                        file.Close();
+                    }
+                }
+                // PlayStation 2 fog
+                else if (this.fogComboBox.SelectedIndex == 2)
+                {
+                    // Skip fstp instructions
+                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        /*
+                        label(returnhere)
+
+                        "Taz.exe"+1F6800:
+                        mov [0x00704CBC], 0x449c4000 // FogMin = 1250
+                        push eax // Store eax
+                        mov eax, 0x46ea6000 // eax = 30000
+                        cmp eax, [0x00704CC4] // if FogMax < 30000
+                        pop eax // Restore eax
+                        ja returnhere // Skip FogMin and FogMax fstp
+                        mov [0x00704CC4], 0x46ea6000 // FogMax = 30000
+                        jmp returnhere // Skip FogMin and FogMax fstp
+
+                        "Taz.exe"+8F464:
+                        jmp "Taz.exe"+1F6800
+                        nop
+                        nop
+                        nop
+                        nop
+                        nop
+                        nop
+                        nop
+                        returnhere:
+                        */
+
+                        // Code Injection
+                        byte[] injection = new byte[] { 0xC7, 0x05, 0xBC, 0x4C, 0x70, 0x00, 0x00, 0x40, 0x9C, 0x44, 0x50, 0xB8, 0x00, 0x60, 0xEA, 0x46, 0x3B, 0x05, 0xC4, 0x4C, 0x70, 0x00, 0x58, 0x0F, 0x87, 0x53, 0x8C, 0xE9, 0xFF, 0xC7, 0x05, 0xC4, 0x4C, 0x70, 0x00, 0x00, 0x60, 0xEA, 0x46, 0xE9, 0x44, 0x8C, 0xE9, 0xFF };
+                        file.Position = 0x1F6800;
+                        file.Write(injection, 0, injection.Length);
+
+                        // Jump to Injection
+                        byte[] jmp = new byte[] { 0xE9, 0x97, 0x73, 0x16, 0x00, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 };
+                        file.Position = 0x8F464;
+                        file.Write(jmp, 0, jmp.Length);
                         file.Close();
                     }
                 }
@@ -1824,6 +1921,27 @@ namespace Taz_trainer
                     }
                 }
 
+                //skip crc check
+                if (this.saveCRCcheck.Checked == true)
+                {
+                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        file.Position = 0xA247C;
+                        file.WriteByte(0xEB);
+                        file.Close();
+                    }
+                }
+                else
+                {
+                    //restore crc check
+                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        file.Position = 0xA247C;
+                        file.WriteByte(0x74);
+                        file.Close();
+                    }
+                }
+
                 //voodoo
                 if (this.voodoo.Checked == true)
                 {
@@ -1846,6 +1964,125 @@ namespace Taz_trainer
                     }
                 }
 
+                //extra debug cheats
+                if (this.extraDebug.Checked == true)
+                {
+                    //patch
+                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        //set item flag
+                        byte[] addeax = new byte[] { 0xB8, 0x00, 0x00, 0x00, 0x00, 0x90 };
+                        file.Position = 0xA2F81;
+                        file.Write(addeax, 0, addeax.Length);
+
+                        //set last id
+                        byte[] lastid = new byte[] { 0x80, 0x56, 0x00, 0x00 };
+                        file.Position = 0xA2FA0;
+                        file.Write(lastid, 0, lastid.Length);
+
+                        //set callback id
+                        byte[] callid = new byte[] { 0xE6 };
+                        file.Position = 0xA37A2;
+                        file.Write(callid, 0, callid.Length);
+
+                        //set callback check id
+                        byte[] callcheckid = new byte[] { 0xE6 };
+                        file.Position = 0xA3BB3;
+                        file.Write(callcheckid, 0, callcheckid.Length);
+
+                        //deactivate max id
+                        byte[] demaxid = new byte[] { 0x1E };
+                        file.Position = 0x7BE4D;
+                        file.Write(demaxid, 0, demaxid.Length);
+
+                        //deactivate all max id
+                        byte[] deallmaxid = new byte[] { 0x1E };
+                        file.Position = 0x7C3E2;
+                        file.Write(deallmaxid, 0, deallmaxid.Length);
+
+                        //first dbg activate id
+                        byte[] firstdbg = new byte[] { 0x1F };
+                        file.Position = 0xA5B57;
+                        file.Write(firstdbg, 0, firstdbg.Length);
+
+                        //first dbg deactivate id
+                        byte[] defirstdbg = new byte[] { 0x1F };
+                        file.Position = 0xA5B97;
+                        file.Write(defirstdbg, 0, defirstdbg.Length);
+
+                        //activate cheat switch case
+                        byte[] actcase = new byte[] { 0x00, 0x12, 0x12, 0x12, 0x01, 0x02, 0x03, 0x04, 0x12, 0x12, 0x05, 0x06, 0x12, 0x07, 0x12, 0x08, 0x12, 0x12, 0x12, 0x09, 0x0A, 0x12, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0x10, 0x11, 0x11 };
+                        file.Position = 0x7C160;
+                        file.Write(actcase, 0, actcase.Length);
+
+                        //deactivate cheat switch case
+                        byte[] deactcase = new byte[] { 0x00, 0x0C, 0x0C, 0x0C, 0x0C, 0x0C, 0x01, 0x01, 0x0C, 0x02, 0x0C, 0x03, 0x0C, 0x0C, 0x0C, 0x04, 0x0C, 0x05, 0x06, 0x07, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x00 };
+                        file.Position = 0x7C344;
+                        file.Write(deactcase, 0, deactcase.Length);
+
+                        file.Close();
+                    }
+                }
+                else 
+                {
+                    //restore
+                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        //restore item flag
+                        byte[] addeax = new byte[] { 0x83, 0xE0, 0xFE, 0x83, 0xC0, 0x02 };
+                        file.Position = 0xA2F81;
+                        file.Write(addeax, 0, addeax.Length);
+
+                        //restore last id
+                        byte[] lastid = new byte[] { 0xE0, 0x55, 0x00, 0x00 };
+                        file.Position = 0xA2FA0;
+                        file.Write(lastid, 0, lastid.Length);
+
+                        //restore callback id
+                        byte[] callid = new byte[] { 0xDE };
+                        file.Position = 0xA37A2;
+                        file.Write(callid, 0, callid.Length);
+
+                        //restore callback check id
+                        byte[] callcheckid = new byte[] { 0xDD };
+                        file.Position = 0xA3BB3;
+                        file.Write(callcheckid, 0, callcheckid.Length);
+
+                        //restore deactivate max id
+                        byte[] demaxid = new byte[] { 0x14 };
+                        file.Position = 0x7BE4D;
+                        file.Write(demaxid, 0, demaxid.Length);
+
+                        //restore deactivate all max id
+                        byte[] deallmaxid = new byte[] { 0x14 };
+                        file.Position = 0x7C3E2;
+                        file.Write(deallmaxid, 0, deallmaxid.Length);
+
+                        //restore first dbg activate id
+                        byte[] firstdbg = new byte[] { 0x15 };
+                        file.Position = 0xA5B57;
+                        file.Write(firstdbg, 0, firstdbg.Length);
+
+                        //restore first dbg deactivate id
+                        byte[] defirstdbg = new byte[] { 0x15 };
+                        file.Position = 0xA5B97;
+                        file.Write(defirstdbg, 0, defirstdbg.Length);
+
+                        //restore activate cheat switch case
+                        byte[] actcase = new byte[] { 0x00, 0x12, 0x12, 0x12, 0x01, 0x02, 0x03, 0x04, 0x12, 0x12, 0x05, 0x06, 0x12, 0x07, 0x12, 0x08, 0x12, 0x12, 0x12, 0x09, 0x12, 0x0A, 0x12, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0x10, 0x11 };
+                        file.Position = 0x7C160;
+                        file.Write(actcase, 0, actcase.Length);
+
+                        //restore deactivate cheat switch case
+                        byte[] deactcase = new byte[] { 0x00, 0x0C, 0x0C, 0x0C, 0x0C, 0x0C, 0x01, 0x01, 0x0C, 0x02, 0x0C, 0x03, 0x0C, 0x0C, 0x0C, 0x04, 0x0C, 0x05, 0x06, 0x07, 0x07, 0x07, 0x08, 0x09, 0x0A, 0x0B };
+                        file.Position = 0x7C344;
+                        file.Write(deactcase, 0, deactcase.Length);
+
+                        file.Close();
+                    }
+                }
+
+                /*
                 //xInputPatch
                 if (this.xInputPatch.Checked == true)
                 {
@@ -1874,7 +2111,7 @@ namespace Taz_trainer
                         file.Close();
                     }
                 }
-
+                */
                 //api
                 //d3d8to9
                 if (apiComboBox.SelectedIndex == 1 || apiComboBox.SelectedIndex == 3)
@@ -1979,6 +2216,70 @@ namespace Taz_trainer
                     }
                 }
 
+                //glyphs
+                // Check backup
+                if (!File.Exists(TazFolderPath + "\\Paks\\glyphs.pc.backup"))
+                {
+                    // Backup file
+                    File.Copy(TazFolderPath + "\\Paks\\glyphs.pc", TazFolderPath + "\\Paks\\glyphs.pc.backup", true);
+                }
+                // PC
+                if (glyphsComboBox.SelectedIndex == 0)
+                {
+                    File.WriteAllBytes(TazFolderPath + "\\Paks\\glyphs.pc", Properties.Resources.pc);
+                }
+                // PlayStation 2
+                else if (glyphsComboBox.SelectedIndex == 1)
+                {
+                    File.WriteAllBytes(TazFolderPath + "\\Paks\\glyphs.pc", Properties.Resources.ps2);
+                }
+                // Xbox Duke
+                else if (glyphsComboBox.SelectedIndex == 2)
+                {
+                    File.WriteAllBytes(TazFolderPath + "\\Paks\\glyphs.pc", Properties.Resources.duke);
+                }
+                // Xbox S
+                else if (glyphsComboBox.SelectedIndex == 3)
+                {
+                    File.WriteAllBytes(TazFolderPath + "\\Paks\\glyphs.pc", Properties.Resources.xbox);
+                }
+
+                //layout
+                // Vanilla = 0 (Do Nothing)
+                // XInput
+                if (layoutComboBox.SelectedIndex == 1)
+                {
+                    using (var file = new FileStream(TazFolderPath + "\\taz.dat", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        byte[] xinput = new byte[] { 0x21, 0x00, 0x00, 0x00, 0x21, 0x00, 0x00, 0x00, 0x22, 0x00, 0x00, 0x00, 0x22, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x23, 0x00, 0x00, 0x00, 0x23, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+                        // Player 1
+                        file.Position = 0x98;
+                        file.Write(xinput, 0, xinput.Length);
+                        // Player 2
+                        file.Position = 0x128;
+                        file.Write(xinput, 0, xinput.Length);
+
+                        file.Close();
+                    }
+                }
+                // DualShock 4
+                else if (layoutComboBox.SelectedIndex == 2)
+                {
+                    using (var file = new FileStream(TazFolderPath + "\\taz.dat", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        byte[] ds4 = new byte[] { 0x21, 0x00, 0x00, 0x00, 0x21, 0x00, 0x00, 0x00, 0x22, 0x00, 0x00, 0x00, 0x22, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+                        // Player 1
+                        file.Position = 0x98;
+                        file.Write(ds4, 0, ds4.Length);
+                        // Player 2
+                        file.Position = 0x128;
+                        file.Write(ds4, 0, ds4.Length);
+
+                        file.Close();
+                    }
+                }
+
+
                 //end
                 this.statusField.Text = "Patched successfully (" + TazFolderPath + ")";
                 if (backuped == true)
@@ -2026,6 +2327,13 @@ namespace Taz_trainer
                         File.Copy(TazFolderPath + "\\Paks\\resTex.pc.backup", TazFolderPath + "\\Paks\\resTex.pc", true);
                         File.Delete(TazFolderPath + "\\Paks\\text.pc.backup");
                         File.Delete(TazFolderPath + "\\Paks\\resTex.pc.backup");
+                    }
+
+                    //Check and restore glyphs.pc backup
+                    if (File.Exists(TazFolderPath + "\\Paks\\glyphs.pc.backup"))
+                    {
+                        // Backup file
+                        File.Copy(TazFolderPath + "\\Paks\\glyphs.pc.backup", TazFolderPath + "\\Paks\\glyphs.pc", true);
                     }
 
                     //Check and restore taz.dat backup
@@ -3014,66 +3322,6 @@ namespace Taz_trainer
                 this.statusField.ForeColor = System.Drawing.Color.DarkRed;
                 return "???";
             }
-        }
-
-        private void apiComboBox_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            if (e.Index < 0) return;
-            var cbo = sender as ComboBox;
-            Color foreColor = e.ForeColor;
-
-            if (e.State.HasFlag(DrawItemState.Selected) && !(e.State.HasFlag(DrawItemState.ComboBoxEdit)))
-            {
-                e.DrawBackground();
-                e.DrawFocusRectangle(); // <= could be removed for a cleaner rendering
-            }
-            else
-            {
-                using (var brush = new SolidBrush(cbo.BackColor))
-                {
-                    var rect = e.Bounds;
-                    rect.Inflate(1, 1);
-                    e.Graphics.FillRectangle(brush, rect);
-                }
-                foreColor = cbo.ForeColor;
-            }
-            TextRenderer.DrawText(e.Graphics, cbo.GetItemText(cbo.Items[e.Index]), e.Font,
-                new Point(e.Bounds.Height + 2, e.Bounds.Y), foreColor);
-
-            //e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-            e.Graphics.DrawImage(apiComboIcons.Images[e.Index],
-                                 new Rectangle(e.Bounds.Location,
-                                 new Size(e.Bounds.Height, e.Bounds.Height)));
-        }
-
-        private void langComboBox_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            if (e.Index < 0) return;
-            var cbo = sender as ComboBox;
-            Color foreColor = e.ForeColor;
-
-            if (e.State.HasFlag(DrawItemState.Selected) && !(e.State.HasFlag(DrawItemState.ComboBoxEdit)))
-            {
-                e.DrawBackground();
-                e.DrawFocusRectangle(); // <= could be removed for a cleaner rendering
-            }
-            else
-            {
-                using (var brush = new SolidBrush(cbo.BackColor))
-                {
-                    var rect = e.Bounds;
-                    rect.Inflate(1, 1);
-                    e.Graphics.FillRectangle(brush, rect);
-                }
-                foreColor = cbo.ForeColor;
-            }
-            TextRenderer.DrawText(e.Graphics, cbo.GetItemText(cbo.Items[e.Index]), e.Font,
-                new Point(e.Bounds.Height + 16, e.Bounds.Y), foreColor);
-
-            //e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-            e.Graphics.DrawImage(langComboIcons.Images[e.Index],
-                                 new Rectangle(e.Bounds.Location,
-                                 new Size(e.Bounds.Height + 14, e.Bounds.Height)));
         }
     }
 }

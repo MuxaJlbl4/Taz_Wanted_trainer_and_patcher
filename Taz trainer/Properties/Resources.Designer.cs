@@ -61,11 +61,41 @@ namespace Taz_trainer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] duke {
+            get {
+                object obj = ResourceManager.GetObject("duke", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
         public static System.IO.UnmanagedMemoryStream moveselection {
             get {
                 return ResourceManager.GetStream("moveselection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] pc {
+            get {
+                object obj = ResourceManager.GetObject("pc", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] ps2 {
+            get {
+                object obj = ResourceManager.GetObject("ps2", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         
@@ -109,6 +139,16 @@ namespace Taz_trainer.Properties {
         public static byte[] text {
             get {
                 object obj = ResourceManager.GetObject("text", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] xbox {
+            get {
+                object obj = ResourceManager.GetObject("xbox", resourceCulture);
                 return ((byte[])(obj));
             }
         }

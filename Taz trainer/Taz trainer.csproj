@@ -111,6 +111,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\glyphs\duke.pc" />
+    <None Include="Resources\glyphs\pc.pc" />
+    <None Include="Resources\glyphs\ps2.pc" />
+    <None Include="Resources\glyphs\xbox.pc" />
     <None Include="Resources\Rus\resTex.pc" />
     <None Include="Resources\Rus\text.pc" />
   </ItemGroup>
@@ -132,6 +136,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

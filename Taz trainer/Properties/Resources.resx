@@ -133,4 +133,16 @@
   <data name="Repacking" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\repacking.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="duke" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\glyphs\duke.pc;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\glyphs\pc.pc;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ps2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\glyphs\ps2.pc;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="xbox" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\glyphs\xbox.pc;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>
