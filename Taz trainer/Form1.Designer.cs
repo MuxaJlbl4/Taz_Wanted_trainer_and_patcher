@@ -69,7 +69,6 @@
             this.tableLayoutPanelPatcher1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanelPatcher13 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureTaz = new System.Windows.Forms.PictureBox();
-            this.patch4gb = new System.Windows.Forms.CheckBox();
             this.videoOptions = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanelPatcher12 = new System.Windows.Forms.TableLayoutPanel();
             this.filtering = new System.Windows.Forms.CheckBox();
@@ -97,6 +96,7 @@
             this.warningBanner = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel111 = new System.Windows.Forms.TableLayoutPanel();
             this.noCD = new System.Windows.Forms.CheckBox();
+            this.patch4gb = new System.Windows.Forms.CheckBox();
             this.disableVideos = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanelPatcher112 = new System.Windows.Forms.TableLayoutPanel();
             this.langComboBox = new System.Windows.Forms.ComboBox();
@@ -131,17 +131,6 @@
             this.trainerSound = new System.Windows.Forms.CheckBox();
             this.trainerAutoSave = new System.Windows.Forms.CheckBox();
             this.trainerText = new System.Windows.Forms.CheckBox();
-            this.tableLayoutPanelSettings213 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanelSettings2131 = new System.Windows.Forms.TableLayoutPanel();
-            this.labelSavedCoords = new System.Windows.Forms.Label();
-            this.tableLayoutPanelSettings2132 = new System.Windows.Forms.TableLayoutPanel();
-            this.labelX = new System.Windows.Forms.Label();
-            this.labelZ = new System.Windows.Forms.Label();
-            this.labelY = new System.Windows.Forms.Label();
-            this.tableLayoutPanelSettings2133 = new System.Windows.Forms.TableLayoutPanel();
-            this.savedCoordX = new System.Windows.Forms.TextBox();
-            this.savedCoordZ = new System.Windows.Forms.TextBox();
-            this.savedCoordY = new System.Windows.Forms.TextBox();
             this.tableLayoutPanelSettings212 = new System.Windows.Forms.TableLayoutPanel();
             this.maxSpeed = new System.Windows.Forms.TextBox();
             this.labelMaxSpeed = new System.Windows.Forms.Label();
@@ -153,6 +142,19 @@
             this.kill = new System.Windows.Forms.Button();
             this.updateWrappers = new System.Windows.Forms.Button();
             this.deleteSav = new System.Windows.Forms.Button();
+            this.groupBoxTazPos = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanelSettings213 = new System.Windows.Forms.TableLayoutPanel();
+            this.savedCoordZ = new System.Windows.Forms.TextBox();
+            this.labelX = new System.Windows.Forms.Label();
+            this.savedCoordY = new System.Windows.Forms.TextBox();
+            this.savedCoordX = new System.Windows.Forms.TextBox();
+            this.labelY = new System.Windows.Forms.Label();
+            this.labelZ = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.cameraSpd = new System.Windows.Forms.TextBox();
+            this.labelCameraSpeed = new System.Windows.Forms.Label();
+            this.labelFlyStep = new System.Windows.Forms.Label();
+            this.flyModeStep = new System.Windows.Forms.TextBox();
             this.nativeOptions = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanelSettings22 = new System.Windows.Forms.TableLayoutPanel();
             this.controls = new System.Windows.Forms.Button();
@@ -218,13 +220,12 @@
             this.tableLayoutPanelSettings2.SuspendLayout();
             this.trainerOptions.SuspendLayout();
             this.tableLayoutPanelSettings21.SuspendLayout();
-            this.tableLayoutPanelSettings213.SuspendLayout();
-            this.tableLayoutPanelSettings2131.SuspendLayout();
-            this.tableLayoutPanelSettings2132.SuspendLayout();
-            this.tableLayoutPanelSettings2133.SuspendLayout();
             this.tableLayoutPanelSettings212.SuspendLayout();
             this.tableLayoutPanelSettings211.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericFpsCap)).BeginInit();
+            this.groupBoxTazPos.SuspendLayout();
+            this.tableLayoutPanelSettings213.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.nativeOptions.SuspendLayout();
             this.tableLayoutPanelSettings22.SuspendLayout();
             this.repackTab.SuspendLayout();
@@ -915,20 +916,6 @@
             this.pictureTaz.TabIndex = 6;
             this.pictureTaz.TabStop = false;
             // 
-            // patch4gb
-            // 
-            this.patch4gb.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.patch4gb.AutoSize = true;
-            this.patch4gb.Checked = true;
-            this.patch4gb.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.patch4gb.Location = new System.Drawing.Point(90, 5);
-            this.patch4gb.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.patch4gb.Name = "patch4gb";
-            this.patch4gb.Size = new System.Drawing.Size(68, 30);
-            this.patch4gb.TabIndex = 1;
-            this.patch4gb.Text = "4GB";
-            this.patch4gb.UseVisualStyleBackColor = false;
-            // 
             // videoOptions
             // 
             this.videoOptions.BackColor = System.Drawing.Color.Transparent;
@@ -1322,6 +1309,20 @@
             this.noCD.TabIndex = 1;
             this.noCD.Text = "NoCD";
             this.noCD.UseVisualStyleBackColor = false;
+            // 
+            // patch4gb
+            // 
+            this.patch4gb.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.patch4gb.AutoSize = true;
+            this.patch4gb.Checked = true;
+            this.patch4gb.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.patch4gb.Location = new System.Drawing.Point(90, 5);
+            this.patch4gb.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.patch4gb.Name = "patch4gb";
+            this.patch4gb.Size = new System.Drawing.Size(68, 30);
+            this.patch4gb.TabIndex = 1;
+            this.patch4gb.Text = "4GB";
+            this.patch4gb.UseVisualStyleBackColor = false;
             // 
             // disableVideos
             // 
@@ -1749,7 +1750,6 @@
             this.tableLayoutPanelSettings21.Controls.Add(this.trainerSound, 0, 0);
             this.tableLayoutPanelSettings21.Controls.Add(this.trainerAutoSave, 0, 1);
             this.tableLayoutPanelSettings21.Controls.Add(this.trainerText, 0, 2);
-            this.tableLayoutPanelSettings21.Controls.Add(this.tableLayoutPanelSettings213, 0, 5);
             this.tableLayoutPanelSettings21.Controls.Add(this.tableLayoutPanelSettings212, 0, 4);
             this.tableLayoutPanelSettings21.Controls.Add(this.tableLayoutPanelSettings211, 0, 3);
             this.tableLayoutPanelSettings21.Controls.Add(this.savePatcherSettings, 1, 0);
@@ -1757,6 +1757,8 @@
             this.tableLayoutPanelSettings21.Controls.Add(this.kill, 1, 4);
             this.tableLayoutPanelSettings21.Controls.Add(this.updateWrappers, 1, 2);
             this.tableLayoutPanelSettings21.Controls.Add(this.deleteSav, 1, 3);
+            this.tableLayoutPanelSettings21.Controls.Add(this.groupBoxTazPos, 1, 5);
+            this.tableLayoutPanelSettings21.Controls.Add(this.tableLayoutPanel1, 0, 5);
             this.tableLayoutPanelSettings21.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelSettings21.Location = new System.Drawing.Point(2, 29);
             this.tableLayoutPanelSettings21.Margin = new System.Windows.Forms.Padding(0);
@@ -1809,158 +1811,6 @@
             this.trainerText.Text = "In-game text messages";
             this.trainerText.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanelSettings213
-            // 
-            this.tableLayoutPanelSettings213.ColumnCount = 3;
-            this.tableLayoutPanelSettings213.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelSettings213.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelSettings213.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelSettings213.Controls.Add(this.tableLayoutPanelSettings2131, 0, 0);
-            this.tableLayoutPanelSettings213.Controls.Add(this.tableLayoutPanelSettings2132, 1, 0);
-            this.tableLayoutPanelSettings213.Controls.Add(this.tableLayoutPanelSettings2133, 2, 0);
-            this.tableLayoutPanelSettings213.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelSettings213.Location = new System.Drawing.Point(0, 220);
-            this.tableLayoutPanelSettings213.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanelSettings213.Name = "tableLayoutPanelSettings213";
-            this.tableLayoutPanelSettings213.RowCount = 1;
-            this.tableLayoutPanelSettings213.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSettings213.Size = new System.Drawing.Size(260, 91);
-            this.tableLayoutPanelSettings213.TabIndex = 5;
-            // 
-            // tableLayoutPanelSettings2131
-            // 
-            this.tableLayoutPanelSettings2131.ColumnCount = 1;
-            this.tableLayoutPanelSettings2131.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSettings2131.Controls.Add(this.labelSavedCoords, 0, 0);
-            this.tableLayoutPanelSettings2131.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelSettings2131.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanelSettings2131.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanelSettings2131.Name = "tableLayoutPanelSettings2131";
-            this.tableLayoutPanelSettings2131.RowCount = 3;
-            this.tableLayoutPanelSettings2131.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33444F));
-            this.tableLayoutPanelSettings2131.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33445F));
-            this.tableLayoutPanelSettings2131.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33112F));
-            this.tableLayoutPanelSettings2131.Size = new System.Drawing.Size(117, 91);
-            this.tableLayoutPanelSettings2131.TabIndex = 7;
-            // 
-            // labelSavedCoords
-            // 
-            this.labelSavedCoords.AutoSize = true;
-            this.labelSavedCoords.Location = new System.Drawing.Point(0, 0);
-            this.labelSavedCoords.Margin = new System.Windows.Forms.Padding(0);
-            this.labelSavedCoords.Name = "labelSavedCoords";
-            this.labelSavedCoords.Size = new System.Drawing.Size(106, 26);
-            this.labelSavedCoords.TabIndex = 0;
-            this.labelSavedCoords.Text = "Saved pos:";
-            this.labelSavedCoords.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // tableLayoutPanelSettings2132
-            // 
-            this.tableLayoutPanelSettings2132.ColumnCount = 1;
-            this.tableLayoutPanelSettings2132.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSettings2132.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelSettings2132.Controls.Add(this.labelX, 0, 0);
-            this.tableLayoutPanelSettings2132.Controls.Add(this.labelZ, 0, 2);
-            this.tableLayoutPanelSettings2132.Controls.Add(this.labelY, 0, 1);
-            this.tableLayoutPanelSettings2132.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelSettings2132.Location = new System.Drawing.Point(117, 0);
-            this.tableLayoutPanelSettings2132.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanelSettings2132.Name = "tableLayoutPanelSettings2132";
-            this.tableLayoutPanelSettings2132.RowCount = 3;
-            this.tableLayoutPanelSettings2132.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelSettings2132.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelSettings2132.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelSettings2132.Size = new System.Drawing.Size(23, 91);
-            this.tableLayoutPanelSettings2132.TabIndex = 7;
-            // 
-            // labelX
-            // 
-            this.labelX.AutoSize = true;
-            this.labelX.Location = new System.Drawing.Point(0, 0);
-            this.labelX.Margin = new System.Windows.Forms.Padding(0);
-            this.labelX.Name = "labelX";
-            this.labelX.Size = new System.Drawing.Size(23, 26);
-            this.labelX.TabIndex = 0;
-            this.labelX.Text = "x";
-            this.labelX.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelZ
-            // 
-            this.labelZ.AutoSize = true;
-            this.labelZ.Location = new System.Drawing.Point(0, 60);
-            this.labelZ.Margin = new System.Windows.Forms.Padding(0);
-            this.labelZ.Name = "labelZ";
-            this.labelZ.Size = new System.Drawing.Size(23, 26);
-            this.labelZ.TabIndex = 2;
-            this.labelZ.Text = "z";
-            this.labelZ.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // labelY
-            // 
-            this.labelY.AutoSize = true;
-            this.labelY.Location = new System.Drawing.Point(0, 30);
-            this.labelY.Margin = new System.Windows.Forms.Padding(0);
-            this.labelY.Name = "labelY";
-            this.labelY.Size = new System.Drawing.Size(22, 26);
-            this.labelY.TabIndex = 1;
-            this.labelY.Text = "y";
-            this.labelY.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // tableLayoutPanelSettings2133
-            // 
-            this.tableLayoutPanelSettings2133.ColumnCount = 1;
-            this.tableLayoutPanelSettings2133.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSettings2133.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelSettings2133.Controls.Add(this.savedCoordX, 0, 0);
-            this.tableLayoutPanelSettings2133.Controls.Add(this.savedCoordZ, 0, 2);
-            this.tableLayoutPanelSettings2133.Controls.Add(this.savedCoordY, 0, 1);
-            this.tableLayoutPanelSettings2133.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelSettings2133.Location = new System.Drawing.Point(140, 0);
-            this.tableLayoutPanelSettings2133.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanelSettings2133.Name = "tableLayoutPanelSettings2133";
-            this.tableLayoutPanelSettings2133.RowCount = 3;
-            this.tableLayoutPanelSettings2133.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelSettings2133.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelSettings2133.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelSettings2133.Size = new System.Drawing.Size(120, 91);
-            this.tableLayoutPanelSettings2133.TabIndex = 7;
-            // 
-            // savedCoordX
-            // 
-            this.savedCoordX.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.savedCoordX.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.savedCoordX.Location = new System.Drawing.Point(0, 0);
-            this.savedCoordX.Margin = new System.Windows.Forms.Padding(0);
-            this.savedCoordX.Name = "savedCoordX";
-            this.savedCoordX.Size = new System.Drawing.Size(120, 30);
-            this.savedCoordX.TabIndex = 0;
-            this.savedCoordX.Text = "0,0";
-            this.savedCoordX.TextChanged += new System.EventHandler(this.savedCoordX_TextChanged);
-            // 
-            // savedCoordZ
-            // 
-            this.savedCoordZ.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.savedCoordZ.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.savedCoordZ.Location = new System.Drawing.Point(0, 60);
-            this.savedCoordZ.Margin = new System.Windows.Forms.Padding(0);
-            this.savedCoordZ.Name = "savedCoordZ";
-            this.savedCoordZ.Size = new System.Drawing.Size(120, 30);
-            this.savedCoordZ.TabIndex = 2;
-            this.savedCoordZ.Text = "0,0";
-            this.savedCoordZ.TextChanged += new System.EventHandler(this.savedCoordZ_TextChanged);
-            // 
-            // savedCoordY
-            // 
-            this.savedCoordY.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.savedCoordY.Font = new System.Drawing.Font("Comic Sans MS", 12F);
-            this.savedCoordY.Location = new System.Drawing.Point(0, 30);
-            this.savedCoordY.Margin = new System.Windows.Forms.Padding(0);
-            this.savedCoordY.Name = "savedCoordY";
-            this.savedCoordY.Size = new System.Drawing.Size(120, 30);
-            this.savedCoordY.TabIndex = 1;
-            this.savedCoordY.Text = "0,0";
-            this.savedCoordY.TextChanged += new System.EventHandler(this.savedCoordY_TextChanged);
-            // 
             // tableLayoutPanelSettings212
             // 
             this.tableLayoutPanelSettings212.ColumnCount = 3;
@@ -1969,7 +1819,6 @@
             this.tableLayoutPanelSettings212.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanelSettings212.Controls.Add(this.maxSpeed, 1, 0);
             this.tableLayoutPanelSettings212.Controls.Add(this.labelMaxSpeed, 0, 0);
-            this.tableLayoutPanelSettings212.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelSettings212.Location = new System.Drawing.Point(0, 176);
             this.tableLayoutPanelSettings212.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelSettings212.Name = "tableLayoutPanelSettings212";
@@ -2028,7 +1877,6 @@
             // 
             // numericFpsCap
             // 
-            this.numericFpsCap.Dock = System.Windows.Forms.DockStyle.Fill;
             this.numericFpsCap.Location = new System.Drawing.Point(140, 0);
             this.numericFpsCap.Margin = new System.Windows.Forms.Padding(0);
             this.numericFpsCap.Maximum = new decimal(new int[] {
@@ -2138,6 +1986,168 @@
             this.deleteSav.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.deleteSav.UseVisualStyleBackColor = true;
             this.deleteSav.Click += new System.EventHandler(this.deleteSav_Click);
+            // 
+            // groupBoxTazPos
+            // 
+            this.groupBoxTazPos.Controls.Add(this.tableLayoutPanelSettings213);
+            this.groupBoxTazPos.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBoxTazPos.Location = new System.Drawing.Point(263, 223);
+            this.groupBoxTazPos.Name = "groupBoxTazPos";
+            this.groupBoxTazPos.Size = new System.Drawing.Size(211, 85);
+            this.groupBoxTazPos.TabIndex = 11;
+            this.groupBoxTazPos.TabStop = false;
+            this.groupBoxTazPos.Text = "Saved Taz position";
+            // 
+            // tableLayoutPanelSettings213
+            // 
+            this.tableLayoutPanelSettings213.ColumnCount = 2;
+            this.tableLayoutPanelSettings213.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanelSettings213.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelSettings213.Controls.Add(this.savedCoordZ, 1, 2);
+            this.tableLayoutPanelSettings213.Controls.Add(this.labelX, 0, 0);
+            this.tableLayoutPanelSettings213.Controls.Add(this.savedCoordY, 1, 1);
+            this.tableLayoutPanelSettings213.Controls.Add(this.savedCoordX, 1, 0);
+            this.tableLayoutPanelSettings213.Controls.Add(this.labelY, 0, 1);
+            this.tableLayoutPanelSettings213.Controls.Add(this.labelZ, 0, 2);
+            this.tableLayoutPanelSettings213.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelSettings213.Location = new System.Drawing.Point(3, 19);
+            this.tableLayoutPanelSettings213.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanelSettings213.Name = "tableLayoutPanelSettings213";
+            this.tableLayoutPanelSettings213.RowCount = 3;
+            this.tableLayoutPanelSettings213.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanelSettings213.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanelSettings213.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanelSettings213.Size = new System.Drawing.Size(205, 63);
+            this.tableLayoutPanelSettings213.TabIndex = 5;
+            // 
+            // savedCoordZ
+            // 
+            this.savedCoordZ.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.savedCoordZ.Location = new System.Drawing.Point(16, 42);
+            this.savedCoordZ.Margin = new System.Windows.Forms.Padding(0);
+            this.savedCoordZ.Name = "savedCoordZ";
+            this.savedCoordZ.Size = new System.Drawing.Size(189, 26);
+            this.savedCoordZ.TabIndex = 2;
+            this.savedCoordZ.Text = "0,0";
+            this.savedCoordZ.TextChanged += new System.EventHandler(this.savedCoordZ_TextChanged);
+            // 
+            // labelX
+            // 
+            this.labelX.AutoSize = true;
+            this.labelX.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelX.Location = new System.Drawing.Point(0, 0);
+            this.labelX.Margin = new System.Windows.Forms.Padding(0);
+            this.labelX.Name = "labelX";
+            this.labelX.Size = new System.Drawing.Size(16, 18);
+            this.labelX.TabIndex = 0;
+            this.labelX.Text = "x";
+            this.labelX.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // savedCoordY
+            // 
+            this.savedCoordY.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.savedCoordY.Location = new System.Drawing.Point(16, 21);
+            this.savedCoordY.Margin = new System.Windows.Forms.Padding(0);
+            this.savedCoordY.Name = "savedCoordY";
+            this.savedCoordY.Size = new System.Drawing.Size(189, 26);
+            this.savedCoordY.TabIndex = 1;
+            this.savedCoordY.Text = "0,0";
+            this.savedCoordY.TextChanged += new System.EventHandler(this.savedCoordY_TextChanged);
+            // 
+            // savedCoordX
+            // 
+            this.savedCoordX.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.savedCoordX.Location = new System.Drawing.Point(16, 0);
+            this.savedCoordX.Margin = new System.Windows.Forms.Padding(0);
+            this.savedCoordX.Name = "savedCoordX";
+            this.savedCoordX.Size = new System.Drawing.Size(189, 26);
+            this.savedCoordX.TabIndex = 0;
+            this.savedCoordX.Text = "0,0";
+            this.savedCoordX.TextChanged += new System.EventHandler(this.savedCoordX_TextChanged);
+            // 
+            // labelY
+            // 
+            this.labelY.AutoSize = true;
+            this.labelY.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelY.Location = new System.Drawing.Point(0, 21);
+            this.labelY.Margin = new System.Windows.Forms.Padding(0);
+            this.labelY.Name = "labelY";
+            this.labelY.Size = new System.Drawing.Size(15, 18);
+            this.labelY.TabIndex = 1;
+            this.labelY.Text = "y";
+            this.labelY.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelZ
+            // 
+            this.labelZ.AutoSize = true;
+            this.labelZ.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelZ.Location = new System.Drawing.Point(0, 42);
+            this.labelZ.Margin = new System.Windows.Forms.Padding(0);
+            this.labelZ.Name = "labelZ";
+            this.labelZ.Size = new System.Drawing.Size(15, 18);
+            this.labelZ.TabIndex = 2;
+            this.labelZ.Text = "z";
+            this.labelZ.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 3;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.Controls.Add(this.cameraSpd, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.labelCameraSpeed, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.labelFlyStep, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.flyModeStep, 1, 1);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 220);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(260, 91);
+            this.tableLayoutPanel1.TabIndex = 4;
+            // 
+            // cameraSpd
+            // 
+            this.cameraSpd.Location = new System.Drawing.Point(140, 0);
+            this.cameraSpd.Margin = new System.Windows.Forms.Padding(0);
+            this.cameraSpd.Name = "cameraSpd";
+            this.cameraSpd.Size = new System.Drawing.Size(120, 34);
+            this.cameraSpd.TabIndex = 1;
+            this.cameraSpd.Text = "2000,0";
+            this.cameraSpd.TextChanged += new System.EventHandler(this.cameraSpd_TextChanged);
+            // 
+            // labelCameraSpeed
+            // 
+            this.labelCameraSpeed.AutoSize = true;
+            this.labelCameraSpeed.Location = new System.Drawing.Point(0, 0);
+            this.labelCameraSpeed.Margin = new System.Windows.Forms.Padding(0);
+            this.labelCameraSpeed.Name = "labelCameraSpeed";
+            this.labelCameraSpeed.Size = new System.Drawing.Size(139, 26);
+            this.labelCameraSpeed.TabIndex = 0;
+            this.labelCameraSpeed.Text = "Camera speed:";
+            // 
+            // labelFlyStep
+            // 
+            this.labelFlyStep.AutoSize = true;
+            this.labelFlyStep.Location = new System.Drawing.Point(0, 45);
+            this.labelFlyStep.Margin = new System.Windows.Forms.Padding(0);
+            this.labelFlyStep.Name = "labelFlyStep";
+            this.labelFlyStep.Size = new System.Drawing.Size(140, 26);
+            this.labelFlyStep.TabIndex = 0;
+            this.labelFlyStep.Text = "Fly mode step:";
+            // 
+            // flyModeStep
+            // 
+            this.flyModeStep.Location = new System.Drawing.Point(140, 45);
+            this.flyModeStep.Margin = new System.Windows.Forms.Padding(0);
+            this.flyModeStep.Name = "flyModeStep";
+            this.flyModeStep.Size = new System.Drawing.Size(120, 34);
+            this.flyModeStep.TabIndex = 1;
+            this.flyModeStep.Text = "5000,0";
+            this.flyModeStep.TextChanged += new System.EventHandler(this.flyModeStep_TextChanged);
             // 
             // nativeOptions
             // 
@@ -2517,18 +2527,16 @@
             this.trainerOptions.ResumeLayout(false);
             this.tableLayoutPanelSettings21.ResumeLayout(false);
             this.tableLayoutPanelSettings21.PerformLayout();
-            this.tableLayoutPanelSettings213.ResumeLayout(false);
-            this.tableLayoutPanelSettings2131.ResumeLayout(false);
-            this.tableLayoutPanelSettings2131.PerformLayout();
-            this.tableLayoutPanelSettings2132.ResumeLayout(false);
-            this.tableLayoutPanelSettings2132.PerformLayout();
-            this.tableLayoutPanelSettings2133.ResumeLayout(false);
-            this.tableLayoutPanelSettings2133.PerformLayout();
             this.tableLayoutPanelSettings212.ResumeLayout(false);
             this.tableLayoutPanelSettings212.PerformLayout();
             this.tableLayoutPanelSettings211.ResumeLayout(false);
             this.tableLayoutPanelSettings211.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericFpsCap)).EndInit();
+            this.groupBoxTazPos.ResumeLayout(false);
+            this.tableLayoutPanelSettings213.ResumeLayout(false);
+            this.tableLayoutPanelSettings213.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.nativeOptions.ResumeLayout(false);
             this.tableLayoutPanelSettings22.ResumeLayout(false);
             this.repackTab.ResumeLayout(false);
@@ -2657,10 +2665,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelSettings211;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelSettings212;
         private System.Windows.Forms.CheckBox trainerAutoSave;
-        private System.Windows.Forms.Label labelSavedCoords;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelSettings2131;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelSettings2132;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelSettings2133;
         private System.Windows.Forms.TextBox savedCoordZ;
         private System.Windows.Forms.TextBox savedCoordX;
         private System.Windows.Forms.TextBox savedCoordY;
@@ -2690,6 +2694,12 @@
         private System.Windows.Forms.Label fog;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel111;
         private System.Windows.Forms.CheckBox patch4gb;
+        private System.Windows.Forms.GroupBox groupBoxTazPos;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TextBox cameraSpd;
+        private System.Windows.Forms.Label labelCameraSpeed;
+        private System.Windows.Forms.Label labelFlyStep;
+        private System.Windows.Forms.TextBox flyModeStep;
     }
 }
 

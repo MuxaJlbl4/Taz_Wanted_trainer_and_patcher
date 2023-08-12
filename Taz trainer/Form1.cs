@@ -47,6 +47,8 @@ namespace Taz_trainer
         float Xcoord = 0f;
         float Ycoord = 0f;
         float Zcoord = 0f;
+        float camSpd = 2000f;
+        float flyStep = 5000f;
 
         //Dictionary<string, Int32> Hashes = new Dictionary<string, Int32>();
 
@@ -928,6 +930,7 @@ namespace Taz_trainer
         {
             if (this.flyCamera.Checked == true)
             {
+                
                 // Hide messages
                 byte[] bytes2 = { 0x00 };
                 checkAndWrite((IntPtr)0x00643008, bytes2, bytes2.Length, new IntPtr());
@@ -936,8 +939,19 @@ namespace Taz_trainer
                 // Fly camera state
                 byte[] bytes = { 0x01 };
                 checkAndWrite((IntPtr)0x0071C4D4, bytes, bytes.Length, new IntPtr());
+                // Controls suspend
+                byte[] controlsuspend = { 0x01 };
+                checkAndWrite((IntPtr)0x006C8E02, controlsuspend, controlsuspend.Length, new IntPtr());
+                // Custom camera speed
+                byte[] spd = BitConverter.GetBytes(camSpd);
+                checkAndWrite((IntPtr)0x00731340, spd, spd.Length, new IntPtr());
+                byte[] camSpdOffset = { 0x40, 0x13, 0x73, 0x00 };
+                checkAndWrite((IntPtr)0x004E14ED, camSpdOffset, camSpdOffset.Length, new IntPtr());
+                checkAndWrite((IntPtr)0x004E14FB, camSpdOffset, camSpdOffset.Length, new IntPtr());
+                checkAndWrite((IntPtr)0x004E1505, camSpdOffset, camSpdOffset.Length, new IntPtr());
 
-                message("Photo Mode: On");
+
+                message("Photo Mode: On (Velocity = " + camSpd.ToString() + ")" );
             }
             else
             {
@@ -949,6 +963,14 @@ namespace Taz_trainer
                 checkAndWrite((IntPtr)0x00643008, bytes2, bytes2.Length, new IntPtr());
                 byte[] bytes3 = { 0x66 };
                 checkAndWrite((IntPtr)0x0064301C, bytes3, bytes3.Length, new IntPtr());
+                // Controls restore
+                byte[] controlsuspend = { 0x00 };
+                checkAndWrite((IntPtr)0x006C8E02, controlsuspend, controlsuspend.Length, new IntPtr());
+                // Restore camera speed
+                byte[] camSpdOffset = { 0xF8, 0x73, 0x5F, 0x00 };
+                checkAndWrite((IntPtr)0x004E14ED, camSpdOffset, camSpdOffset.Length, new IntPtr());
+                checkAndWrite((IntPtr)0x004E14FB, camSpdOffset, camSpdOffset.Length, new IntPtr());
+                checkAndWrite((IntPtr)0x004E1505, camSpdOffset, camSpdOffset.Length, new IntPtr());
 
                 message("Photo Mode: Off");
             }
@@ -3082,6 +3104,38 @@ namespace Taz_trainer
             }
         }
 
+        private void cameraSpd_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                camSpd = Single.Parse(cameraSpd.Text.Replace(",", "."), NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture);
+                this.statusField.Text = "Camera Speed changed to " + camSpd.ToString() + ". Re-apply Photo Mode to update.";
+                this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
+            }
+            catch (Exception ex)
+            {
+                this.statusField.Text = ex.Message.ToString();
+                this.statusField.ForeColor = System.Drawing.Color.DarkRed;
+                return;
+            }
+        }
+
+        private void flyModeStep_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                flyStep = Single.Parse(flyModeStep.Text.Replace(",", "."), NumberStyles.AllowLeadingSign | NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture);
+                this.statusField.Text = "Fly Mode Step changed to " + flyStep.ToString() + ".";
+                this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
+            }
+            catch (Exception ex)
+            {
+                this.statusField.Text = ex.Message.ToString();
+                this.statusField.ForeColor = System.Drawing.Color.DarkRed;
+                return;
+            }
+        }
+
         private void savedCoordX_TextChanged(object sender, EventArgs e)
         {
             try
@@ -3219,6 +3273,8 @@ namespace Taz_trainer
                 using (MyWebClient web1 = new MyWebClient())
                 {
                     // Get latest release
+                    ServicePointManager.Expect100Continue = true; // For XP/7 compatibility (Thanks MilkGames)
+                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12; // For XP/7 compatibility (Thanks MilkGames)
                     string data0 = web1.DownloadString("https://github.com/crosire/d3d8to9/releases/latest");
                     string Latest = web1.ResponseUri.ToString();
                     // Get latest assets
