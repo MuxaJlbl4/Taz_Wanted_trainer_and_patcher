@@ -58,7 +58,7 @@
             this.smoothLighting = new System.Windows.Forms.CheckBox();
             this.Challenges = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanelTrainer4 = new System.Windows.Forms.TableLayoutPanel();
-            this.ballMouseTazMode = new System.Windows.Forms.CheckBox();
+            this.ballMode = new System.Windows.Forms.CheckBox();
             this.disallowJump = new System.Windows.Forms.CheckBox();
             this.debugInfo = new System.Windows.Forms.CheckBox();
             this.undestructibleWorld = new System.Windows.Forms.CheckBox();
@@ -69,6 +69,7 @@
             this.tableLayoutPanelPatcher1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanelPatcher13 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureTaz = new System.Windows.Forms.PictureBox();
+            this.labelVersion = new System.Windows.Forms.Label();
             this.videoOptions = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanelPatcher12 = new System.Windows.Forms.TableLayoutPanel();
             this.filtering = new System.Windows.Forms.CheckBox();
@@ -84,31 +85,29 @@
             this.xLabel = new System.Windows.Forms.Label();
             this.width = new System.Windows.Forms.TextBox();
             this.changeResolution = new System.Windows.Forms.CheckBox();
-            this.tableLayoutPanelPatcher124 = new System.Windows.Forms.TableLayoutPanel();
-            this.fogComboBox = new System.Windows.Forms.ComboBox();
-            this.fog = new System.Windows.Forms.Label();
             this.tableLayoutPanelPatcher121 = new System.Windows.Forms.TableLayoutPanel();
             this.apiComboBox = new System.Windows.Forms.ComboBox();
             this.videoApi = new System.Windows.Forms.Label();
+            this.tableLayoutPanelPatcher124 = new System.Windows.Forms.TableLayoutPanel();
+            this.fogComboBox = new System.Windows.Forms.ComboBox();
+            this.fog = new System.Windows.Forms.Label();
             this.disableDrawDistance = new System.Windows.Forms.CheckBox();
             this.loadOptions = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanelPatcher11 = new System.Windows.Forms.TableLayoutPanel();
-            this.warningBanner = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel111 = new System.Windows.Forms.TableLayoutPanel();
             this.noCD = new System.Windows.Forms.CheckBox();
+            this.skips = new System.Windows.Forms.CheckBox();
+            this.tableLayoutPanel113 = new System.Windows.Forms.TableLayoutPanel();
+            this.mods = new System.Windows.Forms.CheckBox();
             this.patch4gb = new System.Windows.Forms.CheckBox();
-            this.disableVideos = new System.Windows.Forms.CheckBox();
+            this.extraDebug = new System.Windows.Forms.CheckBox();
+            this.saveCRCcheck = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanelPatcher112 = new System.Windows.Forms.TableLayoutPanel();
             this.langComboBox = new System.Windows.Forms.ComboBox();
             this.language = new System.Windows.Forms.Label();
-            this.tableLayoutPanel113 = new System.Windows.Forms.TableLayoutPanel();
-            this.glyphsComboBox = new System.Windows.Forms.ComboBox();
-            this.glyphs = new System.Windows.Forms.Label();
-            this.saveCRCcheck = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanelPatcher114 = new System.Windows.Forms.TableLayoutPanel();
             this.layoutComboBox = new System.Windows.Forms.ComboBox();
             this.layout = new System.Windows.Forms.Label();
-            this.extraDebug = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanelPatcher2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanelPatcher21 = new System.Windows.Forms.TableLayoutPanel();
             this.restore = new System.Windows.Forms.Button();
@@ -132,11 +131,12 @@
             this.trainerAutoSave = new System.Windows.Forms.CheckBox();
             this.trainerText = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanelSettings212 = new System.Windows.Forms.TableLayoutPanel();
-            this.maxSpeed = new System.Windows.Forms.TextBox();
-            this.labelMaxSpeed = new System.Windows.Forms.Label();
-            this.tableLayoutPanelSettings211 = new System.Windows.Forms.TableLayoutPanel();
             this.labelFpsCap = new System.Windows.Forms.Label();
             this.numericFpsCap = new System.Windows.Forms.NumericUpDown();
+            this.tableLayoutPanelSettings211 = new System.Windows.Forms.TableLayoutPanel();
+            this.checkAltLight = new System.Windows.Forms.CheckBox();
+            this.maxSpeed = new System.Windows.Forms.TextBox();
+            this.labelMaxSpeed = new System.Windows.Forms.Label();
             this.savePatcherSettings = new System.Windows.Forms.Button();
             this.resetSettings = new System.Windows.Forms.Button();
             this.kill = new System.Windows.Forms.Button();
@@ -201,13 +201,13 @@
             this.tableLayoutPanelPatcher12.SuspendLayout();
             this.tableLayoutPanelPatcher123.SuspendLayout();
             this.tableLayoutPanelPatcher122.SuspendLayout();
-            this.tableLayoutPanelPatcher124.SuspendLayout();
             this.tableLayoutPanelPatcher121.SuspendLayout();
+            this.tableLayoutPanelPatcher124.SuspendLayout();
             this.loadOptions.SuspendLayout();
             this.tableLayoutPanelPatcher11.SuspendLayout();
             this.tableLayoutPanel111.SuspendLayout();
-            this.tableLayoutPanelPatcher112.SuspendLayout();
             this.tableLayoutPanel113.SuspendLayout();
+            this.tableLayoutPanelPatcher112.SuspendLayout();
             this.tableLayoutPanelPatcher114.SuspendLayout();
             this.tableLayoutPanelPatcher2.SuspendLayout();
             this.tableLayoutPanelPatcher21.SuspendLayout();
@@ -221,8 +221,8 @@
             this.trainerOptions.SuspendLayout();
             this.tableLayoutPanelSettings21.SuspendLayout();
             this.tableLayoutPanelSettings212.SuspendLayout();
-            this.tableLayoutPanelSettings211.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericFpsCap)).BeginInit();
+            this.tableLayoutPanelSettings211.SuspendLayout();
             this.groupBoxTazPos.SuspendLayout();
             this.tableLayoutPanelSettings213.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -237,12 +237,13 @@
             // statusStrip
             // 
             this.statusStrip.BackColor = System.Drawing.Color.Transparent;
+            this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusField});
             this.statusStrip.Location = new System.Drawing.Point(0, 519);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 18, 0);
-            this.statusStrip.Size = new System.Drawing.Size(664, 22);
+            this.statusStrip.Size = new System.Drawing.Size(704, 22);
             this.statusStrip.SizingGrip = false;
             this.statusStrip.TabIndex = 0;
             // 
@@ -250,8 +251,7 @@
             // 
             this.statusField.ForeColor = System.Drawing.SystemColors.ControlText;
             this.statusField.Name = "statusField";
-            this.statusField.Size = new System.Drawing.Size(28, 17);
-            this.statusField.Text = "v3.0";
+            this.statusField.Size = new System.Drawing.Size(0, 17);
             // 
             // timer
             // 
@@ -274,7 +274,7 @@
             this.tableLayoutPanelTrainer.RowCount = 2;
             this.tableLayoutPanelTrainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelTrainer.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelTrainer.Size = new System.Drawing.Size(656, 474);
+            this.tableLayoutPanelTrainer.Size = new System.Drawing.Size(696, 474);
             this.tableLayoutPanelTrainer.TabIndex = 1;
             // 
             // Cheats
@@ -286,7 +286,7 @@
             this.Cheats.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.Cheats.Name = "Cheats";
             this.Cheats.Padding = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Cheats.Size = new System.Drawing.Size(326, 237);
+            this.Cheats.Size = new System.Drawing.Size(346, 237);
             this.Cheats.TabIndex = 0;
             this.Cheats.TabStop = false;
             this.Cheats.Text = "Cheats";
@@ -295,7 +295,7 @@
             // 
             this.tableLayoutPanelTrainer1.ColumnCount = 1;
             this.tableLayoutPanelTrainer1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelTrainer1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanelTrainer1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 19F));
             this.tableLayoutPanelTrainer1.Controls.Add(this.gameSpeed, 0, 4);
             this.tableLayoutPanelTrainer1.Controls.Add(this.invisibility, 0, 0);
             this.tableLayoutPanelTrainer1.Controls.Add(this.freezeLevelTimer, 0, 3);
@@ -312,7 +312,7 @@
             this.tableLayoutPanelTrainer1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanelTrainer1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanelTrainer1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanelTrainer1.Size = new System.Drawing.Size(322, 210);
+            this.tableLayoutPanelTrainer1.Size = new System.Drawing.Size(342, 210);
             this.tableLayoutPanelTrainer1.TabIndex = 1;
             // 
             // gameSpeed
@@ -325,8 +325,8 @@
             this.gameSpeed.Location = new System.Drawing.Point(1, 169);
             this.gameSpeed.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.gameSpeed.Name = "gameSpeed";
-            this.gameSpeed.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.gameSpeed.Size = new System.Drawing.Size(320, 41);
+            this.gameSpeed.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.gameSpeed.Size = new System.Drawing.Size(340, 41);
             this.gameSpeed.TabIndex = 4;
             this.gameSpeed.Text = "      - = - Change Game Speed";
             this.gameSpeed.UseVisualStyleBackColor = false;
@@ -396,8 +396,8 @@
             this.invisibility.Location = new System.Drawing.Point(1, 1);
             this.invisibility.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.invisibility.Name = "invisibility";
-            this.invisibility.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.invisibility.Size = new System.Drawing.Size(320, 41);
+            this.invisibility.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.invisibility.Size = new System.Drawing.Size(340, 41);
             this.invisibility.TabIndex = 0;
             this.invisibility.Text = "      F1 - Invisibility Mode";
             this.invisibility.UseVisualStyleBackColor = false;
@@ -413,8 +413,8 @@
             this.freezeLevelTimer.Location = new System.Drawing.Point(1, 127);
             this.freezeLevelTimer.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.freezeLevelTimer.Name = "freezeLevelTimer";
-            this.freezeLevelTimer.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.freezeLevelTimer.Size = new System.Drawing.Size(320, 41);
+            this.freezeLevelTimer.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.freezeLevelTimer.Size = new System.Drawing.Size(340, 41);
             this.freezeLevelTimer.TabIndex = 3;
             this.freezeLevelTimer.Text = "      F4 - Freeze Timers && Boxes";
             this.freezeLevelTimer.UseVisualStyleBackColor = false;
@@ -430,8 +430,8 @@
             this.superBelchCan.Location = new System.Drawing.Point(1, 43);
             this.superBelchCan.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.superBelchCan.Name = "superBelchCan";
-            this.superBelchCan.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.superBelchCan.Size = new System.Drawing.Size(320, 41);
+            this.superBelchCan.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.superBelchCan.Size = new System.Drawing.Size(340, 41);
             this.superBelchCan.TabIndex = 1;
             this.superBelchCan.Text = "      F2 - Burp Soda Mode";
             this.superBelchCan.UseVisualStyleBackColor = false;
@@ -447,8 +447,8 @@
             this.superJump.Location = new System.Drawing.Point(1, 85);
             this.superJump.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.superJump.Name = "superJump";
-            this.superJump.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.superJump.Size = new System.Drawing.Size(320, 41);
+            this.superJump.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.superJump.Size = new System.Drawing.Size(340, 41);
             this.superJump.TabIndex = 2;
             this.superJump.Text = "      F3 - Moon Jump Mode";
             this.superJump.UseVisualStyleBackColor = false;
@@ -463,7 +463,7 @@
             this.Hacks.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.Hacks.Name = "Hacks";
             this.Hacks.Padding = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Hacks.Size = new System.Drawing.Size(326, 237);
+            this.Hacks.Size = new System.Drawing.Size(346, 237);
             this.Hacks.TabIndex = 1;
             this.Hacks.TabStop = false;
             this.Hacks.Text = "Hacks";
@@ -488,7 +488,7 @@
             this.tableLayoutPanelTrainer2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanelTrainer2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanelTrainer2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanelTrainer2.Size = new System.Drawing.Size(322, 210);
+            this.tableLayoutPanelTrainer2.Size = new System.Drawing.Size(342, 210);
             this.tableLayoutPanelTrainer2.TabIndex = 2;
             // 
             // debugMenu
@@ -501,8 +501,8 @@
             this.debugMenu.Location = new System.Drawing.Point(1, 1);
             this.debugMenu.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.debugMenu.Name = "debugMenu";
-            this.debugMenu.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.debugMenu.Size = new System.Drawing.Size(320, 41);
+            this.debugMenu.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.debugMenu.Size = new System.Drawing.Size(340, 41);
             this.debugMenu.TabIndex = 0;
             this.debugMenu.Text = "      F5 - Open Debug Menu";
             this.debugMenu.UseVisualStyleBackColor = false;
@@ -518,8 +518,8 @@
             this.loadPos.Location = new System.Drawing.Point(1, 127);
             this.loadPos.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.loadPos.Name = "loadPos";
-            this.loadPos.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.loadPos.Size = new System.Drawing.Size(320, 41);
+            this.loadPos.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.loadPos.Size = new System.Drawing.Size(340, 41);
             this.loadPos.TabIndex = 3;
             this.loadPos.Text = "      Num3 - Load Taz Position";
             this.loadPos.UseVisualStyleBackColor = false;
@@ -535,8 +535,8 @@
             this.flyMode.Location = new System.Drawing.Point(1, 169);
             this.flyMode.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.flyMode.Name = "flyMode";
-            this.flyMode.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.flyMode.Size = new System.Drawing.Size(320, 41);
+            this.flyMode.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.flyMode.Size = new System.Drawing.Size(340, 41);
             this.flyMode.TabIndex = 4;
             this.flyMode.Text = "      Num5 - Fly Mode";
             this.flyMode.UseVisualStyleBackColor = false;
@@ -552,8 +552,8 @@
             this.savePos.Location = new System.Drawing.Point(1, 85);
             this.savePos.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.savePos.Name = "savePos";
-            this.savePos.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.savePos.Size = new System.Drawing.Size(320, 41);
+            this.savePos.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.savePos.Size = new System.Drawing.Size(340, 41);
             this.savePos.TabIndex = 2;
             this.savePos.Text = "      Num1 - Save Taz Position";
             this.savePos.UseVisualStyleBackColor = false;
@@ -569,8 +569,8 @@
             this.flyCamera.Location = new System.Drawing.Point(1, 43);
             this.flyCamera.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.flyCamera.Name = "flyCamera";
-            this.flyCamera.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.flyCamera.Size = new System.Drawing.Size(320, 41);
+            this.flyCamera.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.flyCamera.Size = new System.Drawing.Size(340, 41);
             this.flyCamera.TabIndex = 1;
             this.flyCamera.Text = "      Num0 - Photo Mode";
             this.flyCamera.UseVisualStyleBackColor = false;
@@ -581,11 +581,11 @@
             this.Tweaks.BackColor = System.Drawing.Color.Transparent;
             this.Tweaks.Controls.Add(this.tableLayoutPanelTrainer3);
             this.Tweaks.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Tweaks.Location = new System.Drawing.Point(329, 0);
+            this.Tweaks.Location = new System.Drawing.Point(349, 0);
             this.Tweaks.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.Tweaks.Name = "Tweaks";
             this.Tweaks.Padding = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Tweaks.Size = new System.Drawing.Size(326, 237);
+            this.Tweaks.Size = new System.Drawing.Size(346, 237);
             this.Tweaks.TabIndex = 2;
             this.Tweaks.TabStop = false;
             this.Tweaks.Text = "Tweaks";
@@ -610,7 +610,7 @@
             this.tableLayoutPanelTrainer3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanelTrainer3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanelTrainer3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanelTrainer3.Size = new System.Drawing.Size(322, 210);
+            this.tableLayoutPanelTrainer3.Size = new System.Drawing.Size(342, 210);
             this.tableLayoutPanelTrainer3.TabIndex = 2;
             // 
             // drawDistance
@@ -623,8 +623,8 @@
             this.drawDistance.Location = new System.Drawing.Point(1, 1);
             this.drawDistance.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.drawDistance.Name = "drawDistance";
-            this.drawDistance.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.drawDistance.Size = new System.Drawing.Size(320, 41);
+            this.drawDistance.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.drawDistance.Size = new System.Drawing.Size(340, 41);
             this.drawDistance.TabIndex = 0;
             this.drawDistance.Text = "      F6 - Inf Draw Distance";
             this.drawDistance.UseVisualStyleBackColor = false;
@@ -640,8 +640,8 @@
             this.textureAlpha.Location = new System.Drawing.Point(1, 85);
             this.textureAlpha.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.textureAlpha.Name = "textureAlpha";
-            this.textureAlpha.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.textureAlpha.Size = new System.Drawing.Size(320, 41);
+            this.textureAlpha.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.textureAlpha.Size = new System.Drawing.Size(340, 41);
             this.textureAlpha.TabIndex = 2;
             this.textureAlpha.Text = "      F8 - Show Alpha Textures";
             this.textureAlpha.UseVisualStyleBackColor = false;
@@ -657,8 +657,8 @@
             this.textureFilter.Location = new System.Drawing.Point(1, 43);
             this.textureFilter.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.textureFilter.Name = "textureFilter";
-            this.textureFilter.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.textureFilter.Size = new System.Drawing.Size(320, 41);
+            this.textureFilter.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.textureFilter.Size = new System.Drawing.Size(340, 41);
             this.textureFilter.TabIndex = 1;
             this.textureFilter.Text = "      F7 - Texture Filtering";
             this.textureFilter.UseVisualStyleBackColor = false;
@@ -674,8 +674,8 @@
             this.fpsCap.Location = new System.Drawing.Point(1, 127);
             this.fpsCap.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.fpsCap.Name = "fpsCap";
-            this.fpsCap.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.fpsCap.Size = new System.Drawing.Size(320, 41);
+            this.fpsCap.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.fpsCap.Size = new System.Drawing.Size(340, 41);
             this.fpsCap.TabIndex = 3;
             this.fpsCap.Text = "      F9 - FPS Cap; / * - Adjust";
             this.fpsCap.UseVisualStyleBackColor = false;
@@ -691,8 +691,8 @@
             this.smoothLighting.Location = new System.Drawing.Point(1, 169);
             this.smoothLighting.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.smoothLighting.Name = "smoothLighting";
-            this.smoothLighting.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.smoothLighting.Size = new System.Drawing.Size(320, 41);
+            this.smoothLighting.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.smoothLighting.Size = new System.Drawing.Size(340, 41);
             this.smoothLighting.TabIndex = 4;
             this.smoothLighting.Text = "      F10 - Smooth Actor Lighting";
             this.smoothLighting.UseVisualStyleBackColor = false;
@@ -703,11 +703,11 @@
             this.Challenges.BackColor = System.Drawing.Color.Transparent;
             this.Challenges.Controls.Add(this.tableLayoutPanelTrainer4);
             this.Challenges.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Challenges.Location = new System.Drawing.Point(329, 237);
+            this.Challenges.Location = new System.Drawing.Point(349, 237);
             this.Challenges.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.Challenges.Name = "Challenges";
             this.Challenges.Padding = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.Challenges.Size = new System.Drawing.Size(326, 237);
+            this.Challenges.Size = new System.Drawing.Size(346, 237);
             this.Challenges.TabIndex = 3;
             this.Challenges.TabStop = false;
             this.Challenges.Text = "Miscellaneous";
@@ -716,7 +716,7 @@
             // 
             this.tableLayoutPanelTrainer4.ColumnCount = 1;
             this.tableLayoutPanelTrainer4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelTrainer4.Controls.Add(this.ballMouseTazMode, 0, 1);
+            this.tableLayoutPanelTrainer4.Controls.Add(this.ballMode, 0, 1);
             this.tableLayoutPanelTrainer4.Controls.Add(this.disallowJump, 0, 0);
             this.tableLayoutPanelTrainer4.Controls.Add(this.debugInfo, 0, 2);
             this.tableLayoutPanelTrainer4.Controls.Add(this.undestructibleWorld, 0, 3);
@@ -732,25 +732,25 @@
             this.tableLayoutPanelTrainer4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanelTrainer4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.tableLayoutPanelTrainer4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.tableLayoutPanelTrainer4.Size = new System.Drawing.Size(322, 210);
+            this.tableLayoutPanelTrainer4.Size = new System.Drawing.Size(342, 210);
             this.tableLayoutPanelTrainer4.TabIndex = 2;
             // 
-            // ballMouseTazMode
+            // ballMode
             // 
-            this.ballMouseTazMode.Appearance = System.Windows.Forms.Appearance.Button;
-            this.ballMouseTazMode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ballMouseTazMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.ballMouseTazMode.ImageKey = "target6.png";
-            this.ballMouseTazMode.ImageList = this.smallButtonIcons;
-            this.ballMouseTazMode.Location = new System.Drawing.Point(1, 43);
-            this.ballMouseTazMode.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
-            this.ballMouseTazMode.Name = "ballMouseTazMode";
-            this.ballMouseTazMode.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.ballMouseTazMode.Size = new System.Drawing.Size(320, 41);
-            this.ballMouseTazMode.TabIndex = 1;
-            this.ballMouseTazMode.Text = "      F12 -Ball/Mouse/Taz(Ghost)";
-            this.ballMouseTazMode.UseVisualStyleBackColor = false;
-            this.ballMouseTazMode.CheckedChanged += new System.EventHandler(this.ballMouseTazMode_CheckedChanged);
+            this.ballMode.Appearance = System.Windows.Forms.Appearance.Button;
+            this.ballMode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ballMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.ballMode.ImageKey = "target6.png";
+            this.ballMode.ImageList = this.smallButtonIcons;
+            this.ballMode.Location = new System.Drawing.Point(1, 43);
+            this.ballMode.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
+            this.ballMode.Name = "ballMode";
+            this.ballMode.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.ballMode.Size = new System.Drawing.Size(340, 41);
+            this.ballMode.TabIndex = 1;
+            this.ballMode.Text = "      F12 - Glover Ball Mode";
+            this.ballMode.UseVisualStyleBackColor = false;
+            this.ballMode.CheckedChanged += new System.EventHandler(this.ballMode_CheckedChanged);
             // 
             // disallowJump
             // 
@@ -762,8 +762,8 @@
             this.disallowJump.Location = new System.Drawing.Point(1, 1);
             this.disallowJump.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.disallowJump.Name = "disallowJump";
-            this.disallowJump.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.disallowJump.Size = new System.Drawing.Size(320, 41);
+            this.disallowJump.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.disallowJump.Size = new System.Drawing.Size(340, 41);
             this.disallowJump.TabIndex = 0;
             this.disallowJump.Text = "      F11 - No Jumps Mode";
             this.disallowJump.UseVisualStyleBackColor = false;
@@ -779,8 +779,8 @@
             this.debugInfo.Location = new System.Drawing.Point(1, 85);
             this.debugInfo.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.debugInfo.Name = "debugInfo";
-            this.debugInfo.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.debugInfo.Size = new System.Drawing.Size(320, 41);
+            this.debugInfo.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.debugInfo.Size = new System.Drawing.Size(340, 41);
             this.debugInfo.TabIndex = 2;
             this.debugInfo.Text = "      Ins - Show Debug Info";
             this.debugInfo.UseVisualStyleBackColor = false;
@@ -796,8 +796,8 @@
             this.undestructibleWorld.Location = new System.Drawing.Point(1, 127);
             this.undestructibleWorld.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.undestructibleWorld.Name = "undestructibleWorld";
-            this.undestructibleWorld.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.undestructibleWorld.Size = new System.Drawing.Size(320, 41);
+            this.undestructibleWorld.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.undestructibleWorld.Size = new System.Drawing.Size(340, 41);
             this.undestructibleWorld.TabIndex = 2;
             this.undestructibleWorld.Text = "      Home - No Destructions";
             this.undestructibleWorld.UseVisualStyleBackColor = false;
@@ -813,8 +813,8 @@
             this.bulldozerMode.Location = new System.Drawing.Point(1, 169);
             this.bulldozerMode.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
             this.bulldozerMode.Name = "bulldozerMode";
-            this.bulldozerMode.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.bulldozerMode.Size = new System.Drawing.Size(320, 41);
+            this.bulldozerMode.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.bulldozerMode.Size = new System.Drawing.Size(340, 41);
             this.bulldozerMode.TabIndex = 2;
             this.bulldozerMode.Text = "      End - Bulldozer Mode";
             this.bulldozerMode.UseVisualStyleBackColor = false;
@@ -828,7 +828,6 @@
             this.tabs.Controls.Add(this.repackTab);
             this.tabs.Controls.Add(this.infoTab);
             this.tabs.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabs.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tabs.ImageList = this.smallButtonIcons;
             this.tabs.ItemSize = new System.Drawing.Size(223, 37);
             this.tabs.Location = new System.Drawing.Point(0, 0);
@@ -836,8 +835,7 @@
             this.tabs.Name = "tabs";
             this.tabs.Padding = new System.Drawing.Point(0, 0);
             this.tabs.SelectedIndex = 0;
-            this.tabs.Size = new System.Drawing.Size(664, 519);
-            this.tabs.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
+            this.tabs.Size = new System.Drawing.Size(704, 519);
             this.tabs.TabIndex = 0;
             this.tabs.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.tabs_DrawItem);
             // 
@@ -850,7 +848,7 @@
             this.patcherTab.Location = new System.Drawing.Point(4, 41);
             this.patcherTab.Margin = new System.Windows.Forms.Padding(0);
             this.patcherTab.Name = "patcherTab";
-            this.patcherTab.Size = new System.Drawing.Size(656, 474);
+            this.patcherTab.Size = new System.Drawing.Size(696, 474);
             this.patcherTab.TabIndex = 1;
             this.patcherTab.Text = "Patches";
             // 
@@ -867,15 +865,15 @@
             this.tableLayoutPanelPatcher.RowCount = 2;
             this.tableLayoutPanelPatcher.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelPatcher.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 110F));
-            this.tableLayoutPanelPatcher.Size = new System.Drawing.Size(656, 474);
+            this.tableLayoutPanelPatcher.Size = new System.Drawing.Size(696, 474);
             this.tableLayoutPanelPatcher.TabIndex = 7;
             // 
             // tableLayoutPanelPatcher1
             // 
             this.tableLayoutPanelPatcher1.ColumnCount = 3;
-            this.tableLayoutPanelPatcher1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.32653F));
-            this.tableLayoutPanelPatcher1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.67347F));
-            this.tableLayoutPanelPatcher1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 165F));
+            this.tableLayoutPanelPatcher1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelPatcher1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelPatcher1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 166F));
             this.tableLayoutPanelPatcher1.Controls.Add(this.tableLayoutPanelPatcher13, 2, 0);
             this.tableLayoutPanelPatcher1.Controls.Add(this.videoOptions, 1, 0);
             this.tableLayoutPanelPatcher1.Controls.Add(this.loadOptions, 0, 0);
@@ -885,8 +883,7 @@
             this.tableLayoutPanelPatcher1.Name = "tableLayoutPanelPatcher1";
             this.tableLayoutPanelPatcher1.RowCount = 1;
             this.tableLayoutPanelPatcher1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelPatcher1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelPatcher1.Size = new System.Drawing.Size(656, 364);
+            this.tableLayoutPanelPatcher1.Size = new System.Drawing.Size(696, 364);
             this.tableLayoutPanelPatcher1.TabIndex = 2;
             // 
             // tableLayoutPanelPatcher13
@@ -894,14 +891,15 @@
             this.tableLayoutPanelPatcher13.ColumnCount = 1;
             this.tableLayoutPanelPatcher13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelPatcher13.Controls.Add(this.pictureTaz, 0, 0);
-            this.tableLayoutPanelPatcher13.Location = new System.Drawing.Point(490, 0);
+            this.tableLayoutPanelPatcher13.Controls.Add(this.labelVersion, 0, 1);
+            this.tableLayoutPanelPatcher13.Location = new System.Drawing.Point(530, 0);
             this.tableLayoutPanelPatcher13.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelPatcher13.Name = "tableLayoutPanelPatcher13";
             this.tableLayoutPanelPatcher13.RowCount = 2;
             this.tableLayoutPanelPatcher13.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanelPatcher13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelPatcher13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelPatcher13.Size = new System.Drawing.Size(166, 364);
+            this.tableLayoutPanelPatcher13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 19F));
+            this.tableLayoutPanelPatcher13.Size = new System.Drawing.Size(166, 349);
             this.tableLayoutPanelPatcher13.TabIndex = 2;
             // 
             // pictureTaz
@@ -916,19 +914,29 @@
             this.pictureTaz.TabIndex = 6;
             this.pictureTaz.TabStop = false;
             // 
+            // labelVersion
+            // 
+            this.labelVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelVersion.AutoSize = true;
+            this.labelVersion.Location = new System.Drawing.Point(114, 302);
+            this.labelVersion.Name = "labelVersion";
+            this.labelVersion.Size = new System.Drawing.Size(49, 26);
+            this.labelVersion.TabIndex = 7;
+            this.labelVersion.Text = "v4.0";
+            // 
             // videoOptions
             // 
             this.videoOptions.BackColor = System.Drawing.Color.Transparent;
             this.videoOptions.Controls.Add(this.tableLayoutPanelPatcher12);
             this.videoOptions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.videoOptions.Location = new System.Drawing.Point(228, 0);
+            this.videoOptions.Location = new System.Drawing.Point(266, 0);
             this.videoOptions.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.videoOptions.Name = "videoOptions";
             this.videoOptions.Padding = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.videoOptions.Size = new System.Drawing.Size(261, 364);
+            this.videoOptions.Size = new System.Drawing.Size(263, 364);
             this.videoOptions.TabIndex = 1;
             this.videoOptions.TabStop = false;
-            this.videoOptions.Text = "Graphics Options";
+            this.videoOptions.Text = "Graphics";
             // 
             // tableLayoutPanelPatcher12
             // 
@@ -939,8 +947,8 @@
             this.tableLayoutPanelPatcher12.Controls.Add(this.windowed, 0, 3);
             this.tableLayoutPanelPatcher12.Controls.Add(this.tableLayoutPanelPatcher123, 0, 2);
             this.tableLayoutPanelPatcher12.Controls.Add(this.tableLayoutPanelPatcher122, 0, 1);
-            this.tableLayoutPanelPatcher12.Controls.Add(this.tableLayoutPanelPatcher124, 0, 7);
             this.tableLayoutPanelPatcher12.Controls.Add(this.tableLayoutPanelPatcher121, 0, 0);
+            this.tableLayoutPanelPatcher12.Controls.Add(this.tableLayoutPanelPatcher124, 0, 7);
             this.tableLayoutPanelPatcher12.Controls.Add(this.disableDrawDistance, 0, 6);
             this.tableLayoutPanelPatcher12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelPatcher12.Location = new System.Drawing.Point(2, 27);
@@ -956,7 +964,7 @@
             this.tableLayoutPanelPatcher12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanelPatcher12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanelPatcher12.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelPatcher12.Size = new System.Drawing.Size(257, 337);
+            this.tableLayoutPanelPatcher12.Size = new System.Drawing.Size(259, 337);
             this.tableLayoutPanelPatcher12.TabIndex = 0;
             // 
             // filtering
@@ -964,7 +972,6 @@
             this.filtering.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.filtering.AutoSize = true;
             this.filtering.Location = new System.Drawing.Point(3, 205);
-            this.filtering.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.filtering.Name = "filtering";
             this.filtering.Size = new System.Drawing.Size(228, 30);
             this.filtering.TabIndex = 0;
@@ -976,7 +983,6 @@
             this.voodoo.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.voodoo.AutoSize = true;
             this.voodoo.Location = new System.Drawing.Point(3, 165);
-            this.voodoo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.voodoo.Name = "voodoo";
             this.voodoo.Size = new System.Drawing.Size(210, 30);
             this.voodoo.TabIndex = 0;
@@ -988,7 +994,6 @@
             this.windowed.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.windowed.AutoSize = true;
             this.windowed.Location = new System.Drawing.Point(3, 125);
-            this.windowed.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.windowed.Name = "windowed";
             this.windowed.Size = new System.Drawing.Size(174, 30);
             this.windowed.TabIndex = 0;
@@ -1001,7 +1006,7 @@
             this.tableLayoutPanelPatcher123.ColumnCount = 5;
             this.tableLayoutPanelPatcher123.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 105F));
             this.tableLayoutPanelPatcher123.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 48F));
-            this.tableLayoutPanelPatcher123.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanelPatcher123.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanelPatcher123.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 48F));
             this.tableLayoutPanelPatcher123.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelPatcher123.Controls.Add(this.pointsLabel, 2, 0);
@@ -1020,7 +1025,7 @@
             // 
             this.pointsLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pointsLabel.AutoSize = true;
-            this.pointsLabel.Location = new System.Drawing.Point(156, 7);
+            this.pointsLabel.Location = new System.Drawing.Point(157, 7);
             this.pointsLabel.Name = "pointsLabel";
             this.pointsLabel.Size = new System.Drawing.Size(18, 26);
             this.pointsLabel.TabIndex = 2;
@@ -1030,7 +1035,7 @@
             // aspect2
             // 
             this.aspect2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.aspect2.Location = new System.Drawing.Point(178, 3);
+            this.aspect2.Location = new System.Drawing.Point(179, 3);
             this.aspect2.Margin = new System.Windows.Forms.Padding(0);
             this.aspect2.Name = "aspect2";
             this.aspect2.Size = new System.Drawing.Size(48, 34);
@@ -1053,7 +1058,6 @@
             this.aspectRatio.Checked = true;
             this.aspectRatio.CheckState = System.Windows.Forms.CheckState.Checked;
             this.aspectRatio.Location = new System.Drawing.Point(3, 5);
-            this.aspectRatio.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.aspectRatio.Name = "aspectRatio";
             this.aspectRatio.Size = new System.Drawing.Size(97, 30);
             this.aspectRatio.TabIndex = 0;
@@ -1066,7 +1070,7 @@
             this.tableLayoutPanelPatcher122.ColumnCount = 5;
             this.tableLayoutPanelPatcher122.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 76F));
             this.tableLayoutPanelPatcher122.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
-            this.tableLayoutPanelPatcher122.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanelPatcher122.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanelPatcher122.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 77F));
             this.tableLayoutPanelPatcher122.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelPatcher122.Controls.Add(this.height, 3, 0);
@@ -1084,7 +1088,7 @@
             // height
             // 
             this.height.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.height.Location = new System.Drawing.Point(178, 3);
+            this.height.Location = new System.Drawing.Point(179, 3);
             this.height.Margin = new System.Windows.Forms.Padding(0);
             this.height.Name = "height";
             this.height.Size = new System.Drawing.Size(77, 34);
@@ -1097,7 +1101,7 @@
             this.xLabel.AutoSize = true;
             this.xLabel.Location = new System.Drawing.Point(156, 7);
             this.xLabel.Name = "xLabel";
-            this.xLabel.Size = new System.Drawing.Size(19, 26);
+            this.xLabel.Size = new System.Drawing.Size(20, 26);
             this.xLabel.TabIndex = 2;
             this.xLabel.Text = "x";
             this.xLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1120,54 +1124,12 @@
             this.changeResolution.Checked = true;
             this.changeResolution.CheckState = System.Windows.Forms.CheckState.Checked;
             this.changeResolution.Location = new System.Drawing.Point(3, 5);
-            this.changeResolution.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.changeResolution.Name = "changeResolution";
             this.changeResolution.Size = new System.Drawing.Size(68, 30);
             this.changeResolution.TabIndex = 0;
             this.changeResolution.Text = "Res:";
             this.changeResolution.UseVisualStyleBackColor = false;
             this.changeResolution.CheckedChanged += new System.EventHandler(this.changeResolution_CheckedChanged);
-            // 
-            // tableLayoutPanelPatcher124
-            // 
-            this.tableLayoutPanelPatcher124.ColumnCount = 2;
-            this.tableLayoutPanelPatcher124.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelPatcher124.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelPatcher124.Controls.Add(this.fogComboBox, 1, 0);
-            this.tableLayoutPanelPatcher124.Controls.Add(this.fog, 0, 0);
-            this.tableLayoutPanelPatcher124.Location = new System.Drawing.Point(0, 280);
-            this.tableLayoutPanelPatcher124.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanelPatcher124.Name = "tableLayoutPanelPatcher124";
-            this.tableLayoutPanelPatcher124.RowCount = 1;
-            this.tableLayoutPanelPatcher124.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelPatcher124.Size = new System.Drawing.Size(255, 40);
-            this.tableLayoutPanelPatcher124.TabIndex = 0;
-            // 
-            // fogComboBox
-            // 
-            this.fogComboBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.fogComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.fogComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.fogComboBox.Items.AddRange(new object[] {
-            "No · PC (Default)",
-            "Normal · Xbox/GCN",
-            "Thick · PlayStation 2"});
-            this.fogComboBox.Location = new System.Drawing.Point(51, 1);
-            this.fogComboBox.Margin = new System.Windows.Forms.Padding(1);
-            this.fogComboBox.Name = "fogComboBox";
-            this.fogComboBox.Size = new System.Drawing.Size(203, 34);
-            this.fogComboBox.TabIndex = 1;
-            // 
-            // fog
-            // 
-            this.fog.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.fog.AutoSize = true;
-            this.fog.Location = new System.Drawing.Point(0, 7);
-            this.fog.Margin = new System.Windows.Forms.Padding(0);
-            this.fog.Name = "fog";
-            this.fog.Size = new System.Drawing.Size(50, 26);
-            this.fog.TabIndex = 0;
-            this.fog.Text = "Fog:";
             // 
             // tableLayoutPanelPatcher121
             // 
@@ -1196,7 +1158,7 @@
             this.apiComboBox.Location = new System.Drawing.Point(52, 1);
             this.apiComboBox.Margin = new System.Windows.Forms.Padding(1);
             this.apiComboBox.Name = "apiComboBox";
-            this.apiComboBox.Size = new System.Drawing.Size(203, 34);
+            this.apiComboBox.Size = new System.Drawing.Size(204, 34);
             this.apiComboBox.TabIndex = 1;
             // 
             // videoApi
@@ -1210,6 +1172,47 @@
             this.videoApi.TabIndex = 0;
             this.videoApi.Text = "API:";
             // 
+            // tableLayoutPanelPatcher124
+            // 
+            this.tableLayoutPanelPatcher124.ColumnCount = 2;
+            this.tableLayoutPanelPatcher124.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanelPatcher124.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelPatcher124.Controls.Add(this.fogComboBox, 1, 0);
+            this.tableLayoutPanelPatcher124.Controls.Add(this.fog, 0, 0);
+            this.tableLayoutPanelPatcher124.Location = new System.Drawing.Point(0, 280);
+            this.tableLayoutPanelPatcher124.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanelPatcher124.Name = "tableLayoutPanelPatcher124";
+            this.tableLayoutPanelPatcher124.RowCount = 1;
+            this.tableLayoutPanelPatcher124.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelPatcher124.Size = new System.Drawing.Size(256, 40);
+            this.tableLayoutPanelPatcher124.TabIndex = 0;
+            // 
+            // fogComboBox
+            // 
+            this.fogComboBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.fogComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.fogComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.fogComboBox.Items.AddRange(new object[] {
+            "No · PC (Default)",
+            "Normal · Xbox/GCN",
+            "Thick · PlayStation 2"});
+            this.fogComboBox.Location = new System.Drawing.Point(51, 1);
+            this.fogComboBox.Margin = new System.Windows.Forms.Padding(1);
+            this.fogComboBox.Name = "fogComboBox";
+            this.fogComboBox.Size = new System.Drawing.Size(204, 34);
+            this.fogComboBox.TabIndex = 1;
+            // 
+            // fog
+            // 
+            this.fog.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.fog.AutoSize = true;
+            this.fog.Location = new System.Drawing.Point(0, 7);
+            this.fog.Margin = new System.Windows.Forms.Padding(0);
+            this.fog.Name = "fog";
+            this.fog.Size = new System.Drawing.Size(50, 26);
+            this.fog.TabIndex = 0;
+            this.fog.Text = "Fog:";
+            // 
             // disableDrawDistance
             // 
             this.disableDrawDistance.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -1217,7 +1220,6 @@
             this.disableDrawDistance.Checked = true;
             this.disableDrawDistance.CheckState = System.Windows.Forms.CheckState.Checked;
             this.disableDrawDistance.Location = new System.Drawing.Point(3, 245);
-            this.disableDrawDistance.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.disableDrawDistance.Name = "disableDrawDistance";
             this.disableDrawDistance.Size = new System.Drawing.Size(246, 30);
             this.disableDrawDistance.TabIndex = 2;
@@ -1233,23 +1235,21 @@
             this.loadOptions.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.loadOptions.Name = "loadOptions";
             this.loadOptions.Padding = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.loadOptions.Size = new System.Drawing.Size(225, 364);
+            this.loadOptions.Size = new System.Drawing.Size(263, 364);
             this.loadOptions.TabIndex = 0;
             this.loadOptions.TabStop = false;
-            this.loadOptions.Text = "Launch Options";
+            this.loadOptions.Text = "General";
             // 
             // tableLayoutPanelPatcher11
             // 
             this.tableLayoutPanelPatcher11.ColumnCount = 1;
             this.tableLayoutPanelPatcher11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelPatcher11.Controls.Add(this.warningBanner, 0, 2);
             this.tableLayoutPanelPatcher11.Controls.Add(this.tableLayoutPanel111, 0, 0);
-            this.tableLayoutPanelPatcher11.Controls.Add(this.disableVideos, 0, 1);
-            this.tableLayoutPanelPatcher11.Controls.Add(this.tableLayoutPanelPatcher112, 0, 3);
-            this.tableLayoutPanelPatcher11.Controls.Add(this.tableLayoutPanel113, 0, 4);
-            this.tableLayoutPanelPatcher11.Controls.Add(this.saveCRCcheck, 0, 6);
-            this.tableLayoutPanelPatcher11.Controls.Add(this.tableLayoutPanelPatcher114, 0, 5);
-            this.tableLayoutPanelPatcher11.Controls.Add(this.extraDebug, 0, 7);
+            this.tableLayoutPanelPatcher11.Controls.Add(this.tableLayoutPanel113, 0, 1);
+            this.tableLayoutPanelPatcher11.Controls.Add(this.extraDebug, 0, 3);
+            this.tableLayoutPanelPatcher11.Controls.Add(this.saveCRCcheck, 0, 2);
+            this.tableLayoutPanelPatcher11.Controls.Add(this.tableLayoutPanelPatcher112, 0, 7);
+            this.tableLayoutPanelPatcher11.Controls.Add(this.tableLayoutPanelPatcher114, 0, 6);
             this.tableLayoutPanelPatcher11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelPatcher11.Location = new System.Drawing.Point(2, 27);
             this.tableLayoutPanelPatcher11.Margin = new System.Windows.Forms.Padding(0);
@@ -1264,36 +1264,22 @@
             this.tableLayoutPanelPatcher11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanelPatcher11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanelPatcher11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelPatcher11.Size = new System.Drawing.Size(221, 337);
+            this.tableLayoutPanelPatcher11.Size = new System.Drawing.Size(259, 337);
             this.tableLayoutPanelPatcher11.TabIndex = 0;
-            // 
-            // warningBanner
-            // 
-            this.warningBanner.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.warningBanner.AutoSize = true;
-            this.warningBanner.Checked = true;
-            this.warningBanner.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.warningBanner.Location = new System.Drawing.Point(3, 85);
-            this.warningBanner.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.warningBanner.Name = "warningBanner";
-            this.warningBanner.Size = new System.Drawing.Size(213, 30);
-            this.warningBanner.TabIndex = 3;
-            this.warningBanner.Text = "Skip Warning Banner";
-            this.warningBanner.UseVisualStyleBackColor = false;
             // 
             // tableLayoutPanel111
             // 
             this.tableLayoutPanel111.ColumnCount = 2;
-            this.tableLayoutPanel111.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel111.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
             this.tableLayoutPanel111.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel111.Controls.Add(this.noCD, 0, 0);
-            this.tableLayoutPanel111.Controls.Add(this.patch4gb, 1, 0);
+            this.tableLayoutPanel111.Controls.Add(this.skips, 1, 0);
             this.tableLayoutPanel111.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel111.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel111.Name = "tableLayoutPanel111";
             this.tableLayoutPanel111.RowCount = 1;
             this.tableLayoutPanel111.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel111.Size = new System.Drawing.Size(221, 40);
+            this.tableLayoutPanel111.Size = new System.Drawing.Size(257, 40);
             this.tableLayoutPanel111.TabIndex = 0;
             // 
             // noCD
@@ -1303,12 +1289,52 @@
             this.noCD.Checked = true;
             this.noCD.CheckState = System.Windows.Forms.CheckState.Checked;
             this.noCD.Location = new System.Drawing.Point(3, 5);
-            this.noCD.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.noCD.Name = "noCD";
             this.noCD.Size = new System.Drawing.Size(81, 30);
             this.noCD.TabIndex = 1;
             this.noCD.Text = "NoCD";
             this.noCD.UseVisualStyleBackColor = false;
+            // 
+            // skips
+            // 
+            this.skips.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.skips.AutoSize = true;
+            this.skips.Checked = true;
+            this.skips.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.skips.Location = new System.Drawing.Point(104, 5);
+            this.skips.Name = "skips";
+            this.skips.Size = new System.Drawing.Size(107, 30);
+            this.skips.TabIndex = 3;
+            this.skips.Text = "Skip Ads";
+            this.skips.UseVisualStyleBackColor = false;
+            // 
+            // tableLayoutPanel113
+            // 
+            this.tableLayoutPanel113.ColumnCount = 2;
+            this.tableLayoutPanel113.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
+            this.tableLayoutPanel113.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel113.Controls.Add(this.mods, 0, 0);
+            this.tableLayoutPanel113.Controls.Add(this.patch4gb, 1, 0);
+            this.tableLayoutPanel113.Location = new System.Drawing.Point(0, 40);
+            this.tableLayoutPanel113.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel113.Name = "tableLayoutPanel113";
+            this.tableLayoutPanel113.RowCount = 1;
+            this.tableLayoutPanel113.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel113.Size = new System.Drawing.Size(257, 40);
+            this.tableLayoutPanel113.TabIndex = 0;
+            // 
+            // mods
+            // 
+            this.mods.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.mods.AutoSize = true;
+            this.mods.Checked = true;
+            this.mods.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.mods.Location = new System.Drawing.Point(3, 5);
+            this.mods.Name = "mods";
+            this.mods.Size = new System.Drawing.Size(78, 30);
+            this.mods.TabIndex = 3;
+            this.mods.Text = "Mods";
+            this.mods.UseVisualStyleBackColor = false;
             // 
             // patch4gb
             // 
@@ -1316,41 +1342,48 @@
             this.patch4gb.AutoSize = true;
             this.patch4gb.Checked = true;
             this.patch4gb.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.patch4gb.Location = new System.Drawing.Point(90, 5);
-            this.patch4gb.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.patch4gb.Location = new System.Drawing.Point(104, 5);
             this.patch4gb.Name = "patch4gb";
-            this.patch4gb.Size = new System.Drawing.Size(68, 30);
+            this.patch4gb.Size = new System.Drawing.Size(73, 30);
             this.patch4gb.TabIndex = 1;
-            this.patch4gb.Text = "4GB";
+            this.patch4gb.Text = "4 Gb";
             this.patch4gb.UseVisualStyleBackColor = false;
             // 
-            // disableVideos
+            // extraDebug
             // 
-            this.disableVideos.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.disableVideos.AutoSize = true;
-            this.disableVideos.Checked = true;
-            this.disableVideos.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.disableVideos.Location = new System.Drawing.Point(3, 45);
-            this.disableVideos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.disableVideos.Name = "disableVideos";
-            this.disableVideos.Size = new System.Drawing.Size(176, 30);
-            this.disableVideos.TabIndex = 4;
-            this.disableVideos.Text = "Skip Logo Videos";
-            this.disableVideos.UseVisualStyleBackColor = false;
+            this.extraDebug.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.extraDebug.AutoSize = true;
+            this.extraDebug.Location = new System.Drawing.Point(3, 125);
+            this.extraDebug.Name = "extraDebug";
+            this.extraDebug.Size = new System.Drawing.Size(141, 30);
+            this.extraDebug.TabIndex = 3;
+            this.extraDebug.Text = "More Cheats";
+            this.extraDebug.UseVisualStyleBackColor = false;
+            // 
+            // saveCRCcheck
+            // 
+            this.saveCRCcheck.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.saveCRCcheck.AutoSize = true;
+            this.saveCRCcheck.Location = new System.Drawing.Point(3, 85);
+            this.saveCRCcheck.Name = "saveCRCcheck";
+            this.saveCRCcheck.Size = new System.Drawing.Size(131, 30);
+            this.saveCRCcheck.TabIndex = 3;
+            this.saveCRCcheck.Text = "Bypass CRC";
+            this.saveCRCcheck.UseVisualStyleBackColor = false;
             // 
             // tableLayoutPanelPatcher112
             // 
             this.tableLayoutPanelPatcher112.ColumnCount = 2;
+            this.tableLayoutPanelPatcher112.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
             this.tableLayoutPanelPatcher112.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelPatcher112.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelPatcher112.Controls.Add(this.langComboBox, 1, 0);
             this.tableLayoutPanelPatcher112.Controls.Add(this.language, 0, 0);
-            this.tableLayoutPanelPatcher112.Location = new System.Drawing.Point(0, 120);
+            this.tableLayoutPanelPatcher112.Location = new System.Drawing.Point(0, 280);
             this.tableLayoutPanelPatcher112.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelPatcher112.Name = "tableLayoutPanelPatcher112";
             this.tableLayoutPanelPatcher112.RowCount = 1;
             this.tableLayoutPanelPatcher112.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelPatcher112.Size = new System.Drawing.Size(221, 40);
+            this.tableLayoutPanelPatcher112.Size = new System.Drawing.Size(257, 40);
             this.tableLayoutPanelPatcher112.TabIndex = 0;
             // 
             // langComboBox
@@ -1365,10 +1398,10 @@
             "Italian",
             "Spanish",
             "Russian"});
-            this.langComboBox.Location = new System.Drawing.Point(59, 1);
+            this.langComboBox.Location = new System.Drawing.Point(102, 1);
             this.langComboBox.Margin = new System.Windows.Forms.Padding(1);
             this.langComboBox.Name = "langComboBox";
-            this.langComboBox.Size = new System.Drawing.Size(161, 34);
+            this.langComboBox.Size = new System.Drawing.Size(155, 34);
             this.langComboBox.TabIndex = 1;
             // 
             // language
@@ -1378,77 +1411,23 @@
             this.language.Location = new System.Drawing.Point(0, 7);
             this.language.Margin = new System.Windows.Forms.Padding(0);
             this.language.Name = "language";
-            this.language.Size = new System.Drawing.Size(58, 26);
+            this.language.Size = new System.Drawing.Size(98, 26);
             this.language.TabIndex = 0;
-            this.language.Text = "Lang:";
-            // 
-            // tableLayoutPanel113
-            // 
-            this.tableLayoutPanel113.ColumnCount = 2;
-            this.tableLayoutPanel113.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel113.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel113.Controls.Add(this.glyphsComboBox, 1, 0);
-            this.tableLayoutPanel113.Controls.Add(this.glyphs, 0, 0);
-            this.tableLayoutPanel113.Location = new System.Drawing.Point(0, 160);
-            this.tableLayoutPanel113.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel113.Name = "tableLayoutPanel113";
-            this.tableLayoutPanel113.RowCount = 1;
-            this.tableLayoutPanel113.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel113.Size = new System.Drawing.Size(221, 40);
-            this.tableLayoutPanel113.TabIndex = 0;
-            // 
-            // glyphsComboBox
-            // 
-            this.glyphsComboBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.glyphsComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.glyphsComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.glyphsComboBox.Items.AddRange(new object[] {
-            "PC (Default)",
-            "PlayStation",
-            "Xbox Duke",
-            "Xbox S"});
-            this.glyphsComboBox.Location = new System.Drawing.Point(76, 1);
-            this.glyphsComboBox.Margin = new System.Windows.Forms.Padding(1);
-            this.glyphsComboBox.Name = "glyphsComboBox";
-            this.glyphsComboBox.Size = new System.Drawing.Size(144, 34);
-            this.glyphsComboBox.TabIndex = 1;
-            // 
-            // glyphs
-            // 
-            this.glyphs.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.glyphs.AutoSize = true;
-            this.glyphs.Location = new System.Drawing.Point(0, 7);
-            this.glyphs.Margin = new System.Windows.Forms.Padding(0);
-            this.glyphs.Name = "glyphs";
-            this.glyphs.Size = new System.Drawing.Size(75, 26);
-            this.glyphs.TabIndex = 0;
-            this.glyphs.Text = "Glyphs:";
-            // 
-            // saveCRCcheck
-            // 
-            this.saveCRCcheck.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.saveCRCcheck.AutoSize = true;
-            this.saveCRCcheck.Location = new System.Drawing.Point(3, 245);
-            this.saveCRCcheck.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.saveCRCcheck.Name = "saveCRCcheck";
-            this.saveCRCcheck.Size = new System.Drawing.Size(179, 30);
-            this.saveCRCcheck.TabIndex = 3;
-            this.saveCRCcheck.Text = "Bypass Save CRC";
-            this.saveCRCcheck.UseVisualStyleBackColor = false;
+            this.language.Text = "Language:";
             // 
             // tableLayoutPanelPatcher114
             // 
             this.tableLayoutPanelPatcher114.ColumnCount = 2;
+            this.tableLayoutPanelPatcher114.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
             this.tableLayoutPanelPatcher114.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelPatcher114.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelPatcher114.Controls.Add(this.layoutComboBox, 1, 0);
             this.tableLayoutPanelPatcher114.Controls.Add(this.layout, 0, 0);
-            this.tableLayoutPanelPatcher114.Location = new System.Drawing.Point(0, 200);
+            this.tableLayoutPanelPatcher114.Location = new System.Drawing.Point(0, 240);
             this.tableLayoutPanelPatcher114.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelPatcher114.Name = "tableLayoutPanelPatcher114";
             this.tableLayoutPanelPatcher114.RowCount = 1;
             this.tableLayoutPanelPatcher114.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelPatcher114.Size = new System.Drawing.Size(221, 40);
+            this.tableLayoutPanelPatcher114.Size = new System.Drawing.Size(257, 40);
             this.tableLayoutPanelPatcher114.TabIndex = 0;
             // 
             // layoutComboBox
@@ -1460,10 +1439,10 @@
             "Vanilla",
             "XInput",
             "DS4"});
-            this.layoutComboBox.Location = new System.Drawing.Point(115, 1);
+            this.layoutComboBox.Location = new System.Drawing.Point(102, 1);
             this.layoutComboBox.Margin = new System.Windows.Forms.Padding(1);
             this.layoutComboBox.Name = "layoutComboBox";
-            this.layoutComboBox.Size = new System.Drawing.Size(105, 34);
+            this.layoutComboBox.Size = new System.Drawing.Size(155, 34);
             this.layoutComboBox.TabIndex = 1;
             // 
             // layout
@@ -1473,21 +1452,9 @@
             this.layout.Location = new System.Drawing.Point(0, 7);
             this.layout.Margin = new System.Windows.Forms.Padding(0);
             this.layout.Name = "layout";
-            this.layout.Size = new System.Drawing.Size(114, 26);
+            this.layout.Size = new System.Drawing.Size(90, 26);
             this.layout.TabIndex = 0;
-            this.layout.Text = "Key Layout:";
-            // 
-            // extraDebug
-            // 
-            this.extraDebug.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.extraDebug.AutoSize = true;
-            this.extraDebug.Location = new System.Drawing.Point(3, 285);
-            this.extraDebug.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.extraDebug.Name = "extraDebug";
-            this.extraDebug.Size = new System.Drawing.Size(206, 30);
-            this.extraDebug.TabIndex = 3;
-            this.extraDebug.Text = "Extra Debug Cheats";
-            this.extraDebug.UseVisualStyleBackColor = false;
+            this.layout.Text = "Controls:";
             // 
             // tableLayoutPanelPatcher2
             // 
@@ -1502,7 +1469,7 @@
             this.tableLayoutPanelPatcher2.Name = "tableLayoutPanelPatcher2";
             this.tableLayoutPanelPatcher2.RowCount = 1;
             this.tableLayoutPanelPatcher2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelPatcher2.Size = new System.Drawing.Size(656, 110);
+            this.tableLayoutPanelPatcher2.Size = new System.Drawing.Size(696, 110);
             this.tableLayoutPanelPatcher2.TabIndex = 11;
             // 
             // tableLayoutPanelPatcher21
@@ -1518,7 +1485,7 @@
             this.tableLayoutPanelPatcher21.RowCount = 2;
             this.tableLayoutPanelPatcher21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelPatcher21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelPatcher21.Size = new System.Drawing.Size(328, 110);
+            this.tableLayoutPanelPatcher21.Size = new System.Drawing.Size(348, 110);
             this.tableLayoutPanelPatcher21.TabIndex = 33;
             // 
             // restore
@@ -1533,7 +1500,7 @@
             this.restore.Location = new System.Drawing.Point(1, 56);
             this.restore.Margin = new System.Windows.Forms.Padding(1);
             this.restore.Name = "restore";
-            this.restore.Size = new System.Drawing.Size(326, 53);
+            this.restore.Size = new System.Drawing.Size(346, 53);
             this.restore.TabIndex = 1;
             this.restore.Text = "         Restore patches";
             this.restore.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1561,7 +1528,7 @@
             this.patch.Location = new System.Drawing.Point(1, 1);
             this.patch.Margin = new System.Windows.Forms.Padding(1);
             this.patch.Name = "patch";
-            this.patch.Size = new System.Drawing.Size(326, 53);
+            this.patch.Size = new System.Drawing.Size(346, 53);
             this.patch.TabIndex = 0;
             this.patch.Text = "         Patch game";
             this.patch.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1576,10 +1543,10 @@
             this.play.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.play.ImageKey = "wantedlogomagenta.png";
             this.play.ImageList = this.bigButtonIcons;
-            this.play.Location = new System.Drawing.Point(329, 1);
+            this.play.Location = new System.Drawing.Point(349, 1);
             this.play.Margin = new System.Windows.Forms.Padding(1);
             this.play.Name = "play";
-            this.play.Size = new System.Drawing.Size(326, 108);
+            this.play.Size = new System.Drawing.Size(346, 108);
             this.play.TabIndex = 0;
             this.play.Text = "            Patch && Play";
             this.play.UseVisualStyleBackColor = true;
@@ -1598,7 +1565,7 @@
             this.trainerTab.Location = new System.Drawing.Point(4, 41);
             this.trainerTab.Margin = new System.Windows.Forms.Padding(0);
             this.trainerTab.Name = "trainerTab";
-            this.trainerTab.Size = new System.Drawing.Size(656, 474);
+            this.trainerTab.Size = new System.Drawing.Size(696, 474);
             this.trainerTab.TabIndex = 0;
             this.trainerTab.Text = "Trainer";
             // 
@@ -1608,9 +1575,10 @@
             this.settingsTab.Controls.Add(this.tableLayoutPanelSettings);
             this.settingsTab.ImageKey = "bombbit4.png";
             this.settingsTab.Location = new System.Drawing.Point(4, 41);
+            this.settingsTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.settingsTab.Name = "settingsTab";
-            this.settingsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.settingsTab.Size = new System.Drawing.Size(656, 474);
+            this.settingsTab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.settingsTab.Size = new System.Drawing.Size(696, 474);
             this.settingsTab.TabIndex = 3;
             this.settingsTab.Text = "Settings";
             // 
@@ -1621,21 +1589,24 @@
             this.tableLayoutPanelSettings.Controls.Add(this.groupBoxRegistry, 0, 0);
             this.tableLayoutPanelSettings.Controls.Add(this.tableLayoutPanelSettings2, 0, 1);
             this.tableLayoutPanelSettings.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelSettings.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanelSettings.Location = new System.Drawing.Point(3, 2);
+            this.tableLayoutPanelSettings.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanelSettings.Name = "tableLayoutPanelSettings";
             this.tableLayoutPanelSettings.RowCount = 2;
             this.tableLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanelSettings.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSettings.Size = new System.Drawing.Size(650, 468);
+            this.tableLayoutPanelSettings.Size = new System.Drawing.Size(690, 470);
             this.tableLayoutPanelSettings.TabIndex = 0;
             // 
             // groupBoxRegistry
             // 
             this.groupBoxRegistry.Controls.Add(this.tableLayoutPanelSettings1);
             this.groupBoxRegistry.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBoxRegistry.Location = new System.Drawing.Point(3, 3);
+            this.groupBoxRegistry.Location = new System.Drawing.Point(3, 2);
+            this.groupBoxRegistry.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBoxRegistry.Name = "groupBoxRegistry";
-            this.groupBoxRegistry.Size = new System.Drawing.Size(644, 114);
+            this.groupBoxRegistry.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBoxRegistry.Size = new System.Drawing.Size(684, 114);
             this.groupBoxRegistry.TabIndex = 0;
             this.groupBoxRegistry.TabStop = false;
             this.groupBoxRegistry.Text = "Game path";
@@ -1647,13 +1618,13 @@
             this.tableLayoutPanelSettings1.Controls.Add(this.textBoxRegistry, 0, 0);
             this.tableLayoutPanelSettings1.Controls.Add(this.tableLayoutPanelSettings11, 0, 1);
             this.tableLayoutPanelSettings1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelSettings1.Location = new System.Drawing.Point(3, 30);
+            this.tableLayoutPanelSettings1.Location = new System.Drawing.Point(3, 29);
             this.tableLayoutPanelSettings1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelSettings1.Name = "tableLayoutPanelSettings1";
             this.tableLayoutPanelSettings1.RowCount = 2;
             this.tableLayoutPanelSettings1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanelSettings1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSettings1.Size = new System.Drawing.Size(638, 81);
+            this.tableLayoutPanelSettings1.Size = new System.Drawing.Size(678, 83);
             this.tableLayoutPanelSettings1.TabIndex = 3;
             // 
             // textBoxRegistry
@@ -1662,7 +1633,7 @@
             this.textBoxRegistry.Location = new System.Drawing.Point(1, 1);
             this.textBoxRegistry.Margin = new System.Windows.Forms.Padding(1);
             this.textBoxRegistry.Name = "textBoxRegistry";
-            this.textBoxRegistry.Size = new System.Drawing.Size(636, 34);
+            this.textBoxRegistry.Size = new System.Drawing.Size(676, 34);
             this.textBoxRegistry.TabIndex = 0;
             // 
             // tableLayoutPanelSettings11
@@ -1680,7 +1651,7 @@
             this.tableLayoutPanelSettings11.Name = "tableLayoutPanelSettings11";
             this.tableLayoutPanelSettings11.RowCount = 1;
             this.tableLayoutPanelSettings11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSettings11.Size = new System.Drawing.Size(638, 45);
+            this.tableLayoutPanelSettings11.Size = new System.Drawing.Size(678, 47);
             this.tableLayoutPanelSettings11.TabIndex = 0;
             // 
             // browseGame
@@ -1692,7 +1663,7 @@
             this.browseGame.Location = new System.Drawing.Point(1, 1);
             this.browseGame.Margin = new System.Windows.Forms.Padding(1);
             this.browseGame.Name = "browseGame";
-            this.browseGame.Size = new System.Drawing.Size(157, 43);
+            this.browseGame.Size = new System.Drawing.Size(167, 45);
             this.browseGame.TabIndex = 1;
             this.browseGame.Text = "Browse";
             this.browseGame.UseVisualStyleBackColor = true;
@@ -1704,10 +1675,10 @@
             this.applyRegistry.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.applyRegistry.ImageKey = "greentick.png";
             this.applyRegistry.ImageList = this.smallButtonIcons;
-            this.applyRegistry.Location = new System.Drawing.Point(478, 1);
+            this.applyRegistry.Location = new System.Drawing.Point(508, 1);
             this.applyRegistry.Margin = new System.Windows.Forms.Padding(1);
             this.applyRegistry.Name = "applyRegistry";
-            this.applyRegistry.Size = new System.Drawing.Size(159, 43);
+            this.applyRegistry.Size = new System.Drawing.Size(169, 45);
             this.applyRegistry.TabIndex = 1;
             this.applyRegistry.Text = "Apply";
             this.applyRegistry.UseVisualStyleBackColor = true;
@@ -1721,11 +1692,12 @@
             this.tableLayoutPanelSettings2.Controls.Add(this.trainerOptions, 0, 0);
             this.tableLayoutPanelSettings2.Controls.Add(this.nativeOptions, 1, 0);
             this.tableLayoutPanelSettings2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelSettings2.Location = new System.Drawing.Point(3, 123);
+            this.tableLayoutPanelSettings2.Location = new System.Drawing.Point(3, 122);
+            this.tableLayoutPanelSettings2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanelSettings2.Name = "tableLayoutPanelSettings2";
             this.tableLayoutPanelSettings2.RowCount = 1;
             this.tableLayoutPanelSettings2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSettings2.Size = new System.Drawing.Size(644, 342);
+            this.tableLayoutPanelSettings2.Size = new System.Drawing.Size(684, 346);
             this.tableLayoutPanelSettings2.TabIndex = 6;
             // 
             // trainerOptions
@@ -1737,7 +1709,7 @@
             this.trainerOptions.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.trainerOptions.Name = "trainerOptions";
             this.trainerOptions.Padding = new System.Windows.Forms.Padding(2);
-            this.trainerOptions.Size = new System.Drawing.Size(481, 342);
+            this.trainerOptions.Size = new System.Drawing.Size(511, 346);
             this.trainerOptions.TabIndex = 1;
             this.trainerOptions.TabStop = false;
             this.trainerOptions.Text = "Trainer/Patcher options";
@@ -1770,7 +1742,7 @@
             this.tableLayoutPanelSettings21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28386F));
             this.tableLayoutPanelSettings21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28625F));
             this.tableLayoutPanelSettings21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.57832F));
-            this.tableLayoutPanelSettings21.Size = new System.Drawing.Size(477, 311);
+            this.tableLayoutPanelSettings21.Size = new System.Drawing.Size(507, 315);
             this.tableLayoutPanelSettings21.TabIndex = 2;
             // 
             // trainerSound
@@ -1814,56 +1786,18 @@
             // tableLayoutPanelSettings212
             // 
             this.tableLayoutPanelSettings212.ColumnCount = 3;
-            this.tableLayoutPanelSettings212.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.tableLayoutPanelSettings212.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 139F));
             this.tableLayoutPanelSettings212.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelSettings212.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelSettings212.Controls.Add(this.maxSpeed, 1, 0);
-            this.tableLayoutPanelSettings212.Controls.Add(this.labelMaxSpeed, 0, 0);
+            this.tableLayoutPanelSettings212.Controls.Add(this.labelFpsCap, 0, 0);
+            this.tableLayoutPanelSettings212.Controls.Add(this.numericFpsCap, 1, 0);
             this.tableLayoutPanelSettings212.Location = new System.Drawing.Point(0, 176);
             this.tableLayoutPanelSettings212.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelSettings212.Name = "tableLayoutPanelSettings212";
             this.tableLayoutPanelSettings212.RowCount = 1;
             this.tableLayoutPanelSettings212.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSettings212.Size = new System.Drawing.Size(260, 44);
+            this.tableLayoutPanelSettings212.Size = new System.Drawing.Size(259, 40);
             this.tableLayoutPanelSettings212.TabIndex = 4;
-            // 
-            // maxSpeed
-            // 
-            this.maxSpeed.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.maxSpeed.Location = new System.Drawing.Point(140, 0);
-            this.maxSpeed.Margin = new System.Windows.Forms.Padding(0);
-            this.maxSpeed.Name = "maxSpeed";
-            this.maxSpeed.Size = new System.Drawing.Size(120, 34);
-            this.maxSpeed.TabIndex = 1;
-            this.maxSpeed.Text = "2,0";
-            this.maxSpeed.TextChanged += new System.EventHandler(this.maxSpeed_TextChanged);
-            // 
-            // labelMaxSpeed
-            // 
-            this.labelMaxSpeed.AutoSize = true;
-            this.labelMaxSpeed.Location = new System.Drawing.Point(0, 0);
-            this.labelMaxSpeed.Margin = new System.Windows.Forms.Padding(0);
-            this.labelMaxSpeed.Name = "labelMaxSpeed";
-            this.labelMaxSpeed.Size = new System.Drawing.Size(112, 26);
-            this.labelMaxSpeed.TabIndex = 0;
-            this.labelMaxSpeed.Text = "Max speed:";
-            // 
-            // tableLayoutPanelSettings211
-            // 
-            this.tableLayoutPanelSettings211.ColumnCount = 3;
-            this.tableLayoutPanelSettings211.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
-            this.tableLayoutPanelSettings211.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSettings211.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelSettings211.Controls.Add(this.labelFpsCap, 0, 0);
-            this.tableLayoutPanelSettings211.Controls.Add(this.numericFpsCap, 1, 0);
-            this.tableLayoutPanelSettings211.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelSettings211.Location = new System.Drawing.Point(0, 132);
-            this.tableLayoutPanelSettings211.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanelSettings211.Name = "tableLayoutPanelSettings211";
-            this.tableLayoutPanelSettings211.RowCount = 1;
-            this.tableLayoutPanelSettings211.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSettings211.Size = new System.Drawing.Size(260, 44);
-            this.tableLayoutPanelSettings211.TabIndex = 3;
             // 
             // labelFpsCap
             // 
@@ -1871,13 +1805,13 @@
             this.labelFpsCap.Location = new System.Drawing.Point(0, 0);
             this.labelFpsCap.Margin = new System.Windows.Forms.Padding(0);
             this.labelFpsCap.Name = "labelFpsCap";
-            this.labelFpsCap.Size = new System.Drawing.Size(95, 26);
+            this.labelFpsCap.Size = new System.Drawing.Size(89, 26);
             this.labelFpsCap.TabIndex = 0;
-            this.labelFpsCap.Text = "FPS limit:";
+            this.labelFpsCap.Text = "FPS cap:";
             // 
             // numericFpsCap
             // 
-            this.numericFpsCap.Location = new System.Drawing.Point(140, 0);
+            this.numericFpsCap.Location = new System.Drawing.Point(139, 0);
             this.numericFpsCap.Margin = new System.Windows.Forms.Padding(0);
             this.numericFpsCap.Maximum = new decimal(new int[] {
             1000,
@@ -1899,6 +1833,56 @@
             0});
             this.numericFpsCap.ValueChanged += new System.EventHandler(this.numericFpsCap_ValueChanged);
             // 
+            // tableLayoutPanelSettings211
+            // 
+            this.tableLayoutPanelSettings211.ColumnCount = 4;
+            this.tableLayoutPanelSettings211.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 171F));
+            this.tableLayoutPanelSettings211.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.27586F));
+            this.tableLayoutPanelSettings211.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.72414F));
+            this.tableLayoutPanelSettings211.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 66F));
+            this.tableLayoutPanelSettings211.Controls.Add(this.checkAltLight, 0, 0);
+            this.tableLayoutPanelSettings211.Controls.Add(this.maxSpeed, 3, 0);
+            this.tableLayoutPanelSettings211.Controls.Add(this.labelMaxSpeed, 2, 0);
+            this.tableLayoutPanelSettings211.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelSettings211.Location = new System.Drawing.Point(0, 132);
+            this.tableLayoutPanelSettings211.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanelSettings211.Name = "tableLayoutPanelSettings211";
+            this.tableLayoutPanelSettings211.RowCount = 1;
+            this.tableLayoutPanelSettings211.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelSettings211.Size = new System.Drawing.Size(276, 44);
+            this.tableLayoutPanelSettings211.TabIndex = 3;
+            // 
+            // checkAltLight
+            // 
+            this.checkAltLight.AutoSize = true;
+            this.checkAltLight.Location = new System.Drawing.Point(1, 1);
+            this.checkAltLight.Margin = new System.Windows.Forms.Padding(1);
+            this.checkAltLight.Name = "checkAltLight";
+            this.checkAltLight.Size = new System.Drawing.Size(169, 30);
+            this.checkAltLight.TabIndex = 3;
+            this.checkAltLight.Text = "Unstable Lighting";
+            this.checkAltLight.UseVisualStyleBackColor = true;
+            // 
+            // maxSpeed
+            // 
+            this.maxSpeed.Location = new System.Drawing.Point(209, 0);
+            this.maxSpeed.Margin = new System.Windows.Forms.Padding(0);
+            this.maxSpeed.Name = "maxSpeed";
+            this.maxSpeed.Size = new System.Drawing.Size(63, 34);
+            this.maxSpeed.TabIndex = 1;
+            this.maxSpeed.Text = "2,0";
+            this.maxSpeed.TextChanged += new System.EventHandler(this.maxSpeed_TextChanged);
+            // 
+            // labelMaxSpeed
+            // 
+            this.labelMaxSpeed.AutoSize = true;
+            this.labelMaxSpeed.Location = new System.Drawing.Point(189, 0);
+            this.labelMaxSpeed.Margin = new System.Windows.Forms.Padding(0);
+            this.labelMaxSpeed.Name = "labelMaxSpeed";
+            this.labelMaxSpeed.Size = new System.Drawing.Size(20, 44);
+            this.labelMaxSpeed.TabIndex = 0;
+            this.labelMaxSpeed.Text = "Time:";
+            // 
             // savePatcherSettings
             // 
             this.savePatcherSettings.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1906,10 +1890,10 @@
             this.savePatcherSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.savePatcherSettings.ImageKey = "memcard.png";
             this.savePatcherSettings.ImageList = this.smallButtonIcons;
-            this.savePatcherSettings.Location = new System.Drawing.Point(261, 1);
+            this.savePatcherSettings.Location = new System.Drawing.Point(277, 1);
             this.savePatcherSettings.Margin = new System.Windows.Forms.Padding(1);
             this.savePatcherSettings.Name = "savePatcherSettings";
-            this.savePatcherSettings.Size = new System.Drawing.Size(215, 42);
+            this.savePatcherSettings.Size = new System.Drawing.Size(229, 42);
             this.savePatcherSettings.TabIndex = 6;
             this.savePatcherSettings.Text = "       Save app config";
             this.savePatcherSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1923,10 +1907,10 @@
             this.resetSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.resetSettings.ImageKey = "electricwarning.png";
             this.resetSettings.ImageList = this.smallButtonIcons;
-            this.resetSettings.Location = new System.Drawing.Point(261, 45);
+            this.resetSettings.Location = new System.Drawing.Point(277, 45);
             this.resetSettings.Margin = new System.Windows.Forms.Padding(1);
             this.resetSettings.Name = "resetSettings";
-            this.resetSettings.Size = new System.Drawing.Size(215, 42);
+            this.resetSettings.Size = new System.Drawing.Size(229, 42);
             this.resetSettings.TabIndex = 7;
             this.resetSettings.Text = "       Reset app config";
             this.resetSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1941,10 +1925,10 @@
             this.kill.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.kill.ImageKey = "spookhouse.png";
             this.kill.ImageList = this.smallButtonIcons;
-            this.kill.Location = new System.Drawing.Point(261, 177);
+            this.kill.Location = new System.Drawing.Point(277, 177);
             this.kill.Margin = new System.Windows.Forms.Padding(1);
             this.kill.Name = "kill";
-            this.kill.Size = new System.Drawing.Size(215, 42);
+            this.kill.Size = new System.Drawing.Size(229, 43);
             this.kill.TabIndex = 10;
             this.kill.Text = "       Kill Taz.exe (Alt+F4)";
             this.kill.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1959,10 +1943,10 @@
             this.updateWrappers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.updateWrappers.ImageKey = "cellbattery.png";
             this.updateWrappers.ImageList = this.smallButtonIcons;
-            this.updateWrappers.Location = new System.Drawing.Point(261, 89);
+            this.updateWrappers.Location = new System.Drawing.Point(277, 89);
             this.updateWrappers.Margin = new System.Windows.Forms.Padding(1);
             this.updateWrappers.Name = "updateWrappers";
-            this.updateWrappers.Size = new System.Drawing.Size(215, 42);
+            this.updateWrappers.Size = new System.Drawing.Size(229, 42);
             this.updateWrappers.TabIndex = 8;
             this.updateWrappers.Text = "       Update graphic API\'s";
             this.updateWrappers.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1977,10 +1961,10 @@
             this.deleteSav.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.deleteSav.ImageKey = "paintbrush.png";
             this.deleteSav.ImageList = this.smallButtonIcons;
-            this.deleteSav.Location = new System.Drawing.Point(261, 133);
+            this.deleteSav.Location = new System.Drawing.Point(277, 133);
             this.deleteSav.Margin = new System.Windows.Forms.Padding(1);
             this.deleteSav.Name = "deleteSav";
-            this.deleteSav.Size = new System.Drawing.Size(215, 42);
+            this.deleteSav.Size = new System.Drawing.Size(229, 42);
             this.deleteSav.TabIndex = 9;
             this.deleteSav.Text = "       Delete saves (.sav)";
             this.deleteSav.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -1991,9 +1975,11 @@
             // 
             this.groupBoxTazPos.Controls.Add(this.tableLayoutPanelSettings213);
             this.groupBoxTazPos.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBoxTazPos.Location = new System.Drawing.Point(263, 223);
+            this.groupBoxTazPos.Location = new System.Drawing.Point(279, 223);
+            this.groupBoxTazPos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBoxTazPos.Name = "groupBoxTazPos";
-            this.groupBoxTazPos.Size = new System.Drawing.Size(211, 85);
+            this.groupBoxTazPos.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBoxTazPos.Size = new System.Drawing.Size(211, 82);
             this.groupBoxTazPos.TabIndex = 11;
             this.groupBoxTazPos.TabStop = false;
             this.groupBoxTazPos.Text = "Saved Taz position";
@@ -2010,23 +1996,23 @@
             this.tableLayoutPanelSettings213.Controls.Add(this.labelY, 0, 1);
             this.tableLayoutPanelSettings213.Controls.Add(this.labelZ, 0, 2);
             this.tableLayoutPanelSettings213.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelSettings213.Location = new System.Drawing.Point(3, 19);
+            this.tableLayoutPanelSettings213.Location = new System.Drawing.Point(3, 18);
             this.tableLayoutPanelSettings213.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelSettings213.Name = "tableLayoutPanelSettings213";
             this.tableLayoutPanelSettings213.RowCount = 3;
             this.tableLayoutPanelSettings213.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanelSettings213.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanelSettings213.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanelSettings213.Size = new System.Drawing.Size(205, 63);
+            this.tableLayoutPanelSettings213.Size = new System.Drawing.Size(205, 62);
             this.tableLayoutPanelSettings213.TabIndex = 5;
             // 
             // savedCoordZ
             // 
             this.savedCoordZ.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.savedCoordZ.Location = new System.Drawing.Point(16, 42);
+            this.savedCoordZ.Location = new System.Drawing.Point(16, 40);
             this.savedCoordZ.Margin = new System.Windows.Forms.Padding(0);
             this.savedCoordZ.Name = "savedCoordZ";
-            this.savedCoordZ.Size = new System.Drawing.Size(189, 26);
+            this.savedCoordZ.Size = new System.Drawing.Size(181, 26);
             this.savedCoordZ.TabIndex = 2;
             this.savedCoordZ.Text = "0,0";
             this.savedCoordZ.TextChanged += new System.EventHandler(this.savedCoordZ_TextChanged);
@@ -2046,10 +2032,10 @@
             // savedCoordY
             // 
             this.savedCoordY.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.savedCoordY.Location = new System.Drawing.Point(16, 21);
+            this.savedCoordY.Location = new System.Drawing.Point(16, 20);
             this.savedCoordY.Margin = new System.Windows.Forms.Padding(0);
             this.savedCoordY.Name = "savedCoordY";
-            this.savedCoordY.Size = new System.Drawing.Size(189, 26);
+            this.savedCoordY.Size = new System.Drawing.Size(181, 26);
             this.savedCoordY.TabIndex = 1;
             this.savedCoordY.Text = "0,0";
             this.savedCoordY.TextChanged += new System.EventHandler(this.savedCoordY_TextChanged);
@@ -2060,7 +2046,7 @@
             this.savedCoordX.Location = new System.Drawing.Point(16, 0);
             this.savedCoordX.Margin = new System.Windows.Forms.Padding(0);
             this.savedCoordX.Name = "savedCoordX";
-            this.savedCoordX.Size = new System.Drawing.Size(189, 26);
+            this.savedCoordX.Size = new System.Drawing.Size(181, 26);
             this.savedCoordX.TabIndex = 0;
             this.savedCoordX.Text = "0,0";
             this.savedCoordX.TextChanged += new System.EventHandler(this.savedCoordX_TextChanged);
@@ -2069,7 +2055,7 @@
             // 
             this.labelY.AutoSize = true;
             this.labelY.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelY.Location = new System.Drawing.Point(0, 21);
+            this.labelY.Location = new System.Drawing.Point(0, 20);
             this.labelY.Margin = new System.Windows.Forms.Padding(0);
             this.labelY.Name = "labelY";
             this.labelY.Size = new System.Drawing.Size(15, 18);
@@ -2081,7 +2067,7 @@
             // 
             this.labelZ.AutoSize = true;
             this.labelZ.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelZ.Location = new System.Drawing.Point(0, 42);
+            this.labelZ.Location = new System.Drawing.Point(0, 40);
             this.labelZ.Margin = new System.Windows.Forms.Padding(0);
             this.labelZ.Name = "labelZ";
             this.labelZ.Size = new System.Drawing.Size(15, 18);
@@ -2092,7 +2078,7 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 140F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 139F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.Controls.Add(this.cameraSpd, 1, 0);
@@ -2100,21 +2086,21 @@
             this.tableLayoutPanel1.Controls.Add(this.labelFlyStep, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.flyModeStep, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 220);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 221);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(260, 91);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(276, 94);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // cameraSpd
             // 
-            this.cameraSpd.Location = new System.Drawing.Point(140, 0);
+            this.cameraSpd.Location = new System.Drawing.Point(139, 0);
             this.cameraSpd.Margin = new System.Windows.Forms.Padding(0);
             this.cameraSpd.Name = "cameraSpd";
-            this.cameraSpd.Size = new System.Drawing.Size(120, 34);
+            this.cameraSpd.Size = new System.Drawing.Size(121, 34);
             this.cameraSpd.TabIndex = 1;
             this.cameraSpd.Text = "2000,0";
             this.cameraSpd.TextChanged += new System.EventHandler(this.cameraSpd_TextChanged);
@@ -2132,19 +2118,19 @@
             // labelFlyStep
             // 
             this.labelFlyStep.AutoSize = true;
-            this.labelFlyStep.Location = new System.Drawing.Point(0, 45);
+            this.labelFlyStep.Location = new System.Drawing.Point(0, 47);
             this.labelFlyStep.Margin = new System.Windows.Forms.Padding(0);
             this.labelFlyStep.Name = "labelFlyStep";
-            this.labelFlyStep.Size = new System.Drawing.Size(140, 26);
+            this.labelFlyStep.Size = new System.Drawing.Size(97, 47);
             this.labelFlyStep.TabIndex = 0;
             this.labelFlyStep.Text = "Fly mode step:";
             // 
             // flyModeStep
             // 
-            this.flyModeStep.Location = new System.Drawing.Point(140, 45);
+            this.flyModeStep.Location = new System.Drawing.Point(139, 47);
             this.flyModeStep.Margin = new System.Windows.Forms.Padding(0);
             this.flyModeStep.Name = "flyModeStep";
-            this.flyModeStep.Size = new System.Drawing.Size(120, 34);
+            this.flyModeStep.Size = new System.Drawing.Size(121, 34);
             this.flyModeStep.TabIndex = 1;
             this.flyModeStep.Text = "5000,0";
             this.flyModeStep.TextChanged += new System.EventHandler(this.flyModeStep_TextChanged);
@@ -2154,11 +2140,11 @@
             this.nativeOptions.BackColor = System.Drawing.Color.Transparent;
             this.nativeOptions.Controls.Add(this.tableLayoutPanelSettings22);
             this.nativeOptions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.nativeOptions.Location = new System.Drawing.Point(484, 0);
+            this.nativeOptions.Location = new System.Drawing.Point(514, 0);
             this.nativeOptions.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.nativeOptions.Name = "nativeOptions";
             this.nativeOptions.Padding = new System.Windows.Forms.Padding(2);
-            this.nativeOptions.Size = new System.Drawing.Size(159, 342);
+            this.nativeOptions.Size = new System.Drawing.Size(169, 346);
             this.nativeOptions.TabIndex = 3;
             this.nativeOptions.TabStop = false;
             this.nativeOptions.Text = "Shortcuts";
@@ -2186,7 +2172,7 @@
             this.tableLayoutPanelSettings22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
             this.tableLayoutPanelSettings22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28531F));
             this.tableLayoutPanelSettings22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28816F));
-            this.tableLayoutPanelSettings22.Size = new System.Drawing.Size(155, 311);
+            this.tableLayoutPanelSettings22.Size = new System.Drawing.Size(165, 315);
             this.tableLayoutPanelSettings22.TabIndex = 19;
             // 
             // controls
@@ -2198,7 +2184,7 @@
             this.controls.Location = new System.Drawing.Point(1, 177);
             this.controls.Margin = new System.Windows.Forms.Padding(1);
             this.controls.Name = "controls";
-            this.controls.Size = new System.Drawing.Size(153, 42);
+            this.controls.Size = new System.Drawing.Size(163, 42);
             this.controls.TabIndex = 4;
             this.controls.Text = "      Controls";
             this.controls.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2214,7 +2200,7 @@
             this.audio.Location = new System.Drawing.Point(1, 133);
             this.audio.Margin = new System.Windows.Forms.Padding(1);
             this.audio.Name = "audio";
-            this.audio.Size = new System.Drawing.Size(153, 42);
+            this.audio.Size = new System.Drawing.Size(163, 42);
             this.audio.TabIndex = 3;
             this.audio.Text = "      Audio";
             this.audio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2231,7 +2217,7 @@
             this.video.Location = new System.Drawing.Point(1, 89);
             this.video.Margin = new System.Windows.Forms.Padding(1);
             this.video.Name = "video";
-            this.video.Size = new System.Drawing.Size(153, 42);
+            this.video.Size = new System.Drawing.Size(163, 42);
             this.video.TabIndex = 2;
             this.video.Text = "      Video";
             this.video.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2247,7 +2233,7 @@
             this.executable.Location = new System.Drawing.Point(1, 1);
             this.executable.Margin = new System.Windows.Forms.Padding(1);
             this.executable.Name = "executable";
-            this.executable.Size = new System.Drawing.Size(153, 42);
+            this.executable.Size = new System.Drawing.Size(163, 42);
             this.executable.TabIndex = 0;
             this.executable.Text = "      Play";
             this.executable.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2263,7 +2249,7 @@
             this.launcher.Location = new System.Drawing.Point(1, 45);
             this.launcher.Margin = new System.Windows.Forms.Padding(1);
             this.launcher.Name = "launcher";
-            this.launcher.Size = new System.Drawing.Size(153, 42);
+            this.launcher.Size = new System.Drawing.Size(163, 42);
             this.launcher.TabIndex = 1;
             this.launcher.Text = "      Launcher";
             this.launcher.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2279,7 +2265,7 @@
             this.githubLink.Location = new System.Drawing.Point(1, 265);
             this.githubLink.Margin = new System.Windows.Forms.Padding(1);
             this.githubLink.Name = "githubLink";
-            this.githubLink.Size = new System.Drawing.Size(153, 45);
+            this.githubLink.Size = new System.Drawing.Size(163, 49);
             this.githubLink.TabIndex = 6;
             this.githubLink.Text = "      GitHub";
             this.githubLink.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2295,7 +2281,7 @@
             this.gameFolder.Location = new System.Drawing.Point(1, 221);
             this.gameFolder.Margin = new System.Windows.Forms.Padding(1);
             this.gameFolder.Name = "gameFolder";
-            this.gameFolder.Size = new System.Drawing.Size(153, 42);
+            this.gameFolder.Size = new System.Drawing.Size(163, 42);
             this.gameFolder.TabIndex = 5;
             this.gameFolder.Text = "      Explorer";
             this.gameFolder.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2307,9 +2293,10 @@
             this.repackTab.Controls.Add(this.tableLayoutPanelRepacker1);
             this.repackTab.ImageKey = "playbrick.png";
             this.repackTab.Location = new System.Drawing.Point(4, 41);
+            this.repackTab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.repackTab.Name = "repackTab";
-            this.repackTab.Padding = new System.Windows.Forms.Padding(3);
-            this.repackTab.Size = new System.Drawing.Size(656, 474);
+            this.repackTab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.repackTab.Size = new System.Drawing.Size(696, 474);
             this.repackTab.TabIndex = 4;
             this.repackTab.Text = "Repacking";
             // 
@@ -2321,14 +2308,14 @@
             this.tableLayoutPanelRepacker1.Controls.Add(this.progressBar, 0, 2);
             this.tableLayoutPanelRepacker1.Controls.Add(this.webBrowserRepacking, 0, 0);
             this.tableLayoutPanelRepacker1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelRepacker1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanelRepacker1.Location = new System.Drawing.Point(3, 2);
             this.tableLayoutPanelRepacker1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelRepacker1.Name = "tableLayoutPanelRepacker1";
             this.tableLayoutPanelRepacker1.RowCount = 3;
             this.tableLayoutPanelRepacker1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelRepacker1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.tableLayoutPanelRepacker1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelRepacker1.Size = new System.Drawing.Size(650, 468);
+            this.tableLayoutPanelRepacker1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 19F));
+            this.tableLayoutPanelRepacker1.Size = new System.Drawing.Size(690, 470);
             this.tableLayoutPanelRepacker1.TabIndex = 4;
             // 
             // tableLayoutPanelRepacker2
@@ -2340,12 +2327,12 @@
             this.tableLayoutPanelRepacker2.Controls.Add(this.unpack, 1, 0);
             this.tableLayoutPanelRepacker2.Controls.Add(this.pack, 2, 0);
             this.tableLayoutPanelRepacker2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelRepacker2.Location = new System.Drawing.Point(0, 388);
+            this.tableLayoutPanelRepacker2.Location = new System.Drawing.Point(0, 391);
             this.tableLayoutPanelRepacker2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelRepacker2.Name = "tableLayoutPanelRepacker2";
             this.tableLayoutPanelRepacker2.RowCount = 1;
             this.tableLayoutPanelRepacker2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelRepacker2.Size = new System.Drawing.Size(650, 60);
+            this.tableLayoutPanelRepacker2.Size = new System.Drawing.Size(690, 60);
             this.tableLayoutPanelRepacker2.TabIndex = 7;
             // 
             // unpack
@@ -2357,7 +2344,7 @@
             this.unpack.Location = new System.Drawing.Point(1, 1);
             this.unpack.Margin = new System.Windows.Forms.Padding(1);
             this.unpack.Name = "unpack";
-            this.unpack.Size = new System.Drawing.Size(323, 58);
+            this.unpack.Size = new System.Drawing.Size(343, 58);
             this.unpack.TabIndex = 0;
             this.unpack.Text = "        Unpack game resources";
             this.unpack.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2370,10 +2357,10 @@
             this.pack.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.pack.ImageKey = "destructibles.png";
             this.pack.ImageList = this.medButtonIcons;
-            this.pack.Location = new System.Drawing.Point(326, 1);
+            this.pack.Location = new System.Drawing.Point(346, 1);
             this.pack.Margin = new System.Windows.Forms.Padding(1);
             this.pack.Name = "pack";
-            this.pack.Size = new System.Drawing.Size(323, 58);
+            this.pack.Size = new System.Drawing.Size(343, 58);
             this.pack.TabIndex = 1;
             this.pack.Text = "        Repack game resources";
             this.pack.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -2383,18 +2370,20 @@
             // progressBar
             // 
             this.progressBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.progressBar.Location = new System.Drawing.Point(3, 451);
+            this.progressBar.Location = new System.Drawing.Point(3, 453);
+            this.progressBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(644, 14);
+            this.progressBar.Size = new System.Drawing.Size(684, 15);
             this.progressBar.TabIndex = 3;
             // 
             // webBrowserRepacking
             // 
             this.webBrowserRepacking.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowserRepacking.Location = new System.Drawing.Point(3, 3);
-            this.webBrowserRepacking.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowserRepacking.Location = new System.Drawing.Point(3, 2);
+            this.webBrowserRepacking.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.webBrowserRepacking.MinimumSize = new System.Drawing.Size(19, 19);
             this.webBrowserRepacking.Name = "webBrowserRepacking";
-            this.webBrowserRepacking.Size = new System.Drawing.Size(644, 382);
+            this.webBrowserRepacking.Size = new System.Drawing.Size(684, 387);
             this.webBrowserRepacking.TabIndex = 8;
             // 
             // infoTab
@@ -2404,7 +2393,7 @@
             this.infoTab.Location = new System.Drawing.Point(4, 41);
             this.infoTab.Margin = new System.Windows.Forms.Padding(0);
             this.infoTab.Name = "infoTab";
-            this.infoTab.Size = new System.Drawing.Size(656, 474);
+            this.infoTab.Size = new System.Drawing.Size(696, 474);
             this.infoTab.TabIndex = 2;
             this.infoTab.Text = "Instructions";
             // 
@@ -2414,9 +2403,10 @@
             this.webBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
             this.webBrowser.IsWebBrowserContextMenuEnabled = false;
             this.webBrowser.Location = new System.Drawing.Point(0, 0);
-            this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.webBrowser.MinimumSize = new System.Drawing.Size(19, 19);
             this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(656, 474);
+            this.webBrowser.Size = new System.Drawing.Size(696, 474);
             this.webBrowser.TabIndex = 0;
             this.webBrowser.Url = new System.Uri("https://muxajlbl4.github.io/Taz_Wanted_trainer_and_patcher", System.UriKind.Absolute);
             // 
@@ -2459,19 +2449,19 @@
             // 
             // form
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(664, 541);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 26F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(704, 541);
             this.Controls.Add(this.tabs);
             this.Controls.Add(this.statusStrip);
             this.Cursor = System.Windows.Forms.Cursors.Default;
-            this.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Font = new System.Drawing.Font("Comic Sans MS", 14.25F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MinimumSize = new System.Drawing.Size(680, 580);
+            this.MinimumSize = new System.Drawing.Size(720, 580);
             this.Name = "form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Taz: Wanted · Trainer & Patcher";
+            this.Text = "Taz Wanted · Trainer & Patcher";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.form_FormClosed);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
@@ -2489,6 +2479,7 @@
             this.tableLayoutPanelPatcher.ResumeLayout(false);
             this.tableLayoutPanelPatcher1.ResumeLayout(false);
             this.tableLayoutPanelPatcher13.ResumeLayout(false);
+            this.tableLayoutPanelPatcher13.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureTaz)).EndInit();
             this.videoOptions.ResumeLayout(false);
             this.tableLayoutPanelPatcher12.ResumeLayout(false);
@@ -2497,19 +2488,19 @@
             this.tableLayoutPanelPatcher123.PerformLayout();
             this.tableLayoutPanelPatcher122.ResumeLayout(false);
             this.tableLayoutPanelPatcher122.PerformLayout();
-            this.tableLayoutPanelPatcher124.ResumeLayout(false);
-            this.tableLayoutPanelPatcher124.PerformLayout();
             this.tableLayoutPanelPatcher121.ResumeLayout(false);
             this.tableLayoutPanelPatcher121.PerformLayout();
+            this.tableLayoutPanelPatcher124.ResumeLayout(false);
+            this.tableLayoutPanelPatcher124.PerformLayout();
             this.loadOptions.ResumeLayout(false);
             this.tableLayoutPanelPatcher11.ResumeLayout(false);
             this.tableLayoutPanelPatcher11.PerformLayout();
             this.tableLayoutPanel111.ResumeLayout(false);
             this.tableLayoutPanel111.PerformLayout();
-            this.tableLayoutPanelPatcher112.ResumeLayout(false);
-            this.tableLayoutPanelPatcher112.PerformLayout();
             this.tableLayoutPanel113.ResumeLayout(false);
             this.tableLayoutPanel113.PerformLayout();
+            this.tableLayoutPanelPatcher112.ResumeLayout(false);
+            this.tableLayoutPanelPatcher112.PerformLayout();
             this.tableLayoutPanelPatcher114.ResumeLayout(false);
             this.tableLayoutPanelPatcher114.PerformLayout();
             this.tableLayoutPanelPatcher2.ResumeLayout(false);
@@ -2529,9 +2520,9 @@
             this.tableLayoutPanelSettings21.PerformLayout();
             this.tableLayoutPanelSettings212.ResumeLayout(false);
             this.tableLayoutPanelSettings212.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericFpsCap)).EndInit();
             this.tableLayoutPanelSettings211.ResumeLayout(false);
             this.tableLayoutPanelSettings211.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericFpsCap)).EndInit();
             this.groupBoxTazPos.ResumeLayout(false);
             this.tableLayoutPanelSettings213.ResumeLayout(false);
             this.tableLayoutPanelSettings213.PerformLayout();
@@ -2566,7 +2557,6 @@
         private System.Windows.Forms.CheckBox savePos;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelTrainer3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPatcher1;
-        private System.Windows.Forms.CheckBox disableVideos;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPatcher;
         private System.Windows.Forms.TextBox aspect2;
         private System.Windows.Forms.TextBox aspect1;
@@ -2578,7 +2568,7 @@
         private System.Windows.Forms.Label xLabel;
         private System.Windows.Forms.CheckBox windowed;
         private System.Windows.Forms.TextBox width;
-        private System.Windows.Forms.CheckBox warningBanner;
+        private System.Windows.Forms.CheckBox skips;
         private System.Windows.Forms.CheckBox disableDrawDistance;
         private System.Windows.Forms.GroupBox loadOptions;
         private System.Windows.Forms.CheckBox noCD;
@@ -2608,7 +2598,7 @@
         private System.Windows.Forms.CheckBox flyCamera;
         private System.Windows.Forms.CheckBox smoothLighting;
         private System.Windows.Forms.CheckBox fpsCap;
-        private System.Windows.Forms.CheckBox ballMouseTazMode;
+        private System.Windows.Forms.CheckBox ballMode;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelSettings1;
         private System.Windows.Forms.TextBox textBoxRegistry;
         private System.Windows.Forms.Button browseGame;
@@ -2682,8 +2672,6 @@
         private System.Windows.Forms.ImageList apiComboIcons;
         private System.Windows.Forms.ImageList langComboIcons;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel113;
-        private System.Windows.Forms.ComboBox glyphsComboBox;
-        private System.Windows.Forms.Label glyphs;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPatcher114;
         private System.Windows.Forms.ComboBox layoutComboBox;
         private System.Windows.Forms.Label layout;
@@ -2700,6 +2688,9 @@
         private System.Windows.Forms.Label labelCameraSpeed;
         private System.Windows.Forms.Label labelFlyStep;
         private System.Windows.Forms.TextBox flyModeStep;
+        private System.Windows.Forms.CheckBox mods;
+        private System.Windows.Forms.Label labelVersion;
+        private System.Windows.Forms.CheckBox checkAltLight;
     }
 }
 

@@ -22,6 +22,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using Taz_trainer.Properties;
 using TarExample;
 using System.Globalization;
+using static DPI_Per_Monitor;
 
 namespace Taz_trainer
 {
@@ -50,11 +51,27 @@ namespace Taz_trainer
         float camSpd = 2000f;
         float flyStep = 5000f;
 
-        //Dictionary<string, Int32> Hashes = new Dictionary<string, Int32>();
+        // DPI hacking
+        void SetUserFonts(float scaleFactorX, float scaleFactorY)
+        {
+            var OldFont = Font;
+            Font = new Font(OldFont.FontFamily, 11f * scaleFactorX, OldFont.Style, GraphicsUnit.Pixel);
+            Refresh();
+            OldFont.Dispose();
+        }
+        protected override void DefWndProc(ref Message m)
+        {
+            DPI_Per_Monitor.Check_WM_DPICHANGED_WM_NCCREATE(SetUserFonts, m, this.Handle);
+            base.DefWndProc(ref m);
+        }
 
         public form()
         {
+            // Make the GUI ignore the DPI setting
+            //Font = new Font(Font.Name, 8.25f * 96f / CreateGraphics().DpiX, Font.Style, Font.Unit, Font.GdiCharSet, Font.GdiVerticalFont);
+
             InitializeComponent();
+            DPI_Per_Monitor.TryEnableDPIAware(this, SetUserFonts);
 
             gkh.HookedKeys.Add(Keys.F1);
             gkh.HookedKeys.Add(Keys.F2);
@@ -92,12 +109,14 @@ namespace Taz_trainer
             gkh.KeyUp += new KeyEventHandler(gkh_KeyUp);
 
 
-            if (File.Exists(Application.StartupPath + @"\Patcher.xml"))
+            TazFolderPath = getPathFromRegistry();
+
+            if (TazFolderPath != "" && File.Exists(TazFolderPath + @"\Patcher.xml"))
             {
                 try
                 {
                     // Load form element states
-                    FormSerialisor.Deserialise(this, Application.StartupPath + @"\Patcher.xml");
+                    FormSerialisor.Deserialise(this, TazFolderPath + @"\Patcher.xml");
                     textBoxRegistry.Text = getPathFromRegistry();
                 }
                 catch (Exception ex)
@@ -109,7 +128,6 @@ namespace Taz_trainer
                     textBoxRegistry.Text = getPathFromRegistry();
                     langComboBox.SelectedIndex = 0;
                     apiComboBox.SelectedIndex = 0;
-                    glyphsComboBox.SelectedIndex = 0;
                     layoutComboBox.SelectedIndex = 0;
                     fogComboBox.SelectedIndex = 0;
                 }
@@ -121,11 +139,9 @@ namespace Taz_trainer
                 textBoxRegistry.Text = getPathFromRegistry();
                 langComboBox.SelectedIndex = 0;
                 apiComboBox.SelectedIndex = 0;
-                glyphsComboBox.SelectedIndex = 0;
                 layoutComboBox.SelectedIndex = 0;
                 fogComboBox.SelectedIndex = 0;
             }
-            TazFolderPath = textBoxRegistry.Text;
 
             // Repacking tab init
             string RepackingHTML = Properties.Resources.Repacking;
@@ -136,7 +152,7 @@ namespace Taz_trainer
             //webBrowser.DocumentText = html;
 
             // Welcome Message
-            this.statusField.Text = "v3.0";
+            this.statusField.Text = "v4.0";
             this.statusField.ForeColor = System.Drawing.Color.Black;
         }
 
@@ -212,7 +228,7 @@ namespace Taz_trainer
             }
             if (e.KeyCode == Keys.F12)
             {
-                BallMouseTazSwitch();
+                this.ballMode.Checked = !this.ballMode.Checked;
                 sendKey(Keys.F12, "{F12}");
             }
             if (e.KeyCode == Keys.Insert)
@@ -556,14 +572,14 @@ namespace Taz_trainer
                 byte[] bytes2 = { 0xE9, 0x48, 0x44, 0x19, 0x00, 0x90, 0x90 };
                 checkAndWrite((IntPtr)0x00462245, bytes2, bytes2.Length, new IntPtr());
 
-                message("Moon Jump Mode: On (Hold Jump)");
+                message("Moon Jump: On (Hold Jump Button)");
             }
             else
             {
                 byte[] bytes2 = { 0xD9, 0x44, 0x24, 0x58, 0xD8, 0x63, 0x08 };
                 checkAndWrite((IntPtr)0x00462245, bytes2, bytes2.Length, new IntPtr());
 
-                message("Moon Jump Mode: Off");
+                message("Moon Jump: Off");
             }
         }
 
@@ -1080,19 +1096,39 @@ namespace Taz_trainer
 
         private void debugMenu_CheckedChanged(object sender, EventArgs e)
         {
-            //Read debug menu state offset
+            // Read debug menu trigger offset
             byte[] bytes = { 0x00, 0x00, 0x00, 0x00 };
-            bytes = checkAndRead((IntPtr)0x006C80EC, bytes, 4, new IntPtr());
+            bytes = checkAndRead((IntPtr) 0x006C80EC, bytes, 4, new IntPtr());
             int adress = BitConverter.ToInt32(bytes, 0);
             adress += 0x14;
 
-            //Write debug menu state to 1
-            byte[] bytes2 = { 0x01 };
-            checkAndWrite((IntPtr)adress, bytes2, bytes2.Length, new IntPtr());
+            // Get Debug Menu State
+            checkAndRead((IntPtr) 0x00752028, bytes, 4, new IntPtr());
+            int state = BitConverter.ToInt32(bytes, 0);
 
-            this.dbgMenuOff.Start();
+            if (state == 0)
+            { 
+                // Debug menu Activate
+                byte[] bytes2 = { 0x01 };
+                checkAndWrite((IntPtr) adress, bytes2, bytes2.Length, new IntPtr());
 
-            message("");
+                this.dbgMenuOff.Start();
+
+                message("");
+            }
+            else
+            {
+                // Debug Menu Deactivate
+                dbgMenuOff_Tick(sender, e);
+
+                // Hide Debug Menu
+                byte[] bytes2 = { 0x00 };
+                checkAndWrite((IntPtr) 0x00752028, bytes2, bytes2.Length, new IntPtr());
+
+                this.dbgMenuOff.Stop();
+
+                message("");
+            }
         }
 
         private void debugInfo_CheckedChanged(object sender, EventArgs e)
@@ -1186,28 +1222,37 @@ namespace Taz_trainer
 
         private void SmoothLighting_CheckedChanged(object sender, EventArgs e)
         {
-            //Code injection
-            byte[] bytes = { 0x50, 0xB8, 0x05, 0x00, 0x00, 0x00, 0x89, 0x87, 0x44, 0x01, 0x00, 0x00, 0x58, 0xD8, 0x1D, 0x3C, 0x73, 0x5F, 0x00, 0xE9, 0x77, 0xBB, 0xE6, 0xFF };
-            checkAndWrite((IntPtr)0x005F66D0, bytes, bytes.Length, new IntPtr());
-            //Jump to injection
-            byte[] bytes2 = { 0xE9, 0x72, 0x44, 0x19, 0x00, 0x90 };
-            checkAndWrite((IntPtr)0x00462259, bytes2, bytes2.Length, new IntPtr());
 
-            if (this.smoothLighting.Checked == true)
+            if (checkAltLight.Checked)
             {
-                //Lighting mode 5
-                byte[] bytes3 = { 0x05 };
-                checkAndWrite((IntPtr)0x005F66D2, bytes3, bytes3.Length, new IntPtr());
+                // Unstable Lighting
+                //Code injection
+                byte[] bytes = { 0x50, 0xB8, 0x05, 0x00, 0x00, 0x00, 0x89, 0x87, 0x44, 0x01, 0x00, 0x00, 0x58, 0xD8, 0x1D, 0x3C, 0x73, 0x5F, 0x00, 0xE9, 0x77, 0xBB, 0xE6, 0xFF };
+                checkAndWrite((IntPtr)0x005F66D0, bytes, bytes.Length, new IntPtr());
+                //Jump to injection
+                byte[] bytes2 = { 0xE9, 0x72, 0x44, 0x19, 0x00, 0x90 };
+                checkAndWrite((IntPtr)0x00462259, bytes2, bytes2.Length, new IntPtr());
 
-                message("Smooth Actor Lighting: On");
+                if (this.smoothLighting.Checked == true)
+                {
+                    //Lighting mode 5
+                    byte[] bytes3 = { 0x05 };
+                    checkAndWrite((IntPtr)0x005F66D2, bytes3, bytes3.Length, new IntPtr());
+
+                    message("Smooth Actor Lighting: On");
+                }
+                else
+                {
+                    //Lighting mode 4
+                    byte[] bytes3 = { 0x04 };
+                    checkAndWrite((IntPtr)0x005F66D2, bytes3, bytes3.Length, new IntPtr());
+
+                    message("Smooth Actor Lighting: Off");
+                }
             }
             else
             {
-                //Lighting mode 4
-                byte[] bytes3 = { 0x04 };
-                checkAndWrite((IntPtr)0x005F66D2, bytes3, bytes3.Length, new IntPtr());
 
-                message("Smooth Actor Lighting: Off");
             }
         }
 
@@ -1344,37 +1389,59 @@ namespace Taz_trainer
         */
 
 
-        private void ballMouseTazMode_CheckedChanged(object sender, EventArgs e)
+        private void ballMode_CheckedChanged(object sender, EventArgs e)
         {
-            BallMouseTazSwitch();
+            SingleCallInitialise();
+
+            //BallMouseTazSwitch();
+            if (ballMode.Checked)
+            {
+                // Ball.CEA
+
+                byte[] ballCode = { 0x68, 0x01, 0x00, 0x00, 0x00, 0x68, 0xCC, 0x70, 0x64, 0x00, 0xE8, 0xF1, 0xF1, 0xD6, 0xFF, 0x83, 0xC4, 0x08, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0xCC, 0x70, 0x64, 0x00, 0x68, 0x2C, 0xF7, 0x63, 0x00, 0xE8, 0x8A, 0x14, 0xD4, 0xFF, 0x83, 0xC4, 0x0C, 0x68, 0x1B, 0x00, 0x00, 0x00, 0xE8, 0x4D, 0xAC, 0xD4, 0xFF, 0x83, 0xC4, 0x04, 0x68, 0x1B, 0x00, 0x00, 0x00, 0xE8, 0xB0, 0xA8, 0xD4, 0xFF, 0x83, 0xC4, 0x04, 0xC3 };
+                checkAndWrite((IntPtr)0x00731500, ballCode, ballCode.Length, new IntPtr());
+
+                byte[] activateCheatPatch = { 0xEB, 0x0B };
+                checkAndWrite((IntPtr)0x0047C077, activateCheatPatch, activateCheatPatch.Length, new IntPtr());
+
+                byte[] deactivateCheatPatch = { 0xEB, 0x07 };
+                checkAndWrite((IntPtr)0x0047C29C, deactivateCheatPatch, deactivateCheatPatch.Length, new IntPtr());
+
+                byte[] ballCodeInjection = { 0xE8, 0xFB, 0x00, 0x00, 0x00 };
+                checkAndWrite((IntPtr)0x00731400, ballCodeInjection, ballCodeInjection.Length, new IntPtr());
+
+                message("Glover Ball: On");
+            }
+            else
+            {
+                // BalltoTaz.CEA
+                byte[] tazCode = { 0x68, 0x1B, 0x00, 0x00, 0x00, 0xE8, 0x76, 0xAC, 0xD4, 0xFF, 0x83, 0xC4, 0x04, 0xC3 };
+                checkAndWrite((IntPtr)0x00731500, tazCode, tazCode.Length, new IntPtr());
+
+                byte[] deactivateCheatPatch = { 0xEB, 0x07 };
+                checkAndWrite((IntPtr)0x0047C29C, deactivateCheatPatch, deactivateCheatPatch.Length, new IntPtr());
+
+                byte[] ballCodeInjection = { 0xE8, 0xFB, 0x00, 0x00, 0x00 };
+                checkAndWrite((IntPtr)0x00731400, ballCodeInjection, ballCodeInjection.Length, new IntPtr());
+
+                message("Glover Ball: Off");
+            }
         }
 
-        private void BallMouseTazSwitch()
+        private void SingleCallInitialise()
         {
-            byte[] bytes = { 0x00 };
-            bytes = checkAndRead((IntPtr)0x0042E1B3, bytes, 1, new IntPtr());
+            // Is already injected?
+            byte[] init = { 0x00 };
+            init = checkAndRead((IntPtr)0x00731400, init, 1, new IntPtr());
+            if (init[0] == 0)
+            {
+                // Injections.CEA
+                byte[] singleCallCode = { 0xE9, 0x11, 0x00, 0x00, 0x00, 0xB8, 0x11, 0x00, 0x00, 0x00, 0xA3, 0x01, 0x14, 0x73, 0x00, 0xB0, 0xE9, 0xA2, 0x00, 0x14, 0x73, 0x00, 0x68, 0xB8, 0xA0, 0x6F, 0x00, 0xE9, 0xC4, 0x63, 0xD7, 0xFF };
+                checkAndWrite((IntPtr)0x00731400, singleCallCode, singleCallCode.Length, new IntPtr());
 
-            if (bytes[0] == 0x2A) // From Ball to Mouse
-            {
-                byte[] bytes2 = { 0xEB, 0x4E, 0x90, 0x90, 0x90, 0x90 };
-                checkAndWrite((IntPtr)0x0042E1B2, bytes2, bytes2.Length, new IntPtr());
-                message("Tiny Mouse (Ghost)");
+                byte[] singleCallCodeInjection = { 0xE9, 0x1C, 0x9C, 0x28, 0x00 };
+                checkAndWrite((IntPtr)0x004A77DF, singleCallCodeInjection, singleCallCodeInjection.Length, new IntPtr());
             }
-            else if (bytes[0] == 0x4E) // From Mouse to Taz
-            {
-                byte[] bytes2 = { 0xEB, 0x12, 0x90, 0x90, 0x90, 0x90 };
-                checkAndWrite((IntPtr)0x0042E1B2, bytes2, bytes2.Length, new IntPtr());
-                message("Taz (Ghost)");
-            }
-            else // From Taz to Ball
-            {
-                byte[] bytes2 = { 0x75, 0x05, 0xEB, 0x3E, 0x90 };
-                checkAndWrite((IntPtr)0x0042E1F2, bytes2, bytes2.Length, new IntPtr());
-                byte[] bytes3 = { 0xEB, 0x2A, 0x90, 0x90, 0x90, 0x90 };
-                checkAndWrite((IntPtr)0x0042E1B2, bytes3, bytes3.Length, new IntPtr());
-                message("Bouncy Ball (Ghost)");
-            }
-
         }
 
         private void message(string message)
@@ -1447,13 +1514,13 @@ namespace Taz_trainer
         {
             this.dbgMenuOff.Stop();
 
-            //Read debug menu state offset
+            // Read debug button state
             byte[] bytes = { 0x00, 0x00, 0x00, 0x00 };
             bytes = checkAndRead((IntPtr)0x006C80EC, bytes, 4, new IntPtr());
             int adress = BitConverter.ToInt32(bytes, 0);
             adress += 0x14;
 
-            //Write debug menu state to 0
+            // Debug button pressed = 0
             byte[] bytes2 = { 0x00 };
             checkAndWrite((IntPtr)adress, bytes2, bytes2.Length, new IntPtr());
         }
@@ -1697,23 +1764,6 @@ namespace Taz_trainer
                     }
                 }
 
-                //disable videos
-                if (this.disableVideos.Checked == true)
-                {
-                    if (Directory.Exists(TazFolderPath + "\\!Videos") == false && Directory.Exists(TazFolderPath + "\\Videos") == true)
-                    {
-                        Directory.Move(TazFolderPath + "\\Videos", TazFolderPath + "\\!Videos");
-                    }
-                }
-                else
-                {
-                    //restore videos
-                    if (Directory.Exists(TazFolderPath + "\\Videos") == false && Directory.Exists(TazFolderPath + "\\!Videos") == true)
-                    {
-                        Directory.Move(TazFolderPath + "\\!Videos", TazFolderPath + "/Videos");
-                    }
-                }
-
                 //resolution and windowed
                 if (this.changeResolution.Checked == true)
                 {
@@ -1918,8 +1968,8 @@ namespace Taz_trainer
                     }
                 }
 
-                //warning banner time
-                if (this.warningBanner.Checked == true)
+                //warning banner time (Skip promo)
+                if (this.skips.Checked == true)
                 {
                     using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
                     {
@@ -1939,6 +1989,103 @@ namespace Taz_trainer
                         file.WriteByte(0xF4);
                         file.WriteByte(0x73);
                         file.WriteByte(0x5F);
+                        file.Close();
+                    }
+                }
+
+                //disable videos (Skip promo)
+                if (this.skips.Checked == true)
+                {
+                    if (Directory.Exists(TazFolderPath + "\\!Videos") == false && Directory.Exists(TazFolderPath + "\\Videos") == true)
+                    {
+                        Directory.Move(TazFolderPath + "\\Videos", TazFolderPath + "\\!Videos");
+                    }
+                }
+                else
+                {
+                    //restore videos
+                    if (Directory.Exists(TazFolderPath + "\\Videos") == false && Directory.Exists(TazFolderPath + "\\!Videos") == true)
+                    {
+                        Directory.Move(TazFolderPath + "\\!Videos", TazFolderPath + "/Videos");
+                    }
+                }
+
+                // Mod Loader
+                if (this.mods.Checked == true)
+                {
+                    // Create mods directory
+                    if (Directory.Exists(TazFolderPath + "\\Mods") == false)
+                    {
+                        Directory.CreateDirectory(TazFolderPath + "\\Mods");
+                    }
+                    
+                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        // Patch search path (mods\)
+                        file.Position = 0x2412C4;
+                        byte[] searchpath = { 0x6D, 0x6F, 0x64, 0x73, 0x5C, 0x00, 0x00 };
+                        file.Write(searchpath, 0, searchpath.Length);
+
+                        // LoadGenericObjects Jumps
+                        file.Position = 0xD3690;
+                        byte[] ldgenobjjmp1 = { 0xEB, 0x1B };
+                        file.Write(ldgenobjjmp1, 0, ldgenobjjmp1.Length);
+
+                        file.Position = 0xD38F0;
+                        byte[] ldgenobjjmp2 = { 0xEB, 0x29 };
+                        file.Write(ldgenobjjmp2, 0, ldgenobjjmp2.Length);
+
+                        file.Position = 0xD3962;
+                        byte[] ldgenobjjmp3 = { 0xEB, 0x36 };
+                        file.Write(ldgenobjjmp3, 0, ldgenobjjmp3.Length);
+
+                        file.Position = 0xD39BF;
+                        file.WriteByte(0x90);
+
+                        // LoadGenericObjects Pak names
+                        file.Position = 0xD3940;
+                        byte[] resobjoffset = { 0x44, 0x2D, 0x64, 0x00 };
+                        file.Write(resobjoffset, 0, resobjoffset.Length);
+
+                        file.Position = 0xD393E;
+                        file.WriteByte(0x08);
+
+                        file.Close();
+                    }
+                }
+                else
+                {
+                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        // Patch search path (..\paks)
+                        file.Position = 0x2412C4;
+                        byte[] searchpath = { 0x2E, 0x2E, 0x5C, 0x70, 0x61, 0x6B, 0x73 };
+                        file.Write(searchpath, 0, searchpath.Length);
+
+                        // Restore LoadGenericObjects
+                        file.Position = 0xD3690;
+                        byte[] ldgenobjjmp1 = { 0x8B, 0x44 };
+                        file.Write(ldgenobjjmp1, 0, ldgenobjjmp1.Length);
+
+                        file.Position = 0xD38F0;
+                        byte[] ldgenobjjmp2 = { 0xC3, 0x6A };
+                        file.Write(ldgenobjjmp2, 0, ldgenobjjmp2.Length);
+
+                        file.Position = 0xD3962;
+                        byte[] ldgenobjjmp3 = { 0xC3, 0x6A };
+                        file.Write(ldgenobjjmp3, 0, ldgenobjjmp3.Length);
+
+                        file.Position = 0xD39BF;
+                        file.WriteByte(0xC3);
+
+                        // LoadGenericObjects Pak names
+                        file.Position = 0xD3940;
+                        byte[] ghostoffset = { 0xCC, 0x70, 0x64, 0x00 };
+                        file.Write(ghostoffset, 0, ghostoffset.Length);
+
+                        file.Position = 0xD393E;
+                        file.WriteByte(0x00);
+
                         file.Close();
                     }
                 }
@@ -2238,34 +2385,6 @@ namespace Taz_trainer
                     }
                 }
 
-                //glyphs
-                // Check backup
-                if (!File.Exists(TazFolderPath + "\\Paks\\glyphs.pc.backup"))
-                {
-                    // Backup file
-                    File.Copy(TazFolderPath + "\\Paks\\glyphs.pc", TazFolderPath + "\\Paks\\glyphs.pc.backup", true);
-                }
-                // PC
-                if (glyphsComboBox.SelectedIndex == 0)
-                {
-                    File.WriteAllBytes(TazFolderPath + "\\Paks\\glyphs.pc", Properties.Resources.pc);
-                }
-                // PlayStation 2
-                else if (glyphsComboBox.SelectedIndex == 1)
-                {
-                    File.WriteAllBytes(TazFolderPath + "\\Paks\\glyphs.pc", Properties.Resources.ps2);
-                }
-                // Xbox Duke
-                else if (glyphsComboBox.SelectedIndex == 2)
-                {
-                    File.WriteAllBytes(TazFolderPath + "\\Paks\\glyphs.pc", Properties.Resources.duke);
-                }
-                // Xbox S
-                else if (glyphsComboBox.SelectedIndex == 3)
-                {
-                    File.WriteAllBytes(TazFolderPath + "\\Paks\\glyphs.pc", Properties.Resources.xbox);
-                }
-
                 //layout
                 // Vanilla = 0 (Do Nothing)
                 // XInput
@@ -2351,13 +2470,6 @@ namespace Taz_trainer
                         File.Delete(TazFolderPath + "\\Paks\\resTex.pc.backup");
                     }
 
-                    //Check and restore glyphs.pc backup
-                    if (File.Exists(TazFolderPath + "\\Paks\\glyphs.pc.backup"))
-                    {
-                        // Backup file
-                        File.Copy(TazFolderPath + "\\Paks\\glyphs.pc.backup", TazFolderPath + "\\Paks\\glyphs.pc", true);
-                    }
-
                     //Check and restore taz.dat backup
                     if (File.Exists(TazFolderPath + "\\taz.dat.backup") == true)
                     {
@@ -2377,7 +2489,9 @@ namespace Taz_trainer
                     // Remove Vulkan's wrapper
                     if (File.Exists(Path.Combine(TazFolderPath, "d3d9.dll")))
                         File.Delete(Path.Combine(TazFolderPath, "d3d9.dll"));
-
+                    //restore videos
+                    if (Directory.Exists(TazFolderPath + "\\Videos") == false && Directory.Exists(TazFolderPath + "\\!Videos") == true)
+                        Directory.Move(TazFolderPath + "\\!Videos", TazFolderPath + "/Videos");
                     //restore end
                     this.statusField.Text = "Restored successfully (" + TazFolderPath + ")";
                     this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
@@ -2646,8 +2760,8 @@ namespace Taz_trainer
         {
             try
             {
-                FormSerialisor.Serialise(this, Application.StartupPath + @"\Patcher.xml");
-                this.statusField.Text = "App settings successfully saved to: " + Application.StartupPath + @"\Patcher.xml";
+                FormSerialisor.Serialise(this, TazFolderPath + @"\Patcher.xml");
+                this.statusField.Text = "App settings successfully saved to: " + TazFolderPath + @"\Patcher.xml";
                 this.statusField.ForeColor = System.Drawing.Color.DarkGreen;
             }
             catch (Exception ex)
@@ -3184,12 +3298,12 @@ namespace Taz_trainer
 
         private void resetSettings_Click(object sender, EventArgs e)
         {
-            if (File.Exists(Application.StartupPath + @"\Patcher.xml"))
+            if (File.Exists(TazFolderPath + @"\Patcher.xml"))
             {
                 try
                 {
                     // Delete xml
-                    File.Delete(Application.StartupPath + @"\Patcher.xml");
+                    File.Delete(TazFolderPath + @"\Patcher.xml");
                 }
                 catch (Exception ex)
                 {

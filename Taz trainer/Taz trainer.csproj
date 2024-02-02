@@ -72,6 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DPI_Per_Monitor.cs" />
     <Compile Include="ExtractTarGz.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -111,10 +112,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\glyphs\duke.pc" />
-    <None Include="Resources\glyphs\pc.pc" />
-    <None Include="Resources\glyphs\ps2.pc" />
-    <None Include="Resources\glyphs\xbox.pc" />
     <None Include="Resources\Rus\resTex.pc" />
     <None Include="Resources\Rus\text.pc" />
   </ItemGroup>
