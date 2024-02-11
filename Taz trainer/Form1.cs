@@ -1096,36 +1096,33 @@ namespace Taz_trainer
 
         private void debugMenu_CheckedChanged(object sender, EventArgs e)
         {
-            // Read debug menu trigger offset
-            byte[] bytes = { 0x00, 0x00, 0x00, 0x00 };
-            bytes = checkAndRead((IntPtr) 0x006C80EC, bytes, 4, new IntPtr());
-            int adress = BitConverter.ToInt32(bytes, 0);
-            adress += 0x14;
+            SingleCallInitialise();
 
             // Get Debug Menu State
-            checkAndRead((IntPtr) 0x00752028, bytes, 4, new IntPtr());
-            int state = BitConverter.ToInt32(bytes, 0);
+            byte[] state = { 0x00 };
+            checkAndRead((IntPtr) 0x00752028, state, 1, new IntPtr());
 
-            if (state == 0)
-            { 
-                // Debug menu Activate
-                byte[] bytes2 = { 0x01 };
-                checkAndWrite((IntPtr) adress, bytes2, bytes2.Length, new IntPtr());
+            if (state[0] == 0)
+            {
+                // Debug Menu Activate
+                // DbgMenuShow.CEA
+                byte[] enterGui = { 0x68, 0x80, 0x37, 0x4A, 0x00, 0xE8, 0xE6, 0xB6, 0xE4, 0xFF, 0x83, 0xC4, 0x04, 0xC3 };
+                checkAndWrite((IntPtr) 0x00731500, enterGui, enterGui.Length, new IntPtr());
 
-                this.dbgMenuOff.Start();
+                byte[] codeInjection = { 0xE8, 0xFB, 0x00, 0x00, 0x00 };
+                checkAndWrite((IntPtr)0x00731400, codeInjection, codeInjection.Length, new IntPtr());
 
                 message("");
             }
             else
             {
                 // Debug Menu Deactivate
-                dbgMenuOff_Tick(sender, e);
+                // DbgMenuHide.CEA
+                byte[] exitGui = { 0xE8, 0x5B, 0xB7, 0xE4, 0xFF, 0xC3 };
+                checkAndWrite((IntPtr)0x00731500, exitGui, exitGui.Length, new IntPtr());
 
-                // Hide Debug Menu
-                byte[] bytes2 = { 0x00 };
-                checkAndWrite((IntPtr) 0x00752028, bytes2, bytes2.Length, new IntPtr());
-
-                this.dbgMenuOff.Stop();
+                byte[] codeInjection = { 0xE8, 0xFB, 0x00, 0x00, 0x00 };
+                checkAndWrite((IntPtr)0x00731400, codeInjection, codeInjection.Length, new IntPtr());
 
                 message("");
             }
@@ -1348,46 +1345,6 @@ namespace Taz_trainer
             else
                 message("FPS Cap: Unlimited (F9 to Toggle)");
         }
-        /*
-        private void mouseMode_CheckedChanged(object sender, EventArgs e)
-        {
-            if (this.mouseMode.Checked == true)
-            {
-                byte[] bytes = { 0xEB, 0x4E, 0x90, 0x90, 0x90, 0x90 };
-                checkAndWrite((IntPtr)0x0042E1B2, bytes, bytes.Length, new IntPtr());
-                message("Tiny Mouse (Ghost): On");
-            }
-            else
-            {
-                byte[] bytes = { 0x0F, 0x84, 0x86, 0x00, 0x00, 0x00 };
-                checkAndWrite((IntPtr)0x0042E1B2, bytes, bytes.Length, new IntPtr());
-                message("Tiny Mouse (Ghost): Off");
-            }
-        }
-
-        private void ballMode_CheckedChanged(object sender, EventArgs e)
-        {
-            if (this.ballMode.Checked == true)
-            {
-                byte[] bytes2 = { 0x75, 0x05, 0xEB, 0x3E, 0x90 };
-                checkAndWrite((IntPtr)0x0042E1F2, bytes2, bytes2.Length, new IntPtr());
-                byte[] bytes = { 0xEB, 0x2A, 0x90, 0x90, 0x90, 0x90 };
-                checkAndWrite((IntPtr)0x0042E1B2, bytes, bytes.Length, new IntPtr());
-
-                message("Bouncy Ball (Ghost): On");
-            }
-            else
-            {
-                byte[] bytes2 = { 0x74, 0x40, 0x83, 0xF8, 0x51 };
-                checkAndWrite((IntPtr)0x0042E1F2, bytes2, bytes2.Length, new IntPtr());
-                byte[] bytes = { 0x0F, 0x84, 0x86, 0x00, 0x00, 0x00 };
-                checkAndWrite((IntPtr)0x0042E1B2, bytes, bytes.Length, new IntPtr());
-
-                message("Bouncy Ball (Ghost): Off");
-            }
-        }
-        */
-
 
         private void ballMode_CheckedChanged(object sender, EventArgs e)
         {
@@ -1407,8 +1364,8 @@ namespace Taz_trainer
                 byte[] deactivateCheatPatch = { 0xEB, 0x07 };
                 checkAndWrite((IntPtr)0x0047C29C, deactivateCheatPatch, deactivateCheatPatch.Length, new IntPtr());
 
-                byte[] ballCodeInjection = { 0xE8, 0xFB, 0x00, 0x00, 0x00 };
-                checkAndWrite((IntPtr)0x00731400, ballCodeInjection, ballCodeInjection.Length, new IntPtr());
+                byte[] codeInjection = { 0xE8, 0xFB, 0x00, 0x00, 0x00 };
+                checkAndWrite((IntPtr)0x00731400, codeInjection, codeInjection.Length, new IntPtr());
 
                 message("Glover Ball: On");
             }
@@ -1421,8 +1378,8 @@ namespace Taz_trainer
                 byte[] deactivateCheatPatch = { 0xEB, 0x07 };
                 checkAndWrite((IntPtr)0x0047C29C, deactivateCheatPatch, deactivateCheatPatch.Length, new IntPtr());
 
-                byte[] ballCodeInjection = { 0xE8, 0xFB, 0x00, 0x00, 0x00 };
-                checkAndWrite((IntPtr)0x00731400, ballCodeInjection, ballCodeInjection.Length, new IntPtr());
+                byte[] codeInjection = { 0xE8, 0xFB, 0x00, 0x00, 0x00 };
+                checkAndWrite((IntPtr)0x00731400, codeInjection, codeInjection.Length, new IntPtr());
 
                 message("Glover Ball: Off");
             }
@@ -1506,25 +1463,7 @@ namespace Taz_trainer
             //Restore original dbg  text string 2
             byte[] bytes2 = { 0x46, 0x6F, 0x67, 0x3A, 0x6D, 0x69, 0x6E, 0x20, 0x25, 0x64, 0x2C, 0x20, 0x6D, 0x61, 0x78, 0x20, 0x25, 0x64, 0x2C, 0x20, 0x52, 0x47, 0x42, 0x28, 0x25, 0x64, 0x2C, 0x25, 0x64, 0x2C, 0x25, 0x64, 0x29, 0x00 };
             checkAndWrite((IntPtr)0x00642A94, bytes2, bytes2.Length, new IntPtr());
-
         }
-
-
-        private void dbgMenuOff_Tick(object sender, EventArgs e)
-        {
-            this.dbgMenuOff.Stop();
-
-            // Read debug button state
-            byte[] bytes = { 0x00, 0x00, 0x00, 0x00 };
-            bytes = checkAndRead((IntPtr)0x006C80EC, bytes, 4, new IntPtr());
-            int adress = BitConverter.ToInt32(bytes, 0);
-            adress += 0x14;
-
-            // Debug button pressed = 0
-            byte[] bytes2 = { 0x00 };
-            checkAndWrite((IntPtr)adress, bytes2, bytes2.Length, new IntPtr());
-        }
-
 
         //#######################################################################################################################
         //Patcher
@@ -2027,28 +1966,28 @@ namespace Taz_trainer
                         file.Write(searchpath, 0, searchpath.Length);
 
                         // LoadGenericObjects Jumps
-                        file.Position = 0xD3690;
-                        byte[] ldgenobjjmp1 = { 0xEB, 0x1B };
-                        file.Write(ldgenobjjmp1, 0, ldgenobjjmp1.Length);
+                        //file.Position = 0xD3690;
+                        //byte[] ldgenobjjmp1 = { 0xEB, 0x1B };
+                        //file.Write(ldgenobjjmp1, 0, ldgenobjjmp1.Length);
 
-                        file.Position = 0xD38F0;
-                        byte[] ldgenobjjmp2 = { 0xEB, 0x29 };
-                        file.Write(ldgenobjjmp2, 0, ldgenobjjmp2.Length);
+                        //file.Position = 0xD38F0;
+                        //byte[] ldgenobjjmp2 = { 0xEB, 0x29 };
+                        //file.Write(ldgenobjjmp2, 0, ldgenobjjmp2.Length);
 
-                        file.Position = 0xD3962;
-                        byte[] ldgenobjjmp3 = { 0xEB, 0x36 };
-                        file.Write(ldgenobjjmp3, 0, ldgenobjjmp3.Length);
+                        //file.Position = 0xD3962;
+                        //byte[] ldgenobjjmp3 = { 0xEB, 0x36 };
+                        //file.Write(ldgenobjjmp3, 0, ldgenobjjmp3.Length);
 
-                        file.Position = 0xD39BF;
-                        file.WriteByte(0x90);
+                        //file.Position = 0xD39BF;
+                        //file.WriteByte(0x90);
 
                         // LoadGenericObjects Pak names
-                        file.Position = 0xD3940;
-                        byte[] resobjoffset = { 0x44, 0x2D, 0x64, 0x00 };
-                        file.Write(resobjoffset, 0, resobjoffset.Length);
+                        //file.Position = 0xD3940;
+                        //byte[] resobjoffset = { 0x44, 0x2D, 0x64, 0x00 };
+                        //file.Write(resobjoffset, 0, resobjoffset.Length);
 
-                        file.Position = 0xD393E;
-                        file.WriteByte(0x08);
+                        //file.Position = 0xD393E;
+                        //file.WriteByte(0x08);
 
                         file.Close();
                     }
@@ -2086,27 +2025,6 @@ namespace Taz_trainer
                         file.Position = 0xD393E;
                         file.WriteByte(0x00);
 
-                        file.Close();
-                    }
-                }
-
-                //skip crc check
-                if (this.saveCRCcheck.Checked == true)
-                {
-                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
-                    {
-                        file.Position = 0xA247C;
-                        file.WriteByte(0xEB);
-                        file.Close();
-                    }
-                }
-                else
-                {
-                    //restore crc check
-                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
-                    {
-                        file.Position = 0xA247C;
-                        file.WriteByte(0x74);
                         file.Close();
                     }
                 }

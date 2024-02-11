@@ -101,13 +101,13 @@
             this.mods = new System.Windows.Forms.CheckBox();
             this.patch4gb = new System.Windows.Forms.CheckBox();
             this.extraDebug = new System.Windows.Forms.CheckBox();
-            this.saveCRCcheck = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanelPatcher112 = new System.Windows.Forms.TableLayoutPanel();
             this.langComboBox = new System.Windows.Forms.ComboBox();
             this.language = new System.Windows.Forms.Label();
             this.tableLayoutPanelPatcher114 = new System.Windows.Forms.TableLayoutPanel();
             this.layoutComboBox = new System.Windows.Forms.ComboBox();
             this.layout = new System.Windows.Forms.Label();
+            this.cutsceneSubtitles = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanelPatcher2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanelPatcher21 = new System.Windows.Forms.TableLayoutPanel();
             this.restore = new System.Windows.Forms.Button();
@@ -918,11 +918,11 @@
             // 
             this.labelVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.labelVersion.AutoSize = true;
-            this.labelVersion.Location = new System.Drawing.Point(114, 302);
+            this.labelVersion.Location = new System.Drawing.Point(76, 302);
             this.labelVersion.Name = "labelVersion";
-            this.labelVersion.Size = new System.Drawing.Size(49, 26);
+            this.labelVersion.Size = new System.Drawing.Size(87, 26);
             this.labelVersion.TabIndex = 7;
-            this.labelVersion.Text = "v4.0";
+            this.labelVersion.Text = "dev-v4.0";
             // 
             // videoOptions
             // 
@@ -1193,7 +1193,7 @@
             this.fogComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fogComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.fogComboBox.Items.AddRange(new object[] {
-            "No · PC (Default)",
+            "None · PC (Default)",
             "Normal · Xbox/GCN",
             "Thick · PlayStation 2"});
             this.fogComboBox.Location = new System.Drawing.Point(51, 1);
@@ -1247,9 +1247,9 @@
             this.tableLayoutPanelPatcher11.Controls.Add(this.tableLayoutPanel111, 0, 0);
             this.tableLayoutPanelPatcher11.Controls.Add(this.tableLayoutPanel113, 0, 1);
             this.tableLayoutPanelPatcher11.Controls.Add(this.extraDebug, 0, 3);
-            this.tableLayoutPanelPatcher11.Controls.Add(this.saveCRCcheck, 0, 2);
             this.tableLayoutPanelPatcher11.Controls.Add(this.tableLayoutPanelPatcher112, 0, 7);
             this.tableLayoutPanelPatcher11.Controls.Add(this.tableLayoutPanelPatcher114, 0, 6);
+            this.tableLayoutPanelPatcher11.Controls.Add(this.cutsceneSubtitles, 0, 2);
             this.tableLayoutPanelPatcher11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelPatcher11.Location = new System.Drawing.Point(2, 27);
             this.tableLayoutPanelPatcher11.Margin = new System.Windows.Forms.Padding(0);
@@ -1355,21 +1355,10 @@
             this.extraDebug.AutoSize = true;
             this.extraDebug.Location = new System.Drawing.Point(3, 125);
             this.extraDebug.Name = "extraDebug";
-            this.extraDebug.Size = new System.Drawing.Size(141, 30);
+            this.extraDebug.Size = new System.Drawing.Size(145, 30);
             this.extraDebug.TabIndex = 3;
-            this.extraDebug.Text = "More Cheats";
+            this.extraDebug.Text = "Extra Cheats";
             this.extraDebug.UseVisualStyleBackColor = false;
-            // 
-            // saveCRCcheck
-            // 
-            this.saveCRCcheck.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.saveCRCcheck.AutoSize = true;
-            this.saveCRCcheck.Location = new System.Drawing.Point(3, 85);
-            this.saveCRCcheck.Name = "saveCRCcheck";
-            this.saveCRCcheck.Size = new System.Drawing.Size(131, 30);
-            this.saveCRCcheck.TabIndex = 3;
-            this.saveCRCcheck.Text = "Bypass CRC";
-            this.saveCRCcheck.UseVisualStyleBackColor = false;
             // 
             // tableLayoutPanelPatcher112
             // 
@@ -1455,6 +1444,17 @@
             this.layout.Size = new System.Drawing.Size(90, 26);
             this.layout.TabIndex = 0;
             this.layout.Text = "Controls:";
+            // 
+            // cutsceneSubtitles
+            // 
+            this.cutsceneSubtitles.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cutsceneSubtitles.AutoSize = true;
+            this.cutsceneSubtitles.Location = new System.Drawing.Point(3, 85);
+            this.cutsceneSubtitles.Name = "cutsceneSubtitles";
+            this.cutsceneSubtitles.Size = new System.Drawing.Size(193, 30);
+            this.cutsceneSubtitles.TabIndex = 3;
+            this.cutsceneSubtitles.Text = "Cutscene Subtitles";
+            this.cutsceneSubtitles.UseVisualStyleBackColor = false;
             // 
             // tableLayoutPanelPatcher2
             // 
@@ -1839,7 +1839,7 @@
             this.tableLayoutPanelSettings211.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 171F));
             this.tableLayoutPanelSettings211.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.27586F));
             this.tableLayoutPanelSettings211.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.72414F));
-            this.tableLayoutPanelSettings211.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 66F));
+            this.tableLayoutPanelSettings211.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 71F));
             this.tableLayoutPanelSettings211.Controls.Add(this.checkAltLight, 0, 0);
             this.tableLayoutPanelSettings211.Controls.Add(this.maxSpeed, 3, 0);
             this.tableLayoutPanelSettings211.Controls.Add(this.labelMaxSpeed, 2, 0);
@@ -1865,7 +1865,7 @@
             // 
             // maxSpeed
             // 
-            this.maxSpeed.Location = new System.Drawing.Point(209, 0);
+            this.maxSpeed.Location = new System.Drawing.Point(204, 0);
             this.maxSpeed.Margin = new System.Windows.Forms.Padding(0);
             this.maxSpeed.Name = "maxSpeed";
             this.maxSpeed.Size = new System.Drawing.Size(63, 34);
@@ -1876,10 +1876,10 @@
             // labelMaxSpeed
             // 
             this.labelMaxSpeed.AutoSize = true;
-            this.labelMaxSpeed.Location = new System.Drawing.Point(189, 0);
+            this.labelMaxSpeed.Location = new System.Drawing.Point(187, 0);
             this.labelMaxSpeed.Margin = new System.Windows.Forms.Padding(0);
             this.labelMaxSpeed.Name = "labelMaxSpeed";
-            this.labelMaxSpeed.Size = new System.Drawing.Size(20, 44);
+            this.labelMaxSpeed.Size = new System.Drawing.Size(17, 44);
             this.labelMaxSpeed.TabIndex = 0;
             this.labelMaxSpeed.Text = "Time:";
             // 
@@ -2410,10 +2410,6 @@
             this.webBrowser.TabIndex = 0;
             this.webBrowser.Url = new System.Uri("https://muxajlbl4.github.io/Taz_Wanted_trainer_and_patcher", System.UriKind.Absolute);
             // 
-            // dbgMenuOff
-            // 
-            this.dbgMenuOff.Tick += new System.EventHandler(this.dbgMenuOff_Tick);
-            // 
             // openPakFileDialog
             // 
             this.openPakFileDialog.Filter = "Pak Files|*.pc;*.xbp;*.ps2|All Files|*";
@@ -2675,7 +2671,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPatcher114;
         private System.Windows.Forms.ComboBox layoutComboBox;
         private System.Windows.Forms.Label layout;
-        private System.Windows.Forms.CheckBox saveCRCcheck;
         private System.Windows.Forms.CheckBox extraDebug;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPatcher124;
         private System.Windows.Forms.ComboBox fogComboBox;
@@ -2691,6 +2686,7 @@
         private System.Windows.Forms.CheckBox mods;
         private System.Windows.Forms.Label labelVersion;
         private System.Windows.Forms.CheckBox checkAltLight;
+        private System.Windows.Forms.CheckBox cutsceneSubtitles;
     }
 }
 
