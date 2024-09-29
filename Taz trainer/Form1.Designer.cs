@@ -73,8 +73,6 @@
             this.videoOptions = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanelPatcher12 = new System.Windows.Forms.TableLayoutPanel();
             this.filtering = new System.Windows.Forms.CheckBox();
-            this.voodoo = new System.Windows.Forms.CheckBox();
-            this.windowed = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanelPatcher123 = new System.Windows.Forms.TableLayoutPanel();
             this.pointsLabel = new System.Windows.Forms.Label();
             this.aspect2 = new System.Windows.Forms.TextBox();
@@ -88,26 +86,35 @@
             this.tableLayoutPanelPatcher121 = new System.Windows.Forms.TableLayoutPanel();
             this.apiComboBox = new System.Windows.Forms.ComboBox();
             this.videoApi = new System.Windows.Forms.Label();
-            this.tableLayoutPanelPatcher124 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanelPatcher126 = new System.Windows.Forms.TableLayoutPanel();
             this.fogComboBox = new System.Windows.Forms.ComboBox();
             this.fog = new System.Windows.Forms.Label();
+            this.tableLayoutPanelPatcher125 = new System.Windows.Forms.TableLayoutPanel();
+            this.outlines = new System.Windows.Forms.CheckBox();
+            this.lighting = new System.Windows.Forms.CheckBox();
+            this.tableLayoutPanelPatcher124 = new System.Windows.Forms.TableLayoutPanel();
+            this.voodoo = new System.Windows.Forms.CheckBox();
+            this.windowed = new System.Windows.Forms.CheckBox();
             this.disableDrawDistance = new System.Windows.Forms.CheckBox();
             this.loadOptions = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanelPatcher11 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel111 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanelPatcher111 = new System.Windows.Forms.TableLayoutPanel();
             this.noCD = new System.Windows.Forms.CheckBox();
             this.skips = new System.Windows.Forms.CheckBox();
-            this.tableLayoutPanel113 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanelPatcher112 = new System.Windows.Forms.TableLayoutPanel();
             this.mods = new System.Windows.Forms.CheckBox();
             this.patch4gb = new System.Windows.Forms.CheckBox();
-            this.extraDebug = new System.Windows.Forms.CheckBox();
-            this.tableLayoutPanelPatcher112 = new System.Windows.Forms.TableLayoutPanel();
-            this.langComboBox = new System.Windows.Forms.ComboBox();
-            this.language = new System.Windows.Forms.Label();
-            this.tableLayoutPanelPatcher114 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanelPatcher113 = new System.Windows.Forms.TableLayoutPanel();
             this.layoutComboBox = new System.Windows.Forms.ComboBox();
             this.layout = new System.Windows.Forms.Label();
+            this.tableLayoutPanelPatcher114 = new System.Windows.Forms.TableLayoutPanel();
+            this.langComboBox = new System.Windows.Forms.ComboBox();
+            this.language = new System.Windows.Forms.Label();
+            this.tableLayoutPanel115 = new System.Windows.Forms.TableLayoutPanel();
+            this.catComboBox = new System.Windows.Forms.ComboBox();
+            this.category = new System.Windows.Forms.Label();
             this.cutsceneSubtitles = new System.Windows.Forms.CheckBox();
+            this.extraDebug = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanelPatcher2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanelPatcher21 = new System.Windows.Forms.TableLayoutPanel();
             this.restore = new System.Windows.Forms.Button();
@@ -173,7 +180,6 @@
             this.webBrowserRepacking = new System.Windows.Forms.WebBrowser();
             this.infoTab = new System.Windows.Forms.TabPage();
             this.webBrowser = new System.Windows.Forms.WebBrowser();
-            this.dbgMenuOff = new System.Windows.Forms.Timer(this.components);
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.openPakFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveUnpackedFilesDialog = new System.Windows.Forms.SaveFileDialog();
@@ -202,13 +208,16 @@
             this.tableLayoutPanelPatcher123.SuspendLayout();
             this.tableLayoutPanelPatcher122.SuspendLayout();
             this.tableLayoutPanelPatcher121.SuspendLayout();
+            this.tableLayoutPanelPatcher126.SuspendLayout();
+            this.tableLayoutPanelPatcher125.SuspendLayout();
             this.tableLayoutPanelPatcher124.SuspendLayout();
             this.loadOptions.SuspendLayout();
             this.tableLayoutPanelPatcher11.SuspendLayout();
-            this.tableLayoutPanel111.SuspendLayout();
-            this.tableLayoutPanel113.SuspendLayout();
+            this.tableLayoutPanelPatcher111.SuspendLayout();
             this.tableLayoutPanelPatcher112.SuspendLayout();
+            this.tableLayoutPanelPatcher113.SuspendLayout();
             this.tableLayoutPanelPatcher114.SuspendLayout();
+            this.tableLayoutPanel115.SuspendLayout();
             this.tableLayoutPanelPatcher2.SuspendLayout();
             this.tableLayoutPanelPatcher21.SuspendLayout();
             this.trainerTab.SuspendLayout();
@@ -943,12 +952,12 @@
             this.tableLayoutPanelPatcher12.ColumnCount = 1;
             this.tableLayoutPanelPatcher12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelPatcher12.Controls.Add(this.filtering, 0, 5);
-            this.tableLayoutPanelPatcher12.Controls.Add(this.voodoo, 0, 4);
-            this.tableLayoutPanelPatcher12.Controls.Add(this.windowed, 0, 3);
             this.tableLayoutPanelPatcher12.Controls.Add(this.tableLayoutPanelPatcher123, 0, 2);
             this.tableLayoutPanelPatcher12.Controls.Add(this.tableLayoutPanelPatcher122, 0, 1);
             this.tableLayoutPanelPatcher12.Controls.Add(this.tableLayoutPanelPatcher121, 0, 0);
-            this.tableLayoutPanelPatcher12.Controls.Add(this.tableLayoutPanelPatcher124, 0, 7);
+            this.tableLayoutPanelPatcher12.Controls.Add(this.tableLayoutPanelPatcher126, 0, 7);
+            this.tableLayoutPanelPatcher12.Controls.Add(this.tableLayoutPanelPatcher125, 0, 4);
+            this.tableLayoutPanelPatcher12.Controls.Add(this.tableLayoutPanelPatcher124, 0, 3);
             this.tableLayoutPanelPatcher12.Controls.Add(this.disableDrawDistance, 0, 6);
             this.tableLayoutPanelPatcher12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelPatcher12.Location = new System.Drawing.Point(2, 27);
@@ -973,33 +982,10 @@
             this.filtering.AutoSize = true;
             this.filtering.Location = new System.Drawing.Point(3, 205);
             this.filtering.Name = "filtering";
-            this.filtering.Size = new System.Drawing.Size(228, 30);
+            this.filtering.Size = new System.Drawing.Size(233, 30);
             this.filtering.TabIndex = 0;
-            this.filtering.Text = "Point Texture Filtering";
+            this.filtering.Text = "Point Texture Sampling";
             this.filtering.UseVisualStyleBackColor = false;
-            // 
-            // voodoo
-            // 
-            this.voodoo.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.voodoo.AutoSize = true;
-            this.voodoo.Location = new System.Drawing.Point(3, 165);
-            this.voodoo.Name = "voodoo";
-            this.voodoo.Size = new System.Drawing.Size(210, 30);
-            this.voodoo.TabIndex = 0;
-            this.voodoo.Text = "Voodoo Compatibility";
-            this.voodoo.UseVisualStyleBackColor = false;
-            // 
-            // windowed
-            // 
-            this.windowed.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.windowed.AutoSize = true;
-            this.windowed.Location = new System.Drawing.Point(3, 125);
-            this.windowed.Name = "windowed";
-            this.windowed.Size = new System.Drawing.Size(174, 30);
-            this.windowed.TabIndex = 0;
-            this.windowed.Text = "Windowed Mode";
-            this.windowed.UseVisualStyleBackColor = false;
-            this.windowed.CheckedChanged += new System.EventHandler(this.windowed_CheckedChanged);
             // 
             // tableLayoutPanelPatcher123
             // 
@@ -1172,20 +1158,20 @@
             this.videoApi.TabIndex = 0;
             this.videoApi.Text = "API:";
             // 
-            // tableLayoutPanelPatcher124
+            // tableLayoutPanelPatcher126
             // 
-            this.tableLayoutPanelPatcher124.ColumnCount = 2;
-            this.tableLayoutPanelPatcher124.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelPatcher124.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelPatcher124.Controls.Add(this.fogComboBox, 1, 0);
-            this.tableLayoutPanelPatcher124.Controls.Add(this.fog, 0, 0);
-            this.tableLayoutPanelPatcher124.Location = new System.Drawing.Point(0, 280);
-            this.tableLayoutPanelPatcher124.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanelPatcher124.Name = "tableLayoutPanelPatcher124";
-            this.tableLayoutPanelPatcher124.RowCount = 1;
-            this.tableLayoutPanelPatcher124.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelPatcher124.Size = new System.Drawing.Size(256, 40);
-            this.tableLayoutPanelPatcher124.TabIndex = 0;
+            this.tableLayoutPanelPatcher126.ColumnCount = 2;
+            this.tableLayoutPanelPatcher126.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanelPatcher126.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelPatcher126.Controls.Add(this.fogComboBox, 1, 0);
+            this.tableLayoutPanelPatcher126.Controls.Add(this.fog, 0, 0);
+            this.tableLayoutPanelPatcher126.Location = new System.Drawing.Point(0, 280);
+            this.tableLayoutPanelPatcher126.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanelPatcher126.Name = "tableLayoutPanelPatcher126";
+            this.tableLayoutPanelPatcher126.RowCount = 1;
+            this.tableLayoutPanelPatcher126.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelPatcher126.Size = new System.Drawing.Size(256, 40);
+            this.tableLayoutPanelPatcher126.TabIndex = 0;
             // 
             // fogComboBox
             // 
@@ -1212,6 +1198,84 @@
             this.fog.Size = new System.Drawing.Size(50, 26);
             this.fog.TabIndex = 0;
             this.fog.Text = "Fog:";
+            // 
+            // tableLayoutPanelPatcher125
+            // 
+            this.tableLayoutPanelPatcher125.ColumnCount = 2;
+            this.tableLayoutPanelPatcher125.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelPatcher125.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelPatcher125.Controls.Add(this.outlines, 1, 0);
+            this.tableLayoutPanelPatcher125.Controls.Add(this.lighting, 0, 0);
+            this.tableLayoutPanelPatcher125.Location = new System.Drawing.Point(0, 160);
+            this.tableLayoutPanelPatcher125.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanelPatcher125.Name = "tableLayoutPanelPatcher125";
+            this.tableLayoutPanelPatcher125.RowCount = 1;
+            this.tableLayoutPanelPatcher125.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelPatcher125.Size = new System.Drawing.Size(257, 40);
+            this.tableLayoutPanelPatcher125.TabIndex = 0;
+            // 
+            // outlines
+            // 
+            this.outlines.AutoSize = true;
+            this.outlines.Checked = true;
+            this.outlines.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.outlines.Enabled = false;
+            this.outlines.Location = new System.Drawing.Point(131, 3);
+            this.outlines.Name = "outlines";
+            this.outlines.Size = new System.Drawing.Size(102, 30);
+            this.outlines.TabIndex = 0;
+            this.outlines.Text = "Outlines";
+            this.outlines.UseVisualStyleBackColor = false;
+            // 
+            // lighting
+            // 
+            this.lighting.AutoSize = true;
+            this.lighting.Checked = true;
+            this.lighting.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.lighting.Enabled = false;
+            this.lighting.Location = new System.Drawing.Point(3, 3);
+            this.lighting.Name = "lighting";
+            this.lighting.Size = new System.Drawing.Size(97, 30);
+            this.lighting.TabIndex = 0;
+            this.lighting.Text = "Lighting";
+            this.lighting.UseVisualStyleBackColor = false;
+            // 
+            // tableLayoutPanelPatcher124
+            // 
+            this.tableLayoutPanelPatcher124.ColumnCount = 2;
+            this.tableLayoutPanelPatcher124.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelPatcher124.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelPatcher124.Controls.Add(this.voodoo, 1, 0);
+            this.tableLayoutPanelPatcher124.Controls.Add(this.windowed, 0, 0);
+            this.tableLayoutPanelPatcher124.Location = new System.Drawing.Point(0, 120);
+            this.tableLayoutPanelPatcher124.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanelPatcher124.Name = "tableLayoutPanelPatcher124";
+            this.tableLayoutPanelPatcher124.RowCount = 1;
+            this.tableLayoutPanelPatcher124.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelPatcher124.Size = new System.Drawing.Size(257, 40);
+            this.tableLayoutPanelPatcher124.TabIndex = 0;
+            // 
+            // voodoo
+            // 
+            this.voodoo.AutoSize = true;
+            this.voodoo.Location = new System.Drawing.Point(131, 3);
+            this.voodoo.Name = "voodoo";
+            this.voodoo.Size = new System.Drawing.Size(94, 30);
+            this.voodoo.TabIndex = 0;
+            this.voodoo.Text = "Voodoo";
+            this.voodoo.UseVisualStyleBackColor = false;
+            // 
+            // windowed
+            // 
+            this.windowed.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.windowed.AutoSize = true;
+            this.windowed.Location = new System.Drawing.Point(3, 5);
+            this.windowed.Name = "windowed";
+            this.windowed.Size = new System.Drawing.Size(120, 30);
+            this.windowed.TabIndex = 0;
+            this.windowed.Text = "Windowed";
+            this.windowed.UseVisualStyleBackColor = false;
+            this.windowed.CheckedChanged += new System.EventHandler(this.windowed_CheckedChanged);
             // 
             // disableDrawDistance
             // 
@@ -1244,12 +1308,13 @@
             // 
             this.tableLayoutPanelPatcher11.ColumnCount = 1;
             this.tableLayoutPanelPatcher11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelPatcher11.Controls.Add(this.tableLayoutPanel111, 0, 0);
-            this.tableLayoutPanelPatcher11.Controls.Add(this.tableLayoutPanel113, 0, 1);
-            this.tableLayoutPanelPatcher11.Controls.Add(this.extraDebug, 0, 3);
-            this.tableLayoutPanelPatcher11.Controls.Add(this.tableLayoutPanelPatcher112, 0, 7);
+            this.tableLayoutPanelPatcher11.Controls.Add(this.tableLayoutPanelPatcher111, 0, 0);
+            this.tableLayoutPanelPatcher11.Controls.Add(this.tableLayoutPanelPatcher112, 0, 1);
+            this.tableLayoutPanelPatcher11.Controls.Add(this.tableLayoutPanelPatcher113, 0, 5);
             this.tableLayoutPanelPatcher11.Controls.Add(this.tableLayoutPanelPatcher114, 0, 6);
+            this.tableLayoutPanelPatcher11.Controls.Add(this.tableLayoutPanel115, 0, 7);
             this.tableLayoutPanelPatcher11.Controls.Add(this.cutsceneSubtitles, 0, 2);
+            this.tableLayoutPanelPatcher11.Controls.Add(this.extraDebug, 0, 3);
             this.tableLayoutPanelPatcher11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelPatcher11.Location = new System.Drawing.Point(2, 27);
             this.tableLayoutPanelPatcher11.Margin = new System.Windows.Forms.Padding(0);
@@ -1267,20 +1332,20 @@
             this.tableLayoutPanelPatcher11.Size = new System.Drawing.Size(259, 337);
             this.tableLayoutPanelPatcher11.TabIndex = 0;
             // 
-            // tableLayoutPanel111
+            // tableLayoutPanelPatcher111
             // 
-            this.tableLayoutPanel111.ColumnCount = 2;
-            this.tableLayoutPanel111.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
-            this.tableLayoutPanel111.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel111.Controls.Add(this.noCD, 0, 0);
-            this.tableLayoutPanel111.Controls.Add(this.skips, 1, 0);
-            this.tableLayoutPanel111.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel111.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel111.Name = "tableLayoutPanel111";
-            this.tableLayoutPanel111.RowCount = 1;
-            this.tableLayoutPanel111.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel111.Size = new System.Drawing.Size(257, 40);
-            this.tableLayoutPanel111.TabIndex = 0;
+            this.tableLayoutPanelPatcher111.ColumnCount = 2;
+            this.tableLayoutPanelPatcher111.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.75904F));
+            this.tableLayoutPanelPatcher111.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.24096F));
+            this.tableLayoutPanelPatcher111.Controls.Add(this.noCD, 0, 0);
+            this.tableLayoutPanelPatcher111.Controls.Add(this.skips, 1, 0);
+            this.tableLayoutPanelPatcher111.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanelPatcher111.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanelPatcher111.Name = "tableLayoutPanelPatcher111";
+            this.tableLayoutPanelPatcher111.RowCount = 1;
+            this.tableLayoutPanelPatcher111.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelPatcher111.Size = new System.Drawing.Size(257, 40);
+            this.tableLayoutPanelPatcher111.TabIndex = 0;
             // 
             // noCD
             // 
@@ -1301,27 +1366,27 @@
             this.skips.AutoSize = true;
             this.skips.Checked = true;
             this.skips.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.skips.Location = new System.Drawing.Point(104, 5);
+            this.skips.Location = new System.Drawing.Point(105, 5);
             this.skips.Name = "skips";
             this.skips.Size = new System.Drawing.Size(107, 30);
             this.skips.TabIndex = 3;
             this.skips.Text = "Skip Ads";
             this.skips.UseVisualStyleBackColor = false;
             // 
-            // tableLayoutPanel113
+            // tableLayoutPanelPatcher112
             // 
-            this.tableLayoutPanel113.ColumnCount = 2;
-            this.tableLayoutPanel113.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
-            this.tableLayoutPanel113.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel113.Controls.Add(this.mods, 0, 0);
-            this.tableLayoutPanel113.Controls.Add(this.patch4gb, 1, 0);
-            this.tableLayoutPanel113.Location = new System.Drawing.Point(0, 40);
-            this.tableLayoutPanel113.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel113.Name = "tableLayoutPanel113";
-            this.tableLayoutPanel113.RowCount = 1;
-            this.tableLayoutPanel113.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel113.Size = new System.Drawing.Size(257, 40);
-            this.tableLayoutPanel113.TabIndex = 0;
+            this.tableLayoutPanelPatcher112.ColumnCount = 2;
+            this.tableLayoutPanelPatcher112.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.75904F));
+            this.tableLayoutPanelPatcher112.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.24096F));
+            this.tableLayoutPanelPatcher112.Controls.Add(this.mods, 0, 0);
+            this.tableLayoutPanelPatcher112.Controls.Add(this.patch4gb, 1, 0);
+            this.tableLayoutPanelPatcher112.Location = new System.Drawing.Point(0, 40);
+            this.tableLayoutPanelPatcher112.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanelPatcher112.Name = "tableLayoutPanelPatcher112";
+            this.tableLayoutPanelPatcher112.RowCount = 1;
+            this.tableLayoutPanelPatcher112.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelPatcher112.Size = new System.Drawing.Size(257, 40);
+            this.tableLayoutPanelPatcher112.TabIndex = 0;
             // 
             // mods
             // 
@@ -1342,82 +1407,27 @@
             this.patch4gb.AutoSize = true;
             this.patch4gb.Checked = true;
             this.patch4gb.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.patch4gb.Location = new System.Drawing.Point(104, 5);
+            this.patch4gb.Location = new System.Drawing.Point(105, 5);
             this.patch4gb.Name = "patch4gb";
-            this.patch4gb.Size = new System.Drawing.Size(73, 30);
+            this.patch4gb.Size = new System.Drawing.Size(110, 30);
             this.patch4gb.TabIndex = 1;
-            this.patch4gb.Text = "4 Gb";
+            this.patch4gb.Text = "4Gb Ram";
             this.patch4gb.UseVisualStyleBackColor = false;
             // 
-            // extraDebug
+            // tableLayoutPanelPatcher113
             // 
-            this.extraDebug.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.extraDebug.AutoSize = true;
-            this.extraDebug.Location = new System.Drawing.Point(3, 125);
-            this.extraDebug.Name = "extraDebug";
-            this.extraDebug.Size = new System.Drawing.Size(145, 30);
-            this.extraDebug.TabIndex = 3;
-            this.extraDebug.Text = "Extra Cheats";
-            this.extraDebug.UseVisualStyleBackColor = false;
-            // 
-            // tableLayoutPanelPatcher112
-            // 
-            this.tableLayoutPanelPatcher112.ColumnCount = 2;
-            this.tableLayoutPanelPatcher112.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
-            this.tableLayoutPanelPatcher112.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelPatcher112.Controls.Add(this.langComboBox, 1, 0);
-            this.tableLayoutPanelPatcher112.Controls.Add(this.language, 0, 0);
-            this.tableLayoutPanelPatcher112.Location = new System.Drawing.Point(0, 280);
-            this.tableLayoutPanelPatcher112.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanelPatcher112.Name = "tableLayoutPanelPatcher112";
-            this.tableLayoutPanelPatcher112.RowCount = 1;
-            this.tableLayoutPanelPatcher112.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelPatcher112.Size = new System.Drawing.Size(257, 40);
-            this.tableLayoutPanelPatcher112.TabIndex = 0;
-            // 
-            // langComboBox
-            // 
-            this.langComboBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.langComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.langComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.langComboBox.Items.AddRange(new object[] {
-            "English",
-            "French",
-            "German",
-            "Italian",
-            "Spanish",
-            "Russian"});
-            this.langComboBox.Location = new System.Drawing.Point(102, 1);
-            this.langComboBox.Margin = new System.Windows.Forms.Padding(1);
-            this.langComboBox.Name = "langComboBox";
-            this.langComboBox.Size = new System.Drawing.Size(155, 34);
-            this.langComboBox.TabIndex = 1;
-            // 
-            // language
-            // 
-            this.language.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.language.AutoSize = true;
-            this.language.Location = new System.Drawing.Point(0, 7);
-            this.language.Margin = new System.Windows.Forms.Padding(0);
-            this.language.Name = "language";
-            this.language.Size = new System.Drawing.Size(98, 26);
-            this.language.TabIndex = 0;
-            this.language.Text = "Language:";
-            // 
-            // tableLayoutPanelPatcher114
-            // 
-            this.tableLayoutPanelPatcher114.ColumnCount = 2;
-            this.tableLayoutPanelPatcher114.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 101F));
-            this.tableLayoutPanelPatcher114.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelPatcher114.Controls.Add(this.layoutComboBox, 1, 0);
-            this.tableLayoutPanelPatcher114.Controls.Add(this.layout, 0, 0);
-            this.tableLayoutPanelPatcher114.Location = new System.Drawing.Point(0, 240);
-            this.tableLayoutPanelPatcher114.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanelPatcher114.Name = "tableLayoutPanelPatcher114";
-            this.tableLayoutPanelPatcher114.RowCount = 1;
-            this.tableLayoutPanelPatcher114.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelPatcher114.Size = new System.Drawing.Size(257, 40);
-            this.tableLayoutPanelPatcher114.TabIndex = 0;
+            this.tableLayoutPanelPatcher113.ColumnCount = 2;
+            this.tableLayoutPanelPatcher113.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
+            this.tableLayoutPanelPatcher113.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelPatcher113.Controls.Add(this.layoutComboBox, 1, 0);
+            this.tableLayoutPanelPatcher113.Controls.Add(this.layout, 0, 0);
+            this.tableLayoutPanelPatcher113.Location = new System.Drawing.Point(0, 200);
+            this.tableLayoutPanelPatcher113.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanelPatcher113.Name = "tableLayoutPanelPatcher113";
+            this.tableLayoutPanelPatcher113.RowCount = 1;
+            this.tableLayoutPanelPatcher113.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelPatcher113.Size = new System.Drawing.Size(257, 40);
+            this.tableLayoutPanelPatcher113.TabIndex = 0;
             // 
             // layoutComboBox
             // 
@@ -1428,10 +1438,10 @@
             "Vanilla",
             "XInput",
             "DS4"});
-            this.layoutComboBox.Location = new System.Drawing.Point(102, 1);
+            this.layoutComboBox.Location = new System.Drawing.Point(129, 1);
             this.layoutComboBox.Margin = new System.Windows.Forms.Padding(1);
             this.layoutComboBox.Name = "layoutComboBox";
-            this.layoutComboBox.Size = new System.Drawing.Size(155, 34);
+            this.layoutComboBox.Size = new System.Drawing.Size(127, 34);
             this.layoutComboBox.TabIndex = 1;
             // 
             // layout
@@ -1445,16 +1455,115 @@
             this.layout.TabIndex = 0;
             this.layout.Text = "Controls:";
             // 
+            // tableLayoutPanelPatcher114
+            // 
+            this.tableLayoutPanelPatcher114.ColumnCount = 2;
+            this.tableLayoutPanelPatcher114.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
+            this.tableLayoutPanelPatcher114.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelPatcher114.Controls.Add(this.langComboBox, 1, 0);
+            this.tableLayoutPanelPatcher114.Controls.Add(this.language, 0, 0);
+            this.tableLayoutPanelPatcher114.Location = new System.Drawing.Point(0, 240);
+            this.tableLayoutPanelPatcher114.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanelPatcher114.Name = "tableLayoutPanelPatcher114";
+            this.tableLayoutPanelPatcher114.RowCount = 1;
+            this.tableLayoutPanelPatcher114.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelPatcher114.Size = new System.Drawing.Size(257, 40);
+            this.tableLayoutPanelPatcher114.TabIndex = 0;
+            // 
+            // langComboBox
+            // 
+            this.langComboBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.langComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.langComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.langComboBox.Items.AddRange(new object[] {
+            "English",
+            "Français",
+            "Deutsch",
+            "Italiano",
+            "Español",
+            "Русский"});
+            this.langComboBox.Location = new System.Drawing.Point(129, 1);
+            this.langComboBox.Margin = new System.Windows.Forms.Padding(1);
+            this.langComboBox.Name = "langComboBox";
+            this.langComboBox.Size = new System.Drawing.Size(127, 34);
+            this.langComboBox.TabIndex = 1;
+            // 
+            // language
+            // 
+            this.language.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.language.AutoSize = true;
+            this.language.Location = new System.Drawing.Point(0, 7);
+            this.language.Margin = new System.Windows.Forms.Padding(0);
+            this.language.Name = "language";
+            this.language.Size = new System.Drawing.Size(98, 26);
+            this.language.TabIndex = 0;
+            this.language.Text = "Language:";
+            // 
+            // tableLayoutPanel115
+            // 
+            this.tableLayoutPanel115.ColumnCount = 2;
+            this.tableLayoutPanel115.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 128F));
+            this.tableLayoutPanel115.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel115.Controls.Add(this.catComboBox, 1, 0);
+            this.tableLayoutPanel115.Controls.Add(this.category, 0, 0);
+            this.tableLayoutPanel115.Location = new System.Drawing.Point(0, 280);
+            this.tableLayoutPanel115.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel115.Name = "tableLayoutPanel115";
+            this.tableLayoutPanel115.RowCount = 1;
+            this.tableLayoutPanel115.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel115.Size = new System.Drawing.Size(257, 40);
+            this.tableLayoutPanel115.TabIndex = 0;
+            // 
+            // catComboBox
+            // 
+            this.catComboBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.catComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.catComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.catComboBox.Items.AddRange(new object[] {
+            "None",
+            "Clear",
+            "Any%",
+            "100%"});
+            this.catComboBox.Location = new System.Drawing.Point(129, 1);
+            this.catComboBox.Margin = new System.Windows.Forms.Padding(1);
+            this.catComboBox.Name = "catComboBox";
+            this.catComboBox.Size = new System.Drawing.Size(127, 34);
+            this.catComboBox.TabIndex = 1;
+            // 
+            // category
+            // 
+            this.category.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.category.AutoSize = true;
+            this.category.Location = new System.Drawing.Point(0, 7);
+            this.category.Margin = new System.Windows.Forms.Padding(0);
+            this.category.Name = "category";
+            this.category.Size = new System.Drawing.Size(121, 26);
+            this.category.TabIndex = 0;
+            this.category.Text = "Scoreboard:";
+            // 
             // cutsceneSubtitles
             // 
             this.cutsceneSubtitles.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cutsceneSubtitles.AutoSize = true;
+            this.cutsceneSubtitles.Checked = true;
+            this.cutsceneSubtitles.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cutsceneSubtitles.Location = new System.Drawing.Point(3, 85);
             this.cutsceneSubtitles.Name = "cutsceneSubtitles";
             this.cutsceneSubtitles.Size = new System.Drawing.Size(193, 30);
             this.cutsceneSubtitles.TabIndex = 3;
             this.cutsceneSubtitles.Text = "Cutscene Subtitles";
             this.cutsceneSubtitles.UseVisualStyleBackColor = false;
+            // 
+            // extraDebug
+            // 
+            this.extraDebug.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.extraDebug.AutoSize = true;
+            this.extraDebug.Location = new System.Drawing.Point(3, 125);
+            this.extraDebug.Name = "extraDebug";
+            this.extraDebug.Size = new System.Drawing.Size(206, 30);
+            this.extraDebug.TabIndex = 3;
+            this.extraDebug.Text = "Extra Debug Cheats";
+            this.extraDebug.UseVisualStyleBackColor = false;
             // 
             // tableLayoutPanelPatcher2
             // 
@@ -1839,7 +1948,7 @@
             this.tableLayoutPanelSettings211.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 171F));
             this.tableLayoutPanelSettings211.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.27586F));
             this.tableLayoutPanelSettings211.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.72414F));
-            this.tableLayoutPanelSettings211.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 71F));
+            this.tableLayoutPanelSettings211.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 86F));
             this.tableLayoutPanelSettings211.Controls.Add(this.checkAltLight, 0, 0);
             this.tableLayoutPanelSettings211.Controls.Add(this.maxSpeed, 3, 0);
             this.tableLayoutPanelSettings211.Controls.Add(this.labelMaxSpeed, 2, 0);
@@ -1865,7 +1974,7 @@
             // 
             // maxSpeed
             // 
-            this.maxSpeed.Location = new System.Drawing.Point(204, 0);
+            this.maxSpeed.Location = new System.Drawing.Point(189, 0);
             this.maxSpeed.Margin = new System.Windows.Forms.Padding(0);
             this.maxSpeed.Name = "maxSpeed";
             this.maxSpeed.Size = new System.Drawing.Size(63, 34);
@@ -1876,10 +1985,10 @@
             // labelMaxSpeed
             // 
             this.labelMaxSpeed.AutoSize = true;
-            this.labelMaxSpeed.Location = new System.Drawing.Point(187, 0);
+            this.labelMaxSpeed.Location = new System.Drawing.Point(180, 0);
             this.labelMaxSpeed.Margin = new System.Windows.Forms.Padding(0);
             this.labelMaxSpeed.Name = "labelMaxSpeed";
-            this.labelMaxSpeed.Size = new System.Drawing.Size(17, 44);
+            this.labelMaxSpeed.Size = new System.Drawing.Size(9, 44);
             this.labelMaxSpeed.TabIndex = 0;
             this.labelMaxSpeed.Text = "Time:";
             // 
@@ -2486,19 +2595,25 @@
             this.tableLayoutPanelPatcher122.PerformLayout();
             this.tableLayoutPanelPatcher121.ResumeLayout(false);
             this.tableLayoutPanelPatcher121.PerformLayout();
+            this.tableLayoutPanelPatcher126.ResumeLayout(false);
+            this.tableLayoutPanelPatcher126.PerformLayout();
+            this.tableLayoutPanelPatcher125.ResumeLayout(false);
+            this.tableLayoutPanelPatcher125.PerformLayout();
             this.tableLayoutPanelPatcher124.ResumeLayout(false);
             this.tableLayoutPanelPatcher124.PerformLayout();
             this.loadOptions.ResumeLayout(false);
             this.tableLayoutPanelPatcher11.ResumeLayout(false);
             this.tableLayoutPanelPatcher11.PerformLayout();
-            this.tableLayoutPanel111.ResumeLayout(false);
-            this.tableLayoutPanel111.PerformLayout();
-            this.tableLayoutPanel113.ResumeLayout(false);
-            this.tableLayoutPanel113.PerformLayout();
+            this.tableLayoutPanelPatcher111.ResumeLayout(false);
+            this.tableLayoutPanelPatcher111.PerformLayout();
             this.tableLayoutPanelPatcher112.ResumeLayout(false);
             this.tableLayoutPanelPatcher112.PerformLayout();
+            this.tableLayoutPanelPatcher113.ResumeLayout(false);
+            this.tableLayoutPanelPatcher113.PerformLayout();
             this.tableLayoutPanelPatcher114.ResumeLayout(false);
             this.tableLayoutPanelPatcher114.PerformLayout();
+            this.tableLayoutPanel115.ResumeLayout(false);
+            this.tableLayoutPanel115.PerformLayout();
             this.tableLayoutPanelPatcher2.ResumeLayout(false);
             this.tableLayoutPanelPatcher2.PerformLayout();
             this.tableLayoutPanelPatcher21.ResumeLayout(false);
@@ -2548,7 +2663,6 @@
         private System.Windows.Forms.TabPage patcherTab;
         private System.Windows.Forms.TabPage infoTab;
         private System.Windows.Forms.CheckBox freezeLevelTimer;
-        private System.Windows.Forms.Timer dbgMenuOff;
         private System.Windows.Forms.CheckBox superJump;
         private System.Windows.Forms.CheckBox savePos;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelTrainer3;
@@ -2635,7 +2749,7 @@
         private System.Windows.Forms.Button restore;
         private System.Windows.Forms.Button patch;
         private System.Windows.Forms.Button play;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPatcher112;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPatcher114;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPatcher121;
         private System.Windows.Forms.ComboBox apiComboBox;
         private System.Windows.Forms.Label videoApi;
@@ -2667,15 +2781,15 @@
         private System.Windows.Forms.WebBrowser webBrowserRepacking;
         private System.Windows.Forms.ImageList apiComboIcons;
         private System.Windows.Forms.ImageList langComboIcons;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel113;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPatcher114;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPatcher112;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPatcher113;
         private System.Windows.Forms.ComboBox layoutComboBox;
         private System.Windows.Forms.Label layout;
         private System.Windows.Forms.CheckBox extraDebug;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPatcher124;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPatcher126;
         private System.Windows.Forms.ComboBox fogComboBox;
         private System.Windows.Forms.Label fog;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel111;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPatcher111;
         private System.Windows.Forms.CheckBox patch4gb;
         private System.Windows.Forms.GroupBox groupBoxTazPos;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
@@ -2687,6 +2801,13 @@
         private System.Windows.Forms.Label labelVersion;
         private System.Windows.Forms.CheckBox checkAltLight;
         private System.Windows.Forms.CheckBox cutsceneSubtitles;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPatcher125;
+        private System.Windows.Forms.CheckBox outlines;
+        private System.Windows.Forms.CheckBox lighting;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPatcher124;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel115;
+        private System.Windows.Forms.ComboBox catComboBox;
+        private System.Windows.Forms.Label category;
     }
 }
 

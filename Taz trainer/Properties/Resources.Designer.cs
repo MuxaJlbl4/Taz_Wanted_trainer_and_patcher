@@ -94,12 +94,32 @@ namespace Taz_trainer.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        public static byte[] taz {
+            get {
+                object obj = ResourceManager.GetObject("taz", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
         public static System.Drawing.Bitmap TazTrainer {
             get {
                 object obj = ResourceManager.GetObject("TazTrainer", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        public static byte[] TazWanted {
+            get {
+                object obj = ResourceManager.GetObject("TazWanted", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

@@ -133,4 +133,10 @@
   <data name="Repacking" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\repacking.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="taz" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\taz.dat;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="TazWanted" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TazWanted.sav;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>
