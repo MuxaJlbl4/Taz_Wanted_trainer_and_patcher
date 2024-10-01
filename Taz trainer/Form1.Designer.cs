@@ -1558,6 +1558,8 @@
             // 
             this.extraDebug.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.extraDebug.AutoSize = true;
+            this.extraDebug.Checked = true;
+            this.extraDebug.CheckState = System.Windows.Forms.CheckState.Checked;
             this.extraDebug.Location = new System.Drawing.Point(3, 125);
             this.extraDebug.Name = "extraDebug";
             this.extraDebug.Size = new System.Drawing.Size(206, 30);
@@ -1948,7 +1950,7 @@
             this.tableLayoutPanelSettings211.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 171F));
             this.tableLayoutPanelSettings211.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.27586F));
             this.tableLayoutPanelSettings211.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.72414F));
-            this.tableLayoutPanelSettings211.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 86F));
+            this.tableLayoutPanelSettings211.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 89F));
             this.tableLayoutPanelSettings211.Controls.Add(this.checkAltLight, 0, 0);
             this.tableLayoutPanelSettings211.Controls.Add(this.maxSpeed, 3, 0);
             this.tableLayoutPanelSettings211.Controls.Add(this.labelMaxSpeed, 2, 0);
@@ -1974,7 +1976,7 @@
             // 
             // maxSpeed
             // 
-            this.maxSpeed.Location = new System.Drawing.Point(189, 0);
+            this.maxSpeed.Location = new System.Drawing.Point(186, 0);
             this.maxSpeed.Margin = new System.Windows.Forms.Padding(0);
             this.maxSpeed.Name = "maxSpeed";
             this.maxSpeed.Size = new System.Drawing.Size(63, 34);
@@ -1985,10 +1987,10 @@
             // labelMaxSpeed
             // 
             this.labelMaxSpeed.AutoSize = true;
-            this.labelMaxSpeed.Location = new System.Drawing.Point(180, 0);
+            this.labelMaxSpeed.Location = new System.Drawing.Point(178, 0);
             this.labelMaxSpeed.Margin = new System.Windows.Forms.Padding(0);
             this.labelMaxSpeed.Name = "labelMaxSpeed";
-            this.labelMaxSpeed.Size = new System.Drawing.Size(9, 44);
+            this.labelMaxSpeed.Size = new System.Drawing.Size(8, 44);
             this.labelMaxSpeed.TabIndex = 0;
             this.labelMaxSpeed.Text = "Time:";
             // 
