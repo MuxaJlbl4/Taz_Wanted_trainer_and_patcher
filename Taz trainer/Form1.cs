@@ -335,12 +335,12 @@ namespace Taz_trainer
             }
             if (e.KeyCode == Keys.Multiply)
             {
-                incFPScap();
+                incFPScap(sender, e);
                 sendKey(Keys.Multiply, "{*}");
             }
             if (e.KeyCode == Keys.Divide)
             {
-                decFPScap();
+                decFPScap(sender, e);
                 sendKey(Keys.Divide, "{/}");
             }
             if (e.Modifiers == Keys.Alt && e.KeyCode == Keys.F4)
@@ -1263,95 +1263,78 @@ namespace Taz_trainer
 
         private void fpsCap_CheckedChanged(object sender, EventArgs e)
         {
-            /*
-            label(returnhere)
-            label(exit)
+            // Check FPS patch
+            byte[] fpsPatch = { 0x00 };
 
-            "Taz.exe"+1F6700:
-            // DrawFrame
-            call Taz.exe+90110
+            // Ignore FPS state on / and * buttons
+            string test = sender.GetType().Name;
+            if (sender.GetType().Name != "globalKeyboardHook")
+                checkAndRead((IntPtr)0x00655500, fpsPatch, 1, new IntPtr());
 
-            sleep1:
-            // bkTimerRead__Fv
-            call 005785F0
-            push edx
-            push eax
-
-            mov edx,[00731338]
-            mov eax,[00731334]
-            push edx
-            push eax
-
-            // bkTimerDelta__FUiUi
-            call 00578700
-            push 0x1
-            push 0x1
-            push edx
-            push eax
-            // bkTimerToScanlines__FUiii
-            call 005786B0
-            add esp,0x20
-            fcomp [00731330]
-            fnstsw ax
-            test ah,1
-            jne sleep1
-
-            exit:
-            // bkTimerRead__Fv
-            call 005785F0
-            mov [00731338],edx
-            mov [00731334],eax
-
-            jmp returnhere
-
-            "Taz.exe"+A77EC:
-            jmp "Taz.exe"+1F6700
-            returnhere:
-            */
-            byte[] bytes = { 0xE8, 0x0B, 0x9A, 0xE9, 0xFF, 0xE8, 0xE6, 0x1E, 0xF8, 0xFF, 0x52, 0x50, 0x8B, 0x15, 0x38, 0x13, 0x73, 0x00, 0xA1, 0x34, 0x13, 0x73, 0x00, 0x52, 0x50, 0xE8, 0xE2, 0x1F, 0xF8, 0xFF, 0x68, 0x01, 0x00, 0x00, 0x00, 0x68, 0x01, 0x00, 0x00, 0x00, 0x52, 0x50, 0xE8, 0x81, 0x1F, 0xF8, 0xFF, 0x83, 0xC4, 0x20, 0xD8, 0x1D, 0x30, 0x13, 0x73, 0x00, 0xDF, 0xE0, 0xF6, 0xC4, 0x01, 0x75, 0xC6, 0xE8, 0xAC, 0x1E, 0xF8, 0xFF, 0x89, 0x15, 0x38, 0x13, 0x73, 0x00, 0xA3, 0x34, 0x13, 0x73, 0x00, 0xE9, 0x9D, 0x10, 0xEB, 0xFF };
-            checkAndWrite((IntPtr)0x005F6700, bytes, bytes.Length, new IntPtr());
-            byte[] bytes2 = { 0xE9, 0x0F, 0xEF, 0x14, 0x00 };
-            checkAndWrite((IntPtr)0x004A77EC, bytes2, bytes2.Length, new IntPtr());
-
-            if (this.fpsCap.Checked == true)
+            if (fpsPatch[0] == 0)
             {
+                // FrameLimiter.CEA
+                byte[] bytes = { 0xE8, 0x0B, 0x9A, 0xE9, 0xFF, 0xE8, 0xE6, 0x1E, 0xF8, 0xFF, 0x52, 0x50, 0x8B, 0x15, 0x0C, 0x55, 0x65, 0x00, 0x8B, 0x05, 0x08, 0x55, 0x65, 0x00, 0x52, 0x50, 0xE8, 0xE1, 0x1F, 0xF8, 0xFF, 0x83, 0xC4, 0x10, 0x68, 0x01, 0x00, 0x00, 0x00, 0x68, 0x01, 0x00, 0x00, 0x00, 0x52, 0x50, 0xE8, 0x7D, 0x1F, 0xF8, 0xFF, 0x83, 0xC4, 0x10, 0xD8, 0x1D, 0x04, 0x55, 0x65, 0x00, 0xDF, 0xE0, 0xF6, 0xC4, 0x01, 0x75, 0xC2, 0xE8, 0xA8, 0x1E, 0xF8, 0xFF, 0x89, 0x15, 0x0C, 0x55, 0x65, 0x00, 0xA3, 0x08, 0x55, 0x65, 0x00, 0xE9, 0x99, 0x10, 0xEB, 0xFF };
+                checkAndWrite((IntPtr)0x005F6700, bytes, bytes.Length, new IntPtr());
+                byte[] bytes2 = { 0xE9, 0x0F, 0xEF, 0x14, 0x00 };
+                checkAndWrite((IntPtr)0x004A77EC, bytes2, bytes2.Length, new IntPtr());
+
                 float miliseconds = (1000 / (float)numericFpsCap.Value) / 1000;
 
                 // Float delay in seconds
                 byte[] bytes3 = BitConverter.GetBytes(miliseconds);
-                checkAndWrite((IntPtr)0x00731330, bytes3, bytes3.Length, new IntPtr());
+                checkAndWrite((IntPtr)0x00655504, bytes3, bytes3.Length, new IntPtr());
 
-                message("FPS Cap: " + numericFpsCap.Value.ToString() + " Hz");
+                // FPS patched
+                fpsPatch[0] = 1;
+                checkAndWrite((IntPtr)0x00655500, fpsPatch, fpsPatch.Length, new IntPtr());
+
+                message("Framerate Limit: " + numericFpsCap.Value.ToString() + " FPS");
             }
             else
             {
                 // 0,00
                 byte[] bytes3 = { 0x00, 0x00, 0x00, 0x00 };
-                checkAndWrite((IntPtr)0x00731330, bytes3, bytes3.Length, new IntPtr());
+                checkAndWrite((IntPtr)0x00655504, bytes3, bytes3.Length, new IntPtr());
 
-                message("FPS Cap: Unlimited");
+                // FPS not patched
+                fpsPatch[0] = 0;
+                checkAndWrite((IntPtr)0x00655500, fpsPatch, fpsPatch.Length, new IntPtr());
+
+                message("Unlimited Framerate");
             }
         }
 
-        private void numericFpsCap_ValueChanged(object sender, EventArgs e)
+        private void incFPScap(object sender, EventArgs e)
         {
-            fpsCap_CheckedChanged(sender, e);
-        }
+            byte[] fpsPatch = { 0x00 };
+            checkAndRead((IntPtr)0x00655500, fpsPatch, 1, new IntPtr());
 
-        private void incFPScap()
-        {
-            if (this.fpsCap.Checked == true)
+            if (fpsPatch[0] == 1)
+            {
                 numericFpsCap.UpButton();
+                fpsCap_CheckedChanged(sender, e);
+            }
             else
-                message("FPS Cap: Unlimited (F9 to Toggle)");
+            {
+                message("Unlimited Framerate (F9 to Toggle)");
+            }
         }
 
-        private void decFPScap()
+        private void decFPScap(object sender, EventArgs e)
         {
-            if (this.fpsCap.Checked == true)
+            byte[] fpsPatch = { 0x00 };
+            checkAndRead((IntPtr)0x00655500, fpsPatch, 1, new IntPtr());
+
+            if (fpsPatch[0] == 1)
+            {
                 numericFpsCap.DownButton();
+                fpsCap_CheckedChanged(sender, e);
+            }
             else
-                message("FPS Cap: Unlimited (F9 to Toggle)");
+            {
+                message("Unlimited Framerate (F9 to Toggle)");
+            }
         }
 
         private void ballMode_CheckedChanged(object sender, EventArgs e)
@@ -1396,7 +1379,7 @@ namespace Taz_trainer
         {
             // Is single injections ready?
             byte[] init = { 0x00 };
-            init = checkAndRead((IntPtr)0x00731400, init, 1, new IntPtr());
+            init = checkAndRead((IntPtr)0x005F6880, init, 1, new IntPtr());
             if (init[0] == 0)
             {
                 // Injections.CEA
@@ -2132,12 +2115,148 @@ namespace Taz_trainer
                     }
                 }
 
-                //extra debug cheats
+                //fps cap
+                if (this.limitFPS.Checked == true)
+                {
+                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        // FrameLimiter.CEA
+                        file.Position = 0x1F6700;
+                        byte[] bytes = { 0xE8, 0x0B, 0x9A, 0xE9, 0xFF, 0xE8, 0xE6, 0x1E, 0xF8, 0xFF, 0x52, 0x50, 0x8B, 0x15, 0x0C, 0x55, 0x65, 0x00, 0x8B, 0x05, 0x08, 0x55, 0x65, 0x00, 0x52, 0x50, 0xE8, 0xE1, 0x1F, 0xF8, 0xFF, 0x83, 0xC4, 0x10, 0x68, 0x01, 0x00, 0x00, 0x00, 0x68, 0x01, 0x00, 0x00, 0x00, 0x52, 0x50, 0xE8, 0x7D, 0x1F, 0xF8, 0xFF, 0x83, 0xC4, 0x10, 0xD8, 0x1D, 0x04, 0x55, 0x65, 0x00, 0xDF, 0xE0, 0xF6, 0xC4, 0x01, 0x75, 0xC2, 0xE8, 0xA8, 0x1E, 0xF8, 0xFF, 0x89, 0x15, 0x0C, 0x55, 0x65, 0x00, 0xA3, 0x08, 0x55, 0x65, 0x00, 0xE9, 0x99, 0x10, 0xEB, 0xFF };
+                        file.Write(bytes, 0, bytes.Length);
+
+                        //jump to injection
+                        file.Position = 0xA77EC;
+                        byte[] bytes2 = { 0xE9, 0x0F, 0xEF, 0x14, 0x00 };
+                        file.Write(bytes2, 0, bytes2.Length);
+
+                        //fps value
+                        float miliseconds = (1000 / (float)numericFpsCap.Value) / 1000;
+                        file.Position = 0x255504;
+                        byte[] bytes3 = BitConverter.GetBytes(miliseconds);
+                        file.Write(bytes3, 0, bytes3.Length);
+
+                        //fps patched
+                        file.Position = 0x255500;
+                        byte[] fpsPatch = { 0x01 };
+                        file.Write(fpsPatch, 0, fpsPatch.Length);
+                        file.Close();
+                    }
+                }
+                else
+                {
+                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        //restore fps injeciton
+                        file.Position = 0x1F6700;
+                        byte[] bytes = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+                        file.Write(bytes, 0, bytes.Length);
+
+                        //restore jump to injection
+                        file.Position = 0xA77EC;
+                        byte[] bytes2 = { 0xE8, 0x1F, 0x89, 0xFE, 0xFF };
+                        file.Write(bytes2, 0, bytes2.Length);
+
+                        //restore fps value
+                        file.Position = 0x255504;
+                        byte[] bytes3 = { 0x00, 0x00, 0x00, 0x00 };
+                        file.Write(bytes3, 0, bytes3.Length);
+
+                        //fps unpatched
+                        file.Position = 0x255500;
+                        byte[] fpsPatch = { 0x00 };
+                        file.Write(fpsPatch, 0, fpsPatch.Length);
+                        file.Close();
+                    }
+                }
+
+                //dev injections
+                if (this.limitFPS.Checked == true)
+                {
+                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        // Injections.CEA
+                        file.Position = 0x1F6880;
+                        byte[] bytes = { 0x8B, 0x05, 0x3C, 0x13, 0x73, 0x00, 0x85, 0xC0, 0x0F, 0x84, 0x0F, 0x00, 0x00, 0x00, 0xE8, 0x6D, 0x00, 0x00, 0x00, 0xC7, 0x05, 0x3C, 0x13, 0x73, 0x00, 0x00, 0x00, 0x00, 0x00, 0x68, 0xB8, 0xA0, 0x6F, 0x00, 0xE9, 0x3D, 0x0F, 0xEB, 0xFF };
+                        file.Write(bytes, 0, bytes.Length);
+
+                        //jump to injection
+                        file.Position = 0xA77DF;
+                        byte[] bytes2 = { 0xE9, 0x9C, 0xF0, 0x14, 0x00 };
+                        file.Write(bytes2, 0, bytes2.Length);
+                        file.Close();
+                    }
+                }
+                else
+                {
+                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        //restore
+                        file.Position = 0x1F6880;
+                        byte[] bytes = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+                        file.Write(bytes, 0, bytes.Length);
+
+                        //restore jump to injection
+                        file.Position = 0xA77DF;
+                        byte[] bytes2 = { 0x68, 0xB8, 0xA0, 0x6F, 0x00 };
+                        file.Write(bytes2, 0, bytes2.Length);
+                        file.Close();
+                    }
+                }
+
+                //start level
+                if (this.levelComboBox.SelectedIndex != 0)
+                {
+                    byte index = (byte)this.levelComboBox.SelectedIndex;
+                    byte[] scenes = { 0, 3, 4, 5, 6, 8, 9, 10, 11, 13, 14, 15, 16, 18 };
+
+                    if (index == this.levelComboBox.Items.Count - 1)
+                    {
+                        // Get random index
+                        Random rnd = new Random();
+                        index = (byte)rnd.Next(1, scenes.Length + 1);
+                    }
+                    // Get scene number
+                    index = scenes[index];
+
+                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        //chane start level
+                        file.Position = 0xA94C9;
+                        file.WriteByte(0xB0);
+                        file.WriteByte(index);
+
+                        //start position fix
+                        file.Position = 0xB1FF8;
+                        byte[] fix = { 0xB8, 0x00, 0x00, 0x00, 0x00 };
+                        file.Write(fix, 0, fix.Length);
+                        file.Close();
+                    }
+                }
+                else
+                {
+                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        //restore level
+                        file.Position = 0xA94C9;
+                        file.WriteByte(0x75);
+                        file.WriteByte(0x58);
+
+                        //start position fix
+                        file.Position = 0xB1FF8;
+                        byte[] fix = { 0xA1, 0x28, 0x4C, 0x70, 0x00 };
+                        file.Write(fix, 0, fix.Length);
+                        file.Close();
+                    }
+                }
+
+                //advanced cheats
                 if (this.extraDebug.Checked == true)
                 {
                     //patch
                     using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
                     {
+                        // Extra Debug Menu Cheats
                         //set item flag
                         byte[] addeax = new byte[] { 0xB8, 0x00, 0x00, 0x00, 0x00, 0x90 };
                         file.Position = 0xA2F81;
@@ -2187,6 +2306,12 @@ namespace Taz_trainer
                         byte[] deactcase = new byte[] { 0x00, 0x0C, 0x0C, 0x0C, 0x0C, 0x0C, 0x01, 0x01, 0x0C, 0x02, 0x0C, 0x03, 0x0C, 0x0C, 0x0C, 0x04, 0x0C, 0x05, 0x06, 0x07, 0x07, 0x08, 0x09, 0x0A, 0x0B, 0x00 };
                         file.Position = 0x7C344;
                         file.Write(deactcase, 0, deactcase.Length);
+
+                        // Costume Load Fixes
+                        //force rapper attack init
+                        byte[] rappa = new byte[] { 0xEB, 0x0A };
+                        file.Position = 0x787BD;
+                        file.Write(rappa, 0, rappa.Length);
 
                         file.Close();
                     }
@@ -2245,6 +2370,11 @@ namespace Taz_trainer
                         byte[] deactcase = new byte[] { 0x00, 0x0C, 0x0C, 0x0C, 0x0C, 0x0C, 0x01, 0x01, 0x0C, 0x02, 0x0C, 0x03, 0x0C, 0x0C, 0x0C, 0x04, 0x0C, 0x05, 0x06, 0x07, 0x07, 0x07, 0x08, 0x09, 0x0A, 0x0B };
                         file.Position = 0x7C344;
                         file.Write(deactcase, 0, deactcase.Length);
+
+                        //restore rapper attack init
+                        byte[] rappa = new byte[] { 0x3C, 0x09 };
+                        file.Position = 0x787BD;
+                        file.Write(rappa, 0, rappa.Length);
 
                         file.Close();
                     }
