@@ -63,6 +63,15 @@ namespace Taz_trainer.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
         /// </summary>
+        public static System.IO.UnmanagedMemoryStream cameraclick {
+            get {
+                return ResourceManager.GetStream("cameraclick", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        /// </summary>
         public static System.IO.UnmanagedMemoryStream moveselection {
             get {
                 return ResourceManager.GetStream("moveselection", resourceCulture);
