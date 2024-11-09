@@ -113,15 +113,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\cheats.pc" />
+    <None Include="Resources\cheatssounds.pc" />
     <None Include="Resources\taz.dat" />
     <None Include="Resources\TazWanted.sav" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Rus\resTex.pc" />
-    <None Include="Resources\Rus\text.pc" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\moveselection.wav" />

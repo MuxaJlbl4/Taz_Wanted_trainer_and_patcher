@@ -70,6 +70,26 @@ namespace Taz_trainer.Properties {
         }
         
         /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        public static byte[] cheats {
+            get {
+                object obj = ResourceManager.GetObject("cheats", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        public static byte[] cheatssounds {
+            get {
+                object obj = ResourceManager.GetObject("cheatssounds", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
         /// </summary>
         public static System.IO.UnmanagedMemoryStream moveselection {
@@ -89,16 +109,6 @@ namespace Taz_trainer.Properties {
         public static string Repacking {
             get {
                 return ResourceManager.GetString("Repacking", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Byte[].
-        /// </summary>
-        public static byte[] resTex {
-            get {
-                object obj = ResourceManager.GetObject("resTex", resourceCulture);
-                return ((byte[])(obj));
             }
         }
         
@@ -128,16 +138,6 @@ namespace Taz_trainer.Properties {
         public static byte[] TazWanted {
             get {
                 object obj = ResourceManager.GetObject("TazWanted", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Byte[].
-        /// </summary>
-        public static byte[] text {
-            get {
-                object obj = ResourceManager.GetObject("text", resourceCulture);
                 return ((byte[])(obj));
             }
         }
