@@ -6,13 +6,13 @@ namespace Taz_trainer
 {
     static class Program
     {
+        private static Mutex mutex = new System.Threading.Mutex(false, "TazWantedTrainerAndPatcher");
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
-            Mutex mutex = new System.Threading.Mutex(false, "TazWantedTrainerAndPatcher");
             try
             {
                 if (mutex.WaitOne(0, false))
@@ -34,6 +34,16 @@ namespace Taz_trainer
                     mutex.Close();
                     mutex = null;
                 }
+            }
+        }
+        public static void Restart()
+        {
+            if (mutex != null)
+            {
+                mutex.ReleaseMutex();
+                mutex.Dispose();
+                mutex = null;
+                Application.Restart();
             }
         }
     }

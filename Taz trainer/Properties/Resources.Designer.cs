@@ -102,9 +102,47 @@ namespace Taz_trainer.Properties {
         ///   Ищет локализованную строку, похожую на &lt;!doctype html&gt;
         ///&lt;html&gt;
         ///&lt;head&gt;
-        ///&lt;meta charset=&apos;UTF-8&apos;&gt;&lt;meta name=&apos;viewport&apos; content=&apos;width=device-width initial-scale=1&apos;&gt;
+        ///	&lt;meta charset=&apos;UTF-8&apos;&gt;
+        ///	&lt;meta name=&apos;viewport&apos; content=&apos;width=device-width initial-scale=1&apos;&gt;
         ///
-        ///&lt;link href=&apos;https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos; /&gt;&lt;style type=&apos;text/css&apos;&gt;html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:&quot;Lucida Console&quot;,Consolas,&quot;Courier&quot;,monospace; --title-ba [остаток строки не уместился]&quot;;.
+        ///	&lt;link href=&apos;https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos; /&gt;
+        ///	&lt;style type=&apos;text/css&apos;&gt;
+        ///		html {
+        ///			overflow-x: initial !important;
+        ///		}
+        ///
+        ///		:root {
+        ///			--bg-color: #ffffff;
+        ///			--text-color: #333333;
+        ///			--select-text-bg-color: #B5D6FC;
+        ///			--select-text-font-color: auto;
+        ///			--monospace: &quot;Lucida Console&quot;,Conso [остаток строки не уместился]&quot;;.
+        /// </summary>
+        public static string ReadMe {
+            get {
+                return ResourceManager.GetString("ReadMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на &lt;!doctype html&gt;
+        ///&lt;html&gt;
+        ///&lt;head&gt;
+        ///	&lt;meta charset=&apos;UTF-8&apos;&gt;
+        ///	&lt;meta name=&apos;viewport&apos; content=&apos;width=device-width initial-scale=1&apos;&gt;
+        ///
+        ///	&lt;link href=&apos;https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext&apos; rel=&apos;stylesheet&apos; type=&apos;text/css&apos; /&gt;
+        ///	&lt;style type=&apos;text/css&apos;&gt;
+        ///		html {
+        ///			overflow-x: initial !important;
+        ///		}
+        ///
+        ///		:root {
+        ///			--bg-color: #ffffff;
+        ///			--text-color: #333333;
+        ///			--select-text-bg-color: #B5D6FC;
+        ///			--select-text-font-color: auto;
+        ///			--monospace: &quot;Lucida Console&quot;,Conso [остаток строки не уместился]&quot;;.
         /// </summary>
         public static string Repacking {
             get {

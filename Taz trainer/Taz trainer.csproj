@@ -28,6 +28,8 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -113,6 +115,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="ReadMe.pdf" />
     <None Include="Resources\cheats.pc" />
     <None Include="Resources\cheatssounds.pc" />
     <None Include="Resources\taz.dat" />
@@ -125,6 +128,7 @@
     <None Include="Resources\moveselection.wav" />
     <None Include="Resources\TazTrainer.png" />
     <None Include="Resources\cameraclick.wav" />
+    <Content Include="Resources\ReadMe.html" />
     <Content Include="Resources\Repacking.html" />
     <Content Include="TAZLOGO.ico" />
   </ItemGroup>

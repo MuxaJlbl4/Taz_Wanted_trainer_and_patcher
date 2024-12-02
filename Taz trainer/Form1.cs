@@ -29,6 +29,7 @@ using System.Security.Cryptography.X509Certificates;
 using Newtonsoft.Json;
 using System.Security.Principal;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace Taz_trainer
 {
@@ -148,6 +149,8 @@ namespace Taz_trainer
                     autoFillVideo(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
                     textBoxRegistry.Text = getPathFromRegistry();
                     langComboBox.SelectedIndex = 0;
+                    catComboBox.SelectedIndex = 0;
+                    levelComboBox.SelectedIndex = 0;
                     apiComboBox.SelectedIndex = 0;
                     layoutComboBox.SelectedIndex = 0;
                     fogComboBox.SelectedIndex = 0;
@@ -159,18 +162,22 @@ namespace Taz_trainer
                 autoFillVideo(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
                 textBoxRegistry.Text = getPathFromRegistry();
                 langComboBox.SelectedIndex = 0;
+                catComboBox.SelectedIndex = 0;
+                levelComboBox.SelectedIndex = 0;
                 apiComboBox.SelectedIndex = 0;
                 layoutComboBox.SelectedIndex = 0;
                 fogComboBox.SelectedIndex = 0;
             }
+
+            // Lock speedrun options
+            SpdInitOptions();
 
             // Repacking tab init
             string RepackingHTML = Properties.Resources.Repacking;
             webBrowserRepacking.DocumentText = RepackingHTML;
 
             // Usage tab init
-            //string html = Properties.Resources.README;
-            //webBrowser.DocumentText = html;
+            webBrowserReadMe.DocumentText = Resources.ReadMe;
 
             // Welcome Message
             this.statusField.Text = "v4.0";
@@ -192,6 +199,15 @@ namespace Taz_trainer
 
         void gkh_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.Modifiers == Keys.Alt && e.KeyCode == Keys.F4)
+            {
+                this.kill_Click(sender, e);
+            }
+
+            //Disable trainer cheats with speedrun mode
+            if (speedrunMode.Checked == true)
+                return;
+
             if (e.KeyCode == Keys.F1)
             {
                 this.invisibility.Checked = !this.invisibility.Checked;
@@ -371,11 +387,6 @@ namespace Taz_trainer
                     decFPScap(sender, e);
                 sendKey(Keys.Divide, "{/}");
             }
-            if (e.Modifiers == Keys.Alt && e.KeyCode == Keys.F4)
-            {
-                this.kill_Click(sender, e);
-                //sendKey(Keys.F4, "%{F4}");
-            }
             if (e.KeyCode == Keys.Add)
             {
                 this.incFOV(sender, e);
@@ -544,7 +555,8 @@ namespace Taz_trainer
                     width = "0";
                 if (height == "")
                     height = "0";
-                autoAspect(UInt16.Parse(width), UInt16.Parse(height));
+                if(speedrunMode.Checked == false)
+                    autoAspect(UInt16.Parse(width), UInt16.Parse(height));
                 windowed.Checked = true;
             }
             catch (Exception ex)
@@ -563,7 +575,8 @@ namespace Taz_trainer
                     width = "0";
                 if (height == "")
                     height = "0";
-                autoAspect(UInt16.Parse(width), UInt16.Parse(height));
+                if (speedrunMode.Checked == false)
+                    autoAspect(UInt16.Parse(width), UInt16.Parse(height));
                 windowed.Checked = true;
             }
             catch (Exception ex)
@@ -693,14 +706,14 @@ namespace Taz_trainer
                 byte[] bytes = { 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 };
                 checkAndWrite((IntPtr)0x00482FE2, bytes, bytes.Length, new IntPtr());
 
-                message("Burp Soda Mode: On (Press Rant)");
+                message("Rant Hack Mode: On");
             }
             else
             {
                 byte[] bytes = { 0x0F, 0x85, 0x95, 0x00, 0x00, 0x00 };
                 checkAndWrite((IntPtr)0x00482FE2, bytes, bytes.Length, new IntPtr());
 
-                message("Burp Soda Mode: Off");
+                message("Rant Hack Mode: Off");
             }
         }
 
@@ -3239,7 +3252,7 @@ namespace Taz_trainer
         }
         private void gamebananaLink_Click(object sender, EventArgs e)
         {
-            Process.Start("https://gamebanana.com/games/21253");
+            Process.Start("https://gamebanana.com/mods/games/21253");
         }
         private void discordLink_Click(object sender, EventArgs e)
         {
@@ -3259,7 +3272,8 @@ namespace Taz_trainer
         }
         private void speedrunLink_Click(object sender, EventArgs e)
         {
-            Process.Start("https://github.com/MilkGames/Taz_Wanted_Speedrunning_Patcher");
+            Process.Start("https://github.com/MilkGames/TWASV");
+            //Process.Start("https://github.com/MilkGames/Taz_Wanted_Speedrunning_Patcher");
         }
 
         /*
@@ -3832,6 +3846,7 @@ namespace Taz_trainer
             {
                 try
                 {
+                    trainerAutoSave.Checked = false;
                     // Delete xml
                     File.Delete(TazFolderPath + @"\Patcher.xml");
                 }
@@ -3842,7 +3857,7 @@ namespace Taz_trainer
                     this.statusField.ForeColor = System.Drawing.Color.DarkRed;
                 }
             }
-            Application.Restart();
+            Program.Restart();
         }
 
         private void trainerAutoSave_CheckedChanged(object sender, EventArgs e)
@@ -3857,6 +3872,12 @@ namespace Taz_trainer
             {
                 savePatcherSettings_Click(sender, e);
             }
+        }
+
+        private void form_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (ModifierKeys == Keys.Alt)
+                e.Cancel = true;
         }
 
         private void updateWrappers_Click(object sender, EventArgs e)
@@ -4251,7 +4272,7 @@ namespace Taz_trainer
                 byte[] code = { 0x6A, 0x01, 0x68, 0x87, 0x13, 0x73, 0x00, 0xE8, 0xF4, 0x9D, 0xEA, 0xFF, 0x83, 0xC4, 0x08, 0x6A, 0x00, 0x68, 0x87, 0x13, 0x73, 0x00, 0xE8, 0xB5, 0xD7, 0xED, 0xFF, 0x83, 0xC4, 0x08, 0x6A, 0x01, 0x68, 0x80, 0x13, 0x73, 0x00, 0xE8, 0xD6, 0x9D, 0xEA, 0xFF, 0x83, 0xC4, 0x08, 0x6A, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0x68, 0x94, 0x13, 0x73, 0x00, 0xE8, 0x72, 0xC0, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x6A, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0x68, 0xAE, 0x13, 0x73, 0x00, 0xE8, 0x5E, 0xC0, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x6A, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0x68, 0xC5, 0x13, 0x73, 0x00, 0xE8, 0x4A, 0xC0, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x8B, 0x88, 0xCC, 0x01, 0x00, 0x00, 0x31, 0xD2, 0x8A, 0x91, 0x0C, 0x01, 0x00, 0x00, 0x6A, 0x05, 0x50, 0xE8, 0x7B, 0x99, 0xE3, 0xFF, 0x83, 0xC4, 0x08, 0xE8, 0x63, 0x39, 0xEE, 0xFF, 0xC3 };
                 checkAndWrite((IntPtr)0x005F6900, code, code.Length, new IntPtr());
             }
-            else if (actor == "Swat")
+            else if (actor == "SWAT")
             {
                 // CostumeSwat.CEA
                 byte[] data = { 0x63, 0x68, 0x65, 0x61, 0x74, 0x73, 0x00, 0x63, 0x68, 0x65, 0x61, 0x74, 0x73, 0x73, 0x6F, 0x75, 0x6E, 0x64, 0x73, 0x00, 0x63, 0x6F, 0x73, 0x74, 0x75, 0x6D, 0x65, 0x5C, 0x73, 0x77, 0x61, 0x74, 0x74, 0x61, 0x7A, 0x2E, 0x6F, 0x62, 0x65, 0x00, 0x63, 0x6F, 0x73, 0x74, 0x75, 0x6D, 0x65, 0x5C, 0x73, 0x77, 0x61, 0x74, 0x63, 0x61, 0x70, 0x2E, 0x6F, 0x62, 0x65, 0x00, 0x63, 0x6F, 0x73, 0x74, 0x75, 0x6D, 0x65, 0x5C, 0x73, 0x77, 0x61, 0x74, 0x62, 0x61, 0x63, 0x6B, 0x70, 0x61, 0x63, 0x6B, 0x2E, 0x6F, 0x62, 0x65, 0x00, 0x63, 0x6F, 0x73, 0x74, 0x75, 0x6D, 0x65, 0x5C, 0x73, 0x77, 0x61, 0x74, 0x73, 0x68, 0x61, 0x64, 0x65, 0x73, 0x2E, 0x6F, 0x62, 0x65, 0x00, 0x63, 0x6F, 0x73, 0x74, 0x75, 0x6D, 0x65, 0x5C, 0x73, 0x77, 0x61, 0x74, 0x65, 0x6C, 0x62, 0x6F, 0x77, 0x70, 0x61, 0x64, 0x6C, 0x2E, 0x6F, 0x62, 0x65, 0x00, 0x63, 0x6F, 0x73, 0x74, 0x75, 0x6D, 0x65, 0x5C, 0x73, 0x77, 0x61, 0x74, 0x65, 0x6C, 0x62, 0x6F, 0x77, 0x70, 0x61, 0x64, 0x72, 0x2E, 0x6F, 0x62, 0x65, 0x00, 0x63, 0x6F, 0x73, 0x74, 0x75, 0x6D, 0x65, 0x5C, 0x73, 0x77, 0x61, 0x74, 0x63, 0x68, 0x65, 0x65, 0x73, 0x65, 0x67, 0x75, 0x6E, 0x2E, 0x6F, 0x62, 0x65, 0x00 };
@@ -4676,6 +4697,154 @@ namespace Taz_trainer
         private void pictureTaz_DoubleClick(object sender, EventArgs e)
         {
             injections.Visible = !injections.Visible;
+        }
+        private void SpdInitOptions()
+        {
+            if (speedrunMode.Checked)
+            {
+                SpdLockOptions();
+            }
+        }
+        private void SpdLockOptions()
+        {
+            // Locking options
+            mods.Enabled = false;
+            cutsceneSubtitles.Enabled = false;
+            extraDebug.Enabled = false;
+            injections.Enabled = false;
+            level.Enabled = false;
+            levelComboBox.Enabled = false;
+
+            windowed.Enabled = false;
+            aspectRatio.Enabled = false;
+            aspect1.Enabled = false;
+            aspect2.Enabled = false;
+            pointsLabel.Enabled = false;
+            aspectSwap.Visible = true;
+
+            windowed.Enabled = false;
+            limitFPS.Enabled = false;
+            numericFpsCap.Enabled = false;
+            checkBoxFoV.Enabled = false;
+            numericFoV.Enabled = false;
+            disableDrawDistance.Enabled = false;
+            fog.Enabled = false;
+            fogComboBox.Enabled = false;
+
+            trainerTab.Enabled = false;
+
+            advancedTab.Enabled = false;
+
+            // Change options
+            mods.Checked = false;
+            cutsceneSubtitles.Checked = false;
+            extraDebug.Checked = false;
+            injections.Checked = false;
+            levelComboBox.SelectedIndex = 0;
+
+            int ind = apiComboBox.SelectedIndex;
+            apiComboBox.Items.Clear();
+            apiComboBox.Items.Add("d3d8 · vanilla");
+            apiComboBox.Items.Add("d3d9 · d3d8to9");
+            if (ind >= 1)
+                apiComboBox.SelectedIndex = 1;
+            else
+                apiComboBox.SelectedIndex = 0;
+
+            windowed.Checked = false;
+            aspectRatio.Checked = true;
+            if (!(aspect1.Text == "16" && aspect2.Text == "9"))
+            {
+                aspect1.Text = "4";
+                aspect2.Text = "3";
+            }
+
+            limitFPS.Checked = false;
+            checkBoxFoV.Checked = false;
+            disableDrawDistance.Checked = false;
+            fogComboBox.SelectedIndex = 0;
+
+        }
+        private void SpdUnockOptions()
+        {
+            // Unlocking options
+            mods.Enabled = true;
+            cutsceneSubtitles.Enabled = true;
+            extraDebug.Enabled = true;
+            injections.Enabled = true;
+            level.Enabled = true;
+            levelComboBox.Enabled = true;
+
+            windowed.Enabled = true;
+            aspectRatio.Enabled = true;
+            aspect1.Enabled = true;
+            aspect2.Enabled = true;
+            pointsLabel.Enabled = true;
+            aspectSwap.Visible = false;
+
+            limitFPS.Enabled = true;
+            numericFpsCap.Enabled = true;
+            checkBoxFoV.Enabled = true;
+            numericFoV.Enabled = true;
+            disableDrawDistance.Enabled = true;
+            fog.Enabled = true;
+            fogComboBox.Enabled = true;
+
+            trainerTab.Enabled = true;
+
+            advancedTab.Enabled = true;
+
+            // Change options
+            if (width.Text == "" || height.Text == "")
+                autoFillVideo(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+            autoAspect(Int32.Parse(width.Text), Int32.Parse(height.Text));
+
+            int ind = apiComboBox.SelectedIndex;
+            apiComboBox.Items.Clear();
+            apiComboBox.Items.Add("d3d8 · vanilla");
+            apiComboBox.Items.Add("d3d9 · d3d8to9");
+            apiComboBox.Items.Add("d3d11 · dgVoodoo2");
+            apiComboBox.Items.Add("vulkan · dxvk");
+            if (ind == 1)
+                apiComboBox.SelectedIndex = 1;
+            else
+                apiComboBox.SelectedIndex = 0;
+        }
+
+        private void speedrunMode_Click(object sender, EventArgs e)
+        {
+            if (speedrunMode.Checked)
+            {
+                var result = MessageBox.Show("This will overwrite your settings and terminate game process. All trainer features will be deactivated. Continue?", "Speedrun Mode", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    this.kill_Click(sender, e);
+                    SpdLockOptions();
+                }
+                else
+                {
+                    speedrunMode.Checked = false;
+                }
+            }
+            else
+            {
+                this.kill_Click(sender, e);
+                SpdUnockOptions();
+            }
+        }
+
+        private void aspectSwap_Click(object sender, EventArgs e)
+        {
+            if (aspect1.Text == "4" && aspect2.Text == "3")
+            {
+                aspect1.Text = "16";
+                aspect2.Text = "9";
+            }
+            else
+            {
+                aspect1.Text = "4";
+                aspect2.Text = "3";
+            }
         }
     }
 }

@@ -1,0 +1,1778 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset='UTF-8'>
+	<meta name='viewport' content='width=device-width initial-scale=1'>
+
+	<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' />
+	<style type='text/css'>
+				html {
+					overflow-x: initial !important;
+				}
+
+				:root {
+					--bg-color: #ffffff;
+					--text-color: #333333;
+					--select-text-bg-color: #B5D6FC;
+					--select-text-font-color: auto;
+					--monospace: "Lucida Console",Consolas,"Courier",monospace;
+					--title-bar-height: 20px;
+				}
+
+				.mac-os-11 {
+					--title-bar-height: 28px;
+				}
+
+				html {
+					font-size: 14px;
+					background-color: var(--bg-color);
+					color: var(--text-color);
+					font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+					-webkit-font-smoothing: antialiased;
+				}
+
+				body {
+					margin: 0px;
+					padding: 0px;
+					height: auto;
+					inset: 0px;
+					font-size: 1rem;
+					line-height: 1.42857;
+					overflow-x: hidden;
+					background: inherit;
+					tab-size: 4;
+				}
+
+				iframe {
+					margin: auto;
+				}
+
+				a.url {
+					word-break: break-all;
+				}
+
+				a:active, a:hover {
+					outline: 0px;
+				}
+
+				.in-text-selection, ::selection {
+					text-shadow: none;
+					background: var(--select-text-bg-color);
+					color: var(--select-text-font-color);
+				}
+
+				#write {
+					margin: 0px auto;
+					height: auto;
+					width: inherit;
+					word-break: normal;
+					overflow-wrap: break-word;
+					position: relative;
+					white-space: normal;
+					overflow-x: visible;
+					padding-top: 36px;
+				}
+
+					#write.first-line-indent p {
+						text-indent: 2em;
+					}
+
+						#write.first-line-indent li p, #write.first-line-indent p * {
+							text-indent: 0px;
+						}
+
+					#write.first-line-indent li {
+						margin-left: 2em;
+					}
+
+				.for-image #write {
+					padding-left: 8px;
+					padding-right: 8px;
+				}
+
+				body.typora-export {
+					padding-left: 30px;
+					padding-right: 30px;
+				}
+
+				.typora-export .footnote-line, .typora-export li, .typora-export p {
+					white-space: pre-wrap;
+				}
+
+				.typora-export .task-list-item input {
+					pointer-events: none;
+				}
+
+				@media screen and (max-width: 500px) {
+					body.typora-export {
+						padding-left: 0px;
+						padding-right: 0px;
+					}
+
+					#write {
+						padding-left: 20px;
+						padding-right: 20px;
+					}
+				}
+
+				#write li > figure:last-child {
+					margin-bottom: 0.5rem;
+				}
+
+				#write ol, #write ul {
+					position: relative;
+				}
+
+				img {
+					max-width: 100%;
+					vertical-align: middle;
+					image-orientation: from-image;
+				}
+
+				button, input, select, textarea {
+					color: inherit;
+					font: inherit;
+				}
+
+					input[type="checkbox"], input[type="radio"] {
+						line-height: normal;
+						padding: 0px;
+					}
+
+				*, ::after, ::before {
+					box-sizing: border-box;
+				}
+
+				#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre {
+					width: inherit;
+				}
+
+				#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p {
+					position: relative;
+				}
+
+				p {
+					line-height: inherit;
+				}
+
+				h1, h2, h3, h4, h5, h6 {
+					break-after: avoid-page;
+					break-inside: avoid;
+					orphans: 4;
+				}
+
+				p {
+					orphans: 4;
+				}
+
+				h1 {
+					font-size: 2rem;
+				}
+
+				h2 {
+					font-size: 1.8rem;
+				}
+
+				h3 {
+					font-size: 1.6rem;
+				}
+
+				h4 {
+					font-size: 1.4rem;
+				}
+
+				h5 {
+					font-size: 1.2rem;
+				}
+
+				h6 {
+					font-size: 1rem;
+				}
+
+				.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p {
+					margin-top: 1rem;
+					margin-bottom: 1rem;
+				}
+
+				.hidden {
+					display: none;
+				}
+
+				.md-blockmeta {
+					color: rgb(204, 204, 204);
+					font-weight: 700;
+					font-style: italic;
+				}
+
+				a {
+					cursor: pointer;
+				}
+
+				sup.md-footnote {
+					padding: 2px 4px;
+					background-color: rgba(238, 238, 238, 0.7);
+					color: rgb(85, 85, 85);
+					border-radius: 4px;
+					cursor: pointer;
+				}
+
+					sup.md-footnote a, sup.md-footnote a:hover {
+						color: inherit;
+						text-transform: inherit;
+						text-decoration: inherit;
+					}
+
+				#write input[type="checkbox"] {
+					cursor: pointer;
+					width: inherit;
+					height: inherit;
+				}
+
+				figure {
+					overflow-x: auto;
+					margin: 1.2em 0px;
+					max-width: calc(100% + 16px);
+					padding: 0px;
+				}
+
+					figure > table {
+						margin: 0px;
+					}
+
+				thead, tr {
+					break-inside: avoid;
+					break-after: auto;
+				}
+
+				thead {
+					display: table-header-group;
+				}
+
+				table {
+					border-collapse: collapse;
+					border-spacing: 0px;
+					width: 100%;
+					overflow: auto;
+					break-inside: auto;
+					text-align: left;
+				}
+
+					table.md-table td {
+						min-width: 32px;
+					}
+
+				.CodeMirror-gutters {
+					border-right: 0px;
+					background-color: inherit;
+				}
+
+				.CodeMirror-linenumber {
+					user-select: none;
+				}
+
+				.CodeMirror {
+					text-align: left;
+				}
+
+				.CodeMirror-placeholder {
+					opacity: 0.3;
+				}
+
+				.CodeMirror pre {
+					padding: 0px 4px;
+				}
+
+				.CodeMirror-lines {
+					padding: 0px;
+				}
+
+				div.hr:focus {
+					cursor: none;
+				}
+
+				#write pre {
+					white-space: pre-wrap;
+				}
+
+				#write.fences-no-line-wrapping pre {
+					white-space: pre;
+				}
+
+				#write pre.ty-contain-cm {
+					white-space: normal;
+				}
+
+				.CodeMirror-gutters {
+					margin-right: 4px;
+				}
+
+				.md-fences {
+					font-size: 0.9rem;
+					display: block;
+					break-inside: avoid;
+					text-align: left;
+					overflow: visible;
+					white-space: pre;
+					background: inherit;
+					position: relative !important;
+				}
+
+				.md-fences-adv-panel {
+					width: 100%;
+					margin-top: 10px;
+					text-align: center;
+					padding-top: 0px;
+					padding-bottom: 8px;
+					overflow-x: auto;
+				}
+
+				#write .md-fences.mock-cm {
+					white-space: pre-wrap;
+				}
+
+				.md-fences.md-fences-with-lineno {
+					padding-left: 0px;
+				}
+
+				#write.fences-no-line-wrapping .md-fences.mock-cm {
+					white-space: pre;
+					overflow-x: auto;
+				}
+
+				.md-fences.mock-cm.md-fences-with-lineno {
+					padding-left: 8px;
+				}
+
+				.CodeMirror-line, twitterwidget {
+					break-inside: avoid;
+				}
+
+				svg {
+					break-inside: avoid;
+				}
+
+				.footnotes {
+					opacity: 0.8;
+					font-size: 0.9rem;
+					margin-top: 1em;
+					margin-bottom: 1em;
+				}
+
+					.footnotes + .footnotes {
+						margin-top: 0px;
+					}
+
+				.md-reset {
+					margin: 0px;
+					padding: 0px;
+					border: 0px;
+					outline: 0px;
+					vertical-align: top;
+					background: 0px 0px;
+					text-decoration: none;
+					text-shadow: none;
+					float: none;
+					position: static;
+					width: auto;
+					height: auto;
+					white-space: nowrap;
+					cursor: inherit;
+					-webkit-tap-highlight-color: transparent;
+					line-height: normal;
+					font-weight: 400;
+					text-align: left;
+					box-sizing: content-box;
+					direction: ltr;
+				}
+
+				li div {
+					padding-top: 0px;
+				}
+
+				blockquote {
+					margin: 1rem 0px;
+				}
+
+				li .mathjax-block, li p {
+					margin: 0.5rem 0px;
+				}
+
+				li blockquote {
+					margin: 1rem 0px;
+				}
+
+				li {
+					margin: 0px;
+					position: relative;
+				}
+
+				blockquote > :last-child {
+					margin-bottom: 0px;
+				}
+
+				blockquote > :first-child, li > :first-child {
+					margin-top: 0px;
+				}
+
+				.footnotes-area {
+					color: rgb(136, 136, 136);
+					margin-top: 0.714rem;
+					padding-bottom: 0.143rem;
+					white-space: normal;
+				}
+
+				#write .footnote-line {
+					white-space: pre-wrap;
+				}
+
+				@media print {
+					body, html {
+						border: 1px solid transparent;
+						height: 99%;
+						break-after: avoid;
+						break-before: avoid;
+						font-variant-ligatures: no-common-ligatures;
+					}
+
+					#write {
+						margin-top: 0px;
+						padding-top: 0px;
+						border-color: transparent !important;
+						padding-bottom: 0px !important;
+					}
+
+					.typora-export * {
+						-webkit-print-color-adjust: exact;
+					}
+
+					.typora-export #write {
+						break-after: avoid;
+					}
+
+						.typora-export #write::after {
+							height: 0px;
+						}
+
+					.is-mac table {
+						break-inside: avoid;
+					}
+
+					.typora-export-show-outline .typora-export-sidebar {
+						display: none;
+					}
+				}
+
+				.footnote-line {
+					margin-top: 0.714em;
+					font-size: 0.7em;
+				}
+
+				a img, img a {
+					cursor: pointer;
+				}
+
+				pre.md-meta-block {
+					font-size: 0.8rem;
+					min-height: 0.8rem;
+					white-space: pre-wrap;
+					background: rgb(204, 204, 204);
+					display: block;
+					overflow-x: hidden;
+				}
+
+				p > .md-image:only-child:not(.md-img-error) img, p > img:only-child {
+					display: block;
+					margin: auto;
+				}
+
+				#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img {
+					left: -2em;
+					position: relative;
+				}
+
+				p > .md-image:only-child {
+					display: inline-block;
+					width: 100%;
+				}
+
+				#write .MathJax_Display {
+					margin: 0.8em 0px 0px;
+				}
+
+				.md-math-block {
+					width: 100%;
+				}
+
+					.md-math-block:not(:empty)::after {
+						display: none;
+					}
+
+				.MathJax_ref {
+					fill: currentcolor;
+				}
+
+				[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus {
+					outline: 0px;
+					box-shadow: none;
+				}
+
+				.md-task-list-item {
+					position: relative;
+					list-style-type: none;
+				}
+
+				.task-list-item.md-task-list-item {
+					padding-left: 0px;
+				}
+
+				.md-task-list-item > input {
+					position: absolute;
+					top: 0px;
+					left: 0px;
+					margin-left: -1.2em;
+					margin-top: calc(1em - 10px);
+					border: none;
+				}
+
+				.math {
+					font-size: 1rem;
+				}
+
+				.md-toc {
+					min-height: 3.58rem;
+					position: relative;
+					font-size: 0.9rem;
+					border-radius: 10px;
+				}
+
+				.md-toc-content {
+					position: relative;
+					margin-left: 0px;
+				}
+
+					.md-toc-content::after, .md-toc::after {
+						display: none;
+					}
+
+				.md-toc-item {
+					display: block;
+					color: rgb(65, 131, 196);
+				}
+
+					.md-toc-item a {
+						text-decoration: none;
+					}
+
+				.md-toc-inner:hover {
+					text-decoration: underline;
+				}
+
+				.md-toc-inner {
+					display: inline-block;
+					cursor: pointer;
+				}
+
+				.md-toc-h1 .md-toc-inner {
+					margin-left: 0px;
+					font-weight: 700;
+				}
+
+				.md-toc-h2 .md-toc-inner {
+					margin-left: 2em;
+				}
+
+				.md-toc-h3 .md-toc-inner {
+					margin-left: 4em;
+				}
+
+				.md-toc-h4 .md-toc-inner {
+					margin-left: 6em;
+				}
+
+				.md-toc-h5 .md-toc-inner {
+					margin-left: 8em;
+				}
+
+				.md-toc-h6 .md-toc-inner {
+					margin-left: 10em;
+				}
+
+				@media screen and (max-width: 48em) {
+					.md-toc-h3 .md-toc-inner {
+						margin-left: 3.5em;
+					}
+
+					.md-toc-h4 .md-toc-inner {
+						margin-left: 5em;
+					}
+
+					.md-toc-h5 .md-toc-inner {
+						margin-left: 6.5em;
+					}
+
+					.md-toc-h6 .md-toc-inner {
+						margin-left: 8em;
+					}
+				}
+
+				a.md-toc-inner {
+					font-size: inherit;
+					font-style: inherit;
+					font-weight: inherit;
+					line-height: inherit;
+				}
+
+				.footnote-line a:not(.reversefootnote) {
+					color: inherit;
+				}
+
+				.reversefootnote {
+					font-family: ui-monospace, sans-serif;
+				}
+
+				.md-attr {
+					display: none;
+				}
+
+				.md-fn-count::after {
+					content: ".";
+				}
+
+				code, pre, samp, tt {
+					font-family: var(--monospace);
+				}
+
+				kbd {
+					margin: 0px 0.1em;
+					padding: 0.1em 0.6em;
+					font-size: 0.8em;
+					color: rgb(36, 39, 41);
+					background: rgb(255, 255, 255);
+					border: 1px solid rgb(173, 179, 185);
+					border-radius: 3px;
+					box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset;
+					white-space: nowrap;
+					vertical-align: middle;
+				}
+
+				.md-comment {
+					color: rgb(162, 127, 3);
+					opacity: 0.6;
+					font-family: var(--monospace);
+				}
+
+				code {
+					text-align: left;
+					vertical-align: initial;
+				}
+
+				a.md-print-anchor {
+					white-space: pre !important;
+					border-width: initial !important;
+					border-style: none !important;
+					border-color: initial !important;
+					display: inline-block !important;
+					position: absolute !important;
+					width: 1px !important;
+					right: 0px !important;
+					outline: 0px !important;
+					background: 0px 0px !important;
+					text-decoration: initial !important;
+					text-shadow: initial !important;
+				}
+
+				.os-windows.monocolor-emoji .md-emoji {
+					font-family: "Segoe UI Symbol", sans-serif;
+				}
+
+				.md-diagram-panel > svg {
+					max-width: 100%;
+				}
+
+				[lang="flow"] svg, [lang="mermaid"] svg {
+					max-width: 100%;
+					height: auto;
+				}
+
+				[lang="mermaid"] .node text {
+					font-size: 1rem;
+				}
+
+				table tr th {
+					border-bottom: 0px;
+				}
+
+				video {
+					max-width: 100%;
+					display: block;
+					margin: 0px auto;
+				}
+
+				iframe {
+					max-width: 100%;
+					width: 100%;
+					border: none;
+				}
+
+				.highlight td, .highlight tr {
+					border: 0px;
+				}
+
+				mark {
+					background: rgb(255, 255, 0);
+					color: rgb(0, 0, 0);
+				}
+
+					.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong {
+						color: inherit;
+					}
+
+				.md-expand mark .md-meta {
+					opacity: 0.3 !important;
+				}
+
+				mark .md-meta {
+					color: rgb(0, 0, 0);
+				}
+
+				@media print {
+					.typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 {
+						break-inside: avoid;
+					}
+				}
+
+				.md-diagram-panel .messageText {
+					stroke: none !important;
+				}
+
+				.md-diagram-panel .start-state {
+					fill: var(--node-fill);
+				}
+
+				.md-diagram-panel .edgeLabel rect {
+					opacity: 1 !important;
+				}
+
+				.md-fences.md-fences-math {
+					font-size: 1em;
+				}
+
+				.md-fences-advanced:not(.md-focus) {
+					padding: 0px;
+					white-space: nowrap;
+					border: 0px;
+				}
+
+				.md-fences-advanced:not(.md-focus) {
+					background: inherit;
+				}
+
+				.typora-export-show-outline .typora-export-content {
+					max-width: 1440px;
+					margin: auto;
+					display: flex;
+					flex-direction: row;
+				}
+
+				.typora-export-sidebar {
+					width: 300px;
+					font-size: 0.8rem;
+					margin-top: 80px;
+					margin-right: 18px;
+				}
+
+				.typora-export-show-outline #write {
+					--webkit-flex: 2;
+					flex: 2 1 0%;
+				}
+
+				.typora-export-sidebar .outline-content {
+					position: fixed;
+					top: 0px;
+					max-height: 100%;
+					overflow: hidden auto;
+					padding-bottom: 30px;
+					padding-top: 60px;
+					width: 300px;
+				}
+
+				@media screen and (max-width: 1024px) {
+					.typora-export-sidebar, .typora-export-sidebar .outline-content {
+						width: 240px;
+					}
+				}
+
+				@media screen and (max-width: 800px) {
+					.typora-export-sidebar {
+						display: none;
+					}
+				}
+
+				.outline-content li, .outline-content ul {
+					margin-left: 0px;
+					margin-right: 0px;
+					padding-left: 0px;
+					padding-right: 0px;
+					list-style: none;
+				}
+
+				.outline-content ul {
+					margin-top: 0px;
+					margin-bottom: 0px;
+				}
+
+				.outline-content strong {
+					font-weight: 400;
+				}
+
+				.outline-expander {
+					width: 1rem;
+					height: 1.42857rem;
+					position: relative;
+					display: table-cell;
+					vertical-align: middle;
+					cursor: pointer;
+					padding-left: 4px;
+				}
+
+					.outline-expander::before {
+						content: "";
+						position: relative;
+						font-family: Ionicons;
+						display: inline-block;
+						font-size: 8px;
+						vertical-align: middle;
+					}
+
+				.outline-item {
+					padding-top: 3px;
+					padding-bottom: 3px;
+					cursor: pointer;
+				}
+
+				.outline-expander:hover::before {
+					content: "";
+				}
+
+				.outline-h1 > .outline-item {
+					padding-left: 0px;
+				}
+
+				.outline-h2 > .outline-item {
+					padding-left: 1em;
+				}
+
+				.outline-h3 > .outline-item {
+					padding-left: 2em;
+				}
+
+				.outline-h4 > .outline-item {
+					padding-left: 3em;
+				}
+
+				.outline-h5 > .outline-item {
+					padding-left: 4em;
+				}
+
+				.outline-h6 > .outline-item {
+					padding-left: 5em;
+				}
+
+				.outline-label {
+					cursor: pointer;
+					display: table-cell;
+					vertical-align: middle;
+					text-decoration: none;
+					color: inherit;
+				}
+
+					.outline-label:hover {
+						text-decoration: underline;
+					}
+
+				.outline-item:hover {
+					border-color: rgb(245, 245, 245);
+					background-color: var(--item-hover-bg-color);
+				}
+
+				.outline-item:hover {
+					margin-left: -28px;
+					margin-right: -28px;
+					border-left: 28px solid transparent;
+					border-right: 28px solid transparent;
+				}
+
+				.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before {
+					display: none;
+				}
+
+				.outline-item-open > .outline-item > .outline-expander::before {
+					content: "";
+				}
+
+				.outline-children {
+					display: none;
+				}
+
+				.info-panel-tab-wrapper {
+					display: none;
+				}
+
+				.outline-item-open > .outline-children {
+					display: block;
+				}
+
+				.typora-export .outline-item {
+					padding-top: 1px;
+					padding-bottom: 1px;
+				}
+
+					.typora-export .outline-item:hover {
+						margin-right: -8px;
+						border-right: 8px solid transparent;
+					}
+
+				.typora-export .outline-expander::before {
+					content: "+";
+					font-family: inherit;
+					top: -1px;
+				}
+
+				.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before {
+					content: "−";
+				}
+
+				.typora-export-collapse-outline .outline-children {
+					display: none;
+				}
+
+				.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children {
+					display: block;
+				}
+
+				.typora-export-no-collapse-outline .outline-expander::before {
+					content: "" !important;
+				}
+
+				.typora-export-show-outline .outline-item-active > .outline-item .outline-label {
+					font-weight: 700;
+				}
+
+				.md-inline-math-container mjx-container {
+					zoom: 0.95;
+				}
+
+				mjx-container {
+					break-inside: avoid;
+				}
+
+
+				.CodeMirror {
+					height: auto;
+				}
+
+					.CodeMirror.cm-s-inner {
+						background: inherit;
+					}
+
+				.CodeMirror-scroll {
+					overflow: auto hidden;
+					z-index: 3;
+				}
+
+				.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler {
+					background-color: rgb(255, 255, 255);
+				}
+
+				.CodeMirror-gutters {
+					border-right: 1px solid rgb(221, 221, 221);
+					background: inherit;
+					white-space: nowrap;
+				}
+
+				.CodeMirror-linenumber {
+					padding: 0px 3px 0px 5px;
+					text-align: right;
+					color: rgb(153, 153, 153);
+				}
+
+				.cm-s-inner .cm-keyword {
+					color: rgb(119, 0, 136);
+				}
+
+				.cm-s-inner .cm-atom, .cm-s-inner.cm-atom {
+					color: rgb(34, 17, 153);
+				}
+
+				.cm-s-inner .cm-number {
+					color: rgb(17, 102, 68);
+				}
+
+				.cm-s-inner .cm-def {
+					color: rgb(0, 0, 255);
+				}
+
+				.cm-s-inner .cm-variable {
+					color: rgb(0, 0, 0);
+				}
+
+				.cm-s-inner .cm-variable-2 {
+					color: rgb(0, 85, 170);
+				}
+
+				.cm-s-inner .cm-variable-3 {
+					color: rgb(0, 136, 85);
+				}
+
+				.cm-s-inner .cm-string {
+					color: rgb(170, 17, 17);
+				}
+
+				.cm-s-inner .cm-property {
+					color: rgb(0, 0, 0);
+				}
+
+				.cm-s-inner .cm-operator {
+					color: rgb(152, 26, 26);
+				}
+
+				.cm-s-inner .cm-comment, .cm-s-inner.cm-comment {
+					color: rgb(170, 85, 0);
+				}
+
+				.cm-s-inner .cm-string-2 {
+					color: rgb(255, 85, 0);
+				}
+
+				.cm-s-inner .cm-meta {
+					color: rgb(85, 85, 85);
+				}
+
+				.cm-s-inner .cm-qualifier {
+					color: rgb(85, 85, 85);
+				}
+
+				.cm-s-inner .cm-builtin {
+					color: rgb(51, 0, 170);
+				}
+
+				.cm-s-inner .cm-bracket {
+					color: rgb(153, 153, 119);
+				}
+
+				.cm-s-inner .cm-tag {
+					color: rgb(17, 119, 0);
+				}
+
+				.cm-s-inner .cm-attribute {
+					color: rgb(0, 0, 204);
+				}
+
+				.cm-s-inner .cm-header, .cm-s-inner.cm-header {
+					color: rgb(0, 0, 255);
+				}
+
+				.cm-s-inner .cm-quote, .cm-s-inner.cm-quote {
+					color: rgb(0, 153, 0);
+				}
+
+				.cm-s-inner .cm-hr, .cm-s-inner.cm-hr {
+					color: rgb(153, 153, 153);
+				}
+
+				.cm-s-inner .cm-link, .cm-s-inner.cm-link {
+					color: rgb(0, 0, 204);
+				}
+
+				.cm-negative {
+					color: rgb(221, 68, 68);
+				}
+
+				.cm-positive {
+					color: rgb(34, 153, 34);
+				}
+
+				.cm-header, .cm-strong {
+					font-weight: 700;
+				}
+
+				.cm-del {
+					text-decoration: line-through;
+				}
+
+				.cm-em {
+					font-style: italic;
+				}
+
+				.cm-link {
+					text-decoration: underline;
+				}
+
+				.cm-error {
+					color: red;
+				}
+
+				.cm-invalidchar {
+					color: red;
+				}
+
+				.cm-constant {
+					color: rgb(38, 139, 210);
+				}
+
+				.cm-defined {
+					color: rgb(181, 137, 0);
+				}
+
+				div.CodeMirror span.CodeMirror-matchingbracket {
+					color: rgb(0, 255, 0);
+				}
+
+				div.CodeMirror span.CodeMirror-nonmatchingbracket {
+					color: rgb(255, 34, 34);
+				}
+
+				.cm-s-inner .CodeMirror-activeline-background {
+					background: inherit;
+				}
+
+				.CodeMirror {
+					position: relative;
+					overflow: hidden;
+				}
+
+				.CodeMirror-scroll {
+					height: 100%;
+					outline: 0px;
+					position: relative;
+					box-sizing: content-box;
+					background: inherit;
+				}
+
+				.CodeMirror-sizer {
+					position: relative;
+				}
+
+				.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar {
+					position: absolute;
+					z-index: 6;
+					display: none;
+					outline: 0px;
+				}
+
+				.CodeMirror-vscrollbar {
+					right: 0px;
+					top: 0px;
+					overflow: hidden;
+				}
+
+				.CodeMirror-hscrollbar {
+					bottom: 0px;
+					left: 0px;
+					overflow: auto hidden;
+				}
+
+				.CodeMirror-scrollbar-filler {
+					right: 0px;
+					bottom: 0px;
+				}
+
+				.CodeMirror-gutter-filler {
+					left: 0px;
+					bottom: 0px;
+				}
+
+				.CodeMirror-gutters {
+					position: absolute;
+					left: 0px;
+					top: 0px;
+					padding-bottom: 10px;
+					z-index: 3;
+					overflow-y: hidden;
+				}
+
+				.CodeMirror-gutter {
+					white-space: normal;
+					height: 100%;
+					box-sizing: content-box;
+					padding-bottom: 30px;
+					margin-bottom: -32px;
+					display: inline-block;
+				}
+
+				.CodeMirror-gutter-wrapper {
+					position: absolute;
+					z-index: 4;
+					background: 0px 0px !important;
+					border: none !important;
+				}
+
+				.CodeMirror-gutter-background {
+					position: absolute;
+					top: 0px;
+					bottom: 0px;
+					z-index: 4;
+				}
+
+				.CodeMirror-gutter-elt {
+					position: absolute;
+					cursor: default;
+					z-index: 4;
+				}
+
+				.CodeMirror-lines {
+					cursor: text;
+				}
+
+				.CodeMirror pre {
+					border-radius: 0px;
+					border-width: 0px;
+					background: 0px 0px;
+					font-family: inherit;
+					font-size: inherit;
+					margin: 0px;
+					white-space: pre;
+					overflow-wrap: normal;
+					color: inherit;
+					z-index: 2;
+					position: relative;
+					overflow: visible;
+				}
+
+				.CodeMirror-wrap pre {
+					overflow-wrap: break-word;
+					white-space: pre-wrap;
+					word-break: normal;
+				}
+
+				.CodeMirror-code pre {
+					border-right: 30px solid transparent;
+					width: fit-content;
+				}
+
+				.CodeMirror-wrap .CodeMirror-code pre {
+					border-right: none;
+					width: auto;
+				}
+
+				.CodeMirror-linebackground {
+					position: absolute;
+					inset: 0px;
+					z-index: 0;
+				}
+
+				.CodeMirror-linewidget {
+					position: relative;
+					z-index: 2;
+					overflow: auto;
+				}
+
+				.CodeMirror-wrap .CodeMirror-scroll {
+					overflow-x: hidden;
+				}
+
+				.CodeMirror-measure {
+					position: absolute;
+					width: 100%;
+					height: 0px;
+					overflow: hidden;
+					visibility: hidden;
+				}
+
+					.CodeMirror-measure pre {
+						position: static;
+					}
+
+				.CodeMirror div.CodeMirror-cursor {
+					position: absolute;
+					visibility: hidden;
+					border-right: none;
+					width: 0px;
+				}
+
+				.CodeMirror div.CodeMirror-cursor {
+					visibility: hidden;
+				}
+
+				.CodeMirror-focused div.CodeMirror-cursor {
+					visibility: inherit;
+				}
+
+				.cm-searching {
+					background: rgba(255, 255, 0, 0.4);
+				}
+
+				span.cm-underlined {
+					text-decoration: underline;
+				}
+
+				span.cm-strikethrough {
+					text-decoration: line-through;
+				}
+
+				.cm-tw-syntaxerror {
+					color: rgb(255, 255, 255);
+					background-color: rgb(153, 0, 0);
+				}
+
+				.cm-tw-deleted {
+					text-decoration: line-through;
+				}
+
+				.cm-tw-header5 {
+					font-weight: 700;
+				}
+
+				.cm-tw-listitem:first-child {
+					padding-left: 10px;
+				}
+
+				.cm-tw-box {
+					border-style: solid;
+					border-right-width: 1px;
+					border-bottom-width: 1px;
+					border-left-width: 1px;
+					border-color: inherit;
+					border-top-width: 0px !important;
+				}
+
+				.cm-tw-underline {
+					text-decoration: underline;
+				}
+
+				@media print {
+					.CodeMirror div.CodeMirror-cursor {
+						visibility: hidden;
+					}
+				}
+
+
+				:root {
+					--side-bar-bg-color: #fafafa;
+					--control-text-color: #777;
+				}
+
+				@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+				/* open-sans-regular - latin-ext_latin */
+				/* open-sans-italic - latin-ext_latin */
+				/* open-sans-700 - latin-ext_latin */
+				/* open-sans-700italic - latin-ext_latin */
+				html {
+					font-size: 16px;
+					-webkit-font-smoothing: antialiased;
+				}
+
+				body {
+					font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+					color: rgb(51, 51, 51);
+					line-height: 1.6;
+				}
+
+				#write {
+					max-width: 860px;
+					margin: 0 auto;
+					padding: 30px;
+					padding-bottom: 100px;
+				}
+
+				@media only screen and (min-width: 1400px) {
+					#write {
+						max-width: 1024px;
+					}
+				}
+
+				@media only screen and (min-width: 1800px) {
+					#write {
+						max-width: 1200px;
+					}
+				}
+
+				#write > ul:first-child,
+				#write > ol:first-child {
+					margin-top: 30px;
+				}
+
+				a {
+					color: #4183C4;
+				}
+
+				h1,
+				h2,
+				h3,
+				h4,
+				h5,
+				h6 {
+					position: relative;
+					margin-top: 1rem;
+					margin-bottom: 1rem;
+					font-weight: bold;
+					line-height: 1.4;
+					cursor: text;
+				}
+
+					h1:hover a.anchor,
+					h2:hover a.anchor,
+					h3:hover a.anchor,
+					h4:hover a.anchor,
+					h5:hover a.anchor,
+					h6:hover a.anchor {
+						text-decoration: none;
+					}
+
+					h1 tt,
+					h1 code {
+						font-size: inherit;
+					}
+
+					h2 tt,
+					h2 code {
+						font-size: inherit;
+					}
+
+					h3 tt,
+					h3 code {
+						font-size: inherit;
+					}
+
+					h4 tt,
+					h4 code {
+						font-size: inherit;
+					}
+
+					h5 tt,
+					h5 code {
+						font-size: inherit;
+					}
+
+					h6 tt,
+					h6 code {
+						font-size: inherit;
+					}
+
+				h1 {
+					font-size: 2.25em;
+					line-height: 1.2;
+					border-bottom: 1px solid #eee;
+				}
+
+				h2 {
+					font-size: 1.75em;
+					line-height: 1.225;
+					border-bottom: 1px solid #eee;
+				}
+
+				/*@media print {
+			.typora-export h1,
+			.typora-export h2 {
+				border-bottom: none;
+				padding-bottom: initial;
+			}
+
+			.typora-export h1::after,
+			.typora-export h2::after {
+				content: "";
+				display: block;
+				height: 100px;
+				margin-top: -96px;
+				border-top: 1px solid #eee;
+			}
+		}*/
+
+				h3 {
+					font-size: 1.5em;
+					line-height: 1.43;
+				}
+
+				h4 {
+					font-size: 1.25em;
+				}
+
+				h5 {
+					font-size: 1em;
+				}
+
+				h6 {
+					font-size: 1em;
+					color: #777;
+				}
+
+				p,
+				blockquote,
+				ul,
+				ol,
+				dl,
+				table {
+					margin: 0.8em 0;
+				}
+
+				li > ol,
+				li > ul {
+					margin: 0 0;
+				}
+
+				hr {
+					height: 2px;
+					padding: 0;
+					margin: 16px 0;
+					background-color: #e7e7e7;
+					border: 0 none;
+					overflow: hidden;
+					box-sizing: content-box;
+				}
+
+				li p.first {
+					display: inline-block;
+				}
+
+				ul,
+				ol {
+					padding-left: 30px;
+				}
+
+					ul:first-child,
+					ol:first-child {
+						margin-top: 0;
+					}
+
+					ul:last-child,
+					ol:last-child {
+						margin-bottom: 0;
+					}
+
+				blockquote {
+					border-left: 4px solid #dfe2e5;
+					padding: 0 15px;
+					color: #777777;
+				}
+
+					blockquote blockquote {
+						padding-right: 0;
+					}
+
+				table {
+					padding: 0;
+					word-break: initial;
+				}
+
+					table tr {
+						border: 1px solid #dfe2e5;
+						margin: 0;
+						padding: 0;
+					}
+
+						table tr:nth-child(2n),
+						thead {
+							background-color: #f8f8f8;
+						}
+
+					table th {
+						font-weight: bold;
+						border: 1px solid #dfe2e5;
+						border-bottom: 0;
+						margin: 0;
+						padding: 6px 13px;
+					}
+
+					table td {
+						border: 1px solid #dfe2e5;
+						margin: 0;
+						padding: 6px 13px;
+					}
+
+						table th:first-child,
+						table td:first-child {
+							margin-top: 0;
+						}
+
+						table th:last-child,
+						table td:last-child {
+							margin-bottom: 0;
+						}
+
+				.CodeMirror-lines {
+					padding-left: 4px;
+				}
+
+				.code-tooltip {
+					box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+					border-top: 1px solid #eef2f2;
+				}
+
+				.md-fences,
+				code,
+				tt {
+					border: 1px solid #e7eaed;
+					background-color: #f8f8f8;
+					border-radius: 3px;
+					padding: 0;
+					padding: 2px 4px 0px 4px;
+					font-size: 0.9em;
+				}
+
+				code {
+					background-color: #f3f4f4;
+					padding: 0 2px 0 2px;
+				}
+
+				.md-fences {
+					margin-bottom: 15px;
+					margin-top: 15px;
+					padding-top: 8px;
+					padding-bottom: 6px;
+				}
+
+
+				.md-task-list-item > input {
+					margin-left: -1.3em;
+				}
+
+				@media print {
+					html {
+						font-size: 13px;
+					}
+
+					pre {
+						page-break-inside: avoid;
+						word-wrap: break-word;
+					}
+				}
+
+				.md-fences {
+					background-color: #f8f8f8;
+				}
+
+				#write pre.md-meta-block {
+					padding: 1rem;
+					font-size: 85%;
+					line-height: 1.45;
+					background-color: #f7f7f7;
+					border: 0;
+					border-radius: 3px;
+					color: #777777;
+					margin-top: 0 !important;
+				}
+
+				.mathjax-block > .code-tooltip {
+					bottom: .375rem;
+				}
+
+				.md-mathjax-midline {
+					background: #fafafa;
+				}
+
+				#write > h3.md-focus:before {
+					left: -1.5625rem;
+					top: .375rem;
+				}
+
+				#write > h4.md-focus:before {
+					left: -1.5625rem;
+					top: .285714286rem;
+				}
+
+				#write > h5.md-focus:before {
+					left: -1.5625rem;
+					top: .285714286rem;
+				}
+
+				#write > h6.md-focus:before {
+					left: -1.5625rem;
+					top: .285714286rem;
+				}
+
+				.md-image > .md-meta {
+					/*border: 1px solid #ddd;*/
+					border-radius: 3px;
+					padding: 2px 0px 0px 4px;
+					font-size: 0.9em;
+					color: inherit;
+				}
+
+				.md-tag {
+					color: #a7a7a7;
+					opacity: 1;
+				}
+
+				.md-toc {
+					margin-top: 20px;
+					padding-bottom: 20px;
+				}
+
+				.sidebar-tabs {
+					border-bottom: none;
+				}
+
+				#typora-quick-open {
+					border: 1px solid #ddd;
+					background-color: #f8f8f8;
+				}
+
+				#typora-quick-open-item {
+					background-color: #FAFAFA;
+					border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+					border-style: solid;
+					border-width: 1px;
+				}
+
+				/** focus mode */
+				.on-focus-mode blockquote {
+					border-left-color: rgba(85, 85, 85, 0.12);
+				}
+
+				header, .context-menu, .megamenu-content, footer {
+					font-family: "Segoe UI", "Arial", sans-serif;
+				}
+
+				.file-node-content:hover .file-node-icon,
+				.file-node-content:hover .file-node-open-state {
+					visibility: visible;
+				}
+
+				.mac-seamless-mode #typora-sidebar {
+					background-color: #fafafa;
+					background-color: var(--side-bar-bg-color);
+				}
+
+				.md-lang {
+					color: #b4654d;
+				}
+
+				/*.html-for-mac {
+			--item-hover-bg-color: #E6F0FE;
+		}*/
+
+				#md-notification .btn {
+					border: 0;
+				}
+
+				.dropdown-menu .divider {
+					border-color: #e5e5e5;
+					opacity: 0.4;
+				}
+
+				.ty-preferences .window-content {
+					background-color: #fafafa;
+				}
+
+				.ty-preferences .nav-group-item.active {
+					color: white;
+					background: #999;
+				}
+
+				.menu-item-container a.menu-style-btn {
+					background-color: #f5f8fa;
+					background-image: linear-gradient( 180deg, hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0));
+				}
+	</style>
+	<title>ReadMe</title>
+</head>
+<body style='font-family: Segoe UI Emoji' class='typora-export os-windows'>
+	<div class='typora-export-content'>
+		<div id='write' class=''>
+			<h1 id='taz-wanted-·-trainer--patcher'><span>Taz: Wanted · Trainer &amp; Patcher</span></h1><p><span>Custom launcher for </span><strong><span>Taz: Wanted</span></strong><span> PC game with trainer features, patcher enhances and repacking ability </span></p><h2 id='✏️-requirements'><span>✏️ Requirements</span></h2><h3 id='✅️-main'><span>✅️ Main</span></h3><ul><li><strong><a href='https://oldgamesdownload.com/file/84753-2'><span>Taz: Wanted</span></a></strong><span> - installed full </span><strong><span>US</span></strong><span> game version</span></li><li><strong><a href='https://go.microsoft.com/fwlink/?linkid=2088631'><span>Microsoft .NET Framework 4.8</span></a></strong><span> - preinstalled with </span><a href='https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/versions-and-dependencies#net-framework-48'><span>Windows 10 (1903+)</span></a></li></ul><h3 id='☑️-optional'><span>☑️ Optional</span></h3><ul><li><strong><a href='https://www.microsoft.com/en-us/download/details.aspx?id=35'><span>DirectX® End-User Runtime</span></a></strong><span> - for </span><a href='https://github.com/crosire/d3d8to9'><span>d3d8to9</span></a><span>, </span><a href='https://github.com/dege-diosg/dgVoodoo2'><span>dgVoodoo2</span></a><span> and </span><a href='https://github.com/doitsujin/dxvk'><span>dxvk</span></a></li><li><strong><span>Internet Access</span></strong><span> - for </span><a href='https://github.com/crosire/d3d8to9'><span>custom </span></a><a href='https://github.com/dege-diosg/dgVoodoo2'><span>graphic </span></a><a href='https://github.com/doitsujin/dxvk'><span>wrappers</span></a><span> and </span><a href='https://www.speedrun.com/ru-RU/taz_wanted/levels'><span>scoreboards</span></a></li></ul><h2 id='💡-troubleshooting'><span>💡 Troubleshooting</span></h2><h3 id='📝-main-issues'><span>📝 Main Issues</span></h3><ul><li><span>Make sure you have installed </span><strong><span>US</span></strong><span> version. </span><strong><span>Europe</span></strong><span> and </span><strong><span>Atari</span></strong><span> game versions are unsupported. You can replace your </span><code>Taz.exe</code><span> file from </span><strong><span>US</span></strong><span> version for compatibility</span></li><li><strong><span>Demo</span></strong><span> and </span><strong><span>Pre-release</span></strong><span> versions are unsupported</span></li><li><span>Make sure your registry path is correct: </span><code>Settings -&gt; Game Path</code></li><li><span>Make sure you have installed </span><a href='https://go.microsoft.com/fwlink/?linkid=2088631'><span>Microsoft .NET Framework 4.8</span></a></li></ul><h3 id='🎞-video-issues'><span>🎞 Video Issues</span></h3><ul><li><span>Make sure your </span><strong><span>DirectPlay</span></strong><span> component is enabled</span></li><li><span>Make sure you have installed </span><strong><span>DirectX 9.0c</span></strong></li><li><span>Make sure you have correct video device in the </span><code>Settings -&gt; Video</code></li><li><span>Make sure you have latest video drivers installed</span></li><li><span>Try windowed / fullscreen mode</span></li><li><span>Try another </span><strong><span>GPU</span></strong><span> (integrated / discrete graphics)</span></li></ul><h3 id='🎮-control-issues'><span>🎮 Control Issues</span></h3><ul><li><span>Set </span><strong><span>Vanilla</span></strong><span> option for </span><strong><span>Controls</span></strong><span> settings and configure layout manually via </span><code>Settings -&gt; Controls</code></li></ul><h3 id='🛍️-mod-issues'><span>🛍️ Mod Issues</span></h3><ul><li><span>Some mods can be incompatible with each other and may cause game crush in the specific scenarios</span></li><li><span>Some heavy mods can require </span><strong><span>4Gb Ram</span></strong><span> patch</span></li></ul><h3 id='🪛-specific-issues'><span>🪛 Specific Issues</span></h3><ul><li><span>Try compatibility mode with </span><strong><span>Windows XP SP3</span></strong><span> for </span><strong><span>Taz.exe</span></strong></li><li><span>Try graphic wrappers or debug version of wrappers</span></li><li><span>Make sure </span><strong><span>Taz.exe</span></strong><span> process is not already launched</span></li></ul><h3 id='🐞-fps-bugs'><span>🐞 FPS Bugs</span></h3><p><span>The game is not designed for more than </span><strong><span>60 FPS</span></strong><span> refresh rate, use </span><strong><span>Frame Limiter</span></strong><span> or </span><strong><span>FPS Cap</span></strong><span> (</span><strong><code>F9</code></strong><span>) to avoid bugs:</span></p><ul><li><span>Slow UI animation</span></li><li><span>Buggy Gladiatoons</span></li><li><span>Broken chili pepper, particles, etc...</span></li></ul><p><span>Also, you can cause some wall clipping bugs with low refresh rate: </span><strong><span>~20 FPS</span></strong></p><h3 id='🧪-unstable-features'><span>🧪 Unstable Features</span></h3><p><span>Some trainer features are unstable and can crash game in specific scenarios, use with caution:</span></p><ul><li><span>Alternate Lighting (</span><strong><code>F10</code></strong><span>)</span></li><li><span>Player (</span><strong><code>F12</code><span> </span><code>PgUp</code><span> </span><code>PgDn</code></strong><span>)</span></li></ul><h3 id='📎-misc-issues'><span>📎 Misc Issues</span></h3><ul><li><span>Game crush on debug cheats menu selection with Russian language - use </span><a href='https://gamebanana.com/mods/556918'><span>Russian language mod</span></a><span> with fixed cheat bugs</span></li><li><span>Game crash on level leaderboards screen - make sure you have created user on </span><strong><span>3rd save slot</span></strong></li><li><span>Unpacking doesn&#39;t support </span><strong><span>GameCube</span></strong><span> (</span><code>.gc</code><span>) files - use </span><strong><span>QuickBMS</span></strong><span> with </span><a href='http://blitz_games.bms/'><span>blitz_games.bms</span></a><span> script</span></li><li><strong><span>dgVoodoo</span></strong><span> watermark can be removed with: </span><code>...\Taz Wanted\Wrappers\dgVoodoo2\dgVoodooCpl.exe</code></li><li><span>For custom game launchers, you can create shortcut or batch file: </span><code>Taz.exe Launched</code></li></ul><h2 id='🔩-patches'><span>🔩 Patches</span></h2><h3 id='⚠️-general'><span>⚠️ General</span></h3><ul><li><p><strong><span>NoCD</span></strong><span> - remove CD check during startup</span></p></li><li><p><strong><span>Skip Ads</span></strong><span> - skip intro logos and warning banner</span></p></li><li><p><strong><span>Mods</span></strong><span> - load custom paks from </span><code>Mods</code><span> folder</span></p></li><li><p><strong><span>4Gb Ram</span></strong><span> - extend available memory (</span><a href='https://ntcore.com/?page_id=371'><span>ntcore.com</span></a><span>)</span></p></li><li><p><strong><span>Cutscene Subtitles</span></strong><span> - show subtitles for game cutscenes</span></p></li><li><p><strong><span>Advanced Cheats</span></strong><span> - enable specific patches for </span><strong><span>Player</span></strong><span> trainer cheat (</span><code>F12</code><span> </span><code>PgUp</code><span> </span><code>PgDn</code><span>) and unlocks all cheats in debug menu (console)</span></p></li><li><p><strong><span>Speedrun Mode</span></strong><span> - lock trainer features and some patches</span></p></li><li><p><strong><span>Controls</span></strong><span> - preset button layout for:</span></p><ul><li><strong><span>Vanilla</span></strong><span> - default behaviour</span></li><li><strong><span>XInput</span></strong><span> - </span><strong><span>Xbox</span></strong><span> controllers</span></li><li><strong><span>DualSense</span></strong><span> - </span><strong><span>DualShock</span></strong><span>/</span><strong><span>DualSense</span></strong><span> controllers</span></li></ul></li><li><p><strong><span>Language</span></strong><span> - set game language to:</span></p><ul><li><strong><span>English</span></strong><span> - default behaviour</span></li><li><strong><span>Français</span></strong><span> - French</span></li><li><strong><span>Deutsch</span></strong><span> - German</span></li><li><strong><span>Italiano</span></strong><span> - Italian</span></li><li><strong><span>Español</span></strong><span> - Spanish</span></li></ul></li><li><p><strong><span>Scoreboard</span></strong><span> - download level scoreboards from </span><a href='https://www.speedrun.com/taz_wanted'><span>speedrun.com</span></a><span> to game save file:</span></p><ul><li><strong><span>None</span></strong><span> - default behaviour</span></li><li><strong><span>Clean</span></strong><span> - reset all scoreboards</span></li><li><strong><span>Any%</span></strong><span> - sync with </span><a href='https://www.speedrun.com/ru-RU/taz_wanted/levels?h=Any&amp;x=9d83rl2n'><span>Any%</span></a><span> category</span></li><li><strong><span>100%</span></strong><span> - sync with </span><a href='https://www.speedrun.com/ru-RU/taz_wanted/levels?h=100&amp;x=xd1v0wd8'><span>100%</span></a><span> category</span></li><li><strong><span>Pure Any%</span></strong><span> - sync with </span><a href='https://www.speedrun.com/ru-RU/taz_wanted/levels?h=pure-any&amp;x=7kjn5jzd'><span>Pure Any%</span></a><span> category</span></li><li><strong><span>Perfect Any%</span></strong><span> - sync with </span><a href='https://www.speedrun.com/ru-RU/taz_wanted/levels?h=perfect-100&amp;x=xk9myogd'><span>Perfect Any%</span></a><span> category</span></li></ul></li><li><p><strong><span>Start Level</span></strong><span> - load specific level on game startup:</span></p><ul><li><strong><span>Main Intro</span></strong><span> - default behaviour</span></li><li><strong><span>Front End</span></strong><span> - Taz&#39;s Island</span></li><li><strong><span>Zoo-Hub</span></strong><span> - Yosemite Zoo</span></li><li><strong><span>Ice Kingdome</span></strong><span> - Ice Burg</span></li><li><strong><span>Safari</span></strong><span> - Zooney Tunes</span></li><li><strong><span>Aqua</span></strong><span> - Looney Lagoon</span></li><li><strong><span>City-Hub</span></strong><span> - Sam Francisco</span></li><li><strong><span>Dept Store</span></strong><span> - Looningdale&#39;s</span></li><li><strong><span>Museum</span></strong><span> - Samsonian Museum</span></li><li><strong><span>Construct</span></strong><span> - Bank of Samerica</span></li><li><strong><span>West-Hub</span></strong><span> - Wile E. West</span></li><li><strong><span>Ghost Town</span></strong><span> - Taz: Haunted</span></li><li><strong><span>Gold Mine</span></strong><span> - Cartoon Strip-Mine</span></li><li><strong><span>Grand Canyon</span></strong><span> - Granny Canyon</span></li><li><strong><span>Tazmania</span></strong><span> - Tazland A-maze-ment Park</span></li><li><strong><span>Random</span></strong><span> - random playable level</span></li></ul></li></ul><h3 id='📺-graphics'><span>📺 Graphics</span></h3><ul><li><p><strong><span>API</span></strong><span> - download and replace graphic API with custom wrapper:</span></p><ul><li><strong><span>d3d8</span></strong><span> - default </span><strong><span>DirectX 8.1</span></strong><span> API</span></li><li><strong><span>d3d9</span></strong><span> - </span><strong><span>DirectX 9</span></strong><span> wrapper </span><a href='https://github.com/crosire/d3d8to9'><span>d3d8to9</span></a></li><li><strong><span>d3d11</span></strong><span> - </span><strong><span>DirectX 11</span></strong><span> wrapper </span><a href='https://github.com/dege-diosg/dgVoodoo2'><span>dgVoodoo2</span></a><span>, unavailable with </span><strong><span>Speedrun Mode</span></strong></li><li><strong><span>vulkan</span></strong><span> - </span><strong><span>Vulkan</span></strong><span> wrapper </span><a href='https://github.com/doitsujin/dxvk'><span>dxvk</span></a><span>, unavailable with </span><strong><span>Speedrun Mode</span></strong></li></ul></li><li><p><strong><span>Res</span></strong><span> - video resolution, prefilled with system defaults</span></p></li><li><p><strong><span>Aspect</span></strong><span> - aspect ratio, prefilled with calculated resolution proportions, with </span><strong><span>Speedrun Mode</span></strong><span> can be only </span><code>4:3</code><span> or </span><code>16:9</code></p></li><li><p><strong><span>Windowed</span></strong><span> - set windowed mode with selected resolution and aspect ratio</span></p></li><li><p><strong><span>Voodoo</span></strong><span> - simplified graphics mode, incompatible with windowed mode</span></p></li><li><p><strong><span>Lighting</span></strong><span> - enable cartoon lighting</span></p></li><li><p><strong><span>Outlines</span></strong><span> - enable cartoon outlines</span></p></li><li><p><strong><span>Frame Limiter</span></strong><span> - enable </span><strong><span>FPS</span></strong><span> cap (</span><code>*</code><span> </span><code>/</code><span> - adjust in-game)</span></p></li><li><p><strong><span>Field of View</span></strong><span> - override default </span><strong><span>FoV</span></strong><span> (</span><code>Num+</code><span> </span><code>Num-</code><span> - adjust in-game)</span></p></li><li><p><strong><span>Point Texture Sampling</span></strong><span> - set nearest-neighbour filtering for magnified textures</span></p></li><li><p><strong><span>Unlimited Draw Distance</span></strong><span> - deactivate draw distance limitations</span></p></li><li><p><strong><span>Fog</span></strong><span> - set fog density as for console versions:</span></p><ul><li><strong><span>None</span></strong><span> - default behaviour (no fog)</span></li><li><strong><span>Normal</span></strong><span> - </span><strong><span>Xbox</span></strong><span> and </span><strong><span>GameCube</span></strong></li><li><strong><span>Thick</span></strong><span> - </span><strong><span>PlayStation 2</span></strong></li></ul></li></ul><h3 id='🚀-buttons'><span>🚀 Buttons</span></h3><ul><li><strong><span>Patch &amp; Play</span></strong><span> - start game with selected patches</span></li><li><strong><span>Patch game</span></strong><span> - apply patches without starting game</span></li><li><strong><span>Restore patches</span></strong><span> - reset all patches</span></li></ul><h2 id='💲-trainer'><span>💲 Trainer</span></h2><p><span>While game is running, use the specified keys to activate/deactivate hacks:</span></p><h3 id='☣️-cheats'><span>☣️ Cheats</span></h3><ul><li><strong><code>F1</code></strong><span> </span><strong><span>Invisibility Mode</span></strong><span> - toggle test tube effect</span></li><li><strong><code>F2</code></strong><span> </span><strong><span>Rant Hack Mode</span></strong><span> - toggle burp soda can effect</span></li><li><strong><code>F3</code></strong><span> </span><strong><span>Jump Hack Mode</span></strong><span> - hold jump to move up</span></li><li><strong><code>F4</code></strong><span> </span><strong><span>Freeze Timers &amp; Boxes</span></strong><span> - freeze all level timers and Whack-in-the-boxes</span></li><li><strong><code>-</code><span> </span><code>=</code></strong><span> </span><strong><span>Change Game Speed</span></strong><span> - decrease/increase in-game time speed; can be adjusted via </span><strong><span>Settings</span></strong><span> tab</span></li><li><strong><code>BkSp</code></strong><span> </span><strong><span>Spin Hack Mode</span></strong><span> - toggle spin movement acceleration hack</span></li></ul><h3 id='💻-hacks'><span>💻 Hacks</span></h3><ul><li><p><strong><code>F5</code></strong><span> </span><strong><span>Debug Menu (Console)</span></strong><span> - toggle developer debug menu (console)</span></p></li><li><p><strong><code>Num0</code></strong><span> </span><strong><span>Photo Mode</span></strong><span> - toggle free look camera:</span></p><ul><li><strong><code>Movement</code></strong><span> - move camera</span></li><li><strong><code>Camera ←/→</code></strong><span> - strafe camera</span></li><li><strong><code>Bite</code></strong><span> - teleport Taz to the camera position</span></li></ul></li><li><p><strong><code>Num1</code><span> </span><code>Num3</code></strong><span> </span><strong><span>Save/Load Taz Position</span></strong><span> - store/restore current Taz position; can be adjusted via </span><strong><span>Settings</span></strong><span> tab</span></p></li><li><p><strong><code>Num5</code></strong><span> </span><strong><span>Fly Mode</span></strong><span> - toggle fly mode:</span></p><ul><li><strong><code>Num4</code><span> </span><code>Num6</code></strong><span> - move by </span><strong><span>X</span></strong><span> coordinates</span></li><li><strong><code>Num2</code><span> </span><code>Num8</code></strong><span> - move by </span><strong><span>Z</span></strong><span> coordinates</span></li><li><strong><code>Num7</code><span> </span><code>Num9</code></strong><span> - move by </span><strong><span>Y</span></strong><span> coordinates</span></li></ul></li><li><p><strong><code>PrtSc</code></strong><span> </span><strong><span>Screenshot</span></strong><span> - take and save screenshot to the game folder as a </span><strong><span>bmp</span></strong><span> file</span></p></li></ul><h3 id='👀-graphics'><span>👀 Graphics</span></h3><ul><li><p><strong><code>F6</code></strong><span> </span><strong><span>Inf. Draw Distance</span></strong><span> - toggle draw distance limitations</span></p></li><li><p><strong><code>F7</code></strong><span> </span><strong><span>Texture Filtering</span></strong><span> - toggle Nearest-Neighbour/Bilinear texture filtering</span></p></li><li><p><strong><code>F8</code></strong><span> </span><strong><span>Show Alpha Textures</span></strong><span> - toggle alpha textures visibility</span></p></li><li><p><strong><code>F9</code></strong><span> </span><strong><span>FPS Cap</span></strong><span> - toggle FPS limit; can be adjusted via </span><strong><span>Patches</span></strong><span> tab</span></p><ul><li><strong><code>*</code><span> </span><code>/</code></strong><span> - increase/decrease max FPS value</span></li></ul></li><li><p><strong><code>F10</code></strong><span> </span><strong><span>Alternate Lighting</span></strong><span> - toggle smooth lighting feature for characters</span></p></li><li><p><strong><code>Num+</code><span> </span><code>Num-</code></strong><span> </span><strong><span>Field of View</span></strong><span> - increase/decrease FoV angle; can be adjusted via </span><strong><span>Patches</span></strong><span> tab</span></p></li></ul><h3 id='🎮-gameplay'><span>🎮 Gameplay</span></h3><ul><li><p><strong><code>F11</code></strong><span> </span><strong><span>No Jumps Mode</span></strong><span> - toggle jump ability</span></p></li><li><p><strong><code>F12</code></strong><span> </span><strong><span>Player</span></strong><span> - change playable character/costume; requieres </span><strong><span>Advanced Cheats</span></strong><span> patch</span></p><ul><li><strong><code>PgUp</code><span> </span><code>PgDn</code></strong><span> - next/prev character/costume; can be adjusted via </span><strong><span>Advanced</span></strong><span> tab</span></li></ul></li><li><p><strong><code>Ins</code></strong><span> </span><strong><span>Show Debug Info</span></strong><span> - show Taz angle, position and game tick rate</span></p></li><li><p><strong><code>Home</code></strong><span> </span><strong><span>No Destructions</span></strong><span> - indestructible world mode</span></p></li><li><p><strong><code>End</code></strong><span> </span><strong><span>Bulldozer Mode</span></strong><span> - one touch destructions mode</span></p></li><li><p><strong><code>Del</code></strong><span> </span><strong><span>Unsinkability</span></strong><span> - toggle water collisions</span></p></li></ul><h2 id='🔋-advanced'><span>🔋 Advanced</span></h2><p><span>While game is running with enabled </span><strong><span>Advanced Cheats</span></strong><span> patch, press </span><strong><code>F12</code><span> </span><code>PgUp</code><span> </span><code>PgDn</code></strong><span> - to change playable character/costume:</span></p><h2 id='☎️-acme-costumes'><span>☎️ ACME Costumes</span></h2><ul><li><span>😎 </span><strong><span>Agent</span></strong><span> - </span><code>agenthat.obe</code><span> </span><code>agentshades.obe</code><span> </span><code>agentwatch.obe</code></li><li><span>🎩 </span><strong><span>Bandit</span></strong><span> - </span><code>cowboybelt.obe</code><span> </span><code>cowboyhat.obe</code><span> </span><code>cowboymask.obe</code><span> </span><code>cowboymoustache.obe</code><span> </span><code>tazstubblecowboy.obe</code></li><li><span>🎧 </span><strong><span>Construction Worker</span></strong><span> - </span><code>constructionbelt.obe</code><span> </span><code>constructionhat.obe</code></li><li><span>🧐 </span><strong><span>Explorer</span></strong><span> - </span><code>explorerbackpack.obe</code><span> </span><code>explorerbelt.obe</code><span> </span><code>explorerhat.obe</code><span> </span><code>explorermachete.obe</code><span> </span><code>explorermonacle.obe</code><span> </span><code>explorertaz.obe</code></li><li><span>🤠 </span><strong><span>Indy</span></strong><span> - </span><code>indyhat.obe</code><span> </span><code>indywhip.obe</code></li><li><span>⛏️ </span><strong><span>Miner</span></strong><span> - </span><code>minerbelt.obe</code><span> </span><code>minerhelmet.obe</code><span> </span><code>minerpickaxe.obe</code></li><li><span>🥷 </span><strong><span>Ninja</span></strong><span> - </span><code>bandana.obe</code><span> </span><code>ninjabelt.obe</code><span> </span><code>ninjakatana.obe</code><span> </span><code>tazninja.obe</code></li><li><span>🔊 </span><strong><span>Rappa</span></strong><span> - </span><code>baseballcap.obe</code><span> </span><code>dex.obe</code><span> </span><code>tazrappa.obe</code></li><li><span>🦌 </span><strong><span>Reindeer</span></strong><span> - </span><code>iceantlers.obe</code><span> </span><code>icerednose.obe</code></li><li><span>🛹 </span><strong><span>Skater</span></strong><span> - </span><code>skaterbaseballcap.obe</code><span> </span><code>skaterelbowpadl.obe</code><span> </span><code>skaterelbowpadr.obe</code><span> </span><code>skaterskateboard.obe</code><span> </span><code>tazskater.obe</code></li><li><span>🏂 </span><strong><span>Snowboarder</span></strong><span> - </span><code>snowball.obe</code><span> </span><code>snowboard.obe</code><span> </span><code>snowboardgoggles.obe</code><span> </span><code>snowboardhat.obe</code><span> </span><code>tazsnowboarder.obe</code></li><li><span>⛑️ </span><strong><span>Stuntman</span></strong><span> - </span><code>crashhelmet.obe</code><span> </span><code>elbowpadl.obe</code><span> </span><code>elbowpadr.obe</code></li><li><span>🏄‍ </span><strong><span>Surfer</span></strong><span>  - </span><code>aquashades.obe</code><span> </span><code>aquasurfboard.obe</code><span> </span><code>tazaquasurfer.obe</code></li><li><span>🧀 </span><strong><span>SWAT</span></strong><span> - </span><code>swatbackpack.obe</code><span> </span><code>swatcap.obe</code><span> </span><code>swatcheesegun.obe</code><span> </span><code>swatelbowpadl.obe</code><span> </span><code>swatelbowpadr.obe</code><span> </span><code>swatshades.obe</code><span> </span><code>swattaz.obe</code></li><li><span>🌴 </span><strong><span>Tarzan</span></strong><span> - </span><code>elephant.obe</code><span> </span><code>taztarzan.obe</code></li><li><span>🌼 </span><strong><span>Trippy</span></strong><span> - </span><code>taztrippy.obe</code><span> </span><code>trippyshades.obe</code></li><li><span>🎃 </span><strong><span>Werewolf</span></strong><span> - </span><code>tazwerewolf.obe</code></li></ul><h2 id='☢️-characters'><span>☢️ Characters</span></h2><ul><li><span>🐊 </span><strong><span>Alligator</span></strong><span> - </span><code>alligator.obe</code></li><li><span>🏴‍☠️ </span><strong><span>Ape Pirate</span></strong><span> - </span><code>pirateape.obe</code></li><li><span>🏜️ </span><strong><span>Bandit Cowboy</span></strong><span> - </span><code>bjshellac.obe</code></li><li><span>🪖 </span><strong><span>Bandit Miner</span></strong><span> - </span><code>bjscargill.obe</code></li><li><span>🦅 </span><strong><span>Beaky Buzzard</span></strong><span> - </span><code>beaky.obe</code></li><li><span>🦜 </span><strong><span>Beaky Parrot</span></strong><span> - </span><code>parrot.obe</code></li><li><span>🐻 </span><strong><span>Bear Brown</span></strong><span> - </span><code>browbear.obe</code></li><li><span>🐻‍❄️ </span><strong><span>Bear Polar</span></strong><span> - </span><code>polarbear.obe</code></li><li><span>🧱 </span><strong><span>Bot Builder</span></strong><span> - </span><code>construction bot.obe</code></li><li><span>⚒️ </span><strong><span>Bot Miner</span></strong><span> - </span><code>minerbot.obe</code></li><li><span>🤖 </span><strong><span>Bot Security</span></strong><span> - </span><code>security bot.obe</code></li><li><span>👷 </span><strong><span>Builder</span></strong><span> - </span><code>construction worker.obe</code></li><li><span>👮 </span><strong><span>Catcher</span></strong><span> - </span><code>keeper.obe</code></li><li><span>🦆 </span><strong><span>Daffy Duck</span></strong><span> - </span><code>daft.obe</code></li><li><span>🐶 </span><strong><span>Dog Monster</span></strong><span> - </span><code>demondog.obe</code></li><li><span>🐕 </span><strong><span>Dog Security</span></strong><span> - </span><code>doggy.obe</code></li><li><span>🐘 </span><strong><span>Elephant</span></strong><span> - </span><code>elephant.obe</code></li><li><span>🧢 </span><strong><span>Elmer Fudd</span></strong><span> - </span><code>mrfudd.obe</code></li><li><span>🏀 </span><strong><span>Glover Ball</span></strong><span> - </span><code>ball.obe</code></li><li><span>♥️ </span><strong><span>Gossamer</span></strong><span> - </span><code>gossamer.obe</code></li><li><span>🟢 </span><strong><span>Guard Green</span></strong><span> - </span><code>greenguard.obe</code></li><li><span>🔴 </span><strong><span>Guard Red</span></strong><span> - </span><code>guard.obe</code></li><li><span>🍌 </span><strong><span>Monkey</span></strong><span> - </span><code>irrepresible.obe</code></li><li><span>🐁 </span><strong><span>Mouse</span></strong><span> - </span><code>mouse.obe</code></li><li><span>🌵 </span><strong><span>Nasty Canasta</span></strong><span> - </span><code>nastycan.obe</code></li><li><span>🦈 </span><strong><span>Shark</span></strong><span> - </span><code>shark.obe</code></li><li><span>🎀 </span><strong><span>Shedevil</span></strong><span> - </span><code>shedevil.obe</code><span> </span><code>shedevilbowtie.obe</code></li><li><span>😺 </span><strong><span>Sylvester the Cat</span></strong><span> - </span><code>sylvester.obe</code></li><li><span>🌀 </span><strong><span>Taz</span></strong><span> - </span><code>tazdevil.obe</code></li><li><span>🥬 </span><strong><span>Tribal Chief</span></strong><span> - </span><code>tribalchief.obe</code></li><li><span>🐤 </span><strong><span>Tweety</span></strong><span> - </span><code>tweety.obe</code></li><li><span>🐥 </span><strong><span>Tweety Mecha</span></strong><span> - </span><code>mechatweety.obe</code></li><li><span>🥊 </span><strong><span>Whack-in-a-Box</span></strong><span> - </span><code>secbox.obe</code></li><li><span>🐺 </span><strong><span>Wile E. Coyote</span></strong><span> - </span><code>coyote.obe</code></li><li><span>🧨 </span><strong><span>Yosemite Sam</span></strong><span> - </span><code>yosemite.obe</code></li><li><span>👔 </span><strong><span>Yosemite Sam Tycoon</span></strong><span> - </span><code>tycoon.obe</code></li></ul><h2 id='⚙️-settings'><span>⚙️ Settings</span></h2><h3 id='🗺-game-path'><span>🗺 Game path</span></h3><p><span>You can select game path manually by </span><strong><span>Browse</span></strong><span> and </span><strong><span>Apply</span></strong><span> buttons; It changes Windows registry value with Taz path</span></p><h3 id='🛠-trainerpatcher-options'><span>🛠 Trainer/Patcher options</span></h3><ul><li><strong><span>Auto save config on exit</span></strong><span> - auto save app settings to </span><code>Patcher.xml</code><span> file on exit</span></li><li><strong><span>In-game text messages</span></strong><span> - show/hide in-game trainer messages</span></li><li><strong><span>Screenshot sound</span></strong><span> - play sound on screenshot take</span></li><li><strong><span>Trainer key sound</span></strong><span> - play sound on trainer key press</span></li><li><strong><span>Camera speed:</span></strong><span> - camera speed value for </span><strong><span>Photo Mode</span></strong><span> (Default = </span><code>2000.0</code><span>)</span></li><li><strong><span>Fly mode step:</span></strong><span> - step value for fly mode movement (Default = </span><code>5000.0</code><span>)</span></li><li><strong><span>Max time scale:</span></strong><span> - set max in-game speed (Default = </span><code>2.0</code><span>)</span></li></ul><h3 id='🧭-saved-taz-coords'><span>🧭 Saved Taz coords</span></h3><ul><li><strong><span>x/y/z</span></strong><span> - saved x/y/z Taz coordinates (Default = </span><code>0.0</code><span>/</span><code>0.0</code><span>/</span><code>0.0</code><span>)</span></li></ul><h3 id='⛳️-shortcuts'><span>⛳️ Shortcuts</span></h3><ul><li><strong><span>Play</span></strong><span> - start game (</span><code>Taz.exe Launched</code><span>)</span></li><li><strong><span>Launcher</span></strong><span> - open native Taz: Wanted launcher (</span><code>TazLauncher.exe Forced</code><span>)</span></li><li><strong><span>Explorer</span></strong><span> - open game folder in Windows explorer</span></li></ul><h3 id='🔨-settings'><span>🔨 Settings</span></h3><ul><li><strong><span>Video</span></strong><span> - open native video setup (</span><code>config.exe graphics 0</code><span>)</span></li><li><strong><span>Audio</span></strong><span> - open native audio setup (</span><code>config.exe sound 0</code><span>)</span></li><li><strong><span>Controls</span></strong><span> - open native controls setup (</span><code>config.exe control 0</code><span>)</span></li></ul><h3 id='📜-config'><span>📜 Config</span></h3><ul><li><strong><span>Save</span></strong><span> - save app settings to </span><code>Patcher.xml</code><span> file</span></li><li><strong><span>Reset</span></strong><span> - delete </span><code>Patcher.xml</code><span> file and restart app with default settings</span></li><li><strong><span>Proc. Kill</span></strong><span> - terminate game process (hooked as </span><strong><code>Alt+F4</code></strong><span> in game)</span></li></ul><h3 id='💾-savegame'><span>💾 Savegame</span></h3><ul><li><strong><span>Clean</span></strong><span> - delete </span><code>TazWanted.sav</code><span> file</span></li><li><strong><span>Savefiles</span></strong><span> - link to </span><a href='https://www.speedrun.com/taz_wanted/resources/gpvrv'><span>Save Files</span></a></li><li><strong><span>Template</span></strong><span> - link to </span><a href='https://github.com/MuxaJlbl4/Game-Data-Mining/tree/main/Taz%20Wanted/Save'><span>Binary Templates</span></a></li></ul><h3 id='📎-misc'><span>📎 Misc</span></h3><ul><li><strong><span>Update API&#39;s</span></strong><span> - download latest graphics API wrappers to the game folder (</span><a href='https://github.com/crosire/d3d8to9'><span>D3D9</span></a><span>, </span><a href='https://github.com/dege-diosg/dgVoodoo2'><span>D3D11</span></a><span> and </span><a href='https://github.com/doitsujin/dxvk'><span>Vulkan</span></a><span>)</span></li><li><strong><span>In-game Cheats</span></strong><span> - link to </span><a href='https://github.com/MuxaJlbl4/Game-Data-Mining/blob/main/Taz%20Wanted/Cheat%20Codes.md'><span>Cheat Codes</span></a></li><li><strong><span>Speedrun Autosplitter</span></strong><span> - link to </span><a href='https://github.com/MilkGames/TWASV'><span>Autosplitter</span></a></li></ul><h3 id='🌍-links'><span>🌍 Links</span></h3><ul><li><strong><span>Discord</span></strong><span> - link to </span><a href='https://discord.gg/m4PUvmpFWv'><span>Taz: Wanted Preservation Community</span></a></li><li><strong><span>GitHub</span></strong><span> - link to </span><a href='https://github.com/MuxaJlbl4/Taz_Wanted_trainer_and_patcher'><span>Taz: Wanted · Trainer &amp; Patcher</span></a><span> project</span></li><li><strong><span>Mods</span></strong><span> -  link to </span><a href='https://gamebanana.com/mods/games/21253'><span>Taz: Wanted Mods</span></a></li></ul><h2 id='🎲-repacking'><span>🎲 Repacking</span></h2><h3 id='📤-unpacking'><span>📤 Unpacking</span></h3><ol start='0'><li><span>Make sure you have at least </span><strong><span>1 GB</span></strong><span> free memory space if you want unpack all files</span></li><li><span>Press </span><strong><span>Unpack game resources</span></strong></li><li><span>Choose Taz </span><strong><span>Pak</span></strong><span> files (</span><code>.pc</code><span>, </span><code>.xpb</code><span>, </span><code>.ps2</code><span>) in the first file dialog</span></li><li><span>Choose output folder in the second file dialog</span></li><li><span>Multiple files unpacking can take much time. It&#39;s Ok if app looks like not responding</span></li><li><span>Use specific tools for opening and editing unpacked media files (</span><strong><span>Audacity</span></strong><span>, </span><strong><span>Foobar2000</span></strong><span>+</span><strong><span>vgmstream</span></strong><span>, </span><strong><span>Bitmap</span></strong><span>/</span><strong><span>Hex editors</span></strong><span>...)</span></li></ol><h3 id='📥-repacking'><span>📥 Repacking</span></h3><ol start='0'><li><span>It&#39;s recommended to make backup of original </span><strong><span>Pak</span></strong><span> files</span></li><li><span>Press </span><strong><span>Repack game resources</span></strong></li><li><span>Choose folder with unpacked resources in the first file dialog</span></li><li><span>Choose output file in the second file dialog</span></li></ol><h2 id='🎨-modding'><span>🎨 Modding</span></h2><p><span>Game mods can be found here: </span><a href='https://gamebanana.com/mods/games/21253'><span>https://gamebanana.com/mods/games/21253</span></a></p><h3 id='📔-example'><span>📔 Example</span></h3><p><span>As a mod example, you can add motion bike to the level:</span></p><ol start=''><li><span>Unpack any </span><code>.pc</code><span> file with </span><code>.lom</code><span> file</span></li><li><span>Add </span><strong><span>motion</span></strong><span> object to the </span><code>.lom</code><span> file:</span></li></ol><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="c" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="c"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.52344px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: none;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: none;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">Level</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">{</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  ...</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">Object</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>{</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">Name</span> <span class="cm-operator">=</span> <span class="cm-string">"MOTION"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">SPECIALTYPE</span> <span class="cm-operator">=</span> <span class="cm-string">"VEHICLE"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">TYPE</span> <span class="cm-operator">=</span> <span class="cm-string">"ROCKETBIKE"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">Instance</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>{</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">Name</span> <span class="cm-operator">=</span> <span class="cm-string">"MOTION00"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">PosX</span> <span class="cm-operator">=</span> <span class="cm-number">0.000</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">PosY</span> <span class="cm-operator">=</span> <span class="cm-number">0.000</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">PosZ</span> <span class="cm-operator">=</span> <span class="cm-number">0.000</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">RotX</span> <span class="cm-operator">=</span> <span class="cm-number">0.000</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">RotY</span> <span class="cm-operator">=</span> <span class="cm-number">0.000</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">RotZ</span> <span class="cm-operator">=</span> <span class="cm-number">0.000</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">RotW</span> <span class="cm-operator">=</span> <span class="cm-operator">-</span><span class="cm-number">1.000</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">SclX</span> <span class="cm-operator">=</span> <span class="cm-number">1.000</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">SclY</span> <span class="cm-operator">=</span> <span class="cm-number">1.000</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-variable">SclZ</span> <span class="cm-operator">=</span> <span class="cm-number">1.000</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span><span class="cm-tab" role="presentation" cm-text="	">    </span>}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-tab" role="presentation" cm-text="	">    </span>}</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  ...</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">}</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom: 0px solid transparent; top: 599px;"></div><div class="CodeMirror-gutters" style="display: none; height: 599px;"></div></div></div></pre><ol start='3'><li><span>Replace </span><strong><span>PosX/Y/Z</span></strong><span> with </span><strong><span>STARTPOSITION</span></strong><span> (or any other) values</span></li><li><span>Copy </span><code>\objects\motion.obe</code><span> from </span><code>vrgrandc.pc</code><span> to your unpacked </span><code>objects</code><span> folder</span></li><li><span>Repack results back as </span><code>.pc</code><span> file to the </span><code>Mods</code><span> folder</span></li></ol><h2 id='⭐-credits'><span>⭐ Credits</span></h2><h3 id='👍-used-projects'><span>👍 Used Projects</span></h3><ul><li><a href='https://github.com/crosire/d3d8to9'><span>d3d8to9</span></a></li><li><a href='https://github.com/dege-diosg/dgVoodoo2'><span>dgVoodoo2</span></a></li><li><a href='https://github.com/doitsujin/dxvk'><span>DXVK</span></a></li><li><a href='https://gist.github.com/ForeverZer0/a2cd292bd2f3b5e114956c00bb6e872b'><span>ExtractTarGz</span></a></li><li><a href='https://github.com/Skkay/FormSerialisor'><span>FormSerialisor</span></a></li><li><a href='https://github.com/jparnell8839/globalKeyboardHook'><span>GlobalKeyboardHook</span></a></li><li><a href='https://github.com/aleen42/markdown-only'><span>markdown-only</span></a></li></ul><h3 id='❤️-special-thanks'><span>❤️ Special Thanks</span></h3><ul><li><a href='https://www.youtube.com/channel/UC8ZrxS78M9TqB_2cMlIWJMA'><span>Milk</span></a><a href='https://github.com/MilkGames'><span>Games</span></a></li><li><a href='https://www.youtube.com/c/CycloneFN'><span>Cyclone</span></a><a href='https://pastebin.com/u/CycloneFN'><span>FN</span></a><span> </span></li><li><a href='https://hiddenpalace.org/MrPinball64'><span>MrPinball</span></a><a href='http://redump.org/discs/region/Eu/dumper/MrPinball64/'><span>64</span></a></li><li><a href='https://discord.gg/m4PUvmpFWv'><span>Preservation Community</span></a></li><li><a href='https://discord.gg/YJAVRbB8PK'><span>Speedrunning Community</span></a></li></ul>
+		</div>
+	</div>
+</body>
+</html>
