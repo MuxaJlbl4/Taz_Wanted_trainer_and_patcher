@@ -83,8 +83,11 @@ namespace FormSerialisation
                     {
                             xmlSerialisedForm.WriteElementString("Checked", ((CheckBox)childCtrl).Checked.ToString());
                     }
-
                     // Taz Trainer & Patcher
+                    else if (childCtrl is RadioButton)
+                    {
+                        xmlSerialisedForm.WriteElementString("Checked", ((RadioButton)childCtrl).Checked.ToString());
+                    }
                     else if (childCtrl is NumericUpDown)
                     {
                         xmlSerialisedForm.WriteElementString("Value", ((NumericUpDown)childCtrl).Value.ToString());
@@ -176,8 +179,10 @@ namespace FormSerialisation
                             case "System.Windows.Forms.CheckBox":
                                 ((System.Windows.Forms.CheckBox)ctrlToSet).Checked = Convert.ToBoolean(n["Checked"].InnerText);
                                 break;
-
                             // Taz Trainer & Patcher
+                            case "System.Windows.Forms.RadioButton":
+                                ((System.Windows.Forms.RadioButton)ctrlToSet).Checked = Convert.ToBoolean(n["Checked"].InnerText);
+                                break;
                             case "System.Windows.Forms.NumericUpDown":
                                 ((System.Windows.Forms.NumericUpDown)ctrlToSet).Value = Convert.ToDecimal(n["Value"].InnerText);
                                 break;

@@ -86,6 +86,7 @@
             System.Windows.Forms.ListViewItem listViewItem52 = new System.Windows.Forms.ListViewItem("Yosemite Sam", "Yosemite Sam.png");
             System.Windows.Forms.ListViewItem listViewItem53 = new System.Windows.Forms.ListViewItem("Yosemite Sam Tycoon", "Yosemite Sam Tycoon.png");
             this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusField = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.tableLayoutPanelTrainer = new System.Windows.Forms.TableLayoutPanel();
@@ -101,11 +102,11 @@
             this.hacksTrainerGroup = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanelTrainer2 = new System.Windows.Forms.TableLayoutPanel();
             this.debugMenu = new System.Windows.Forms.CheckBox();
-            this.loadPos = new System.Windows.Forms.CheckBox();
-            this.flyMode = new System.Windows.Forms.CheckBox();
             this.savePos = new System.Windows.Forms.CheckBox();
             this.flyCamera = new System.Windows.Forms.CheckBox();
             this.screenshot = new System.Windows.Forms.CheckBox();
+            this.flyMode = new System.Windows.Forms.CheckBox();
+            this.debugInfo = new System.Windows.Forms.CheckBox();
             this.graphicsTrainerGroup = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanelTrainer3 = new System.Windows.Forms.TableLayoutPanel();
             this.drawDistance = new System.Windows.Forms.CheckBox();
@@ -116,9 +117,9 @@
             this.fov = new System.Windows.Forms.CheckBox();
             this.gameplayTrainerGroup = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanelTrainer4 = new System.Windows.Forms.TableLayoutPanel();
+            this.resetLevel = new System.Windows.Forms.CheckBox();
             this.ballMode = new System.Windows.Forms.CheckBox();
-            this.disallowJump = new System.Windows.Forms.CheckBox();
-            this.debugInfo = new System.Windows.Forms.CheckBox();
+            this.coopMode = new System.Windows.Forms.CheckBox();
             this.undestructibleWorld = new System.Windows.Forms.CheckBox();
             this.bulldozerMode = new System.Windows.Forms.CheckBox();
             this.unsinkabilityMode = new System.Windows.Forms.CheckBox();
@@ -169,7 +170,7 @@
             this.tableLayoutPanelPatcher116 = new System.Windows.Forms.TableLayoutPanel();
             this.injections = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanelPatcher115 = new System.Windows.Forms.TableLayoutPanel();
-            this.speedrunMode = new System.Windows.Forms.CheckBox();
+            this.coopFix = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanelPatcher114 = new System.Windows.Forms.TableLayoutPanel();
             this.extraDebug = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanelPatcher111 = new System.Windows.Forms.TableLayoutPanel();
@@ -214,19 +215,30 @@
             this.tableLayoutPanelSettings = new System.Windows.Forms.TableLayoutPanel();
             this.optionsGroup = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanelSettings2 = new System.Windows.Forms.TableLayoutPanel();
-            this.trainerText = new System.Windows.Forms.CheckBox();
-            this.trainerSound = new System.Windows.Forms.CheckBox();
-            this.screenshotSound = new System.Windows.Forms.CheckBox();
-            this.trainerAutoSave = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanelSettings21 = new System.Windows.Forms.TableLayoutPanel();
-            this.labelCameraSpeed = new System.Windows.Forms.Label();
             this.cameraSpd = new System.Windows.Forms.TextBox();
+            this.labelCameraSpeed = new System.Windows.Forms.Label();
             this.tableLayoutPanelSettings22 = new System.Windows.Forms.TableLayoutPanel();
             this.flyModeStep = new System.Windows.Forms.TextBox();
             this.labelFlyStep = new System.Windows.Forms.Label();
+            this.tableLayoutPanelSettings24 = new System.Windows.Forms.TableLayoutPanel();
+            this.radioBounty = new System.Windows.Forms.RadioButton();
+            this.radioDate = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanelSettings23 = new System.Windows.Forms.TableLayoutPanel();
             this.maxSpeed = new System.Windows.Forms.TextBox();
             this.labelMaxSpeed = new System.Windows.Forms.Label();
+            this.trainerAutoSave = new System.Windows.Forms.CheckBox();
+            this.trainerSound = new System.Windows.Forms.CheckBox();
+            this.screenshotSound = new System.Windows.Forms.CheckBox();
+            this.speedrunMode = new System.Windows.Forms.CheckBox();
+            this.unstableLight = new System.Windows.Forms.CheckBox();
+            this.trainerText = new System.Windows.Forms.CheckBox();
+            this.checkUpdates = new System.Windows.Forms.CheckBox();
+            this.labelSplitScreen = new System.Windows.Forms.Label();
+            this.labelScore = new System.Windows.Forms.Label();
+            this.tableLayoutPanelSettings25 = new System.Windows.Forms.TableLayoutPanel();
+            this.radioHorizontal = new System.Windows.Forms.RadioButton();
+            this.radioVertical = new System.Windows.Forms.RadioButton();
             this.groupBoxTazPos = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanelSettings3 = new System.Windows.Forms.TableLayoutPanel();
             this.savedCoordZ = new System.Windows.Forms.TextBox();
@@ -281,12 +293,13 @@
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.webBrowserRepacking = new System.Windows.Forms.WebBrowser();
             this.infoTab = new System.Windows.Forms.TabPage();
+            this.webBrowserReadMe = new System.Windows.Forms.WebBrowser();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.openPakFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveUnpackedFilesDialog = new System.Windows.Forms.SaveFileDialog();
             this.folderResourceBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.saveRepackedFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.webBrowserReadMe = new System.Windows.Forms.WebBrowser();
+            this.statusStrip.SuspendLayout();
             this.tableLayoutPanelTrainer.SuspendLayout();
             this.cheatsTrainerGroup.SuspendLayout();
             this.tableLayoutPanelTrainer1.SuspendLayout();
@@ -341,7 +354,9 @@
             this.tableLayoutPanelSettings2.SuspendLayout();
             this.tableLayoutPanelSettings21.SuspendLayout();
             this.tableLayoutPanelSettings22.SuspendLayout();
+            this.tableLayoutPanelSettings24.SuspendLayout();
             this.tableLayoutPanelSettings23.SuspendLayout();
+            this.tableLayoutPanelSettings25.SuspendLayout();
             this.groupBoxTazPos.SuspendLayout();
             this.tableLayoutPanelSettings3.SuspendLayout();
             this.linksGroup.SuspendLayout();
@@ -371,6 +386,8 @@
             // 
             this.statusStrip.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel});
             this.statusStrip.Location = new System.Drawing.Point(0, 669);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 20, 0);
@@ -378,6 +395,12 @@
             this.statusStrip.SizingGrip = false;
             this.statusStrip.TabIndex = 0;
             this.statusStrip.Text = "123";
+            // 
+            // toolStripStatusLabel
+            // 
+            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(16, 17);
+            this.toolStripStatusLabel.Text = ": )";
             // 
             // statusField
             // 
@@ -421,7 +444,7 @@
             this.cheatsTrainerGroup.Size = new System.Drawing.Size(367, 306);
             this.cheatsTrainerGroup.TabIndex = 0;
             this.cheatsTrainerGroup.TabStop = false;
-            this.cheatsTrainerGroup.Text = "Cheats";
+            this.cheatsTrainerGroup.Text = "Hacks";
             // 
             // tableLayoutPanelTrainer1
             // 
@@ -463,7 +486,7 @@
             this.gameSpeed.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.gameSpeed.Size = new System.Drawing.Size(361, 46);
             this.gameSpeed.TabIndex = 50;
-            this.gameSpeed.Text = "       - =   Change Game Speed";
+            this.gameSpeed.Text = "       -/=     Adjust Time Scale";
             this.gameSpeed.UseVisualStyleBackColor = false;
             // 
             // smallButtonIcons
@@ -555,6 +578,7 @@
             this.smallButtonIcons.Images.SetKeyName(82, "icon_right.png");
             this.smallButtonIcons.Images.SetKeyName(83, "camera.png");
             this.smallButtonIcons.Images.SetKeyName(84, "painting3.png");
+            this.smallButtonIcons.Images.SetKeyName(85, "bow.png");
             // 
             // invisibility
             // 
@@ -571,7 +595,7 @@
             this.invisibility.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.invisibility.Size = new System.Drawing.Size(361, 46);
             this.invisibility.TabIndex = 10;
-            this.invisibility.Text = "       F1    Invisibility Mode";
+            this.invisibility.Text = "       F1      Invisibility Mode";
             this.invisibility.UseVisualStyleBackColor = false;
             this.invisibility.CheckedChanged += new System.EventHandler(this.invisibility_CheckedChanged);
             // 
@@ -590,7 +614,7 @@
             this.freezeLevelTimer.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.freezeLevelTimer.Size = new System.Drawing.Size(361, 46);
             this.freezeLevelTimer.TabIndex = 40;
-            this.freezeLevelTimer.Text = "       F4    Stop Timers && Boxes";
+            this.freezeLevelTimer.Text = "       F4      Stop Timers && Boxes";
             this.freezeLevelTimer.UseVisualStyleBackColor = false;
             this.freezeLevelTimer.CheckedChanged += new System.EventHandler(this.freezeLevelTimer_CheckedChanged);
             // 
@@ -609,7 +633,7 @@
             this.superBelchCan.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.superBelchCan.Size = new System.Drawing.Size(361, 46);
             this.superBelchCan.TabIndex = 20;
-            this.superBelchCan.Text = "       F2    Rant Hack Mode";
+            this.superBelchCan.Text = "       F2      Burp Hack Mode";
             this.superBelchCan.UseVisualStyleBackColor = false;
             this.superBelchCan.CheckedChanged += new System.EventHandler(this.superBelchCan_CheckedChanged);
             // 
@@ -628,7 +652,7 @@
             this.superJump.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.superJump.Size = new System.Drawing.Size(361, 46);
             this.superJump.TabIndex = 30;
-            this.superJump.Text = "       F3    Jump Hack Mode";
+            this.superJump.Text = "       F3      Jump Hack Mode";
             this.superJump.UseVisualStyleBackColor = false;
             this.superJump.CheckedChanged += new System.EventHandler(this.superJump_CheckedChanged);
             // 
@@ -639,7 +663,7 @@
             this.speedHack.Dock = System.Windows.Forms.DockStyle.Fill;
             this.speedHack.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.speedHack.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.speedHack.ImageKey = "swirl.png";
+            this.speedHack.ImageKey = "sneaker (2).png";
             this.speedHack.ImageList = this.smallButtonIcons;
             this.speedHack.Location = new System.Drawing.Point(0, 230);
             this.speedHack.Margin = new System.Windows.Forms.Padding(0);
@@ -647,7 +671,7 @@
             this.speedHack.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.speedHack.Size = new System.Drawing.Size(361, 47);
             this.speedHack.TabIndex = 60;
-            this.speedHack.Text = "       BkSp  Spin Hack Mode";
+            this.speedHack.Text = "       BkSp    Spin Hack Mode";
             this.speedHack.UseVisualStyleBackColor = false;
             this.speedHack.CheckedChanged += new System.EventHandler(this.speedHack_CheckedChanged);
             // 
@@ -662,18 +686,18 @@
             this.hacksTrainerGroup.Size = new System.Drawing.Size(367, 306);
             this.hacksTrainerGroup.TabIndex = 1;
             this.hacksTrainerGroup.TabStop = false;
-            this.hacksTrainerGroup.Text = "Hacks";
+            this.hacksTrainerGroup.Text = "Debug";
             // 
             // tableLayoutPanelTrainer2
             // 
             this.tableLayoutPanelTrainer2.ColumnCount = 1;
             this.tableLayoutPanelTrainer2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelTrainer2.Controls.Add(this.debugMenu, 0, 0);
-            this.tableLayoutPanelTrainer2.Controls.Add(this.loadPos, 0, 3);
-            this.tableLayoutPanelTrainer2.Controls.Add(this.flyMode, 0, 4);
             this.tableLayoutPanelTrainer2.Controls.Add(this.savePos, 0, 2);
             this.tableLayoutPanelTrainer2.Controls.Add(this.flyCamera, 0, 1);
             this.tableLayoutPanelTrainer2.Controls.Add(this.screenshot, 0, 5);
+            this.tableLayoutPanelTrainer2.Controls.Add(this.flyMode, 0, 3);
+            this.tableLayoutPanelTrainer2.Controls.Add(this.debugInfo, 0, 4);
             this.tableLayoutPanelTrainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelTrainer2.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tableLayoutPanelTrainer2.Location = new System.Drawing.Point(3, 26);
@@ -704,47 +728,9 @@
             this.debugMenu.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.debugMenu.Size = new System.Drawing.Size(361, 46);
             this.debugMenu.TabIndex = 100;
-            this.debugMenu.Text = "       F5    Debug Menu (Console)";
+            this.debugMenu.Text = "       F5       Debug Menu";
             this.debugMenu.UseVisualStyleBackColor = false;
             this.debugMenu.CheckedChanged += new System.EventHandler(this.debugMenu_CheckedChanged);
-            // 
-            // loadPos
-            // 
-            this.loadPos.Appearance = System.Windows.Forms.Appearance.Button;
-            this.loadPos.AutoEllipsis = true;
-            this.loadPos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.loadPos.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.loadPos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.loadPos.ImageKey = "flagexit.png";
-            this.loadPos.ImageList = this.smallButtonIcons;
-            this.loadPos.Location = new System.Drawing.Point(0, 138);
-            this.loadPos.Margin = new System.Windows.Forms.Padding(0);
-            this.loadPos.Name = "loadPos";
-            this.loadPos.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.loadPos.Size = new System.Drawing.Size(361, 46);
-            this.loadPos.TabIndex = 130;
-            this.loadPos.Text = "       Num3 Load Taz Position";
-            this.loadPos.UseVisualStyleBackColor = false;
-            this.loadPos.CheckedChanged += new System.EventHandler(this.loadPos_CheckedChanged);
-            // 
-            // flyMode
-            // 
-            this.flyMode.Appearance = System.Windows.Forms.Appearance.Button;
-            this.flyMode.AutoEllipsis = true;
-            this.flyMode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flyMode.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.flyMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.flyMode.ImageKey = "cloud.png";
-            this.flyMode.ImageList = this.smallButtonIcons;
-            this.flyMode.Location = new System.Drawing.Point(0, 184);
-            this.flyMode.Margin = new System.Windows.Forms.Padding(0);
-            this.flyMode.Name = "flyMode";
-            this.flyMode.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.flyMode.Size = new System.Drawing.Size(361, 46);
-            this.flyMode.TabIndex = 140;
-            this.flyMode.Text = "       Num5 Fly Mode";
-            this.flyMode.UseVisualStyleBackColor = false;
-            this.flyMode.CheckedChanged += new System.EventHandler(this.flyMode_CheckedChanged);
             // 
             // savePos
             // 
@@ -761,7 +747,7 @@
             this.savePos.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.savePos.Size = new System.Drawing.Size(361, 46);
             this.savePos.TabIndex = 120;
-            this.savePos.Text = "       Num1 Save Taz Position";
+            this.savePos.Text = "       Num⅓   Save/Load Position";
             this.savePos.UseVisualStyleBackColor = false;
             this.savePos.CheckedChanged += new System.EventHandler(this.savePos_CheckedChanged);
             // 
@@ -780,7 +766,7 @@
             this.flyCamera.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.flyCamera.Size = new System.Drawing.Size(361, 46);
             this.flyCamera.TabIndex = 110;
-            this.flyCamera.Text = "       Num0 Photo Mode";
+            this.flyCamera.Text = "       Num0    Photo Mode";
             this.flyCamera.UseVisualStyleBackColor = false;
             this.flyCamera.CheckedChanged += new System.EventHandler(this.flyCamera_CheckedChanged);
             // 
@@ -791,7 +777,7 @@
             this.screenshot.Dock = System.Windows.Forms.DockStyle.Fill;
             this.screenshot.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.screenshot.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.screenshot.ImageKey = "painting3.png";
+            this.screenshot.ImageKey = "camera.png";
             this.screenshot.ImageList = this.smallButtonIcons;
             this.screenshot.Location = new System.Drawing.Point(0, 230);
             this.screenshot.Margin = new System.Windows.Forms.Padding(0);
@@ -799,9 +785,47 @@
             this.screenshot.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.screenshot.Size = new System.Drawing.Size(361, 47);
             this.screenshot.TabIndex = 150;
-            this.screenshot.Text = "       PrtSc Screenshot";
+            this.screenshot.Text = "       PrtSc    Take Screenshot";
             this.screenshot.UseVisualStyleBackColor = false;
             this.screenshot.CheckedChanged += new System.EventHandler(this.screenshot_CheckedChanged);
+            // 
+            // flyMode
+            // 
+            this.flyMode.Appearance = System.Windows.Forms.Appearance.Button;
+            this.flyMode.AutoEllipsis = true;
+            this.flyMode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flyMode.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.flyMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.flyMode.ImageKey = "cloud.png";
+            this.flyMode.ImageList = this.smallButtonIcons;
+            this.flyMode.Location = new System.Drawing.Point(0, 138);
+            this.flyMode.Margin = new System.Windows.Forms.Padding(0);
+            this.flyMode.Name = "flyMode";
+            this.flyMode.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.flyMode.Size = new System.Drawing.Size(361, 46);
+            this.flyMode.TabIndex = 130;
+            this.flyMode.Text = "       Num5    Fly Mode (Num⅑ ↑↓)";
+            this.flyMode.UseVisualStyleBackColor = false;
+            this.flyMode.CheckedChanged += new System.EventHandler(this.flyMode_CheckedChanged);
+            // 
+            // debugInfo
+            // 
+            this.debugInfo.Appearance = System.Windows.Forms.Appearance.Button;
+            this.debugInfo.AutoEllipsis = true;
+            this.debugInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.debugInfo.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.debugInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.debugInfo.ImageKey = "subunkradar.png";
+            this.debugInfo.ImageList = this.smallButtonIcons;
+            this.debugInfo.Location = new System.Drawing.Point(0, 184);
+            this.debugInfo.Margin = new System.Windows.Forms.Padding(0);
+            this.debugInfo.Name = "debugInfo";
+            this.debugInfo.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.debugInfo.Size = new System.Drawing.Size(361, 46);
+            this.debugInfo.TabIndex = 140;
+            this.debugInfo.Text = "       NumDec Debug Info";
+            this.debugInfo.UseVisualStyleBackColor = false;
+            this.debugInfo.CheckedChanged += new System.EventHandler(this.debugInfo_CheckedChanged);
             // 
             // graphicsTrainerGroup
             // 
@@ -856,7 +880,7 @@
             this.drawDistance.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.drawDistance.Size = new System.Drawing.Size(361, 46);
             this.drawDistance.TabIndex = 200;
-            this.drawDistance.Text = "       F6     Inf. Draw Distance";
+            this.drawDistance.Text = "       F6       Inf. Draw Distance";
             this.drawDistance.UseVisualStyleBackColor = false;
             this.drawDistance.CheckedChanged += new System.EventHandler(this.drawDistance_CheckedChanged);
             // 
@@ -875,7 +899,7 @@
             this.textureAlpha.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.textureAlpha.Size = new System.Drawing.Size(361, 46);
             this.textureAlpha.TabIndex = 220;
-            this.textureAlpha.Text = "       F8     Show Alpha Textures";
+            this.textureAlpha.Text = "       F8       Alpha Textures";
             this.textureAlpha.UseVisualStyleBackColor = false;
             this.textureAlpha.CheckedChanged += new System.EventHandler(this.textureAlpha_CheckedChanged);
             // 
@@ -894,7 +918,7 @@
             this.textureFilter.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.textureFilter.Size = new System.Drawing.Size(361, 46);
             this.textureFilter.TabIndex = 210;
-            this.textureFilter.Text = "       F7     Texture Filtering";
+            this.textureFilter.Text = "       F7       Texture Filtering";
             this.textureFilter.UseVisualStyleBackColor = false;
             this.textureFilter.CheckedChanged += new System.EventHandler(this.textureFilter_CheckedChanged);
             // 
@@ -913,7 +937,7 @@
             this.fpsCap.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.fpsCap.Size = new System.Drawing.Size(361, 46);
             this.fpsCap.TabIndex = 230;
-            this.fpsCap.Text = "       F9     FPS Cap (*/ - ↑↓)";
+            this.fpsCap.Text = "       F9       FPS Cap (*/ - ↑↓)";
             this.fpsCap.UseVisualStyleBackColor = false;
             this.fpsCap.CheckedChanged += new System.EventHandler(this.fpsCap_CheckedChanged);
             // 
@@ -932,7 +956,7 @@
             this.smoothLighting.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.smoothLighting.Size = new System.Drawing.Size(361, 46);
             this.smoothLighting.TabIndex = 240;
-            this.smoothLighting.Text = "       F10    Alternate Lighting";
+            this.smoothLighting.Text = "       F10     Alternate Lighting";
             this.smoothLighting.UseVisualStyleBackColor = false;
             this.smoothLighting.CheckedChanged += new System.EventHandler(this.SmoothLighting_CheckedChanged);
             // 
@@ -951,7 +975,7 @@
             this.fov.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.fov.Size = new System.Drawing.Size(361, 47);
             this.fov.TabIndex = 250;
-            this.fov.Text = "       Num±  Field of View (↑↓)";
+            this.fov.Text = "       Num±   Field of View (↑↓)";
             this.fov.UseVisualStyleBackColor = false;
             // 
             // gameplayTrainerGroup
@@ -971,12 +995,12 @@
             // 
             this.tableLayoutPanelTrainer4.ColumnCount = 1;
             this.tableLayoutPanelTrainer4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelTrainer4.Controls.Add(this.resetLevel, 0, 5);
             this.tableLayoutPanelTrainer4.Controls.Add(this.ballMode, 0, 1);
-            this.tableLayoutPanelTrainer4.Controls.Add(this.disallowJump, 0, 0);
-            this.tableLayoutPanelTrainer4.Controls.Add(this.debugInfo, 0, 2);
-            this.tableLayoutPanelTrainer4.Controls.Add(this.undestructibleWorld, 0, 3);
-            this.tableLayoutPanelTrainer4.Controls.Add(this.bulldozerMode, 0, 4);
-            this.tableLayoutPanelTrainer4.Controls.Add(this.unsinkabilityMode, 0, 5);
+            this.tableLayoutPanelTrainer4.Controls.Add(this.coopMode, 0, 0);
+            this.tableLayoutPanelTrainer4.Controls.Add(this.undestructibleWorld, 0, 2);
+            this.tableLayoutPanelTrainer4.Controls.Add(this.bulldozerMode, 0, 3);
+            this.tableLayoutPanelTrainer4.Controls.Add(this.unsinkabilityMode, 0, 4);
             this.tableLayoutPanelTrainer4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelTrainer4.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tableLayoutPanelTrainer4.Location = new System.Drawing.Point(3, 26);
@@ -991,6 +1015,25 @@
             this.tableLayoutPanelTrainer4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66944F));
             this.tableLayoutPanelTrainer4.Size = new System.Drawing.Size(361, 277);
             this.tableLayoutPanelTrainer4.TabIndex = 2;
+            // 
+            // resetLevel
+            // 
+            this.resetLevel.Appearance = System.Windows.Forms.Appearance.Button;
+            this.resetLevel.AutoEllipsis = true;
+            this.resetLevel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.resetLevel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.resetLevel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.resetLevel.ImageKey = "tntstick01.png";
+            this.resetLevel.ImageList = this.smallButtonIcons;
+            this.resetLevel.Location = new System.Drawing.Point(0, 230);
+            this.resetLevel.Margin = new System.Windows.Forms.Padding(0);
+            this.resetLevel.Name = "resetLevel";
+            this.resetLevel.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.resetLevel.Size = new System.Drawing.Size(361, 47);
+            this.resetLevel.TabIndex = 350;
+            this.resetLevel.Text = "       Del      Reset Current Level";
+            this.resetLevel.UseVisualStyleBackColor = false;
+            this.resetLevel.CheckedChanged += new System.EventHandler(this.resetLevel_CheckedChanged);
             // 
             // ballMode
             // 
@@ -1007,47 +1050,28 @@
             this.ballMode.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.ballMode.Size = new System.Drawing.Size(361, 46);
             this.ballMode.TabIndex = 310;
-            this.ballMode.Text = "       F12    Player (PgUp/Dn ↑↓)";
+            this.ballMode.Text = "       F12     Player (PgUp/Dn ↑↓)";
             this.ballMode.UseVisualStyleBackColor = false;
             this.ballMode.CheckedChanged += new System.EventHandler(this.ballMode_CheckedChanged);
             // 
-            // disallowJump
+            // coopMode
             // 
-            this.disallowJump.Appearance = System.Windows.Forms.Appearance.Button;
-            this.disallowJump.AutoEllipsis = true;
-            this.disallowJump.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.disallowJump.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.disallowJump.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.disallowJump.ImageKey = "bowlingball.png";
-            this.disallowJump.ImageList = this.smallButtonIcons;
-            this.disallowJump.Location = new System.Drawing.Point(0, 0);
-            this.disallowJump.Margin = new System.Windows.Forms.Padding(0);
-            this.disallowJump.Name = "disallowJump";
-            this.disallowJump.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.disallowJump.Size = new System.Drawing.Size(361, 46);
-            this.disallowJump.TabIndex = 300;
-            this.disallowJump.Text = "       F11    No Jumps Mode";
-            this.disallowJump.UseVisualStyleBackColor = false;
-            this.disallowJump.CheckedChanged += new System.EventHandler(this.disallowJump_CheckedChanged);
-            // 
-            // debugInfo
-            // 
-            this.debugInfo.Appearance = System.Windows.Forms.Appearance.Button;
-            this.debugInfo.AutoEllipsis = true;
-            this.debugInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.debugInfo.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.debugInfo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.debugInfo.ImageKey = "subunkradar.png";
-            this.debugInfo.ImageList = this.smallButtonIcons;
-            this.debugInfo.Location = new System.Drawing.Point(0, 92);
-            this.debugInfo.Margin = new System.Windows.Forms.Padding(0);
-            this.debugInfo.Name = "debugInfo";
-            this.debugInfo.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.debugInfo.Size = new System.Drawing.Size(361, 46);
-            this.debugInfo.TabIndex = 320;
-            this.debugInfo.Text = "       Ins     Show Debug Info";
-            this.debugInfo.UseVisualStyleBackColor = false;
-            this.debugInfo.CheckedChanged += new System.EventHandler(this.debugInfo_CheckedChanged);
+            this.coopMode.Appearance = System.Windows.Forms.Appearance.Button;
+            this.coopMode.AutoEllipsis = true;
+            this.coopMode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.coopMode.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.coopMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.coopMode.ImageKey = "bow.png";
+            this.coopMode.ImageList = this.smallButtonIcons;
+            this.coopMode.Location = new System.Drawing.Point(0, 0);
+            this.coopMode.Margin = new System.Windows.Forms.Padding(0);
+            this.coopMode.Name = "coopMode";
+            this.coopMode.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.coopMode.Size = new System.Drawing.Size(361, 46);
+            this.coopMode.TabIndex = 300;
+            this.coopMode.Text = "       F11     Cooperative Mode";
+            this.coopMode.UseVisualStyleBackColor = false;
+            this.coopMode.CheckedChanged += new System.EventHandler(this.disallowJump_CheckedChanged);
             // 
             // undestructibleWorld
             // 
@@ -1058,13 +1082,13 @@
             this.undestructibleWorld.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.undestructibleWorld.ImageKey = "goldnugget.png";
             this.undestructibleWorld.ImageList = this.smallButtonIcons;
-            this.undestructibleWorld.Location = new System.Drawing.Point(0, 138);
+            this.undestructibleWorld.Location = new System.Drawing.Point(0, 92);
             this.undestructibleWorld.Margin = new System.Windows.Forms.Padding(0);
             this.undestructibleWorld.Name = "undestructibleWorld";
             this.undestructibleWorld.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.undestructibleWorld.Size = new System.Drawing.Size(361, 46);
-            this.undestructibleWorld.TabIndex = 330;
-            this.undestructibleWorld.Text = "       Home   No Destructions";
+            this.undestructibleWorld.TabIndex = 320;
+            this.undestructibleWorld.Text = "       Home   Indestructible Mode";
             this.undestructibleWorld.UseVisualStyleBackColor = false;
             this.undestructibleWorld.CheckedChanged += new System.EventHandler(this.undestructibleWorld_CheckedChanged);
             // 
@@ -1077,12 +1101,12 @@
             this.bulldozerMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bulldozerMode.ImageKey = "geniebottle.png";
             this.bulldozerMode.ImageList = this.smallButtonIcons;
-            this.bulldozerMode.Location = new System.Drawing.Point(0, 184);
+            this.bulldozerMode.Location = new System.Drawing.Point(0, 138);
             this.bulldozerMode.Margin = new System.Windows.Forms.Padding(0);
             this.bulldozerMode.Name = "bulldozerMode";
             this.bulldozerMode.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.bulldozerMode.Size = new System.Drawing.Size(361, 46);
-            this.bulldozerMode.TabIndex = 340;
+            this.bulldozerMode.TabIndex = 330;
             this.bulldozerMode.Text = "       End     Bulldozer Mode";
             this.bulldozerMode.UseVisualStyleBackColor = false;
             this.bulldozerMode.CheckedChanged += new System.EventHandler(this.bulldozerMode_CheckedChanged);
@@ -1096,13 +1120,13 @@
             this.unsinkabilityMode.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.unsinkabilityMode.ImageKey = "tazwaterdrop.png";
             this.unsinkabilityMode.ImageList = this.smallButtonIcons;
-            this.unsinkabilityMode.Location = new System.Drawing.Point(0, 230);
+            this.unsinkabilityMode.Location = new System.Drawing.Point(0, 184);
             this.unsinkabilityMode.Margin = new System.Windows.Forms.Padding(0);
             this.unsinkabilityMode.Name = "unsinkabilityMode";
             this.unsinkabilityMode.Padding = new System.Windows.Forms.Padding(3, 0, 0, 0);
-            this.unsinkabilityMode.Size = new System.Drawing.Size(361, 47);
-            this.unsinkabilityMode.TabIndex = 350;
-            this.unsinkabilityMode.Text = "       Del     Unsinkability Mode";
+            this.unsinkabilityMode.Size = new System.Drawing.Size(361, 46);
+            this.unsinkabilityMode.TabIndex = 340;
+            this.unsinkabilityMode.Text = "       Ins      Unsinkability Mode";
             this.unsinkabilityMode.UseVisualStyleBackColor = false;
             this.unsinkabilityMode.CheckedChanged += new System.EventHandler(this.unsinkabilityMode_CheckedChanged);
             // 
@@ -1496,6 +1520,7 @@
             this.apiComboBox.Name = "apiComboBox";
             this.apiComboBox.Size = new System.Drawing.Size(224, 35);
             this.apiComboBox.TabIndex = 200;
+            this.apiComboBox.SelectedIndexChanged += new System.EventHandler(this.apiComboBox_SelectedIndexChanged);
             // 
             // videoApi
             // 
@@ -1797,7 +1822,8 @@
             // tableLayoutPanelPatcher116
             // 
             this.tableLayoutPanelPatcher116.ColumnCount = 1;
-            this.tableLayoutPanelPatcher116.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.75904F));
+            this.tableLayoutPanelPatcher116.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelPatcher116.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelPatcher116.Controls.Add(this.injections, 0, 0);
             this.tableLayoutPanelPatcher116.Location = new System.Drawing.Point(0, 225);
             this.tableLayoutPanelPatcher116.Margin = new System.Windows.Forms.Padding(0);
@@ -1824,7 +1850,7 @@
             // 
             this.tableLayoutPanelPatcher115.ColumnCount = 1;
             this.tableLayoutPanelPatcher115.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.75904F));
-            this.tableLayoutPanelPatcher115.Controls.Add(this.speedrunMode, 0, 0);
+            this.tableLayoutPanelPatcher115.Controls.Add(this.coopFix, 0, 0);
             this.tableLayoutPanelPatcher115.Location = new System.Drawing.Point(0, 180);
             this.tableLayoutPanelPatcher115.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelPatcher115.Name = "tableLayoutPanelPatcher115";
@@ -1833,18 +1859,19 @@
             this.tableLayoutPanelPatcher115.Size = new System.Drawing.Size(280, 45);
             this.tableLayoutPanelPatcher115.TabIndex = 50;
             // 
-            // speedrunMode
+            // coopFix
             // 
-            this.speedrunMode.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.speedrunMode.AutoSize = true;
-            this.speedrunMode.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.speedrunMode.Location = new System.Drawing.Point(3, 7);
-            this.speedrunMode.Name = "speedrunMode";
-            this.speedrunMode.Size = new System.Drawing.Size(173, 31);
-            this.speedrunMode.TabIndex = 70;
-            this.speedrunMode.Text = "Speedrun Mode";
-            this.speedrunMode.UseVisualStyleBackColor = false;
-            this.speedrunMode.Click += new System.EventHandler(this.speedrunMode_Click);
+            this.coopFix.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.coopFix.AutoSize = true;
+            this.coopFix.Checked = true;
+            this.coopFix.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.coopFix.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.coopFix.Location = new System.Drawing.Point(3, 7);
+            this.coopFix.Name = "coopFix";
+            this.coopFix.Size = new System.Drawing.Size(174, 31);
+            this.coopFix.TabIndex = 70;
+            this.coopFix.Text = "Cooperative Fix";
+            this.coopFix.UseVisualStyleBackColor = false;
             // 
             // tableLayoutPanelPatcher114
             // 
@@ -1876,8 +1903,8 @@
             // tableLayoutPanelPatcher111
             // 
             this.tableLayoutPanelPatcher111.ColumnCount = 2;
-            this.tableLayoutPanelPatcher111.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.75904F));
-            this.tableLayoutPanelPatcher111.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.24096F));
+            this.tableLayoutPanelPatcher111.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanelPatcher111.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanelPatcher111.Controls.Add(this.noCD, 0, 0);
             this.tableLayoutPanelPatcher111.Controls.Add(this.skips, 1, 0);
             this.tableLayoutPanelPatcher111.Location = new System.Drawing.Point(0, 0);
@@ -1909,7 +1936,7 @@
             this.skips.Checked = true;
             this.skips.CheckState = System.Windows.Forms.CheckState.Checked;
             this.skips.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.skips.Location = new System.Drawing.Point(114, 7);
+            this.skips.Location = new System.Drawing.Point(115, 7);
             this.skips.Name = "skips";
             this.skips.Size = new System.Drawing.Size(111, 31);
             this.skips.TabIndex = 20;
@@ -1946,8 +1973,8 @@
             // tableLayoutPanelPatcher112
             // 
             this.tableLayoutPanelPatcher112.ColumnCount = 2;
-            this.tableLayoutPanelPatcher112.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 39.75904F));
-            this.tableLayoutPanelPatcher112.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60.24096F));
+            this.tableLayoutPanelPatcher112.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanelPatcher112.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanelPatcher112.Controls.Add(this.mods, 0, 0);
             this.tableLayoutPanelPatcher112.Controls.Add(this.patch4gb, 1, 0);
             this.tableLayoutPanelPatcher112.Location = new System.Drawing.Point(0, 45);
@@ -1979,7 +2006,7 @@
             this.patch4gb.Checked = true;
             this.patch4gb.CheckState = System.Windows.Forms.CheckState.Checked;
             this.patch4gb.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.patch4gb.Location = new System.Drawing.Point(114, 7);
+            this.patch4gb.Location = new System.Drawing.Point(115, 7);
             this.patch4gb.Name = "patch4gb";
             this.patch4gb.Size = new System.Drawing.Size(113, 31);
             this.patch4gb.TabIndex = 40;
@@ -2080,7 +2107,6 @@
             // 
             this.category.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.category.AutoSize = true;
-            this.category.Enabled = false;
             this.category.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.category.Location = new System.Drawing.Point(0, 9);
             this.category.Margin = new System.Windows.Forms.Padding(0);
@@ -2639,85 +2665,34 @@
             this.tableLayoutPanelSettings2.ColumnCount = 2;
             this.tableLayoutPanelSettings2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 51.68142F));
             this.tableLayoutPanelSettings2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 48.31858F));
-            this.tableLayoutPanelSettings2.Controls.Add(this.trainerText, 0, 1);
-            this.tableLayoutPanelSettings2.Controls.Add(this.trainerSound, 0, 3);
-            this.tableLayoutPanelSettings2.Controls.Add(this.screenshotSound, 0, 2);
-            this.tableLayoutPanelSettings2.Controls.Add(this.trainerAutoSave, 0, 0);
             this.tableLayoutPanelSettings2.Controls.Add(this.tableLayoutPanelSettings21, 1, 0);
             this.tableLayoutPanelSettings2.Controls.Add(this.tableLayoutPanelSettings22, 1, 1);
+            this.tableLayoutPanelSettings2.Controls.Add(this.tableLayoutPanelSettings24, 1, 4);
             this.tableLayoutPanelSettings2.Controls.Add(this.tableLayoutPanelSettings23, 1, 2);
+            this.tableLayoutPanelSettings2.Controls.Add(this.trainerAutoSave, 0, 0);
+            this.tableLayoutPanelSettings2.Controls.Add(this.trainerSound, 0, 6);
+            this.tableLayoutPanelSettings2.Controls.Add(this.screenshotSound, 0, 5);
+            this.tableLayoutPanelSettings2.Controls.Add(this.speedrunMode, 0, 4);
+            this.tableLayoutPanelSettings2.Controls.Add(this.unstableLight, 0, 3);
+            this.tableLayoutPanelSettings2.Controls.Add(this.trainerText, 0, 2);
+            this.tableLayoutPanelSettings2.Controls.Add(this.checkUpdates, 0, 1);
+            this.tableLayoutPanelSettings2.Controls.Add(this.labelSplitScreen, 1, 5);
+            this.tableLayoutPanelSettings2.Controls.Add(this.labelScore, 1, 3);
+            this.tableLayoutPanelSettings2.Controls.Add(this.tableLayoutPanelSettings25, 1, 6);
             this.tableLayoutPanelSettings2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelSettings2.Location = new System.Drawing.Point(3, 26);
             this.tableLayoutPanelSettings2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelSettings2.Name = "tableLayoutPanelSettings2";
-            this.tableLayoutPanelSettings2.RowCount = 6;
-            this.tableLayoutPanelSettings2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66589F));
-            this.tableLayoutPanelSettings2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66589F));
-            this.tableLayoutPanelSettings2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66589F));
-            this.tableLayoutPanelSettings2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66589F));
-            this.tableLayoutPanelSettings2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66868F));
-            this.tableLayoutPanelSettings2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66778F));
+            this.tableLayoutPanelSettings2.RowCount = 7;
+            this.tableLayoutPanelSettings2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28464F));
+            this.tableLayoutPanelSettings2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28464F));
+            this.tableLayoutPanelSettings2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28464F));
+            this.tableLayoutPanelSettings2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28464F));
+            this.tableLayoutPanelSettings2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28703F));
+            this.tableLayoutPanelSettings2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28626F));
+            this.tableLayoutPanelSettings2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28816F));
             this.tableLayoutPanelSettings2.Size = new System.Drawing.Size(569, 303);
             this.tableLayoutPanelSettings2.TabIndex = 40;
-            // 
-            // trainerText
-            // 
-            this.trainerText.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.trainerText.AutoSize = true;
-            this.trainerText.Checked = true;
-            this.trainerText.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.trainerText.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.trainerText.Location = new System.Drawing.Point(1, 59);
-            this.trainerText.Margin = new System.Windows.Forms.Padding(1);
-            this.trainerText.Name = "trainerText";
-            this.trainerText.Size = new System.Drawing.Size(251, 31);
-            this.trainerText.TabIndex = 50;
-            this.trainerText.Text = "In-game text messages";
-            this.trainerText.UseVisualStyleBackColor = true;
-            // 
-            // trainerSound
-            // 
-            this.trainerSound.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.trainerSound.AutoSize = true;
-            this.trainerSound.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.trainerSound.Location = new System.Drawing.Point(1, 159);
-            this.trainerSound.Margin = new System.Windows.Forms.Padding(1);
-            this.trainerSound.Name = "trainerSound";
-            this.trainerSound.Size = new System.Drawing.Size(197, 31);
-            this.trainerSound.TabIndex = 70;
-            this.trainerSound.Text = "Trainer key sound";
-            this.trainerSound.UseVisualStyleBackColor = true;
-            // 
-            // screenshotSound
-            // 
-            this.screenshotSound.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.screenshotSound.AutoSize = true;
-            this.screenshotSound.Checked = true;
-            this.screenshotSound.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.screenshotSound.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.screenshotSound.Location = new System.Drawing.Point(1, 109);
-            this.screenshotSound.Margin = new System.Windows.Forms.Padding(1);
-            this.screenshotSound.Name = "screenshotSound";
-            this.screenshotSound.Size = new System.Drawing.Size(192, 31);
-            this.screenshotSound.TabIndex = 60;
-            this.screenshotSound.Text = "Screenshot sound";
-            this.screenshotSound.UseVisualStyleBackColor = true;
-            // 
-            // trainerAutoSave
-            // 
-            this.trainerAutoSave.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.trainerAutoSave.AutoSize = true;
-            this.trainerAutoSave.Checked = true;
-            this.trainerAutoSave.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.trainerAutoSave.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.trainerAutoSave.Location = new System.Drawing.Point(1, 9);
-            this.trainerAutoSave.Margin = new System.Windows.Forms.Padding(1);
-            this.trainerAutoSave.Name = "trainerAutoSave";
-            this.trainerAutoSave.Size = new System.Drawing.Size(257, 31);
-            this.trainerAutoSave.TabIndex = 40;
-            this.trainerAutoSave.Text = "Auto save config on exit";
-            this.trainerAutoSave.UseVisualStyleBackColor = true;
-            this.trainerAutoSave.CheckedChanged += new System.EventHandler(this.trainerAutoSave_CheckedChanged);
             // 
             // tableLayoutPanelSettings21
             // 
@@ -2726,40 +2701,40 @@
             this.tableLayoutPanelSettings21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanelSettings21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
             this.tableLayoutPanelSettings21.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 23F));
-            this.tableLayoutPanelSettings21.Controls.Add(this.labelCameraSpeed, 0, 0);
             this.tableLayoutPanelSettings21.Controls.Add(this.cameraSpd, 1, 0);
+            this.tableLayoutPanelSettings21.Controls.Add(this.labelCameraSpeed, 0, 0);
             this.tableLayoutPanelSettings21.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelSettings21.Location = new System.Drawing.Point(294, 0);
             this.tableLayoutPanelSettings21.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelSettings21.Name = "tableLayoutPanelSettings21";
             this.tableLayoutPanelSettings21.RowCount = 1;
             this.tableLayoutPanelSettings21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSettings21.Size = new System.Drawing.Size(275, 50);
-            this.tableLayoutPanelSettings21.TabIndex = 80;
+            this.tableLayoutPanelSettings21.Size = new System.Drawing.Size(275, 43);
+            this.tableLayoutPanelSettings21.TabIndex = 110;
+            // 
+            // cameraSpd
+            // 
+            this.cameraSpd.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cameraSpd.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.cameraSpd.Location = new System.Drawing.Point(172, 4);
+            this.cameraSpd.Margin = new System.Windows.Forms.Padding(0);
+            this.cameraSpd.Name = "cameraSpd";
+            this.cameraSpd.Size = new System.Drawing.Size(102, 34);
+            this.cameraSpd.TabIndex = 110;
+            this.cameraSpd.Text = "2000";
+            this.cameraSpd.TextChanged += new System.EventHandler(this.cameraSpd_TextChanged);
             // 
             // labelCameraSpeed
             // 
             this.labelCameraSpeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelCameraSpeed.AutoSize = true;
             this.labelCameraSpeed.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelCameraSpeed.Location = new System.Drawing.Point(0, 11);
-            this.labelCameraSpeed.Margin = new System.Windows.Forms.Padding(0);
+            this.labelCameraSpeed.Location = new System.Drawing.Point(3, 8);
+            this.labelCameraSpeed.Margin = new System.Windows.Forms.Padding(3);
             this.labelCameraSpeed.Name = "labelCameraSpeed";
             this.labelCameraSpeed.Size = new System.Drawing.Size(149, 27);
             this.labelCameraSpeed.TabIndex = 0;
             this.labelCameraSpeed.Text = "Camera speed:";
-            // 
-            // cameraSpd
-            // 
-            this.cameraSpd.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cameraSpd.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cameraSpd.Location = new System.Drawing.Point(172, 8);
-            this.cameraSpd.Margin = new System.Windows.Forms.Padding(0);
-            this.cameraSpd.Name = "cameraSpd";
-            this.cameraSpd.Size = new System.Drawing.Size(102, 34);
-            this.cameraSpd.TabIndex = 80;
-            this.cameraSpd.Text = "2000,0";
-            this.cameraSpd.TextChanged += new System.EventHandler(this.cameraSpd_TextChanged);
             // 
             // tableLayoutPanelSettings22
             // 
@@ -2771,24 +2746,24 @@
             this.tableLayoutPanelSettings22.Controls.Add(this.flyModeStep, 1, 0);
             this.tableLayoutPanelSettings22.Controls.Add(this.labelFlyStep, 0, 0);
             this.tableLayoutPanelSettings22.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelSettings22.Location = new System.Drawing.Point(294, 50);
+            this.tableLayoutPanelSettings22.Location = new System.Drawing.Point(294, 43);
             this.tableLayoutPanelSettings22.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelSettings22.Name = "tableLayoutPanelSettings22";
             this.tableLayoutPanelSettings22.RowCount = 1;
             this.tableLayoutPanelSettings22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSettings22.Size = new System.Drawing.Size(275, 50);
-            this.tableLayoutPanelSettings22.TabIndex = 90;
+            this.tableLayoutPanelSettings22.Size = new System.Drawing.Size(275, 43);
+            this.tableLayoutPanelSettings22.TabIndex = 120;
             // 
             // flyModeStep
             // 
             this.flyModeStep.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.flyModeStep.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.flyModeStep.Location = new System.Drawing.Point(172, 8);
+            this.flyModeStep.Location = new System.Drawing.Point(172, 4);
             this.flyModeStep.Margin = new System.Windows.Forms.Padding(0);
             this.flyModeStep.Name = "flyModeStep";
             this.flyModeStep.Size = new System.Drawing.Size(102, 34);
-            this.flyModeStep.TabIndex = 90;
-            this.flyModeStep.Text = "5000,0";
+            this.flyModeStep.TabIndex = 120;
+            this.flyModeStep.Text = "1000";
             this.flyModeStep.TextChanged += new System.EventHandler(this.flyModeStep_TextChanged);
             // 
             // labelFlyStep
@@ -2796,12 +2771,55 @@
             this.labelFlyStep.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelFlyStep.AutoSize = true;
             this.labelFlyStep.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelFlyStep.Location = new System.Drawing.Point(0, 11);
-            this.labelFlyStep.Margin = new System.Windows.Forms.Padding(0);
+            this.labelFlyStep.Location = new System.Drawing.Point(3, 8);
+            this.labelFlyStep.Margin = new System.Windows.Forms.Padding(3);
             this.labelFlyStep.Name = "labelFlyStep";
             this.labelFlyStep.Size = new System.Drawing.Size(150, 27);
             this.labelFlyStep.TabIndex = 0;
             this.labelFlyStep.Text = "Fly mode step:";
+            // 
+            // tableLayoutPanelSettings24
+            // 
+            this.tableLayoutPanelSettings24.ColumnCount = 2;
+            this.tableLayoutPanelSettings24.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanelSettings24.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanelSettings24.Controls.Add(this.radioBounty, 0, 0);
+            this.tableLayoutPanelSettings24.Controls.Add(this.radioDate, 1, 0);
+            this.tableLayoutPanelSettings24.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelSettings24.Location = new System.Drawing.Point(294, 172);
+            this.tableLayoutPanelSettings24.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanelSettings24.Name = "tableLayoutPanelSettings24";
+            this.tableLayoutPanelSettings24.RowCount = 1;
+            this.tableLayoutPanelSettings24.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelSettings24.Size = new System.Drawing.Size(275, 43);
+            this.tableLayoutPanelSettings24.TabIndex = 140;
+            // 
+            // radioBounty
+            // 
+            this.radioBounty.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioBounty.AutoSize = true;
+            this.radioBounty.Checked = true;
+            this.radioBounty.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
+            this.radioBounty.Location = new System.Drawing.Point(3, 6);
+            this.radioBounty.Name = "radioBounty";
+            this.radioBounty.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.radioBounty.Size = new System.Drawing.Size(112, 31);
+            this.radioBounty.TabIndex = 140;
+            this.radioBounty.TabStop = true;
+            this.radioBounty.Text = "Bounty";
+            this.radioBounty.UseVisualStyleBackColor = true;
+            // 
+            // radioDate
+            // 
+            this.radioDate.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioDate.AutoSize = true;
+            this.radioDate.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
+            this.radioDate.Location = new System.Drawing.Point(121, 6);
+            this.radioDate.Name = "radioDate";
+            this.radioDate.Size = new System.Drawing.Size(75, 31);
+            this.radioDate.TabIndex = 140;
+            this.radioDate.Text = "Date";
+            this.radioDate.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanelSettings23
             // 
@@ -2813,24 +2831,24 @@
             this.tableLayoutPanelSettings23.Controls.Add(this.maxSpeed, 1, 0);
             this.tableLayoutPanelSettings23.Controls.Add(this.labelMaxSpeed, 0, 0);
             this.tableLayoutPanelSettings23.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelSettings23.Location = new System.Drawing.Point(294, 100);
+            this.tableLayoutPanelSettings23.Location = new System.Drawing.Point(294, 86);
             this.tableLayoutPanelSettings23.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelSettings23.Name = "tableLayoutPanelSettings23";
             this.tableLayoutPanelSettings23.RowCount = 1;
             this.tableLayoutPanelSettings23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSettings23.Size = new System.Drawing.Size(275, 50);
-            this.tableLayoutPanelSettings23.TabIndex = 100;
+            this.tableLayoutPanelSettings23.Size = new System.Drawing.Size(275, 43);
+            this.tableLayoutPanelSettings23.TabIndex = 130;
             // 
             // maxSpeed
             // 
             this.maxSpeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.maxSpeed.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.maxSpeed.Location = new System.Drawing.Point(172, 8);
+            this.maxSpeed.Location = new System.Drawing.Point(172, 4);
             this.maxSpeed.Margin = new System.Windows.Forms.Padding(0);
             this.maxSpeed.Name = "maxSpeed";
             this.maxSpeed.Size = new System.Drawing.Size(102, 34);
-            this.maxSpeed.TabIndex = 100;
-            this.maxSpeed.Text = "2,0";
+            this.maxSpeed.TabIndex = 130;
+            this.maxSpeed.Text = "10.0";
             this.maxSpeed.TextChanged += new System.EventHandler(this.maxSpeed_TextChanged);
             // 
             // labelMaxSpeed
@@ -2838,12 +2856,174 @@
             this.labelMaxSpeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelMaxSpeed.AutoSize = true;
             this.labelMaxSpeed.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelMaxSpeed.Location = new System.Drawing.Point(0, 11);
-            this.labelMaxSpeed.Margin = new System.Windows.Forms.Padding(0);
+            this.labelMaxSpeed.Location = new System.Drawing.Point(3, 8);
+            this.labelMaxSpeed.Margin = new System.Windows.Forms.Padding(3);
             this.labelMaxSpeed.Name = "labelMaxSpeed";
             this.labelMaxSpeed.Size = new System.Drawing.Size(161, 27);
             this.labelMaxSpeed.TabIndex = 0;
             this.labelMaxSpeed.Text = "Max time scale:";
+            // 
+            // trainerAutoSave
+            // 
+            this.trainerAutoSave.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.trainerAutoSave.AutoSize = true;
+            this.trainerAutoSave.Checked = true;
+            this.trainerAutoSave.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.trainerAutoSave.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.trainerAutoSave.Location = new System.Drawing.Point(3, 6);
+            this.trainerAutoSave.Name = "trainerAutoSave";
+            this.trainerAutoSave.Size = new System.Drawing.Size(257, 31);
+            this.trainerAutoSave.TabIndex = 40;
+            this.trainerAutoSave.Text = "Auto save config on exit";
+            this.trainerAutoSave.UseVisualStyleBackColor = true;
+            this.trainerAutoSave.CheckedChanged += new System.EventHandler(this.trainerAutoSave_CheckedChanged);
+            // 
+            // trainerSound
+            // 
+            this.trainerSound.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.trainerSound.AutoSize = true;
+            this.trainerSound.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.trainerSound.Location = new System.Drawing.Point(3, 265);
+            this.trainerSound.Name = "trainerSound";
+            this.trainerSound.Size = new System.Drawing.Size(197, 31);
+            this.trainerSound.TabIndex = 100;
+            this.trainerSound.Text = "Trainer key sound";
+            this.trainerSound.UseVisualStyleBackColor = true;
+            // 
+            // screenshotSound
+            // 
+            this.screenshotSound.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.screenshotSound.AutoSize = true;
+            this.screenshotSound.Checked = true;
+            this.screenshotSound.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.screenshotSound.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.screenshotSound.Location = new System.Drawing.Point(3, 221);
+            this.screenshotSound.Name = "screenshotSound";
+            this.screenshotSound.Size = new System.Drawing.Size(192, 31);
+            this.screenshotSound.TabIndex = 90;
+            this.screenshotSound.Text = "Screenshot sound";
+            this.screenshotSound.UseVisualStyleBackColor = true;
+            // 
+            // speedrunMode
+            // 
+            this.speedrunMode.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.speedrunMode.AutoSize = true;
+            this.speedrunMode.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.speedrunMode.Location = new System.Drawing.Point(3, 178);
+            this.speedrunMode.Name = "speedrunMode";
+            this.speedrunMode.Size = new System.Drawing.Size(280, 31);
+            this.speedrunMode.TabIndex = 80;
+            this.speedrunMode.Text = "Safe mode (for speedruns)";
+            this.speedrunMode.UseVisualStyleBackColor = false;
+            this.speedrunMode.Click += new System.EventHandler(this.speedrunMode_Click);
+            // 
+            // unstableLight
+            // 
+            this.unstableLight.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.unstableLight.AutoSize = true;
+            this.unstableLight.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.unstableLight.Location = new System.Drawing.Point(3, 135);
+            this.unstableLight.Name = "unstableLight";
+            this.unstableLight.Size = new System.Drawing.Size(265, 31);
+            this.unstableLight.TabIndex = 70;
+            this.unstableLight.Text = "Legacy lighting (unstable)";
+            this.unstableLight.UseVisualStyleBackColor = true;
+            // 
+            // trainerText
+            // 
+            this.trainerText.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.trainerText.AutoSize = true;
+            this.trainerText.Checked = true;
+            this.trainerText.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.trainerText.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.trainerText.Location = new System.Drawing.Point(3, 92);
+            this.trainerText.Name = "trainerText";
+            this.trainerText.Size = new System.Drawing.Size(251, 31);
+            this.trainerText.TabIndex = 60;
+            this.trainerText.Text = "In-game text messages";
+            this.trainerText.UseVisualStyleBackColor = true;
+            // 
+            // checkUpdates
+            // 
+            this.checkUpdates.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.checkUpdates.AutoSize = true;
+            this.checkUpdates.Checked = true;
+            this.checkUpdates.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkUpdates.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkUpdates.Location = new System.Drawing.Point(3, 49);
+            this.checkUpdates.Name = "checkUpdates";
+            this.checkUpdates.Size = new System.Drawing.Size(201, 31);
+            this.checkUpdates.TabIndex = 50;
+            this.checkUpdates.Text = "Check for updates";
+            this.checkUpdates.UseVisualStyleBackColor = true;
+            // 
+            // labelSplitScreen
+            // 
+            this.labelSplitScreen.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelSplitScreen.AutoSize = true;
+            this.labelSplitScreen.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelSplitScreen.Location = new System.Drawing.Point(297, 223);
+            this.labelSplitScreen.Margin = new System.Windows.Forms.Padding(3);
+            this.labelSplitScreen.Name = "labelSplitScreen";
+            this.labelSplitScreen.Size = new System.Drawing.Size(257, 27);
+            this.labelSplitScreen.TabIndex = 132;
+            this.labelSplitScreen.Text = "Split screen (cooperative):";
+            // 
+            // labelScore
+            // 
+            this.labelScore.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelScore.AutoSize = true;
+            this.labelScore.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelScore.Location = new System.Drawing.Point(297, 137);
+            this.labelScore.Margin = new System.Windows.Forms.Padding(3);
+            this.labelScore.Name = "labelScore";
+            this.labelScore.Size = new System.Drawing.Size(196, 27);
+            this.labelScore.TabIndex = 132;
+            this.labelScore.Text = "Score (scoreboard):";
+            // 
+            // tableLayoutPanelSettings25
+            // 
+            this.tableLayoutPanelSettings25.ColumnCount = 2;
+            this.tableLayoutPanelSettings25.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanelSettings25.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanelSettings25.Controls.Add(this.radioHorizontal, 0, 0);
+            this.tableLayoutPanelSettings25.Controls.Add(this.radioVertical, 1, 0);
+            this.tableLayoutPanelSettings25.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelSettings25.Location = new System.Drawing.Point(294, 258);
+            this.tableLayoutPanelSettings25.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanelSettings25.Name = "tableLayoutPanelSettings25";
+            this.tableLayoutPanelSettings25.RowCount = 1;
+            this.tableLayoutPanelSettings25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelSettings25.Size = new System.Drawing.Size(275, 45);
+            this.tableLayoutPanelSettings25.TabIndex = 150;
+            // 
+            // radioHorizontal
+            // 
+            this.radioHorizontal.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioHorizontal.AutoSize = true;
+            this.radioHorizontal.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
+            this.radioHorizontal.Location = new System.Drawing.Point(3, 7);
+            this.radioHorizontal.Name = "radioHorizontal";
+            this.radioHorizontal.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.radioHorizontal.Size = new System.Drawing.Size(144, 31);
+            this.radioHorizontal.TabIndex = 150;
+            this.radioHorizontal.Text = "Horizontal";
+            this.radioHorizontal.UseVisualStyleBackColor = true;
+            // 
+            // radioVertical
+            // 
+            this.radioVertical.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.radioVertical.AutoSize = true;
+            this.radioVertical.Checked = true;
+            this.radioVertical.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
+            this.radioVertical.Location = new System.Drawing.Point(153, 7);
+            this.radioVertical.Name = "radioVertical";
+            this.radioVertical.Size = new System.Drawing.Size(103, 31);
+            this.radioVertical.TabIndex = 150;
+            this.radioVertical.TabStop = true;
+            this.radioVertical.Text = "Vertical";
+            this.radioVertical.UseVisualStyleBackColor = true;
+            this.radioVertical.CheckedChanged += new System.EventHandler(this.radioVertical_CheckedChanged);
             // 
             // groupBoxTazPos
             // 
@@ -3381,7 +3561,7 @@
             this.kill.Name = "kill";
             this.kill.Size = new System.Drawing.Size(142, 43);
             this.kill.TabIndex = 220;
-            this.kill.Text = "    Proc. Kill";
+            this.kill.Text = "    Kill Proc.";
             this.kill.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.kill.UseVisualStyleBackColor = true;
             this.kill.Click += new System.EventHandler(this.kill_Click);
@@ -3686,6 +3866,7 @@
             this.webBrowserRepacking.Name = "webBrowserRepacking";
             this.webBrowserRepacking.Size = new System.Drawing.Size(740, 530);
             this.webBrowserRepacking.TabIndex = 8;
+            this.webBrowserRepacking.Navigating += new System.Windows.Forms.WebBrowserNavigatingEventHandler(this.webBrowserRepacking_Navigating);
             // 
             // infoTab
             // 
@@ -3697,6 +3878,16 @@
             this.infoTab.Size = new System.Drawing.Size(746, 624);
             this.infoTab.TabIndex = 2;
             this.infoTab.Text = "Info";
+            // 
+            // webBrowserReadMe
+            // 
+            this.webBrowserReadMe.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowserReadMe.Location = new System.Drawing.Point(0, 0);
+            this.webBrowserReadMe.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowserReadMe.Name = "webBrowserReadMe";
+            this.webBrowserReadMe.Size = new System.Drawing.Size(746, 624);
+            this.webBrowserReadMe.TabIndex = 0;
+            this.webBrowserReadMe.Navigating += new System.Windows.Forms.WebBrowserNavigatingEventHandler(this.webBrowserReadMe_Navigating);
             // 
             // openPakFileDialog
             // 
@@ -3710,15 +3901,6 @@
             // saveRepackedFileDialog
             // 
             this.saveRepackedFileDialog.Filter = "Pak Files|*.pc;*.xbp;*.ps2|All Files|*";
-            // 
-            // webBrowserReadMe
-            // 
-            this.webBrowserReadMe.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowserReadMe.Location = new System.Drawing.Point(0, 0);
-            this.webBrowserReadMe.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowserReadMe.Name = "webBrowserReadMe";
-            this.webBrowserReadMe.Size = new System.Drawing.Size(746, 624);
-            this.webBrowserReadMe.TabIndex = 0;
             // 
             // form
             // 
@@ -3736,6 +3918,8 @@
             this.Text = "Taz Wanted · Trainer & Patcher";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.form_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.form_FormClosed);
+            this.statusStrip.ResumeLayout(false);
+            this.statusStrip.PerformLayout();
             this.tableLayoutPanelTrainer.ResumeLayout(false);
             this.cheatsTrainerGroup.ResumeLayout(false);
             this.tableLayoutPanelTrainer1.ResumeLayout(false);
@@ -3817,8 +4001,12 @@
             this.tableLayoutPanelSettings21.PerformLayout();
             this.tableLayoutPanelSettings22.ResumeLayout(false);
             this.tableLayoutPanelSettings22.PerformLayout();
+            this.tableLayoutPanelSettings24.ResumeLayout(false);
+            this.tableLayoutPanelSettings24.PerformLayout();
             this.tableLayoutPanelSettings23.ResumeLayout(false);
             this.tableLayoutPanelSettings23.PerformLayout();
+            this.tableLayoutPanelSettings25.ResumeLayout(false);
+            this.tableLayoutPanelSettings25.PerformLayout();
             this.groupBoxTazPos.ResumeLayout(false);
             this.tableLayoutPanelSettings3.ResumeLayout(false);
             this.tableLayoutPanelSettings3.PerformLayout();
@@ -3901,11 +4089,10 @@
         private System.Windows.Forms.CheckBox textureAlpha;
         private System.Windows.Forms.CheckBox drawDistance;
         private System.Windows.Forms.CheckBox textureFilter;
-        private System.Windows.Forms.CheckBox loadPos;
         private System.Windows.Forms.CheckBox gameSpeed;
         private System.Windows.Forms.GroupBox hacksTrainerGroup;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelTrainer2;
-        private System.Windows.Forms.CheckBox disallowJump;
+        private System.Windows.Forms.CheckBox coopMode;
         private System.Windows.Forms.CheckBox undestructibleWorld;
         private System.Windows.Forms.CheckBox flyCamera;
         private System.Windows.Forms.CheckBox smoothLighting;
@@ -4046,7 +4233,6 @@
         private System.Windows.Forms.Button saveditLink;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPatcher127;
         private System.Windows.Forms.CheckBox checkBoxFoV;
-        private System.Windows.Forms.CheckBox speedrunMode;
         private System.Windows.Forms.Button aspectSwap;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPatcher116;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPatcher115;
@@ -4056,6 +4242,20 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPatcher128;
         private System.Windows.Forms.ToolStripStatusLabel statusField;
         private System.Windows.Forms.WebBrowser webBrowserReadMe;
+        private System.Windows.Forms.CheckBox speedrunMode;
+        private System.Windows.Forms.CheckBox coopFix;
+        private System.Windows.Forms.CheckBox resetLevel;
+        private System.Windows.Forms.CheckBox unstableLight;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
+        private System.Windows.Forms.CheckBox checkUpdates;
+        private System.Windows.Forms.Label labelSplitScreen;
+        private System.Windows.Forms.RadioButton radioHorizontal;
+        private System.Windows.Forms.RadioButton radioVertical;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelSettings25;
+        private System.Windows.Forms.Label labelScore;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelSettings24;
+        private System.Windows.Forms.RadioButton radioBounty;
+        private System.Windows.Forms.RadioButton radioDate;
     }
 }
 
