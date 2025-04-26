@@ -59,6 +59,127 @@ namespace Taz_trainer
         float camSpd = 2000f;
         float flyStep = 1000f;
 
+        // Achievements globals
+        const int achievementsTotal = 115;
+        bool[] achievementsStateTrainer = Enumerable.Repeat<bool>(false, achievementsTotal).ToArray();
+        string[,] Achievements = {
+                { "271979", "Taz, With Your Nose So Bright" , "Change into a red-nosed reindeer" },
+                { "271980", "Revenge is Sweet" , "Defeat the Catcher in Yosemite Zoo" },
+                { "271981", "Elephant Abolitionist" , "Destroy all 7 wanted posters and complete Zooney Tunes" },
+                { "271982", "Hidden Treasure of Zooney Tunes" , "Collect the golden Yosemite Sam statue in Zooney Tunes" },
+                { "271983", "The Zooney Tunes Varmint" , "On expert daffy-culty, earn the destruction bonus in Zooney Tunes" },
+                { "271984", "Zooney Tunes' Most Wanted" , "On expert daffy-culty, reach the maximum bounty of $10,000 in Zooney Tunes" },
+                { "271985", "Fine Cuisine of Zooney Tunes" , "On expert daffy-culty, eat all 100 sandwiches in Zooney Tunes" },
+                { "271986", "Taz Rad Devil" , "Change into a skater" },
+                { "271987", "Cage-Free Zooney Tunes" , "Defeat all 6 Catchers in Zooney Tunes" },
+                { "271988", "The Zooney Tunes Assassin" , "Defeat all 6 Catchers in Zooney Tunes on Expert Daffy-culty without being caught" },
+                { "272091", "No Monkeying Around" , "Destroy the wanted poster on the cliff van in Zooney Tunes without swinging from monkeys or bouncing on tires" },
+                { "272072", "Safari Speedster" , "Complete the Zooney Tunes bonus game" },
+                { "272073", "Zoolander" , "Complete the Zooney Tunes bonus game with at least 0:12:0 left on the clock" },
+                { "271989", "Prepare for Takeoff" , "Destroy all 7 wanted posters and complete Ice Burg" },
+                { "271990", "Hidden Treasure of Ice Burg" , "Collect the golden Yosemite Sam statue in Ice Burg" },
+                { "271991", "The Ice Burg Varmint" , "On expert daffy-culty, earn the destruction bonus in Ice Burg" },
+                { "271992", "Ice Burg's Most Wanted" , "On expert daffy-culty, reach the maximum bounty of $20,000 in Ice Burg" },
+                { "271993", "Fine Cuisine of Ice Burg" , "On expert daffy-culty, eat all 100 sandwiches in Ice Burg" },
+                { "271994", "Taz Cool as Ice, Baby" , "Change into a snowboarder" },
+                { "271995", "Cage-Free Ice Burg" , "Defeat all 6 Catchers in Ice Burg" },
+                { "271996", "The Ice Burg Assassin" , "Defeat all 6 Catchers in Ice Burg on Expert Daffy-culty without being caught" },
+                { "272074", "Blistering Blitzer" , "Complete the Ice Burg bonus game" },
+                { "272075", "Taz Only Involved in Quality Work" , "Complete the Ice Burg bonus game with at least 0:20:0 left on the clock" },
+                { "271997", "Radical Raft" , "Destroy all 7 wanted posters and complete Looney Lagoon" },
+                { "271998", "Hidden Treasure of Looney Lagoon" , "Collect the golden Yosemite Sam statue in Looney Lagoon" },
+                { "271999", "The Looney Lagoon Varmint" , "On expert daffy-culty, earn the destruction bonus in Looney Lagoon" },
+                { "272000", "Looney Lagoon's Most Wanted" , "On expert daffy-culty, reach the maximum bounty of $30,000 in Looney Lagoon" },
+                { "272001", "Fine Cuisine of Looney Lagoon" , "On expert daffy-culty, eat all 100 sandwiches in Looney Lagoon" },
+                { "272002", "Hang Ten, Duuude" , "Change into a surfer" },
+                { "272003", "Cage-Free Looney Lagoon" , "Defeat all 4 Catchers in Looney Lagoon" },
+                { "272004", "The Looney Lagoon Assassin" , "Defeat all 4 Catchers in Looney Lagoon on Expert Daffy-culty without being caught" },
+                { "272076", "Wavy Walloper" , "Complete the Looney Lagoon bonus game" },
+                { "272077", "Radical Crate Ravager" , "Complete the Looney Lagoon bonus game while destroying at least 100 crates" },
+                { "272005", "Gossamer Gobbler" , "Defeat Gossamer in Elephant Pong" },
+                { "272006", "Pong Professional" , "On expert daffy-culty, defeat Gossamer in Elephant Pong without letting him score" },
+                { "272015", "Glizzy Gladiator" , "Destroy all 7 wanted posters and complete Samsonian Museum" },
+                { "272016", "Hidden Treasure of Samsonian Museum" , "Collect the golden Yosemite Sam statue in Samsonian Museum" },
+                { "272017", "The Samsonian Museum Varmint" , "On expert daffy-culty, earn the destruction bonus in Samsonian Museum" },
+                { "272018", "Samsonian Museum's Most Wanted" , "On expert daffy-culty, reach the maximum bounty of $75,000 in Samsonian Museum" },
+                { "272019", "Fine Cuisine of Samsonian Museum" , "On expert daffy-culty, eat all 100 sandwiches in Samsonian Museum" },
+                { "272020", "Fujibayashi Naga-Taz" , "Change into a ninja" },
+                { "272021", "Cage-Free Samsonian Museum" , "Defeat the Catcher in Samsonian Museum" },
+                { "272022", "The Samsonian Museum Assassin" , "Defeat the Catcher in Samsonian Museum on Expert Daffy-culty without being caught" },
+                { "272082", "Productive Polisher" , "Complete the Samsonian Museum bonus game" },
+                { "272083", "Janitor of the Year" , "Complete the Samsonian Museum bonus game in 35s or less" },
+                { "272007", "Department Store Delivery" , "Destroy all 7 wanted posters and complete Looningdale's" },
+                { "272008", "Hidden Treasure of Looningdale's" , "Collect the golden Yosemite Sam statue in Looningdale's" },
+                { "272009", "The Looningdale's Varmint" , "On expert daffy-culty, earn the destruction bonus in Looningdale's" },
+                { "272010", "Looningdale's Most Wanted" , "On expert daffy-culty, reach the maximum bounty of $50,000 in Looningdale's" },
+                { "272011", "Fine Cuisine of Looningdale's" , "On expert daffy-culty, eat all 100 sandwiches in Looningdale's" },
+                { "272012", "Yo, Yo, Yo" , "Change into a DJ" },
+                { "272013", "Cage-Free Looningdale's" , "Defeat all 4 Catchers in Looningdale's" },
+                { "272014", "The Looningdale's Assassin" , "Defeat all 4 Catchers in Looningdale's on Expert Daffy-culty without being caught" },
+                { "272078", "Retail Racer" , "Complete the Looningdale's bonus game" },
+                { "272079", "Shopping Cart Hero" , "Complete the Looningdale's bonus game in 45.0s or less" },
+                { "272023", "Demolition Detour" , "Destroy all 7 wanted posters and complete Bank of Samerica" },
+                { "272024", "Hidden Treasure of Bank of Samerica" , "Collect the golden Yosemite Sam statue in Bank of Samerica" },
+                { "272025", "The Bank of Samerica Varmint" , "On expert daffy-culty, earn the destruction bonus in Bank of Samerica" },
+                { "272026", "Bank of Samerica's Most Wanted" , "On expert daffy-culty, reach the maximum bounty of $100,000 in Bank of Samerica" },
+                { "272027", "Fine Cuisine of Bank of Samerica" , "On expert daffy-culty, eat all 100 sandwiches in Bank of Samerica" },
+                { "272028", "Freeze! This Is a Raid" , "Change into a SWAT officer" },
+                { "272029", "Cage-Free Bank of Samerica" , "Defeat all 6 Catchers in Bank of Samerica" },
+                { "272030", "The Bank of Samerica Assassin" , "Defeat all 6 Catchers in Bank of Samerica on Expert Daffy-culty without being caught" },
+                { "272080", "Skyscraper Scavenger" , "Complete the Bank of Samerica bonus game" },
+                { "272081", "Ferocious Taz in the Clouds" , "Complete the Bank of Samerica bonus game while destroying at least 75 crates" },
+                { "272031", "Daffy Dominator" , "Defeat Daffy in Gladiatoons" },
+                { "272032", "High Roller" , "On expert daffy-culty, defeat Daffy in Gladiatoons without losing the lead after 1:30:0" },
+                { "272033", "High Noon Shooter" , "Destroy all 7 wanted posters and complete Granny Canyon" },
+                { "272034", "Hidden Treasure of Granny Canyon" , "Collect the golden Yosemite Sam statue in Granny Canyon" },
+                { "272035", "The Granny Canyon Varmint" , "On expert daffy-culty, earn the destruction bonus in Granny Canyon" },
+                { "272036", "Granny Canyon's Most Wanted" , "On expert daffy-culty, reach the maximum bounty of $250,000 in Granny Canyon" },
+                { "272037", "Fine Cuisine of Granny Canyon" , "On expert daffy-culty, eat all 100 sandwiches in Granny Canyon" },
+                { "272038", "Go Ahead, Make Taz Day" , "Change into a cowboy" },
+                { "272039", "Cage-Free Granny Canyon" , "Defeat all 4 Catchers in Granny Canyon" },
+                { "272040", "The Granny Canyon Assassin" , "Defeat all 4 Catchers in Granny Canyon on Expert Daffy-culty without being caught" },
+                { "272084", "Desert Dasher" , "Complete the Granny Canyon bonus game" },
+                { "272085", "I'm a Rocket Taz" , "Complete the Granny Canyon bonus game in 50s or less" },
+                { "272041", "Digging for Gold" , "Destroy all 7 wanted posters and complete Cartoon Strip-Mine" },
+                { "272042", "Hidden Treasure of Cartoon Strip-Mine" , "Collect the golden Yosemite Sam statue in Cartoon Strip-Mine" },
+                { "272043", "The Cartoon Strip-Mine Varmint" , "On expert daffy-culty, earn the destruction bonus in Cartoon Strip-Mine" },
+                { "272044", "Cartoon Strip-Mine's Most Wanted" , "On expert daffy-culty, reach the maximum bounty of $500,000 in Cartoon Strip-Mine" },
+                { "272045", "Fine Cuisine of Cartoon Strip-Mine" , "On expert daffy-culty, eat all 100 sandwiches in Cartoon Strip-Mine" },
+                { "272046", "Snakes…Why’d It Have to Be Snakes?" , "Change into an adventurer" },
+                { "272047", "Cage-Free Cartoon Strip-Mine" , "Defeat all 4 Catchers in Cartoon Strip-Mine" },
+                { "272048", "The Cartoon Strip-Mine Assassin" , "Defeat all 4 Catchers in Cartoon Strip-Mine on Expert Daffy-culty without being caught" },
+                { "272086", "Swift Spelunker" , "Complete the Cartoon Strip-Mine bonus game" },
+                { "272087", "Bad(t)azz", "Complete the Cartoon Strip-Mine bonus game with at least 0:25:0 left on the clock" },
+                { "272049", "Big Bad Taz", "Destroy all 7 wanted posters and complete Taz: Haunted" },
+                { "272050", "Hidden Treasure of Taz: Haunted" , "Collect the golden Yosemite Sam statue in Taz: Haunted" },
+                { "272051", "The Taz: Haunted Varmint" , "On expert daffy-culty, earn the destruction bonus in Taz: Haunted" },
+                { "272052", "Taz: Haunted's Most Wanted" , "On expert daffy-culty, reach the maximum bounty of $750,000 in Taz: Haunted" },
+                { "272053", "Fine Cuisine of Taz: Haunted" , "On expert daffy-culty, eat all 100 sandwiches in Taz: Haunted" },
+                { "272054", "Taz: Unleased" , "Change into a werewolf" },
+                { "272055", "Cage-Free Taz: Haunted" , "Defeat all 4 Catchers in Taz: Haunted" },
+                { "272056", "The Taz: Haunted Assassin" , "Defeat all 4 Catchers in Taz: Haunted on Expert Daffy-culty without being caught" },
+                { "272057", "Glove to See It" , "Transform into the iconic ball from Glover" },
+                { "272088", "Hopping Hound" , "Complete the Taz: Haunted bonus game" },
+                { "272089", "Taz Need to Lay off the Booze" , "Complete the Taz: Haunted bonus game while destroying at least 100 crates" },
+                { "272058", "Sam Suppressor" , "Defeat Yosemite Sam in Dodge City" },
+                { "272059", "Pesky Critter" , "On expert daffy-culty, defeat Yosemite Sam in Dodge City without getting hit by an explosion" },
+                { "272060", "Taz's Dominion" , "Destroy all 7 wanted posters and complete Tazland A-maze-ment Park" },
+                { "272061", "Hidden Treasure of Tazland A-maze-ment Park" , "Collect the golden Yosemite Sam statue in Tazland A-maze-ment Park" },
+                { "272062", "The Tazland A-maze-ment Park Varmint" , "On expert daffy-culty, earn the destruction bonus in Tazland A-maze-ment Park" },
+                { "272063", "Tazland A-maze-ment Park's Most Wanted" , "On expert daffy-culty, reach the maximum bounty of $1,000,000 in Tazland A-maze-ment Park" },
+                { "272064", "Fine Cuisine of Tazland A-maze-ment Park" , "On expert daffy-culty, eat all 100 sandwiches in Tazland A-maze-ment Park" },
+                { "272065", "Ta(r)zan", "Change into a caveman" },
+                { "272066", "Cage-Free Tazland A-maze-ment Park" , "Defeat all 5 Catchers in Tazland A-maze-ment Park" },
+                { "272067", "The Tazland A-maze-ment Park Assassin" , "Defeat all 5 Catchers in Tazland A-maze-ment Park on Expert Daffy-culty without being caught" },
+                { "272068", "Sam Samba" , "Defeat Yosemite Sam in Disco Volcano" },
+                { "272069", "Groovy Varmint" , "On expert daffy-culty, defeat Yosemite Sam in Disco Volcano without touching lava or letting him score" },
+                { "272070", "Tweety Tranquilizer" , "Defeat Tweety in The Hindenbird and reunite Taz with his wife!" },
+                { "272071", "Hydrogen Leak" , "On expert daffy-culty, defeat Tweety in The Hindenbird without getting hit" },
+                { "272090", "Tazmanian Sniper" , "Defeat a zoo keeper with a ranged costume attack from a great distance" },
+                { "272092", "Gallery Gazer" , "Collect all 10 gallery pages" },
+                { "271794", "#1 Most Wanted" , "Complete the game on Expert Daffy-culty with the highest possible bounty of $3,142,000" },
+            };
+
         // DPI hacking
         void SetUserFonts(float scaleFactorX, float scaleFactorY)
         {
@@ -187,7 +308,11 @@ namespace Taz_trainer
                 CheckTrainerUpdate(version);
             */
 
+            DrawAchievementsTable();
+            UpdateAchievementsTable();
         }
+
+
 
         //#######################################################################################################################
         //Key hooker functions
@@ -204,154 +329,154 @@ namespace Taz_trainer
 
         void gkh_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Modifiers == Keys.Alt && e.KeyCode == Keys.F4)
-            {
-                this.kill_Click(sender, e);
-            }
-
             //Disable trainer cheats with speedrun mode
-            if (speedrunMode.Checked == true)
-                return;
-
             if (e.KeyCode == Keys.F1)
             {
-                this.invisibility.Checked = !this.invisibility.Checked;
+                if (speedrunMode.Checked == false)
+                    this.invisibility.Checked = !this.invisibility.Checked;
                 sendKey(Keys.F1, "{F1}");
             }
             if (e.KeyCode == Keys.F2)
             {
-                this.superBelchCan.Checked = !this.superBelchCan.Checked;
+                if (speedrunMode.Checked == false)
+                    this.superBelchCan.Checked = !this.superBelchCan.Checked;
                 sendKey(Keys.F2, "{F2}");
             }
             if (e.KeyCode == Keys.F3)
             {
-                this.superJump.Checked = !this.superJump.Checked;
+                if (speedrunMode.Checked == false)
+                    this.superJump.Checked = !this.superJump.Checked;
                 sendKey(Keys.F3, "{F3}");
             }
             if (e.KeyCode == Keys.F4)
             {
-                this.freezeLevelTimer.Checked = !this.freezeLevelTimer.Checked;
+                if (speedrunMode.Checked == false)
+                    this.freezeLevelTimer.Checked = !this.freezeLevelTimer.Checked;
                 sendKey(Keys.F4, "{F4}");
             }
             if (e.KeyCode == Keys.F5)
             {
-                this.debugMenu.Checked = !this.debugMenu.Checked;
+                if (speedrunMode.Checked == false)
+                    this.debugMenu.Checked = !this.debugMenu.Checked;
                 sendKey(Keys.F5, "{F5}");
             }
             if (e.KeyCode == Keys.F6)
             {
-                this.drawDistance.Checked = !this.drawDistance.Checked;
+                if (speedrunMode.Checked == false)
+                    this.drawDistance.Checked = !this.drawDistance.Checked;
                 sendKey(Keys.F6, "{F6}");
             }
             if (e.KeyCode == Keys.F7)
             {
-                this.textureFilter.Checked = !this.textureFilter.Checked;
+                if (speedrunMode.Checked == false)
+                    this.textureFilter.Checked = !this.textureFilter.Checked;
                 sendKey(Keys.F7, "{F7}");
             }
             if (e.KeyCode == Keys.F8)
             {
-                this.textureAlpha.Checked = !this.textureAlpha.Checked;
+                if (speedrunMode.Checked == false)
+                    this.textureAlpha.Checked = !this.textureAlpha.Checked;
                 sendKey(Keys.F8, "{F8}");
             }
             if (e.KeyCode == Keys.F9)
             {
-                this.fpsCap.Checked = !this.fpsCap.Checked;
+                if (speedrunMode.Checked == false)
+                    this.fpsCap.Checked = !this.fpsCap.Checked;
                 sendKey(Keys.F9, "{F9}");
             }
             if (e.KeyCode == Keys.F10)
             {
-                this.smoothLighting.Checked = !this.smoothLighting.Checked;
+                if (speedrunMode.Checked == false)
+                    this.smoothLighting.Checked = !this.smoothLighting.Checked;
                 sendKey(Keys.F10, "{F10}");
             }
             if (e.KeyCode == Keys.F11)
             {
-                this.coopMode.Checked = !this.coopMode.Checked;
+                if (speedrunMode.Checked == false)
+                    this.coopMode.Checked = !this.coopMode.Checked;
                 sendKey(Keys.F11, "{F11}");
             }
             if (e.KeyCode == Keys.F12)
             {
-                this.ballMode.Checked = !this.ballMode.Checked;
+                if (speedrunMode.Checked == false)
+                    this.ballMode.Checked = !this.ballMode.Checked;
                 sendKey(Keys.F12, "{F12}");
             }
             if (e.KeyCode == Keys.Insert)
             {
-                this.unsinkabilityMode.Checked = !this.unsinkabilityMode.Checked;
+                if (speedrunMode.Checked == false)
+                    this.unsinkabilityMode.Checked = !this.unsinkabilityMode.Checked;
                 sendKey(Keys.Insert, "{Insert}");
             }
             if (e.KeyCode == Keys.Home)
             {
-                this.undestructibleWorld.Checked = !this.undestructibleWorld.Checked;
+                if (speedrunMode.Checked == false)
+                    this.undestructibleWorld.Checked = !this.undestructibleWorld.Checked;
                 sendKey(Keys.Home, "{Home}");
             }
             if (e.KeyCode == Keys.End)
             {
-                this.bulldozerMode.Checked = !this.bulldozerMode.Checked;
+                if (speedrunMode.Checked == false)
+                    this.bulldozerMode.Checked = !this.bulldozerMode.Checked;
                 sendKey(Keys.End, "{End}");
             }
             if (e.KeyCode == Keys.OemMinus)
             {
-                changeGameSpeed(0);
+                if (speedrunMode.Checked == false)
+                    changeGameSpeed(0);
                 sendKey(Keys.OemMinus, "{-}");
             }
             if (e.KeyCode == Keys.Oemplus)
             {
-                changeGameSpeed(1);
+                if (speedrunMode.Checked == false)
+                    changeGameSpeed(1);
                 sendKey(Keys.Oemplus, "{=}");
             }
             if (e.KeyCode == Keys.NumPad5)
             {
-                //if (e.IsRepeat) return;
-                this.flyMode.Checked = !this.flyMode.Checked;
+                if (speedrunMode.Checked == false)
+                    this.flyMode.Checked = !this.flyMode.Checked;
                 sendKey(Keys.NumPad5, "{5}");
             }
             if (e.KeyCode == Keys.NumPad9)
             {
-                if (this.flyMode.Checked == true)
-                {
+                if (this.flyMode.Checked == true && speedrunMode.Checked == false)
                     movement(0); //Z+
-                }
                 sendKey(Keys.NumPad9, "{9}");
             }
             if (e.KeyCode == Keys.NumPad8)
             {
-                if (this.flyMode.Checked == true)
-                {
+                if (this.flyMode.Checked == true && speedrunMode.Checked == false)
                     movement(4); //Y+
-                }
                 sendKey(Keys.NumPad8, "{8}");
             }
             if (e.KeyCode == Keys.NumPad7)
             {
-                if (this.flyMode.Checked == true)
-                {
+                if (this.flyMode.Checked == true && speedrunMode.Checked == false)
                     movement(1); //Z-
-                }
                 sendKey(Keys.NumPad7, "{7}");
             }
             if (e.KeyCode == Keys.NumPad6)
             {
-                if (this.flyMode.Checked == true)
-                {
+                if (this.flyMode.Checked == true && speedrunMode.Checked == false)
                     movement(2); //X+
-                }
                 sendKey(Keys.NumPad6, "{6}");
             }
             if (e.KeyCode == Keys.NumPad4)
             {
-                if (this.flyMode.Checked == true)
-                {
+                if (this.flyMode.Checked == true && speedrunMode.Checked == false)
                     movement(3); //X-
-                }
                 sendKey(Keys.NumPad4, "{4}");
             }
             if (e.KeyCode == Keys.NumPad3)
             {
-                loadPos_CheckedChanged(sender, e);
+                if (speedrunMode.Checked == false)
+                    loadPos_CheckedChanged(sender, e);
                 sendKey(Keys.NumPad3, "{3}");
             }
             if (e.KeyCode == Keys.NumPad2)
             {
-                if (this.flyMode.Checked == true)
+                if (this.flyMode.Checked == true && speedrunMode.Checked == false)
                 {
                     movement(5); //Y-
                 }
@@ -359,74 +484,82 @@ namespace Taz_trainer
             }
             if (e.KeyCode == Keys.NumPad1)
             {
-                this.savePos.Checked = !this.savePos.Checked;
+                if (speedrunMode.Checked == false)
+                    this.savePos.Checked = !this.savePos.Checked;
                 sendKey(Keys.NumPad1, "{1}");
             }
             if (e.KeyCode == Keys.NumPad0)
             {
-                this.flyCamera.Checked = !this.flyCamera.Checked;
+                if (speedrunMode.Checked == false)
+                    this.flyCamera.Checked = !this.flyCamera.Checked;
                 sendKey(Keys.NumPad0, "{0}");
             }
             if (e.KeyCode == Keys.PrintScreen)
             {
-                this.screenshot.Checked = !this.screenshot.Checked;
+                if (speedrunMode.Checked == false)
+                    this.screenshot.Checked = !this.screenshot.Checked;
                 sendKey(Keys.PrintScreen, "{PRTSC}");
             }
             if (e.KeyCode == Keys.Multiply)
             {
-                if (e.Modifiers == Keys.Shift)
-                    incFOV(sender, e);
-                else
+                if (speedrunMode.Checked == false)
                     incFPScap(sender, e);
                 sendKey(Keys.Multiply, "{MULTIPLY}");
             }
             if (e.KeyCode == Keys.Divide)
             {
-                if (e.Modifiers == Keys.Shift)
-                {
-                    decFOV(sender, e);
-                    sendKey(Keys.Divide, "{DIVIDE}");
-                }
-
-                else
+                if (speedrunMode.Checked == false)
                     decFPScap(sender, e);
                 sendKey(Keys.Divide, "{/}");
             }
             if (e.KeyCode == Keys.Add)
             {
-                this.incFOV(sender, e);
+                if (speedrunMode.Checked == false)
+                    this.incFOV(sender, e);
                 sendKey(Keys.Add, "{ADD}");
             }
             if (e.KeyCode == Keys.Subtract)
             {
-                this.decFOV(sender, e);
+                if (speedrunMode.Checked == false)
+                    this.decFOV(sender, e);
                 sendKey(Keys.Subtract, "{SUBTRACT}");
             }
             if (e.KeyCode == Keys.PageUp)
             {
-                buttonNext_Click(sender, e);
+                if (speedrunMode.Checked == false)
+                    buttonNext_Click(sender, e);
                 sendKey(Keys.PageUp, "{PGUP}");
             }
             if (e.KeyCode == Keys.PageDown)
             {
-                buttonPrev_Click(sender, e);
+                if (speedrunMode.Checked == false)
+                    buttonPrev_Click(sender, e);
                 sendKey(Keys.PageDown, "{PGDN}");
             }
             if (e.KeyCode == Keys.Back)
             {
-                this.speedHack.Checked = !this.speedHack.Checked;
+                if (speedrunMode.Checked == false)
+                    this.speedHack.Checked = !this.speedHack.Checked;
                 sendKey(Keys.Back, "{BKSP}");
             }
             if (e.KeyCode == Keys.Decimal)
             {
-                this.debugInfo.Checked = !this.debugInfo.Checked;
+                if (speedrunMode.Checked == false)
+                    this.debugInfo.Checked = !this.debugInfo.Checked;
                 sendKey(Keys.Decimal, "{.}");
             }
             if (e.KeyCode == Keys.Delete)
             {
-                this.resetLevel.Checked = !this.resetLevel.Checked;
+                if (speedrunMode.Checked == false)
+                    this.resetLevel.Checked = !this.resetLevel.Checked;
                 sendKey(Keys.Delete, "{DEL}");
             }
+            if (e.Modifiers == Keys.Alt && e.KeyCode == Keys.F4)
+            {
+                if (!killProcess())
+                    sendKey(Keys.F4, "%{F4}");
+            }
+
             e.Handled = true;
         }
 
@@ -466,11 +599,11 @@ namespace Taz_trainer
             int procId = findProcessId(procName);
             if (procId == 0)
             {
-                this.toolStripStatusLabel.Text = "Change option failed. " + procName + " process not found!";
-                this.toolStripStatusLabel.ForeColor = System.Drawing.Color.DarkRed;
+                //this.toolStripStatusLabel.Text = "Change option failed. " + procName + " process not found!";
+                //this.toolStripStatusLabel.ForeColor = System.Drawing.Color.DarkRed;
                 return bytes;
             }
-            this.toolStripStatusLabel.Text = procName + "process found";
+            //this.toolStripStatusLabel.Text = procName + "process found";
             var handle = OpenProcess(0x001F0FFF, false, procId);
             ReadProcessMemory(handle, (IntPtr)adress, bytes, size, out mem);
             CloseHandle(handle);
@@ -500,19 +633,21 @@ namespace Taz_trainer
         }
 
         //Kill process
-        private void killProcess()
+        private bool killProcess()
         {
             int procId = findProcessId(procName);
             if (procId == 0)
             {
                 this.toolStripStatusLabel.Text = "Kill process failed. " + procName + " process not found!";
                 this.toolStripStatusLabel.ForeColor = System.Drawing.Color.DarkRed;
+                return false;
             }
             else
             {
                 Process.GetProcessById(procId).Kill();
                 this.toolStripStatusLabel.Text = procName + " process killed";
                 this.toolStripStatusLabel.ForeColor = System.Drawing.Color.DarkGreen;
+                return true;
             }
         }
 
@@ -800,6 +935,9 @@ namespace Taz_trainer
                 byte[] bytes2 = { 0xE9, 0x33, 0x44, 0x19, 0x00, 0x90, 0x90 };
                 checkAndWrite((IntPtr)0x00462238, bytes2, bytes2.Length, new IntPtr());
 
+                //byte[] flymode = { 0xEB,0x4C };
+                //checkAndWrite((IntPtr)0x00480D6B, flymode, flymode.Length, new IntPtr());
+
                 message("Fly Mode: On (Step = " + flyStep.ToString() + ")");
             }
             else
@@ -817,6 +955,9 @@ namespace Taz_trainer
 
                 byte[] bytes2 = { 0xD9, 0x44, 0x24, 0x54, 0xD8, 0x63, 0x04 };
                 checkAndWrite((IntPtr)0x00462238, bytes2, bytes2.Length, new IntPtr());
+
+                //byte[] flymode = { 0xA0, 0x71 };
+                //checkAndWrite((IntPtr)0x00480D6B, flymode, flymode.Length, new IntPtr());
 
                 message("Fly Mode: Off");
             }
@@ -1442,7 +1583,7 @@ namespace Taz_trainer
                     byte[] inj = { 0xE9, 0x78, 0x41, 0x12, 0x00 };
                     checkAndWrite((IntPtr)0x004D2553, inj, inj.Length, new IntPtr());
 
-                    message("Alternate Lighting: On");
+                    message("Airbrush Shading: On");
                 }
                 else
                 {
@@ -1455,7 +1596,7 @@ namespace Taz_trainer
                     byte[] inj = { 0x8B, 0x4C, 0x24, 0x38, 0x5F };
                     checkAndWrite((IntPtr)0x004D2553, inj, inj.Length, new IntPtr());
 
-                    message("Alternate Lighting: Off");
+                    message("Airbrush Shading: Off");
                 }
 
                 byte[] injectionFlag = { 0x01 };
@@ -1632,13 +1773,22 @@ namespace Taz_trainer
 
         private void ballMode_CheckedChanged(object sender, EventArgs e)
         {
-            if (listViewActors.SelectedItems.Count > 0)
+
+            if (ballMode.Checked == true)
             {
-                int i = listViewActors.SelectedItems[0].Index;
-                listViewActors.Items[i].Selected = true;
+                if (listViewActors.SelectedItems.Count > 0)
+                {
+                    int i = listViewActors.SelectedItems[0].Index;
+                    listViewActors.SelectedItems.Clear();
+                    listViewActors.Items[i].Selected = true;
+                }
+                else
+                    listViewActors.Items[0].Selected = true;
             }
             else
-                listViewActors.Items[0].Selected = true;
+            {
+                AdvancedActorCheat(false);
+            }
         }
 
         private void SingleCallInitialise()
@@ -2520,6 +2670,36 @@ namespace Taz_trainer
                     }
                 }
 
+                //achievements
+                if (this.achievements.Checked == true)
+                {
+                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        // Achievements.CEA
+                        file.Position = 0x184C00;
+                        byte[] injectionAch = { 0x50, 0x51, 0x53, 0x31, 0xC0, 0x3B, 0x05, 0xA8, 0x8B, 0x6C, 0x00, 0x0F, 0x84, 0x67, 0x01, 0x00, 0x00, 0x8B, 0x0D, 0xC0, 0x8B, 0x6C, 0x00, 0x8B, 0x81, 0xCC, 0x01, 0x00, 0x00, 0x8B, 0x88, 0x0C, 0x01, 0x00, 0x00, 0xBB, 0x00, 0x16, 0x73, 0x00, 0x31, 0xC0, 0x3B, 0x03, 0x0F, 0x85, 0x10, 0x00, 0x00, 0x00, 0x80, 0xF9, 0x03, 0x0F, 0x85, 0x07, 0x00, 0x00, 0x00, 0xB8, 0x01, 0x00, 0x00, 0x00, 0x89, 0x03, 0xBB, 0x07, 0x16, 0x73, 0x00, 0x31, 0xC0, 0x3B, 0x03, 0x0F, 0x85, 0x10, 0x00, 0x00, 0x00, 0x80, 0xF9, 0x0D, 0x0F, 0x85, 0x07, 0x00, 0x00, 0x00, 0xB8, 0x01, 0x00, 0x00, 0x00, 0x89, 0x03, 0xBB, 0x12, 0x16, 0x73, 0x00, 0x31, 0xC0, 0x3B, 0x03, 0x0F, 0x85, 0x10, 0x00, 0x00, 0x00, 0x80, 0xF9, 0x0B, 0x0F, 0x85, 0x07, 0x00, 0x00, 0x00, 0xB8, 0x01, 0x00, 0x00, 0x00, 0x89, 0x03, 0xBB, 0x1C, 0x16, 0x73, 0x00, 0x31, 0xC0, 0x3B, 0x03, 0x0F, 0x85, 0x10, 0x00, 0x00, 0x00, 0x80, 0xF9, 0x05, 0x0F, 0x85, 0x07, 0x00, 0x00, 0x00, 0xB8, 0x01, 0x00, 0x00, 0x00, 0x89, 0x03, 0xBB, 0x28, 0x16, 0x73, 0x00, 0x31, 0xC0, 0x3B, 0x03, 0x0F, 0x85, 0x10, 0x00, 0x00, 0x00, 0x80, 0xF9, 0x00, 0x0F, 0x85, 0x07, 0x00, 0x00, 0x00, 0xB8, 0x01, 0x00, 0x00, 0x00, 0x89, 0x03, 0xBB, 0x32, 0x16, 0x73, 0x00, 0x31, 0xC0, 0x3B, 0x03, 0x0F, 0x85, 0x10, 0x00, 0x00, 0x00, 0x80, 0xF9, 0x06, 0x0F, 0x85, 0x07, 0x00, 0x00, 0x00, 0xB8, 0x01, 0x00, 0x00, 0x00, 0x89, 0x03, 0xBB, 0x3C, 0x16, 0x73, 0x00, 0x31, 0xC0, 0x3B, 0x03, 0x0F, 0x85, 0x10, 0x00, 0x00, 0x00, 0x80, 0xF9, 0x0C, 0x0F, 0x85, 0x07, 0x00, 0x00, 0x00, 0xB8, 0x01, 0x00, 0x00, 0x00, 0x89, 0x03, 0xBB, 0x48, 0x16, 0x73, 0x00, 0x31, 0xC0, 0x3B, 0x03, 0x0F, 0x85, 0x10, 0x00, 0x00, 0x00, 0x80, 0xF9, 0x01, 0x0F, 0x85, 0x07, 0x00, 0x00, 0x00, 0xB8, 0x01, 0x00, 0x00, 0x00, 0x89, 0x03, 0xBB, 0x52, 0x16, 0x73, 0x00, 0x31, 0xC0, 0x3B, 0x03, 0x0F, 0x85, 0x10, 0x00, 0x00, 0x00, 0x80, 0xF9, 0x09, 0x0F, 0x85, 0x07, 0x00, 0x00, 0x00, 0xB8, 0x01, 0x00, 0x00, 0x00, 0x89, 0x03, 0xBB, 0x5C, 0x16, 0x73, 0x00, 0x31, 0xC0, 0x3B, 0x03, 0x0F, 0x85, 0x10, 0x00, 0x00, 0x00, 0x80, 0xF9, 0x07, 0x0F, 0x85, 0x07, 0x00, 0x00, 0x00, 0xB8, 0x01, 0x00, 0x00, 0x00, 0x89, 0x03, 0xBB, 0x69, 0x16, 0x73, 0x00, 0x31, 0xC0, 0x3B, 0x03, 0x0F, 0x85, 0x10, 0x00, 0x00, 0x00, 0x80, 0xF9, 0x0A, 0x0F, 0x85, 0x07, 0x00, 0x00, 0x00, 0xB8, 0x01, 0x00, 0x00, 0x00, 0x89, 0x03, 0x5B, 0x59, 0x58, 0x8B, 0x05, 0xA0, 0x8B, 0x6C, 0x00, 0xE9, 0x2F, 0x2B, 0xF2, 0xFF };
+
+                        file.Write(injectionAch, 0, injectionAch.Length);
+
+                        //jump to injection
+                        file.Position = 0xA78B0;
+                        byte[] injectionJmp = { 0xE9, 0x4B, 0xD3, 0x0D, 0x00 };
+                        file.Write(injectionJmp, 0, injectionJmp.Length);
+                        file.Close();
+                    }
+                }
+                else
+                {
+                    using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
+                    {
+                        // restore jump to injection
+                        file.Position = 0xA77F1;
+                        byte[] injectionPreJmp = { 0xA1, 0xA0, 0x8B, 0x6C, 0x00 };
+                        file.Write(injectionPreJmp, 0, injectionPreJmp.Length);
+                        file.Close();
+                    }
+                }
+
                 //dev injections
                 if (this.injections.Checked == true)
                 {
@@ -3150,7 +3330,10 @@ namespace Taz_trainer
             {
                 patch_Click(sender, e);
                 if (toolStripStatusLabel.Text.Contains("taz.dat") == false)
-                    executable_Click(sender, e);
+                {
+                    string TazExecPath = TazFolderPath + "\\Taz.exe";
+                    Process.Start(TazExecPath, "Launched");
+                }
                 else
                     MessageBox.Show("Game config file not found. Launch game via native launcher (Settings -> Shortcuts -> Launcher) to create config, then restart game via patcher.", "File taz.dat not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -3255,8 +3438,7 @@ namespace Taz_trainer
         }
         private void speedrunLink_Click(object sender, EventArgs e)
         {
-            Process.Start("https://github.com/MilkGames/TWASV");
-            //Process.Start("https://github.com/MilkGames/Taz_Wanted_Speedrunning_Patcher");
+            Process.Start("https://retroachievements.org/game/19917");
         }
 
         private void savePatcherSettings_Click(object sender, EventArgs e)
@@ -3779,12 +3961,6 @@ namespace Taz_trainer
             }
         }
 
-        private void form_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (ModifierKeys == Keys.Alt)
-                e.Cancel = true;
-        }
-
         private void updateWrappers_Click(object sender, EventArgs e)
         {
             try
@@ -4052,12 +4228,15 @@ namespace Taz_trainer
             if (listViewActors.SelectedItems.Count > 0)
             {
                 labelSelection.Text = listViewActors.SelectedItems[0].Text;
-                AdvancedActorCheat();
+                AdvancedActorCheat(true);
             }
         }
 
         private void buttonPrev_Click(object sender, EventArgs e)
         {
+            if (ballMode.Checked == false)
+                ballMode.Checked = true;
+
             if (listViewActors.SelectedItems.Count > 0)
             {
                 int i = listViewActors.SelectedItems[0].Index;
@@ -4069,6 +4248,14 @@ namespace Taz_trainer
             }
             else
                 listViewActors.Items[listViewActors.Items.Count - 1].Selected = true;
+
+            // Change trainer button state with no event
+            if (ballMode.Checked == false)
+            {
+                ballMode.CheckedChanged -= ballMode_CheckedChanged;
+                ballMode.Checked = true;
+                ballMode.CheckedChanged += ballMode_CheckedChanged;
+            }
         }
 
         private void buttonNext_Click(object sender, EventArgs e)
@@ -4084,9 +4271,17 @@ namespace Taz_trainer
             }
             else
                 listViewActors.Items[1].Selected = true;
+
+            // Change trainer button state with no event
+            if (ballMode.Checked == false)
+            {
+                ballMode.CheckedChanged -= ballMode_CheckedChanged;
+                ballMode.Checked = true;
+                ballMode.CheckedChanged += ballMode_CheckedChanged;
+            }
         }
 
-        private void AdvancedActorCheat()
+        private void AdvancedActorCheat(bool state)
         {
             // Check patches
             byte[] check = { 0x00 };
@@ -4099,12 +4294,18 @@ namespace Taz_trainer
 
             SingleCallInitialise();
 
-            string actor = labelSelection.Text;
+            string actor = "";
+
+            // Toggle cheat on/off
+            if (state)
+                actor = labelSelection.Text;
+            else
+                actor = "Taz";
 
             // ResetTaz.CEA (InjectionPre)
             byte[] tazdata = { 0x74, 0x61, 0x7A, 0x00, 0x74, 0x61, 0x7A, 0x64, 0x65, 0x76, 0x69, 0x6C, 0x2E, 0x6F, 0x62, 0x65, 0x00 };
             checkAndWrite((IntPtr)0x00731500, tazdata, tazdata.Length, new IntPtr());
-            byte[] tazcode = { 0x68, 0x01, 0x00, 0x00, 0x00, 0x68, 0x00, 0x15, 0x73, 0x00, 0xE8, 0x71, 0x9A, 0xEA, 0xFF, 0x83, 0xC4, 0x08, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x00, 0x15, 0x73, 0x00, 0x68, 0x04, 0x15, 0x73, 0x00, 0xE8, 0x0A, 0xBD, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x05, 0x00, 0x00, 0x00, 0x68, 0x04, 0x15, 0x73, 0x00, 0xE8, 0x8E, 0xC1, 0xE7, 0xFF, 0x8B, 0x15, 0xC0, 0x8B, 0x6C, 0x00, 0x83, 0xC4, 0x04, 0x50, 0x52, 0xE8, 0x5E, 0xEC, 0xE7, 0xFF, 0x83, 0xC4, 0x14, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x50, 0xE8, 0x4F, 0xA1, 0xE3, 0xFF, 0x83, 0xC4, 0x04, 0xE8, 0x07, 0x36, 0xEE, 0xFF, 0xB8, 0x00, 0x00, 0xFA, 0x43, 0xA3, 0x58, 0x9B, 0x64, 0x00, 0x68, 0x1B, 0x00, 0x00, 0x00, 0xE8, 0x83, 0x54, 0xE8, 0xFF, 0x83, 0xC4, 0x04, 0x81, 0x25, 0x28, 0x8E, 0x6C, 0x00, 0xF7, 0xF7, 0xFF, 0xFB, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x05, 0xA0, 0x01, 0x00, 0x00, 0x68, 0x04, 0x15, 0x73, 0x00, 0x50, 0xE8, 0xB0, 0x04, 0xFF, 0xFF, 0x83, 0xC4, 0x08, 0xC3 };
+            byte[] tazcode = { 0x68, 0x01, 0x00, 0x00, 0x00, 0x68, 0x00, 0x15, 0x73, 0x00, 0xE8, 0x71, 0x9A, 0xEA, 0xFF, 0x83, 0xC4, 0x08, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x00, 0x15, 0x73, 0x00, 0x68, 0x04, 0x15, 0x73, 0x00, 0xE8, 0x0A, 0xBD, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x05, 0x00, 0x00, 0x00, 0x68, 0x04, 0x15, 0x73, 0x00, 0xE8, 0x8E, 0xC1, 0xE7, 0xFF, 0x8B, 0x15, 0xC0, 0x8B, 0x6C, 0x00, 0x83, 0xC4, 0x04, 0x50, 0x52, 0xE8, 0x5E, 0xEC, 0xE7, 0xFF, 0x83, 0xC4, 0x14, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x50, 0xE8, 0x4F, 0xA1, 0xE3, 0xFF, 0x83, 0xC4, 0x04, 0xE8, 0x07, 0x36, 0xEE, 0xFF, 0xB8, 0x00, 0x00, 0xFA, 0x43, 0xA3, 0x58, 0x9B, 0x64, 0x00, 0x68, 0x1B, 0x00, 0x00, 0x00, 0xE8, 0x83, 0x54, 0xE8, 0xFF, 0x83, 0xC4, 0x04, 0x81, 0x25, 0x28, 0x8E, 0x6C, 0x00, 0xF7, 0xF7, 0xFF, 0xFB, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x05, 0xA0, 0x01, 0x00, 0x00, 0x68, 0x04, 0x15, 0x73, 0x00, 0x50, 0xE8, 0xB0, 0x04, 0xFF, 0xFF, 0x83, 0xC4, 0x08, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x8B, 0x88, 0xC8, 0x01, 0x00, 0x00, 0x8B, 0x81, 0xB0, 0x00, 0x00, 0x00, 0x83, 0xF8, 0x51, 0x0F, 0x85, 0x0A, 0x00, 0x00, 0x00, 0xC7, 0x81, 0xB0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xC3 };
             checkAndWrite((IntPtr)0x005F6C80, tazcode, tazcode.Length, new IntPtr());
 
             float CameraDistance = 500;
@@ -4298,6 +4499,7 @@ namespace Taz_trainer
                 // Actor.CEA
                 byte[] code = { 0x68, 0x01, 0x00, 0x00, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0xE8, 0xF1, 0x9D, 0xEA, 0xFF, 0x83, 0xC4, 0x08, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0x68, 0xA0, 0x13, 0x73, 0x00, 0xE8, 0x8A, 0xC0, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x05, 0x00, 0x00, 0x00, 0x68, 0xA0, 0x13, 0x73, 0x00, 0xE8, 0x0E, 0xC5, 0xE7, 0xFF, 0x8B, 0x15, 0xC0, 0x8B, 0x6C, 0x00, 0x83, 0xC4, 0x04, 0x50, 0x52, 0xE8, 0xDE, 0xEF, 0xE7, 0xFF, 0x83, 0xC4, 0x14, 0xE8, 0x96, 0x39, 0xEE, 0xFF, 0x8B, 0x05, 0x30, 0x55, 0x65, 0x00, 0xA3, 0x58, 0x9B, 0x64, 0x00, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x05, 0xA0, 0x01, 0x00, 0x00, 0x68, 0xA0, 0x13, 0x73, 0x00, 0x50, 0xE8, 0x55, 0x08, 0xFF, 0xFF, 0x83, 0xC4, 0x08, 0xC3 };
                 checkAndWrite((IntPtr)0x005F6900, code, code.Length, new IntPtr());
+                CameraDistance = 1000;
             }
             else if (actor == "Beaky Parrot")
             {
@@ -4308,6 +4510,7 @@ namespace Taz_trainer
                 // Actor.CEA
                 byte[] code = { 0x68, 0x01, 0x00, 0x00, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0xE8, 0xF1, 0x9D, 0xEA, 0xFF, 0x83, 0xC4, 0x08, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0x68, 0xA0, 0x13, 0x73, 0x00, 0xE8, 0x8A, 0xC0, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x05, 0x00, 0x00, 0x00, 0x68, 0xA0, 0x13, 0x73, 0x00, 0xE8, 0x0E, 0xC5, 0xE7, 0xFF, 0x8B, 0x15, 0xC0, 0x8B, 0x6C, 0x00, 0x83, 0xC4, 0x04, 0x50, 0x52, 0xE8, 0xDE, 0xEF, 0xE7, 0xFF, 0x83, 0xC4, 0x14, 0xE8, 0x96, 0x39, 0xEE, 0xFF, 0x8B, 0x05, 0x30, 0x55, 0x65, 0x00, 0xA3, 0x58, 0x9B, 0x64, 0x00, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x05, 0xA0, 0x01, 0x00, 0x00, 0x68, 0xA0, 0x13, 0x73, 0x00, 0x50, 0xE8, 0x55, 0x08, 0xFF, 0xFF, 0x83, 0xC4, 0x08, 0xC3 };
                 checkAndWrite((IntPtr)0x005F6900, code, code.Length, new IntPtr());
+                CameraDistance = 1000;
             }
             else if (actor == "Bear Brown")
             {
@@ -4340,6 +4543,7 @@ namespace Taz_trainer
                 // Actor.CEA
                 byte[] code = { 0x68, 0x01, 0x00, 0x00, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0xE8, 0xF1, 0x9D, 0xEA, 0xFF, 0x83, 0xC4, 0x08, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0x68, 0xA0, 0x13, 0x73, 0x00, 0xE8, 0x8A, 0xC0, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x05, 0x00, 0x00, 0x00, 0x68, 0xA0, 0x13, 0x73, 0x00, 0xE8, 0x0E, 0xC5, 0xE7, 0xFF, 0x8B, 0x15, 0xC0, 0x8B, 0x6C, 0x00, 0x83, 0xC4, 0x04, 0x50, 0x52, 0xE8, 0xDE, 0xEF, 0xE7, 0xFF, 0x83, 0xC4, 0x14, 0xE8, 0x96, 0x39, 0xEE, 0xFF, 0x8B, 0x05, 0x30, 0x55, 0x65, 0x00, 0xA3, 0x58, 0x9B, 0x64, 0x00, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x05, 0xA0, 0x01, 0x00, 0x00, 0x68, 0xA0, 0x13, 0x73, 0x00, 0x50, 0xE8, 0x55, 0x08, 0xFF, 0xFF, 0x83, 0xC4, 0x08, 0xC3 };
                 checkAndWrite((IntPtr)0x005F6900, code, code.Length, new IntPtr());
+                CameraDistance = 1000;
             }
             else if (actor == "Bot Miner")
             {
@@ -4350,6 +4554,7 @@ namespace Taz_trainer
                 // Actor.CEA
                 byte[] code = { 0x68, 0x01, 0x00, 0x00, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0xE8, 0xF1, 0x9D, 0xEA, 0xFF, 0x83, 0xC4, 0x08, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0x68, 0xA0, 0x13, 0x73, 0x00, 0xE8, 0x8A, 0xC0, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x05, 0x00, 0x00, 0x00, 0x68, 0xA0, 0x13, 0x73, 0x00, 0xE8, 0x0E, 0xC5, 0xE7, 0xFF, 0x8B, 0x15, 0xC0, 0x8B, 0x6C, 0x00, 0x83, 0xC4, 0x04, 0x50, 0x52, 0xE8, 0xDE, 0xEF, 0xE7, 0xFF, 0x83, 0xC4, 0x14, 0xE8, 0x96, 0x39, 0xEE, 0xFF, 0x8B, 0x05, 0x30, 0x55, 0x65, 0x00, 0xA3, 0x58, 0x9B, 0x64, 0x00, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x05, 0xA0, 0x01, 0x00, 0x00, 0x68, 0xA0, 0x13, 0x73, 0x00, 0x50, 0xE8, 0x55, 0x08, 0xFF, 0xFF, 0x83, 0xC4, 0x08, 0xC3 };
                 checkAndWrite((IntPtr)0x005F6900, code, code.Length, new IntPtr());
+                CameraDistance = 1000;
             }
             else if (actor == "Bot Security")
             {
@@ -4360,6 +4565,7 @@ namespace Taz_trainer
                 // Actor.CEA
                 byte[] code = { 0x68, 0x01, 0x00, 0x00, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0xE8, 0xF1, 0x9D, 0xEA, 0xFF, 0x83, 0xC4, 0x08, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0x68, 0xA0, 0x13, 0x73, 0x00, 0xE8, 0x8A, 0xC0, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x05, 0x00, 0x00, 0x00, 0x68, 0xA0, 0x13, 0x73, 0x00, 0xE8, 0x0E, 0xC5, 0xE7, 0xFF, 0x8B, 0x15, 0xC0, 0x8B, 0x6C, 0x00, 0x83, 0xC4, 0x04, 0x50, 0x52, 0xE8, 0xDE, 0xEF, 0xE7, 0xFF, 0x83, 0xC4, 0x14, 0xE8, 0x96, 0x39, 0xEE, 0xFF, 0x8B, 0x05, 0x30, 0x55, 0x65, 0x00, 0xA3, 0x58, 0x9B, 0x64, 0x00, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x05, 0xA0, 0x01, 0x00, 0x00, 0x68, 0xA0, 0x13, 0x73, 0x00, 0x50, 0xE8, 0x55, 0x08, 0xFF, 0xFF, 0x83, 0xC4, 0x08, 0xC3 };
                 checkAndWrite((IntPtr)0x005F6900, code, code.Length, new IntPtr());
+                CameraDistance = 1000;
             }
             else if (actor == "Builder")
             {
@@ -4402,6 +4608,7 @@ namespace Taz_trainer
                 // Actor.CEA
                 byte[] code = { 0x68, 0x01, 0x00, 0x00, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0xE8, 0xF1, 0x9D, 0xEA, 0xFF, 0x83, 0xC4, 0x08, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0x68, 0xA0, 0x13, 0x73, 0x00, 0xE8, 0x8A, 0xC0, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x05, 0x00, 0x00, 0x00, 0x68, 0xA0, 0x13, 0x73, 0x00, 0xE8, 0x0E, 0xC5, 0xE7, 0xFF, 0x8B, 0x15, 0xC0, 0x8B, 0x6C, 0x00, 0x83, 0xC4, 0x04, 0x50, 0x52, 0xE8, 0xDE, 0xEF, 0xE7, 0xFF, 0x83, 0xC4, 0x14, 0xE8, 0x96, 0x39, 0xEE, 0xFF, 0x8B, 0x05, 0x30, 0x55, 0x65, 0x00, 0xA3, 0x58, 0x9B, 0x64, 0x00, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x05, 0xA0, 0x01, 0x00, 0x00, 0x68, 0xA0, 0x13, 0x73, 0x00, 0x50, 0xE8, 0x55, 0x08, 0xFF, 0xFF, 0x83, 0xC4, 0x08, 0xC3 };
                 checkAndWrite((IntPtr)0x005F6900, code, code.Length, new IntPtr());
+                CameraDistance = 1000;
             }
             else if (actor == "Dog Security")
             {
@@ -4412,6 +4619,7 @@ namespace Taz_trainer
                 // Actor.CEA
                 byte[] code = { 0x68, 0x01, 0x00, 0x00, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0xE8, 0xF1, 0x9D, 0xEA, 0xFF, 0x83, 0xC4, 0x08, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0x68, 0xA0, 0x13, 0x73, 0x00, 0xE8, 0x8A, 0xC0, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x05, 0x00, 0x00, 0x00, 0x68, 0xA0, 0x13, 0x73, 0x00, 0xE8, 0x0E, 0xC5, 0xE7, 0xFF, 0x8B, 0x15, 0xC0, 0x8B, 0x6C, 0x00, 0x83, 0xC4, 0x04, 0x50, 0x52, 0xE8, 0xDE, 0xEF, 0xE7, 0xFF, 0x83, 0xC4, 0x14, 0xE8, 0x96, 0x39, 0xEE, 0xFF, 0x8B, 0x05, 0x30, 0x55, 0x65, 0x00, 0xA3, 0x58, 0x9B, 0x64, 0x00, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x05, 0xA0, 0x01, 0x00, 0x00, 0x68, 0xA0, 0x13, 0x73, 0x00, 0x50, 0xE8, 0x55, 0x08, 0xFF, 0xFF, 0x83, 0xC4, 0x08, 0xC3 };
                 checkAndWrite((IntPtr)0x005F6900, code, code.Length, new IntPtr());
+                CameraDistance = 1000;
             }
             else if (actor == "Elephant")
             {
@@ -4484,6 +4692,7 @@ namespace Taz_trainer
                 // Actor.CEA
                 byte[] code = { 0x68, 0x01, 0x00, 0x00, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0xE8, 0xF1, 0x9D, 0xEA, 0xFF, 0x83, 0xC4, 0x08, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0x68, 0xA0, 0x13, 0x73, 0x00, 0xE8, 0x8A, 0xC0, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x05, 0x00, 0x00, 0x00, 0x68, 0xA0, 0x13, 0x73, 0x00, 0xE8, 0x0E, 0xC5, 0xE7, 0xFF, 0x8B, 0x15, 0xC0, 0x8B, 0x6C, 0x00, 0x83, 0xC4, 0x04, 0x50, 0x52, 0xE8, 0xDE, 0xEF, 0xE7, 0xFF, 0x83, 0xC4, 0x14, 0xE8, 0x96, 0x39, 0xEE, 0xFF, 0x8B, 0x05, 0x30, 0x55, 0x65, 0x00, 0xA3, 0x58, 0x9B, 0x64, 0x00, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x05, 0xA0, 0x01, 0x00, 0x00, 0x68, 0xA0, 0x13, 0x73, 0x00, 0x50, 0xE8, 0x55, 0x08, 0xFF, 0xFF, 0x83, 0xC4, 0x08, 0xC3 };
                 checkAndWrite((IntPtr)0x005F6900, code, code.Length, new IntPtr());
+                CameraDistance = 1000;
             }
             else if (actor == "Mouse")
             {
@@ -4491,8 +4700,8 @@ namespace Taz_trainer
                 checkAndWrite((IntPtr)0x00731380, pak, pak.Length, new IntPtr());
                 byte[] obe = Encoding.ASCII.GetBytes("extras\\mouse.obe\0");
                 checkAndWrite((IntPtr)0x007313A0, obe, obe.Length, new IntPtr());
-                // Actor.CEA
-                byte[] code = { 0x68, 0x01, 0x00, 0x00, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0xE8, 0xF1, 0x9D, 0xEA, 0xFF, 0x83, 0xC4, 0x08, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0x68, 0xA0, 0x13, 0x73, 0x00, 0xE8, 0x8A, 0xC0, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x05, 0x00, 0x00, 0x00, 0x68, 0xA0, 0x13, 0x73, 0x00, 0xE8, 0x0E, 0xC5, 0xE7, 0xFF, 0x8B, 0x15, 0xC0, 0x8B, 0x6C, 0x00, 0x83, 0xC4, 0x04, 0x50, 0x52, 0xE8, 0xDE, 0xEF, 0xE7, 0xFF, 0x83, 0xC4, 0x14, 0xE8, 0x96, 0x39, 0xEE, 0xFF, 0x8B, 0x05, 0x30, 0x55, 0x65, 0x00, 0xA3, 0x58, 0x9B, 0x64, 0x00, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x05, 0xA0, 0x01, 0x00, 0x00, 0x68, 0xA0, 0x13, 0x73, 0x00, 0x50, 0xE8, 0x55, 0x08, 0xFF, 0xFF, 0x83, 0xC4, 0x08, 0xC3 };
+                // Mouse.CEA
+                byte[] code = { 0x68, 0x01, 0x00, 0x00, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0xE8, 0xF1, 0x9D, 0xEA, 0xFF, 0x83, 0xC4, 0x08, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0x68, 0xA0, 0x13, 0x73, 0x00, 0xE8, 0x8A, 0xC0, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x00, 0x00, 0x00, 0x00, 0x68, 0x05, 0x00, 0x00, 0x00, 0x68, 0xA0, 0x13, 0x73, 0x00, 0xE8, 0x0E, 0xC5, 0xE7, 0xFF, 0x8B, 0x15, 0xC0, 0x8B, 0x6C, 0x00, 0x83, 0xC4, 0x04, 0x50, 0x52, 0xE8, 0xDE, 0xEF, 0xE7, 0xFF, 0x83, 0xC4, 0x14, 0xE8, 0x96, 0x39, 0xEE, 0xFF, 0x8B, 0x05, 0x30, 0x55, 0x65, 0x00, 0xA3, 0x58, 0x9B, 0x64, 0x00, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x05, 0xA0, 0x01, 0x00, 0x00, 0x68, 0xA0, 0x13, 0x73, 0x00, 0x50, 0xE8, 0x55, 0x08, 0xFF, 0xFF, 0x83, 0xC4, 0x08, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x8B, 0x88, 0xC8, 0x01, 0x00, 0x00, 0xC7, 0x81, 0xB0, 0x00, 0x00, 0x00, 0x51, 0x00, 0x00, 0x00, 0xC3 };
                 checkAndWrite((IntPtr)0x005F6900, code, code.Length, new IntPtr());
             }
             else if (actor == "Nasty Canasta")
@@ -4638,6 +4847,8 @@ namespace Taz_trainer
         private void pictureTaz_DoubleClick(object sender, EventArgs e)
         {
             injections.Visible = !injections.Visible;
+            kill2.Visible = !kill2.Visible;
+            achReset.Visible = !achReset.Visible;
         }
         private void SpdInitOptions()
         {
@@ -4710,6 +4921,7 @@ namespace Taz_trainer
             disableDrawDistance.Checked = false;
             fogComboBox.SelectedIndex = 0;
 
+            this.Text = "Taz Wanted · SAFE MODE";
         }
         private void SpdUnockOptions()
         {
@@ -4767,6 +4979,8 @@ namespace Taz_trainer
                 apiComboBox.SelectedIndex = 0;
 
             disableDrawDistance.Checked = true;
+
+            this.Text = "Taz Wanted · Trainer & Patcher";
         }
 
         private void speedrunMode_Click(object sender, EventArgs e)
@@ -4880,6 +5094,89 @@ namespace Taz_trainer
                 }
             }
         }
+
+        private void DrawAchievementsTable()
+        {
+            var NameFont = new Font("Segoe UI", 13, FontStyle.Bold);
+            var DescFont = new Font("Segoe UI", 12);
+
+            for (int i = 0; i < Achievements.GetLength(0); i++)
+            {
+                listViewAchievements.Items.Add(i.ToString(), "", Achievements[i, 0] + "_lock.png");
+                // Colors
+                if (i % 2 == 0)
+                    listViewAchievements.Items[i].BackColor = listViewAchievements.BackColor;
+                else
+                    listViewAchievements.Items[i].BackColor = Color.Beige;
+                // Add achievement
+                listViewAchievements.Items[i].UseItemStyleForSubItems = false;
+                listViewAchievements.Items[i].SubItems.Add(Achievements[i, 1], Color.Black, listViewAchievements.Items[i].BackColor, NameFont);
+                listViewAchievements.Items[i].SubItems.Add(Achievements[i, 2], Color.Black, listViewAchievements.Items[i].BackColor, DescFont);
+            }
+
+            progressBarAchievements.Maximum = achievementsTotal;
+        }
+
+        private void UpdateAchievementsTable()
+        {
+            int unlocked = 0;
+
+            for (int i = 0; i < achievementsTotal; i++)
+            {
+                // Check unlock
+                if (achievementsStateTrainer[i])
+                {
+                    listViewAchievements.Items[i].ImageKey = Achievements[i, 0] + ".png";
+                    unlocked++;
+                }
+                else
+                    listViewAchievements.Items[i].ImageKey = Achievements[i, 0] + "_lock.png";
+            }
+            labelAchievementsProgress.Text = unlocked.ToString() + '/' + achievementsTotal.ToString();
+            progressBarAchievements.Value = unlocked;
+        }
+
+        private void timerAchievementCheck_Tick(object sender, EventArgs e)
+        {
+            // Read achievement states
+            byte[] achievementStatesGame = Enumerable.Repeat<byte>(0, achievementsTotal).ToArray(); ;
+            checkAndRead((IntPtr)0x00731600, achievementStatesGame, achievementStatesGame.Length, new IntPtr());
+
+            for (int i = 0; i < achievementsTotal; i++)
+            {
+                if (achievementStatesGame[i] == 0x01 && achievementsStateTrainer[i] == false)
+                {
+                    achievementsStateTrainer[i] = true;
+
+                    string AchievementMessage = "Achievement Unlocked! " + listViewAchievements.Items[i].SubItems[1].Text;
+                    message(AchievementMessage);
+                    this.toolStripStatusLabel.Text = AchievementMessage;
+                    this.toolStripStatusLabel.ForeColor = System.Drawing.Color.Green;
+                }
+            }
+
+            UpdateAchievementsTable();
+
+        }
+
+        private void achReset_Click(object sender, EventArgs e)
+        {
+            // Reset in-game achievements states
+            byte[] achievementStatesGame = Enumerable.Repeat<byte>(0, achievementsTotal).ToArray(); ;
+            checkAndWrite((IntPtr)0x00731600, achievementStatesGame, achievementStatesGame.Length, new IntPtr());
+
+            // Reset trainer achievements states
+            for (int i = 0; i < achievementsTotal; i++)
+                achievementsStateTrainer[i] = false;
+
+            UpdateAchievementsTable();
+
+            string AchievementMessage = "Reset All Achievements";
+            message(AchievementMessage);
+            this.toolStripStatusLabel.Text = AchievementMessage;
+            this.toolStripStatusLabel.ForeColor = System.Drawing.Color.Green;
+        }
     }
 }
+
 
