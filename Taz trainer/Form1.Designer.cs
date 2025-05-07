@@ -30,61 +30,61 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form));
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("ACME Costumes", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Characters", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewItem listViewItem54 = new System.Windows.Forms.ListViewItem("Agent", "Agent.png");
-            System.Windows.Forms.ListViewItem listViewItem55 = new System.Windows.Forms.ListViewItem("Bandit", "Bandit.png");
-            System.Windows.Forms.ListViewItem listViewItem56 = new System.Windows.Forms.ListViewItem("Construction Worker", "Construction Worker.png");
-            System.Windows.Forms.ListViewItem listViewItem57 = new System.Windows.Forms.ListViewItem("Explorer", "Explorer.png");
-            System.Windows.Forms.ListViewItem listViewItem58 = new System.Windows.Forms.ListViewItem("Indy", "Indy.png");
-            System.Windows.Forms.ListViewItem listViewItem59 = new System.Windows.Forms.ListViewItem("Miner", "Miner.png");
-            System.Windows.Forms.ListViewItem listViewItem60 = new System.Windows.Forms.ListViewItem("Ninja", "Ninja.png");
-            System.Windows.Forms.ListViewItem listViewItem61 = new System.Windows.Forms.ListViewItem("Rappa", "Rappa.png");
-            System.Windows.Forms.ListViewItem listViewItem62 = new System.Windows.Forms.ListViewItem("Reindeer", "Reindeer.png");
-            System.Windows.Forms.ListViewItem listViewItem63 = new System.Windows.Forms.ListViewItem("Skater", "Skater.png");
-            System.Windows.Forms.ListViewItem listViewItem64 = new System.Windows.Forms.ListViewItem("Snowboarder", "Snowboard.png");
-            System.Windows.Forms.ListViewItem listViewItem65 = new System.Windows.Forms.ListViewItem("Stuntman", "Stuntman.png");
-            System.Windows.Forms.ListViewItem listViewItem66 = new System.Windows.Forms.ListViewItem("Surfer", "Surfer.png");
-            System.Windows.Forms.ListViewItem listViewItem67 = new System.Windows.Forms.ListViewItem("SWAT", "Swat.png");
-            System.Windows.Forms.ListViewItem listViewItem68 = new System.Windows.Forms.ListViewItem("Tarzan", "Tarzan.png");
-            System.Windows.Forms.ListViewItem listViewItem69 = new System.Windows.Forms.ListViewItem("Trippy", "Trippy.png");
-            System.Windows.Forms.ListViewItem listViewItem70 = new System.Windows.Forms.ListViewItem("Werewolf", "Werewolf.png");
-            System.Windows.Forms.ListViewItem listViewItem71 = new System.Windows.Forms.ListViewItem("Alligator", "Alligator.png");
-            System.Windows.Forms.ListViewItem listViewItem72 = new System.Windows.Forms.ListViewItem("Ape Pirate", "Ape Pirate.png");
-            System.Windows.Forms.ListViewItem listViewItem73 = new System.Windows.Forms.ListViewItem("Bandit Cowboy", "Bandit Cowboy.png");
-            System.Windows.Forms.ListViewItem listViewItem74 = new System.Windows.Forms.ListViewItem("Bandit Miner", "Bandit Miner.png");
-            System.Windows.Forms.ListViewItem listViewItem75 = new System.Windows.Forms.ListViewItem("Beaky Buzzard", "Beaky Buzzard.png");
-            System.Windows.Forms.ListViewItem listViewItem76 = new System.Windows.Forms.ListViewItem("Beaky Parrot", "Beaky Parrot.png");
-            System.Windows.Forms.ListViewItem listViewItem77 = new System.Windows.Forms.ListViewItem("Bear Brown", "Bear Brown.png");
-            System.Windows.Forms.ListViewItem listViewItem78 = new System.Windows.Forms.ListViewItem("Bear Polar", "Bear Polar.png");
-            System.Windows.Forms.ListViewItem listViewItem79 = new System.Windows.Forms.ListViewItem("Bot Builder", "Bot Builder.png");
-            System.Windows.Forms.ListViewItem listViewItem80 = new System.Windows.Forms.ListViewItem("Bot Miner", "Bot Miner.png");
-            System.Windows.Forms.ListViewItem listViewItem81 = new System.Windows.Forms.ListViewItem("Bot Security", "Bot Security.png");
-            System.Windows.Forms.ListViewItem listViewItem82 = new System.Windows.Forms.ListViewItem("Builder", "Builder.png");
-            System.Windows.Forms.ListViewItem listViewItem83 = new System.Windows.Forms.ListViewItem("Catcher", "Catcher.png");
-            System.Windows.Forms.ListViewItem listViewItem84 = new System.Windows.Forms.ListViewItem("Daffy Duck", "Daffy Duck.png");
-            System.Windows.Forms.ListViewItem listViewItem85 = new System.Windows.Forms.ListViewItem("Dog Monster", "Dog Monster.png");
-            System.Windows.Forms.ListViewItem listViewItem86 = new System.Windows.Forms.ListViewItem("Dog Security", "Dog Security.png");
-            System.Windows.Forms.ListViewItem listViewItem87 = new System.Windows.Forms.ListViewItem("Elephant", "Elephant.png");
-            System.Windows.Forms.ListViewItem listViewItem88 = new System.Windows.Forms.ListViewItem("Elmer Fudd", "Elmer Fudd.png");
-            System.Windows.Forms.ListViewItem listViewItem89 = new System.Windows.Forms.ListViewItem("Glover Ball", "Glover Ball.png");
-            System.Windows.Forms.ListViewItem listViewItem90 = new System.Windows.Forms.ListViewItem("Gossamer", "Gossamer.png");
-            System.Windows.Forms.ListViewItem listViewItem91 = new System.Windows.Forms.ListViewItem("Guard Green", "Guard Green.png");
-            System.Windows.Forms.ListViewItem listViewItem92 = new System.Windows.Forms.ListViewItem("Guard Red", "Guard Red.png");
-            System.Windows.Forms.ListViewItem listViewItem93 = new System.Windows.Forms.ListViewItem("Monkey", "Monkey.png");
-            System.Windows.Forms.ListViewItem listViewItem94 = new System.Windows.Forms.ListViewItem("Mouse", "Mouse.png");
-            System.Windows.Forms.ListViewItem listViewItem95 = new System.Windows.Forms.ListViewItem("Nasty Canasta", "Nasty Canasta.png");
-            System.Windows.Forms.ListViewItem listViewItem96 = new System.Windows.Forms.ListViewItem("Shark", "Shark.png");
-            System.Windows.Forms.ListViewItem listViewItem97 = new System.Windows.Forms.ListViewItem("Shedevil", "Shedevil.png");
-            System.Windows.Forms.ListViewItem listViewItem98 = new System.Windows.Forms.ListViewItem("Sylvester the Cat", "Sylvester the Cat.png");
-            System.Windows.Forms.ListViewItem listViewItem99 = new System.Windows.Forms.ListViewItem("Taz", "Taz.png");
-            System.Windows.Forms.ListViewItem listViewItem100 = new System.Windows.Forms.ListViewItem("Tribal Chief", "Tribal Chief.png");
-            System.Windows.Forms.ListViewItem listViewItem101 = new System.Windows.Forms.ListViewItem("Tweety", "Tweety.png");
-            System.Windows.Forms.ListViewItem listViewItem102 = new System.Windows.Forms.ListViewItem("Tweety Mecha", "Tweety Mecha.png");
-            System.Windows.Forms.ListViewItem listViewItem103 = new System.Windows.Forms.ListViewItem("Whack-in-a-Box", "Whack-in-a-Box.png");
-            System.Windows.Forms.ListViewItem listViewItem104 = new System.Windows.Forms.ListViewItem("Wile E. Coyote", "Wile E. Coyote.png");
-            System.Windows.Forms.ListViewItem listViewItem105 = new System.Windows.Forms.ListViewItem("Yosemite Sam", "Yosemite Sam.png");
-            System.Windows.Forms.ListViewItem listViewItem106 = new System.Windows.Forms.ListViewItem("Yosemite Sam Tycoon", "Yosemite Sam Tycoon.png");
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("ACME Costumes", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Characters", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Agent", "Agent.png");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Bandit", "Bandit.png");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Construction Worker", "Construction Worker.png");
+            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Explorer", "Explorer.png");
+            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Indy", "Indy.png");
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Miner", "Miner.png");
+            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Ninja", "Ninja.png");
+            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Rappa", "Rappa.png");
+            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Reindeer", "Reindeer.png");
+            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Skater", "Skater.png");
+            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("Snowboarder", "Snowboard.png");
+            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("Stuntman", "Stuntman.png");
+            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("Surfer", "Surfer.png");
+            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("SWAT", "Swat.png");
+            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("Tarzan", "Tarzan.png");
+            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("Trippy", "Trippy.png");
+            System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem("Werewolf", "Werewolf.png");
+            System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem("Alligator", "Alligator.png");
+            System.Windows.Forms.ListViewItem listViewItem19 = new System.Windows.Forms.ListViewItem("Ape Pirate", "Ape Pirate.png");
+            System.Windows.Forms.ListViewItem listViewItem20 = new System.Windows.Forms.ListViewItem("Bandit Cowboy", "Bandit Cowboy.png");
+            System.Windows.Forms.ListViewItem listViewItem21 = new System.Windows.Forms.ListViewItem("Bandit Miner", "Bandit Miner.png");
+            System.Windows.Forms.ListViewItem listViewItem22 = new System.Windows.Forms.ListViewItem("Beaky Buzzard", "Beaky Buzzard.png");
+            System.Windows.Forms.ListViewItem listViewItem23 = new System.Windows.Forms.ListViewItem("Beaky Parrot", "Beaky Parrot.png");
+            System.Windows.Forms.ListViewItem listViewItem24 = new System.Windows.Forms.ListViewItem("Bear Brown", "Bear Brown.png");
+            System.Windows.Forms.ListViewItem listViewItem25 = new System.Windows.Forms.ListViewItem("Bear Polar", "Bear Polar.png");
+            System.Windows.Forms.ListViewItem listViewItem26 = new System.Windows.Forms.ListViewItem("Bot Builder", "Bot Builder.png");
+            System.Windows.Forms.ListViewItem listViewItem27 = new System.Windows.Forms.ListViewItem("Bot Miner", "Bot Miner.png");
+            System.Windows.Forms.ListViewItem listViewItem28 = new System.Windows.Forms.ListViewItem("Bot Security", "Bot Security.png");
+            System.Windows.Forms.ListViewItem listViewItem29 = new System.Windows.Forms.ListViewItem("Builder", "Builder.png");
+            System.Windows.Forms.ListViewItem listViewItem30 = new System.Windows.Forms.ListViewItem("Catcher", "Catcher.png");
+            System.Windows.Forms.ListViewItem listViewItem31 = new System.Windows.Forms.ListViewItem("Daffy Duck", "Daffy Duck.png");
+            System.Windows.Forms.ListViewItem listViewItem32 = new System.Windows.Forms.ListViewItem("Dog Monster", "Dog Monster.png");
+            System.Windows.Forms.ListViewItem listViewItem33 = new System.Windows.Forms.ListViewItem("Dog Security", "Dog Security.png");
+            System.Windows.Forms.ListViewItem listViewItem34 = new System.Windows.Forms.ListViewItem("Elephant", "Elephant.png");
+            System.Windows.Forms.ListViewItem listViewItem35 = new System.Windows.Forms.ListViewItem("Elmer Fudd", "Elmer Fudd.png");
+            System.Windows.Forms.ListViewItem listViewItem36 = new System.Windows.Forms.ListViewItem("Glover Ball", "Glover Ball.png");
+            System.Windows.Forms.ListViewItem listViewItem37 = new System.Windows.Forms.ListViewItem("Gossamer", "Gossamer.png");
+            System.Windows.Forms.ListViewItem listViewItem38 = new System.Windows.Forms.ListViewItem("Guard Green", "Guard Green.png");
+            System.Windows.Forms.ListViewItem listViewItem39 = new System.Windows.Forms.ListViewItem("Guard Red", "Guard Red.png");
+            System.Windows.Forms.ListViewItem listViewItem40 = new System.Windows.Forms.ListViewItem("Monkey", "Monkey.png");
+            System.Windows.Forms.ListViewItem listViewItem41 = new System.Windows.Forms.ListViewItem("Mouse", "Mouse.png");
+            System.Windows.Forms.ListViewItem listViewItem42 = new System.Windows.Forms.ListViewItem("Nasty Canasta", "Nasty Canasta.png");
+            System.Windows.Forms.ListViewItem listViewItem43 = new System.Windows.Forms.ListViewItem("Shark", "Shark.png");
+            System.Windows.Forms.ListViewItem listViewItem44 = new System.Windows.Forms.ListViewItem("Shedevil", "Shedevil.png");
+            System.Windows.Forms.ListViewItem listViewItem45 = new System.Windows.Forms.ListViewItem("Sylvester the Cat", "Sylvester the Cat.png");
+            System.Windows.Forms.ListViewItem listViewItem46 = new System.Windows.Forms.ListViewItem("Taz", "Taz.png");
+            System.Windows.Forms.ListViewItem listViewItem47 = new System.Windows.Forms.ListViewItem("Tribal Chief", "Tribal Chief.png");
+            System.Windows.Forms.ListViewItem listViewItem48 = new System.Windows.Forms.ListViewItem("Tweety", "Tweety.png");
+            System.Windows.Forms.ListViewItem listViewItem49 = new System.Windows.Forms.ListViewItem("Tweety Mecha", "Tweety Mecha.png");
+            System.Windows.Forms.ListViewItem listViewItem50 = new System.Windows.Forms.ListViewItem("Whack-in-a-Box", "Whack-in-a-Box.png");
+            System.Windows.Forms.ListViewItem listViewItem51 = new System.Windows.Forms.ListViewItem("Wile E. Coyote", "Wile E. Coyote.png");
+            System.Windows.Forms.ListViewItem listViewItem52 = new System.Windows.Forms.ListViewItem("Yosemite Sam", "Yosemite Sam.png");
+            System.Windows.Forms.ListViewItem listViewItem53 = new System.Windows.Forms.ListViewItem("Yosemite Sam Tycoon", "Yosemite Sam Tycoon.png");
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusField = new System.Windows.Forms.ToolStripStatusLabel();
@@ -2862,121 +2862,121 @@
             this.listViewActors.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listViewActors.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listViewActors.GridLines = true;
-            listViewGroup3.Header = "ACME Costumes";
-            listViewGroup3.Name = "ListViewAcme";
-            listViewGroup4.Header = "Characters";
-            listViewGroup4.Name = "ListViewChar";
+            listViewGroup1.Header = "ACME Costumes";
+            listViewGroup1.Name = "ListViewAcme";
+            listViewGroup2.Header = "Characters";
+            listViewGroup2.Name = "ListViewChar";
             this.listViewActors.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup3,
-            listViewGroup4});
+            listViewGroup1,
+            listViewGroup2});
             this.listViewActors.HideSelection = false;
-            listViewItem54.Group = listViewGroup3;
-            listViewItem55.Group = listViewGroup3;
-            listViewItem56.Group = listViewGroup3;
-            listViewItem57.Group = listViewGroup3;
-            listViewItem58.Group = listViewGroup3;
-            listViewItem59.Group = listViewGroup3;
-            listViewItem60.Group = listViewGroup3;
-            listViewItem61.Group = listViewGroup3;
-            listViewItem62.Group = listViewGroup3;
-            listViewItem63.Group = listViewGroup3;
-            listViewItem64.Group = listViewGroup3;
-            listViewItem65.Group = listViewGroup3;
-            listViewItem66.Group = listViewGroup3;
-            listViewItem67.Group = listViewGroup3;
-            listViewItem68.Group = listViewGroup3;
-            listViewItem69.Group = listViewGroup3;
-            listViewItem70.Group = listViewGroup3;
-            listViewItem71.Group = listViewGroup4;
-            listViewItem72.Group = listViewGroup4;
-            listViewItem73.Group = listViewGroup4;
-            listViewItem74.Group = listViewGroup4;
-            listViewItem75.Group = listViewGroup4;
-            listViewItem76.Group = listViewGroup4;
-            listViewItem77.Group = listViewGroup4;
-            listViewItem78.Group = listViewGroup4;
-            listViewItem79.Group = listViewGroup4;
-            listViewItem80.Group = listViewGroup4;
-            listViewItem81.Group = listViewGroup4;
-            listViewItem82.Group = listViewGroup4;
-            listViewItem83.Group = listViewGroup4;
-            listViewItem84.Group = listViewGroup4;
-            listViewItem85.Group = listViewGroup4;
-            listViewItem86.Group = listViewGroup4;
-            listViewItem87.Group = listViewGroup4;
-            listViewItem88.Group = listViewGroup4;
-            listViewItem89.Group = listViewGroup4;
-            listViewItem90.Group = listViewGroup4;
-            listViewItem91.Group = listViewGroup4;
-            listViewItem92.Group = listViewGroup4;
-            listViewItem93.Group = listViewGroup4;
-            listViewItem94.Group = listViewGroup4;
-            listViewItem95.Group = listViewGroup4;
-            listViewItem96.Group = listViewGroup4;
-            listViewItem97.Group = listViewGroup4;
-            listViewItem98.Group = listViewGroup4;
-            listViewItem99.Group = listViewGroup4;
-            listViewItem100.Group = listViewGroup4;
-            listViewItem101.Group = listViewGroup4;
-            listViewItem102.Group = listViewGroup4;
-            listViewItem103.Group = listViewGroup4;
-            listViewItem104.Group = listViewGroup4;
-            listViewItem105.Group = listViewGroup4;
-            listViewItem106.Group = listViewGroup4;
+            listViewItem1.Group = listViewGroup1;
+            listViewItem2.Group = listViewGroup1;
+            listViewItem3.Group = listViewGroup1;
+            listViewItem4.Group = listViewGroup1;
+            listViewItem5.Group = listViewGroup1;
+            listViewItem6.Group = listViewGroup1;
+            listViewItem7.Group = listViewGroup1;
+            listViewItem8.Group = listViewGroup1;
+            listViewItem9.Group = listViewGroup1;
+            listViewItem10.Group = listViewGroup1;
+            listViewItem11.Group = listViewGroup1;
+            listViewItem12.Group = listViewGroup1;
+            listViewItem13.Group = listViewGroup1;
+            listViewItem14.Group = listViewGroup1;
+            listViewItem15.Group = listViewGroup1;
+            listViewItem16.Group = listViewGroup1;
+            listViewItem17.Group = listViewGroup1;
+            listViewItem18.Group = listViewGroup2;
+            listViewItem19.Group = listViewGroup2;
+            listViewItem20.Group = listViewGroup2;
+            listViewItem21.Group = listViewGroup2;
+            listViewItem22.Group = listViewGroup2;
+            listViewItem23.Group = listViewGroup2;
+            listViewItem24.Group = listViewGroup2;
+            listViewItem25.Group = listViewGroup2;
+            listViewItem26.Group = listViewGroup2;
+            listViewItem27.Group = listViewGroup2;
+            listViewItem28.Group = listViewGroup2;
+            listViewItem29.Group = listViewGroup2;
+            listViewItem30.Group = listViewGroup2;
+            listViewItem31.Group = listViewGroup2;
+            listViewItem32.Group = listViewGroup2;
+            listViewItem33.Group = listViewGroup2;
+            listViewItem34.Group = listViewGroup2;
+            listViewItem35.Group = listViewGroup2;
+            listViewItem36.Group = listViewGroup2;
+            listViewItem37.Group = listViewGroup2;
+            listViewItem38.Group = listViewGroup2;
+            listViewItem39.Group = listViewGroup2;
+            listViewItem40.Group = listViewGroup2;
+            listViewItem41.Group = listViewGroup2;
+            listViewItem42.Group = listViewGroup2;
+            listViewItem43.Group = listViewGroup2;
+            listViewItem44.Group = listViewGroup2;
+            listViewItem45.Group = listViewGroup2;
+            listViewItem46.Group = listViewGroup2;
+            listViewItem47.Group = listViewGroup2;
+            listViewItem48.Group = listViewGroup2;
+            listViewItem49.Group = listViewGroup2;
+            listViewItem50.Group = listViewGroup2;
+            listViewItem51.Group = listViewGroup2;
+            listViewItem52.Group = listViewGroup2;
+            listViewItem53.Group = listViewGroup2;
             this.listViewActors.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem54,
-            listViewItem55,
-            listViewItem56,
-            listViewItem57,
-            listViewItem58,
-            listViewItem59,
-            listViewItem60,
-            listViewItem61,
-            listViewItem62,
-            listViewItem63,
-            listViewItem64,
-            listViewItem65,
-            listViewItem66,
-            listViewItem67,
-            listViewItem68,
-            listViewItem69,
-            listViewItem70,
-            listViewItem71,
-            listViewItem72,
-            listViewItem73,
-            listViewItem74,
-            listViewItem75,
-            listViewItem76,
-            listViewItem77,
-            listViewItem78,
-            listViewItem79,
-            listViewItem80,
-            listViewItem81,
-            listViewItem82,
-            listViewItem83,
-            listViewItem84,
-            listViewItem85,
-            listViewItem86,
-            listViewItem87,
-            listViewItem88,
-            listViewItem89,
-            listViewItem90,
-            listViewItem91,
-            listViewItem92,
-            listViewItem93,
-            listViewItem94,
-            listViewItem95,
-            listViewItem96,
-            listViewItem97,
-            listViewItem98,
-            listViewItem99,
-            listViewItem100,
-            listViewItem101,
-            listViewItem102,
-            listViewItem103,
-            listViewItem104,
-            listViewItem105,
-            listViewItem106});
+            listViewItem1,
+            listViewItem2,
+            listViewItem3,
+            listViewItem4,
+            listViewItem5,
+            listViewItem6,
+            listViewItem7,
+            listViewItem8,
+            listViewItem9,
+            listViewItem10,
+            listViewItem11,
+            listViewItem12,
+            listViewItem13,
+            listViewItem14,
+            listViewItem15,
+            listViewItem16,
+            listViewItem17,
+            listViewItem18,
+            listViewItem19,
+            listViewItem20,
+            listViewItem21,
+            listViewItem22,
+            listViewItem23,
+            listViewItem24,
+            listViewItem25,
+            listViewItem26,
+            listViewItem27,
+            listViewItem28,
+            listViewItem29,
+            listViewItem30,
+            listViewItem31,
+            listViewItem32,
+            listViewItem33,
+            listViewItem34,
+            listViewItem35,
+            listViewItem36,
+            listViewItem37,
+            listViewItem38,
+            listViewItem39,
+            listViewItem40,
+            listViewItem41,
+            listViewItem42,
+            listViewItem43,
+            listViewItem44,
+            listViewItem45,
+            listViewItem46,
+            listViewItem47,
+            listViewItem48,
+            listViewItem49,
+            listViewItem50,
+            listViewItem51,
+            listViewItem52,
+            listViewItem53});
             this.listViewActors.LargeImageList = this.actorIcons;
             this.listViewActors.Location = new System.Drawing.Point(3, 3);
             this.listViewActors.MultiSelect = false;

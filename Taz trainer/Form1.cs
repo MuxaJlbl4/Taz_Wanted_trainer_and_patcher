@@ -31,6 +31,8 @@ using System.Security.Principal;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 using System.Runtime.Remoting.Messaging;
+using System.Runtime.Versioning;
+using System.Threading;
 
 namespace Taz_trainer
 {
@@ -4947,10 +4949,16 @@ namespace Taz_trainer
                 {
                     achievementsStateTrainer[i] = true;
 
-                    string AchievementMessage = "Achievement Unlocked! " + listViewAchievements.Items[i].SubItems[1].Text;
-                    message(AchievementMessage);
-                    this.toolStripStatusLabel.Text = AchievementMessage;
-                    this.toolStripStatusLabel.ForeColor = System.Drawing.Color.Green;
+                    //string AchievementMessage = "Achievement Unlocked! " + listViewAchievements.Items[i].SubItems[1].Text;
+                    //message(AchievementMessage);
+                    //this.toolStripStatusLabel.Text = AchievementMessage;
+                    //this.toolStripStatusLabel.ForeColor = System.Drawing.Color.Green;
+                    AchievementNotificationForm.ShowAchievement(
+                        "Taz, With Your Nose So Bright",
+                        "Change into a red-nosed reindeer",
+                        null,
+                        AchievementStyle.Zoo
+                    );
                 }
             }
 
@@ -4986,5 +4994,3 @@ namespace Taz_trainer
         }
     }
 }
-
-
