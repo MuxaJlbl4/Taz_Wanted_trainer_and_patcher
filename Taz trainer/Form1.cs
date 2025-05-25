@@ -3026,9 +3026,13 @@ namespace Taz_trainer
         {
             try
             {
-                var result = MessageBox.Show("This will restore all game options and mods to default. Continue?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                var result = MessageBox.Show("This will restore all game options to default and terminate running game. Continue?", "Are you sure?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
+                    //Kill process
+                    if (checkProcess())
+                        killProcess();
+
                     //Check backup
                     if (File.Exists(TazFolderPath + "\\Taz.exe.backup") == true)
                     {
@@ -3825,6 +3829,10 @@ namespace Taz_trainer
         {
             if (File.Exists(TazFolderPath + @"\Patcher.xml"))
             {
+                var result = MessageBox.Show("This will reset all achievements and application settings. Game process will be terminated. Continue?", "Reset application settings", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.No)
+                    return;
+
                 try
                 {
                     trainerAutoSave.Checked = false;
@@ -3833,11 +3841,15 @@ namespace Taz_trainer
                 }
                 catch (Exception ex)
                 {
-                    // Anyway it's cannot be seen
                     this.toolStripStatusLabel.Text = ex.Message.ToString();
                     this.toolStripStatusLabel.ForeColor = System.Drawing.Color.DarkRed;
                 }
             }
+            // Kill process
+            if (checkProcess())
+                killProcess();
+
+            // Restart application
             Program.Restart();
         }
 
@@ -5058,6 +5070,10 @@ namespace Taz_trainer
 
         private void achReset_Click(object sender, EventArgs e)
         {
+            var result = MessageBox.Show("This will reset all achievement progress. Continue?", "Reset achievements", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No)
+                return;
+
             // Reset in-game achievements states
             byte[] achievementStatesGame = Enumerable.Repeat<byte>(0, achievementsTotal).ToArray(); ;
             checkAndWrite((IntPtr)0x00731600, achievementStatesGame, achievementStatesGame.Length, new IntPtr());
