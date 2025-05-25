@@ -30,61 +30,61 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form));
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("ACME Costumes", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Characters", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Agent", "Agent.png");
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Bandit", "Bandit.png");
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Construction Worker", "Construction Worker.png");
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Explorer", "Explorer.png");
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Indy", "Indy.png");
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Miner", "Miner.png");
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Ninja", "Ninja.png");
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Rappa", "Rappa.png");
-            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Reindeer", "Reindeer.png");
-            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Skater", "Skater.png");
-            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("Snowboarder", "Snowboard.png");
-            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("Stuntman", "Stuntman.png");
-            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("Surfer", "Surfer.png");
-            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("SWAT", "Swat.png");
-            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("Tarzan", "Tarzan.png");
-            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("Trippy", "Trippy.png");
-            System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem("Werewolf", "Werewolf.png");
-            System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem("Alligator", "Alligator.png");
-            System.Windows.Forms.ListViewItem listViewItem19 = new System.Windows.Forms.ListViewItem("Ape Pirate", "Ape Pirate.png");
-            System.Windows.Forms.ListViewItem listViewItem20 = new System.Windows.Forms.ListViewItem("Bandit Cowboy", "Bandit Cowboy.png");
-            System.Windows.Forms.ListViewItem listViewItem21 = new System.Windows.Forms.ListViewItem("Bandit Miner", "Bandit Miner.png");
-            System.Windows.Forms.ListViewItem listViewItem22 = new System.Windows.Forms.ListViewItem("Beaky Buzzard", "Beaky Buzzard.png");
-            System.Windows.Forms.ListViewItem listViewItem23 = new System.Windows.Forms.ListViewItem("Beaky Parrot", "Beaky Parrot.png");
-            System.Windows.Forms.ListViewItem listViewItem24 = new System.Windows.Forms.ListViewItem("Bear Brown", "Bear Brown.png");
-            System.Windows.Forms.ListViewItem listViewItem25 = new System.Windows.Forms.ListViewItem("Bear Polar", "Bear Polar.png");
-            System.Windows.Forms.ListViewItem listViewItem26 = new System.Windows.Forms.ListViewItem("Bot Builder", "Bot Builder.png");
-            System.Windows.Forms.ListViewItem listViewItem27 = new System.Windows.Forms.ListViewItem("Bot Miner", "Bot Miner.png");
-            System.Windows.Forms.ListViewItem listViewItem28 = new System.Windows.Forms.ListViewItem("Bot Security", "Bot Security.png");
-            System.Windows.Forms.ListViewItem listViewItem29 = new System.Windows.Forms.ListViewItem("Builder", "Builder.png");
-            System.Windows.Forms.ListViewItem listViewItem30 = new System.Windows.Forms.ListViewItem("Catcher", "Catcher.png");
-            System.Windows.Forms.ListViewItem listViewItem31 = new System.Windows.Forms.ListViewItem("Daffy Duck", "Daffy Duck.png");
-            System.Windows.Forms.ListViewItem listViewItem32 = new System.Windows.Forms.ListViewItem("Dog Monster", "Dog Monster.png");
-            System.Windows.Forms.ListViewItem listViewItem33 = new System.Windows.Forms.ListViewItem("Dog Security", "Dog Security.png");
-            System.Windows.Forms.ListViewItem listViewItem34 = new System.Windows.Forms.ListViewItem("Elephant", "Elephant.png");
-            System.Windows.Forms.ListViewItem listViewItem35 = new System.Windows.Forms.ListViewItem("Elmer Fudd", "Elmer Fudd.png");
-            System.Windows.Forms.ListViewItem listViewItem36 = new System.Windows.Forms.ListViewItem("Glover Ball", "Glover Ball.png");
-            System.Windows.Forms.ListViewItem listViewItem37 = new System.Windows.Forms.ListViewItem("Gossamer", "Gossamer.png");
-            System.Windows.Forms.ListViewItem listViewItem38 = new System.Windows.Forms.ListViewItem("Guard Green", "Guard Green.png");
-            System.Windows.Forms.ListViewItem listViewItem39 = new System.Windows.Forms.ListViewItem("Guard Red", "Guard Red.png");
-            System.Windows.Forms.ListViewItem listViewItem40 = new System.Windows.Forms.ListViewItem("Monkey", "Monkey.png");
-            System.Windows.Forms.ListViewItem listViewItem41 = new System.Windows.Forms.ListViewItem("Mouse", "Mouse.png");
-            System.Windows.Forms.ListViewItem listViewItem42 = new System.Windows.Forms.ListViewItem("Nasty Canasta", "Nasty Canasta.png");
-            System.Windows.Forms.ListViewItem listViewItem43 = new System.Windows.Forms.ListViewItem("Shark", "Shark.png");
-            System.Windows.Forms.ListViewItem listViewItem44 = new System.Windows.Forms.ListViewItem("Shedevil", "Shedevil.png");
-            System.Windows.Forms.ListViewItem listViewItem45 = new System.Windows.Forms.ListViewItem("Sylvester the Cat", "Sylvester the Cat.png");
-            System.Windows.Forms.ListViewItem listViewItem46 = new System.Windows.Forms.ListViewItem("Taz", "Taz.png");
-            System.Windows.Forms.ListViewItem listViewItem47 = new System.Windows.Forms.ListViewItem("Tribal Chief", "Tribal Chief.png");
-            System.Windows.Forms.ListViewItem listViewItem48 = new System.Windows.Forms.ListViewItem("Tweety", "Tweety.png");
-            System.Windows.Forms.ListViewItem listViewItem49 = new System.Windows.Forms.ListViewItem("Tweety Mecha", "Tweety Mecha.png");
-            System.Windows.Forms.ListViewItem listViewItem50 = new System.Windows.Forms.ListViewItem("Whack-in-a-Box", "Whack-in-a-Box.png");
-            System.Windows.Forms.ListViewItem listViewItem51 = new System.Windows.Forms.ListViewItem("Wile E. Coyote", "Wile E. Coyote.png");
-            System.Windows.Forms.ListViewItem listViewItem52 = new System.Windows.Forms.ListViewItem("Yosemite Sam", "Yosemite Sam.png");
-            System.Windows.Forms.ListViewItem listViewItem53 = new System.Windows.Forms.ListViewItem("Yosemite Sam Tycoon", "Yosemite Sam Tycoon.png");
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("ACME Costumes", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Characters", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewItem listViewItem54 = new System.Windows.Forms.ListViewItem("Agent", "Agent.png");
+            System.Windows.Forms.ListViewItem listViewItem55 = new System.Windows.Forms.ListViewItem("Bandit", "Bandit.png");
+            System.Windows.Forms.ListViewItem listViewItem56 = new System.Windows.Forms.ListViewItem("Construction Worker", "Construction Worker.png");
+            System.Windows.Forms.ListViewItem listViewItem57 = new System.Windows.Forms.ListViewItem("Explorer", "Explorer.png");
+            System.Windows.Forms.ListViewItem listViewItem58 = new System.Windows.Forms.ListViewItem("Indy", "Indy.png");
+            System.Windows.Forms.ListViewItem listViewItem59 = new System.Windows.Forms.ListViewItem("Miner", "Miner.png");
+            System.Windows.Forms.ListViewItem listViewItem60 = new System.Windows.Forms.ListViewItem("Ninja", "Ninja.png");
+            System.Windows.Forms.ListViewItem listViewItem61 = new System.Windows.Forms.ListViewItem("Rappa", "Rappa.png");
+            System.Windows.Forms.ListViewItem listViewItem62 = new System.Windows.Forms.ListViewItem("Reindeer", "Reindeer.png");
+            System.Windows.Forms.ListViewItem listViewItem63 = new System.Windows.Forms.ListViewItem("Skater", "Skater.png");
+            System.Windows.Forms.ListViewItem listViewItem64 = new System.Windows.Forms.ListViewItem("Snowboarder", "Snowboard.png");
+            System.Windows.Forms.ListViewItem listViewItem65 = new System.Windows.Forms.ListViewItem("Stuntman", "Stuntman.png");
+            System.Windows.Forms.ListViewItem listViewItem66 = new System.Windows.Forms.ListViewItem("Surfer", "Surfer.png");
+            System.Windows.Forms.ListViewItem listViewItem67 = new System.Windows.Forms.ListViewItem("SWAT", "Swat.png");
+            System.Windows.Forms.ListViewItem listViewItem68 = new System.Windows.Forms.ListViewItem("Tarzan", "Tarzan.png");
+            System.Windows.Forms.ListViewItem listViewItem69 = new System.Windows.Forms.ListViewItem("Trippy", "Trippy.png");
+            System.Windows.Forms.ListViewItem listViewItem70 = new System.Windows.Forms.ListViewItem("Werewolf", "Werewolf.png");
+            System.Windows.Forms.ListViewItem listViewItem71 = new System.Windows.Forms.ListViewItem("Alligator", "Alligator.png");
+            System.Windows.Forms.ListViewItem listViewItem72 = new System.Windows.Forms.ListViewItem("Ape Pirate", "Ape Pirate.png");
+            System.Windows.Forms.ListViewItem listViewItem73 = new System.Windows.Forms.ListViewItem("Bandit Cowboy", "Bandit Cowboy.png");
+            System.Windows.Forms.ListViewItem listViewItem74 = new System.Windows.Forms.ListViewItem("Bandit Miner", "Bandit Miner.png");
+            System.Windows.Forms.ListViewItem listViewItem75 = new System.Windows.Forms.ListViewItem("Beaky Buzzard", "Beaky Buzzard.png");
+            System.Windows.Forms.ListViewItem listViewItem76 = new System.Windows.Forms.ListViewItem("Beaky Parrot", "Beaky Parrot.png");
+            System.Windows.Forms.ListViewItem listViewItem77 = new System.Windows.Forms.ListViewItem("Bear Brown", "Bear Brown.png");
+            System.Windows.Forms.ListViewItem listViewItem78 = new System.Windows.Forms.ListViewItem("Bear Polar", "Bear Polar.png");
+            System.Windows.Forms.ListViewItem listViewItem79 = new System.Windows.Forms.ListViewItem("Bot Builder", "Bot Builder.png");
+            System.Windows.Forms.ListViewItem listViewItem80 = new System.Windows.Forms.ListViewItem("Bot Miner", "Bot Miner.png");
+            System.Windows.Forms.ListViewItem listViewItem81 = new System.Windows.Forms.ListViewItem("Bot Security", "Bot Security.png");
+            System.Windows.Forms.ListViewItem listViewItem82 = new System.Windows.Forms.ListViewItem("Builder", "Builder.png");
+            System.Windows.Forms.ListViewItem listViewItem83 = new System.Windows.Forms.ListViewItem("Catcher", "Catcher.png");
+            System.Windows.Forms.ListViewItem listViewItem84 = new System.Windows.Forms.ListViewItem("Daffy Duck", "Daffy Duck.png");
+            System.Windows.Forms.ListViewItem listViewItem85 = new System.Windows.Forms.ListViewItem("Dog Monster", "Dog Monster.png");
+            System.Windows.Forms.ListViewItem listViewItem86 = new System.Windows.Forms.ListViewItem("Dog Security", "Dog Security.png");
+            System.Windows.Forms.ListViewItem listViewItem87 = new System.Windows.Forms.ListViewItem("Elephant", "Elephant.png");
+            System.Windows.Forms.ListViewItem listViewItem88 = new System.Windows.Forms.ListViewItem("Elmer Fudd", "Elmer Fudd.png");
+            System.Windows.Forms.ListViewItem listViewItem89 = new System.Windows.Forms.ListViewItem("Glover Ball", "Glover Ball.png");
+            System.Windows.Forms.ListViewItem listViewItem90 = new System.Windows.Forms.ListViewItem("Gossamer", "Gossamer.png");
+            System.Windows.Forms.ListViewItem listViewItem91 = new System.Windows.Forms.ListViewItem("Guard Green", "Guard Green.png");
+            System.Windows.Forms.ListViewItem listViewItem92 = new System.Windows.Forms.ListViewItem("Guard Red", "Guard Red.png");
+            System.Windows.Forms.ListViewItem listViewItem93 = new System.Windows.Forms.ListViewItem("Monkey", "Monkey.png");
+            System.Windows.Forms.ListViewItem listViewItem94 = new System.Windows.Forms.ListViewItem("Mouse", "Mouse.png");
+            System.Windows.Forms.ListViewItem listViewItem95 = new System.Windows.Forms.ListViewItem("Nasty Canasta", "Nasty Canasta.png");
+            System.Windows.Forms.ListViewItem listViewItem96 = new System.Windows.Forms.ListViewItem("Shark", "Shark.png");
+            System.Windows.Forms.ListViewItem listViewItem97 = new System.Windows.Forms.ListViewItem("Shedevil", "Shedevil.png");
+            System.Windows.Forms.ListViewItem listViewItem98 = new System.Windows.Forms.ListViewItem("Sylvester the Cat", "Sylvester the Cat.png");
+            System.Windows.Forms.ListViewItem listViewItem99 = new System.Windows.Forms.ListViewItem("Taz", "Taz.png");
+            System.Windows.Forms.ListViewItem listViewItem100 = new System.Windows.Forms.ListViewItem("Tribal Chief", "Tribal Chief.png");
+            System.Windows.Forms.ListViewItem listViewItem101 = new System.Windows.Forms.ListViewItem("Tweety", "Tweety.png");
+            System.Windows.Forms.ListViewItem listViewItem102 = new System.Windows.Forms.ListViewItem("Tweety Mecha", "Tweety Mecha.png");
+            System.Windows.Forms.ListViewItem listViewItem103 = new System.Windows.Forms.ListViewItem("Whack-in-a-Box", "Whack-in-a-Box.png");
+            System.Windows.Forms.ListViewItem listViewItem104 = new System.Windows.Forms.ListViewItem("Wile E. Coyote", "Wile E. Coyote.png");
+            System.Windows.Forms.ListViewItem listViewItem105 = new System.Windows.Forms.ListViewItem("Yosemite Sam", "Yosemite Sam.png");
+            System.Windows.Forms.ListViewItem listViewItem106 = new System.Windows.Forms.ListViewItem("Yosemite Sam Tycoon", "Yosemite Sam Tycoon.png");
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusField = new System.Windows.Forms.ToolStripStatusLabel();
@@ -242,19 +242,14 @@
             this.maxSpeed = new System.Windows.Forms.TextBox();
             this.labelMaxSpeed = new System.Windows.Forms.Label();
             this.trainerAutoSave = new System.Windows.Forms.CheckBox();
-            this.trainerSound = new System.Windows.Forms.CheckBox();
-            this.screenshotSound = new System.Windows.Forms.CheckBox();
-            this.speedrunMode = new System.Windows.Forms.CheckBox();
             this.unstableLight = new System.Windows.Forms.CheckBox();
             this.trainerText = new System.Windows.Forms.CheckBox();
             this.checkUpdates = new System.Windows.Forms.CheckBox();
-            this.labelSplitScreen = new System.Windows.Forms.Label();
-            this.tableLayoutPanelSettings25 = new System.Windows.Forms.TableLayoutPanel();
-            this.radioHorizontal = new System.Windows.Forms.RadioButton();
-            this.radioVertical = new System.Windows.Forms.RadioButton();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.spinSpeed = new System.Windows.Forms.TextBox();
-            this.labelSpinHackSpeed = new System.Windows.Forms.Label();
+            this.screenshotSound = new System.Windows.Forms.CheckBox();
+            this.trainerSound = new System.Windows.Forms.CheckBox();
+            this.verticalSplit = new System.Windows.Forms.CheckBox();
+            this.popupAchievements = new System.Windows.Forms.CheckBox();
+            this.achievementSound = new System.Windows.Forms.CheckBox();
             this.groupBoxTazPos = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanelSettings3 = new System.Windows.Forms.TableLayoutPanel();
             this.savedCoordZ = new System.Windows.Forms.TextBox();
@@ -274,6 +269,7 @@
             this.tableLayoutPanelSettings11 = new System.Windows.Forms.TableLayoutPanel();
             this.browseGame = new System.Windows.Forms.Button();
             this.applyRegistry = new System.Windows.Forms.Button();
+            this.speedrunMode = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanelSettings4 = new System.Windows.Forms.TableLayoutPanel();
             this.shortcutsGroup = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanelSettings41 = new System.Windows.Forms.TableLayoutPanel();
@@ -316,6 +312,7 @@
             this.folderResourceBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.saveRepackedFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.timerAchievementCheck = new System.Windows.Forms.Timer(this.components);
+            this.timerCooldown = new System.Windows.Forms.Timer(this.components);
             this.statusStrip.SuspendLayout();
             this.tableLayoutPanelTrainer.SuspendLayout();
             this.cheatsTrainerGroup.SuspendLayout();
@@ -378,8 +375,6 @@
             this.tableLayoutPanelSettings21.SuspendLayout();
             this.tableLayoutPanelSettings22.SuspendLayout();
             this.tableLayoutPanelSettings23.SuspendLayout();
-            this.tableLayoutPanelSettings25.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
             this.groupBoxTazPos.SuspendLayout();
             this.tableLayoutPanelSettings3.SuspendLayout();
             this.linksGroup.SuspendLayout();
@@ -2862,121 +2857,121 @@
             this.listViewActors.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listViewActors.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listViewActors.GridLines = true;
-            listViewGroup1.Header = "ACME Costumes";
-            listViewGroup1.Name = "ListViewAcme";
-            listViewGroup2.Header = "Characters";
-            listViewGroup2.Name = "ListViewChar";
+            listViewGroup3.Header = "ACME Costumes";
+            listViewGroup3.Name = "ListViewAcme";
+            listViewGroup4.Header = "Characters";
+            listViewGroup4.Name = "ListViewChar";
             this.listViewActors.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2});
+            listViewGroup3,
+            listViewGroup4});
             this.listViewActors.HideSelection = false;
-            listViewItem1.Group = listViewGroup1;
-            listViewItem2.Group = listViewGroup1;
-            listViewItem3.Group = listViewGroup1;
-            listViewItem4.Group = listViewGroup1;
-            listViewItem5.Group = listViewGroup1;
-            listViewItem6.Group = listViewGroup1;
-            listViewItem7.Group = listViewGroup1;
-            listViewItem8.Group = listViewGroup1;
-            listViewItem9.Group = listViewGroup1;
-            listViewItem10.Group = listViewGroup1;
-            listViewItem11.Group = listViewGroup1;
-            listViewItem12.Group = listViewGroup1;
-            listViewItem13.Group = listViewGroup1;
-            listViewItem14.Group = listViewGroup1;
-            listViewItem15.Group = listViewGroup1;
-            listViewItem16.Group = listViewGroup1;
-            listViewItem17.Group = listViewGroup1;
-            listViewItem18.Group = listViewGroup2;
-            listViewItem19.Group = listViewGroup2;
-            listViewItem20.Group = listViewGroup2;
-            listViewItem21.Group = listViewGroup2;
-            listViewItem22.Group = listViewGroup2;
-            listViewItem23.Group = listViewGroup2;
-            listViewItem24.Group = listViewGroup2;
-            listViewItem25.Group = listViewGroup2;
-            listViewItem26.Group = listViewGroup2;
-            listViewItem27.Group = listViewGroup2;
-            listViewItem28.Group = listViewGroup2;
-            listViewItem29.Group = listViewGroup2;
-            listViewItem30.Group = listViewGroup2;
-            listViewItem31.Group = listViewGroup2;
-            listViewItem32.Group = listViewGroup2;
-            listViewItem33.Group = listViewGroup2;
-            listViewItem34.Group = listViewGroup2;
-            listViewItem35.Group = listViewGroup2;
-            listViewItem36.Group = listViewGroup2;
-            listViewItem37.Group = listViewGroup2;
-            listViewItem38.Group = listViewGroup2;
-            listViewItem39.Group = listViewGroup2;
-            listViewItem40.Group = listViewGroup2;
-            listViewItem41.Group = listViewGroup2;
-            listViewItem42.Group = listViewGroup2;
-            listViewItem43.Group = listViewGroup2;
-            listViewItem44.Group = listViewGroup2;
-            listViewItem45.Group = listViewGroup2;
-            listViewItem46.Group = listViewGroup2;
-            listViewItem47.Group = listViewGroup2;
-            listViewItem48.Group = listViewGroup2;
-            listViewItem49.Group = listViewGroup2;
-            listViewItem50.Group = listViewGroup2;
-            listViewItem51.Group = listViewGroup2;
-            listViewItem52.Group = listViewGroup2;
-            listViewItem53.Group = listViewGroup2;
+            listViewItem54.Group = listViewGroup3;
+            listViewItem55.Group = listViewGroup3;
+            listViewItem56.Group = listViewGroup3;
+            listViewItem57.Group = listViewGroup3;
+            listViewItem58.Group = listViewGroup3;
+            listViewItem59.Group = listViewGroup3;
+            listViewItem60.Group = listViewGroup3;
+            listViewItem61.Group = listViewGroup3;
+            listViewItem62.Group = listViewGroup3;
+            listViewItem63.Group = listViewGroup3;
+            listViewItem64.Group = listViewGroup3;
+            listViewItem65.Group = listViewGroup3;
+            listViewItem66.Group = listViewGroup3;
+            listViewItem67.Group = listViewGroup3;
+            listViewItem68.Group = listViewGroup3;
+            listViewItem69.Group = listViewGroup3;
+            listViewItem70.Group = listViewGroup3;
+            listViewItem71.Group = listViewGroup4;
+            listViewItem72.Group = listViewGroup4;
+            listViewItem73.Group = listViewGroup4;
+            listViewItem74.Group = listViewGroup4;
+            listViewItem75.Group = listViewGroup4;
+            listViewItem76.Group = listViewGroup4;
+            listViewItem77.Group = listViewGroup4;
+            listViewItem78.Group = listViewGroup4;
+            listViewItem79.Group = listViewGroup4;
+            listViewItem80.Group = listViewGroup4;
+            listViewItem81.Group = listViewGroup4;
+            listViewItem82.Group = listViewGroup4;
+            listViewItem83.Group = listViewGroup4;
+            listViewItem84.Group = listViewGroup4;
+            listViewItem85.Group = listViewGroup4;
+            listViewItem86.Group = listViewGroup4;
+            listViewItem87.Group = listViewGroup4;
+            listViewItem88.Group = listViewGroup4;
+            listViewItem89.Group = listViewGroup4;
+            listViewItem90.Group = listViewGroup4;
+            listViewItem91.Group = listViewGroup4;
+            listViewItem92.Group = listViewGroup4;
+            listViewItem93.Group = listViewGroup4;
+            listViewItem94.Group = listViewGroup4;
+            listViewItem95.Group = listViewGroup4;
+            listViewItem96.Group = listViewGroup4;
+            listViewItem97.Group = listViewGroup4;
+            listViewItem98.Group = listViewGroup4;
+            listViewItem99.Group = listViewGroup4;
+            listViewItem100.Group = listViewGroup4;
+            listViewItem101.Group = listViewGroup4;
+            listViewItem102.Group = listViewGroup4;
+            listViewItem103.Group = listViewGroup4;
+            listViewItem104.Group = listViewGroup4;
+            listViewItem105.Group = listViewGroup4;
+            listViewItem106.Group = listViewGroup4;
             this.listViewActors.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5,
-            listViewItem6,
-            listViewItem7,
-            listViewItem8,
-            listViewItem9,
-            listViewItem10,
-            listViewItem11,
-            listViewItem12,
-            listViewItem13,
-            listViewItem14,
-            listViewItem15,
-            listViewItem16,
-            listViewItem17,
-            listViewItem18,
-            listViewItem19,
-            listViewItem20,
-            listViewItem21,
-            listViewItem22,
-            listViewItem23,
-            listViewItem24,
-            listViewItem25,
-            listViewItem26,
-            listViewItem27,
-            listViewItem28,
-            listViewItem29,
-            listViewItem30,
-            listViewItem31,
-            listViewItem32,
-            listViewItem33,
-            listViewItem34,
-            listViewItem35,
-            listViewItem36,
-            listViewItem37,
-            listViewItem38,
-            listViewItem39,
-            listViewItem40,
-            listViewItem41,
-            listViewItem42,
-            listViewItem43,
-            listViewItem44,
-            listViewItem45,
-            listViewItem46,
-            listViewItem47,
-            listViewItem48,
-            listViewItem49,
-            listViewItem50,
-            listViewItem51,
-            listViewItem52,
-            listViewItem53});
+            listViewItem54,
+            listViewItem55,
+            listViewItem56,
+            listViewItem57,
+            listViewItem58,
+            listViewItem59,
+            listViewItem60,
+            listViewItem61,
+            listViewItem62,
+            listViewItem63,
+            listViewItem64,
+            listViewItem65,
+            listViewItem66,
+            listViewItem67,
+            listViewItem68,
+            listViewItem69,
+            listViewItem70,
+            listViewItem71,
+            listViewItem72,
+            listViewItem73,
+            listViewItem74,
+            listViewItem75,
+            listViewItem76,
+            listViewItem77,
+            listViewItem78,
+            listViewItem79,
+            listViewItem80,
+            listViewItem81,
+            listViewItem82,
+            listViewItem83,
+            listViewItem84,
+            listViewItem85,
+            listViewItem86,
+            listViewItem87,
+            listViewItem88,
+            listViewItem89,
+            listViewItem90,
+            listViewItem91,
+            listViewItem92,
+            listViewItem93,
+            listViewItem94,
+            listViewItem95,
+            listViewItem96,
+            listViewItem97,
+            listViewItem98,
+            listViewItem99,
+            listViewItem100,
+            listViewItem101,
+            listViewItem102,
+            listViewItem103,
+            listViewItem104,
+            listViewItem105,
+            listViewItem106});
             this.listViewActors.LargeImageList = this.actorIcons;
             this.listViewActors.Location = new System.Drawing.Point(3, 3);
             this.listViewActors.MultiSelect = false;
@@ -3168,27 +3163,25 @@
             this.tableLayoutPanelSettings2.Controls.Add(this.tableLayoutPanelSettings22, 1, 1);
             this.tableLayoutPanelSettings2.Controls.Add(this.tableLayoutPanelSettings23, 1, 2);
             this.tableLayoutPanelSettings2.Controls.Add(this.trainerAutoSave, 0, 0);
-            this.tableLayoutPanelSettings2.Controls.Add(this.trainerSound, 0, 6);
-            this.tableLayoutPanelSettings2.Controls.Add(this.screenshotSound, 0, 5);
-            this.tableLayoutPanelSettings2.Controls.Add(this.speedrunMode, 0, 4);
             this.tableLayoutPanelSettings2.Controls.Add(this.unstableLight, 0, 3);
             this.tableLayoutPanelSettings2.Controls.Add(this.trainerText, 0, 2);
             this.tableLayoutPanelSettings2.Controls.Add(this.checkUpdates, 0, 1);
-            this.tableLayoutPanelSettings2.Controls.Add(this.labelSplitScreen, 1, 5);
-            this.tableLayoutPanelSettings2.Controls.Add(this.tableLayoutPanelSettings25, 1, 6);
-            this.tableLayoutPanelSettings2.Controls.Add(this.tableLayoutPanel3, 1, 3);
+            this.tableLayoutPanelSettings2.Controls.Add(this.screenshotSound, 1, 4);
+            this.tableLayoutPanelSettings2.Controls.Add(this.trainerSound, 1, 5);
+            this.tableLayoutPanelSettings2.Controls.Add(this.verticalSplit, 0, 5);
+            this.tableLayoutPanelSettings2.Controls.Add(this.popupAchievements, 0, 4);
+            this.tableLayoutPanelSettings2.Controls.Add(this.achievementSound, 1, 3);
             this.tableLayoutPanelSettings2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelSettings2.Location = new System.Drawing.Point(3, 26);
             this.tableLayoutPanelSettings2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelSettings2.Name = "tableLayoutPanelSettings2";
-            this.tableLayoutPanelSettings2.RowCount = 7;
+            this.tableLayoutPanelSettings2.RowCount = 6;
             this.tableLayoutPanelSettings2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28464F));
             this.tableLayoutPanelSettings2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28464F));
             this.tableLayoutPanelSettings2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28464F));
             this.tableLayoutPanelSettings2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28464F));
             this.tableLayoutPanelSettings2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28703F));
             this.tableLayoutPanelSettings2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28626F));
-            this.tableLayoutPanelSettings2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28816F));
             this.tableLayoutPanelSettings2.Size = new System.Drawing.Size(712, 303);
             this.tableLayoutPanelSettings2.TabIndex = 40;
             // 
@@ -3205,14 +3198,14 @@
             this.tableLayoutPanelSettings21.Name = "tableLayoutPanelSettings21";
             this.tableLayoutPanelSettings21.RowCount = 1;
             this.tableLayoutPanelSettings21.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSettings21.Size = new System.Drawing.Size(345, 43);
+            this.tableLayoutPanelSettings21.Size = new System.Drawing.Size(345, 50);
             this.tableLayoutPanelSettings21.TabIndex = 110;
             // 
             // cameraSpd
             // 
             this.cameraSpd.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.cameraSpd.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cameraSpd.Location = new System.Drawing.Point(200, 4);
+            this.cameraSpd.Location = new System.Drawing.Point(200, 8);
             this.cameraSpd.Margin = new System.Windows.Forms.Padding(0);
             this.cameraSpd.Name = "cameraSpd";
             this.cameraSpd.Size = new System.Drawing.Size(102, 34);
@@ -3225,7 +3218,7 @@
             this.labelCameraSpeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelCameraSpeed.AutoSize = true;
             this.labelCameraSpeed.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelCameraSpeed.Location = new System.Drawing.Point(3, 5);
+            this.labelCameraSpeed.Location = new System.Drawing.Point(3, 8);
             this.labelCameraSpeed.Margin = new System.Windows.Forms.Padding(3);
             this.labelCameraSpeed.Name = "labelCameraSpeed";
             this.labelCameraSpeed.Padding = new System.Windows.Forms.Padding(30, 3, 3, 3);
@@ -3241,19 +3234,19 @@
             this.tableLayoutPanelSettings22.Controls.Add(this.flyModeStep, 1, 0);
             this.tableLayoutPanelSettings22.Controls.Add(this.labelFlyStep, 0, 0);
             this.tableLayoutPanelSettings22.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelSettings22.Location = new System.Drawing.Point(367, 43);
+            this.tableLayoutPanelSettings22.Location = new System.Drawing.Point(367, 50);
             this.tableLayoutPanelSettings22.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelSettings22.Name = "tableLayoutPanelSettings22";
             this.tableLayoutPanelSettings22.RowCount = 1;
             this.tableLayoutPanelSettings22.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSettings22.Size = new System.Drawing.Size(345, 43);
+            this.tableLayoutPanelSettings22.Size = new System.Drawing.Size(345, 50);
             this.tableLayoutPanelSettings22.TabIndex = 120;
             // 
             // flyModeStep
             // 
             this.flyModeStep.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.flyModeStep.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.flyModeStep.Location = new System.Drawing.Point(200, 4);
+            this.flyModeStep.Location = new System.Drawing.Point(200, 8);
             this.flyModeStep.Margin = new System.Windows.Forms.Padding(0);
             this.flyModeStep.Name = "flyModeStep";
             this.flyModeStep.Size = new System.Drawing.Size(102, 34);
@@ -3266,7 +3259,7 @@
             this.labelFlyStep.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelFlyStep.AutoSize = true;
             this.labelFlyStep.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelFlyStep.Location = new System.Drawing.Point(3, 5);
+            this.labelFlyStep.Location = new System.Drawing.Point(3, 8);
             this.labelFlyStep.Margin = new System.Windows.Forms.Padding(3);
             this.labelFlyStep.Name = "labelFlyStep";
             this.labelFlyStep.Padding = new System.Windows.Forms.Padding(30, 3, 3, 3);
@@ -3281,19 +3274,20 @@
             this.tableLayoutPanelSettings23.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanelSettings23.Controls.Add(this.maxSpeed, 1, 0);
             this.tableLayoutPanelSettings23.Controls.Add(this.labelMaxSpeed, 0, 0);
-            this.tableLayoutPanelSettings23.Location = new System.Drawing.Point(367, 86);
+            this.tableLayoutPanelSettings23.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelSettings23.Location = new System.Drawing.Point(367, 100);
             this.tableLayoutPanelSettings23.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelSettings23.Name = "tableLayoutPanelSettings23";
             this.tableLayoutPanelSettings23.RowCount = 1;
             this.tableLayoutPanelSettings23.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSettings23.Size = new System.Drawing.Size(345, 43);
+            this.tableLayoutPanelSettings23.Size = new System.Drawing.Size(345, 50);
             this.tableLayoutPanelSettings23.TabIndex = 130;
             // 
             // maxSpeed
             // 
             this.maxSpeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.maxSpeed.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.maxSpeed.Location = new System.Drawing.Point(200, 4);
+            this.maxSpeed.Location = new System.Drawing.Point(200, 8);
             this.maxSpeed.Margin = new System.Windows.Forms.Padding(0);
             this.maxSpeed.Name = "maxSpeed";
             this.maxSpeed.Size = new System.Drawing.Size(102, 34);
@@ -3306,7 +3300,7 @@
             this.labelMaxSpeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.labelMaxSpeed.AutoSize = true;
             this.labelMaxSpeed.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelMaxSpeed.Location = new System.Drawing.Point(3, 5);
+            this.labelMaxSpeed.Location = new System.Drawing.Point(3, 8);
             this.labelMaxSpeed.Margin = new System.Windows.Forms.Padding(3);
             this.labelMaxSpeed.Name = "labelMaxSpeed";
             this.labelMaxSpeed.Padding = new System.Windows.Forms.Padding(30, 3, 3, 3);
@@ -3321,7 +3315,7 @@
             this.trainerAutoSave.Checked = true;
             this.trainerAutoSave.CheckState = System.Windows.Forms.CheckState.Checked;
             this.trainerAutoSave.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.trainerAutoSave.Location = new System.Drawing.Point(3, 6);
+            this.trainerAutoSave.Location = new System.Drawing.Point(3, 9);
             this.trainerAutoSave.Name = "trainerAutoSave";
             this.trainerAutoSave.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.trainerAutoSave.Size = new System.Drawing.Size(287, 31);
@@ -3330,54 +3324,12 @@
             this.trainerAutoSave.UseVisualStyleBackColor = true;
             this.trainerAutoSave.CheckedChanged += new System.EventHandler(this.trainerAutoSave_CheckedChanged);
             // 
-            // trainerSound
-            // 
-            this.trainerSound.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.trainerSound.AutoSize = true;
-            this.trainerSound.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.trainerSound.Location = new System.Drawing.Point(3, 265);
-            this.trainerSound.Name = "trainerSound";
-            this.trainerSound.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.trainerSound.Size = new System.Drawing.Size(227, 31);
-            this.trainerSound.TabIndex = 100;
-            this.trainerSound.Text = "Trainer key sound";
-            this.trainerSound.UseVisualStyleBackColor = true;
-            // 
-            // screenshotSound
-            // 
-            this.screenshotSound.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.screenshotSound.AutoSize = true;
-            this.screenshotSound.Checked = true;
-            this.screenshotSound.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.screenshotSound.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.screenshotSound.Location = new System.Drawing.Point(3, 221);
-            this.screenshotSound.Name = "screenshotSound";
-            this.screenshotSound.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.screenshotSound.Size = new System.Drawing.Size(222, 31);
-            this.screenshotSound.TabIndex = 90;
-            this.screenshotSound.Text = "Screenshot sound";
-            this.screenshotSound.UseVisualStyleBackColor = true;
-            // 
-            // speedrunMode
-            // 
-            this.speedrunMode.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.speedrunMode.AutoSize = true;
-            this.speedrunMode.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.speedrunMode.Location = new System.Drawing.Point(3, 178);
-            this.speedrunMode.Name = "speedrunMode";
-            this.speedrunMode.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
-            this.speedrunMode.Size = new System.Drawing.Size(310, 31);
-            this.speedrunMode.TabIndex = 80;
-            this.speedrunMode.Text = "Safe mode (for speedruns)";
-            this.speedrunMode.UseVisualStyleBackColor = false;
-            this.speedrunMode.Click += new System.EventHandler(this.speedrunMode_Click);
-            // 
             // unstableLight
             // 
             this.unstableLight.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.unstableLight.AutoSize = true;
             this.unstableLight.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.unstableLight.Location = new System.Drawing.Point(3, 135);
+            this.unstableLight.Location = new System.Drawing.Point(3, 159);
             this.unstableLight.Name = "unstableLight";
             this.unstableLight.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.unstableLight.Size = new System.Drawing.Size(295, 31);
@@ -3392,7 +3344,7 @@
             this.trainerText.Checked = true;
             this.trainerText.CheckState = System.Windows.Forms.CheckState.Checked;
             this.trainerText.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.trainerText.Location = new System.Drawing.Point(3, 92);
+            this.trainerText.Location = new System.Drawing.Point(3, 109);
             this.trainerText.Name = "trainerText";
             this.trainerText.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.trainerText.Size = new System.Drawing.Size(281, 31);
@@ -3407,7 +3359,7 @@
             this.checkUpdates.Checked = true;
             this.checkUpdates.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkUpdates.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkUpdates.Location = new System.Drawing.Point(3, 49);
+            this.checkUpdates.Location = new System.Drawing.Point(3, 59);
             this.checkUpdates.Name = "checkUpdates";
             this.checkUpdates.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
             this.checkUpdates.Size = new System.Drawing.Size(231, 31);
@@ -3415,102 +3367,80 @@
             this.checkUpdates.Text = "Check for updates";
             this.checkUpdates.UseVisualStyleBackColor = true;
             // 
-            // labelSplitScreen
+            // screenshotSound
             // 
-            this.labelSplitScreen.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelSplitScreen.AutoSize = true;
-            this.labelSplitScreen.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelSplitScreen.Location = new System.Drawing.Point(370, 220);
-            this.labelSplitScreen.Margin = new System.Windows.Forms.Padding(3);
-            this.labelSplitScreen.Name = "labelSplitScreen";
-            this.labelSplitScreen.Padding = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.labelSplitScreen.Size = new System.Drawing.Size(290, 33);
-            this.labelSplitScreen.TabIndex = 132;
-            this.labelSplitScreen.Text = "Split screen (cooperative):";
+            this.screenshotSound.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.screenshotSound.AutoSize = true;
+            this.screenshotSound.Checked = true;
+            this.screenshotSound.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.screenshotSound.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.screenshotSound.Location = new System.Drawing.Point(370, 209);
+            this.screenshotSound.Name = "screenshotSound";
+            this.screenshotSound.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.screenshotSound.Size = new System.Drawing.Size(222, 31);
+            this.screenshotSound.TabIndex = 150;
+            this.screenshotSound.Text = "Screenshot sound";
+            this.screenshotSound.UseVisualStyleBackColor = true;
             // 
-            // tableLayoutPanelSettings25
+            // trainerSound
             // 
-            this.tableLayoutPanelSettings25.ColumnCount = 2;
-            this.tableLayoutPanelSettings25.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelSettings25.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanelSettings25.Controls.Add(this.radioHorizontal, 0, 0);
-            this.tableLayoutPanelSettings25.Controls.Add(this.radioVertical, 1, 0);
-            this.tableLayoutPanelSettings25.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelSettings25.Location = new System.Drawing.Point(367, 258);
-            this.tableLayoutPanelSettings25.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanelSettings25.Name = "tableLayoutPanelSettings25";
-            this.tableLayoutPanelSettings25.RowCount = 1;
-            this.tableLayoutPanelSettings25.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSettings25.Size = new System.Drawing.Size(345, 45);
-            this.tableLayoutPanelSettings25.TabIndex = 150;
+            this.trainerSound.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.trainerSound.AutoSize = true;
+            this.trainerSound.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.trainerSound.Location = new System.Drawing.Point(370, 261);
+            this.trainerSound.Name = "trainerSound";
+            this.trainerSound.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.trainerSound.Size = new System.Drawing.Size(227, 31);
+            this.trainerSound.TabIndex = 160;
+            this.trainerSound.Text = "Trainer key sound";
+            this.trainerSound.UseVisualStyleBackColor = true;
             // 
-            // radioHorizontal
+            // verticalSplit
             // 
-            this.radioHorizontal.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioHorizontal.AutoSize = true;
-            this.radioHorizontal.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
-            this.radioHorizontal.Location = new System.Drawing.Point(3, 4);
-            this.radioHorizontal.Name = "radioHorizontal";
-            this.radioHorizontal.Padding = new System.Windows.Forms.Padding(60, 3, 3, 3);
-            this.radioHorizontal.Size = new System.Drawing.Size(187, 37);
-            this.radioHorizontal.TabIndex = 150;
-            this.radioHorizontal.Text = "Horizontal";
-            this.radioHorizontal.UseVisualStyleBackColor = true;
+            this.verticalSplit.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.verticalSplit.AutoSize = true;
+            this.verticalSplit.Checked = true;
+            this.verticalSplit.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.verticalSplit.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.verticalSplit.Location = new System.Drawing.Point(3, 261);
+            this.verticalSplit.Name = "verticalSplit";
+            this.verticalSplit.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.verticalSplit.Size = new System.Drawing.Size(248, 31);
+            this.verticalSplit.TabIndex = 90;
+            this.verticalSplit.Text = "Vertical split screen";
+            this.verticalSplit.UseVisualStyleBackColor = true;
+            this.verticalSplit.CheckedChanged += new System.EventHandler(this.verticalSplit_CheckedChanged);
             // 
-            // radioVertical
+            // popupAchievements
             // 
-            this.radioVertical.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioVertical.AutoSize = true;
-            this.radioVertical.Checked = true;
-            this.radioVertical.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold);
-            this.radioVertical.Location = new System.Drawing.Point(196, 7);
-            this.radioVertical.Name = "radioVertical";
-            this.radioVertical.Size = new System.Drawing.Size(103, 31);
-            this.radioVertical.TabIndex = 150;
-            this.radioVertical.TabStop = true;
-            this.radioVertical.Text = "Vertical";
-            this.radioVertical.UseVisualStyleBackColor = true;
-            this.radioVertical.CheckedChanged += new System.EventHandler(this.radioVertical_CheckedChanged);
+            this.popupAchievements.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.popupAchievements.AutoSize = true;
+            this.popupAchievements.Checked = true;
+            this.popupAchievements.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.popupAchievements.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.popupAchievements.Location = new System.Drawing.Point(3, 209);
+            this.popupAchievements.Name = "popupAchievements";
+            this.popupAchievements.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.popupAchievements.Size = new System.Drawing.Size(253, 31);
+            this.popupAchievements.TabIndex = 80;
+            this.popupAchievements.Text = "Pop-up achievements";
+            this.popupAchievements.UseVisualStyleBackColor = true;
+            this.popupAchievements.CheckedChanged += new System.EventHandler(this.verticalSplit_CheckedChanged);
             // 
-            // tableLayoutPanel3
+            // achievementSound
             // 
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel3.Controls.Add(this.spinSpeed, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.labelSpinHackSpeed, 0, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(367, 129);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(345, 43);
-            this.tableLayoutPanel3.TabIndex = 130;
-            // 
-            // spinSpeed
-            // 
-            this.spinSpeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.spinSpeed.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.spinSpeed.Location = new System.Drawing.Point(207, 4);
-            this.spinSpeed.Margin = new System.Windows.Forms.Padding(0);
-            this.spinSpeed.Name = "spinSpeed";
-            this.spinSpeed.Size = new System.Drawing.Size(86, 34);
-            this.spinSpeed.TabIndex = 130;
-            this.spinSpeed.Text = "10.0";
-            this.spinSpeed.TextChanged += new System.EventHandler(this.maxSpeed_TextChanged);
-            // 
-            // labelSpinHackSpeed
-            // 
-            this.labelSpinHackSpeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelSpinHackSpeed.AutoSize = true;
-            this.labelSpinHackSpeed.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelSpinHackSpeed.Location = new System.Drawing.Point(3, 5);
-            this.labelSpinHackSpeed.Margin = new System.Windows.Forms.Padding(3);
-            this.labelSpinHackSpeed.Name = "labelSpinHackSpeed";
-            this.labelSpinHackSpeed.Padding = new System.Windows.Forms.Padding(30, 3, 3, 3);
-            this.labelSpinHackSpeed.Size = new System.Drawing.Size(201, 33);
-            this.labelSpinHackSpeed.TabIndex = 0;
-            this.labelSpinHackSpeed.Text = "Spin hack speed:";
+            this.achievementSound.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.achievementSound.AutoSize = true;
+            this.achievementSound.Checked = true;
+            this.achievementSound.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.achievementSound.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.achievementSound.Location = new System.Drawing.Point(370, 159);
+            this.achievementSound.Name = "achievementSound";
+            this.achievementSound.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.achievementSound.Size = new System.Drawing.Size(235, 31);
+            this.achievementSound.TabIndex = 140;
+            this.achievementSound.Text = "Achievement sound";
+            this.achievementSound.UseVisualStyleBackColor = true;
             // 
             // groupBoxTazPos
             // 
@@ -3751,6 +3681,7 @@
             this.tableLayoutPanelSettings11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18F));
             this.tableLayoutPanelSettings11.Controls.Add(this.browseGame, 0, 0);
             this.tableLayoutPanelSettings11.Controls.Add(this.applyRegistry, 2, 0);
+            this.tableLayoutPanelSettings11.Controls.Add(this.speedrunMode, 1, 0);
             this.tableLayoutPanelSettings11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelSettings11.Location = new System.Drawing.Point(0, 32);
             this.tableLayoutPanelSettings11.Margin = new System.Windows.Forms.Padding(0);
@@ -3797,6 +3728,20 @@
             this.applyRegistry.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.applyRegistry.UseVisualStyleBackColor = false;
             this.applyRegistry.Click += new System.EventHandler(this.applyRegistry_Click);
+            // 
+            // speedrunMode
+            // 
+            this.speedrunMode.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.speedrunMode.AutoSize = true;
+            this.speedrunMode.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.speedrunMode.Location = new System.Drawing.Point(131, 9);
+            this.speedrunMode.Name = "speedrunMode";
+            this.speedrunMode.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.speedrunMode.Size = new System.Drawing.Size(310, 31);
+            this.speedrunMode.TabIndex = 80;
+            this.speedrunMode.Text = "Safe mode (for speedruns)";
+            this.speedrunMode.UseVisualStyleBackColor = false;
+            this.speedrunMode.Click += new System.EventHandler(this.speedrunMode_Click);
             // 
             // tableLayoutPanelSettings4
             // 
@@ -4409,6 +4354,11 @@
             this.timerAchievementCheck.Interval = 1000;
             this.timerAchievementCheck.Tick += new System.EventHandler(this.timerAchievementCheck_Tick);
             // 
+            // timerCooldown
+            // 
+            this.timerCooldown.Interval = 5000;
+            this.timerCooldown.Tick += new System.EventHandler(this.timerCooldown_Tick);
+            // 
             // form
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -4516,10 +4466,6 @@
             this.tableLayoutPanelSettings22.PerformLayout();
             this.tableLayoutPanelSettings23.ResumeLayout(false);
             this.tableLayoutPanelSettings23.PerformLayout();
-            this.tableLayoutPanelSettings25.ResumeLayout(false);
-            this.tableLayoutPanelSettings25.PerformLayout();
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
             this.groupBoxTazPos.ResumeLayout(false);
             this.tableLayoutPanelSettings3.ResumeLayout(false);
             this.tableLayoutPanelSettings3.PerformLayout();
@@ -4733,10 +4679,6 @@
         private System.Windows.Forms.CheckBox unstableLight;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel;
         private System.Windows.Forms.CheckBox checkUpdates;
-        private System.Windows.Forms.Label labelSplitScreen;
-        private System.Windows.Forms.RadioButton radioHorizontal;
-        private System.Windows.Forms.RadioButton radioVertical;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelSettings25;
         private System.Windows.Forms.TabPage achTab;
         private System.Windows.Forms.ListView listViewAchievements;
         private System.Windows.Forms.ColumnHeader columnIcon;
@@ -4782,9 +4724,10 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.ComboBox daffycultyComboBox;
         private System.Windows.Forms.Label daffyculty;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.TextBox spinSpeed;
-        private System.Windows.Forms.Label labelSpinHackSpeed;
+        private System.Windows.Forms.CheckBox verticalSplit;
+        private System.Windows.Forms.CheckBox popupAchievements;
+        private System.Windows.Forms.CheckBox achievementSound;
+        private System.Windows.Forms.Timer timerCooldown;
     }
 }
 

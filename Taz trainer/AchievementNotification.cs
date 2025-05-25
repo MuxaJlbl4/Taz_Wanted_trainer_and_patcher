@@ -9,6 +9,7 @@ using System.Linq;
 using System.Media;
 using System.Windows.Forms;
 using Taz_trainer.Properties;
+using Taz_trainer;
 
 /// <summary>
 /// Specifies the visual style of the achievement notification.
@@ -360,6 +361,7 @@ public class AchievementNotificationForm : Form
         achievementForm.achievementIconPb.Image = data.Icon ?? Resources.defaultAchievement;
         achievementForm.currentStyle = data.Style;
 
+        /*
         Stream soundStream = Resources.achievement;
 
         try
@@ -374,6 +376,7 @@ public class AchievementNotificationForm : Form
             Console.WriteLine($"Error loading sound for achievement style {data.Style}: {ex.Message}");
             achievementForm.soundPlayer = null; // Ensure player is null if sound loading fails.
         }
+        */
 
         // Subscribe to the FormClosed event to handle cleanup and process the next item in the queue.
         achievementForm.FormClosed += AchievementForm_FormClosed;
@@ -422,7 +425,7 @@ public class AchievementNotificationForm : Form
         this.currentOpacity = 0.0;
         this.Opacity = this.currentOpacity;
 
-        soundPlayer?.Play(); // Play the achievement sound, if loaded.
+        //soundPlayer?.Play(); // Play the achievement sound, if loaded.
 
         this.animationTimer.Tag = "in"; // Set state for the animation timer to "in" (appearing).
         this.animationTimer.Start();
@@ -542,7 +545,7 @@ public class AchievementNotificationForm : Form
             // Dispose of managed resources.
             animationTimer?.Dispose();
             displayDurationTimer?.Dispose();
-            soundPlayer?.Dispose(); // Disposes the SoundPlayer and releases the sound file.
+            //soundPlayer?.Dispose(); // Disposes the SoundPlayer and releases the sound file.
             achievementIconPb?.Dispose();
             titleLabel?.Dispose();
             descriptionLabel?.Dispose();

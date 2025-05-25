@@ -750,6 +750,15 @@ namespace Taz_trainer
             }
 
         }
+        private void playAchievementSound(System.IO.Stream stream)
+        {
+            if (screenshotSound.Checked == true)
+            {
+                System.Media.SoundPlayer player = new System.Media.SoundPlayer(stream);
+                player.Play();
+            }
+
+        }
 
 
         //#######################################################################################################################
@@ -2343,7 +2352,7 @@ namespace Taz_trainer
                         byte[] injectionCoop = { 0x80, 0x3D, 0x54, 0x4A, 0x6F, 0x00, 0x01, 0x0F, 0x84, 0x21, 0x00, 0x00, 0x00, 0xC7, 0x05, 0x57, 0x4A, 0x6F, 0x00, 0x00, 0x00, 0x00, 0x00, 0x68, 0x01, 0x00, 0x00, 0x00, 0x68, 0x02, 0x00, 0x00, 0x00, 0xE8, 0x9A, 0x8C, 0xE9, 0xFF, 0x83, 0xC4, 0x08, 0xE9, 0x1C, 0x00, 0x00, 0x00, 0xC7, 0x05, 0x57, 0x4A, 0x6F, 0x00, 0x01, 0x00, 0x00, 0x00, 0x68, 0x01, 0x00, 0x00, 0x00, 0x68, 0x01, 0x00, 0x00, 0x00, 0xE8, 0x79, 0x8C, 0xE9, 0xFF, 0x83, 0xC4, 0x08, 0x64, 0x89, 0x0D, 0x00, 0x00, 0x00, 0x00, 0xC3 };
 
                         // Change split arg
-                        if (radioHorizontal.Checked == true)
+                        if (verticalSplit.Checked == false)
                             injectionCoop[24] = 0x00;
 
                         file.Write(injectionCoop, 0, injectionCoop.Length);
@@ -4868,7 +4877,7 @@ namespace Taz_trainer
             }
         }
 
-        private void radioVertical_CheckedChanged(object sender, EventArgs e)
+        private void verticalSplit_CheckedChanged(object sender, EventArgs e)
         {
             this.toolStripStatusLabel.Text = "Restart game with Cooperative Fix to change split screen orientation";
             this.toolStripStatusLabel.ForeColor = System.Drawing.Color.Green;
@@ -4939,31 +4948,53 @@ namespace Taz_trainer
 
         private void timerAchievementCheck_Tick(object sender, EventArgs e)
         {
+            // Not available in trainer mode
+            if (radioTrainer.Checked == false || injections.Checked == true)
+            {    
             // Read achievement states
             byte[] achievementStatesGame = Enumerable.Repeat<byte>(0, achievementsTotal).ToArray(); ;
             checkAndRead((IntPtr)0x00731600, achievementStatesGame, achievementStatesGame.Length, new IntPtr());
 
-            for (int i = 0; i < achievementsTotal; i++)
-            {
-                if (achievementStatesGame[i] == 0x01 && achievementsStateTrainer[i] == false)
+                for (int i = 0; i < achievementsTotal; i++)
                 {
-                    achievementsStateTrainer[i] = true;
-                    UpdateAchievementsTable();
-                    AchievementStyle style;
-                    if (Achievements[i,3] == "Zoo") style = AchievementStyle.Zoo;
-                    else if (Achievements[i, 3] == "City") style = AchievementStyle.City;
-                    else if (Achievements[i, 3] == "West") style = AchievementStyle.West;
-                    else if (Achievements[i, 3] == "Tazland") style = AchievementStyle.Tazland;
-                    else if (Achievements[i, 3] == "Challenge") style = AchievementStyle.Challenge;
-                    else style = AchievementStyle.Hardcore;
-                    AchievementNotificationForm.ShowAchievement(
-                        listViewAchievements.Items[i].SubItems[1].Text,
-                        listViewAchievements.Items[i].SubItems[2].Text,
-                        listViewAchievements.Items[i].ImageList.Images[listViewAchievements.Items[i].ImageKey],
-                        style
-                    );
+                    if (achievementStatesGame[i] == 0x01 && achievementsStateTrainer[i] == false)
+                    {
+                        // Update achievements table
+                        achievementsStateTrainer[i] = true;
+                        UpdateAchievementsTable();
+
+                        // Pop-up achievement when allowed
+                        if (popupAchievements.Checked == true && radioSpeedrun.Checked == false)
+                        {
+                            AchievementStyle style;
+                            if (Achievements[i, 3] == "Zoo") style = AchievementStyle.Zoo;
+                            else if (Achievements[i, 3] == "City") style = AchievementStyle.City;
+                            else if (Achievements[i, 3] == "West") style = AchievementStyle.West;
+                            else if (Achievements[i, 3] == "Tazland") style = AchievementStyle.Tazland;
+                            else if (Achievements[i, 3] == "Challenge") style = AchievementStyle.Challenge;
+                            else style = AchievementStyle.Hardcore;
+                            AchievementNotificationForm.ShowAchievement(
+                                listViewAchievements.Items[i].SubItems[1].Text,
+                                listViewAchievements.Items[i].SubItems[2].Text,
+                                listViewAchievements.Items[i].ImageList.Images[listViewAchievements.Items[i].ImageKey],
+                                style
+                            );
+
+                            // Achievement sound with cooldown
+                            if (achievementSound.Checked == true && timerCooldown.Enabled == false)
+                            {
+                                playAchievementSound(Properties.Resources.achievement);
+                                timerCooldown.Start();
+                            }
+                        }
+                    }
                 }
             }
+        }
+
+        private void timerCooldown_Tick(object sender, EventArgs e)
+        {
+            timerCooldown.Stop();
         }
 
         private void achReset_Click(object sender, EventArgs e)
@@ -4992,5 +5023,7 @@ namespace Taz_trainer
 
             UpdateAchievementsTable();
         }
+
+
     }
 }
