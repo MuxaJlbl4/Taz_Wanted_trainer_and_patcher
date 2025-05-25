@@ -289,7 +289,7 @@ namespace Taz_trainer
             }
 
             // Lock speedrun options
-            SpdInitOptions();
+            InitModeOptions();
 
             // Repacking tab init
             string RepackingHTML = Properties.Resources.Repacking;
@@ -332,151 +332,151 @@ namespace Taz_trainer
             //Disable trainer cheats with speedrun mode
             if (e.KeyCode == Keys.F1)
             {
-                if (speedrunMode.Checked == false)
+                if (invisibility.Enabled)
                     this.invisibility.Checked = !this.invisibility.Checked;
                 sendKey(Keys.F1, "{F1}");
             }
             if (e.KeyCode == Keys.F2)
             {
-                if (speedrunMode.Checked == false)
+                if (superBelchCan.Enabled)
                     this.superBelchCan.Checked = !this.superBelchCan.Checked;
                 sendKey(Keys.F2, "{F2}");
             }
             if (e.KeyCode == Keys.F3)
             {
-                if (speedrunMode.Checked == false)
+                if (superJump.Enabled)
                     this.superJump.Checked = !this.superJump.Checked;
                 sendKey(Keys.F3, "{F3}");
             }
             if (e.KeyCode == Keys.F4)
             {
-                if (speedrunMode.Checked == false)
+                if (freezeLevelTimer.Enabled)
                     this.freezeLevelTimer.Checked = !this.freezeLevelTimer.Checked;
                 sendKey(Keys.F4, "{F4}");
             }
             if (e.KeyCode == Keys.F5)
             {
-                if (speedrunMode.Checked == false)
+                if (debugMenu.Enabled)
                     this.debugMenu.Checked = !this.debugMenu.Checked;
                 sendKey(Keys.F5, "{F5}");
             }
             if (e.KeyCode == Keys.F6)
             {
-                if (speedrunMode.Checked == false)
+                if (drawDistance.Enabled)
                     this.drawDistance.Checked = !this.drawDistance.Checked;
                 sendKey(Keys.F6, "{F6}");
             }
             if (e.KeyCode == Keys.F7)
             {
-                if (speedrunMode.Checked == false)
+                if (textureFilter.Enabled)
                     this.textureFilter.Checked = !this.textureFilter.Checked;
                 sendKey(Keys.F7, "{F7}");
             }
             if (e.KeyCode == Keys.F8)
             {
-                if (speedrunMode.Checked == false)
+                if (textureAlpha.Enabled)
                     this.textureAlpha.Checked = !this.textureAlpha.Checked;
                 sendKey(Keys.F8, "{F8}");
             }
             if (e.KeyCode == Keys.F9)
             {
-                if (speedrunMode.Checked == false)
+                if (fpsCap.Enabled)
                     this.fpsCap.Checked = !this.fpsCap.Checked;
                 sendKey(Keys.F9, "{F9}");
             }
             if (e.KeyCode == Keys.F10)
             {
-                if (speedrunMode.Checked == false)
+                if (smoothLighting.Enabled)
                     this.smoothLighting.Checked = !this.smoothLighting.Checked;
                 sendKey(Keys.F10, "{F10}");
             }
             if (e.KeyCode == Keys.F11)
             {
-                if (speedrunMode.Checked == false)
+                if (coopMode.Enabled)
                     this.coopMode.Checked = !this.coopMode.Checked;
                 sendKey(Keys.F11, "{F11}");
             }
             if (e.KeyCode == Keys.F12)
             {
-                if (speedrunMode.Checked == false)
+                if (ballMode.Enabled)
                     this.ballMode.Checked = !this.ballMode.Checked;
                 sendKey(Keys.F12, "{F12}");
             }
             if (e.KeyCode == Keys.Insert)
             {
-                if (speedrunMode.Checked == false)
+                if (unsinkabilityMode.Enabled)
                     this.unsinkabilityMode.Checked = !this.unsinkabilityMode.Checked;
                 sendKey(Keys.Insert, "{Insert}");
             }
             if (e.KeyCode == Keys.Home)
             {
-                if (speedrunMode.Checked == false)
+                if (undestructibleWorld.Enabled)
                     this.undestructibleWorld.Checked = !this.undestructibleWorld.Checked;
                 sendKey(Keys.Home, "{Home}");
             }
             if (e.KeyCode == Keys.End)
             {
-                if (speedrunMode.Checked == false)
+                if (bulldozerMode.Enabled)
                     this.bulldozerMode.Checked = !this.bulldozerMode.Checked;
                 sendKey(Keys.End, "{End}");
             }
             if (e.KeyCode == Keys.OemMinus)
             {
-                if (speedrunMode.Checked == false)
+                if (gameSpeed.Enabled)
                     changeGameSpeed(0);
                 sendKey(Keys.OemMinus, "{-}");
             }
             if (e.KeyCode == Keys.Oemplus)
             {
-                if (speedrunMode.Checked == false)
+                if (gameSpeed.Enabled)
                     changeGameSpeed(1);
                 sendKey(Keys.Oemplus, "{=}");
             }
             if (e.KeyCode == Keys.NumPad5)
             {
-                if (speedrunMode.Checked == false)
+                if (flyMode.Enabled)
                     this.flyMode.Checked = !this.flyMode.Checked;
                 sendKey(Keys.NumPad5, "{5}");
             }
             if (e.KeyCode == Keys.NumPad9)
             {
-                if (this.flyMode.Checked == true && speedrunMode.Checked == false)
+                if (this.flyMode.Checked == true && flyMode.Enabled)
                     movement(0); //Z+
                 sendKey(Keys.NumPad9, "{9}");
             }
             if (e.KeyCode == Keys.NumPad8)
             {
-                if (this.flyMode.Checked == true && speedrunMode.Checked == false)
+                if (this.flyMode.Checked == true && flyMode.Enabled)
                     movement(4); //Y+
                 sendKey(Keys.NumPad8, "{8}");
             }
             if (e.KeyCode == Keys.NumPad7)
             {
-                if (this.flyMode.Checked == true && speedrunMode.Checked == false)
+                if (this.flyMode.Checked == true && flyMode.Enabled)
                     movement(1); //Z-
                 sendKey(Keys.NumPad7, "{7}");
             }
             if (e.KeyCode == Keys.NumPad6)
             {
-                if (this.flyMode.Checked == true && speedrunMode.Checked == false)
+                if (this.flyMode.Checked == true && flyMode.Enabled)
                     movement(2); //X+
                 sendKey(Keys.NumPad6, "{6}");
             }
             if (e.KeyCode == Keys.NumPad4)
             {
-                if (this.flyMode.Checked == true && speedrunMode.Checked == false)
+                if (this.flyMode.Checked == true && flyMode.Enabled)
                     movement(3); //X-
                 sendKey(Keys.NumPad4, "{4}");
             }
             if (e.KeyCode == Keys.NumPad3)
             {
-                if (speedrunMode.Checked == false)
+                if (savePos.Enabled)
                     loadPos_CheckedChanged(sender, e);
                 sendKey(Keys.NumPad3, "{3}");
             }
             if (e.KeyCode == Keys.NumPad2)
             {
-                if (this.flyMode.Checked == true && speedrunMode.Checked == false)
+                if (this.flyMode.Checked == true && flyMode.Enabled)
                 {
                     movement(5); //Y-
                 }
@@ -484,73 +484,73 @@ namespace Taz_trainer
             }
             if (e.KeyCode == Keys.NumPad1)
             {
-                if (speedrunMode.Checked == false)
+                if (savePos.Enabled)
                     this.savePos.Checked = !this.savePos.Checked;
                 sendKey(Keys.NumPad1, "{1}");
             }
             if (e.KeyCode == Keys.NumPad0)
             {
-                if (speedrunMode.Checked == false)
+                if (flyCamera.Enabled)
                     this.flyCamera.Checked = !this.flyCamera.Checked;
                 sendKey(Keys.NumPad0, "{0}");
             }
             if (e.KeyCode == Keys.PrintScreen)
             {
-                if (speedrunMode.Checked == false)
+                if (screenshot.Enabled)
                     this.screenshot.Checked = !this.screenshot.Checked;
                 sendKey(Keys.PrintScreen, "{PRTSC}");
             }
             if (e.KeyCode == Keys.Multiply)
             {
-                if (speedrunMode.Checked == false)
+                if (fpsCap.Enabled)
                     incFPScap(sender, e);
                 sendKey(Keys.Multiply, "{MULTIPLY}");
             }
             if (e.KeyCode == Keys.Divide)
             {
-                if (speedrunMode.Checked == false)
+                if (fpsCap.Enabled)
                     decFPScap(sender, e);
                 sendKey(Keys.Divide, "{/}");
             }
             if (e.KeyCode == Keys.Add)
             {
-                if (speedrunMode.Checked == false)
+                if (fov.Enabled)
                     this.incFOV(sender, e);
                 sendKey(Keys.Add, "{ADD}");
             }
             if (e.KeyCode == Keys.Subtract)
             {
-                if (speedrunMode.Checked == false)
+                if (fov.Enabled)
                     this.decFOV(sender, e);
                 sendKey(Keys.Subtract, "{SUBTRACT}");
             }
             if (e.KeyCode == Keys.PageUp)
             {
-                if (speedrunMode.Checked == false)
+                if (ballMode.Enabled)
                     buttonNext_Click(sender, e);
                 sendKey(Keys.PageUp, "{PGUP}");
             }
             if (e.KeyCode == Keys.PageDown)
             {
-                if (speedrunMode.Checked == false)
+                if (ballMode.Enabled)
                     buttonPrev_Click(sender, e);
                 sendKey(Keys.PageDown, "{PGDN}");
             }
             if (e.KeyCode == Keys.Back)
             {
-                if (speedrunMode.Checked == false)
+                if (speedHack.Enabled)
                     this.speedHack.Checked = !this.speedHack.Checked;
                 sendKey(Keys.Back, "{BKSP}");
             }
             if (e.KeyCode == Keys.Decimal)
             {
-                if (speedrunMode.Checked == false)
+                if (debugInfo.Enabled)
                     this.debugInfo.Checked = !this.debugInfo.Checked;
                 sendKey(Keys.Decimal, "{.}");
             }
             if (e.KeyCode == Keys.Delete)
             {
-                if (speedrunMode.Checked == false)
+                if (resetLevel.Enabled)
                     this.resetLevel.Checked = !this.resetLevel.Checked;
                 sendKey(Keys.Delete, "{DEL}");
             }
@@ -650,6 +650,28 @@ namespace Taz_trainer
                 return true;
             }
         }
+        private bool checkProcess()
+        {
+            int procId = findProcessId(procName);
+            if (procId == 0)
+                return false;
+            else
+                return true;
+        }
+
+        private void startGame()
+        {
+            if (checkProcess())
+            {
+                    var result = MessageBox.Show("Another game instance is already running. Terminate?", "Start Game", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                    killProcess();
+                else
+                    return;
+            }
+            string TazExecPath = TazFolderPath + "\\Taz.exe";
+            Process.Start(TazExecPath, "Launched");
+        }
 
         //#######################################################################################################################
         //Other
@@ -700,7 +722,7 @@ namespace Taz_trainer
                     width = "0";
                 if (height == "")
                     height = "0";
-                if(speedrunMode.Checked == false)
+                if (radioSpeedrun.Checked == false)
                     autoAspect(UInt16.Parse(width), UInt16.Parse(height));
                 windowed.Checked = true;
             }
@@ -720,7 +742,7 @@ namespace Taz_trainer
                     width = "0";
                 if (height == "")
                     height = "0";
-                if (speedrunMode.Checked == false)
+                if (radioSpeedrun.Checked == false)
                     autoAspect(UInt16.Parse(width), UInt16.Parse(height));
                 windowed.Checked = true;
             }
@@ -1910,28 +1932,28 @@ namespace Taz_trainer
 
                 bool backuped = false;
 
-                //backup Taz.exe
+                // Backup Taz.exe
                 if (File.Exists(TazFolderPath + "\\Taz.exe.backup") == false)
                 {
                     File.Copy(TazFolderPath + "\\Taz.exe", TazFolderPath + "\\Taz.exe.backup", true);
                     backuped = true;
                 }
 
-                //check taz.dat
+                // Check taz.dat
                 if (File.Exists(TazFolderPath + "\\taz.dat") == false)
                 {
                     //create empty dat file
                     File.WriteAllBytes(TazFolderPath + "\\taz.dat", Properties.Resources.taz);
                 }
 
-                //backup taz.dat
+                // Backup taz.dat
                 if (File.Exists(TazFolderPath + "\\taz.dat.backup") == false)
                 {
                     File.Copy(TazFolderPath + "\\taz.dat", TazFolderPath + "\\taz.dat.backup", true);
                     backuped = true;
                 }
 
-                //check TazWanted.sav
+                // Check TazWanted.sav
                 if (File.Exists(TazFolderPath + "\\TazWanted.sav") == false)
                 {
                     //create empty sav file
@@ -1943,7 +1965,7 @@ namespace Taz_trainer
                 using (var file = new FileStream(TazFolderPath + "\\Taz.exe", FileMode.Open, FileAccess.ReadWrite))
                 {
                     // NoCD 
-                    if (this.noCD.Checked == true)
+                    if (noCD.Checked && noCD.Enabled)
                     {
                         byte[] nocd = new byte[] { 0x33, 0xC0, 0x40, 0xC3 };
                         file.Position = 0xA1F10;
@@ -1959,7 +1981,7 @@ namespace Taz_trainer
                     }
 
                     // 4gb
-                    if (this.patch4gb.Checked == true)
+                    if (patch4gb.Checked && patch4gb.Enabled)
                     {
                         file.Position = 0x12E;
                         file.WriteByte(0x2F);
@@ -1971,7 +1993,7 @@ namespace Taz_trainer
                     }
 
                     // Subtitles
-                    if (this.cutsceneSubtitles.Checked == true)
+                    if (cutsceneSubtitles.Checked && cutsceneSubtitles.Enabled)
                     {
                         byte[] intro = new byte[] { 0xE8, 0x09, 0x6F, 0x00, 0x00 };
                         file.Position = 0xD2D92;
@@ -2016,7 +2038,7 @@ namespace Taz_trainer
 
 
                     // Draw distance
-                    if (this.disableDrawDistance.Checked == true)
+                    if (disableDrawDistance.Checked && disableDrawDistance.Enabled)
                     {
 
                         byte[] bytes = new byte[] { 0xFF, 0xFF, 0xEB }; // 00 00 75
@@ -2060,7 +2082,7 @@ namespace Taz_trainer
 
                     // Fog
                     // No fog
-                    if (this.fogComboBox.SelectedIndex == 0)
+                    if (fogComboBox.SelectedIndex == 0 || !fogComboBox.Enabled)
                     {
                         // Restore fstp instructions
                         byte[] stock = new byte[] { 0xD9, 0x1D, 0xBC, 0x4C, 0x70, 0x00, 0xD9, 0x1D, 0xC4, 0x4C, 0x70, 0x00 };
@@ -2091,7 +2113,7 @@ namespace Taz_trainer
 
 
                     // Resolution and windowed
-                    if (this.changeResolution.Checked == true)
+                    if (changeResolution.Checked)
                     {
                         byte[] width = BitConverter.GetBytes(UInt32.Parse(this.width.Text));
                         byte[] height = BitConverter.GetBytes(UInt32.Parse(this.height.Text));
@@ -2124,7 +2146,7 @@ namespace Taz_trainer
                     }
 
                     // Aspect ratio
-                    if (this.aspectRatio.Checked == true)
+                    if (aspectRatio.Checked)
                     {
                         byte aspect1 = Byte.Parse(this.aspect1.Text);
                         byte aspect2 = Byte.Parse(this.aspect2.Text);
@@ -2163,7 +2185,7 @@ namespace Taz_trainer
                     }
 
                     // Texture filtering
-                    if (this.filtering.Checked == true)
+                    if (filtering.Checked && filtering.Enabled)
                     {
                         file.Position = 0x255E00;
                         file.WriteByte(0x01);
@@ -2180,7 +2202,7 @@ namespace Taz_trainer
                     }
 
                     // Warning banner time and videos
-                    if (this.skips.Checked == true)
+                    if (skips.Checked && skips.Enabled)
                     {
                         file.Position = 0x8F07D;
                         file.WriteByte(0x20);
@@ -2205,7 +2227,7 @@ namespace Taz_trainer
                     }
 
                     // Mod Loader
-                    if (this.mods.Checked == true)
+                    if (mods.Checked && mods.Enabled)
                     {
                         // Create mods directory
                         if (Directory.Exists(TazFolderPath + "\\Mods") == false)
@@ -2251,7 +2273,7 @@ namespace Taz_trainer
                     }
 
                     // Fps cap
-                    if (this.limitFPS.Checked == true)
+                    if (limitFPS.Checked && limitFPS.Enabled)
                     {
                         // FrameLimiter.CEA
                         file.Position = 0x1F6700;
@@ -2298,7 +2320,7 @@ namespace Taz_trainer
                     }
 
                     // Fov
-                    if (this.checkBoxFoV.Checked == true)
+                    if (checkBoxFoV.Checked && checkBoxFoV.Enabled)
                     {
                         // FoV.CEA
                         file.Position = 0x1F6760;
@@ -2345,7 +2367,7 @@ namespace Taz_trainer
                     }
 
                     // Coop fix
-                    if (this.coopFix.Checked == true && this.coopFix.Enabled == true) // unavailable with d3d8to9
+                    if (coopFix.Checked && coopFix.Enabled) // unavailable with d3d8to9
                     {
                         // CoopPatch.CEA
                         file.Position = 0x1F6E00;
@@ -2377,7 +2399,7 @@ namespace Taz_trainer
                     }
 
                     // Achievements
-                    if (this.achievements.Checked == true)
+                    if ((achievements.Checked && achievements.Enabled) || (injections.Checked && injections.Enabled))
                     {
                         // Achievements.CEA
                         file.Position = 0x1D5CF8;
@@ -2458,7 +2480,7 @@ namespace Taz_trainer
                     }
 
                     // Dev injections
-                    if (this.injections.Checked == true)
+                    if (injections.Checked && injections.Enabled)
                     {
                         // InjectionPost.CEA
                         file.Position = 0x1F6880;
@@ -2501,7 +2523,7 @@ namespace Taz_trainer
                     }
 
                     // Daffy-culty
-                    if (this.daffycultyComboBox.SelectedIndex != 0)
+                    if (daffycultyComboBox.SelectedIndex != 0 && daffyculty.Enabled)
                     {
                         // Init for daffyculty
                         file.Position = 0xA2351;
@@ -2518,7 +2540,7 @@ namespace Taz_trainer
                     }
 
                     // Start level
-                    if (this.levelComboBox.SelectedIndex != 0)
+                    if (levelComboBox.SelectedIndex != 0 && levelComboBox.Enabled)
                     {
                         byte index = (byte)this.levelComboBox.SelectedIndex;
 
@@ -2573,7 +2595,7 @@ namespace Taz_trainer
                     }
 
                     // Advanced cheats
-                    if (this.extraDebug.Checked == true)
+                    if (extraDebug.Checked && extraDebug.Enabled)
                     {
                         // Check cheats.pc
                         if (File.Exists(TazFolderPath + "\\Paks\\cheats.pc") == true)
@@ -2832,7 +2854,7 @@ namespace Taz_trainer
                 using (var filedat = new FileStream(TazFolderPath + "\\taz.dat", FileMode.Open, FileAccess.ReadWrite))
                 {
                     // Lighting
-                    if (this.lighting.Checked == true)
+                    if (lighting.Checked)
                     {
                         // Cartoon lighting on
                         filedat.Position = 0x38;
@@ -2846,7 +2868,7 @@ namespace Taz_trainer
                     }
 
                     // Outlines
-                    if (this.outlines.Checked == true)
+                    if (outlines.Checked)
                     {
                         // Cartoon outlines on
                         filedat.Position = 0x3C;
@@ -2860,7 +2882,7 @@ namespace Taz_trainer
                     }
 
                     // Voodoo
-                    if (this.voodoo.Checked == true)
+                    if (voodoo.Checked)
                     {
                         // Voodoo on
                         filedat.Position = 0x40;
@@ -2873,7 +2895,7 @@ namespace Taz_trainer
                         filedat.WriteByte(0x00);
                     }
 
-                    if (this.windowed.Checked == false)
+                    if (!windowed.Checked && !windowed.Enabled)
                     {
                         //fullscreen
                         filedat.Position = 0x34;
@@ -2889,7 +2911,7 @@ namespace Taz_trainer
                     byte[] width = BitConverter.GetBytes(UInt32.Parse(this.width.Text));
                     byte[] height = BitConverter.GetBytes(UInt32.Parse(this.height.Text));
 
-                    if (this.changeResolution.Checked == true)
+                    if (changeResolution.Checked)
                     {
                         // Width
                         filedat.Position = 0x24;
@@ -2930,7 +2952,7 @@ namespace Taz_trainer
                     }
 
                     // Draw distance
-                    if (this.disableDrawDistance.Checked == true)
+                    if (disableDrawDistance.Checked && disableDrawDistance.Enabled)
                     {
                         // Max distance
                         filedat.Position = 0x44;
@@ -2948,7 +2970,7 @@ namespace Taz_trainer
                     // Layout
                     // Vanilla = 0 (Do Nothing)
                     // XInput
-                    if (layoutComboBox.SelectedIndex == 1)
+                    if (layoutComboBox.SelectedIndex == 1 && layoutComboBox.Enabled)
                     {
                         byte[] xinput = new byte[] { 0x21, 0x00, 0x00, 0x00, 0x21, 0x00, 0x00, 0x00, 0x22, 0x00, 0x00, 0x00, 0x22, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x23, 0x00, 0x00, 0x00, 0x23, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
                         // Player 1
@@ -2959,7 +2981,7 @@ namespace Taz_trainer
                         filedat.Write(xinput, 0, xinput.Length);
                     }
                     // DualShock 4
-                    else if (layoutComboBox.SelectedIndex == 2)
+                    else if (layoutComboBox.SelectedIndex == 2 && layoutComboBox.Enabled)
                     {
                         byte[] ds4 = new byte[] { 0x21, 0x00, 0x00, 0x00, 0x21, 0x00, 0x00, 0x00, 0x22, 0x00, 0x00, 0x00, 0x22, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x03, 0x00, 0x00, 0x00, 0x05, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x06, 0x00, 0x00, 0x00, 0x07, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x0A, 0x00, 0x00, 0x00, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
                         // Player 1
@@ -2972,7 +2994,10 @@ namespace Taz_trainer
 
                     // Language
                     filedat.Position = 0x168;
-                    filedat.WriteByte((Byte)langComboBox.SelectedIndex);
+                    if (langComboBox.Enabled)
+                        filedat.WriteByte((Byte)langComboBox.SelectedIndex);
+                    else
+                        filedat.WriteByte((Byte)0);
 
                     // Dat patches end
                     filedat.Close();
@@ -3119,9 +3144,9 @@ namespace Taz_trainer
         {
             try
             {
-                if (speedrunMode.Checked == true)
+                if (radioTrainer.Checked == false)
                 {
-                    MessageBox.Show("This shortcut unavailable in safe mode. Use Patch & Play button.", "Safe mode", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("This shortcut only available with Trainer mode. Use Patch & Play button.", "Safe mode", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -3192,13 +3217,12 @@ namespace Taz_trainer
 
         private void executable_Click(object sender, EventArgs e)
         {
-            if (speedrunMode.Checked == true)
+            if (radioTrainer.Checked == false)
             {
-                MessageBox.Show("This shortcut unavailable in safe mode. Use Patch & Play button.", "Safe mode", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("This shortcut only available with Trainer mode. Use Patch & Play button.", "Safe mode", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            string TazExecPath = TazFolderPath + "\\Taz.exe";
-            Process.Start(TazExecPath, "Launched");
+            startGame();
         }
 
         private void play_Click(object sender, EventArgs e)
@@ -3207,10 +3231,7 @@ namespace Taz_trainer
             {
                 patch_Click(sender, e);
                 if (toolStripStatusLabel.Text.Contains("taz.dat") == false)
-                {
-                    string TazExecPath = TazFolderPath + "\\Taz.exe";
-                    Process.Start(TazExecPath, "Launched");
-                }
+                    startGame();
                 else
                     MessageBox.Show("Game config file not found. Launch game via native launcher (Settings -> Shortcuts -> Launcher) to create config, then restart game via patcher.", "File taz.dat not found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -4658,11 +4679,16 @@ namespace Taz_trainer
         {
             injections.Visible = !injections.Visible;
         }
-        private void SpdInitOptions()
+        private void InitModeOptions()
         {
-            if (speedrunMode.Checked)
-            {
+            if (radioAchievements.Checked)
+                AchLockOptions();
+            else if (radioSpeedrun.Checked)
                 SpdLockOptions();
+            else if (radioTrainer.Checked)
+            {
+                SpdUnlockOptions();
+                AchUnlockOptions();
             }
         }
         private void SpdLockOptions()
@@ -4673,7 +4699,7 @@ namespace Taz_trainer
             extraDebug.Enabled = false;
             coopFix.Enabled = false;
             injections.Enabled = false;
-            achievements.Enabled = false;
+            achievements.Enabled = true;
             level.Enabled = false;
             levelComboBox.Enabled = false;
             daffyculty.Enabled = false;
@@ -4681,9 +4707,6 @@ namespace Taz_trainer
 
             windowed.Enabled = false;
             aspectRatio.Enabled = false;
-            aspect1.Enabled = false;
-            aspect2.Enabled = false;
-            pointsLabel.Enabled = false;
             aspectSwap.Visible = true;
 
             windowed.Enabled = false;
@@ -4699,15 +4722,7 @@ namespace Taz_trainer
 
             advancedTab.Enabled = false;
 
-            // Change options
-            mods.Checked = false;
-            cutsceneSubtitles.Checked = false;
-            extraDebug.Checked = false;
-            coopFix.Checked = false;
-            injections.Checked = false;
-            levelComboBox.SelectedIndex = 0;
-            daffycultyComboBox.SelectedIndex = 0;
-
+            // API
             int ind = apiComboBox.SelectedIndex;
             apiComboBox.Items.Clear();
             apiComboBox.Items.Add("d3d8 · vanilla");
@@ -4717,22 +4732,35 @@ namespace Taz_trainer
             else
                 apiComboBox.SelectedIndex = 0;
 
-            windowed.Checked = false;
+            // Aspect
             aspectRatio.Checked = true;
+            aspect1.ReadOnly = true;
+            aspect2.ReadOnly = true;
             if (!(aspect1.Text == "16" && aspect2.Text == "9"))
             {
                 aspect1.Text = "4";
                 aspect2.Text = "3";
             }
 
+
+            // Change options
+            /*
+            mods.Checked = false;
+            cutsceneSubtitles.Checked = false;
+            extraDebug.Checked = false;
+            coopFix.Checked = false;
+            injections.Checked = false;
+            levelComboBox.SelectedIndex = 0;
+            daffycultyComboBox.SelectedIndex = 0;
+            windowed.Checked = false;
             limitFPS.Checked = false;
             checkBoxFoV.Checked = false;
             disableDrawDistance.Checked = false;
             fogComboBox.SelectedIndex = 0;
-
+            */
             this.Text = "Taz Wanted · SPEEDRUN MODE";
         }
-        private void SpdUnockOptions()
+        private void SpdUnlockOptions()
         {
             // Unlocking options
             mods.Enabled = true;
@@ -4740,7 +4768,7 @@ namespace Taz_trainer
             extraDebug.Enabled = true;
             coopFix.Enabled = true;
             injections.Enabled = true;
-            achievements.Enabled = true;
+            achievements.Enabled = false;
             level.Enabled = true;
             levelComboBox.Enabled = true;
             daffyculty.Enabled = true;
@@ -4749,9 +4777,6 @@ namespace Taz_trainer
 
             windowed.Enabled = true;
             aspectRatio.Enabled = true;
-            aspect1.Enabled = true;
-            aspect2.Enabled = true;
-            pointsLabel.Enabled = true;
             aspectSwap.Visible = false;
 
             limitFPS.Enabled = true;
@@ -4766,17 +4791,7 @@ namespace Taz_trainer
 
             advancedTab.Enabled = true;
 
-            // Change options
-            mods.Checked = true;
-            cutsceneSubtitles.Checked = true;
-            extraDebug.Checked = true;
-            coopFix.Checked = true;
-            //catComboBox.SelectedIndex = 0;
-
-            if (width.Text == "" || height.Text == "")
-                autoFillVideo(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
-            autoAspect(Int32.Parse(width.Text), Int32.Parse(height.Text));
-
+            // API
             int ind = apiComboBox.SelectedIndex;
             apiComboBox.Items.Clear();
             apiComboBox.Items.Add("d3d8 · vanilla");
@@ -4788,31 +4803,75 @@ namespace Taz_trainer
             else
                 apiComboBox.SelectedIndex = 0;
 
+            // Aspect
+            if (width.Text == "" || height.Text == "")
+                autoFillVideo(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+            autoAspect(Int32.Parse(width.Text), Int32.Parse(height.Text));
+            aspect1.ReadOnly = false;
+            aspect2.ReadOnly = false;
+
+            // Change options
+            /*
+            mods.Checked = true;
+            cutsceneSubtitles.Checked = true;
+            extraDebug.Checked = true;
+            coopFix.Checked = true;
+            //catComboBox.SelectedIndex = 0;
             disableDrawDistance.Checked = true;
+            */
 
             this.Text = "Taz Wanted · Trainer & Patcher";
         }
-
-        private void speedrunMode_Click(object sender, EventArgs e)
+        private void AchLockOptions()
         {
-            if (speedrunMode.Checked)
-            {
-                var result = MessageBox.Show("This will overwrite your settings and terminate game process. All trainer features will be deactivated. Continue?", "Speedrun mode", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                {
-                    this.kill_Click(sender, e);
-                    SpdLockOptions();
-                }
-                else
-                {
-                    speedrunMode.Checked = false;
-                }
-            }
-            else
-            {
-                this.kill_Click(sender, e);
-                SpdUnockOptions();
-            }
+            // Lock some trainer features
+            invisibility.Enabled = false;
+            superBelchCan.Enabled = false;
+            superJump.Enabled = false;
+            freezeLevelTimer.Enabled = false;
+            gameSpeed.Enabled = false;
+            speedHack.Enabled = false;
+
+            debugMenu.Enabled = false;
+            flyCamera.Enabled = false;
+            savePos.Enabled = false;
+            flyMode.Enabled = false;
+            debugInfo.Enabled = false;
+
+            coopMode.Enabled = false;
+            ballMode.Enabled = false;
+            undestructibleWorld.Enabled = false;
+            bulldozerMode.Enabled = false;
+            unsinkabilityMode.Enabled = false;
+
+            // Unlock achievements
+            achievements.Enabled = true;
+        }
+
+        private void AchUnlockOptions()
+        {
+            // Lock some trainer features
+            invisibility.Enabled = true;
+            superBelchCan.Enabled = true;
+            superJump.Enabled = true;
+            freezeLevelTimer.Enabled = true;
+            gameSpeed.Enabled = true;
+            speedHack.Enabled = true;
+
+            debugMenu.Enabled = true;
+            flyCamera.Enabled = true;
+            savePos.Enabled = true;
+            flyMode.Enabled = true;
+            debugInfo.Enabled = true;
+
+            coopMode.Enabled = true;
+            ballMode.Enabled = true;
+            undestructibleWorld.Enabled = true;
+            bulldozerMode.Enabled = true;
+            unsinkabilityMode.Enabled = true;
+
+            // Unlock achievements
+            achievements.Enabled = false;
         }
 
         private void aspectSwap_Click(object sender, EventArgs e)
@@ -4885,7 +4944,7 @@ namespace Taz_trainer
 
         private void apiComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (speedrunMode.Checked == false)
+            if (radioSpeedrun.Checked == false)
             {
                 // Lock coop fix for d3d8to9 (for some reason game crashes on startup)
                 if (apiComboBox.SelectedIndex == 1)
@@ -5025,5 +5084,85 @@ namespace Taz_trainer
         }
 
 
+        private void radioAchievements_Click(object sender, EventArgs e)
+        {
+            /*if (radioAchievements.Checked == true)
+                return;*/
+
+            // Check game
+            if (checkProcess())
+            {
+                var result = MessageBox.Show("This will terminate launched game process. Continue?", "Achievements mode", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                    killProcess();
+                else
+                {
+                    // Reset radio
+                    if (trainerTab.Enabled == false)
+                        radioSpeedrun.Checked = true;
+                    else
+                        radioTrainer.Checked = true;
+                    return;
+                }
+            }
+
+            // Unlock spd options
+            if (trainerTab.Enabled == false)
+                SpdUnlockOptions();
+
+            // Lock options
+            AchLockOptions();
+        }
+
+        private void radioSpeedrun_Click(object sender, EventArgs e)
+        {
+           /* if (radioTrainer.Checked == true)
+                return;*/
+
+            // Check game
+            if (checkProcess())
+            {
+                var result = MessageBox.Show("This will terminate launched game process. Continue?", "Speedrun mode", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                    killProcess();
+                else
+                {
+                    // Reset radio
+                    if (achievements.Enabled == false)
+                        radioTrainer.Checked = true;
+                    else
+                        radioAchievements.Checked = true;
+                    return;
+                }
+            }
+
+            // Lock options
+            SpdLockOptions();
+        }
+
+        private void radioTrainer_Click(object sender, EventArgs e)
+        {
+            // Check game
+            if (checkProcess())
+            {
+                var result = MessageBox.Show("This will terminate launched game process. Continue?", "Trainer mode", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                    killProcess();
+                else
+                {
+                    // Reset radio
+                    if (trainerTab.Enabled == false)
+                        radioSpeedrun.Checked = true;
+                    else
+                        radioAchievements.Checked = true;
+                    return;
+                }
+            }
+
+            // Unlock options (except achievements)
+            if (trainerTab.Enabled == false)
+                SpdUnlockOptions();
+            AchUnlockOptions();
+        }
     }
 }
