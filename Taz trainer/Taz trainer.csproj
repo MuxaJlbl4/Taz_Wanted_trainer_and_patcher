@@ -131,6 +131,7 @@
     <None Include="Resources\moveselection.wav" />
     <None Include="Resources\TazTrainer.png" />
     <None Include="Resources\cameraclick.wav" />
+    <Content Include="Resources\achievement.wav" />
     <Content Include="Resources\ReadMe.html" />
     <Content Include="Resources\Repacking.html" />
     <Content Include="TAZLOGO.ico" />
