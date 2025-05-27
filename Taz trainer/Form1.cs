@@ -1399,7 +1399,7 @@ namespace Taz_trainer
                 byte[] bytes = { 0x0D };
                 checkAndWrite((IntPtr)0x0057384C, bytes, bytes.Length, new IntPtr());
 
-                message("Alpha Textures: On");
+                message("Show Wall Collisions: On");
             }
             else
             {
@@ -1407,7 +1407,7 @@ namespace Taz_trainer
                 byte[] bytes = { 0x05 };
                 checkAndWrite((IntPtr)0x0057384C, bytes, bytes.Length, new IntPtr());
 
-                message("Alpha Textures: Off");
+                message("Show Wall Collisions: Off");
             }
         }
 
@@ -4809,7 +4809,7 @@ namespace Taz_trainer
             apiComboBox.Items.Clear();
             apiComboBox.Items.Add("d3d8 · vanilla");
             apiComboBox.Items.Add("d3d9 · d3d8to9");
-            apiComboBox.Items.Add("d3d11 · dgVoodoo2");
+            apiComboBox.Items.Add("d3d12 · dgVoodoo2");
             apiComboBox.Items.Add("vulkan · dxvk");
             if (ind == 1)
                 apiComboBox.SelectedIndex = 1;
