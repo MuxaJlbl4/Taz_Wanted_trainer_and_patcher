@@ -193,7 +193,7 @@
             this.tableLayoutPanelPatcher118 = new System.Windows.Forms.TableLayoutPanel();
             this.layoutComboBox = new System.Windows.Forms.ComboBox();
             this.layout = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanelPatcher11B = new System.Windows.Forms.TableLayoutPanel();
             this.daffycultyComboBox = new System.Windows.Forms.ComboBox();
             this.daffyculty = new System.Windows.Forms.Label();
             this.tableLayoutPanelPatcher11A = new System.Windows.Forms.TableLayoutPanel();
@@ -293,8 +293,8 @@
             this.hpLink = new System.Windows.Forms.Button();
             this.savegameGroup = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanelSettings52 = new System.Windows.Forms.TableLayoutPanel();
-            this.deleteSav = new System.Windows.Forms.Button();
             this.updateWrappers = new System.Windows.Forms.Button();
+            this.deleteSav = new System.Windows.Forms.Button();
             this.kill = new System.Windows.Forms.Button();
             this.repackTab = new System.Windows.Forms.TabPage();
             this.tableLayoutPanelRepacker1 = new System.Windows.Forms.TableLayoutPanel();
@@ -355,7 +355,7 @@
             this.tableLayoutPanelPatcher112.SuspendLayout();
             this.tableLayoutPanelPatcher119.SuspendLayout();
             this.tableLayoutPanelPatcher118.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanelPatcher11B.SuspendLayout();
             this.tableLayoutPanelPatcher11A.SuspendLayout();
             this.tableLayoutPanelPatcher2.SuspendLayout();
             this.tableLayoutPanelPatcher21.SuspendLayout();
@@ -1280,6 +1280,7 @@
             this.tableLayoutPanelPatcher1311.Controls.Add(this.radioTrainer, 0, 2);
             this.tableLayoutPanelPatcher1311.Controls.Add(this.radioSpeedrun, 0, 1);
             this.tableLayoutPanelPatcher1311.Controls.Add(this.radioAchievements, 0, 0);
+            this.tableLayoutPanelPatcher1311.Font = new System.Drawing.Font("Comic Sans MS", 13F, System.Drawing.FontStyle.Bold);
             this.tableLayoutPanelPatcher1311.Location = new System.Drawing.Point(17, 0);
             this.tableLayoutPanelPatcher1311.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelPatcher1311.Name = "tableLayoutPanelPatcher1311";
@@ -1295,9 +1296,9 @@
             this.radioTrainer.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.radioTrainer.AutoSize = true;
             this.radioTrainer.Checked = true;
-            this.radioTrainer.Location = new System.Drawing.Point(3, 77);
+            this.radioTrainer.Location = new System.Drawing.Point(3, 78);
             this.radioTrainer.Name = "radioTrainer";
-            this.radioTrainer.Size = new System.Drawing.Size(98, 31);
+            this.radioTrainer.Size = new System.Drawing.Size(95, 29);
             this.radioTrainer.TabIndex = 0;
             this.radioTrainer.TabStop = true;
             this.radioTrainer.Text = "Trainer";
@@ -1308,9 +1309,9 @@
             // 
             this.radioSpeedrun.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.radioSpeedrun.AutoSize = true;
-            this.radioSpeedrun.Location = new System.Drawing.Point(3, 40);
+            this.radioSpeedrun.Location = new System.Drawing.Point(3, 41);
             this.radioSpeedrun.Name = "radioSpeedrun";
-            this.radioSpeedrun.Size = new System.Drawing.Size(115, 31);
+            this.radioSpeedrun.Size = new System.Drawing.Size(110, 29);
             this.radioSpeedrun.TabIndex = 0;
             this.radioSpeedrun.Text = "Speedrun";
             this.radioSpeedrun.UseVisualStyleBackColor = true;
@@ -1320,9 +1321,9 @@
             // 
             this.radioAchievements.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.radioAchievements.AutoSize = true;
-            this.radioAchievements.Location = new System.Drawing.Point(3, 3);
+            this.radioAchievements.Location = new System.Drawing.Point(3, 4);
             this.radioAchievements.Name = "radioAchievements";
-            this.radioAchievements.Size = new System.Drawing.Size(155, 31);
+            this.radioAchievements.Size = new System.Drawing.Size(146, 29);
             this.radioAchievements.TabIndex = 0;
             this.radioAchievements.Text = "Achievements";
             this.radioAchievements.UseVisualStyleBackColor = true;
@@ -1901,7 +1902,7 @@
             this.tableLayoutPanelPatcher11.Controls.Add(this.tableLayoutPanelPatcher112, 0, 1);
             this.tableLayoutPanelPatcher11.Controls.Add(this.tableLayoutPanelPatcher119, 0, 6);
             this.tableLayoutPanelPatcher11.Controls.Add(this.tableLayoutPanelPatcher118, 0, 7);
-            this.tableLayoutPanelPatcher11.Controls.Add(this.tableLayoutPanel1, 0, 9);
+            this.tableLayoutPanelPatcher11.Controls.Add(this.tableLayoutPanelPatcher11B, 0, 9);
             this.tableLayoutPanelPatcher11.Controls.Add(this.tableLayoutPanelPatcher11A, 0, 8);
             this.tableLayoutPanelPatcher11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelPatcher11.Location = new System.Drawing.Point(3, 26);
@@ -2229,21 +2230,21 @@
             this.layout.TabIndex = 0;
             this.layout.Text = "Layout:";
             // 
-            // tableLayoutPanel1
+            // tableLayoutPanelPatcher11B
             // 
-            this.tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
-            this.tableLayoutPanel1.Controls.Add(this.daffycultyComboBox, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.daffyculty, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(26, 414);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(280, 45);
-            this.tableLayoutPanel1.TabIndex = 70;
+            this.tableLayoutPanelPatcher11B.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tableLayoutPanelPatcher11B.ColumnCount = 2;
+            this.tableLayoutPanelPatcher11B.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanelPatcher11B.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanelPatcher11B.Controls.Add(this.daffycultyComboBox, 1, 0);
+            this.tableLayoutPanelPatcher11B.Controls.Add(this.daffyculty, 0, 0);
+            this.tableLayoutPanelPatcher11B.Location = new System.Drawing.Point(26, 414);
+            this.tableLayoutPanelPatcher11B.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanelPatcher11B.Name = "tableLayoutPanelPatcher11B";
+            this.tableLayoutPanelPatcher11B.RowCount = 1;
+            this.tableLayoutPanelPatcher11B.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelPatcher11B.Size = new System.Drawing.Size(280, 45);
+            this.tableLayoutPanelPatcher11B.TabIndex = 70;
             // 
             // daffycultyComboBox
             // 
@@ -3564,7 +3565,7 @@
             this.linksGroup.Size = new System.Drawing.Size(176, 164);
             this.linksGroup.TabIndex = 800;
             this.linksGroup.TabStop = false;
-            this.linksGroup.Text = "Links";
+            this.linksGroup.Text = "Hubs";
             // 
             // tableLayoutPanelSettings43
             // 
@@ -3987,7 +3988,7 @@
             this.savePatcherSettings.Name = "savePatcherSettings";
             this.savePatcherSettings.Size = new System.Drawing.Size(239, 43);
             this.savePatcherSettings.TabIndex = 200;
-            this.savePatcherSettings.Text = "    Save Settings";
+            this.savePatcherSettings.Text = "    Save settings";
             this.savePatcherSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.savePatcherSettings.UseVisualStyleBackColor = false;
             this.savePatcherSettings.Click += new System.EventHandler(this.savePatcherSettings_Click);
@@ -4005,7 +4006,7 @@
             this.resetAchievements.Name = "resetAchievements";
             this.resetAchievements.Size = new System.Drawing.Size(239, 43);
             this.resetAchievements.TabIndex = 220;
-            this.resetAchievements.Text = "    Reset Achievements";
+            this.resetAchievements.Text = "    Reset achievements";
             this.resetAchievements.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.resetAchievements.UseVisualStyleBackColor = false;
             this.resetAchievements.Click += new System.EventHandler(this.achReset_Click);
@@ -4023,7 +4024,7 @@
             this.resetSettings.Name = "resetSettings";
             this.resetSettings.Size = new System.Drawing.Size(239, 43);
             this.resetSettings.TabIndex = 210;
-            this.resetSettings.Text = "    Reset Settings";
+            this.resetSettings.Text = "    Reset settings";
             this.resetSettings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.resetSettings.UseVisualStyleBackColor = false;
             this.resetSettings.Click += new System.EventHandler(this.resetSettings_Click);
@@ -4038,7 +4039,7 @@
             this.miscGroup.Size = new System.Drawing.Size(212, 164);
             this.miscGroup.TabIndex = 400;
             this.miscGroup.TabStop = false;
-            this.miscGroup.Text = "Misc";
+            this.miscGroup.Text = "Links";
             // 
             // tableLayoutPanelSettings53
             // 
@@ -4072,7 +4073,7 @@
             this.speedrunLink.Name = "speedrunLink";
             this.speedrunLink.Size = new System.Drawing.Size(204, 43);
             this.speedrunLink.TabIndex = 420;
-            this.speedrunLink.Text = "      Speedrun.com";
+            this.speedrunLink.Text = "      speedrun.com";
             this.speedrunLink.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.speedrunLink.UseVisualStyleBackColor = false;
             this.speedrunLink.Click += new System.EventHandler(this.speedrunLink_Click);
@@ -4081,6 +4082,7 @@
             // 
             this.raLink.AutoSize = true;
             this.raLink.BackColor = System.Drawing.Color.Transparent;
+            this.raLink.Dock = System.Windows.Forms.DockStyle.Fill;
             this.raLink.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.raLink.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.raLink.ImageKey = "bonusbox.png";
@@ -4090,7 +4092,7 @@
             this.raLink.Name = "raLink";
             this.raLink.Size = new System.Drawing.Size(204, 43);
             this.raLink.TabIndex = 410;
-            this.raLink.Text = "      RetroAchievements.org";
+            this.raLink.Text = "      retroachievements.org";
             this.raLink.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.raLink.UseVisualStyleBackColor = false;
             this.raLink.Click += new System.EventHandler(this.raLink_Click);
@@ -4099,16 +4101,17 @@
             // 
             this.hpLink.AutoSize = true;
             this.hpLink.BackColor = System.Drawing.Color.Transparent;
+            this.hpLink.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hpLink.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.hpLink.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.hpLink.ImageKey = "legored.png";
+            this.hpLink.ImageKey = "swirl.png";
             this.hpLink.ImageList = this.smallButtonIcons;
             this.hpLink.Location = new System.Drawing.Point(1, 1);
             this.hpLink.Margin = new System.Windows.Forms.Padding(1);
             this.hpLink.Name = "hpLink";
             this.hpLink.Size = new System.Drawing.Size(204, 43);
             this.hpLink.TabIndex = 400;
-            this.hpLink.Text = "      HiddenPalace.org";
+            this.hpLink.Text = "      hiddenpalace.org";
             this.hpLink.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.hpLink.UseVisualStyleBackColor = false;
             this.hpLink.Click += new System.EventHandler(this.hpLink_Click);
@@ -4123,15 +4126,15 @@
             this.savegameGroup.Size = new System.Drawing.Size(247, 164);
             this.savegameGroup.TabIndex = 300;
             this.savegameGroup.TabStop = false;
-            this.savegameGroup.Text = "Savegame";
+            this.savegameGroup.Text = "Misc";
             // 
             // tableLayoutPanelSettings52
             // 
             this.tableLayoutPanelSettings52.ColumnCount = 1;
             this.tableLayoutPanelSettings52.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelSettings52.Controls.Add(this.deleteSav, 0, 0);
             this.tableLayoutPanelSettings52.Controls.Add(this.updateWrappers, 0, 2);
-            this.tableLayoutPanelSettings52.Controls.Add(this.kill, 0, 1);
+            this.tableLayoutPanelSettings52.Controls.Add(this.deleteSav, 0, 1);
+            this.tableLayoutPanelSettings52.Controls.Add(this.kill, 0, 0);
             this.tableLayoutPanelSettings52.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelSettings52.Location = new System.Drawing.Point(3, 26);
             this.tableLayoutPanelSettings52.Margin = new System.Windows.Forms.Padding(0);
@@ -4142,25 +4145,6 @@
             this.tableLayoutPanelSettings52.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanelSettings52.Size = new System.Drawing.Size(241, 135);
             this.tableLayoutPanelSettings52.TabIndex = 300;
-            // 
-            // deleteSav
-            // 
-            this.deleteSav.AutoSize = true;
-            this.deleteSav.BackColor = System.Drawing.Color.Transparent;
-            this.deleteSav.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.deleteSav.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.deleteSav.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.deleteSav.ImageKey = "paintbrush.png";
-            this.deleteSav.ImageList = this.smallButtonIcons;
-            this.deleteSav.Location = new System.Drawing.Point(1, 1);
-            this.deleteSav.Margin = new System.Windows.Forms.Padding(1);
-            this.deleteSav.Name = "deleteSav";
-            this.deleteSav.Size = new System.Drawing.Size(239, 43);
-            this.deleteSav.TabIndex = 300;
-            this.deleteSav.Text = "    Delete Game Save";
-            this.deleteSav.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.deleteSav.UseVisualStyleBackColor = false;
-            this.deleteSav.Click += new System.EventHandler(this.deleteSav_Click);
             // 
             // updateWrappers
             // 
@@ -4181,6 +4165,25 @@
             this.updateWrappers.UseVisualStyleBackColor = false;
             this.updateWrappers.Click += new System.EventHandler(this.updateWrappers_Click);
             // 
+            // deleteSav
+            // 
+            this.deleteSav.AutoSize = true;
+            this.deleteSav.BackColor = System.Drawing.Color.Transparent;
+            this.deleteSav.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.deleteSav.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.deleteSav.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.deleteSav.ImageKey = "paintbrush.png";
+            this.deleteSav.ImageList = this.smallButtonIcons;
+            this.deleteSav.Location = new System.Drawing.Point(1, 46);
+            this.deleteSav.Margin = new System.Windows.Forms.Padding(1);
+            this.deleteSav.Name = "deleteSav";
+            this.deleteSav.Size = new System.Drawing.Size(239, 43);
+            this.deleteSav.TabIndex = 310;
+            this.deleteSav.Text = "    Delete game save";
+            this.deleteSav.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.deleteSav.UseVisualStyleBackColor = false;
+            this.deleteSav.Click += new System.EventHandler(this.deleteSav_Click);
+            // 
             // kill
             // 
             this.kill.AutoSize = true;
@@ -4190,12 +4193,12 @@
             this.kill.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.kill.ImageKey = "spookhouse.png";
             this.kill.ImageList = this.smallButtonIcons;
-            this.kill.Location = new System.Drawing.Point(1, 46);
+            this.kill.Location = new System.Drawing.Point(1, 1);
             this.kill.Margin = new System.Windows.Forms.Padding(1);
             this.kill.Name = "kill";
             this.kill.Size = new System.Drawing.Size(239, 43);
-            this.kill.TabIndex = 310;
-            this.kill.Text = "    Kill Taz Process";
+            this.kill.TabIndex = 300;
+            this.kill.Text = "    Kill taz.exe process";
             this.kill.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.kill.UseVisualStyleBackColor = false;
             this.kill.Click += new System.EventHandler(this.kill_Click);
@@ -4425,8 +4428,8 @@
             this.tableLayoutPanelPatcher119.PerformLayout();
             this.tableLayoutPanelPatcher118.ResumeLayout(false);
             this.tableLayoutPanelPatcher118.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanelPatcher11B.ResumeLayout(false);
+            this.tableLayoutPanelPatcher11B.PerformLayout();
             this.tableLayoutPanelPatcher11A.ResumeLayout(false);
             this.tableLayoutPanelPatcher11A.PerformLayout();
             this.tableLayoutPanelPatcher2.ResumeLayout(false);
@@ -4708,7 +4711,7 @@
         private System.Windows.Forms.RadioButton radioTrainer;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPatcher1311;
         private System.Windows.Forms.Button hpLink;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPatcher11B;
         private System.Windows.Forms.ComboBox daffycultyComboBox;
         private System.Windows.Forms.Label daffyculty;
         private System.Windows.Forms.CheckBox verticalSplit;
