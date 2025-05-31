@@ -256,8 +256,13 @@ namespace Taz_trainer
             {
                 try
                 {
-                    // Load form element states
-                    FormSerialisor.Deserialise(this, TazFolderPath + @"\Patcher.xml");
+                    // Load form element states + additional data
+                    Dictionary<string, object> additionalData = null;
+                    FormSerialisor.Deserialise(this, TazFolderPath + @"\Patcher.xml", out additionalData);
+
+                    if (additionalData != null && additionalData.ContainsKey("achievementsStateTrainer"))
+                        achievementsStateTrainer = (bool[])additionalData["achievementsStateTrainer"];
+
                     textBoxRegistry.Text = getPathFromRegistry();
                 }
                 catch (Exception ex)
@@ -3344,7 +3349,11 @@ namespace Taz_trainer
         {
             try
             {
-                FormSerialisor.Serialise(this, TazFolderPath + @"\Patcher.xml");
+                // Prepare additional data
+                Dictionary<string, object> additionalData = new Dictionary<string, object>();
+                additionalData["achievementsStateTrainer"] = achievementsStateTrainer;
+
+                FormSerialisor.Serialise(this, TazFolderPath + @"\Patcher.xml", additionalData);
                 this.toolStripStatusLabel.Text = "App settings successfully saved to: " + TazFolderPath + @"\Patcher.xml";
                 this.toolStripStatusLabel.ForeColor = System.Drawing.Color.DarkGreen;
             }
@@ -4700,7 +4709,7 @@ namespace Taz_trainer
                 SpdLockOptions();
             else if (radioTrainer.Checked)
             {
-                SpdUnlockOptions();
+                SpdUnlockOptions(true);
                 AchUnlockOptions();
             }
         }
@@ -4773,7 +4782,7 @@ namespace Taz_trainer
             */
             this.Text = "Taz Wanted · SPEEDRUN MODE";
         }
-        private void SpdUnlockOptions()
+        private void SpdUnlockOptions(bool init)
         {
             // Unlocking options
             mods.Enabled = true;
@@ -4805,17 +4814,19 @@ namespace Taz_trainer
             advancedTab.Enabled = true;
 
             // API
-            int ind = apiComboBox.SelectedIndex;
-            apiComboBox.Items.Clear();
-            apiComboBox.Items.Add("d3d8 · vanilla");
-            apiComboBox.Items.Add("d3d9 · d3d8to9");
-            apiComboBox.Items.Add("d3d12 · dgVoodoo2");
-            apiComboBox.Items.Add("vulkan · dxvk");
-            if (ind == 1)
-                apiComboBox.SelectedIndex = 1;
-            else
-                apiComboBox.SelectedIndex = 0;
-
+            if (!init)
+            {
+                int ind = apiComboBox.SelectedIndex;
+                apiComboBox.Items.Clear();
+                apiComboBox.Items.Add("d3d8 · vanilla");
+                apiComboBox.Items.Add("d3d9 · d3d8to9");
+                apiComboBox.Items.Add("d3d12 · dgVoodoo2");
+                apiComboBox.Items.Add("vulkan · dxvk");
+                if (ind == 1)
+                    apiComboBox.SelectedIndex = 1;
+                else
+                    apiComboBox.SelectedIndex = 0;
+            }
             // Aspect
             if (width.Text == "" || height.Text == "")
                 autoFillVideo(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
@@ -5015,6 +5026,7 @@ namespace Taz_trainer
                     listViewAchievements.Items[i].ImageKey = Achievements[i, 0] + "_lock.png";
             }
             labelAchievementsProgress.Text = unlocked.ToString() + '/' + achievementsTotal.ToString();
+            labelAchievementsPercent.Text = ((float)unlocked/(float)achievementsTotal * 100).ToString("0.00") + " %";
             progressBarAchievements.Value = unlocked;
         }
 
@@ -5125,7 +5137,7 @@ namespace Taz_trainer
 
             // Unlock spd options
             if (trainerTab.Enabled == false)
-                SpdUnlockOptions();
+                SpdUnlockOptions(false);
 
             // Lock options
             AchLockOptions();
@@ -5178,7 +5190,7 @@ namespace Taz_trainer
 
             // Unlock options (except achievements)
             if (trainerTab.Enabled == false)
-                SpdUnlockOptions();
+                SpdUnlockOptions(false);
             AchUnlockOptions();
         }
     }

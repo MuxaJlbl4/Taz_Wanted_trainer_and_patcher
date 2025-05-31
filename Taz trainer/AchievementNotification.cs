@@ -51,7 +51,7 @@ public class AchievementNotificationForm : Form
     private const int DISPLAY_DURATION_MS = 5000; // Duration the notification stays fully visible.
 
     // Sound and style
-    private SoundPlayer soundPlayer;
+    //private SoundPlayer soundPlayer;
     private AchievementStyle currentStyle;
 
     // Rounded corners and appearance

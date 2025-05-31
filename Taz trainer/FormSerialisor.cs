@@ -4,8 +4,9 @@ using System.Windows.Forms;
 using System.Reflection;
 using System.Xml;
 using System.Diagnostics;
-// Taz Trainer & Patcher
+
 using System.Collections.Generic;
+using System.Linq;
 
 namespace FormSerialisation
 {
@@ -23,7 +24,7 @@ namespace FormSerialisation
          * (Unofficial) Update :
          *  Add Serialization and Deserialization of DateTimePicker
          */
-        public static void Serialise(Control c, string XmlFileName)
+        public static void Serialise(Control c, string XmlFileName, Dictionary<string, object> additionalData = null)
         {
             XmlTextWriter xmlSerialisedForm = new XmlTextWriter(XmlFileName, System.Text.Encoding.Default);
             xmlSerialisedForm.Formatting = Formatting.Indented;
@@ -31,6 +32,29 @@ namespace FormSerialisation
             xmlSerialisedForm.WriteStartElement("ChildForm");
             // enumerate all controls on the form, and serialise them as appropriate
             AddChildControls(xmlSerialisedForm, c);
+
+            // enumerate additional data
+            if (additionalData != null && additionalData.Count > 0)
+            {
+                xmlSerialisedForm.WriteStartElement("AdditionalData");
+                foreach (var item in additionalData)
+                {
+                    xmlSerialisedForm.WriteStartElement("DataItem");
+                    xmlSerialisedForm.WriteAttributeString("Key", item.Key);
+
+                    if (item.Value is bool[])
+                    {
+                        bool[] array = (bool[])item.Value;
+                        string data = string.Join("", array.Select(b => b ? "1" : "0"));
+                        xmlSerialisedForm.WriteAttributeString("Type", "bool[]");
+                        xmlSerialisedForm.WriteString(data);
+                    }
+
+                    xmlSerialisedForm.WriteEndElement(); // DataItem
+                }
+                xmlSerialisedForm.WriteEndElement(); // AdditionalData
+            }
+
             xmlSerialisedForm.WriteEndElement(); // ChildForm
             xmlSerialisedForm.WriteEndDocument();
             xmlSerialisedForm.Flush();
@@ -122,19 +146,45 @@ namespace FormSerialisation
             }
         }
 
-        public static void Deserialise(Control c, string XmlFileName)
+        public static void Deserialise(Control c, string XmlFileName, out Dictionary<string, object> additionalData)
         {
+            additionalData = null;
             if (File.Exists(XmlFileName))
             {
                 XmlDocument xmlSerialisedForm = new XmlDocument();
                 xmlSerialisedForm.Load(XmlFileName);
                 XmlNode topLevel = xmlSerialisedForm.ChildNodes[1];
+
+                // enumerate all control
                 foreach (XmlNode n in topLevel.ChildNodes)
                 {
-                    SetControlProperties((Control)c, n);
+                    if (n.Name == "Control")
+                    {
+                        SetControlProperties(c, n);
+                    }
+                }
+
+                // enumerate additional data
+                XmlNode additionalDataNode = topLevel.SelectSingleNode("AdditionalData");
+                if (additionalDataNode != null)
+                {
+                    additionalData = new Dictionary<string, object>();
+                    foreach (XmlNode dataItemNode in additionalDataNode.ChildNodes)
+                    {
+                        string key = dataItemNode.Attributes["Key"].Value;
+                        string type = dataItemNode.Attributes["Type"].Value;
+                        string data = dataItemNode.InnerText;
+
+                        if (type == "bool[]")
+                        {
+                            bool[] array = data.Select(ch => ch == '1').ToArray();
+                            additionalData[key] = array;
+                        }
+                    }
                 }
             }
         }
+
 
         private static void SetControlProperties(Control currentCtrl, XmlNode n)
         {
