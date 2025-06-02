@@ -65,121 +65,148 @@ namespace Taz_trainer
         const int achievementsTotal = 115;
         bool[] achievementsStateTrainer = Enumerable.Repeat<bool>(false, achievementsTotal).ToArray();
         private string[,] Achievements = {
-                { "271979", "Taz, With Your Nose So Bright" , "Change into a red-nosed reindeer", "Zoo" },
-                { "271980", "Revenge is Sweet" , "Defeat the Catcher in Yosemite Zoo", "Zoo" },
-                { "271981", "Elephant Abolitionist" , "Destroy all 7 wanted posters and complete Zooney Tunes", "Zoo" },
-                { "271982", "Hidden Treasure of Zooney Tunes" , "Collect the golden Yosemite Sam statue in Zooney Tunes", "Zoo" },
-                { "271983", "The Zooney Tunes Varmint" , "On expert daffy-culty, earn the destruction bonus in Zooney Tunes", "Challenge" },
-                { "271984", "Zooney Tunes' Most Wanted" , "On expert daffy-culty, reach the maximum bounty of $10,000 in Zooney Tunes", "Challenge" },
-                { "271985", "Fine Cuisine of Zooney Tunes" , "On expert daffy-culty, eat all 100 sandwiches in Zooney Tunes", "Challenge" },
-                { "271986", "Taz Rad Devil" , "Change into a skater", "Zoo" },
-                { "271987", "Cage-Free Zooney Tunes" , "Defeat all 6 Catchers in Zooney Tunes", "Challenge" },
-                { "271988", "The Zooney Tunes Assassin" , "Defeat all 6 Catchers in Zooney Tunes on Expert Daffy-culty without being caught", "Challenge" }, // advanced
-                { "272091", "No Monkeying Around" , "Destroy the wanted poster on the cliff van in Zooney Tunes without swinging from monkeys or bouncing on tires", "Challenge" },
-                { "272072", "Safari Speedster" , "Complete the Zooney Tunes bonus game", "Zoo" },
-                { "272073", "Zoolander" , "Complete the Zooney Tunes bonus game with at least 0:12:0 left on the clock", "Challenge" },
-                { "271989", "Prepare for Takeoff" , "Destroy all 7 wanted posters and complete Ice Burg", "Zoo" },
-                { "271990", "Hidden Treasure of Ice Burg" , "Collect the golden Yosemite Sam statue in Ice Burg", "Zoo" },
-                { "271991", "The Ice Burg Varmint" , "On expert daffy-culty, earn the destruction bonus in Ice Burg", "Challenge" },
-                { "271992", "Ice Burg's Most Wanted" , "On expert daffy-culty, reach the maximum bounty of $20,000 in Ice Burg", "Challenge" }, // advanced
-                { "271993", "Fine Cuisine of Ice Burg" , "On expert daffy-culty, eat all 100 sandwiches in Ice Burg", "Challenge" },
-                { "271994", "Taz Cool as Ice, Baby" , "Change into a snowboarder", "Zoo" },
-                { "271995", "Cage-Free Ice Burg" , "Defeat all 6 Catchers in Ice Burg", "Challenge" },
-                { "271996", "The Ice Burg Assassin" , "Defeat all 6 Catchers in Ice Burg on Expert Daffy-culty without being caught", "Challenge" }, // advanced
-                { "272074", "Blistering Blitzer" , "Complete the Ice Burg bonus game", "Zoo" },
-                { "272075", "Taz Only Involved in Quality Work" , "Complete the Ice Burg bonus game with at least 0:20:0 left on the clock", "Challenge" },
-                { "271997", "Radical Raft" , "Destroy all 7 wanted posters and complete Looney Lagoon", "Zoo" },
-                { "271998", "Hidden Treasure of Looney Lagoon" , "Collect the golden Yosemite Sam statue in Looney Lagoon", "Zoo" },
-                { "271999", "The Looney Lagoon Varmint" , "On expert daffy-culty, earn the destruction bonus in Looney Lagoon", "Challenge" },
-                { "272000", "Looney Lagoon's Most Wanted" , "On expert daffy-culty, reach the maximum bounty of $30,000 in Looney Lagoon", "Challenge" }, // advanced
-                { "272001", "Fine Cuisine of Looney Lagoon" , "On expert daffy-culty, eat all 100 sandwiches in Looney Lagoon", "Challenge" },
-                { "272002", "Hang Ten, Duuude" , "Change into a surfer", "Zoo" },
-                { "272003", "Cage-Free Looney Lagoon" , "Defeat all 4 Catchers in Looney Lagoon", "Challenge" },
-                { "272004", "The Looney Lagoon Assassin" , "Defeat all 4 Catchers in Looney Lagoon on Expert Daffy-culty without being caught", "Challenge" }, // advanced
-                { "272076", "Wavy Walloper" , "Complete the Looney Lagoon bonus game", "Zoo" },
-                { "272077", "Radical Crate Ravager" , "Complete the Looney Lagoon bonus game while destroying at least 100 crates", "Challenge" },
-                { "272005", "Gossamer Gobbler" , "Defeat Gossamer in Elephant Pong", "Zoo" },
-                { "272006", "Pong Professional" , "On expert daffy-culty, defeat Gossamer in Elephant Pong without letting him score", "Challenge" },
-                { "272015", "Glizzy Gladiator" , "Destroy all 7 wanted posters and complete Samsonian Museum", "City" },
-                { "272016", "Hidden Treasure of Samsonian Museum" , "Collect the golden Yosemite Sam statue in Samsonian Museum", "City" },
-                { "272017", "The Samsonian Museum Varmint" , "On expert daffy-culty, earn the destruction bonus in Samsonian Museum", "Challenge" },
-                { "272018", "Samsonian Museum's Most Wanted" , "On expert daffy-culty, reach the maximum bounty of $75,000 in Samsonian Museum", "Challenge" }, // advanced
-                { "272019", "Fine Cuisine of Samsonian Museum" , "On expert daffy-culty, eat all 100 sandwiches in Samsonian Museum", "Challenge" },
-                { "272020", "Fujibayashi Naga-Taz" , "Change into a ninja", "City" },
-                { "272021", "Cage-Free Samsonian Museum" , "Defeat the Catcher in Samsonian Museum", "City" },
-                { "272022", "The Samsonian Museum Assassin" , "Defeat the Catcher in Samsonian Museum on Expert Daffy-culty without being caught", "Challenge" },
-                { "272082", "Productive Polisher" , "Complete the Samsonian Museum bonus game", "City" },
-                { "272083", "Janitor of the Year" , "Complete the Samsonian Museum bonus game in 35s or less", "Challenge" },
-                { "272007", "Department Store Delivery" , "Destroy all 7 wanted posters and complete Looningdale's", "City" },
-                { "272008", "Hidden Treasure of Looningdale's" , "Collect the golden Yosemite Sam statue in Looningdale's", "City" },
-                { "272009", "The Looningdale's Varmint" , "On expert daffy-culty, earn the destruction bonus in Looningdale's", "Challenge" },
-                { "272010", "Looningdale's Most Wanted" , "On expert daffy-culty, reach the maximum bounty of $50,000 in Looningdale's", "Challenge" }, // advanced
-                { "272011", "Fine Cuisine of Looningdale's" , "On expert daffy-culty, eat all 100 sandwiches in Looningdale's", "Challenge" },
-                { "272012", "Yo, Yo, Yo" , "Change into a DJ", "City" },
-                { "272013", "Cage-Free Looningdale's" , "Defeat all 4 Catchers in Looningdale's", "Challenge" },
-                { "272014", "The Looningdale's Assassin" , "Defeat all 4 Catchers in Looningdale's on Expert Daffy-culty without being caught", "Challenge" }, // advanced
-                { "272078", "Retail Racer" , "Complete the Looningdale's bonus game", "City" },
-                { "272079", "Shopping Cart Hero" , "Complete the Looningdale's bonus game in 45.0s or less", "Challenge" },
-                { "272023", "Demolition Detour" , "Destroy all 7 wanted posters and complete Bank of Samerica", "City" },
-                { "272024", "Hidden Treasure of Bank of Samerica" , "Collect the golden Yosemite Sam statue in Bank of Samerica", "City" },
-                { "272025", "The Bank of Samerica Varmint" , "On expert daffy-culty, earn the destruction bonus in Bank of Samerica", "Challenge" },
-                { "272026", "Bank of Samerica's Most Wanted" , "On expert daffy-culty, reach the maximum bounty of $100,000 in Bank of Samerica", "Challenge" }, // advanced
-                { "272027", "Fine Cuisine of Bank of Samerica" , "On expert daffy-culty, eat all 100 sandwiches in Bank of Samerica", "Challenge" },
-                { "272028", "Freeze! This Is a Raid" , "Change into a SWAT officer", "City" },
-                { "272029", "Cage-Free Bank of Samerica" , "Defeat all 6 Catchers in Bank of Samerica", "Challenge" },
-                { "272030", "The Bank of Samerica Assassin" , "Defeat all 6 Catchers in Bank of Samerica on Expert Daffy-culty without being caught", "Challenge" }, // advanced
-                { "272080", "Skyscraper Scavenger" , "Complete the Bank of Samerica bonus game", "City" },
-                { "272081", "Ferocious Taz in the Clouds" , "Complete the Bank of Samerica bonus game while destroying at least 75 crates", "Challenge" },
-                { "272031", "Daffy Dominator" , "Defeat Daffy in Gladiatoons", "City" },
-                { "272032", "High Roller" , "On expert daffy-culty, defeat Daffy in Gladiatoons without losing the lead after 1:30:0", "Challenge" },
-                { "272033", "High Noon Shooter" , "Destroy all 7 wanted posters and complete Granny Canyon", "West" },
-                { "272034", "Hidden Treasure of Granny Canyon" , "Collect the golden Yosemite Sam statue in Granny Canyon", "West" },
-                { "272035", "The Granny Canyon Varmint" , "On expert daffy-culty, earn the destruction bonus in Granny Canyon", "Challenge" },
-                { "272036", "Granny Canyon's Most Wanted" , "On expert daffy-culty, reach the maximum bounty of $250,000 in Granny Canyon", "Challenge" }, // advanced
-                { "272037", "Fine Cuisine of Granny Canyon" , "On expert daffy-culty, eat all 100 sandwiches in Granny Canyon", "Challenge" },
-                { "272038", "Go Ahead, Make Taz Day" , "Change into a cowboy", "West" },
-                { "272039", "Cage-Free Granny Canyon" , "Defeat all 4 Catchers in Granny Canyon", "Challenge" },
-                { "272040", "The Granny Canyon Assassin" , "Defeat all 4 Catchers in Granny Canyon on Expert Daffy-culty without being caught", "Challenge" }, // advanced
-                { "272084", "Desert Dasher" , "Complete the Granny Canyon bonus game", "West" },
-                { "272085", "I'm a Rocket Taz" , "Complete the Granny Canyon bonus game in 50s or less", "Challenge" },
-                { "272041", "Digging for Gold" , "Destroy all 7 wanted posters and complete Cartoon Strip-Mine", "West" },
-                { "272042", "Hidden Treasure of Cartoon Strip-Mine" , "Collect the golden Yosemite Sam statue in Cartoon Strip-Mine", "West" },
-                { "272043", "The Cartoon Strip-Mine Varmint" , "On expert daffy-culty, earn the destruction bonus in Cartoon Strip-Mine", "Challenge" },
-                { "272044", "Cartoon Strip-Mine's Most Wanted" , "On expert daffy-culty, reach the maximum bounty of $500,000 in Cartoon Strip-Mine", "Challenge" },
-                { "272045", "Fine Cuisine of Cartoon Strip-Mine" , "On expert daffy-culty, eat all 100 sandwiches in Cartoon Strip-Mine", "Challenge" },
-                { "272046", "Snakes…Why’d It Have to Be Snakes?" , "Change into an adventurer", "West" },
-                { "272047", "Cage-Free Cartoon Strip-Mine" , "Defeat all 4 Catchers in Cartoon Strip-Mine", "Challenge" },
-                { "272048", "The Cartoon Strip-Mine Assassin" , "Defeat all 4 Catchers in Cartoon Strip-Mine on Expert Daffy-culty without being caught", "Challenge" }, // advanced
-                { "272086", "Swift Spelunker" , "Complete the Cartoon Strip-Mine bonus game", "West" },
-                { "272087", "Bad(t)azz", "Complete the Cartoon Strip-Mine bonus game with at least 0:25:0 left on the clock", "Challenge" },
-                { "272049", "Big Bad Taz", "Destroy all 7 wanted posters and complete Taz: Haunted", "West" },
-                { "272050", "Hidden Treasure of Taz: Haunted" , "Collect the golden Yosemite Sam statue in Taz: Haunted", "West" },
-                { "272051", "The Taz: Haunted Varmint" , "On expert daffy-culty, earn the destruction bonus in Taz: Haunted", "Challenge" },
-                { "272052", "Taz: Haunted's Most Wanted" , "On expert daffy-culty, reach the maximum bounty of $750,000 in Taz: Haunted", "Challenge" }, // advanced
-                { "272053", "Fine Cuisine of Taz: Haunted" , "On expert daffy-culty, eat all 100 sandwiches in Taz: Haunted", "Challenge" },
-                { "272054", "Taz: Unleased" , "Change into a werewolf", "West" },
-                { "272055", "Cage-Free Taz: Haunted" , "Defeat all 4 Catchers in Taz: Haunted", "Challenge" },
-                { "272056", "The Taz: Haunted Assassin" , "Defeat all 4 Catchers in Taz: Haunted on Expert Daffy-culty without being caught", "Challenge" }, // advanced
-                { "272057", "Glove to See It" , "Transform into the iconic ball from Glover", "West" },
-                { "272088", "Hopping Hound" , "Complete the Taz: Haunted bonus game", "West" },
-                { "272089", "Taz Need to Lay off the Booze" , "Complete the Taz: Haunted bonus game while destroying at least 100 crates", "Challenge" },
-                { "272058", "Sam Suppressor" , "Defeat Yosemite Sam in Dodge City", "West" },
-                { "272059", "Pesky Critter" , "On expert daffy-culty, defeat Yosemite Sam in Dodge City without getting hit by an explosion", "Challenge" }, // advanced???
-                { "272060", "Taz's Dominion" , "Destroy all 7 wanted posters and complete Tazland A-maze-ment Park", "Tazland" },
-                { "272061", "Hidden Treasure of Tazland A-maze-ment Park" , "Collect the golden Yosemite Sam statue in Tazland A-maze-ment Park", "Tazland" },
-                { "272062", "The Tazland A-maze-ment Park Varmint" , "On expert daffy-culty, earn the destruction bonus in Tazland A-maze-ment Park", "Challenge" },
-                { "272063", "Tazland A-maze-ment Park's Most Wanted" , "On expert daffy-culty, reach the maximum bounty of $1,000,000 in Tazland A-maze-ment Park", "Challenge" }, // advanced
-                { "272064", "Fine Cuisine of Tazland A-maze-ment Park" , "On expert daffy-culty, eat all 100 sandwiches in Tazland A-maze-ment Park", "Challenge" },
-                { "272065", "Ta(r)zan", "Change into a caveman", "Tazland" },
-                { "272066", "Cage-Free Tazland A-maze-ment Park" , "Defeat all 5 Catchers in Tazland A-maze-ment Park", "Challenge" },
-                { "272067", "The Tazland A-maze-ment Park Assassin" , "Defeat all 5 Catchers in Tazland A-maze-ment Park on Expert Daffy-culty without being caught", "Challenge" }, // advanced
-                { "272068", "Sam Samba" , "Defeat Yosemite Sam in Disco Volcano", "Tazland" },
-                { "272069", "Groovy Varmint" , "On expert daffy-culty, defeat Yosemite Sam in Disco Volcano without touching lava or letting him score", "Challenge" },
-                { "272070", "Tweety Tranquilizer" , "Defeat Tweety in The Hindenbird and reunite Taz with his wife!", "Tazland" },
-                { "272071", "Hydrogen Leak" , "On expert daffy-culty, defeat Tweety in The Hindenbird without getting hit", "Challenge" }, // advanced???
-                { "272090", "Tazmanian Sniper" , "Defeat a zoo keeper with a ranged costume attack from a great distance", "Challenge" },
-                { "272092", "Gallery Gazer" , "Collect all 10 gallery pages", "Hardcore" },
-                { "271794", "#1 Most Wanted" , "Complete the game on Expert Daffy-culty with the highest possible bounty of $3,142,000", "Hardcore" },
+                { "271979", "Taz, With Your Nose So Bright", "Change into a red-nosed reindeer", "zoohub_second" },
+                { "271980", "Revenge is Sweet", "Defeat the Catcher in Yosemite Zoo", "zoohub_main" },
+
+                { "271981", "Elephant Abolitionist", "Destroy all 7 wanted posters and complete Zooney Tunes", "safarinew_main" },
+                { "271982", "Hidden Treasure of Zooney Tunes", "Collect the golden Yosemite Sam statue in Zooney Tunes", "safarinew_second" },
+                { "271983", "The Zooney Tunes Varmint", "On expert daffy-culty, earn the destruction bonus in Zooney Tunes", "safarinew_second" },
+                { "271984", "Zooney Tunes' Most Wanted", "On expert daffy-culty, reach the maximum bounty of $10,000 in Zooney Tunes", "safarinew_second" },
+                { "271985", "Fine Cuisine of Zooney Tunes", "On expert daffy-culty, eat all 100 sandwiches in Zooney Tunes", "safarinew_second" },
+                { "271986", "Taz Rad Devil", "Change into a skater", "safarinew_second" },
+                { "271987", "Cage-Free Zooney Tunes", "Defeat all 6 Catchers in Zooney Tunes", "safarinew_second" },
+                { "271988", "The Zooney Tunes Assassin", "Defeat all 6 Catchers in Zooney Tunes on Expert Daffy-culty without being caught", "safarinew_second" },
+                { "272091", "No Monkeying Around", "Destroy the wanted poster on the cliff van in Zooney Tunes without swinging from monkeys or bouncing on tires", "safarinew_second" },
+                
+                { "272072", "Safari Speedster", "Complete the Zooney Tunes bonus game", "safariset_second" },
+                { "272073", "Zoolander", "Complete the Zooney Tunes bonus game with at least 0:12:0 left on the clock", "safariset_main_star" },
+
+                { "271989", "Prepare for Takeoff", "Destroy all 7 wanted posters and complete Ice Burg", "kingdome_second" },
+                { "271990", "Hidden Treasure of Ice Burg", "Collect the golden Yosemite Sam statue in Ice Burg", "kingdome_second" },
+                { "271991", "The Ice Burg Varmint", "On expert daffy-culty, earn the destruction bonus in Ice Burg", "kingdome_second" },
+                { "271992", "Ice Burg's Most Wanted", "On expert daffy-culty, reach the maximum bounty of $20,000 in Ice Burg", "kingdome_second" },
+                { "271993", "Fine Cuisine of Ice Burg", "On expert daffy-culty, eat all 100 sandwiches in Ice Burg", "kingdome_second" },
+                { "271994", "Taz Cool as Ice, Baby", "Change into a snowboarder", "kingdome_second" },
+                { "271995", "Cage-Free Ice Burg", "Defeat all 6 Catchers in Ice Burg", "kingdome_second" },
+                { "271996", "The Ice Burg Assassin", "Defeat all 6 Catchers in Ice Burg on Expert Daffy-culty without being caught", "kingdome_second" },
+
+                { "272074", "Blistering Blitzer", "Complete the Ice Burg bonus game", "kingdomenight_second" },
+                { "272075", "Taz Only Involved in Quality Work", "Complete the Ice Burg bonus game with at least 0:20:0 left on the clock", "kingdomenight_second_star" },
+
+                { "271997", "Radical Raft", "Destroy all 7 wanted posters and complete Looney Lagoon", "aqua_main" },
+                { "271998", "Hidden Treasure of Looney Lagoon", "Collect the golden Yosemite Sam statue in Looney Lagoon", "aqua_second" },
+                { "271999", "The Looney Lagoon Varmint", "On expert daffy-culty, earn the destruction bonus in Looney Lagoon", "aqua_second" },
+                { "272000", "Looney Lagoon's Most Wanted", "On expert daffy-culty, reach the maximum bounty of $30,000 in Looney Lagoon", "aqua_second" },
+                { "272001", "Fine Cuisine of Looney Lagoon", "On expert daffy-culty, eat all 100 sandwiches in Looney Lagoon", "aqua_second" },
+                { "272002", "Hang Ten, Duuude", "Change into a surfer", "aqua_second" },
+                { "272003", "Cage-Free Looney Lagoon", "Defeat all 4 Catchers in Looney Lagoon", "aqua_second" },
+                { "272004", "The Looney Lagoon Assassin", "Defeat all 4 Catchers in Looney Lagoon on Expert Daffy-culty without being caught", "aqua_second" },
+
+                { "272076", "Wavy Walloper", "Complete the Looney Lagoon bonus game", "aqua_second" },
+                { "272077", "Radical Crate Ravager", "Complete the Looney Lagoon bonus game while destroying at least 100 crates", "aqua_main_star" },
+
+                { "272005", "Gossamer Gobbler", "Defeat Gossamer in Elephant Pong", "zooboss_main_alpha" },
+                { "272006", "Pong Professional", "On expert daffy-culty, defeat Gossamer in Elephant Pong without letting him score", "zooboss_main_alpha_star" },
+
+                { "272015", "Glizzy Gladiator", "Destroy all 7 wanted posters and complete Samsonian Museum", "city_main" },
+                { "272016", "Hidden Treasure of Samsonian Museum", "Collect the golden Yosemite Sam statue in Samsonian Museum", "city_second" },
+                { "272017", "The Samsonian Museum Varmint", "On expert daffy-culty, earn the destruction bonus in Samsonian Museum", "city_second" },
+                { "272018", "Samsonian Museum's Most Wanted", "On expert daffy-culty, reach the maximum bounty of $75,000 in Samsonian Museum", "city_second" },
+                { "272019", "Fine Cuisine of Samsonian Museum", "On expert daffy-culty, eat all 100 sandwiches in Samsonian Museum", "city_second" },
+                { "272020", "Fujibayashi Naga-Taz", "Change into a ninja", "city_second" },
+                { "272021", "Cage-Free Samsonian Museum", "Defeat the Catcher in Samsonian Museum", "city_second" },
+                { "272022", "The Samsonian Museum Assassin", "Defeat the Catcher in Samsonian Museum on Expert Daffy-culty without being caught", "city_second" },
+
+                { "272082", "Productive Polisher", "Complete the Samsonian Museum bonus game", "city_second_beta" },
+                { "272083", "Janitor of the Year", "Complete the Samsonian Museum bonus game in 35s or less", "city_main_beta_star" },
+
+                { "272007", "Department Store Delivery", "Destroy all 7 wanted posters and complete Looningdale's", "city_main" },
+                { "272008", "Hidden Treasure of Looningdale's", "Collect the golden Yosemite Sam statue in Looningdale's", "city_second" },
+                { "272009", "The Looningdale's Varmint", "On expert daffy-culty, earn the destruction bonus in Looningdale's", "city_second" },
+                { "272010", "Looningdale's Most Wanted", "On expert daffy-culty, reach the maximum bounty of $50,000 in Looningdale's", "city_second" },
+                { "272011", "Fine Cuisine of Looningdale's", "On expert daffy-culty, eat all 100 sandwiches in Looningdale's", "city_second" },
+                { "272012", "Yo, Yo, Yo", "Change into a DJ", "city_second" },
+                { "272013", "Cage-Free Looningdale's", "Defeat all 4 Catchers in Looningdale's", "city_second" },
+                { "272014", "The Looningdale's Assassin", "Defeat all 4 Catchers in Looningdale's on Expert Daffy-culty without being caught", "city_second" },
+
+                { "272078", "Retail Racer", "Complete the Looningdale's bonus game", "city_second_beta" },
+                { "272079", "Shopping Cart Hero", "Complete the Looningdale's bonus game in 45.0s or less", "city_main_beta_star" },
+
+                { "272023", "Demolition Detour", "Destroy all 7 wanted posters and complete Bank of Samerica", "city_main" },
+                { "272024", "Hidden Treasure of Bank of Samerica", "Collect the golden Yosemite Sam statue in Bank of Samerica", "city_second" },
+                { "272025", "The Bank of Samerica Varmint", "On expert daffy-culty, earn the destruction bonus in Bank of Samerica", "city_second" },
+                { "272026", "Bank of Samerica's Most Wanted", "On expert daffy-culty, reach the maximum bounty of $100,000 in Bank of Samerica", "city_second" },
+                { "272027", "Fine Cuisine of Bank of Samerica", "On expert daffy-culty, eat all 100 sandwiches in Bank of Samerica", "city_second" },
+                { "272028", "Freeze! This Is a Raid", "Change into a SWAT officer", "city_second" },
+                { "272029", "Cage-Free Bank of Samerica", "Defeat all 6 Catchers in Bank of Samerica", "city_second" },
+                { "272030", "The Bank of Samerica Assassin", "Defeat all 6 Catchers in Bank of Samerica on Expert Daffy-culty without being caught", "city_second" },
+
+                { "272080", "Skyscraper Scavenger", "Complete the Bank of Samerica bonus game", "city_second_beta" },
+                { "272081", "Ferocious Taz in the Clouds", "Complete the Bank of Samerica bonus game while destroying at least 75 crates", "city_main_beta_star" },
+
+                { "272031", "Daffy Dominator", "Defeat Daffy in Gladiatoons", "city_main_beta" },
+                { "272032", "High Roller", "On expert daffy-culty, defeat Daffy in Gladiatoons without losing the lead after 1:30:0", "city_main_beta_star" },
+
+                { "272033", "High Noon Shooter", "Destroy all 7 wanted posters and complete Granny Canyon", "west_main" },
+                { "272034", "Hidden Treasure of Granny Canyon", "Collect the golden Yosemite Sam statue in Granny Canyon", "west_second" },
+                { "272035", "The Granny Canyon Varmint", "On expert daffy-culty, earn the destruction bonus in Granny Canyon", "west_second" },
+                { "272036", "Granny Canyon's Most Wanted", "On expert daffy-culty, reach the maximum bounty of $250,000 in Granny Canyon", "west_second" },
+                { "272037", "Fine Cuisine of Granny Canyon", "On expert daffy-culty, eat all 100 sandwiches in Granny Canyon", "west_second" },
+                { "272038", "Go Ahead, Make Taz Day", "Change into a cowboy", "west_second" },
+                { "272039", "Cage-Free Granny Canyon", "Defeat all 4 Catchers in Granny Canyon", "west_second" },
+                { "272040", "The Granny Canyon Assassin", "Defeat all 4 Catchers in Granny Canyon on Expert Daffy-culty without being caught", "west_second" },
+
+                { "272084", "Desert Dasher", "Complete the Granny Canyon bonus game", "westset_second" },
+                { "272085", "I'm a Rocket Taz", "Complete the Granny Canyon bonus game in 50s or less", "westset_main_star" },
+
+                { "272041", "Digging for Gold", "Destroy all 7 wanted posters and complete Cartoon Strip-Mine", "west_main" },
+                { "272042", "Hidden Treasure of Cartoon Strip-Mine", "Collect the golden Yosemite Sam statue in Cartoon Strip-Mine", "west_second" },
+                { "272043", "The Cartoon Strip-Mine Varmint", "On expert daffy-culty, earn the destruction bonus in Cartoon Strip-Mine", "west_second" },
+                { "272044", "Cartoon Strip-Mine's Most Wanted", "On expert daffy-culty, reach the maximum bounty of $500,000 in Cartoon Strip-Mine", "west_second" },
+                { "272045", "Fine Cuisine of Cartoon Strip-Mine", "On expert daffy-culty, eat all 100 sandwiches in Cartoon Strip-Mine", "west_second" },
+                { "272046", "Snakes…Why’d It Have to Be Snakes?", "Change into an adventurer", "west_second" },
+                { "272047", "Cage-Free Cartoon Strip-Mine", "Defeat all 4 Catchers in Cartoon Strip-Mine", "west_second" },
+                { "272048", "The Cartoon Strip-Mine Assassin", "Defeat all 4 Catchers in Cartoon Strip-Mine on Expert Daffy-culty without being caught", "west_second" },
+
+                { "272086", "Swift Spelunker", "Complete the Cartoon Strip-Mine bonus game", "zooboss_second_beta" },
+                { "272087", "Bad(t)azz", "Complete the Cartoon Strip-Mine bonus game with at least 0:25:0 left on the clock", "zooboss_main_beta_star" },
+
+                { "272049", "Big Bad Taz", "Destroy all 7 wanted posters and complete Taz: Haunted", "ghost_main" },
+                { "272050", "Hidden Treasure of Taz: Haunted", "Collect the golden Yosemite Sam statue in Taz: Haunted", "ghost_second" },
+                { "272051", "The Taz: Haunted Varmint", "On expert daffy-culty, earn the destruction bonus in Taz: Haunted", "ghost_second" },
+                { "272052", "Taz: Haunted's Most Wanted", "On expert daffy-culty, reach the maximum bounty of $750,000 in Taz: Haunted", "ghost_second" },
+                { "272053", "Fine Cuisine of Taz: Haunted", "On expert daffy-culty, eat all 100 sandwiches in Taz: Haunted", "ghost_second" },
+                { "272054", "Taz: Unleased", "Change into a werewolf", "ghost_second" },
+                { "272055", "Cage-Free Taz: Haunted", "Defeat all 4 Catchers in Taz: Haunted", "ghost_second" },
+                { "272056", "The Taz: Haunted Assassin", "Defeat all 4 Catchers in Taz: Haunted on Expert Daffy-culty without being caught", "ghost_second" },
+                { "272057", "Glove to See It", "Transform into the iconic ball from Glover", "ghost_second" },
+
+                { "272088", "Hopping Hound", "Complete the Taz: Haunted bonus game", "ghostdest_second" },
+                { "272089", "Taz Need to Lay off the Booze", "Complete the Taz: Haunted bonus game while destroying at least 100 crates", "ghostdest_main_star" },
+
+                { "272058", "Sam Suppressor", "Defeat Yosemite Sam in Dodge City", "westset_main" },
+                { "272059", "Pesky Critter", "On expert daffy-culty, defeat Yosemite Sam in Dodge City without getting hit by an explosion_star", "westset_main_star" },
+
+                { "272060", "Taz's Dominion", "Destroy all 7 wanted posters and complete Tazland A-maze-ment Park", "tasmania_main" },
+                { "272061", "Hidden Treasure of Tazland A-maze-ment Park", "Collect the golden Yosemite Sam statue in Tazland A-maze-ment Park", "tasmania_second" },
+                { "272062", "The Tazland A-maze-ment Park Varmint", "On expert daffy-culty, earn the destruction bonus in Tazland A-maze-ment Park", "tasmania_second" },
+                { "272063", "Tazland A-maze-ment Park's Most Wanted", "On expert daffy-culty, reach the maximum bounty of $1,000,000 in Tazland A-maze-ment Park", "tasmania_second" },
+                { "272064", "Fine Cuisine of Tazland A-maze-ment Park", "On expert daffy-culty, eat all 100 sandwiches in Tazland A-maze-ment Park", "tasmania_second" },
+                { "272065", "Ta(r)zan", "Change into a caveman", "tasmania_second" },
+                { "272066", "Cage-Free Tazland A-maze-ment Park", "Defeat all 5 Catchers in Tazland A-maze-ment Park", "tasmania_second" },
+                { "272067", "The Tazland A-maze-ment Park Assassin", "Defeat all 5 Catchers in Tazland A-maze-ment Park on Expert Daffy-culty without being caught", "tasmania_second" },
+
+                { "272068", "Sam Samba", "Defeat Yosemite Sam in Disco Volcano", "main" },
+                { "272069", "Groovy Varmint", "On expert daffy-culty, defeat Yosemite Sam in Disco Volcano without touching lava or letting him score", "main_star" },
+
+                { "272070", "Tweety Tranquilizer", "Defeat Tweety in The Hindenbird and reunite Taz with his wife!", "safarinew_main_beta" },
+                { "272071", "Hydrogen Leak", "On expert daffy-culty, defeat Tweety in The Hindenbird without getting hit", "safarinew_main_beta_star" },
+
+                { "272090", "Tazmanian Sniper", "Defeat a zoo keeper with a ranged costume attack from a great distance", "sky" },
+
+                { "272092", "Gallery Gazer", "Collect all 10 gallery pages", "citycheese" },
+
+                { "271794", "#1 Most Wanted", "Complete the game on Expert Daffy-culty with the highest possible bounty of $3,142,000", "zooboss_alpha_second_star" },
             };
 
         // DPI hacking
@@ -5075,18 +5102,11 @@ namespace Taz_trainer
                         // Pop-up achievement when allowed
                         if (popupAchievements.Checked == true && radioSpeedrun.Checked == false)
                         {
-                            AchievementStyle style;
-                            if (Achievements[i, 3] == "Zoo") style = AchievementStyle.Zoo;
-                            else if (Achievements[i, 3] == "City") style = AchievementStyle.City;
-                            else if (Achievements[i, 3] == "West") style = AchievementStyle.West;
-                            else if (Achievements[i, 3] == "Tazland") style = AchievementStyle.Tazland;
-                            else if (Achievements[i, 3] == "Challenge") style = AchievementStyle.Challenge;
-                            else style = AchievementStyle.Hardcore;
                             AchievementNotificationForm.ShowAchievement(
-                                listViewAchievements.Items[i].SubItems[1].Text,
-                                listViewAchievements.Items[i].SubItems[2].Text,
+                                Achievements[i, 1],
+                                Achievements[i, 2],
                                 listViewAchievements.Items[i].ImageList.Images[listViewAchievements.Items[i].ImageKey],
-                                style
+                                Achievements[i, 3]
                             );
 
                             // Achievement sound with cooldown
@@ -5180,18 +5200,11 @@ namespace Taz_trainer
                 // Pop-up achievement when allowed
                 if (popupAchievements.Checked == true && radioSpeedrun.Checked == false)
                 {
-                    AchievementStyle style;
-                    if (Achievements[i, 3] == "Zoo") style = AchievementStyle.Zoo;
-                    else if (Achievements[i, 3] == "City") style = AchievementStyle.City;
-                    else if (Achievements[i, 3] == "West") style = AchievementStyle.West;
-                    else if (Achievements[i, 3] == "Tazland") style = AchievementStyle.Tazland;
-                    else if (Achievements[i, 3] == "Challenge") style = AchievementStyle.Challenge;
-                    else style = AchievementStyle.Hardcore;
                     AchievementNotificationForm.ShowAchievement(
-                        listViewAchievements.Items[i].SubItems[1].Text,
-                        listViewAchievements.Items[i].SubItems[2].Text,
+                        Achievements[i, 1],
+                        Achievements[i, 2],
                         listViewAchievements.Items[i].ImageList.Images[listViewAchievements.Items[i].ImageKey],
-                        style
+                        Achievements[i, 3]
                     );
 
                     // Achievement sound with cooldown

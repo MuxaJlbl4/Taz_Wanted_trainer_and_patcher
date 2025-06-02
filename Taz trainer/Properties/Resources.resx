@@ -151,4 +151,121 @@
   <data name="achievement" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\achievement.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="aqua_main" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\aqua_main.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="aqua_second" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\aqua_second.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="china" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\china.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="citycheese" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\citycheese.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="city_main" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\city_main.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="city_main_beta" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\city_main_beta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="city_second" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\city_second.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="city_second_beta" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\city_second_beta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ghostdest_main" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ghostdest_main.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ghostdest_second" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ghostdest_second.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ghost_main" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ghost_main.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ghost_second" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ghost_second.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="kingdomenight_second" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\kingdomenight_second.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="kingdome_second" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\kingdome_second.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="main" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\main.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="safarinew_main" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\safarinew_main.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="safarinew_main_beta" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\safarinew_main_beta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="safarinew_second" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\safarinew_second.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="safarinew_second_beta" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\safarinew_second_beta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="safariset_main" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\safariset_main.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="safariset_second" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\safariset_second.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="second" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\second.bmp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sky" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sky.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tasmania_main" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tasmania_main.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tasmania_second" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tasmania_second.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="westset_main" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\westset_main.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="westset_second" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\westset_second.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="west_main" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\west_main.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="west_second" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\west_second.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zooboss_alpha_second" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zooboss_alpha_second.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zooboss_main" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zooboss_main.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zooboss_main_alpha" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zooboss_main_alpha.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zooboss_main_beta" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zooboss_main_beta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zooboss_second" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zooboss_second.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zooboss_second_beta" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zooboss_second_beta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zoohub_main" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zoohub_main.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zoohub_main_beta" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zoohub_main_beta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zoohub_second" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zoohub_second.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="zoohub_second_beta" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\zoohub_second_beta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

@@ -4,25 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.IO;
 using System.Linq;
-using System.Media;
 using System.Windows.Forms;
 using Taz_trainer.Properties;
-using Taz_trainer;
-
-/// <summary>
-/// Specifies the visual style of the achievement notification.
-/// </summary>
-public enum AchievementStyle
-{
-    Zoo,
-    City,
-    West,
-    Tazland,
-    Challenge,
-    Hardcore
-}
 
 /// <summary>
 /// Represents a customizable achievement notification window that appears and disappears with animation.
@@ -50,14 +34,12 @@ public class AchievementNotificationForm : Form
     private const double OPACITY_STEP = 0.08;   // Amount to change opacity per animation tick.
     private const int DISPLAY_DURATION_MS = 5000; // Duration the notification stays fully visible.
 
-    // Sound and style
-    //private SoundPlayer soundPlayer;
-    private AchievementStyle currentStyle;
+    // Style
+    private string currentStyle;
 
     // Rounded corners and appearance
     private int cornerRadius = 25; // Radius for rounded corners.
-    private const int OUTLINE_BORDER_WIDTH = 8; // Width of the black outline.
-    private const int GLOW_EFFECT_WIDTH = 12; // Width of the glow effect pen for specific styles.
+    private const int OUTLINE_BORDER_WIDTH = 4; // Width of the black outline.
 
     // --- Static members for queueing achievements ---
     private static Queue<AchievementData> achievementQueue = new Queue<AchievementData>();
@@ -72,7 +54,7 @@ public class AchievementNotificationForm : Form
         public string Title;
         public string Description;
         public Image Icon;
-        public AchievementStyle Style;
+        public string Style;
     }
     // --- End of static members for queueing ---
 
@@ -99,26 +81,26 @@ public class AchievementNotificationForm : Form
         this.displayDurationTimer = new System.Windows.Forms.Timer();
 
         // Achievement Icon PictureBox
-        this.achievementIconPb.Location = new Point(20, 20);
-        this.achievementIconPb.Size = new Size(70, 70);
+        this.achievementIconPb.Location = new Point(16, 16);
+        this.achievementIconPb.Size = new Size(64, 64);
         this.achievementIconPb.SizeMode = PictureBoxSizeMode.StretchImage;
         this.achievementIconPb.BackColor = Color.Transparent; // Important for custom background to show through.
 
         // Title Label
-        this.titleLabel.Location = new Point(100, 13);
-        this.titleLabel.Size = new Size(400, 25);
-        this.titleLabel.Font = new Font("Comic Sans MS", 12F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+        this.titleLabel.Location = new Point(96, 8);
+        this.titleLabel.Size = new Size(416, 78);
+        this.titleLabel.Font = new Font("Comic Sans MS", 18F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
         this.titleLabel.ForeColor = Color.White;
         this.titleLabel.BackColor = Color.Transparent; // Shows form's custom background.
         this.titleLabel.TextAlign = ContentAlignment.MiddleLeft;
 
         // Description Label
-        this.descriptionLabel.Location = new Point(100, 43); // Positioned below the title.
-        this.descriptionLabel.Size = new Size(400, 60);
-        this.descriptionLabel.Font = new Font("Comic Sans MS", 9F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
+        this.descriptionLabel.Location = new Point(16, 84); // Positioned below the title.
+        this.descriptionLabel.Size = new Size(496, 44);
+        this.descriptionLabel.Font = new Font("Comic Sans MS", 10F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
         this.descriptionLabel.ForeColor = Color.Gainsboro;
         this.descriptionLabel.BackColor = Color.Transparent; // Shows form's custom background.
-        this.descriptionLabel.TextAlign = ContentAlignment.TopLeft;
+        this.descriptionLabel.TextAlign = ContentAlignment.MiddleLeft;
 
 
         // Animation Timer (for slide-in/out and fade-in/out effects)
@@ -146,9 +128,9 @@ public class AchievementNotificationForm : Form
         this.StartPosition = FormStartPosition.Manual; // Position will be set manually.
         this.Opacity = 0;           // Starts fully transparent for the fade-in animation.
 
-        // Form dimensions
-        this.Width = 500;
-        this.Height = 110;
+        // Form dimensions, same as background arts dimensions.
+        this.Width = 512;
+        this.Height = 128;
 
         // Set a specific, unlikely color as BackColor and make it the TransparencyKey.
         // Areas of the form with this BackColor will be rendered transparent.
@@ -200,55 +182,12 @@ public class AchievementNotificationForm : Form
         // Using ClientRectangle ensures the path is relative to the drawable area of the form.
         using (GraphicsPath drawPath = CreateRoundedRectanglePath(this.ClientRectangle, cornerRadius))
         {
-            Color backgroundColor;
-            Color glowColor = Color.Transparent;
-            bool hasGlow = false;
-
-            // Determine background color and glow effect based on the current achievement style.
-            switch (currentStyle)
-            {
-                case AchievementStyle.Zoo:
-                    backgroundColor = Color.Green;
-                    break;
-                case AchievementStyle.City:
-                    backgroundColor = Color.SteelBlue;
-                    break;
-                case AchievementStyle.West:
-                    backgroundColor = Color.Peru; // Sand-like color.
-                    break;
-                case AchievementStyle.Tazland:
-                    backgroundColor = Color.DarkGreen;
-                    break;
-                case AchievementStyle.Challenge:
-                    backgroundColor = Color.DimGray;
-                    glowColor = Color.DeepSkyBlue;
-                    hasGlow = true;
-                    break;
-                case AchievementStyle.Hardcore:
-                    backgroundColor = Color.Firebrick; // Essentially just red.
-                    glowColor = Color.Gold;
-                    hasGlow = true;
-                    break;
-                default: // Just for a compiler.
-                    backgroundColor = Color.Gray;
-                    break;
-            }
+            Color backgroundColor = Color.FromArgb(192, Color.Black);
 
             // Fill the background of the notification using the determined color.
             using (SolidBrush backBrush = new SolidBrush(backgroundColor))
             {
                 e.Graphics.FillPath(backBrush, drawPath);
-            }
-
-            // Draw the "glow" effect for Challenge and Hardcore styles.
-            // This is rendered as a thicker, semi-transparent line along the existing path.
-            if (hasGlow)
-            {
-                using (Pen glowPen = new Pen(glowColor, GLOW_EFFECT_WIDTH))
-                {
-                    glowPen.LineJoin = LineJoin.Round; // Provides smoother joins for thick lines.
-                    e.Graphics.DrawPath(glowPen, drawPath);
-                }
             }
 
             // Draw the main black outline around the window.
@@ -264,11 +203,11 @@ public class AchievementNotificationForm : Form
         // on top of our custom-drawn background.
         base.OnPaint(e);
 
-        // Draw the icon border for specific styles (Challenge, Hardcore).
+        // Draw the icon border for specific styles (Starred).
         // This is drawn on top of the PictureBox (if it was painted by base.OnPaint).
-        if (currentStyle == AchievementStyle.Challenge || currentStyle == AchievementStyle.Hardcore)
+        if (currentStyle.EndsWith("_star"))
         {
-            Color iconBorderColor = (currentStyle == AchievementStyle.Challenge) ? Color.DeepSkyBlue : Color.Gold;
+            Color iconBorderColor = Color.Gold;
             using (Pen pen = new Pen(iconBorderColor, 2)) // 2px border for the icon.
             {
                 Rectangle iconRect = achievementIconPb.Bounds; // Bounds are relative to the form.
@@ -321,7 +260,7 @@ public class AchievementNotificationForm : Form
     /// <param name="description">The description of the achievement.</param>
     /// <param name="icon">The <see cref="Image"/> for the achievement. A default icon will be used if null.</param>
     /// <param name="style">The <see cref="AchievementStyle"/> determining the visual appearance.</param>
-    public static void ShowAchievement(string title, string description, Image icon, AchievementStyle style)
+    public static void ShowAchievement(string title, string description, Image icon, string style)
     {
         AchievementData data = new AchievementData
         {
@@ -360,23 +299,6 @@ public class AchievementNotificationForm : Form
         // Use a default achievement icon from resources if no specific icon is provided.
         achievementForm.achievementIconPb.Image = data.Icon ?? Resources.defaultAchievement;
         achievementForm.currentStyle = data.Style;
-
-        /*
-        Stream soundStream = Resources.achievement;
-
-        try
-        {
-            if (soundStream != null)
-            {
-                achievementForm.soundPlayer = new SoundPlayer(soundStream);
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error loading sound for achievement style {data.Style}: {ex.Message}");
-            achievementForm.soundPlayer = null; // Ensure player is null if sound loading fails.
-        }
-        */
 
         // Subscribe to the FormClosed event to handle cleanup and process the next item in the queue.
         achievementForm.FormClosed += AchievementForm_FormClosed;
@@ -419,13 +341,14 @@ public class AchievementNotificationForm : Form
     /// </summary>
     private void StartAnimationIn()
     {
+        // Set background image
+        this.BackgroundImage = (Image)Resources.ResourceManager.GetObject(currentStyle.Replace("_star",""));
+
         // Reset position and opacity for appearance.
         this.currentY = this.startY;
         this.Top = this.currentY;
         this.currentOpacity = 0.0;
         this.Opacity = this.currentOpacity;
-
-        //soundPlayer?.Play(); // Play the achievement sound, if loaded.
 
         this.animationTimer.Tag = "in"; // Set state for the animation timer to "in" (appearing).
         this.animationTimer.Start();
@@ -545,7 +468,6 @@ public class AchievementNotificationForm : Form
             // Dispose of managed resources.
             animationTimer?.Dispose();
             displayDurationTimer?.Dispose();
-            //soundPlayer?.Dispose(); // Disposes the SoundPlayer and releases the sound file.
             achievementIconPb?.Dispose();
             titleLabel?.Dispose();
             descriptionLabel?.Dispose();
