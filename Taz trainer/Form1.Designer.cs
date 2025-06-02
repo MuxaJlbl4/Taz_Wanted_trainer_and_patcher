@@ -1240,7 +1240,7 @@
             this.pictureTaz.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureTaz.TabIndex = 6;
             this.pictureTaz.TabStop = false;
-            this.pictureTaz.DoubleClick += new System.EventHandler(this.pictureTaz_DoubleClick);
+            this.pictureTaz.Click += new System.EventHandler(this.pictureTaz_Click);
             // 
             // modeGroup
             // 
@@ -1280,7 +1280,6 @@
             this.tableLayoutPanelPatcher1311.Controls.Add(this.radioTrainer, 0, 2);
             this.tableLayoutPanelPatcher1311.Controls.Add(this.radioSpeedrun, 0, 1);
             this.tableLayoutPanelPatcher1311.Controls.Add(this.radioAchievements, 0, 0);
-            this.tableLayoutPanelPatcher1311.Font = new System.Drawing.Font("Comic Sans MS", 13F, System.Drawing.FontStyle.Bold);
             this.tableLayoutPanelPatcher1311.Location = new System.Drawing.Point(17, 0);
             this.tableLayoutPanelPatcher1311.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanelPatcher1311.Name = "tableLayoutPanelPatcher1311";
@@ -1296,9 +1295,9 @@
             this.radioTrainer.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.radioTrainer.AutoSize = true;
             this.radioTrainer.Checked = true;
-            this.radioTrainer.Location = new System.Drawing.Point(3, 78);
+            this.radioTrainer.Location = new System.Drawing.Point(3, 77);
             this.radioTrainer.Name = "radioTrainer";
-            this.radioTrainer.Size = new System.Drawing.Size(95, 29);
+            this.radioTrainer.Size = new System.Drawing.Size(98, 31);
             this.radioTrainer.TabIndex = 0;
             this.radioTrainer.TabStop = true;
             this.radioTrainer.Text = "Trainer";
@@ -1309,9 +1308,9 @@
             // 
             this.radioSpeedrun.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.radioSpeedrun.AutoSize = true;
-            this.radioSpeedrun.Location = new System.Drawing.Point(3, 41);
+            this.radioSpeedrun.Location = new System.Drawing.Point(3, 40);
             this.radioSpeedrun.Name = "radioSpeedrun";
-            this.radioSpeedrun.Size = new System.Drawing.Size(110, 29);
+            this.radioSpeedrun.Size = new System.Drawing.Size(115, 31);
             this.radioSpeedrun.TabIndex = 0;
             this.radioSpeedrun.Text = "Speedrun";
             this.radioSpeedrun.UseVisualStyleBackColor = true;
@@ -1321,9 +1320,9 @@
             // 
             this.radioAchievements.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.radioAchievements.AutoSize = true;
-            this.radioAchievements.Location = new System.Drawing.Point(3, 4);
+            this.radioAchievements.Location = new System.Drawing.Point(3, 3);
             this.radioAchievements.Name = "radioAchievements";
-            this.radioAchievements.Size = new System.Drawing.Size(146, 29);
+            this.radioAchievements.Size = new System.Drawing.Size(155, 31);
             this.radioAchievements.TabIndex = 0;
             this.radioAchievements.Text = "Achievements";
             this.radioAchievements.UseVisualStyleBackColor = true;
@@ -2534,7 +2533,6 @@
             this.labelAchievementsPercent.Size = new System.Drawing.Size(93, 26);
             this.labelAchievementsPercent.TabIndex = 133;
             this.labelAchievementsPercent.Text = "100.00 %";
-            this.labelAchievementsPercent.Click += new System.EventHandler(this.achReset_Click);
             // 
             // listViewAchievements
             // 
@@ -2548,12 +2546,14 @@
             this.listViewAchievements.HideSelection = false;
             this.listViewAchievements.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.listViewAchievements.Location = new System.Drawing.Point(3, 3);
+            this.listViewAchievements.MultiSelect = false;
             this.listViewAchievements.Name = "listViewAchievements";
             this.listViewAchievements.Size = new System.Drawing.Size(894, 574);
             this.listViewAchievements.SmallImageList = this.achievementIcons;
             this.listViewAchievements.TabIndex = 0;
             this.listViewAchievements.UseCompatibleStateImageBehavior = false;
             this.listViewAchievements.View = System.Windows.Forms.View.Details;
+            this.listViewAchievements.SelectedIndexChanged += new System.EventHandler(this.listViewAchievements_SelectedIndexChanged);
             // 
             // columnIcon
             // 

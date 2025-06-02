@@ -4720,9 +4720,11 @@ namespace Taz_trainer
             message(actor);
         }
 
-        private void pictureTaz_DoubleClick(object sender, EventArgs e)
+        private void pictureTaz_Click(object sender, EventArgs e)
         {
+#if DEBUG
             injections.Visible = !injections.Visible;
+#endif
         }
         private void InitModeOptions()
         {
@@ -5128,13 +5130,87 @@ namespace Taz_trainer
 
         private void labelAchievementsProgress_Click(object sender, EventArgs e)
         {
-            // Unlock all achievements
+#if DEBUG
+            bool unlock = false;
+
             for (int i = 0; i < achievementsTotal; i++)
-                achievementsStateTrainer[i] = true;
+            {
+                // Check not unlocked
+                if (!achievementsStateTrainer[i])
+                    unlock = true;
+            }
+
+            if (unlock)
+            {
+                // Unlock all achievements
+                for (int i = 0; i < achievementsTotal; i++)
+                    achievementsStateTrainer[i] = true;
+            }
+            else
+            {
+                // Reset in-game achievements states
+                byte[] achievementStatesGame = Enumerable.Repeat<byte>(0, achievementsTotal).ToArray(); ;
+                checkAndWrite((IntPtr)0x00731600, achievementStatesGame, achievementStatesGame.Length, new IntPtr());
+
+                // Reset trainer achievements states
+                for (int i = 0; i < achievementsTotal; i++)
+                    achievementsStateTrainer[i] = false;
+            }
 
             UpdateAchievementsTable();
+#endif
         }
 
+        private void listViewAchievements_SelectedIndexChanged(object sender, EventArgs e)
+        {
+#if DEBUG
+            int i = 0;
+
+            if (listViewAchievements.SelectedItems.Count > 0)
+                i = listViewAchievements.SelectedItems[0].Index;
+            else
+                return;
+
+            if (achievementsStateTrainer[i] == false)
+            {
+                // Update achievements table
+                achievementsStateTrainer[i] = true;
+                UpdateAchievementsTable();
+
+                // Pop-up achievement when allowed
+                if (popupAchievements.Checked == true && radioSpeedrun.Checked == false)
+                {
+                    AchievementStyle style;
+                    if (Achievements[i, 3] == "Zoo") style = AchievementStyle.Zoo;
+                    else if (Achievements[i, 3] == "City") style = AchievementStyle.City;
+                    else if (Achievements[i, 3] == "West") style = AchievementStyle.West;
+                    else if (Achievements[i, 3] == "Tazland") style = AchievementStyle.Tazland;
+                    else if (Achievements[i, 3] == "Challenge") style = AchievementStyle.Challenge;
+                    else style = AchievementStyle.Hardcore;
+                    AchievementNotificationForm.ShowAchievement(
+                        listViewAchievements.Items[i].SubItems[1].Text,
+                        listViewAchievements.Items[i].SubItems[2].Text,
+                        listViewAchievements.Items[i].ImageList.Images[listViewAchievements.Items[i].ImageKey],
+                        style
+                    );
+
+                    // Achievement sound with cooldown
+                    if (achievementSound.Checked == true && timerCooldown.Enabled == false)
+                    {
+                        playAchievementSound(Properties.Resources.achievement);
+                        timerCooldown.Start();
+                    }
+                }
+            }
+            else
+            {
+                achievementsStateTrainer[i] = false;
+                UpdateAchievementsTable();
+            }
+
+            listViewAchievements.SelectedItems.Clear();
+#endif
+        }
 
         private void radioAchievements_Click(object sender, EventArgs e)
         {

@@ -114,7 +114,7 @@ public class AchievementNotificationForm : Form
 
         // Description Label
         this.descriptionLabel.Location = new Point(100, 43); // Positioned below the title.
-        this.descriptionLabel.Size = new Size(280, 60);
+        this.descriptionLabel.Size = new Size(400, 60);
         this.descriptionLabel.Font = new Font("Comic Sans MS", 9F, FontStyle.Bold, GraphicsUnit.Point, ((byte)(0)));
         this.descriptionLabel.ForeColor = Color.Gainsboro;
         this.descriptionLabel.BackColor = Color.Transparent; // Shows form's custom background.
