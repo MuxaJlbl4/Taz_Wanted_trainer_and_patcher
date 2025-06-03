@@ -1,13 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Utilities;
@@ -17,22 +13,8 @@ using FormSerialisation;
 using System.Net;
 using System.Text.RegularExpressions;
 using System.IO.Compression;
-using System.Reflection;
-using System.Runtime.Serialization.Formatters.Binary;
 using Taz_trainer.Properties;
-using TarExample;
 using System.Globalization;
-using static DPI_Per_Monitor;
-using System.Runtime.InteropServices.ComTypes;
-using System.Security.Cryptography.X509Certificates;
-
-using Newtonsoft.Json;
-using System.Security.Principal;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
-using System.Runtime.Remoting.Messaging;
-using System.Runtime.Versioning;
-using System.Threading;
 
 namespace Taz_trainer
 {
