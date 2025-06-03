@@ -114,7 +114,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="ReadMe.pdf" />
     <None Include="Resources\cheats.pc" />
     <None Include="Resources\cheatssounds.pc" />
     <None Include="Resources\taz.dat" />
