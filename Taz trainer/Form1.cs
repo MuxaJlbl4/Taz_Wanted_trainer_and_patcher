@@ -3382,6 +3382,10 @@ namespace Taz_trainer
         {
             Process.Start("https://discord.gg/m4PUvmpFWv");
         }
+        private void cheatLink_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/MuxaJlbl4/Game-Data-Mining/blob/main/Taz%20Wanted/Cheat%20Codes.md");
+        }
         private void hpLink_Click(object sender, EventArgs e)
         {
             Process.Start("https://hiddenpalace.org/Category:Taz:_Wanted_prototypes");
@@ -3393,6 +3397,10 @@ namespace Taz_trainer
         private void speedrunLink_Click(object sender, EventArgs e)
         {
             Process.Start("https://www.speedrun.com/taz_wanted");
+        }
+        private void tcrfLink_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://tcrf.net/Taz:_Wanted");
         }
 
         private void savePatcherSettings_Click(object sender, EventArgs e)
