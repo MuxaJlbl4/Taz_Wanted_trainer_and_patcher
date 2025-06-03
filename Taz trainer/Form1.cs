@@ -2951,7 +2951,7 @@ namespace Taz_trainer
                         filedat.WriteByte(0x00);
                     }
 
-                    if (!windowed.Checked && !windowed.Enabled)
+                    if (!windowed.Checked || !windowed.Enabled)
                     {
                         //fullscreen
                         filedat.Position = 0x34;

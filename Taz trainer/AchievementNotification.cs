@@ -32,7 +32,7 @@ public class AchievementNotificationForm : Form
 
     private const int ANIMATION_STEP_Y = 16;    // Pixels to move per animation tick for Y-axis.
     private const double OPACITY_STEP = 0.08;   // Amount to change opacity per animation tick.
-    private const int DISPLAY_DURATION_MS = 5000; // Duration the notification stays fully visible.
+    private const int DISPLAY_DURATION_MS = 6000; // Duration the notification stays fully visible.
 
     // Style
     private string currentStyle;
