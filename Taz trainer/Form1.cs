@@ -2595,20 +2595,39 @@ namespace Taz_trainer
                     }
 
                     // Daffy-culty
-                    if (daffycultyComboBox.SelectedIndex != 0 && daffyculty.Enabled)
+                    if (daffycultyComboBox.Enabled)
                     {
-                        // Init for daffyculty
+                        // Init for global daffyculty
                         file.Position = 0xA2351;
                         byte[] daffyculty = { 0x1C, 0xB0, 0x00, 0x88, 0x46, 0x10, 0xE8, 0x04, 0x00, 0x00, 0x00, 0x89, 0xF0, 0x5E, 0xC3 };
                         daffyculty[2] = (byte)daffycultyComboBox.SelectedIndex;
                         file.Write(daffyculty, 0, daffyculty.Length);
+
+                        // Restore CheckMemCardOnBoot
+                        file.Position = 0xB8CDC;
+                        byte[] memcard = { 0x8B, 0x0D, 0x53, 0x23, 0x4A, 0x00, 0xB8, 0xB4, 0xAA, 0x6C, 0x00, 0x88, 0x08, 0x05, 0xD4, 0x13, 0x00, 0x00, 0xEB, 0xB4 };
+                        file.Write(memcard, 0, memcard.Length);
+
+                        file.Position = 0xB8CA4;
+                        byte[] memcard2 = { 0x88, 0x08, 0x05, 0xD4, 0x13, 0x00, 0x00, 0x88, 0x08, 0xC3 };
+                        file.Write(memcard2, 0, memcard2.Length);
+
                     }
                     else
                     {
-                        // Restore daffyculty (0)
+                        // Restore global daffyculty (0)
                         file.Position = 0xA2351;
                         byte[] daffyculty = { 0x10, 0x88, 0x46, 0x1C, 0xE8, 0x06, 0x00, 0x00, 0x00, 0x8B, 0xC6, 0x5E, 0xC3, 0x90, 0x90 };
                         file.Write(daffyculty, 0, daffyculty.Length);
+
+                        // Restore CheckMemCardOnBoot
+                        file.Position = 0xB8CDC;
+                        byte[] memcard = { 0xC3, 0x90, 0x90, 0x90, 0xC3, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 };
+                        file.Write(memcard, 0, memcard.Length);
+
+                        file.Position = 0xB8CA4;
+                        byte[] memcard2 = { 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 };
+                        file.Write(memcard2, 0, memcard2.Length);
                     }
 
                     // Start level
