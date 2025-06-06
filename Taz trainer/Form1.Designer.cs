@@ -1296,7 +1296,6 @@
             // radioTrainer
             // 
             this.radioTrainer.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioTrainer.AutoSize = true;
             this.radioTrainer.Checked = true;
             this.radioTrainer.Location = new System.Drawing.Point(3, 77);
             this.radioTrainer.Name = "radioTrainer";
@@ -1310,7 +1309,6 @@
             // radioSpeedrun
             // 
             this.radioSpeedrun.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioSpeedrun.AutoSize = true;
             this.radioSpeedrun.Location = new System.Drawing.Point(3, 40);
             this.radioSpeedrun.Name = "radioSpeedrun";
             this.radioSpeedrun.Size = new System.Drawing.Size(115, 31);
@@ -1322,7 +1320,6 @@
             // radioAchievements
             // 
             this.radioAchievements.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.radioAchievements.AutoSize = true;
             this.radioAchievements.Location = new System.Drawing.Point(3, 3);
             this.radioAchievements.Name = "radioAchievements";
             this.radioAchievements.Size = new System.Drawing.Size(155, 31);
@@ -1394,7 +1391,6 @@
             // disableDrawDistance
             // 
             this.disableDrawDistance.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.disableDrawDistance.AutoSize = true;
             this.disableDrawDistance.Checked = true;
             this.disableDrawDistance.CheckState = System.Windows.Forms.CheckState.Checked;
             this.disableDrawDistance.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1422,7 +1418,6 @@
             // filtering
             // 
             this.filtering.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.filtering.AutoSize = true;
             this.filtering.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.filtering.Location = new System.Drawing.Point(3, 7);
             this.filtering.Name = "filtering";
@@ -1456,7 +1451,6 @@
             // pointsLabel
             // 
             this.pointsLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pointsLabel.AutoSize = true;
             this.pointsLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pointsLabel.Location = new System.Drawing.Point(171, 9);
             this.pointsLabel.Name = "pointsLabel";
@@ -1490,7 +1484,6 @@
             // aspectRatio
             // 
             this.aspectRatio.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.aspectRatio.AutoSize = true;
             this.aspectRatio.Checked = true;
             this.aspectRatio.CheckState = System.Windows.Forms.CheckState.Checked;
             this.aspectRatio.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1552,7 +1545,6 @@
             // xLabel
             // 
             this.xLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.xLabel.AutoSize = true;
             this.xLabel.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.xLabel.Location = new System.Drawing.Point(169, 9);
             this.xLabel.Name = "xLabel";
@@ -1576,7 +1568,6 @@
             // changeResolution
             // 
             this.changeResolution.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.changeResolution.AutoSize = true;
             this.changeResolution.Checked = true;
             this.changeResolution.CheckState = System.Windows.Forms.CheckState.Checked;
             this.changeResolution.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1625,7 +1616,6 @@
             // videoApi
             // 
             this.videoApi.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.videoApi.AutoSize = true;
             this.videoApi.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.videoApi.Location = new System.Drawing.Point(0, 9);
             this.videoApi.Margin = new System.Windows.Forms.Padding(0);
@@ -1669,7 +1659,6 @@
             // fog
             // 
             this.fog.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.fog.AutoSize = true;
             this.fog.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.fog.Location = new System.Drawing.Point(0, 9);
             this.fog.Margin = new System.Windows.Forms.Padding(0);
@@ -1723,7 +1712,6 @@
             // limitFPS
             // 
             this.limitFPS.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.limitFPS.AutoSize = true;
             this.limitFPS.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.limitFPS.Location = new System.Drawing.Point(3, 7);
             this.limitFPS.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
@@ -1752,7 +1740,6 @@
             // voodoo
             // 
             this.voodoo.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.voodoo.AutoSize = true;
             this.voodoo.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.voodoo.Location = new System.Drawing.Point(143, 7);
             this.voodoo.Name = "voodoo";
@@ -1764,7 +1751,6 @@
             // windowed
             // 
             this.windowed.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.windowed.AutoSize = true;
             this.windowed.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.windowed.Location = new System.Drawing.Point(3, 7);
             this.windowed.Name = "windowed";
@@ -1793,7 +1779,6 @@
             // checkBoxFoV
             // 
             this.checkBoxFoV.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.checkBoxFoV.AutoSize = true;
             this.checkBoxFoV.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.checkBoxFoV.Location = new System.Drawing.Point(3, 7);
             this.checkBoxFoV.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
@@ -1854,7 +1839,6 @@
             // outlines
             // 
             this.outlines.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.outlines.AutoSize = true;
             this.outlines.Checked = true;
             this.outlines.CheckState = System.Windows.Forms.CheckState.Checked;
             this.outlines.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1868,7 +1852,6 @@
             // lighting
             // 
             this.lighting.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lighting.AutoSize = true;
             this.lighting.Checked = true;
             this.lighting.CheckState = System.Windows.Forms.CheckState.Checked;
             this.lighting.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1943,7 +1926,6 @@
             // cutsceneSubtitles
             // 
             this.cutsceneSubtitles.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cutsceneSubtitles.AutoSize = true;
             this.cutsceneSubtitles.Checked = true;
             this.cutsceneSubtitles.CheckState = System.Windows.Forms.CheckState.Checked;
             this.cutsceneSubtitles.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1971,7 +1953,6 @@
             // coopFix
             // 
             this.coopFix.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.coopFix.AutoSize = true;
             this.coopFix.Checked = true;
             this.coopFix.CheckState = System.Windows.Forms.CheckState.Checked;
             this.coopFix.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -1999,7 +1980,6 @@
             // extraDebug
             // 
             this.extraDebug.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.extraDebug.AutoSize = true;
             this.extraDebug.Checked = true;
             this.extraDebug.CheckState = System.Windows.Forms.CheckState.Checked;
             this.extraDebug.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -2029,7 +2009,6 @@
             // noCD
             // 
             this.noCD.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.noCD.AutoSize = true;
             this.noCD.Checked = true;
             this.noCD.CheckState = System.Windows.Forms.CheckState.Checked;
             this.noCD.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -2043,7 +2022,6 @@
             // skips
             // 
             this.skips.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.skips.AutoSize = true;
             this.skips.Checked = true;
             this.skips.CheckState = System.Windows.Forms.CheckState.Checked;
             this.skips.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -2073,7 +2051,6 @@
             // injections
             // 
             this.injections.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.injections.AutoSize = true;
             this.injections.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.injections.Location = new System.Drawing.Point(165, 7);
             this.injections.Name = "injections";
@@ -2086,7 +2063,6 @@
             // achievements
             // 
             this.achievements.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.achievements.AutoSize = true;
             this.achievements.Checked = true;
             this.achievements.CheckState = System.Windows.Forms.CheckState.Checked;
             this.achievements.Enabled = false;
@@ -2117,7 +2093,6 @@
             // mods
             // 
             this.mods.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.mods.AutoSize = true;
             this.mods.Checked = true;
             this.mods.CheckState = System.Windows.Forms.CheckState.Checked;
             this.mods.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -2131,7 +2106,6 @@
             // patch4gb
             // 
             this.patch4gb.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.patch4gb.AutoSize = true;
             this.patch4gb.Checked = true;
             this.patch4gb.CheckState = System.Windows.Forms.CheckState.Checked;
             this.patch4gb.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -2179,7 +2153,6 @@
             // language
             // 
             this.language.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.language.AutoSize = true;
             this.language.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.language.Location = new System.Drawing.Point(0, 9);
             this.language.Margin = new System.Windows.Forms.Padding(0);
@@ -2223,7 +2196,6 @@
             // layout
             // 
             this.layout.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.layout.AutoSize = true;
             this.layout.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.layout.Location = new System.Drawing.Point(0, 9);
             this.layout.Margin = new System.Windows.Forms.Padding(0);
@@ -2267,7 +2239,6 @@
             // daffyculty
             // 
             this.daffyculty.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.daffyculty.AutoSize = true;
             this.daffyculty.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.daffyculty.Location = new System.Drawing.Point(0, 9);
             this.daffyculty.Margin = new System.Windows.Forms.Padding(0);
@@ -2340,7 +2311,6 @@
             // level
             // 
             this.level.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.level.AutoSize = true;
             this.level.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.level.Location = new System.Drawing.Point(0, 9);
             this.level.Margin = new System.Windows.Forms.Padding(0);
@@ -2383,7 +2353,6 @@
             // 
             // restore
             // 
-            this.restore.AutoSize = true;
             this.restore.BackColor = System.Drawing.Color.Transparent;
             this.restore.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.restore.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -2414,7 +2383,6 @@
             // 
             // patch
             // 
-            this.patch.AutoSize = true;
             this.patch.BackColor = System.Drawing.Color.Transparent;
             this.patch.Dock = System.Windows.Forms.DockStyle.Fill;
             this.patch.Font = new System.Drawing.Font("Comic Sans MS", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -2434,7 +2402,6 @@
             // 
             // play
             // 
-            this.play.AutoSize = true;
             this.play.BackColor = System.Drawing.Color.Transparent;
             this.play.Dock = System.Windows.Forms.DockStyle.Fill;
             this.play.Font = new System.Drawing.Font("Comic Sans MS", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -2513,7 +2480,6 @@
             // labelAchievementsProgress
             // 
             this.labelAchievementsProgress.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelAchievementsProgress.AutoSize = true;
             this.labelAchievementsProgress.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold);
             this.labelAchievementsProgress.Location = new System.Drawing.Point(3, 3);
             this.labelAchievementsProgress.Margin = new System.Windows.Forms.Padding(3);
@@ -2527,7 +2493,6 @@
             // labelAchievementsPercent
             // 
             this.labelAchievementsPercent.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.labelAchievementsPercent.AutoSize = true;
             this.labelAchievementsPercent.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold);
             this.labelAchievementsPercent.Location = new System.Drawing.Point(798, 3);
             this.labelAchievementsPercent.Margin = new System.Windows.Forms.Padding(3);
@@ -3084,7 +3049,6 @@
             // labelHint
             // 
             this.labelHint.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelHint.AutoSize = true;
             this.labelHint.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelHint.Location = new System.Drawing.Point(555, 0);
             this.labelHint.Name = "labelHint";
@@ -3108,7 +3072,6 @@
             // labelSelection
             // 
             this.labelSelection.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelSelection.AutoSize = true;
             this.labelSelection.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelSelection.Location = new System.Drawing.Point(159, 5);
             this.labelSelection.Name = "labelSelection";
@@ -3223,7 +3186,6 @@
             // labelCameraSpeed
             // 
             this.labelCameraSpeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelCameraSpeed.AutoSize = true;
             this.labelCameraSpeed.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelCameraSpeed.Location = new System.Drawing.Point(3, 8);
             this.labelCameraSpeed.Margin = new System.Windows.Forms.Padding(3);
@@ -3264,7 +3226,6 @@
             // labelFlyStep
             // 
             this.labelFlyStep.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelFlyStep.AutoSize = true;
             this.labelFlyStep.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelFlyStep.Location = new System.Drawing.Point(3, 8);
             this.labelFlyStep.Margin = new System.Windows.Forms.Padding(3);
@@ -3305,7 +3266,6 @@
             // labelMaxSpeed
             // 
             this.labelMaxSpeed.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelMaxSpeed.AutoSize = true;
             this.labelMaxSpeed.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelMaxSpeed.Location = new System.Drawing.Point(3, 8);
             this.labelMaxSpeed.Margin = new System.Windows.Forms.Padding(3);
@@ -3318,7 +3278,6 @@
             // trainerAutoSave
             // 
             this.trainerAutoSave.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.trainerAutoSave.AutoSize = true;
             this.trainerAutoSave.Checked = true;
             this.trainerAutoSave.CheckState = System.Windows.Forms.CheckState.Checked;
             this.trainerAutoSave.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -3334,7 +3293,6 @@
             // unstableLight
             // 
             this.unstableLight.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.unstableLight.AutoSize = true;
             this.unstableLight.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.unstableLight.Location = new System.Drawing.Point(3, 159);
             this.unstableLight.Name = "unstableLight";
@@ -3347,7 +3305,6 @@
             // trainerText
             // 
             this.trainerText.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.trainerText.AutoSize = true;
             this.trainerText.Checked = true;
             this.trainerText.CheckState = System.Windows.Forms.CheckState.Checked;
             this.trainerText.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -3362,7 +3319,6 @@
             // checkUpdates
             // 
             this.checkUpdates.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.checkUpdates.AutoSize = true;
             this.checkUpdates.Checked = true;
             this.checkUpdates.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkUpdates.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -3377,7 +3333,6 @@
             // screenshotSound
             // 
             this.screenshotSound.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.screenshotSound.AutoSize = true;
             this.screenshotSound.Checked = true;
             this.screenshotSound.CheckState = System.Windows.Forms.CheckState.Checked;
             this.screenshotSound.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -3392,7 +3347,6 @@
             // trainerSound
             // 
             this.trainerSound.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.trainerSound.AutoSize = true;
             this.trainerSound.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.trainerSound.Location = new System.Drawing.Point(370, 261);
             this.trainerSound.Name = "trainerSound";
@@ -3405,7 +3359,6 @@
             // verticalSplit
             // 
             this.verticalSplit.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.verticalSplit.AutoSize = true;
             this.verticalSplit.Checked = true;
             this.verticalSplit.CheckState = System.Windows.Forms.CheckState.Checked;
             this.verticalSplit.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -3421,7 +3374,6 @@
             // popupAchievements
             // 
             this.popupAchievements.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.popupAchievements.AutoSize = true;
             this.popupAchievements.Checked = true;
             this.popupAchievements.CheckState = System.Windows.Forms.CheckState.Checked;
             this.popupAchievements.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -3437,7 +3389,6 @@
             // achievementSound
             // 
             this.achievementSound.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.achievementSound.AutoSize = true;
             this.achievementSound.Checked = true;
             this.achievementSound.CheckState = System.Windows.Forms.CheckState.Checked;
             this.achievementSound.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -3498,7 +3449,6 @@
             // labelX
             // 
             this.labelX.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelX.AutoSize = true;
             this.labelX.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelX.Location = new System.Drawing.Point(0, 4);
             this.labelX.Margin = new System.Windows.Forms.Padding(0);
@@ -3535,7 +3485,6 @@
             // labelY
             // 
             this.labelY.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelY.AutoSize = true;
             this.labelY.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelY.Location = new System.Drawing.Point(0, 31);
             this.labelY.Margin = new System.Windows.Forms.Padding(0);
@@ -3548,7 +3497,6 @@
             // labelZ
             // 
             this.labelZ.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelZ.AutoSize = true;
             this.labelZ.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelZ.Location = new System.Drawing.Point(0, 58);
             this.labelZ.Margin = new System.Windows.Forms.Padding(0);
@@ -3719,7 +3667,6 @@
             // 
             // browseGame
             // 
-            this.browseGame.AutoSize = true;
             this.browseGame.BackColor = System.Drawing.Color.Transparent;
             this.browseGame.Dock = System.Windows.Forms.DockStyle.Fill;
             this.browseGame.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -3738,7 +3685,6 @@
             // 
             // applyRegistry
             // 
-            this.applyRegistry.AutoSize = true;
             this.applyRegistry.BackColor = System.Drawing.Color.Transparent;
             this.applyRegistry.Dock = System.Windows.Forms.DockStyle.Fill;
             this.applyRegistry.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -4086,7 +4032,6 @@
             // 
             // speedrunLink
             // 
-            this.speedrunLink.AutoSize = true;
             this.speedrunLink.BackColor = System.Drawing.Color.Transparent;
             this.speedrunLink.Dock = System.Windows.Forms.DockStyle.Fill;
             this.speedrunLink.Font = new System.Drawing.Font("Comic Sans MS", 10.5F, System.Drawing.FontStyle.Bold);
@@ -4105,7 +4050,6 @@
             // 
             // raLink
             // 
-            this.raLink.AutoSize = true;
             this.raLink.BackColor = System.Drawing.Color.Transparent;
             this.raLink.Dock = System.Windows.Forms.DockStyle.Fill;
             this.raLink.Font = new System.Drawing.Font("Comic Sans MS", 10.5F, System.Drawing.FontStyle.Bold);
@@ -4124,7 +4068,6 @@
             // 
             // hpLink
             // 
-            this.hpLink.AutoSize = true;
             this.hpLink.BackColor = System.Drawing.Color.Transparent;
             this.hpLink.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hpLink.Font = new System.Drawing.Font("Comic Sans MS", 10.5F, System.Drawing.FontStyle.Bold);
@@ -4143,7 +4086,6 @@
             // 
             // tcrfLink
             // 
-            this.tcrfLink.AutoSize = true;
             this.tcrfLink.BackColor = System.Drawing.Color.Transparent;
             this.tcrfLink.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcrfLink.Font = new System.Drawing.Font("Comic Sans MS", 10.5F, System.Drawing.FontStyle.Bold);
@@ -4192,7 +4134,6 @@
             // 
             // updateWrappers
             // 
-            this.updateWrappers.AutoSize = true;
             this.updateWrappers.BackColor = System.Drawing.Color.Transparent;
             this.updateWrappers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.updateWrappers.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -4211,7 +4152,6 @@
             // 
             // deleteSav
             // 
-            this.deleteSav.AutoSize = true;
             this.deleteSav.BackColor = System.Drawing.Color.Transparent;
             this.deleteSav.Dock = System.Windows.Forms.DockStyle.Fill;
             this.deleteSav.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -4230,7 +4170,6 @@
             // 
             // kill
             // 
-            this.kill.AutoSize = true;
             this.kill.BackColor = System.Drawing.Color.Transparent;
             this.kill.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kill.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));

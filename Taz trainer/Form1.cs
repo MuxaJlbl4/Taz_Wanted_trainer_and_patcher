@@ -280,7 +280,7 @@ namespace Taz_trainer
                     this.toolStripStatusLabel.Text = ex.Message.ToString();
                     this.toolStripStatusLabel.ForeColor = System.Drawing.Color.DarkRed;
                     // Default form element states
-                    autoFillVideo(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+                    autoFillVideo();
                     textBoxRegistry.Text = getPathFromRegistry();
                     langComboBox.SelectedIndex = 0;
                     levelComboBox.SelectedIndex = 0;
@@ -293,7 +293,7 @@ namespace Taz_trainer
             else
             {
                 // Default form element states
-                autoFillVideo(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+                autoFillVideo();
                 textBoxRegistry.Text = getPathFromRegistry();
                 langComboBox.SelectedIndex = 0;
                 levelComboBox.SelectedIndex = 0;
@@ -683,11 +683,18 @@ namespace Taz_trainer
         //#######################################################################################################################
         //Other
 
-        private void autoFillVideo(int width, int height)
+        private void autoFillVideo()
         {
+            // Screen.PrimaryScreen.Bounds - return wrong values with custom DPI
+
+            Size physicalSize = ScreenHelper.GetPhysicalResolution();
+
+            int screenWidth = physicalSize.Width;
+            int screenHeight = physicalSize.Height;
+
             //fill resolution
-            this.width.Text = width.ToString();
-            this.height.Text = height.ToString();
+            this.width.Text = screenWidth.ToString();
+            this.height.Text = screenHeight.ToString();
             this.windowed.Checked = false;
         }
 
@@ -3226,7 +3233,7 @@ namespace Taz_trainer
         {
             if (this.windowed.Checked == false)
             {
-                autoFillVideo(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+                autoFillVideo();
                 this.voodoo.Enabled = true;
             }
             else
@@ -4925,7 +4932,7 @@ namespace Taz_trainer
             }
             // Aspect
             if (width.Text == "" || height.Text == "")
-                autoFillVideo(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+                autoFillVideo();
             autoAspect(Int32.Parse(width.Text), Int32.Parse(height.Text));
             aspect1.ReadOnly = false;
             aspect2.ReadOnly = false;
