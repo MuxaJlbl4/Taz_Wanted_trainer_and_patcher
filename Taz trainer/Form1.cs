@@ -210,6 +210,7 @@ namespace Taz_trainer
             // Make the GUI ignore the DPI setting
 
             InitializeComponent();
+            this.AutoScaleMode = AutoScaleMode.None;
             DPI_Per_Monitor.TryEnableDPIAware(this, SetUserFonts);
 
             // Advanced Tab Init

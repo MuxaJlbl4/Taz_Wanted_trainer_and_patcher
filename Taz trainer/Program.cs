@@ -20,6 +20,7 @@ namespace Taz_trainer
                     // Run the application
                     Application.EnableVisualStyles();
                     Application.SetCompatibleTextRenderingDefault(false);
+
                     Application.Run(new form());
                 }
                 else
@@ -36,6 +37,10 @@ namespace Taz_trainer
                 }
             }
         }
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern bool SetProcessDPIAware();
+
         public static void Restart()
         {
             if (mutex != null)
