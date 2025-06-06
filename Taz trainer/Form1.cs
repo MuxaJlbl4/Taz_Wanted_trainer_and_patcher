@@ -274,6 +274,8 @@ namespace Taz_trainer
                         achievementsStateTrainer = (bool[])additionalData["achievementsStateTrainer"];
 
                     textBoxRegistry.Text = getPathFromRegistry();
+
+                    CheckAllComboBoxes(this);
                 }
                 catch (Exception ex)
                 {
@@ -282,12 +284,7 @@ namespace Taz_trainer
                     // Default form element states
                     autoFillVideo();
                     textBoxRegistry.Text = getPathFromRegistry();
-                    langComboBox.SelectedIndex = 0;
-                    levelComboBox.SelectedIndex = 0;
-                    apiComboBox.SelectedIndex = 0;
-                    layoutComboBox.SelectedIndex = 0;
-                    fogComboBox.SelectedIndex = 0;
-                    daffycultyComboBox.SelectedIndex = 0;
+                    CheckAllComboBoxes(this);
                 }
             }
             else
@@ -295,13 +292,9 @@ namespace Taz_trainer
                 // Default form element states
                 autoFillVideo();
                 textBoxRegistry.Text = getPathFromRegistry();
-                langComboBox.SelectedIndex = 0;
-                levelComboBox.SelectedIndex = 0;
-                apiComboBox.SelectedIndex = 0;
-                layoutComboBox.SelectedIndex = 0;
-                fogComboBox.SelectedIndex = 0;
-                daffycultyComboBox.SelectedIndex = 0;
+                CheckAllComboBoxes(this);
             }
+
 
             // Lock speedrun options
             InitModeOptions();
@@ -327,7 +320,31 @@ namespace Taz_trainer
             UpdateAchievementsTable();
         }
 
+        private void CheckAllComboBoxes(Control parentControl)
+        {
+            foreach (Control control in parentControl.Controls)
+            {
+                // Обработка ComboBox
+                if (control is ComboBox comboBox)
+                {
+                    ProcessComboBox(comboBox);
+                }
 
+                // Рекурсивный обход дочерних элементов
+                if (control.Controls.Count > 0)
+                {
+                    CheckAllComboBoxes(control);
+                }
+            }
+        }
+
+        private void ProcessComboBox(ComboBox comboBox)
+        {
+            if (comboBox.SelectedIndex == -1 && comboBox.Items.Count > 0)
+            {
+                comboBox.SelectedIndex = 0;
+            }
+        }
 
         //#######################################################################################################################
         //Key hooker functions
@@ -5135,37 +5152,42 @@ namespace Taz_trainer
 
         private void timerAchievementCheck_Tick(object sender, EventArgs e)
         {
-            // Not available in trainer mode
-            if (radioTrainer.Checked == false || injections.Checked == true)
-            {    
+            
             // Read achievement states
             byte[] achievementStatesGame = Enumerable.Repeat<byte>(0, achievementsTotal).ToArray(); ;
             checkAndRead((IntPtr)0x00731600, achievementStatesGame, achievementStatesGame.Length, new IntPtr());
 
-                for (int i = 0; i < achievementsTotal; i++)
+            for (int i = 0; i < achievementsTotal; i++)
+            {
+                if (achievementStatesGame[i] == 0x01 && achievementsStateTrainer[i] == false)
                 {
-                    if (achievementStatesGame[i] == 0x01 && achievementsStateTrainer[i] == false)
+                    if (radioTrainer.Checked == true && injections.Checked == false)
                     {
-                        // Update achievements table
-                        achievementsStateTrainer[i] = true;
-                        UpdateAchievementsTable();
+                        // Should not happen due patch unavailability
+                        if(popupAchievements.Checked == true)
+                            message("Achievements not available in Trainer game mode");
+                        return;
+                    }
+                    
+                    // Unlock achievement and update table
+                    achievementsStateTrainer[i] = true;
+                    UpdateAchievementsTable();
 
-                        // Pop-up achievement when allowed
-                        if (popupAchievements.Checked == true && radioSpeedrun.Checked == false)
+                    // Pop-up achievement when allowed
+                    if (popupAchievements.Checked == true && radioSpeedrun.Checked == false)
+                    {
+                        AchievementNotificationForm.ShowAchievement(
+                            Achievements[i, 1],
+                            Achievements[i, 2],
+                            listViewAchievements.Items[i].ImageList.Images[listViewAchievements.Items[i].ImageKey],
+                            Achievements[i, 3]
+                        );
+
+                        // Achievement sound with cooldown
+                        if (achievementSound.Checked == true && timerCooldown.Enabled == false)
                         {
-                            AchievementNotificationForm.ShowAchievement(
-                                Achievements[i, 1],
-                                Achievements[i, 2],
-                                listViewAchievements.Items[i].ImageList.Images[listViewAchievements.Items[i].ImageKey],
-                                Achievements[i, 3]
-                            );
-
-                            // Achievement sound with cooldown
-                            if (achievementSound.Checked == true && timerCooldown.Enabled == false)
-                            {
-                                playAchievementSound(Properties.Resources.achievement);
-                                timerCooldown.Start();
-                            }
+                            playAchievementSound(Properties.Resources.achievement);
+                            timerCooldown.Start();
                         }
                     }
                 }
