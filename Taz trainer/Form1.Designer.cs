@@ -261,6 +261,7 @@
             this.linksGroup = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanelSettings43 = new System.Windows.Forms.TableLayoutPanel();
             this.githubLink = new System.Windows.Forms.Button();
+            this.linkIcons = new System.Windows.Forms.ImageList(this.components);
             this.discordLink = new System.Windows.Forms.Button();
             this.cheatLink = new System.Windows.Forms.Button();
             this.gamebananaLink = new System.Windows.Forms.Button();
@@ -314,7 +315,6 @@
             this.saveRepackedFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.timerAchievementCheck = new System.Windows.Forms.Timer(this.components);
             this.timerCooldown = new System.Windows.Forms.Timer(this.components);
-            this.linkIcons = new System.Windows.Forms.ImageList(this.components);
             this.statusStrip.SuspendLayout();
             this.tableLayoutPanelTrainer.SuspendLayout();
             this.cheatsTrainerGroup.SuspendLayout();
@@ -3540,8 +3540,8 @@
             // 
             // githubLink
             // 
+            this.githubLink.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.githubLink.BackColor = System.Drawing.Color.Transparent;
-            this.githubLink.Dock = System.Windows.Forms.DockStyle.Fill;
             this.githubLink.Font = new System.Drawing.Font("Comic Sans MS", 10.5F, System.Drawing.FontStyle.Bold);
             this.githubLink.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.githubLink.ImageKey = "space.png";
@@ -3556,10 +3556,23 @@
             this.githubLink.UseVisualStyleBackColor = false;
             this.githubLink.Click += new System.EventHandler(this.githubLink_Click);
             // 
+            // linkIcons
+            // 
+            this.linkIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("linkIcons.ImageStream")));
+            this.linkIcons.TransparentColor = System.Drawing.Color.Transparent;
+            this.linkIcons.Images.SetKeyName(0, "banana.png");
+            this.linkIcons.Images.SetKeyName(1, "bonusbox.png");
+            this.linkIcons.Images.SetKeyName(2, "burpcan.png");
+            this.linkIcons.Images.SetKeyName(3, "ingredientsjar02.png");
+            this.linkIcons.Images.SetKeyName(4, "saw.png");
+            this.linkIcons.Images.SetKeyName(5, "space.png");
+            this.linkIcons.Images.SetKeyName(6, "starating.png");
+            this.linkIcons.Images.SetKeyName(7, "swirl.png");
+            // 
             // discordLink
             // 
+            this.discordLink.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.discordLink.BackColor = System.Drawing.Color.Transparent;
-            this.discordLink.Dock = System.Windows.Forms.DockStyle.Fill;
             this.discordLink.Font = new System.Drawing.Font("Comic Sans MS", 10.5F, System.Drawing.FontStyle.Bold);
             this.discordLink.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.discordLink.ImageKey = "ingredientsjar02.png";
@@ -3576,8 +3589,8 @@
             // 
             // cheatLink
             // 
+            this.cheatLink.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.cheatLink.BackColor = System.Drawing.Color.Transparent;
-            this.cheatLink.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cheatLink.Font = new System.Drawing.Font("Comic Sans MS", 10.5F, System.Drawing.FontStyle.Bold);
             this.cheatLink.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.cheatLink.ImageKey = "burpcan.png";
@@ -3594,16 +3607,16 @@
             // 
             // gamebananaLink
             // 
+            this.gamebananaLink.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.gamebananaLink.BackColor = System.Drawing.Color.Transparent;
-            this.gamebananaLink.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gamebananaLink.Font = new System.Drawing.Font("Comic Sans MS", 10.5F, System.Drawing.FontStyle.Bold);
             this.gamebananaLink.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.gamebananaLink.ImageKey = "banana.png";
             this.gamebananaLink.ImageList = this.linkIcons;
-            this.gamebananaLink.Location = new System.Drawing.Point(0, 99);
+            this.gamebananaLink.Location = new System.Drawing.Point(0, 100);
             this.gamebananaLink.Margin = new System.Windows.Forms.Padding(0);
             this.gamebananaLink.Name = "gamebananaLink";
-            this.gamebananaLink.Size = new System.Drawing.Size(170, 36);
+            this.gamebananaLink.Size = new System.Drawing.Size(170, 34);
             this.gamebananaLink.TabIndex = 830;
             this.gamebananaLink.Text = "    Mods";
             this.gamebananaLink.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -3667,8 +3680,8 @@
             // 
             // browseGame
             // 
+            this.browseGame.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.browseGame.BackColor = System.Drawing.Color.Transparent;
-            this.browseGame.Dock = System.Windows.Forms.DockStyle.Fill;
             this.browseGame.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.browseGame.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.browseGame.ImageKey = "shovel.png";
@@ -3685,8 +3698,8 @@
             // 
             // applyRegistry
             // 
+            this.applyRegistry.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.applyRegistry.BackColor = System.Drawing.Color.Transparent;
-            this.applyRegistry.Dock = System.Windows.Forms.DockStyle.Fill;
             this.applyRegistry.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.applyRegistry.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.applyRegistry.ImageKey = "greentick.png";
@@ -3755,8 +3768,8 @@
             // 
             // executable
             // 
+            this.executable.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.executable.BackColor = System.Drawing.Color.Transparent;
-            this.executable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.executable.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.executable.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.executable.ImageKey = "tazwanted.png";
@@ -3773,8 +3786,8 @@
             // 
             // launcher
             // 
+            this.launcher.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.launcher.BackColor = System.Drawing.Color.Transparent;
-            this.launcher.Dock = System.Windows.Forms.DockStyle.Fill;
             this.launcher.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.launcher.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.launcher.ImageKey = "hammer.png";
@@ -3791,8 +3804,8 @@
             // 
             // gameFolder
             // 
+            this.gameFolder.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.gameFolder.BackColor = System.Drawing.Color.Transparent;
-            this.gameFolder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gameFolder.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.gameFolder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.gameFolder.ImageKey = "scroll.png";
@@ -3844,8 +3857,8 @@
             // 
             // controls
             // 
+            this.controls.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.controls.BackColor = System.Drawing.Color.Transparent;
-            this.controls.Dock = System.Windows.Forms.DockStyle.Fill;
             this.controls.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.controls.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.controls.ImageKey = "snowboat.png";
@@ -3862,8 +3875,8 @@
             // 
             // video
             // 
+            this.video.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.video.BackColor = System.Drawing.Color.Transparent;
-            this.video.Dock = System.Windows.Forms.DockStyle.Fill;
             this.video.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.video.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.video.ImageKey = "monitor.png";
@@ -3880,8 +3893,8 @@
             // 
             // audio
             // 
+            this.audio.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.audio.BackColor = System.Drawing.Color.Transparent;
-            this.audio.Dock = System.Windows.Forms.DockStyle.Fill;
             this.audio.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.audio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.audio.ImageKey = "record.png";
@@ -3946,8 +3959,8 @@
             // 
             // savePatcherSettings
             // 
+            this.savePatcherSettings.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.savePatcherSettings.BackColor = System.Drawing.Color.Transparent;
-            this.savePatcherSettings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.savePatcherSettings.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.savePatcherSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.savePatcherSettings.ImageKey = "memcard.png";
@@ -3964,8 +3977,8 @@
             // 
             // resetAchievements
             // 
+            this.resetAchievements.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.resetAchievements.BackColor = System.Drawing.Color.Transparent;
-            this.resetAchievements.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resetAchievements.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.resetAchievements.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.resetAchievements.ImageKey = "samface.png";
@@ -3982,8 +3995,8 @@
             // 
             // resetSettings
             // 
+            this.resetSettings.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.resetSettings.BackColor = System.Drawing.Color.Transparent;
-            this.resetSettings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resetSettings.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.resetSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.resetSettings.ImageKey = "electricwarning.png";
@@ -4032,8 +4045,8 @@
             // 
             // speedrunLink
             // 
+            this.speedrunLink.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.speedrunLink.BackColor = System.Drawing.Color.Transparent;
-            this.speedrunLink.Dock = System.Windows.Forms.DockStyle.Fill;
             this.speedrunLink.Font = new System.Drawing.Font("Comic Sans MS", 10.5F, System.Drawing.FontStyle.Bold);
             this.speedrunLink.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.speedrunLink.ImageKey = "starating.png";
@@ -4050,8 +4063,8 @@
             // 
             // raLink
             // 
+            this.raLink.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.raLink.BackColor = System.Drawing.Color.Transparent;
-            this.raLink.Dock = System.Windows.Forms.DockStyle.Fill;
             this.raLink.Font = new System.Drawing.Font("Comic Sans MS", 10.5F, System.Drawing.FontStyle.Bold);
             this.raLink.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.raLink.ImageKey = "bonusbox.png";
@@ -4068,8 +4081,8 @@
             // 
             // hpLink
             // 
+            this.hpLink.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.hpLink.BackColor = System.Drawing.Color.Transparent;
-            this.hpLink.Dock = System.Windows.Forms.DockStyle.Fill;
             this.hpLink.Font = new System.Drawing.Font("Comic Sans MS", 10.5F, System.Drawing.FontStyle.Bold);
             this.hpLink.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.hpLink.ImageKey = "swirl.png";
@@ -4086,16 +4099,16 @@
             // 
             // tcrfLink
             // 
+            this.tcrfLink.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tcrfLink.BackColor = System.Drawing.Color.Transparent;
-            this.tcrfLink.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tcrfLink.Font = new System.Drawing.Font("Comic Sans MS", 10.5F, System.Drawing.FontStyle.Bold);
             this.tcrfLink.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.tcrfLink.ImageKey = "saw.png";
             this.tcrfLink.ImageList = this.linkIcons;
-            this.tcrfLink.Location = new System.Drawing.Point(0, 99);
+            this.tcrfLink.Location = new System.Drawing.Point(0, 100);
             this.tcrfLink.Margin = new System.Windows.Forms.Padding(0);
             this.tcrfLink.Name = "tcrfLink";
-            this.tcrfLink.Size = new System.Drawing.Size(206, 36);
+            this.tcrfLink.Size = new System.Drawing.Size(206, 34);
             this.tcrfLink.TabIndex = 430;
             this.tcrfLink.Text = "    tcrf.net";
             this.tcrfLink.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -4134,8 +4147,8 @@
             // 
             // updateWrappers
             // 
+            this.updateWrappers.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.updateWrappers.BackColor = System.Drawing.Color.Transparent;
-            this.updateWrappers.Dock = System.Windows.Forms.DockStyle.Fill;
             this.updateWrappers.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.updateWrappers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.updateWrappers.ImageKey = "ingredientsjar01.png";
@@ -4152,8 +4165,8 @@
             // 
             // deleteSav
             // 
+            this.deleteSav.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.deleteSav.BackColor = System.Drawing.Color.Transparent;
-            this.deleteSav.Dock = System.Windows.Forms.DockStyle.Fill;
             this.deleteSav.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.deleteSav.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.deleteSav.ImageKey = "paintbrush.png";
@@ -4170,8 +4183,8 @@
             // 
             // kill
             // 
+            this.kill.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.kill.BackColor = System.Drawing.Color.Transparent;
-            this.kill.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kill.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.kill.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.kill.ImageKey = "spookhouse.png";
@@ -4333,19 +4346,6 @@
             this.timerCooldown.Interval = 6000;
             this.timerCooldown.Tick += new System.EventHandler(this.timerCooldown_Tick);
             // 
-            // linkIcons
-            // 
-            this.linkIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("linkIcons.ImageStream")));
-            this.linkIcons.TransparentColor = System.Drawing.Color.Transparent;
-            this.linkIcons.Images.SetKeyName(0, "banana.png");
-            this.linkIcons.Images.SetKeyName(1, "bonusbox.png");
-            this.linkIcons.Images.SetKeyName(2, "burpcan.png");
-            this.linkIcons.Images.SetKeyName(3, "ingredientsjar02.png");
-            this.linkIcons.Images.SetKeyName(4, "saw.png");
-            this.linkIcons.Images.SetKeyName(5, "space.png");
-            this.linkIcons.Images.SetKeyName(6, "starating.png");
-            this.linkIcons.Images.SetKeyName(7, "swirl.png");
-            // 
             // form
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -4381,72 +4381,48 @@
             this.modeGroup.ResumeLayout(false);
             this.tableLayoutPanelPatcher131.ResumeLayout(false);
             this.tableLayoutPanelPatcher1311.ResumeLayout(false);
-            this.tableLayoutPanelPatcher1311.PerformLayout();
             this.graphicsGroup.ResumeLayout(false);
             this.tableLayoutPanelPatcher12.ResumeLayout(false);
             this.tableLayoutPanelPatcher129.ResumeLayout(false);
-            this.tableLayoutPanelPatcher129.PerformLayout();
             this.tableLayoutPanelPatcher128.ResumeLayout(false);
-            this.tableLayoutPanelPatcher128.PerformLayout();
             this.tableLayoutPanelPatcher123.ResumeLayout(false);
             this.tableLayoutPanelPatcher123.PerformLayout();
             this.tableLayoutPanelPatcher122.ResumeLayout(false);
             this.tableLayoutPanelPatcher122.PerformLayout();
             this.tableLayoutPanelPatcher121.ResumeLayout(false);
-            this.tableLayoutPanelPatcher121.PerformLayout();
             this.tableLayoutPanelPatcher12A.ResumeLayout(false);
-            this.tableLayoutPanelPatcher12A.PerformLayout();
             this.tableLayoutPanelPatcher126.ResumeLayout(false);
-            this.tableLayoutPanelPatcher126.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericFpsCap)).EndInit();
             this.tableLayoutPanelPatcher124.ResumeLayout(false);
-            this.tableLayoutPanelPatcher124.PerformLayout();
             this.tableLayoutPanelPatcher127.ResumeLayout(false);
-            this.tableLayoutPanelPatcher127.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericFoV)).EndInit();
             this.tableLayoutPanelPatcher125.ResumeLayout(false);
-            this.tableLayoutPanelPatcher125.PerformLayout();
             this.startupGroup.ResumeLayout(false);
             this.tableLayoutPanelPatcher11.ResumeLayout(false);
             this.tableLayoutPanelPatcher116.ResumeLayout(false);
-            this.tableLayoutPanelPatcher116.PerformLayout();
             this.tableLayoutPanelPatcher115.ResumeLayout(false);
-            this.tableLayoutPanelPatcher115.PerformLayout();
             this.tableLayoutPanelPatcher114.ResumeLayout(false);
-            this.tableLayoutPanelPatcher114.PerformLayout();
             this.tableLayoutPanelPatcher111.ResumeLayout(false);
-            this.tableLayoutPanelPatcher111.PerformLayout();
             this.tableLayoutPanelPatcher113.ResumeLayout(false);
-            this.tableLayoutPanelPatcher113.PerformLayout();
             this.tableLayoutPanelPatcher112.ResumeLayout(false);
-            this.tableLayoutPanelPatcher112.PerformLayout();
             this.tableLayoutPanelPatcher119.ResumeLayout(false);
-            this.tableLayoutPanelPatcher119.PerformLayout();
             this.tableLayoutPanelPatcher118.ResumeLayout(false);
-            this.tableLayoutPanelPatcher118.PerformLayout();
             this.tableLayoutPanelPatcher11B.ResumeLayout(false);
-            this.tableLayoutPanelPatcher11B.PerformLayout();
             this.tableLayoutPanelPatcher11A.ResumeLayout(false);
-            this.tableLayoutPanelPatcher11A.PerformLayout();
             this.tableLayoutPanelPatcher2.ResumeLayout(false);
-            this.tableLayoutPanelPatcher2.PerformLayout();
             this.tableLayoutPanelPatcher21.ResumeLayout(false);
-            this.tableLayoutPanelPatcher21.PerformLayout();
             this.achTab.ResumeLayout(false);
             this.tableLayoutPanelAchievements1.ResumeLayout(false);
             this.tableLayoutPanelAchievements11.ResumeLayout(false);
-            this.tableLayoutPanelAchievements11.PerformLayout();
             this.trainerTab.ResumeLayout(false);
             this.advancedTab.ResumeLayout(false);
             this.actorsTrainerGroup.ResumeLayout(false);
             this.tableLayoutPanel1Advanced.ResumeLayout(false);
             this.tableLayoutPanel11Advanced.ResumeLayout(false);
-            this.tableLayoutPanel11Advanced.PerformLayout();
             this.settingsTab.ResumeLayout(false);
             this.tableLayoutPanelSettings.ResumeLayout(false);
             this.optionsGroup.ResumeLayout(false);
             this.tableLayoutPanelSettings2.ResumeLayout(false);
-            this.tableLayoutPanelSettings2.PerformLayout();
             this.tableLayoutPanelSettings21.ResumeLayout(false);
             this.tableLayoutPanelSettings21.PerformLayout();
             this.tableLayoutPanelSettings22.ResumeLayout(false);
@@ -4462,7 +4438,6 @@
             this.tableLayoutPanelSettings1.ResumeLayout(false);
             this.tableLayoutPanelSettings1.PerformLayout();
             this.tableLayoutPanelSettings11.ResumeLayout(false);
-            this.tableLayoutPanelSettings11.PerformLayout();
             this.tableLayoutPanelSettings4.ResumeLayout(false);
             this.shortcutsGroup.ResumeLayout(false);
             this.tableLayoutPanelSettings41.ResumeLayout(false);
@@ -4473,10 +4448,8 @@
             this.tableLayoutPanelSettings51.ResumeLayout(false);
             this.miscGroup.ResumeLayout(false);
             this.tableLayoutPanelSettings53.ResumeLayout(false);
-            this.tableLayoutPanelSettings53.PerformLayout();
             this.savegameGroup.ResumeLayout(false);
             this.tableLayoutPanelSettings52.ResumeLayout(false);
-            this.tableLayoutPanelSettings52.PerformLayout();
             this.repackTab.ResumeLayout(false);
             this.tableLayoutPanelRepacker1.ResumeLayout(false);
             this.tableLayoutPanelRepacker2.ResumeLayout(false);
