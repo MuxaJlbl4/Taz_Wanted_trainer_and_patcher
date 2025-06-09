@@ -2488,6 +2488,7 @@
             this.labelAchievementsProgress.Size = new System.Drawing.Size(84, 26);
             this.labelAchievementsProgress.TabIndex = 133;
             this.labelAchievementsProgress.Text = "999/999";
+            this.labelAchievementsProgress.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelAchievementsProgress.Click += new System.EventHandler(this.labelAchievementsProgress_Click);
             // 
             // labelAchievementsPercent
@@ -2501,6 +2502,7 @@
             this.labelAchievementsPercent.Size = new System.Drawing.Size(93, 26);
             this.labelAchievementsPercent.TabIndex = 133;
             this.labelAchievementsPercent.Text = "100.00 %";
+            this.labelAchievementsPercent.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // listViewAchievements
             // 

@@ -4900,7 +4900,7 @@ namespace Taz_trainer
             disableDrawDistance.Checked = false;
             fogComboBox.SelectedIndex = 0;
             */
-            this.Text = "Taz Wanted · SPEEDRUN MODE";
+            this.Text = "Taz Wanted · Speedrun Mode";
         }
         private void SpdUnlockOptions(bool init)
         {
@@ -4990,6 +4990,8 @@ namespace Taz_trainer
 
             // Unlock achievements
             achievements.Enabled = true;
+
+            this.Text = "Taz Wanted · Achievements Mode";
         }
 
         private void AchUnlockOptions()
@@ -5016,6 +5018,8 @@ namespace Taz_trainer
 
             // Unlock achievements
             achievements.Enabled = false;
+
+            this.Text = "Taz Wanted · Trainer & Patcher";
         }
 
         private void aspectSwap_Click(object sender, EventArgs e)
