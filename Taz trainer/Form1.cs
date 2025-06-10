@@ -3482,251 +3482,317 @@ namespace Taz_trainer
             }
         }
 
-        private void UnpackPak(String fileName, String OutputPath)
+        private void UnpackPak(string fileName, string outputPath)
         {
-            // Create New Folder
-            OutputPath = Path.Combine(OutputPath, Path.GetFileNameWithoutExtension(fileName));
-            Directory.CreateDirectory(OutputPath);
-            // Open file
-            byte[] pakFile = File.ReadAllBytes(fileName);
-            //Parse Header
-            //Int32 TimeStamp =       BitConverter.ToInt32(pakFile, 0x00);
-            Int32 PakAlign = BitConverter.ToInt32(pakFile, 0x04);
-            //Int32 Sound =          BitConverter.ToInt32(pakFile, 0x08);
-            Int32 FilesCount = BitConverter.ToInt32(pakFile, 0x0C);
-            Int32 InfoOffset = BitConverter.ToInt32(pakFile, 0x10) * PakAlign;
-            //Int32 TagOffset =       BitConverter.ToInt32(pakFile, 0x14) * PakAlign;
-            //Int32 Zero0 =           BitConverter.ToInt32(pakFile, 0x18);
-            //Int32 TagCount =          BitConverter.ToInt32(pakFile, 0x1C);
-            //Int32 FootOffset =      BitConverter.ToInt32(pakFile, 0x20) * PakAlign;
-            //Int32 Dummy =          BitConverter.ToInt32(pakFile, 0x24);
-            Int32 NamesOffset = BitConverter.ToInt32(pakFile, 0x28) * PakAlign;
-            Int32 NamesSize = BitConverter.ToInt32(pakFile, 0x2C);
-            //Int32 InfoSize =        BitConverter.ToInt32(pakFile, 0x30);
-            //Int32 Zero1 =            BitConverter.ToInt32(pakFile, 0x34);
-            //Int32 SixtyFour =       BitConverter.ToInt32(pakFile, 0x38);
+            // Create output directory
+            outputPath = Path.Combine(outputPath, Path.GetFileNameWithoutExtension(fileName));
+            Directory.CreateDirectory(outputPath);
 
-            //Parse Files
-            for (Int32 i = 0; i < FilesCount; i++)
+            using (var fs = new FileStream(fileName, FileMode.Open, FileAccess.Read))
             {
-                Int32 Base = (i * 32) + InfoOffset;
-                // Parse File Info
-                Int32 Offset = BitConverter.ToInt32(pakFile, Base + 0x00) * PakAlign;
-                //Int32 Hash32 =      BitConverter.ToInt32(pakFile, Base + 0x04);
-                Int32 Size = BitConverter.ToInt32(pakFile, Base + 0x08);
-                Int32 NameOffset = BitConverter.ToInt32(pakFile, Base + 0x0C);
-                Int32 IsFile = BitConverter.ToInt32(pakFile, Base + 0x10);
-                //Int32 Zero =        BitConverter.ToInt32(pakFile, Base + 0x14);
-                //Int64 Hash64 =      BitConverter.ToInt64(pakFile, Base + 0x18);
+                // Read and parse header
+                byte[] headerBuffer = new byte[2048];
+                fs.Read(headerBuffer, 0, headerBuffer.Length);
 
-                // Is it file
-                if (IsFile == 0 && Size == NamesSize)
-                    continue;
+                int PakAlign = BitConverter.ToInt32(headerBuffer, 0x04);
+                int FilesCount = BitConverter.ToInt32(headerBuffer, 0x0C);
+                int InfoOffset = BitConverter.ToInt32(headerBuffer, 0x10) * PakAlign;
+                int NamesOffset = BitConverter.ToInt32(headerBuffer, 0x28) * PakAlign;
+                int NamesSize = BitConverter.ToInt32(headerBuffer, 0x2C);
 
-                // Get Name
-                string FileName = "";
-                Int32 StrOffset = NamesOffset + NameOffset;
-                Int32 StrLen = Array.IndexOf(pakFile, (byte)0, StrOffset) - StrOffset;
-                ASCIIEncoding ascii = new ASCIIEncoding();
-                FileName = ascii.GetString(pakFile, StrOffset, StrLen);
+                // Read file info table
+                byte[] fileInfoBuffer = new byte[FilesCount * 32];
+                fs.Seek(InfoOffset, SeekOrigin.Begin);
+                fs.Read(fileInfoBuffer, 0, fileInfoBuffer.Length);
 
-                // Check Subfolders
-                string FilePath = Path.Combine(OutputPath, Path.GetDirectoryName(FileName));
-                if (!Directory.Exists(FilePath))
-                    Directory.CreateDirectory(FilePath);
+                // Read names block
+                byte[] namesBuffer = new byte[NamesSize];
+                fs.Seek(NamesOffset, SeekOrigin.Begin);
+                fs.Read(namesBuffer, 0, NamesSize);
 
-                // Get Content
-                byte[] Content = new byte[Size];
-                Content = pakFile.Skip(Offset).Take(Size).ToArray();
-                // Unpack to File
-                File.WriteAllBytes(Path.Combine(FilePath, Path.GetFileName(FileName)), Content);
+                // Process files
+                var ascii = Encoding.ASCII;
+                var buffer = new byte[8192]; // 8KB buffer for file copying
+
+                for (int i = 0; i < FilesCount; i++)
+                {
+                    int baseOffset = i * 32;
+                    int Offset = BitConverter.ToInt32(fileInfoBuffer, baseOffset + 0x00) * PakAlign;
+                    int Size = BitConverter.ToInt32(fileInfoBuffer, baseOffset + 0x08);
+                    int NameOffset = BitConverter.ToInt32(fileInfoBuffer, baseOffset + 0x0C);
+                    int IsFile = BitConverter.ToInt32(fileInfoBuffer, baseOffset + 0x10);
+
+                    // Skip hidden file (names block)
+                    if (IsFile == 0 && Size == NamesSize)
+                        continue;
+
+                    // Extract filename
+                    int nameStart = NameOffset;
+                    int nameLength = 0;
+                    while (nameStart + nameLength < NamesSize &&
+                           namesBuffer[nameStart + nameLength] != 0)
+                    {
+                        nameLength++;
+                    }
+
+                    string fileNameStr = ascii.GetString(namesBuffer, nameStart, nameLength);
+                    string fullOutputPath = Path.Combine(outputPath, fileNameStr);
+
+                    // Create directory structure
+                    string directoryPath = Path.GetDirectoryName(fullOutputPath);
+                    if (!Directory.Exists(directoryPath))
+                    {
+                        Directory.CreateDirectory(directoryPath);
+                    }
+
+                    // Extract file content
+                    fs.Seek(Offset, SeekOrigin.Begin);
+                    using (var outputFile = File.Create(fullOutputPath))
+                    {
+                        int bytesLeft = Size;
+                        while (bytesLeft > 0)
+                        {
+                            int bytesToRead = Math.Min(buffer.Length, bytesLeft);
+                            int bytesRead = fs.Read(buffer, 0, bytesToRead);
+                            if (bytesRead == 0) break; // End of file
+
+                            outputFile.Write(buffer, 0, bytesRead);
+                            bytesLeft -= bytesRead;
+                        }
+                    }
+                }
             }
         }
 
-        private void PackPak(String DirName, String OutputName)
+        private void PackPak(string DirName, string OutputName)
         {
-            // Init
-            byte[] Header = { };
-            byte[] Contents = { };
-            byte[] FileNames = { };
-            byte[] FileInfos = { };
-            byte[] Footer = { };
-            Dictionary<string, Int32> FileContentLocalOffsets = new Dictionary<string, Int32>();
-            Dictionary<string, Int32> FileNameLocalOffsets = new Dictionary<string, Int32>();
-            int HiddenFileHash = 881391266;
-            int FileLocalOffset = 0;
-            int NameLocalOffset = 0;
-            int TagLocalOffset = 0;
-            int TagCount = 0;
-            int Remainder = 0;
-            int FileSize = 0;
-            int NamesSize = 0;
-            int NamesRealSize = 0;
-            int HiddenFileInfoLocalIndex = 0;
-            int HeaderSize = 2048;
-            int FooterSize = 32;
+            const int HiddenFileHash = 881391266;
+            const int HeaderSize = 2048;
+            const int FooterSize = 32;
+            const int FileInfoSize = 32; // Each file info entry is 32 bytes
 
-            string[] Files = Directory.GetFiles(DirName, "*", SearchOption.AllDirectories).ToArray();
+            // Normalize base directory path
+            string normalizedDir = DirName.EndsWith("\\") ? DirName : DirName + "\\";
 
-            // Append Hidden File
-            Files = Files.Append("").ToArray();
-            // Sort by Hashes
-            UInt32[] UsedHashes = { };
-            foreach (string FullName in Files)
+            // Get all files from directory and subdirectories
+            var files = Directory.GetFiles(DirName, "*", SearchOption.AllDirectories).ToList();
+            files.Add(""); // Add hidden file placeholder
+
+            // Create list for sorting (hash, full path, short name)
+            var sortingList = new List<Tuple<uint, string, string>>();
+            foreach (string file in files)
             {
-                string ShortName = FullName.Replace(DirName + "\\", "");
-                NamesSize += ShortName.Length + 1;
-                if (ShortName == "")
-                    // Append Hidden File Hash (Without Name)
-                    UsedHashes = UsedHashes.Append((UInt32)HiddenFileHash).ToArray();
+                if (file == "")
+                {
+                    sortingList.Add(new Tuple<uint, string, string>((uint)HiddenFileHash, file, ""));
+                }
                 else
-                    UsedHashes = UsedHashes.Append(CRC32.Crc32(Encoding.ASCII.GetBytes(ShortName.ToLower()))).ToArray();
+                {
+                    // Get relative path (same as original)
+                    string shortName = file.Replace(normalizedDir, "").Replace("/", "\\");
+                    uint hash = CRC32.Crc32(Encoding.ASCII.GetBytes(shortName.ToLower()));
+                    sortingList.Add(new Tuple<uint, string, string>(hash, file, shortName));
+                }
             }
 
+            // Sort files by hash
+            var sortedFiles = sortingList
+                .OrderBy(t => t.Item1)
+                .ToList();
 
-            Array.Sort(UsedHashes, Files);
+            // Pre-calculate sizes
+            int totalFiles = sortedFiles.Count;
+            int namesRealSize = 0;
+            int totalContentSize = 0;
+            int tagLocalOffset = -1; // -1 means not found
+            int tagCount = 0;
 
-
-            // Content + Names + Infos
-            foreach (string FilePath in Files)
+            // Collect file metadata
+            var fileMetadata = new List<FileMeta>();
+            foreach (var fileTuple in sortedFiles)
             {
-                // Get Short Name
-                string ShortName = FilePath.Replace(DirName + "\\", "");
-
-                // Is Hidden
-                if (ShortName == "")
+                if (fileTuple.Item2 == "")
                 {
-                    HiddenFileInfoLocalIndex = FileInfos.Length;
-                    // Allocate Hidden FileNames File Info
-                    Array.Resize<byte>(ref FileInfos, FileInfos.Length + 32);
+                    // Hidden file metadata
+                    fileMetadata.Add(new FileMeta
+                    {
+                        Path = "",
+                        ShortName = "",
+                        Size = 0,
+                        PaddedSize = 0,
+                        Hash = (uint)HiddenFileHash,
+                        NameOffset = 0
+                    });
                     continue;
                 }
 
-                // RawContent
-                byte[] FileContent = File.ReadAllBytes(FilePath);
-                FileSize = FileContent.Length;
-                // + Alignment
-                Remainder = FileContent.Length % 16;
-                if (Remainder > 0) for (int i = 0; i < 16 - Remainder; i++) FileContent = FileContent.Append((byte)0).ToArray();
-                // Append Content
-                Contents = Contents.Concat(FileContent).ToArray();
+                string shortName = fileTuple.Item3;
+                int size = (int)new FileInfo(fileTuple.Item2).Length;
+                int paddedSize = (size + 15) & ~15; // Align to 16 bytes using bitwise operation
+                uint hash = fileTuple.Item1;
+                int nameOffset = namesRealSize;
 
+                namesRealSize += shortName.Length + 1; // +1 for null terminator
+                totalContentSize += paddedSize;
 
-                // FileNames
-                FileNames = FileNames.Concat(Encoding.ASCII.GetBytes(ShortName)).ToArray();
-                FileNames = FileNames.Append((byte)0).ToArray();
-
-
-                // FileInfos
-                // Global File Offset (\16)
-                FileInfos = FileInfos.Concat(BitConverter.GetBytes((HeaderSize + FileLocalOffset) / 16)).ToArray();
-                // Hash32
-                FileInfos = FileInfos.Concat(BitConverter.GetBytes(CRC32.Crc32(Encoding.ASCII.GetBytes(ShortName.ToLower())))).ToArray();
-                // Size
-                FileInfos = FileInfos.Concat(BitConverter.GetBytes(FileSize)).ToArray();
-                // Local Name Offset
-                FileInfos = FileInfos.Concat(BitConverter.GetBytes(NameLocalOffset)).ToArray();
-                // Is File + Some Tag Info
-                if (ShortName == "TagTable.pak.sys")
+                // Special handling for TagTable file
+                if (shortName == "TagTable.pak.sys")
                 {
-                    FileInfos = FileInfos.Concat(BitConverter.GetBytes((Int32)0)).ToArray();
-                    TagLocalOffset = FileLocalOffset;
-                    TagCount = FileSize / 4;
+                    tagLocalOffset = totalContentSize - paddedSize; // Offset before alignment
+                    tagCount = size / 4; // Each tag is 4 bytes
                 }
-                else
-                    FileInfos = FileInfos.Concat(BitConverter.GetBytes((Int32)1)).ToArray();
-                // Zeroes
-                FileInfos = FileInfos.Concat(BitConverter.GetBytes((Int32)0)).ToArray();
-                FileInfos = FileInfos.Concat(BitConverter.GetBytes((Int64)0)).ToArray();
 
-
-                // Next Local Offsets
-                FileLocalOffset += FileContent.Length;
-                NameLocalOffset += ShortName.Length + 1;
+                fileMetadata.Add(new FileMeta
+                {
+                    Path = fileTuple.Item2,
+                    ShortName = shortName,
+                    Size = size,
+                    PaddedSize = paddedSize,
+                    Hash = hash,
+                    NameOffset = nameOffset
+                });
             }
 
+            // Calculate section sizes and offsets
+            int paddedNamesSize = (namesRealSize + 15) & ~15; // Align names block to 16 bytes
+            int fileInfosSize = totalFiles * FileInfoSize;
 
-            // + Alignment for FileNames
-            NamesRealSize = NameLocalOffset;
-            Remainder = NameLocalOffset % 16;
-            if (Remainder > 0) for (int i = 0; i < 16 - Remainder; i++) FileNames = FileNames.Append((byte)0).ToArray();
+            int namesOffset = HeaderSize + totalContentSize;
+            int fileInfoOffset = namesOffset + paddedNamesSize;
+            int footerOffset = fileInfoOffset + fileInfosSize;
+            int totalSize = footerOffset + FooterSize;
 
+            // Check if this is a sound package
+            bool isSound = DirName.IndexOf("sound", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                          (Path.GetDirectoryName(DirName) ?? "").IndexOf("sound", StringComparison.OrdinalIgnoreCase) >= 0;
 
-            // Add Hidden FileNames File Info
-            byte[] HiddenFileInfos = { };
-            HiddenFileInfos = HiddenFileInfos.Concat(BitConverter.GetBytes((HeaderSize + Contents.Length) / 16)).ToArray(); // FileInfo
-            HiddenFileInfos = HiddenFileInfos.Concat(BitConverter.GetBytes(HiddenFileHash)).ToArray(); // Hash32
-            HiddenFileInfos = HiddenFileInfos.Concat(BitConverter.GetBytes(NameLocalOffset)).ToArray(); // Size
-            HiddenFileInfos = HiddenFileInfos.Concat(BitConverter.GetBytes(NameLocalOffset)).ToArray(); // Local Name Offset
-            HiddenFileInfos = HiddenFileInfos.Concat(BitConverter.GetBytes((Int32)0)).ToArray(); // Is File
-            HiddenFileInfos = HiddenFileInfos.Concat(BitConverter.GetBytes((Int32)0)).ToArray(); // Zeroes
-            HiddenFileInfos = HiddenFileInfos.Concat(BitConverter.GetBytes((Int64)0)).ToArray(); // Zeroes
-            Array.Copy(HiddenFileInfos, 0, FileInfos, HiddenFileInfoLocalIndex, HiddenFileInfos.Length);
+            // Build header
+            byte[] header = new byte[HeaderSize];
+            using (var writer = new BinaryWriter(new MemoryStream(header)))
+            {
+                writer.Write(0);                        // Timestamp
+                writer.Write(16);                       // Alignment value
+                writer.Write(isSound ? 1 : 0);          // Sound package flag
+                writer.Write(totalFiles);               // Total files count
+                writer.Write(fileInfoOffset / 16);      // File info table offset (in 16-byte blocks)
+                writer.Write(tagLocalOffset >= 0 ?
+                    (HeaderSize + tagLocalOffset) / 16 : 0); // Tag table offset
+                writer.Write(0);                        // Reserved
+                writer.Write(tagCount);                 // Tag count
+                writer.Write(fileInfoOffset / 16);      // Footer offset (same as file info offset)
+                writer.Write(1);                        // Unknown (dummy value)
+                writer.Write(namesOffset / 16);         // Names block offset
+                writer.Write(namesRealSize);            // Actual names size
+                writer.Write(fileInfosSize);            // File info table size
+                writer.Write(0);                        // Reserved
+                writer.Write(64);                       // Constant value (64)
 
+                // Pad header to 2048 bytes
+                int bytesWritten = (int)writer.BaseStream.Position;
+                if (bytesWritten < HeaderSize)
+                {
+                    writer.Write(new byte[HeaderSize - bytesWritten]);
+                }
+            }
 
-            // Footer
-            // Offset
-            Footer = Footer.Concat(BitConverter.GetBytes((Int32)0)).ToArray();
-            // PakSize (\16)
-            Footer = Footer.Concat(BitConverter.GetBytes((HeaderSize + Contents.Length + FileNames.Length + FileInfos.Length + FooterSize) / 16)).ToArray();
-            // One
-            Footer = Footer.Concat(BitConverter.GetBytes((Int32)1)).ToArray();
-            // Zeroes
-            Footer = Footer.Concat(BitConverter.GetBytes((Int32)0)).ToArray();
-            Footer = Footer.Concat(BitConverter.GetBytes((Int64)0)).ToArray();
-            Footer = Footer.Concat(BitConverter.GetBytes((Int64)0)).ToArray();
-
-            // Header
-            // TimeStamp
-            Header = Header.Concat(BitConverter.GetBytes((Int32)0)).ToArray();
-            // Align
-            Header = Header.Concat(BitConverter.GetBytes((Int32)16)).ToArray();
-            // Sound
-            if (Path.GetDirectoryName(DirName).Contains("sound") || Path.GetDirectoryName(DirName).Contains("Sound"))
-                Header = Header.Concat(BitConverter.GetBytes((Int32)1)).ToArray();
-            else
-                Header = Header.Concat(BitConverter.GetBytes((Int32)0)).ToArray();
-            // Files Count (+1 Hidden)
-            Header = Header.Concat(BitConverter.GetBytes(Files.Length)).ToArray();
-            // Info Offset (/16)
-            Header = Header.Concat(BitConverter.GetBytes((HeaderSize + Contents.Length + FileNames.Length) / 16)).ToArray();
-            // Tag Offset (/16)
-            Header = Header.Concat(BitConverter.GetBytes((HeaderSize + TagLocalOffset) / 16)).ToArray();
-            // Zero0
-            Header = Header.Concat(BitConverter.GetBytes((Int32)0)).ToArray();
-            // TagCount
-            Header = Header.Concat(BitConverter.GetBytes(TagCount)).ToArray();
-            // FootOffset (/16)
-            Header = Header.Concat(BitConverter.GetBytes((HeaderSize + Contents.Length + FileNames.Length + FileInfos.Length) / 16)).ToArray();
-            // Dummy
-            Header = Header.Concat(BitConverter.GetBytes((Int32)1)).ToArray();
-            // Names Offset (/16)
-            Header = Header.Concat(BitConverter.GetBytes((HeaderSize + Contents.Length) / 16)).ToArray();
-            // Names Size
-            Header = Header.Concat(BitConverter.GetBytes(NamesRealSize)).ToArray();
-            // Info Size
-            Header = Header.Concat(BitConverter.GetBytes(FileInfos.Length)).ToArray();
-            // Zero1
-            Header = Header.Concat(BitConverter.GetBytes((Int32)0)).ToArray();
-            // 64
-            Header = Header.Concat(BitConverter.GetBytes((Int32)64)).ToArray();
-            // Zeroes
-            Array.Resize<byte>(ref Header, 2048);
-
-
-            // Final Concat
-            byte[] RepackedFile = { };
-            RepackedFile = RepackedFile.Concat(Header).ToArray();
-            RepackedFile = RepackedFile.Concat(Contents).ToArray();
-            RepackedFile = RepackedFile.Concat(FileNames).ToArray();
-            RepackedFile = RepackedFile.Concat(FileInfos).ToArray();
-            RepackedFile = RepackedFile.Concat(Footer).ToArray();
-
-            // WriteOut
+            // Ensure output directory exists
             Directory.CreateDirectory(Path.GetDirectoryName(OutputName));
-            File.WriteAllBytes(OutputName, RepackedFile);
 
+            // Write data directly to output file
+            using (var output = new FileStream(OutputName, FileMode.Create, FileAccess.Write))
+            {
+                // 1. Write header
+                output.Write(header, 0, HeaderSize);
 
+                // 2. Write file contents
+                int currentContentOffset = 0;
+                foreach (var meta in fileMetadata)
+                {
+                    if (string.IsNullOrEmpty(meta.Path)) continue;
+
+                    // Write file content
+                    using (var input = File.OpenRead(meta.Path))
+                    {
+                        input.CopyTo(output);
+                    }
+
+                    // Write padding
+                    int padding = meta.PaddedSize - meta.Size;
+                    if (padding > 0)
+                    {
+                        output.Write(new byte[padding], 0, padding);
+                    }
+
+                    currentContentOffset += meta.PaddedSize;
+                }
+
+                // 3. Write file names
+                foreach (var meta in fileMetadata)
+                {
+                    if (string.IsNullOrEmpty(meta.Path)) continue;
+
+                    byte[] nameBytes = Encoding.ASCII.GetBytes(meta.ShortName);
+                    output.Write(nameBytes, 0, nameBytes.Length);
+                    output.WriteByte(0); // Null terminator
+                }
+
+                // Pad names block
+                int namesPadding = paddedNamesSize - namesRealSize;
+                if (namesPadding > 0)
+                {
+                    output.Write(new byte[namesPadding], 0, namesPadding);
+                }
+
+                // 4. Write file info table
+                byte[] infoBuffer = new byte[FileInfoSize];
+                int contentOffsetAccumulator = 0; // Track cumulative content offset
+
+                foreach (var meta in fileMetadata)
+                {
+                    Array.Clear(infoBuffer, 0, infoBuffer.Length);
+
+                    if (string.IsNullOrEmpty(meta.Path))
+                    {
+                        // Hidden file entry (points to names block)
+                        BitConverter.GetBytes(namesOffset / 16).CopyTo(infoBuffer, 0);
+                        BitConverter.GetBytes(HiddenFileHash).CopyTo(infoBuffer, 4);
+                        BitConverter.GetBytes(namesRealSize).CopyTo(infoBuffer, 8);
+                        BitConverter.GetBytes(namesRealSize).CopyTo(infoBuffer, 12);
+                        BitConverter.GetBytes(0).CopyTo(infoBuffer, 16); // Not a regular file
+                    }
+                    else
+                    {
+                        // Regular file entry
+                        BitConverter.GetBytes((HeaderSize + contentOffsetAccumulator) / 16).CopyTo(infoBuffer, 0);
+                        BitConverter.GetBytes(meta.Hash).CopyTo(infoBuffer, 4);
+                        BitConverter.GetBytes(meta.Size).CopyTo(infoBuffer, 8);
+                        BitConverter.GetBytes(meta.NameOffset).CopyTo(infoBuffer, 12);
+                        BitConverter.GetBytes(meta.ShortName == "TagTable.pak.sys" ? 0 : 1).CopyTo(infoBuffer, 16);
+
+                        // Move to next file position
+                        contentOffsetAccumulator += meta.PaddedSize;
+                    }
+                    output.Write(infoBuffer, 0, FileInfoSize);
+                }
+
+                // 5. Write footer
+                byte[] footer = new byte[FooterSize];
+                BitConverter.GetBytes(0).CopyTo(footer, 0);          // Unknown
+                BitConverter.GetBytes(totalSize / 16).CopyTo(footer, 4); // Total package size
+                BitConverter.GetBytes(1).CopyTo(footer, 8);          // Constant value (1)
+                output.Write(footer, 0, FooterSize);
+            }
+        }
+
+        // Helper class for file metadata
+        private class FileMeta
+        {
+            public string Path { get; set; }       // Full file path
+            public string ShortName { get; set; }  // Relative path in package
+            public int Size { get; set; }          // Original file size
+            public int PaddedSize { get; set; }    // Size after alignment
+            public uint Hash { get; set; }         // CRC32 hash of lowercase relative path
+            public int NameOffset { get; set; }    // Offset in names block
         }
 
         public static class CRC32
