@@ -1,0 +1,115 @@
+label(returnhere)
+label(nextcheck)
+label(originalcode)
+label(exit)
+
+005F6A50:
+// paks
+cheats:
+db 'cheats', 0
+
+// obes
+agenthat:
+db 'costume\agenthat.obe', 0
+agentshades:
+db 'costume\agentshades.obe', 0
+agentwatch:
+db 'costume\agentwatch.obe', 0
+crashhelmet:
+db 'costume\crashhelmet.obe', 0
+elbowpadl:
+db 'costume\elbowpadl.obe', 0
+elbowpadr:
+db 'costume\elbowpadr.obe', 0
+
+005F6B00:
+cmp eax, 0F
+jnz nextcheck
+// AttachObjectToCharacter
+push 03
+push 00
+push 00
+push 00
+push 00630FE8	// spinetop
+push agenthat
+mov eax, [006C8BC0]
+push eax
+call 00477880
+add esp, 1C
+
+// AttachObjectToCharacter
+push 03
+push 00
+push 00
+push 00
+push 00630FE8	// spinetop
+push agentshades
+mov eax, [006C8BC0]
+push eax
+call 00477880
+add esp, 1C
+
+// AttachObjectToCharacter
+push 07
+push 00
+push 00
+push 00
+push 00639C54	// armforeleft
+push agentwatch
+mov eax, [006C8BC0]
+push eax
+call 00477880
+add esp, 1C
+
+nextcheck:
+
+cmp eax, 10
+jnz originalcode
+
+// AttachObjectToCharacter
+push 03
+push 00
+push 00
+push 00
+push 00630FE8	// spinetop
+push crashhelmet
+mov eax, [006C8BC0]
+push eax
+call 00477880
+add esp, 1C
+
+// AttachObjectToCharacter
+push 03
+push 00
+push 00
+push 00
+push 00639C54	// armforeleft
+push elbowpadl
+mov eax, [006C8BC0]
+push eax
+call 00477880
+add esp, 1C
+
+// AttachObjectToCharacter
+push 03
+push 00
+push 00
+push 00
+push 00639C44	// armforeright
+push elbowpadr
+mov eax, [006C8BC0]
+push eax
+call 00477880
+add esp, 1C
+
+originalcode:
+test byte ptr [Taz.exe+2C8E28],08
+
+exit:
+jmp returnhere
+
+"Taz.exe"+30D98:
+jmp 005F6B00
+nop 2
+returnhere:
+

@@ -1,0 +1,46 @@
+005F6700:
+// DrawFrame() // Original Code
+call 00490110
+
+sleep1:
+// bkTimerRead()
+call 005785F0
+
+// bkTimerDelta()
+push edx
+push eax
+mov edx,[0065550C]
+mov eax,[00655508]
+push edx
+push eax
+call 00578700
+add esp,10
+
+// bkTimerToScanlines()
+push 00000001
+push 00000001
+push edx
+push eax
+call 005786B0
+add esp,10
+
+// bkTimerRead()
+fcomp [00655504]
+fnstsw ax
+test ah, 01
+jne sleep1
+call 005785F0
+// Store Timer Value
+mov [0065550C],edx
+mov [00655508],eax
+jmp returnhere
+
+// Injection
+004A77EC:
+jmp 005F6700
+returnhere:
+
+// FPS patch = true
+00655500:
+db 01
+

@@ -1,0 +1,71 @@
+00731380:
+pak:
+db 'shedevil', 0
+obe:
+db 'shedevil.obe', 0
+shedevilbowtie:
+db 'shedevilbowtie.obe', 0
+
+005F6900:
+// LoadWholePackage("pak", 1);
+push 0x01
+push pak
+call 004A0700
+add esp, 0x08
+
+// LoadActor("obe", "pak", 0);
+push 0x00
+push pak
+push obe
+call 004729B0
+add esp, 0x0C
+
+// LoadActor("obe", "pak", 0);
+push 0x00
+push pak
+push shedevilbowtie
+call 004729B0
+add esp, 0x0C
+
+// ActorInActorList = FindActorInActorList("obe");
+// ChangeActorInstance([0x006C8BC0], ActorInActorList, 5, 0, 0);
+push    0x00
+push    0x00
+push    0x05
+push    obe
+call    0x00472E50
+mov     edx, [0x006C8BC0]
+add     esp, 0x04
+push    eax
+push    edx
+call    0x00475930
+add     esp, 0x14
+
+// AttachObjectToCharacter
+push 03
+push 00
+push 00
+push 00
+push 00630FE8	// spinetop
+push shedevilbowtie
+mov eax, [006C8BC0]
+push eax
+call 00477880
+add esp, 1C
+
+// ListAnimatingTextures
+call 004DA2F0
+
+// HandleSpin
+mov eax, [006C8BC0]
+add eax, 0x01A0
+push obe
+push eax
+call 005E71D0
+add esp, 08
+
+ret
+
+00655510:
+db 01
+

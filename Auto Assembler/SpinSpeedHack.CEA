@@ -1,0 +1,24 @@
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+originalcode:
+fst dword ptr [esi+28]
+
+
+mov [esi+28], (float)1
+
+fcomp dword ptr [esp+14]
+
+exit:
+jmp returnhere
+
+"Taz.exe"+62375:
+jmp newmem
+nop 2
+returnhere:
+

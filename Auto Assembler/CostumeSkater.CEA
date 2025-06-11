@@ -1,0 +1,90 @@
+00731380:
+// paks
+cheats:
+db 'cheats', 0
+cheatssounds:
+db 'cheatssounds', 0
+
+// obes
+tazskater:
+db 'costume\tazskater.obe', 0
+skaterelbowpadl:
+db 'costume\skaterelbowpadl.obe', 0
+skaterelbowpadr:
+db 'costume\skaterelbowpadr.obe', 0
+skaterskateboard:
+db 'costume\skaterskateboard.obe', 0
+skaterbaseballcap:
+db 'costume\skaterbaseballcap.obe', 0
+
+005F6900:
+// LoadWholePackage
+push 01
+push cheatssounds
+call 004A0700
+add esp, 08
+
+// LoadSamples
+push 00
+push cheatssounds
+call 004D40D0
+add esp, 08
+
+// LoadWholePackage
+push 01
+push cheats
+call 004A0700
+add esp, 08
+
+// LoadActor
+push 00
+push cheats
+push tazskater
+call 004729B0
+add esp, 0C
+
+// LoadActor
+push 00
+push cheats
+push skaterelbowpadl
+call 004729B0
+add esp, 0C
+
+// LoadActor
+push 00
+push cheats
+push skaterelbowpadr
+call 004729B0
+add esp, 0C
+
+// LoadActor
+push 00
+push cheats
+push skaterskateboard
+call 004729B0
+add esp, 0C
+
+// LoadActor
+push 00
+push cheats
+push skaterbaseballcap
+call 004729B0
+add esp, 0C
+
+// SetupCostume
+mov     eax, [006C8BC0]
+mov     ecx, [eax+01CC]
+xor     edx, edx
+mov     dl, [ecx+010C]
+push    0D
+push    eax
+call    00430300
+add     esp, 08
+
+// ListAnimatingTextures
+call 004DA2F0
+
+ret
+
+00655510:
+db 01

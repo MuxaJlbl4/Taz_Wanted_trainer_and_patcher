@@ -1,0 +1,11 @@
+005F6900:
+
+// DeactivateCheat(CHEAT_NEARFOCUS);
+push	0x16
+call	0047C180
+add		esp, 0x04
+
+ret
+
+00655510:
+db 01

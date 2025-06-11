@@ -1,0 +1,32 @@
+005F6900:
+// If level is Gladiatoons
+mov al, [006C8BA8]
+cmp al, 0C
+jne numplayers
+// versusCPU = 0
+mov al, 0
+mov [006F4A57], al
+jmp changescene
+
+numplayers:
+// numPlayers = 2
+mov byte ptr [006F4A54], 0x02
+
+changescene:
+// guiChangeScene(gameStatus.currentScene);
+push [006C8BA8]
+call 004A53B0
+add    esp, 0x04
+
+ret
+
+// Gladiatoons hack
+004A543F:
+db 0
+
+// startposition2 = startposition
+006442C9:
+db 0
+
+00655510:
+db 01

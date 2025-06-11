@@ -1,0 +1,93 @@
+00731380:
+// paks
+cheats:
+db 'cheats', 0
+
+// obes
+explorerhat:
+db 'costume\explorerhat.obe', 0
+explorermonacle:
+db 'costume\explorermonacle.obe', 0
+explorertaz:
+db 'costume\explorertaz.obe', 0
+explorermachete:
+db 'costume\explorermachete.obe', 0
+explorerbackpack:
+db 'costume\explorerbackpack.obe', 0
+explorerbelt:
+db 'costume\explorerbelt.obe', 0
+/*
+// patches
+00639EE8:
+db 'safarimonacle.obe', 0
+00639F04:
+db 'safarihat.obe', 0
+00639F74:
+db 'tazstubblecowboy.obe', 0
+*/
+005F6900:
+// LoadWholePackage
+push 01
+push cheats
+call 004A0700
+add esp, 08
+
+// LoadActor
+push 00
+push cheats
+push explorerhat
+call 004729B0
+add esp, 0C
+
+// LoadActor
+push 00
+push cheats
+push explorermonacle
+call 004729B0
+add esp, 0C
+
+// LoadActor
+push 00
+push cheats
+push explorertaz
+call 004729B0
+add esp, 0C
+
+// LoadActor
+push 00
+push cheats
+push explorermachete
+call 004729B0
+add esp, 0C
+/*
+// LoadActor
+push 00
+push cheats
+push explorerbackpack
+call 004729B0
+add esp, 0C
+*/
+// LoadActor
+push 00
+push cheats
+push explorerbelt
+call 004729B0
+add esp, 0C
+
+// SetupCostume
+mov     eax, [006C8BC0]
+mov     ecx, [eax+01CC]
+xor     edx, edx
+mov     dl, [ecx+010C]
+push    04
+push    eax
+call    00430300
+add     esp, 08
+
+// ListAnimatingTextures
+call 004DA2F0
+
+ret
+
+00655510:
+db 01

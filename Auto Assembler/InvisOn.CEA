@@ -1,0 +1,47 @@
+005F6900:
+
+// Player 1
+// EnableActorLineOnlyRenderMode(&actorInstance->actorInstance, &invisLineParms);
+push	00689600
+mov		eax, [006C8BC0]
+push	eax
+call	004757B0
+add		esp, 0x08
+mov		ecx, [eax+0x1CC]
+// actorInstance->characterInfo->powerUpInfo.invisible = TRUE;
+mov		dword ptr [ecx+0x170], 1
+// actorInstance->characterInfo->powerUpInfo.state = RENDERSTATE_LINEONLY;
+mov		dword ptr [ecx+0x148], 2
+
+// Check 2nd player
+mov		eax, [006F4A54]
+cmp		eax, 2
+jne		return
+
+// Player 2
+// EnableActorLineOnlyRenderMode(&actorInstance->actorInstance, &invisLineParms);
+push	00689600
+mov		eax, [006C8BC4]
+push	eax
+call	004757B0
+add		esp, 0x08
+mov		ecx, [eax+0x1CC]
+// actorInstance->characterInfo->powerUpInfo.invisible = TRUE;
+mov		dword ptr [ecx+0x170], 1
+// actorInstance->characterInfo->powerUpInfo.state = RENDERSTATE_LINEONLY;
+mov		dword ptr [ecx+0x148], 2
+
+return:
+ret
+
+// Code patches (0xC3)
+// return for FinishInvisibility
+0051F440:
+ret
+
+// return for UpdateCharacterInvisiblity
+0051F2D0:
+ret
+
+00655510:
+db 01

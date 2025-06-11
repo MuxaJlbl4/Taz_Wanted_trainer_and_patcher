@@ -1,0 +1,36 @@
+00731380:
+pak:
+db 'cheats', 0
+obe:
+db 'extras\ball.obe', 0
+
+005F6900:
+// LoadWholePackage
+push 0x01
+push pak
+call 004A0700
+add esp, 0x08
+
+// LoadActor
+push 0x00
+push pak
+push obe
+call 004729B0
+add esp, 0x0C
+
+// DeactivateCheat(CHEAT_GLOVER_MODE)
+push 0x1B
+call 0047C180
+add esp, 0x04
+
+// ActivateCheat(CHEAT_GLOVER_MODE)
+push 0x1B
+call 0047BDF0
+add esp, 0x04
+
+// Return
+ret
+
+00655510:
+db 01
+

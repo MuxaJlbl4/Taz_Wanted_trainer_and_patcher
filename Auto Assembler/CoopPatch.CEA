@@ -1,0 +1,60 @@
+label(single)
+label(originalcode)
+
+//004A8140: // gladiatoons_fix (1)
+//db 0x01
+
+004D2553: // coop_hook (5)
+jmp 005F6E00
+ret_coop:
+
+005F6E00: // coop_patch (512)
+
+// Store registers
+push eax
+push ecx
+
+// If level is Gladiatoons
+cmp bl, 0C
+jne numcheck 
+mov al, [006F4A57]
+cmp al, 01
+je singlescreen
+jmp doublescreen
+
+numcheck:
+
+cmp byte ptr [006F4A54], 0x01
+je single
+
+// versusCPU
+mov [006F4A57], 0x00
+doublescreen:
+// setNumScreens(const int numScreens, const ESplitScreenMode split)
+push 0x01
+push 0x02
+call 0048FAC0
+add esp, 0x08
+jmp skip
+
+single:
+// versusCPU
+mov [006F4A57], 0x01
+singlescreen:
+// setNumScreens(const int numScreens, const ESplitScreenMode split)
+push 0x01
+push 0x01
+call 0048FAC0
+add esp, 0x08
+
+skip:
+// Restore registers
+pop ecx
+pop eax
+
+originalcode:
+mov ecx,[esp+38]
+pop edi
+jmp ret_coop
+
+

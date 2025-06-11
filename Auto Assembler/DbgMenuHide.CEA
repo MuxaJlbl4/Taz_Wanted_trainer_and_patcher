@@ -1,0 +1,9 @@
+005F6900:
+// bgExitGui()
+call     0x0057CC60
+
+// Return
+ret
+
+00655510:
+db 01

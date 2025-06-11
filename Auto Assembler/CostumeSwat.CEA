@@ -1,0 +1,108 @@
+00731380:
+// paks
+cheats:
+db 'cheats', 0
+cheatssounds:
+db 'cheatssounds', 0
+
+// obes
+swattaz:
+db 'costume\swattaz.obe', 0
+swatcap:
+db 'costume\swatcap.obe', 0
+swatbackpack:
+db 'costume\swatbackpack.obe', 0
+swatshades:
+db 'costume\swatshades.obe', 0
+swatelbowpadl:
+db 'costume\swatelbowpadl.obe', 0
+swatelbowpadr:
+db 'costume\swatelbowpadr.obe', 0
+swatcheesegun:
+db 'costume\swatcheesegun.obe', 0
+
+005F6900:
+// LoadWholePackage
+push 01
+push cheatssounds
+call 004A0700
+add esp, 08
+
+// LoadSamples
+push 00
+push cheatssounds
+call 004D40D0
+add esp, 08
+
+// LoadWholePackage
+push 01
+push cheats
+call 004A0700
+add esp, 08
+
+// LoadActor
+push 00
+push cheats
+push swattaz
+call 004729B0
+add esp, 0C
+
+// LoadActor
+push 00
+push cheats
+push swatcap
+call 004729B0
+add esp, 0C
+
+// LoadActor
+push 00
+push cheats
+push swatbackpack
+call 004729B0
+add esp, 0C
+
+// LoadActor
+push 00
+push cheats
+push swatshades
+call 004729B0
+add esp, 0C
+
+// LoadActor
+push 00
+push cheats
+push swatelbowpadl
+call 004729B0
+add esp, 0C
+
+// LoadActor
+push 00
+push cheats
+push swatelbowpadr
+call 004729B0
+add esp, 0C
+
+// LoadActor
+push 00
+push cheats
+push swatcheesegun
+call 004729B0
+add esp, 0C
+
+// SetupCostume
+mov     eax, [006C8BC0]
+mov     ecx, [eax+01CC]
+xor     edx, edx
+mov     dl, [ecx+010C]
+push    0C
+push    eax
+call    00430300
+add     esp, 08
+
+// ListAnimatingTextures
+call 004DA2F0
+
+ret
+
+00655510:
+db 01

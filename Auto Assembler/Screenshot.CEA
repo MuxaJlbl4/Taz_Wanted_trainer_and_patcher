@@ -1,0 +1,37 @@
+00731340:
+screenname:
+db '%04hu-%02hu-%02hu-%02hu-%02hu-%02hu-%03hu.bmp', 0
+addr:
+dd 006FE4CC
+
+005F6900:
+// GetLocalTime()
+push [addr]
+call [005F70CC]
+
+// sprintf()
+push    [006FE4DA]
+push    [006FE4D8]
+push    [006FE4D6]
+push    [006FE4D4]
+push    [006FE4D2]
+push    [006FE4CE]
+push    [006FE4CC]
+push    screenname
+push    screenname
+call    005DB617
+add esp, 24
+
+// bdScreenshot()
+push    screenname
+call 0056EF70
+add esp, 04
+
+// Return
+ret
+
+00655510:
+db 01
+
+
+

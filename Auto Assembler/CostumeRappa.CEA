@@ -1,0 +1,102 @@
+00731380:
+// paks
+cheats:
+db 'cheats', 0
+cheatssound:
+db 'cheatssound', 0
+
+// obes
+tazrappa:
+db 'costume\tazrappa.obe', 0
+baseballcap:
+db 'costume\baseballcap.obe', 0
+dex:
+db 'costume\dex.obe', 0
+rapperblast:
+db 'extras\rapperblast.obe', 0
+beatboxequal:
+db 'costume\beatboxequal.gif', 0
+rapperblastalpha:
+db 'extras\rapperblastalpha.tga', 0
+
+
+005F6900:
+// LoadWholePackage
+push 01
+push cheatssound
+call 004A0700
+add esp, 08
+
+// LoadSamples
+push 00
+push cheatssound
+call 004D40D0
+add esp, 08
+
+// LoadWholePackage
+push 01
+push cheats
+call 004A0700
+add esp, 08
+
+// LoadActor
+push 00
+push cheats
+push tazrappa
+call 004729B0
+add esp, 0C
+
+// LoadActor
+push 00
+push cheats
+push baseballcap
+call 004729B0
+add esp, 0C
+
+// LoadActor
+push 00
+push cheats
+push dex
+call 004729B0
+add esp, 0C
+
+// LoadActor
+push 00
+push cheats
+push rapperblast
+call 004729B0
+add esp, 0C
+
+// SetupCostume
+mov     eax, [006C8BC0]
+mov     ecx, [eax+01CC]
+xor     edx, edx
+mov     dl, [ecx+010C]
+push    06
+push    eax
+call    00430300
+add     esp, 08
+/*
+// LoadResource()
+push 00
+push 00
+push beatboxequal
+push 00
+call 00567CB0
+add esp, 10
+
+// LoadResource()
+push 00
+push 00
+push rapperblastalpha
+push 00
+call 00567CB0
+add esp, 10
+*/
+// ListAnimatingTextures
+call 004DA2F0
+
+ret
+
+00655510:
+db 01

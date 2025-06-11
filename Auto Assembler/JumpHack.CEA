@@ -1,0 +1,45 @@
+00462245:
+jmp jumphack
+nop
+nop
+return:
+
+005F6780:
+jumphack:
+push ecx
+push eax
+
+player1:
+mov ecx,[006C8390]
+mov ecx,[ecx+20]
+cmp ecx,00000000
+je checkp2
+mov ecx,[006C8BC0]
+mov ecx,[ecx+000001C0]
+mov eax,(float)1750.0
+mov [ecx+00000098],eax
+
+checkp2:
+mov eax, [006F4A54]
+cmp eax, 2
+jne popstack
+
+player2:
+mov ecx,[006C8070]
+mov ecx,[ecx+20]
+cmp ecx,00000000
+je popstack
+mov ecx,[006C8BC4]
+mov ecx,[ecx+000001C0]
+mov eax,(float)1750.0
+mov [ecx+00000098],eax
+
+popstack:
+pop eax
+pop ecx
+
+originalcode:
+fld dword ptr [esp+58]
+fsub dword ptr [ebx+08]
+
+jmp return

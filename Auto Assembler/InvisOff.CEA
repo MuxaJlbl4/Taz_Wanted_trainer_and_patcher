@@ -1,0 +1,49 @@
+005F6900:
+
+// Player 1
+// EnableActorCartoonRenderMode(&actorInstance->actorInstance);
+push	0
+push	0
+mov		eax, [0x006C8BC0]
+push	eax
+call	00475610
+add		esp, 0x0C
+mov		ecx, [eax+0x1CC]
+// actorInstance->characterInfo->powerUpInfo.invisible = FALSE;
+mov		dword ptr [ecx+0x170], 0
+// actorInstance->characterInfo->powerUpInfo.state = RENDERSTATE_CARTOON;
+mov		dword ptr [ecx+0x148], 0
+
+// Check 2nd player
+mov		eax, [006F4A54]
+cmp		eax, 2
+jne		return
+
+// Player 2
+// EnableActorCartoonRenderMode(&actorInstance->actorInstance);
+push	0
+push	0
+mov		eax, [0x006C8BC4]
+push	eax
+call	00475610
+add esp, 0x0C
+mov		ecx, [eax+0x1CC]
+// actorInstance->characterInfo->powerUpInfo.invisible = FALSE;
+mov		dword ptr [ecx+0x170], 0
+// actorInstance->characterInfo->powerUpInfo.state = RENDERSTATE_CARTOON;
+mov		dword ptr [ecx+0x148], 0
+
+return:
+ret
+
+// Code patches restore (0x56)
+// FinishInvisibility
+0051F440:
+push	esi
+
+// UpdateCharacterInvisiblity
+0051F2D0:
+push	esi
+
+00655510:
+db 01

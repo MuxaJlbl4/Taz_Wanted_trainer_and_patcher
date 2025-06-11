@@ -1,0 +1,59 @@
+00655530:
+db (float)500.0
+
+00731380:
+pak:
+db 'cheats', 0
+007313A0:
+obe:
+db 'extras\mouse.obe', 0
+
+005F6900:
+// LoadWholePackage("pak", 1);
+push 0x01
+push pak
+call 004A0700
+add esp, 0x08
+
+// LoadActor("obe", "pak", 0);
+push 0x00
+push pak
+push obe
+call 004729B0
+add esp, 0x0C
+
+// ActorInActorList = FindActorInActorList("obe");
+// ChangeActorInstance([0x006C8BC0], ActorInActorList, 5, 0, 0);
+push    0x00
+push    0x00
+push    0x05
+push    obe
+call    0x00472E50
+mov     edx, [0x006C8BC0]
+add     esp, 0x04
+push    eax
+push    edx
+call    0x00475930
+add     esp, 0x14
+
+// ListAnimatingTextures
+call 004DA2F0
+
+// Camera Distance
+mov eax, [00655530]
+mov [00649B58], eax
+
+// strcpy() (for HandleSpin)
+mov eax, [006C8BC0]
+add eax, 0x01A0
+push obe
+push eax
+call 005E71D0
+add esp, 08
+
+// ChangeState(actorInstance, STATE_MOUSE);
+mov     eax, [0x006C8BC0]
+mov     ecx, [eax+0x01C8]
+mov     [ecx+0xB0], 0x51
+
+ret

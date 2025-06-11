@@ -1,0 +1,27 @@
+005F6900:
+
+// setFOV
+push    006C6AD4 // 006C6AD4
+push    3F96CBE4
+call    0048F980
+add     esp, 0x08
+
+/*
+// applyFOV
+mov     eax, 006C6B40
+mov     ecx, 006C6B3C
+push    eax
+push    ecx
+call    0056ACA0
+add      esp, 0x08
+*/
+
+// Return
+ret
+
+00655524:
+dd (float)1.0
+
+00655510:
+db 01
+

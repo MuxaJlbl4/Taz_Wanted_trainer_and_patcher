@@ -1,0 +1,25 @@
+label(original)
+
+// Empty Injection Function
+005F6C80:
+ret
+
+// Single Call Code
+005F6C00:
+// Check Injection Flag (==02)
+mov eax, [00655510]
+cmp eax, 02
+jne original
+// Call Injection
+call 005F6C80
+// Decrease Injection Flag
+mov [00655510], 01
+
+original:
+mov edx, [006C83BC]
+jmp 004A77F7
+
+// Injection
+"Taz.exe"+A77F1:
+jmp 005F6C00
+

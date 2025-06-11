@@ -1,0 +1,20 @@
+alloc(newmem,2048)
+label(returnhere)
+
+00655520:
+dd (float)2.0
+
+005F6760:
+mov eax,[00655520]
+mov [ebp+08],eax
+
+originalcode:
+fld dword ptr [ebp+08]
+mov ecx,[ebp+0C]
+jmp returnhere
+
+"Taz.exe"+8F986:
+jmp 005F6760
+nop
+returnhere:
+

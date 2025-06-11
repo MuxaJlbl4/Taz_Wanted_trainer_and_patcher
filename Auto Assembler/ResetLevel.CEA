@@ -1,0 +1,10 @@
+005F6900:
+// guiChangeScene(gameStatus.currentScene);
+push [006C8BA8]
+call 004A53B0
+add    esp, 0x04
+
+ret
+
+00655510:
+db 01

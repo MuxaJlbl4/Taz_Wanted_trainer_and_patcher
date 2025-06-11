@@ -1,0 +1,21 @@
+005F6900:
+// apply
+
+push    00
+push    01
+call    0048F980
+add     esp, 0x08
+
+mov     eax, 006C6B40
+mov     ecx, 006C6B3C
+push    eax
+push    ecx
+call    0056ACA0
+add      esp, 0x08
+
+// Return
+ret
+
+00655510:
+db 01
+

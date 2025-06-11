@@ -1,0 +1,1728 @@
+define(suit_reindeer, 731600)
+define(zoo_kill, 731601)
+define(safari_done, 731602)
+define(safari_gold, 731603)
+define(safari_exp_dest, 731604)
+define(safari_exp_bounty, 731605)
+define(safari_exp_sand, 731606)
+define(suit_skater, 731607)
+define(safari_kill, 731608)
+define(safari_exp_kill, 731609)
+define(safari_van, 73160A)
+define(safari_bonus, 73160B)
+define(safari_bonus_time, 73160C)
+define(icedome_done, 73160D)
+define(icedome_gold, 73160E)
+define(icedome_exp_dest, 73160F)
+define(icedome_exp_bounty, 731610)
+define(icedome_exp_sand, 731611)
+define(suit_snowboard, 731612)
+define(icedome_kill, 731613)
+define(icedome_exp_kill, 731614)
+define(icedome_bonus, 731615)
+define(icedome_bonus_time, 731616)
+define(aqua_done, 731617)
+define(aqua_gold, 731618)
+define(aqua_exp_dest, 731619)
+define(aqua_exp_bounty, 73161A)
+define(aqua_exp_sand, 73161B)
+define(suit_surfer, 73161C)
+define(aqua_kill, 73161D)
+define(aqua_exp_kill, 73161E)
+define(aqua_bonus, 73161F)
+define(aqua_bonus_crates, 731620)
+define(zoo_boss, 731621)
+define(zoo_exp_boss, 731622)
+define(museum_done, 731623)
+define(museum_gold, 731624)
+define(museum_exp_dest, 731625)
+define(museum_exp_bounty, 731626)
+define(museum_exp_sand, 731627)
+define(suit_ninja, 731628)
+define(museum_kill, 731629)
+define(museum_exp_kill, 73162A)
+define(museum_bonus, 73162B)
+define(museum_bonus_time, 73162C)
+define(deptstr_done, 73162D)
+define(deptstr_gold, 73162E)
+define(deptstr_exp_dest, 73162F)
+define(deptstr_exp_bounty, 731630)
+define(deptstr_exp_sand, 731631)
+define(suit_rappa, 731632)
+define(deptstr_kill, 731633)
+define(deptstr_exp_kill, 731634)
+define(deptstr_bonus, 731635)
+define(deptstr_bonus_time, 731636)
+define(construct_done, 731637)
+define(construct_gold, 731638)
+define(construct_exp_dest, 731639)
+define(construct_exp_bounty, 73163A)
+define(construct_exp_sand, 73163B)
+define(suit_swat, 73163C)
+define(construct_kill, 73163D)
+define(construct_exp_kill, 73163E)
+define(construct_bonus, 73163F)
+define(construct_bonus_crates, 731640)
+define(city_boss, 731641)
+define(city_exp_boss, 731642)
+define(grandc_done, 731643)
+define(grandc_gold, 731644)
+define(grandc_exp_dest, 731645)
+define(grandc_exp_bounty, 731646)
+define(grandc_exp_sand, 731647)
+define(suit_cowboy, 731648)
+define(grandc_kill, 731649)
+define(grandc_exp_kill, 73164A)
+define(grandc_bonus, 73164B)
+define(grandc_bonus_time, 73164C)
+define(goldmine_done, 73164D)
+define(goldmine_gold, 73164E)
+define(goldmine_exp_dest, 73164F)
+define(goldmine_exp_bounty, 731650)
+define(goldmine_exp_sand, 731651)
+define(suit_indy, 731652)
+define(goldmine_kill, 731653)
+define(goldmine_exp_kill, 731654)
+define(goldmine_bonus, 731655)
+define(goldmine_bonus_time, 731656)
+define(ghost_done, 731657)
+define(ghost_gold, 731658)
+define(ghost_exp_dest, 731659)
+define(ghost_exp_bounty, 73165A)
+define(ghost_exp_sand, 73165B)
+define(suit_weretaz, 73165C)
+define(ghost_kill, 73165D)
+define(ghost_exp_kill, 73165E)
+define(state_glover, 73165F)
+define(ghost_bonus, 731660)
+define(ghost_bonus_crates, 731661)
+define(west_boss, 731662)
+define(west_exp_boss, 731663)
+define(tazland_done, 731664)
+define(tazland_gold, 731665)
+define(tazland_exp_dest, 731666)
+define(tazland_exp_bounty, 731667)
+define(tazland_exp_sand, 731668)
+define(suit_tarzan, 731669)
+define(tazland_kill, 73166A)
+define(tazland_exp_kill, 73166B)
+define(volcano_boss, 73166C)
+define(volcano_exp_boss, 73166D)
+define(tweety_boss, 73166E)
+define(tweety_exp_boss, 73166F)
+define(sniper, 731670)
+define(gallery, 731671)
+define(maxbounty, 731672)
+
+define(scene_languageselect, 0)
+define(scene_frontend, 1)
+define(scene_playpen, 2)
+define(scene_zoohub, 3)
+define(scene_icedome, 4)
+define(scene_safari, 5)
+define(scene_aqua, 6)
+define(scene_zooboss, 7)
+define(scene_cityhub, 8)
+define(scene_deptstr, 9)
+define(scene_museum, A)
+define(scene_construct, B)
+define(scene_cityboss, C)
+define(scene_wildwesthub, D)
+define(scene_ghosttown, E)
+define(scene_goldmine, F)
+define(scene_grandcanyon, 10)
+define(scene_westboss, 11)
+define(scene_tazhub, 12)
+define(scene_tazpreboss, 13)
+define(scene_tazboss, 14)
+define(scene_museumvehiclerace, 15)
+define(scene_grandcvehiclerace, 16)
+define(scene_deptstrvehiclerace, 17)
+define(scene_destructionaqua, 18)
+define(scene_destructionconstruct, 19)
+define(scene_destructiontasmania, 1A)
+define(scene_icedomerace, 1B)
+define(scene_goldminerace, 1C)
+define(scene_safarirace, 1D)
+
+define(costume_ninja, 0)
+define(costume_cowboy, 1)
+define(costume_construction, 2)
+define(costume_reindeer, 3)
+define(costume_explorer, 4)
+define(costume_surfer, 5)
+define(costume_rappa, 6)
+define(costume_weretaz, 7)
+define(costume_miner, 8)
+define(costume_indy, 9)
+define(costume_tarzan, A)
+define(costume_snowboard, B)
+define(costume_swat, C)
+define(costume_skater, D)
+define(costume_trippy, E)
+
+define(state_move, 0)
+define(state_skidstop, 1)
+define(state_tiptoe, 2)
+define(state_slide, 3)
+define(state_getupfromslide, 4)
+define(state_getupfromwater, 5)
+define(state_bigfall, 6)
+define(state_splat, 7)
+define(state_jump, 8)
+define(state_fall, 9)
+define(state_idle, A)
+define(state_bite, B)
+define(state_spinup, C)
+define(state_spin, D)
+define(state_spindown, E)
+define(state_spindownonwater, F)
+define(state_recover, 10)
+define(state_collectpostcard, 11)
+define(state_holdingpostcard, 12)
+define(state_destroypostcard, 13)
+define(state_koikfromwater, 14)
+define(state_projectile, 15)
+define(state_projectileslide, 16)
+define(state_swinging, 17)
+define(state_sprung, 18)
+define(state_vehicle, 19)
+define(state_trapped, 1A)
+define(state_dead, 1B)
+define(state_donothing, 1C)
+define(state_electrocuted, 1D)
+define(state_groundelectrocuted, 1E)
+define(state_onice, 1F)
+define(state_spinonice, 20)
+define(state_waterslide, 21)
+define(state_playanimation, 22)
+define(state_scare, 23)
+define(state_enteringphonebox, 24)
+define(state_onfountain, 25)
+define(state_frontenduse, 26)
+define(state_gotosleep, 27)
+define(state_sleep, 28)
+define(state_dance, 29)
+define(state_debugmove, 2A)
+define(state_squashed, 2B)
+define(state_catatonic, 2C)
+define(state_catatonicphys, 2D)
+define(state_movesquashed, 2E)
+define(state_shocked, 2F)
+define(state_catatonicdelay, 30)
+define(state_intransport, 31)
+define(state_atlasspinup, 32)
+define(state_atlasspin, 33)
+define(state_atlasspindown, 34)
+define(state_atlasspheres, 35)
+define(state_lookaround, 36)
+define(state_enterlookaround, 37)
+define(state_eat, 38)
+define(state_spit, 39)
+define(state_bubblegum, 3A)
+define(state_chillipepper, 3B)
+define(state_frontend, 3C)
+define(state_runon, 3D)
+define(state_init, 3E)
+define(state_ninjakick, 3F)
+define(state_burnt, 40)
+define(state_skatecharge, 41)
+define(state_splatted, 42)
+define(state_splatrecover, 43)
+define(state_snowboardattack, 44)
+define(state_surfboardattack, 45)
+define(state_rapperattack, 46)
+define(state_werewolfattack, 47)
+define(state_cowboyshoot, 48)
+define(state_tazanyell, 49)
+define(state_indyroll, 4A)
+define(state_cheesyattack, 4B)
+define(state_mesmerised, 4C)
+define(state_onminecart, 4D)
+define(state_inportal, 4E)
+define(state_badfood, 4F)
+define(state_enteringxdoor, 50)
+define(state_mouse, 51)
+define(state_ball, 52)
+define(state_crate, 53)
+define(state_caged, 54)
+define(state_cagedmove, 55)
+define(state_smash, 56)
+define(state_vehiclewaterkoik, 57)
+define(state_koikfromdeathplane, 58)
+define(state_net, 59)
+define(state_playanimandfreeze, 5A)
+define(state_losecostume, 5B)
+define(state_waitfortext, 5C)
+define(state_zappedintomouse, 5D)
+define(state_zappedintoball, 5E)
+define(state_zappedintotaz, 5F)
+
+define(catch_failed,7315A0)
+define(catch_kills,7315A4)
+define(state_failed,7315A8)
+define(ex_streak,7315AC)
+define(jump_failed,7315B0)
+define(hit_failed,7315B4)
+define(ex_counter,7315B8)
+define(ex_state,7315BC)
+
+005D5CF8: // achievement_tracking (8780)
+award:
+mov byte ptr [eax], 01 // Unlock Achievement
+ret
+
+get_stats_addr:
+mov ecx, [006C8E2C] // Save slot
+mov eax, [006C8BA8] // Current level
+imul ecx, 13D4
+imul eax, A8
+add eax, ecx
+add eax, 6C9700 // Stats for current level
+ret
+
+get_slot_bounty:
+mov ecx, [006C8E2C] // Save slot
+imul ecx, 13D4
+add ecx, 6C9700 // Stats for current slot
+add ecx, 13C0 // Bounty for current slot
+mov eax, [ecx]
+ret
+
+get_level_id:
+mov eax, [006C8BA8]
+ret
+
+get_time_left:
+mov eax, [0071C604]
+ret
+
+get_gladiatoons_time:
+mov eax, [00736584]
+ret
+
+get_bonus_crates:
+mov eax, [006C8BC0]
+mov ecx, [eax+1C8]
+mov eax, [ecx+184]
+ret
+
+get_suit:
+mov eax, [006C8BC0]
+mov ecx, [eax+1CC]
+xor eax, eax
+mov al, [ecx+10C]
+ret
+
+get_taz_state:
+mov eax, [006C8BC0]
+mov ecx, [eax+1C8]
+mov eax, [ecx+B0]
+ret
+
+set_state_fail:
+mov eax, 1
+mov [state_failed], eax
+ret
+
+set_caught:
+mov eax, 1
+mov [catch_failed], eax
+ret
+
+clear_flags:
+xor eax, eax
+mov [catch_failed], eax
+mov [catch_kills], eax
+mov [state_failed], eax
+mov [ex_streak], eax
+mov [jump_failed], eax
+mov [hit_failed], eax
+mov [ex_counter], eax
+mov [ex_state], eax
+ret
+
+get_state:
+mov eax, [state_failed]
+ret
+
+get_caught:
+mov eax, [catch_failed]
+ret
+
+get_dafficulty:
+mov eax, [006C8E20]
+ret
+
+get_and_inc_kills:
+mov eax, [catch_kills]
+inc eax
+mov [catch_kills], eax
+ret
+
+
+
+// ###
+// ### LevelCompleted
+comp_hook:
+
+// Store registers
+push eax
+push ecx
+
+call get_stats_addr
+mov ecx, [eax+8C]
+cmp cl, 7   // Is 7 posters
+jne done_end
+
+call get_level_id
+mov ecx, eax
+
+done0:
+cmp cl, scene_safari
+jne done1
+mov eax, safari_done
+call award
+jmp done_end
+
+done1:
+cmp cl, scene_icedome
+jne done2
+mov eax, icedome_done
+call award
+jmp done_end
+
+done2:
+cmp cl, scene_aqua
+jne done3
+mov eax, aqua_done
+call award
+jmp done_end
+
+done3:
+cmp cl, scene_museum
+jne done4
+mov eax, museum_done
+call award
+jmp done_end
+
+done4:
+cmp cl, scene_deptstr
+jne done5
+mov eax, deptstr_done
+call award
+jmp done_end
+
+done5:
+cmp cl, scene_construct
+jne done6
+mov eax, construct_done
+call award
+jmp done_end
+
+done6:
+cmp cl, scene_grandcanyon
+jne done7
+mov eax, grandc_done
+call award
+jmp done_end
+
+done7:
+cmp cl, scene_goldmine
+jne done8
+mov eax, goldmine_done
+call award
+jmp done_end
+
+done8:
+cmp cl, scene_ghosttown
+jne done9
+mov eax, ghost_done
+call award
+jmp done_end
+
+done9:
+cmp cl, scene_tazhub
+jne done_end
+mov eax, tazland_done
+call award
+
+done_end:
+
+call get_level_id
+mov ecx, eax
+
+boss0:
+cmp cl, scene_zooboss
+jne boss1
+mov eax, zoo_boss
+call award
+call get_dafficulty
+cmp eax, 2
+jne boss_end
+mov eax, [00735D40]
+cmp eax, 0
+jne boss_end
+mov eax, zoo_exp_boss
+call award
+jmp boss_end
+
+boss1:
+cmp cl, scene_cityboss
+jne boss2
+mov eax, city_boss
+call award
+call get_dafficulty
+cmp eax, 2
+jne boss_end
+call get_state
+cmp eax, 1
+je boss_end
+mov eax, city_exp_boss
+call award
+jmp boss_end
+
+boss2:
+cmp cl, scene_westboss
+jne boss3
+mov eax, west_boss
+call award
+call get_state
+cmp eax, 1
+je boss_end
+call get_dafficulty
+cmp eax, 2
+jne boss_end
+mov eax, west_exp_boss
+call award
+jmp boss_end
+
+boss3:
+cmp cl, scene_tazpreboss
+jne boss4
+mov eax, volcano_boss
+call award
+call get_state
+cmp eax, 1
+je boss_end
+call get_dafficulty
+cmp eax, 2
+jne boss_end
+mov eax, [00739A18]
+cmp eax, 0
+jne boss_end
+mov eax, volcano_exp_boss
+call award
+jmp boss_end
+
+boss4:
+cmp cl, scene_tazboss
+jne boss_end
+mov eax, tweety_boss
+call award
+call get_state
+cmp eax, 1
+je boss_end
+call get_dafficulty
+cmp eax, 2
+jne boss_end
+mov eax, tweety_exp_boss
+call award
+
+boss_end:
+
+// Restore registers
+pop ecx
+pop eax
+// Original code for LevelCompleted
+mov eax, [00708C58]
+jmp ret_comp
+
+
+// ###
+// ### SetupCostume
+suit_hook:
+
+// Store registers
+push eax
+push ecx
+
+call get_taz_state
+cmp eax, state_enteringphonebox
+jne suit_end
+
+call get_suit
+
+suit0:
+cmp eax, costume_skater
+jne suit1
+mov eax, suit_skater
+call award
+jmp suit_end
+
+suit1:
+cmp eax, costume_snowboard
+jne suit2
+mov eax, suit_snowboard
+call award
+jmp suit_end
+
+suit2:
+cmp eax, costume_surfer
+jne suit3
+mov eax, suit_surfer
+call award
+jmp suit_end
+
+suit3:
+cmp eax, costume_ninja
+jne suit4
+mov eax, suit_ninja
+call award
+jmp suit_end
+
+suit4:
+cmp eax, costume_rappa
+jne suit5
+mov eax, suit_rappa
+call award
+jmp suit_end
+
+suit5:
+cmp eax, costume_swat
+jne suit6
+mov eax, suit_swat
+call award
+jmp suit_end
+
+suit6:
+cmp eax, costume_cowboy
+jne suit7
+mov eax, suit_cowboy
+call award
+jmp suit_end
+
+suit7:
+cmp eax, costume_indy
+jne suit8
+mov eax, suit_indy
+call award
+jmp suit_end
+
+suit8:
+cmp eax, costume_weretaz
+jne suit9
+mov eax, suit_weretaz
+call award
+jmp suit_end
+
+suit9:
+cmp eax, costume_tarzan
+jne suit10
+mov eax, suit_tarzan
+call award
+jmp suit_end
+
+suit10:
+cmp eax, costume_reindeer
+jne suit_end
+mov eax, suit_reindeer
+call award
+
+suit_end:
+// Restore registers
+pop ecx
+pop eax
+// Original code for SetupCostume
+mov eax, 1
+jmp ret_suit
+
+
+// ###
+// ### StateChange
+state_hook:
+
+// Store registers
+push eax
+push ecx
+
+stcat:
+call get_taz_state
+cmp eax, state_net
+jne stcat_end
+call set_caught
+stcat_end:
+
+call get_level_id
+cmp eax, scene_ghosttown
+je st0
+cmp eax, scene_safari
+je st1
+cmp eax, scene_tazpreboss
+je st2
+cmp eax, scene_tazboss
+je st3
+cmp eax, scene_westboss
+je st4
+jmp st_end
+
+st0:
+call get_taz_state
+cmp eax, state_ball
+jne st_end
+mov eax, state_glover
+call award
+jmp st_end
+
+st1:
+call get_taz_state
+cmp eax, state_swinging
+je stup0
+cmp eax, state_sprung
+je stup0
+jmp st_end
+
+st2:
+call get_taz_state
+cmp eax, state_burnt
+je stup0
+jmp st_end
+
+st3:
+call get_taz_state
+cmp eax, state_playanimation
+je stup0
+cmp eax, state_burnt
+je stup0
+jmp st_end
+
+st4:
+call get_taz_state
+cmp eax, state_projectile
+je stup0
+jmp st_end
+
+stup0:
+call set_state_fail
+jmp st_end
+
+st_end:
+
+// Restore registers
+pop ecx
+pop eax
+// Original code for StateChange
+pop edi
+pop esi
+pop ebp
+pop ebx
+ret
+jmp ret_state
+
+
+
+// ###
+// ### InitialiseScene
+lev_hook:
+
+// Store registers
+push eax
+push ecx
+
+call clear_flags
+
+lev_end:
+
+// Restore registers
+pop ecx
+pop eax
+// Original code for InitialiseScene
+mov fs:[00000000],ecx
+jmp ret_lev
+
+
+// ###
+// ### cityBossTouchedPad
+touch_hook:
+
+// Store registers
+push eax
+push ecx
+
+call get_gladiatoons_time
+cmp eax,(float)30.0
+jl touch_end
+cmp eax,(float)120.0
+jae touch_end
+mov eax, [006C8BC4]
+mov ecx, [eax+1C8]
+mov eax, [ecx+1B8]
+mov dl, al
+mov eax, [006C8BC0]
+mov ecx, [eax+1C8]
+mov eax, [ecx+1B8]
+cmp dl, al
+jle touch_end
+call set_state_fail
+
+touch_end:
+
+// Restore registers
+pop ecx
+pop eax
+// Original code for cityBossTouchedPad
+add esp, 24
+ret
+jmp ret_touch
+
+
+// ###
+// ### TazCatcherAttackedSeq
+kill_hook:
+
+// Store registers
+push eax
+push ecx
+
+kdist:
+mov ecx, [eax+B8]
+cmp ecx,(float)2500.0
+jl kdist_end
+mov eax, sniper
+call award
+kdist_end:
+
+call get_and_inc_kills
+mov cl, al
+
+call get_level_id
+cmp eax, scene_zoohub
+je kill0
+cmp eax, scene_safari
+je kill1
+cmp eax, scene_icedome
+je kill2
+cmp eax, scene_aqua
+je kill3
+cmp eax, scene_museum
+je kill4
+cmp eax, scene_deptstr
+je kill5
+cmp eax, scene_construct
+je kill6
+cmp eax, scene_grandcanyon
+je kill7
+cmp eax, scene_goldmine
+je kill8
+cmp eax, scene_ghosttown
+je kill9
+cmp eax, scene_tazhub
+je kill10
+jmp kill_end
+
+kill0:
+cmp cl, 1
+jl kill_end
+mov eax, zoo_kill
+call award
+jmp kill_end
+
+kill1:
+cmp cl, 6
+jl kill_end
+mov eax, safari_kill
+call award
+call get_dafficulty
+cmp eax, 2
+jne kill_end
+call get_caught
+cmp eax, 1
+je kill_end
+mov eax, safari_exp_kill
+call award
+jmp kill_end
+
+kill2:
+cmp cl, 6
+jl kill_end
+mov eax, icedome_kill
+call award
+call get_dafficulty
+cmp eax, 2
+jne kill_end
+call get_caught
+cmp eax, 1
+je kill_end
+mov eax, icedome_exp_kill
+call award
+jmp kill_end
+
+kill3:
+cmp cl, 4
+jl kill_end
+mov eax, aqua_kill
+call award
+call get_dafficulty
+cmp eax, 2
+jne kill_end
+call get_caught
+cmp eax, 1
+je kill_end
+mov eax, aqua_exp_kill
+call award
+jmp kill_end
+
+kill4:
+cmp cl, 1
+jl kill_end
+mov eax, museum_kill
+call award
+call get_dafficulty
+cmp eax, 2
+jne kill_end
+call get_caught
+cmp eax, 1
+je kill_end
+mov eax, museum_exp_kill
+call award
+jmp kill_end
+
+kill5:
+cmp cl, 4
+jl kill_end
+mov eax, deptstr_kill
+call award
+call get_dafficulty
+cmp eax, 2
+jne kill_end
+call get_caught
+cmp eax, 1
+je kill_end
+mov eax, deptstr_exp_kill
+call award
+jmp kill_end
+
+kill6:
+cmp cl, 6
+jl kill_end
+mov eax, construct_kill
+call award
+call get_dafficulty
+cmp eax, 2
+jne kill_end
+call get_caught
+cmp eax, 1
+je kill_end
+mov eax, construct_exp_kill
+call award
+jmp kill_end
+
+kill7:
+cmp cl, 4
+jl kill_end
+mov eax, grandc_kill
+call award
+call get_dafficulty
+cmp eax, 2
+jne kill_end
+call get_caught
+cmp eax, 1
+je kill_end
+mov eax, grandc_exp_kill
+call award
+jmp kill_end
+
+kill8:
+cmp cl, 4
+jl kill_end
+mov eax, goldmine_kill
+call award
+call get_dafficulty
+cmp eax, 2
+jne kill_end
+call get_caught
+cmp eax, 1
+je kill_end
+mov eax, goldmine_exp_kill
+call award
+jmp kill_end
+
+kill9:
+cmp cl, 4
+jl kill_end
+mov eax, ghost_kill
+call award
+call get_dafficulty
+cmp eax, 2
+jne kill_end
+call get_caught
+cmp eax, 1
+je kill_end
+mov eax, ghost_exp_kill
+call award
+jmp kill_end
+
+kill10:
+cmp cl, 5
+jl kill_end
+mov eax, tazland_kill
+call award
+call get_dafficulty
+cmp eax, 2
+jne kill_end
+call get_caught
+cmp eax, 1
+je kill_end
+mov eax, tazland_exp_kill
+call award
+
+kill_end:
+
+// Restore registers
+pop ecx
+pop eax
+// Original code for TazCatcherAttackedSeq
+mov eax,[esi+000001C8]
+jmp ret_kill
+
+
+
+// ###
+// ### WriteToGameSave
+save_hook:
+
+// Store registers
+push eax
+push ecx
+
+mov al, [006C96FD]
+cmp al, 1
+jne save_end
+mov eax, gallery
+call award
+
+save_end:
+
+// Restore registers
+pop ecx
+pop eax
+// Original code for WriteToGameSave
+push esi
+mov esi, ecx
+mov al, [esi]
+jmp ret_save
+
+
+// ###
+// ### Create_endCreditsBooks
+end_hook:
+
+// Store registers
+push eax
+push ecx
+
+call get_dafficulty
+cmp eax, 2
+jne end_end
+call get_slot_bounty
+cmp eax,(int)3142000
+jl end_end
+mov eax, maxbounty
+call award
+
+end_end:
+
+// Restore registers
+pop ecx
+pop eax
+// Original code for Create_endCreditsBooks
+push 005F0064
+jmp ret_end
+
+
+// ###
+// ### ProcessItemCollected
+sand_hook:
+
+// Store registers
+push eax
+push ecx
+
+sand:
+//call get_stats_addr
+//mov ecx, [eax+7C]
+cmp edx,(int)100
+jl sand_end
+call get_dafficulty
+cmp eax, 2
+jne sand_end
+call get_level_id
+mov ecx, eax
+
+sand0:
+cmp cl, scene_safari
+jne sand1
+mov eax, safari_exp_sand
+call award
+jmp sand_end
+
+sand1:
+cmp cl, scene_icedome
+jne sand2
+mov eax, icedome_exp_sand
+call award
+jmp sand_end
+
+sand2:
+cmp cl, scene_aqua
+jne sand3
+mov eax, aqua_exp_sand
+call award
+jmp sand_end
+
+sand3:
+cmp cl, scene_museum
+jne sand4
+mov eax, museum_exp_sand
+call award
+jmp sand_end
+
+sand4:
+cmp cl, scene_deptstr
+jne sand5
+mov eax, deptstr_exp_sand
+call award
+jmp sand_end
+
+sand5:
+cmp cl, scene_construct
+jne sand6
+mov eax, construct_exp_sand
+call award
+jmp sand_end
+
+sand6:
+cmp cl, scene_grandcanyon
+jne sand7
+mov eax, grandc_exp_sand
+call award
+jmp sand_end
+
+sand7:
+cmp cl, scene_goldmine
+jne sand8
+mov eax, goldmine_exp_sand
+call award
+jmp sand_end
+
+sand8:
+cmp cl, scene_ghosttown
+jne sand9
+mov eax, ghost_exp_sand
+call award
+jmp sand_end
+
+sand9:
+cmp cl, scene_tazhub
+jne sand_end
+mov eax, tazland_exp_sand
+call award
+
+sand_end:
+
+// Restore registers
+pop ecx
+pop eax
+// Original code for ProcessItemCollected
+cmp bl, 12
+mov [eax], edx
+jmp ret_sand
+
+
+// ###
+// ### ProcessItemCollected
+gold_hook:
+
+// Store registers
+push eax
+push ecx
+
+gold:
+call get_level_id
+mov ecx, eax
+
+gold0:
+cmp cl, scene_safari
+jne gold1
+mov eax, safari_gold
+call award
+jmp gold_end
+
+gold1:
+cmp cl, scene_icedome
+jne gold2
+mov eax, icedome_gold
+call award
+jmp gold_end
+
+gold2:
+cmp cl, scene_aqua
+jne gold3
+mov eax, aqua_gold
+call award
+jmp gold_end
+
+gold3:
+cmp cl, scene_museum
+jne gold4
+mov eax, museum_gold
+call award
+jmp gold_end
+
+gold4:
+cmp cl, scene_deptstr
+jne gold5
+mov eax, deptstr_gold
+call award
+jmp gold_end
+
+gold5:
+cmp cl, scene_construct
+jne gold6
+mov eax, construct_gold
+call award
+jmp gold_end
+
+gold6:
+cmp cl, scene_grandcanyon
+jne gold7
+mov eax, grandc_gold
+call award
+jmp gold_end
+
+gold7:
+cmp cl, scene_goldmine
+jne gold8
+mov eax, goldmine_gold
+call award
+jmp gold_end
+
+gold8:
+cmp cl, scene_ghosttown
+jne gold9
+mov eax, ghost_gold
+call award
+jmp gold_end
+
+gold9:
+cmp cl, scene_tazhub
+jne gold_end
+mov eax, tazland_gold
+call award
+
+gold_end:
+
+// Restore registers
+pop ecx
+pop eax
+// Original code for ProcessItemCollected
+mov byte ptr [eax+edx*4+006C97A1],01
+jmp ret_gold
+
+// ###
+// ### startThwap
+thwap_hook:
+
+// Store registers
+push eax
+push ecx
+
+dest:
+call get_stats_addr
+mov ecx, [eax+A2]
+cmp cl, 1
+jne dest_end
+call get_dafficulty
+cmp eax, 2
+jne dest_end
+call get_level_id
+mov ecx, eax
+
+dest0:
+cmp cl, scene_safari
+jne dest1
+mov eax, safari_exp_dest
+call award
+jmp dest_end
+
+dest1:
+cmp cl, scene_icedome
+jne dest2
+mov eax, icedome_exp_dest
+call award
+jmp dest_end
+
+dest2:
+cmp cl, scene_aqua
+jne dest3
+mov eax, aqua_exp_dest
+call award
+jmp dest_end
+
+dest3:
+cmp cl, scene_museum
+jne dest4
+mov eax, museum_exp_dest
+call award
+jmp dest_end
+
+dest4:
+cmp cl, scene_deptstr
+jne dest5
+mov eax, deptstr_exp_dest
+call award
+jmp dest_end
+
+dest5:
+cmp cl, scene_construct
+jne dest6
+mov eax, construct_exp_dest
+call award
+jmp dest_end
+
+dest6:
+cmp cl, scene_grandcanyon
+jne dest7
+mov eax, grandc_exp_dest
+call award
+jmp dest_end
+
+dest7:
+cmp cl, scene_goldmine
+jne dest8
+mov eax, goldmine_exp_dest
+call award
+jmp dest_end
+
+dest8:
+cmp cl, scene_ghosttown
+jne dest9
+mov eax, ghost_exp_dest
+call award
+jmp dest_end
+
+dest9:
+cmp cl, scene_tazhub
+jne dest_end
+mov eax, tazland_exp_dest
+call award
+
+dest_end:
+
+bounty:
+
+call get_dafficulty
+cmp eax, 2
+jne bounty_end
+call get_stats_addr
+mov ecx, [eax+94]
+call get_level_id
+
+bounty0:
+cmp al, scene_safari
+jne bounty1
+cmp ecx,(int)10000
+jl bounty_end
+mov eax, safari_exp_bounty
+call award
+jmp bounty_end
+
+bounty1:
+cmp al, scene_icedome
+jne bounty2
+cmp ecx,(int)20000
+jl bounty_end
+mov eax, icedome_exp_bounty
+call award
+jmp bounty_end
+
+bounty2:
+cmp al, scene_aqua
+jne bounty3
+cmp ecx,(int)30000
+jl bounty_end
+mov eax, aqua_exp_bounty
+call award
+jmp bounty_end
+
+bounty3:
+cmp al, scene_museum
+jne bounty4
+cmp ecx,(int)75000
+jl bounty_end
+mov eax, museum_exp_bounty
+call award
+jmp bounty_end
+
+bounty4:
+cmp al, scene_deptstr
+jne bounty5
+cmp ecx,(int)50000
+jl bounty_end
+mov eax, deptstr_exp_bounty
+call award
+jmp bounty_end
+
+bounty5:
+cmp al, scene_construct
+jne bounty6
+cmp ecx,(int)100000
+jl bounty_end
+mov eax, construct_exp_bounty
+call award
+jmp bounty_end
+
+bounty6:
+cmp al, scene_grandcanyon
+jne bounty7
+cmp ecx,(int)250000
+jl bounty_end
+mov eax, grandc_exp_bounty
+call award
+jmp bounty_end
+
+bounty7:
+cmp al, scene_goldmine
+jne bounty8
+cmp ecx,(int)500000
+jl bounty_end
+mov eax, goldmine_exp_bounty
+call award
+jmp bounty_end
+
+bounty8:
+cmp al, scene_ghosttown
+jne bounty9
+cmp ecx,(int)750000
+jl bounty_end
+mov eax, ghost_exp_bounty
+call award
+jmp bounty_end
+
+bounty9:
+cmp al, scene_tazhub
+jne bounty_end
+cmp ecx,(int)1000000
+jl bounty_end
+mov eax, tazland_exp_bounty
+call award
+
+bounty_end:
+
+thwap_end:
+
+// Restore registers
+pop ecx
+pop eax
+// Original code for startThwap
+pop edi
+pop esi
+add esp, 10
+jmp ret_thwap
+
+
+
+// ###
+// ### AddWantedPosterToStats
+poster_hook:
+
+// Store registers
+push eax
+push ecx
+
+// Poster number
+mov ecx, eax
+
+call get_level_id
+
+saf_van:
+cmp al, scene_safari
+jne saf_van_end
+cmp cl, 2
+jne saf_van_end
+call get_state
+cmp al, 1
+je saf_van_end
+mov eax, safari_van
+call award
+
+saf_van_end:
+
+poster_end:
+
+// Restore registers
+pop ecx
+pop eax
+// Original code for AddWantedPosterToStats
+mov edx, [esp+04]
+test edx, edx
+jmp ret_poster
+
+
+// ###
+// ### mpEndBonusSetUp
+vr_bonus_hook:
+
+// Store registers
+push eax
+push ecx
+
+vr_bonus0:
+call get_level_id
+cmp al, scene_museumvehiclerace
+jne vr_bonus1
+mov eax, museum_bonus
+call award
+call get_time_left
+cmp eax,(float)25.0
+jl vr_bonus_end
+mov eax, museum_bonus_time
+call award
+jmp vr_bonus_end
+
+vr_bonus1:
+call get_level_id
+cmp al, scene_deptstrvehiclerace
+jne vr_bonus2
+mov eax, deptstr_bonus
+call award
+call get_time_left
+cmp eax,(float)15.0
+jl vr_bonus_end
+mov eax, deptstr_bonus_time
+call award
+jmp vr_bonus_end
+
+vr_bonus2:
+call get_level_id
+cmp al, scene_grandcvehiclerace
+jne vr_bonus_end
+mov eax, grandc_bonus
+call award
+call get_time_left
+cmp eax,(float)10.0
+jl vr_bonus_end
+mov eax, grandc_bonus_time
+call award
+jmp vr_bonus_end
+
+vr_bonus_end:
+
+// Restore registers
+pop ecx
+pop eax
+// Original code for mpEndBonusSetUp
+push 000004E7
+jmp ret_vr_bonus
+
+
+// ###
+// ### mpEndBonusSetUp
+destr_bonus_hook:
+
+// Store registers
+push eax
+push ecx
+
+destr_bonus0:
+call get_level_id
+cmp al, scene_destructionaqua
+jne destr_bonus1
+mov eax, aqua_bonus
+call award
+call get_bonus_crates
+cmp eax,(int)100
+jl destr_bonus_end
+mov eax, aqua_bonus_crates
+call award
+jmp destr_bonus_end
+
+destr_bonus1:
+call get_level_id
+cmp al, scene_destructionconstruct
+jne destr_bonus2
+mov eax, construct_bonus
+call award
+call get_bonus_crates
+cmp eax,(int)75
+jl destr_bonus_end
+mov eax, construct_bonus_crates
+call award
+jmp destr_bonus_end
+
+destr_bonus2:
+call get_level_id
+cmp al, scene_destructiontasmania
+jne destr_bonus_end
+mov eax, ghost_bonus
+call award
+call get_bonus_crates
+cmp eax,(int)100
+jl destr_bonus_end
+mov eax, ghost_bonus_crates
+call award
+jmp destr_bonus_end
+
+destr_bonus_end:
+
+// Restore registers
+pop ecx
+pop eax
+// Original code for mpEndBonusSetUp
+push 00000515
+jmp ret_destr_bonus
+
+
+// ###
+// ### mpEndBonusSetUp
+ta_bonus_hook:
+
+// Store registers
+push eax
+push ecx
+
+ta_bonus0:
+call get_level_id
+cmp al, scene_safarirace
+jne ta_bonus1
+mov eax, safari_bonus
+call award
+call get_time_left
+cmp eax,(float)12.0
+jl ta_bonus_end
+mov eax, safari_bonus_time
+call award
+jmp ta_bonus_end
+
+ta_bonus1:
+call get_level_id
+cmp al, scene_icedomerace
+jne ta_bonus2
+mov eax, icedome_bonus
+call award
+call get_time_left
+cmp eax,(float)20.0
+jl ta_bonus_end
+mov eax, icedome_bonus_time
+call award
+jmp ta_bonus_end
+
+ta_bonus2:
+call get_level_id
+cmp al, scene_goldminerace
+jne ta_bonus_end
+mov eax, goldmine_bonus
+call award
+call get_time_left
+cmp eax,(float)25.0
+jl ta_bonus_end
+mov eax, goldmine_bonus_time
+call award
+jmp ta_bonus_end
+
+ta_bonus_end:
+
+// Restore registers
+pop ecx
+pop eax
+// Original code for mpEndBonusSetUp
+push 0000053E
+jmp ret_ta_bonus
+
+
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+
+// Injection jumps
+
+004CD830: // comp_hook (5)
+jmp comp_hook
+ret_comp:
+
+00430DE7: // suit_hook (5)
+jmp suit_hook
+ret_suit:
+
+004D99BC: // state_hook (5)
+jmp state_hook
+ret_state:
+
+004D255D: // lev_hook (7)
+jmp lev_hook
+nop
+nop
+ret_lev:
+
+005172A2: // touch_hook (5)
+jmp touch_hook
+ret_touch:
+
+004183B1: // kill_hook (6)
+jmp kill_hook
+nop
+ret_kill:
+
+004A24F0: // save_hook (5)
+jmp save_hook
+ret_save:
+
+00490B52: // end_hook (5)
+jmp end_hook
+ret_end:
+
+0047F6B1: // sand_hook (5)
+jmp sand_hook
+ret_sand:
+
+0047F7F5: // gold_hook (8)
+jmp gold_hook
+nop
+nop
+nop
+ret_gold:
+
+00455252: // thwap_hook (5)
+jmp thwap_hook
+ret_thwap:
+
+004CDB50: // poster_hook (6)
+jmp poster_hook
+nop
+ret_poster:
+
+004F20BF: // vr_bonus_end_hook (5)
+jmp vr_bonus_hook
+ret_vr_bonus:
+
+004F1C18: // destr_bonus_hook (5)
+jmp destr_bonus_hook
+ret_destr_bonus:
+
+004F161E: // ta_bonus_hook (5)
+jmp ta_bonus_hook
+ret_ta_bonus:
+

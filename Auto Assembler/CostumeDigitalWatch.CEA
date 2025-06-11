@@ -1,0 +1,18 @@
+005F6900:
+// CheatMask
+or [006C8E28], 08
+
+// SetupCostume
+mov     eax, [006C8BC0]
+mov     ecx, [eax+01CC]
+xor     edx, edx
+mov     dl, [ecx+010C]
+push    edx
+push    eax
+call    00430300
+add		esp, 08
+
+ret
+
+00655510:
+db 01

@@ -1,0 +1,20 @@
+label(originalcode)
+
+004D2553:
+jmp 005F66D0
+
+005F66D0:
+// ActivateCheat(CHEAT_AIRBRUSH);
+push	0x15
+call	0047BDF0
+add		esp, 0x04
+
+// DeactivateCheat(CHEAT_AIRBRUSH);
+push	0x15
+call	0047C180
+add		esp, 0x04
+
+originalcode:
+mov ecx,[esp+38]
+pop edi
+jmp 004D2558

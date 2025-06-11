@@ -1,0 +1,25 @@
+005F6900:
+// DeactivateCheat(CHEAT_GLOVER_MODE)
+push 0x1B
+call 0047C180
+add esp, 0x04
+
+// Return
+ret
+
+// Patch for DeactivateCheat(const ECheat cheat)
+// //if(map.sceneNumber == SCENE_GHOSTTOWN)
+0047C29C: // EB 07
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+nop
+
+00655510:
+db 01
+

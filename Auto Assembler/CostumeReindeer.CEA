@@ -1,0 +1,46 @@
+00731380:
+// paks
+cheats:
+db 'cheats', 0
+
+// obes
+iceantlers:
+db 'costume\iceantlers.obe', 0
+icerednose:
+db 'costume\icerednose.obe', 0
+
+005F6900:
+// LoadWholePackage
+push 01
+push cheats
+call 004A0700
+add esp, 08
+
+// LoadActor
+push 00
+push cheats
+push iceantlers
+call 004729B0
+add esp, 0C
+
+// LoadActor
+push 00
+push cheats
+push icerednose
+call 004729B0
+add esp, 0C
+
+// SetupCostume
+mov     eax, [006C8BC0]
+mov     ecx, [eax+01CC]
+xor     edx, edx
+mov     dl, [ecx+010C]
+push    03
+push    eax
+call    00430300
+add     esp, 08
+
+ret
+
+00655510:
+db 01
