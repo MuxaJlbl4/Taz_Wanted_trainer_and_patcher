@@ -16,6 +16,7 @@ using System.IO.Compression;
 using Taz_trainer.Properties;
 using System.Globalization;
 
+
 namespace Taz_trainer
 {
     public partial class form : System.Windows.Forms.Form
@@ -33,6 +34,9 @@ namespace Taz_trainer
 
         [DllImport("kernel32.dll", SetLastError = true)]
         static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, [Out] byte[] lpBuffer, int dwSize, out IntPtr lpNumberOfBytesRead);
+
+        static string version = "4.0";
+        static string xmlfile = "Taz.Wanted." + version + ".xml";
 
         string gihubUrl = "https://github.com";
         string TazFolderPath = "";
@@ -262,13 +266,13 @@ namespace Taz_trainer
 
             TazFolderPath = getPathFromRegistry();
 
-            if (TazFolderPath != "" && File.Exists(TazFolderPath + @"\Patcher.xml"))
+            if (TazFolderPath != "" && File.Exists(TazFolderPath + '\\' + xmlfile))
             {
                 try
                 {
                     // Load form element states + additional data
                     Dictionary<string, object> additionalData = null;
-                    FormSerialisor.Deserialise(this, TazFolderPath + @"\Patcher.xml", out additionalData);
+                    FormSerialisor.Deserialise(this, TazFolderPath + '\\' + xmlfile, out additionalData);
 
                     if (additionalData != null && additionalData.ContainsKey("achievementsStateTrainer"))
                         achievementsStateTrainer = (bool[])additionalData["achievementsStateTrainer"];
@@ -306,15 +310,13 @@ namespace Taz_trainer
             // Usage tab init
             webBrowserReadMe.DocumentText = Resources.ReadMe;
 
-            string version = "v4.0";
-
             // Welcome Message
-            this.toolStripStatusLabel.Text = version;
+            this.toolStripStatusLabel.Text = 'v' + version;
             this.toolStripStatusLabel.ForeColor = System.Drawing.Color.Black;
 
             // Check new release
             if (checkUpdates.Checked == true)
-                CheckTrainerUpdate(version);
+                CheckTrainerUpdate('v' + version);
 
             DrawAchievementsTable();
             UpdateAchievementsTable();
@@ -3471,8 +3473,8 @@ namespace Taz_trainer
                 Dictionary<string, object> additionalData = new Dictionary<string, object>();
                 additionalData["achievementsStateTrainer"] = achievementsStateTrainer;
 
-                FormSerialisor.Serialise(this, TazFolderPath + @"\Patcher.xml", additionalData);
-                this.toolStripStatusLabel.Text = "App settings successfully saved to: " + TazFolderPath + @"\Patcher.xml";
+                FormSerialisor.Serialise(this, TazFolderPath + '\\' + xmlfile, additionalData);
+                this.toolStripStatusLabel.Text = "App settings successfully saved to: " + TazFolderPath + '\\' + xmlfile;
                 this.toolStripStatusLabel.ForeColor = System.Drawing.Color.DarkGreen;
             }
             catch (Exception ex)
@@ -4021,7 +4023,7 @@ namespace Taz_trainer
 
         private void resetSettings_Click(object sender, EventArgs e)
         {
-            if (File.Exists(TazFolderPath + @"\Patcher.xml"))
+            if (File.Exists(TazFolderPath + '\\' + xmlfile))
             {
                 var result = MessageBox.Show("This will reset all achievements and application settings. Game process will be terminated. Continue?", "Reset application settings", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.No)
@@ -4031,7 +4033,7 @@ namespace Taz_trainer
                 {
                     trainerAutoSave.Checked = false;
                     // Delete xml
-                    File.Delete(TazFolderPath + @"\Patcher.xml");
+                    File.Delete(TazFolderPath + '\\' + xmlfile);
                 }
                 catch (Exception ex)
                 {
@@ -4229,7 +4231,7 @@ namespace Taz_trainer
                 return "???";
             }
         }
-        private void CheckTrainerUpdate(string version)
+        private void CheckTrainerUpdate(string currentversion)
         {
             try
             {
@@ -4243,7 +4245,7 @@ namespace Taz_trainer
                     string Latest = web1.ResponseUri.ToString();
 
                     // If version is not latest
-                    if (!Latest.Contains(version))
+                    if (!Latest.Contains(currentversion))
                     {
                         var result = MessageBox.Show("New version of Taz Wanted Trainer & Patcher is available. Open the release page?", "New version available", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (result == DialogResult.Yes)
