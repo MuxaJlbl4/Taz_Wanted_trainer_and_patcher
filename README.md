@@ -2,11 +2,7 @@
 <img align="center" src="./Screenshots/Logo.png"><br>
 </h1>
 
-<p align="center">
-<a href="https://github.com/MuxaJlbl4/Taz_Wanted_trainer_and_patcher/releases/download/v4.0/Taz.Wanted.Trainer.Patcher.exe">Download v4.0</a>
-</p>
-
-Custom launcher, trainer and resource repacker for **Taz: Wanted** game
+Custom launcher, trainer and resource repacker for **Taz: Wanted**
 
 ## 🥪 Achievements Tracking
 ![Achievements](./Screenshots/Achievements.png)
@@ -38,7 +34,7 @@ Custom launcher, trainer and resource repacker for **Taz: Wanted** game
 ## 🌫️ Fog from PS2
 ![Fog](./Screenshots/Fog.png)
 
-## 🫥 Gameplay Hacks
+## 🎮 Gameplay Hacks
 ![Hacks](./Screenshots/Hacks.png)
 
 ## 🍫 Graphic Wrappers
@@ -56,4 +52,6 @@ Custom launcher, trainer and resource repacker for **Taz: Wanted** game
 ## 👻 Wall Collisions
 <img src="Screenshots/Walls.webp" onerror="this.onerror=null;this.src='Screenshots/Walls.gif';">
 
-Description, usage, troubleshooting, etc. can be found on [Wiki](https://github.com/MuxaJlbl4/Taz_Wanted_trainer_and_patcher/wiki)
+## 🔖 Links
+- 💾 [Download](https://github.com/MuxaJlbl4/Taz_Wanted_trainer_and_patcher/releases/download/v4.0/Taz.Wanted.Trainer.Patcher.exe) - Taz: Wanted · Trainer & Patcher 4.0
+- 📜 [Wiki](https://github.com/MuxaJlbl4/Taz_Wanted_trainer_and_patcher/wiki) - Description, usage, troubleshooting, etc.
