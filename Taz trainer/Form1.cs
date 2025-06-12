@@ -15,6 +15,8 @@ using System.Text.RegularExpressions;
 using System.IO.Compression;
 using Taz_trainer.Properties;
 using System.Globalization;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 
 namespace Taz_trainer
@@ -316,7 +318,7 @@ namespace Taz_trainer
 
             // Check new release
             if (checkUpdates.Checked == true)
-                CheckTrainerUpdate('v' + version);
+                CheckTrainerUpdateAsync('v' + version);
 
             // Init achievement icons and table
             ImageListHelper.AddProcessedVersionsToImageList(
@@ -4232,34 +4234,62 @@ namespace Taz_trainer
                 return "???";
             }
         }
-        private void CheckTrainerUpdate(string currentversion)
+        private async Task CheckTrainerUpdateAsync(string currentVersion)
         {
             try
             {
-                // Download d3d8to9
-                using (MyWebClient web1 = new MyWebClient())
-                {
-                    // Get latest release
-                    ServicePointManager.Expect100Continue = true; // For XP/7 compatibility (Thanks MilkGames)
-                    ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12; // For XP/7 compatibility (Thanks MilkGames)
-                    string data0 = web1.DownloadString("https://github.com/MuxaJlbl4/Taz_Wanted_trainer_and_patcher/releases/latest");
-                    string Latest = web1.ResponseUri.ToString();
+                // Configure security protocols for legacy OS compatibility (Windows XP/7)
+                ServicePointManager.Expect100Continue = true;
+                ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
-                    // If version is not latest
-                    if (!Latest.Contains(currentversion))
+                // Use HttpClient with timeout
+                using (HttpClientHandler handler = new HttpClientHandler())
+                using (HttpClient httpClient = new HttpClient(handler))
+                {
+                    // Set timeout to 5 seconds
+                    httpClient.Timeout = TimeSpan.FromSeconds(5);
+
+                    // Add custom User-Agent header (required by some servers)
+                    httpClient.DefaultRequestHeaders.Add("User-Agent", "TazWantedTrainerUpdater/1.0");
+
+                    // Send HEAD request (faster than GET, no body downloaded)
+                    var response = await httpClient.SendAsync(
+                        new HttpRequestMessage(HttpMethod.Head,
+                        "https://github.com/MuxaJlbl4/Taz_Wanted_trainer_and_patcher/releases/latest"));
+
+                    // Get final URL after redirects
+                    string latestUrl = response.RequestMessage.RequestUri.ToString();
+
+                    // Check if update is needed
+                    if (!latestUrl.Contains(currentVersion))
                     {
-                        var result = MessageBox.Show("New version of Taz Wanted Trainer & Patcher is available. Open the release page?", "New version available", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                        if (result == DialogResult.Yes)
+                        // Switch to UI thread for message box
+                        this.Invoke((Action)(() =>
                         {
-                            Process.Start("https://github.com/MuxaJlbl4/Taz_Wanted_trainer_and_patcher/releases/latest");
-                        }
+                            DialogResult result = MessageBox.Show(
+                                "New version of Taz Wanted Trainer & Patcher is available. Open the release page?",
+                                "New version available",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Question);
+
+                            if (result == DialogResult.Yes)
+                            {
+                                Process.Start(latestUrl);
+                            }
+                        }));
                     }
                 }
             }
             catch (Exception ex)
             {
-                this.toolStripStatusLabel.Text = ex.Message.ToString();
-                this.toolStripStatusLabel.ForeColor = System.Drawing.Color.DarkRed;
+                // Handle errors in UI thread
+                this.Invoke((Action)(() =>
+                {
+                    this.toolStripStatusLabel.Text = ex is TaskCanceledException
+                        ? "Connection timed out"
+                        : ex.Message.Split('\n')[0];
+                    this.toolStripStatusLabel.ForeColor = Color.DarkRed;
+                }));
             }
         }
 
