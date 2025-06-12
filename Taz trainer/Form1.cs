@@ -318,6 +318,13 @@ namespace Taz_trainer
             if (checkUpdates.Checked == true)
                 CheckTrainerUpdate('v' + version);
 
+            // Init achievement icons and table
+            ImageListHelper.AddProcessedVersionsToImageList(
+                achievementIcons,
+                effect: ImageListHelper.ImageEffect.GrayscaleShading,
+                shadingFactor: 0.75f,
+                blurRadius: 5
+                );
             DrawAchievementsTable();
             UpdateAchievementsTable();
         }
@@ -326,26 +333,18 @@ namespace Taz_trainer
         {
             foreach (Control control in parentControl.Controls)
             {
-                // Обработка ComboBox
                 if (control is ComboBox comboBox)
-                {
                     ProcessComboBox(comboBox);
-                }
 
-                // Рекурсивный обход дочерних элементов
                 if (control.Controls.Count > 0)
-                {
                     CheckAllComboBoxes(control);
-                }
             }
         }
 
         private void ProcessComboBox(ComboBox comboBox)
         {
             if (comboBox.SelectedIndex == -1 && comboBox.Items.Count > 0)
-            {
                 comboBox.SelectedIndex = 0;
-            }
         }
 
         //#######################################################################################################################
@@ -678,7 +677,9 @@ namespace Taz_trainer
             }
             else
             {
-                Process.GetProcessById(procId).Kill();
+                var proc = Process.GetProcessById(procId);
+                proc.Kill();
+                proc.WaitForExit();
                 this.toolStripStatusLabel.Text = procName + " process killed";
                 this.toolStripStatusLabel.ForeColor = System.Drawing.Color.DarkGreen;
                 return true;

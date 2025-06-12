@@ -30,61 +30,61 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form));
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("ACME Costumes", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Characters", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("Agent", "Agent.png");
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("Bandit", "Bandit.png");
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("Construction Worker", "Construction Worker.png");
-            System.Windows.Forms.ListViewItem listViewItem4 = new System.Windows.Forms.ListViewItem("Explorer", "Explorer.png");
-            System.Windows.Forms.ListViewItem listViewItem5 = new System.Windows.Forms.ListViewItem("Indy", "Indy.png");
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("Miner", "Miner.png");
-            System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("Ninja", "Ninja.png");
-            System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("Rappa", "Rappa.png");
-            System.Windows.Forms.ListViewItem listViewItem9 = new System.Windows.Forms.ListViewItem("Reindeer", "Reindeer.png");
-            System.Windows.Forms.ListViewItem listViewItem10 = new System.Windows.Forms.ListViewItem("Skater", "Skater.png");
-            System.Windows.Forms.ListViewItem listViewItem11 = new System.Windows.Forms.ListViewItem("Snowboarder", "Snowboard.png");
-            System.Windows.Forms.ListViewItem listViewItem12 = new System.Windows.Forms.ListViewItem("Stuntman", "Stuntman.png");
-            System.Windows.Forms.ListViewItem listViewItem13 = new System.Windows.Forms.ListViewItem("Surfer", "Surfer.png");
-            System.Windows.Forms.ListViewItem listViewItem14 = new System.Windows.Forms.ListViewItem("SWAT", "Swat.png");
-            System.Windows.Forms.ListViewItem listViewItem15 = new System.Windows.Forms.ListViewItem("Tarzan", "Tarzan.png");
-            System.Windows.Forms.ListViewItem listViewItem16 = new System.Windows.Forms.ListViewItem("Trippy", "Trippy.png");
-            System.Windows.Forms.ListViewItem listViewItem17 = new System.Windows.Forms.ListViewItem("Werewolf", "Werewolf.png");
-            System.Windows.Forms.ListViewItem listViewItem18 = new System.Windows.Forms.ListViewItem("Alligator", "Alligator.png");
-            System.Windows.Forms.ListViewItem listViewItem19 = new System.Windows.Forms.ListViewItem("Ape Pirate", "Ape Pirate.png");
-            System.Windows.Forms.ListViewItem listViewItem20 = new System.Windows.Forms.ListViewItem("Bandit Cowboy", "Bandit Cowboy.png");
-            System.Windows.Forms.ListViewItem listViewItem21 = new System.Windows.Forms.ListViewItem("Bandit Miner", "Bandit Miner.png");
-            System.Windows.Forms.ListViewItem listViewItem22 = new System.Windows.Forms.ListViewItem("Beaky Buzzard", "Beaky Buzzard.png");
-            System.Windows.Forms.ListViewItem listViewItem23 = new System.Windows.Forms.ListViewItem("Beaky Parrot", "Beaky Parrot.png");
-            System.Windows.Forms.ListViewItem listViewItem24 = new System.Windows.Forms.ListViewItem("Bear Brown", "Bear Brown.png");
-            System.Windows.Forms.ListViewItem listViewItem25 = new System.Windows.Forms.ListViewItem("Bear Polar", "Bear Polar.png");
-            System.Windows.Forms.ListViewItem listViewItem26 = new System.Windows.Forms.ListViewItem("Bot Builder", "Bot Builder.png");
-            System.Windows.Forms.ListViewItem listViewItem27 = new System.Windows.Forms.ListViewItem("Bot Miner", "Bot Miner.png");
-            System.Windows.Forms.ListViewItem listViewItem28 = new System.Windows.Forms.ListViewItem("Bot Security", "Bot Security.png");
-            System.Windows.Forms.ListViewItem listViewItem29 = new System.Windows.Forms.ListViewItem("Builder", "Builder.png");
-            System.Windows.Forms.ListViewItem listViewItem30 = new System.Windows.Forms.ListViewItem("Catcher", "Catcher.png");
-            System.Windows.Forms.ListViewItem listViewItem31 = new System.Windows.Forms.ListViewItem("Daffy Duck", "Daffy Duck.png");
-            System.Windows.Forms.ListViewItem listViewItem32 = new System.Windows.Forms.ListViewItem("Dog Monster", "Dog Monster.png");
-            System.Windows.Forms.ListViewItem listViewItem33 = new System.Windows.Forms.ListViewItem("Dog Security", "Dog Security.png");
-            System.Windows.Forms.ListViewItem listViewItem34 = new System.Windows.Forms.ListViewItem("Elephant", "Elephant.png");
-            System.Windows.Forms.ListViewItem listViewItem35 = new System.Windows.Forms.ListViewItem("Elmer Fudd", "Elmer Fudd.png");
-            System.Windows.Forms.ListViewItem listViewItem36 = new System.Windows.Forms.ListViewItem("Glover Ball", "Glover Ball.png");
-            System.Windows.Forms.ListViewItem listViewItem37 = new System.Windows.Forms.ListViewItem("Gossamer", "Gossamer.png");
-            System.Windows.Forms.ListViewItem listViewItem38 = new System.Windows.Forms.ListViewItem("Guard Green", "Guard Green.png");
-            System.Windows.Forms.ListViewItem listViewItem39 = new System.Windows.Forms.ListViewItem("Guard Red", "Guard Red.png");
-            System.Windows.Forms.ListViewItem listViewItem40 = new System.Windows.Forms.ListViewItem("Monkey", "Monkey.png");
-            System.Windows.Forms.ListViewItem listViewItem41 = new System.Windows.Forms.ListViewItem("Mouse", "Mouse.png");
-            System.Windows.Forms.ListViewItem listViewItem42 = new System.Windows.Forms.ListViewItem("Nasty Canasta", "Nasty Canasta.png");
-            System.Windows.Forms.ListViewItem listViewItem43 = new System.Windows.Forms.ListViewItem("Shark", "Shark.png");
-            System.Windows.Forms.ListViewItem listViewItem44 = new System.Windows.Forms.ListViewItem("Shedevil", "Shedevil.png");
-            System.Windows.Forms.ListViewItem listViewItem45 = new System.Windows.Forms.ListViewItem("Sylvester the Cat", "Sylvester the Cat.png");
-            System.Windows.Forms.ListViewItem listViewItem46 = new System.Windows.Forms.ListViewItem("Taz", "Taz.png");
-            System.Windows.Forms.ListViewItem listViewItem47 = new System.Windows.Forms.ListViewItem("Tribal Chief", "Tribal Chief.png");
-            System.Windows.Forms.ListViewItem listViewItem48 = new System.Windows.Forms.ListViewItem("Tweety", "Tweety.png");
-            System.Windows.Forms.ListViewItem listViewItem49 = new System.Windows.Forms.ListViewItem("Tweety Mecha", "Tweety Mecha.png");
-            System.Windows.Forms.ListViewItem listViewItem50 = new System.Windows.Forms.ListViewItem("Whack-in-a-Box", "Whack-in-a-Box.png");
-            System.Windows.Forms.ListViewItem listViewItem51 = new System.Windows.Forms.ListViewItem("Wile E. Coyote", "Wile E. Coyote.png");
-            System.Windows.Forms.ListViewItem listViewItem52 = new System.Windows.Forms.ListViewItem("Yosemite Sam", "Yosemite Sam.png");
-            System.Windows.Forms.ListViewItem listViewItem53 = new System.Windows.Forms.ListViewItem("Yosemite Sam Tycoon", "Yosemite Sam Tycoon.png");
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("ACME Costumes", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("Characters", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewItem listViewItem54 = new System.Windows.Forms.ListViewItem("Agent", "Agent.png");
+            System.Windows.Forms.ListViewItem listViewItem55 = new System.Windows.Forms.ListViewItem("Bandit", "Bandit.png");
+            System.Windows.Forms.ListViewItem listViewItem56 = new System.Windows.Forms.ListViewItem("Construction Worker", "Construction Worker.png");
+            System.Windows.Forms.ListViewItem listViewItem57 = new System.Windows.Forms.ListViewItem("Explorer", "Explorer.png");
+            System.Windows.Forms.ListViewItem listViewItem58 = new System.Windows.Forms.ListViewItem("Indy", "Indy.png");
+            System.Windows.Forms.ListViewItem listViewItem59 = new System.Windows.Forms.ListViewItem("Miner", "Miner.png");
+            System.Windows.Forms.ListViewItem listViewItem60 = new System.Windows.Forms.ListViewItem("Ninja", "Ninja.png");
+            System.Windows.Forms.ListViewItem listViewItem61 = new System.Windows.Forms.ListViewItem("Rappa", "Rappa.png");
+            System.Windows.Forms.ListViewItem listViewItem62 = new System.Windows.Forms.ListViewItem("Reindeer", "Reindeer.png");
+            System.Windows.Forms.ListViewItem listViewItem63 = new System.Windows.Forms.ListViewItem("Skater", "Skater.png");
+            System.Windows.Forms.ListViewItem listViewItem64 = new System.Windows.Forms.ListViewItem("Snowboarder", "Snowboard.png");
+            System.Windows.Forms.ListViewItem listViewItem65 = new System.Windows.Forms.ListViewItem("Stuntman", "Stuntman.png");
+            System.Windows.Forms.ListViewItem listViewItem66 = new System.Windows.Forms.ListViewItem("Surfer", "Surfer.png");
+            System.Windows.Forms.ListViewItem listViewItem67 = new System.Windows.Forms.ListViewItem("SWAT", "Swat.png");
+            System.Windows.Forms.ListViewItem listViewItem68 = new System.Windows.Forms.ListViewItem("Tarzan", "Tarzan.png");
+            System.Windows.Forms.ListViewItem listViewItem69 = new System.Windows.Forms.ListViewItem("Trippy", "Trippy.png");
+            System.Windows.Forms.ListViewItem listViewItem70 = new System.Windows.Forms.ListViewItem("Werewolf", "Werewolf.png");
+            System.Windows.Forms.ListViewItem listViewItem71 = new System.Windows.Forms.ListViewItem("Alligator", "Alligator.png");
+            System.Windows.Forms.ListViewItem listViewItem72 = new System.Windows.Forms.ListViewItem("Ape Pirate", "Ape Pirate.png");
+            System.Windows.Forms.ListViewItem listViewItem73 = new System.Windows.Forms.ListViewItem("Bandit Cowboy", "Bandit Cowboy.png");
+            System.Windows.Forms.ListViewItem listViewItem74 = new System.Windows.Forms.ListViewItem("Bandit Miner", "Bandit Miner.png");
+            System.Windows.Forms.ListViewItem listViewItem75 = new System.Windows.Forms.ListViewItem("Beaky Buzzard", "Beaky Buzzard.png");
+            System.Windows.Forms.ListViewItem listViewItem76 = new System.Windows.Forms.ListViewItem("Beaky Parrot", "Beaky Parrot.png");
+            System.Windows.Forms.ListViewItem listViewItem77 = new System.Windows.Forms.ListViewItem("Bear Brown", "Bear Brown.png");
+            System.Windows.Forms.ListViewItem listViewItem78 = new System.Windows.Forms.ListViewItem("Bear Polar", "Bear Polar.png");
+            System.Windows.Forms.ListViewItem listViewItem79 = new System.Windows.Forms.ListViewItem("Bot Builder", "Bot Builder.png");
+            System.Windows.Forms.ListViewItem listViewItem80 = new System.Windows.Forms.ListViewItem("Bot Miner", "Bot Miner.png");
+            System.Windows.Forms.ListViewItem listViewItem81 = new System.Windows.Forms.ListViewItem("Bot Security", "Bot Security.png");
+            System.Windows.Forms.ListViewItem listViewItem82 = new System.Windows.Forms.ListViewItem("Builder", "Builder.png");
+            System.Windows.Forms.ListViewItem listViewItem83 = new System.Windows.Forms.ListViewItem("Catcher", "Catcher.png");
+            System.Windows.Forms.ListViewItem listViewItem84 = new System.Windows.Forms.ListViewItem("Daffy Duck", "Daffy Duck.png");
+            System.Windows.Forms.ListViewItem listViewItem85 = new System.Windows.Forms.ListViewItem("Dog Monster", "Dog Monster.png");
+            System.Windows.Forms.ListViewItem listViewItem86 = new System.Windows.Forms.ListViewItem("Dog Security", "Dog Security.png");
+            System.Windows.Forms.ListViewItem listViewItem87 = new System.Windows.Forms.ListViewItem("Elephant", "Elephant.png");
+            System.Windows.Forms.ListViewItem listViewItem88 = new System.Windows.Forms.ListViewItem("Elmer Fudd", "Elmer Fudd.png");
+            System.Windows.Forms.ListViewItem listViewItem89 = new System.Windows.Forms.ListViewItem("Glover Ball", "Glover Ball.png");
+            System.Windows.Forms.ListViewItem listViewItem90 = new System.Windows.Forms.ListViewItem("Gossamer", "Gossamer.png");
+            System.Windows.Forms.ListViewItem listViewItem91 = new System.Windows.Forms.ListViewItem("Guard Green", "Guard Green.png");
+            System.Windows.Forms.ListViewItem listViewItem92 = new System.Windows.Forms.ListViewItem("Guard Red", "Guard Red.png");
+            System.Windows.Forms.ListViewItem listViewItem93 = new System.Windows.Forms.ListViewItem("Monkey", "Monkey.png");
+            System.Windows.Forms.ListViewItem listViewItem94 = new System.Windows.Forms.ListViewItem("Mouse", "Mouse.png");
+            System.Windows.Forms.ListViewItem listViewItem95 = new System.Windows.Forms.ListViewItem("Nasty Canasta", "Nasty Canasta.png");
+            System.Windows.Forms.ListViewItem listViewItem96 = new System.Windows.Forms.ListViewItem("Shark", "Shark.png");
+            System.Windows.Forms.ListViewItem listViewItem97 = new System.Windows.Forms.ListViewItem("Shedevil", "Shedevil.png");
+            System.Windows.Forms.ListViewItem listViewItem98 = new System.Windows.Forms.ListViewItem("Sylvester the Cat", "Sylvester the Cat.png");
+            System.Windows.Forms.ListViewItem listViewItem99 = new System.Windows.Forms.ListViewItem("Taz", "Taz.png");
+            System.Windows.Forms.ListViewItem listViewItem100 = new System.Windows.Forms.ListViewItem("Tribal Chief", "Tribal Chief.png");
+            System.Windows.Forms.ListViewItem listViewItem101 = new System.Windows.Forms.ListViewItem("Tweety", "Tweety.png");
+            System.Windows.Forms.ListViewItem listViewItem102 = new System.Windows.Forms.ListViewItem("Tweety Mecha", "Tweety Mecha.png");
+            System.Windows.Forms.ListViewItem listViewItem103 = new System.Windows.Forms.ListViewItem("Whack-in-a-Box", "Whack-in-a-Box.png");
+            System.Windows.Forms.ListViewItem listViewItem104 = new System.Windows.Forms.ListViewItem("Wile E. Coyote", "Wile E. Coyote.png");
+            System.Windows.Forms.ListViewItem listViewItem105 = new System.Windows.Forms.ListViewItem("Yosemite Sam", "Yosemite Sam.png");
+            System.Windows.Forms.ListViewItem listViewItem106 = new System.Windows.Forms.ListViewItem("Yosemite Sam Tycoon", "Yosemite Sam Tycoon.png");
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.statusField = new System.Windows.Forms.ToolStripStatusLabel();
@@ -525,80 +525,44 @@
             this.smallButtonIcons.Images.SetKeyName(9, "cloud.png");
             this.smallButtonIcons.Images.SetKeyName(10, "playbrick.png");
             this.smallButtonIcons.Images.SetKeyName(11, "flag.png");
-            this.smallButtonIcons.Images.SetKeyName(12, "flagexit.png");
-            this.smallButtonIcons.Images.SetKeyName(13, "ectoplasm.png");
-            this.smallButtonIcons.Images.SetKeyName(14, "othereyeball.png");
-            this.smallButtonIcons.Images.SetKeyName(15, "comicbomb.png");
-            this.smallButtonIcons.Images.SetKeyName(16, "rubixcube.png");
-            this.smallButtonIcons.Images.SetKeyName(17, "speedsign.png");
-            this.smallButtonIcons.Images.SetKeyName(18, "subunkradar.png");
-            this.smallButtonIcons.Images.SetKeyName(19, "target6.png");
-            this.smallButtonIcons.Images.SetKeyName(20, "bowlingball.png");
-            this.smallButtonIcons.Images.SetKeyName(21, "truck_crate.png");
-            this.smallButtonIcons.Images.SetKeyName(22, "crateoglys4.png");
-            this.smallButtonIcons.Images.SetKeyName(23, "indyhat.png");
-            this.smallButtonIcons.Images.SetKeyName(24, "diamond.png");
-            this.smallButtonIcons.Images.SetKeyName(25, "cellbattery.png");
-            this.smallButtonIcons.Images.SetKeyName(26, "ball.png");
-            this.smallButtonIcons.Images.SetKeyName(27, "monitor.png");
-            this.smallButtonIcons.Images.SetKeyName(28, "rocksafari.png");
-            this.smallButtonIcons.Images.SetKeyName(29, "paintbrush.png");
-            this.smallButtonIcons.Images.SetKeyName(30, "greenbubble.png");
-            this.smallButtonIcons.Images.SetKeyName(31, "goldnugget.png");
-            this.smallButtonIcons.Images.SetKeyName(32, "whackbit.png");
+            this.smallButtonIcons.Images.SetKeyName(12, "ectoplasm.png");
+            this.smallButtonIcons.Images.SetKeyName(13, "othereyeball.png");
+            this.smallButtonIcons.Images.SetKeyName(14, "rubixcube.png");
+            this.smallButtonIcons.Images.SetKeyName(15, "subunkradar.png");
+            this.smallButtonIcons.Images.SetKeyName(16, "indyhat.png");
+            this.smallButtonIcons.Images.SetKeyName(17, "diamond.png");
+            this.smallButtonIcons.Images.SetKeyName(18, "cellbattery.png");
+            this.smallButtonIcons.Images.SetKeyName(19, "monitor.png");
+            this.smallButtonIcons.Images.SetKeyName(20, "paintbrush.png");
+            this.smallButtonIcons.Images.SetKeyName(21, "greenbubble.png");
+            this.smallButtonIcons.Images.SetKeyName(22, "goldnugget.png");
+            this.smallButtonIcons.Images.SetKeyName(23, "whackbit.png");
+            this.smallButtonIcons.Images.SetKeyName(24, "shovel.png");
+            this.smallButtonIcons.Images.SetKeyName(25, "scroll.png");
+            this.smallButtonIcons.Images.SetKeyName(26, "memcard.png");
+            this.smallButtonIcons.Images.SetKeyName(27, "hammer.png");
+            this.smallButtonIcons.Images.SetKeyName(28, "record.png");
+            this.smallButtonIcons.Images.SetKeyName(29, "electricwarning.png");
+            this.smallButtonIcons.Images.SetKeyName(30, "tazwanted.png");
+            this.smallButtonIcons.Images.SetKeyName(31, "spookhouse.png");
+            this.smallButtonIcons.Images.SetKeyName(32, "snowboat.png");
             this.smallButtonIcons.Images.SetKeyName(33, "shovel.png");
-            this.smallButtonIcons.Images.SetKeyName(34, "scroll.png");
-            this.smallButtonIcons.Images.SetKeyName(35, "presentblue.png");
-            this.smallButtonIcons.Images.SetKeyName(36, "memcard.png");
-            this.smallButtonIcons.Images.SetKeyName(37, "hammer.png");
-            this.smallButtonIcons.Images.SetKeyName(38, "record.png");
-            this.smallButtonIcons.Images.SetKeyName(39, "space.png");
-            this.smallButtonIcons.Images.SetKeyName(40, "electricwarning.png");
-            this.smallButtonIcons.Images.SetKeyName(41, "tazwanted.png");
-            this.smallButtonIcons.Images.SetKeyName(42, "spookhouse.png");
-            this.smallButtonIcons.Images.SetKeyName(43, "snowboat.png");
-            this.smallButtonIcons.Images.SetKeyName(44, "pickaxe.png");
-            this.smallButtonIcons.Images.SetKeyName(45, "shovel.png");
-            this.smallButtonIcons.Images.SetKeyName(46, "dial.png");
-            this.smallButtonIcons.Images.SetKeyName(47, "greentick.png");
-            this.smallButtonIcons.Images.SetKeyName(48, "rad32.png");
-            this.smallButtonIcons.Images.SetKeyName(49, "box.png");
-            this.smallButtonIcons.Images.SetKeyName(50, "box2.png");
-            this.smallButtonIcons.Images.SetKeyName(51, "burp.png");
-            this.smallButtonIcons.Images.SetKeyName(52, "banana.png");
-            this.smallButtonIcons.Images.SetKeyName(53, "bonusbox.png");
-            this.smallButtonIcons.Images.SetKeyName(54, "domino.png");
-            this.smallButtonIcons.Images.SetKeyName(55, "fish.png");
-            this.smallButtonIcons.Images.SetKeyName(56, "fishyellow (2).png");
-            this.smallButtonIcons.Images.SetKeyName(57, "hammer.png");
-            this.smallButtonIcons.Images.SetKeyName(58, "hook.png");
-            this.smallButtonIcons.Images.SetKeyName(59, "ingredientsjar01.png");
-            this.smallButtonIcons.Images.SetKeyName(60, "ingredientsjar02.png");
-            this.smallButtonIcons.Images.SetKeyName(61, "screwdriver.png");
-            this.smallButtonIcons.Images.SetKeyName(62, "skigogs.png");
-            this.smallButtonIcons.Images.SetKeyName(63, "sneaker (2).png");
-            this.smallButtonIcons.Images.SetKeyName(64, "tntstick01.png");
-            this.smallButtonIcons.Images.SetKeyName(65, "tazcam.png");
-            this.smallButtonIcons.Images.SetKeyName(66, "tv.png");
-            this.smallButtonIcons.Images.SetKeyName(67, "baubleyellow.png");
-            this.smallButtonIcons.Images.SetKeyName(68, "bubble.png");
-            this.smallButtonIcons.Images.SetKeyName(69, "bubblegreen.png");
-            this.smallButtonIcons.Images.SetKeyName(70, "geniebottle.png");
-            this.smallButtonIcons.Images.SetKeyName(71, "legored.png");
-            this.smallButtonIcons.Images.SetKeyName(72, "legoyellow.png");
-            this.smallButtonIcons.Images.SetKeyName(73, "lens.png");
-            this.smallButtonIcons.Images.SetKeyName(74, "swatshades.png");
-            this.smallButtonIcons.Images.SetKeyName(75, "swirl.png");
-            this.smallButtonIcons.Images.SetKeyName(76, "tazwaterdrop.png");
-            this.smallButtonIcons.Images.SetKeyName(77, "xboxsave.png");
-            this.smallButtonIcons.Images.SetKeyName(78, "samface.png");
-            this.smallButtonIcons.Images.SetKeyName(79, "icon_backward.png");
-            this.smallButtonIcons.Images.SetKeyName(80, "icon_forward.png");
-            this.smallButtonIcons.Images.SetKeyName(81, "icon_left.png");
-            this.smallButtonIcons.Images.SetKeyName(82, "icon_right.png");
-            this.smallButtonIcons.Images.SetKeyName(83, "camera.png");
-            this.smallButtonIcons.Images.SetKeyName(84, "painting3.png");
-            this.smallButtonIcons.Images.SetKeyName(85, "bow.png");
+            this.smallButtonIcons.Images.SetKeyName(34, "dial.png");
+            this.smallButtonIcons.Images.SetKeyName(35, "greentick.png");
+            this.smallButtonIcons.Images.SetKeyName(36, "hammer.png");
+            this.smallButtonIcons.Images.SetKeyName(37, "ingredientsjar01.png");
+            this.smallButtonIcons.Images.SetKeyName(38, "sneaker (2).png");
+            this.smallButtonIcons.Images.SetKeyName(39, "tntstick01.png");
+            this.smallButtonIcons.Images.SetKeyName(40, "baubleyellow.png");
+            this.smallButtonIcons.Images.SetKeyName(41, "geniebottle.png");
+            this.smallButtonIcons.Images.SetKeyName(42, "swatshades.png");
+            this.smallButtonIcons.Images.SetKeyName(43, "tazwaterdrop.png");
+            this.smallButtonIcons.Images.SetKeyName(44, "xboxsave.png");
+            this.smallButtonIcons.Images.SetKeyName(45, "samface.png");
+            this.smallButtonIcons.Images.SetKeyName(46, "icon_left.png");
+            this.smallButtonIcons.Images.SetKeyName(47, "icon_right.png");
+            this.smallButtonIcons.Images.SetKeyName(48, "camera.png");
+            this.smallButtonIcons.Images.SetKeyName(49, "bow.png");
             // 
             // invisibility
             // 
@@ -2376,10 +2340,9 @@
             this.medButtonIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("medButtonIcons.ImageStream")));
             this.medButtonIcons.TransparentColor = System.Drawing.Color.Transparent;
             this.medButtonIcons.Images.SetKeyName(0, "checkpoint_icon.png");
-            this.medButtonIcons.Images.SetKeyName(1, "shovel.png");
-            this.medButtonIcons.Images.SetKeyName(2, "destructibles.png");
-            this.medButtonIcons.Images.SetKeyName(3, "pickaxe.png");
-            this.medButtonIcons.Images.SetKeyName(4, "box.png");
+            this.medButtonIcons.Images.SetKeyName(1, "destructibles.png");
+            this.medButtonIcons.Images.SetKeyName(2, "pickaxe.png");
+            this.medButtonIcons.Images.SetKeyName(3, "box.png");
             // 
             // patch
             // 
@@ -2545,235 +2508,120 @@
             this.achievementIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("achievementIcons.ImageStream")));
             this.achievementIcons.TransparentColor = System.Drawing.Color.Transparent;
             this.achievementIcons.Images.SetKeyName(0, "271794.png");
-            this.achievementIcons.Images.SetKeyName(1, "271794_lock.png");
-            this.achievementIcons.Images.SetKeyName(2, "271979.png");
-            this.achievementIcons.Images.SetKeyName(3, "271979_lock.png");
-            this.achievementIcons.Images.SetKeyName(4, "271980.png");
-            this.achievementIcons.Images.SetKeyName(5, "271980_lock.png");
-            this.achievementIcons.Images.SetKeyName(6, "271981.png");
-            this.achievementIcons.Images.SetKeyName(7, "271981_lock.png");
-            this.achievementIcons.Images.SetKeyName(8, "271982.png");
-            this.achievementIcons.Images.SetKeyName(9, "271982_lock.png");
-            this.achievementIcons.Images.SetKeyName(10, "271983.png");
-            this.achievementIcons.Images.SetKeyName(11, "271983_lock.png");
-            this.achievementIcons.Images.SetKeyName(12, "271984.png");
-            this.achievementIcons.Images.SetKeyName(13, "271984_lock.png");
-            this.achievementIcons.Images.SetKeyName(14, "271985.png");
-            this.achievementIcons.Images.SetKeyName(15, "271985_lock.png");
-            this.achievementIcons.Images.SetKeyName(16, "271986.png");
-            this.achievementIcons.Images.SetKeyName(17, "271986_lock.png");
-            this.achievementIcons.Images.SetKeyName(18, "271987.png");
-            this.achievementIcons.Images.SetKeyName(19, "271987_lock.png");
-            this.achievementIcons.Images.SetKeyName(20, "271988.png");
-            this.achievementIcons.Images.SetKeyName(21, "271988_lock.png");
-            this.achievementIcons.Images.SetKeyName(22, "271989.png");
-            this.achievementIcons.Images.SetKeyName(23, "271989_lock.png");
-            this.achievementIcons.Images.SetKeyName(24, "271990.png");
-            this.achievementIcons.Images.SetKeyName(25, "271990_lock.png");
-            this.achievementIcons.Images.SetKeyName(26, "271991.png");
-            this.achievementIcons.Images.SetKeyName(27, "271991_lock.png");
-            this.achievementIcons.Images.SetKeyName(28, "271992.png");
-            this.achievementIcons.Images.SetKeyName(29, "271992_lock.png");
-            this.achievementIcons.Images.SetKeyName(30, "271993.png");
-            this.achievementIcons.Images.SetKeyName(31, "271993_lock.png");
-            this.achievementIcons.Images.SetKeyName(32, "271994.png");
-            this.achievementIcons.Images.SetKeyName(33, "271994_lock.png");
-            this.achievementIcons.Images.SetKeyName(34, "271995.png");
-            this.achievementIcons.Images.SetKeyName(35, "271995_lock.png");
-            this.achievementIcons.Images.SetKeyName(36, "271996.png");
-            this.achievementIcons.Images.SetKeyName(37, "271996_lock.png");
-            this.achievementIcons.Images.SetKeyName(38, "271997.png");
-            this.achievementIcons.Images.SetKeyName(39, "271997_lock.png");
-            this.achievementIcons.Images.SetKeyName(40, "271998.png");
-            this.achievementIcons.Images.SetKeyName(41, "271998_lock.png");
-            this.achievementIcons.Images.SetKeyName(42, "271999.png");
-            this.achievementIcons.Images.SetKeyName(43, "271999_lock.png");
-            this.achievementIcons.Images.SetKeyName(44, "272000.png");
-            this.achievementIcons.Images.SetKeyName(45, "272000_lock.png");
-            this.achievementIcons.Images.SetKeyName(46, "272001.png");
-            this.achievementIcons.Images.SetKeyName(47, "272001_lock.png");
-            this.achievementIcons.Images.SetKeyName(48, "272002.png");
-            this.achievementIcons.Images.SetKeyName(49, "272002_lock.png");
-            this.achievementIcons.Images.SetKeyName(50, "272003.png");
-            this.achievementIcons.Images.SetKeyName(51, "272003_lock.png");
-            this.achievementIcons.Images.SetKeyName(52, "272004.png");
-            this.achievementIcons.Images.SetKeyName(53, "272004_lock.png");
-            this.achievementIcons.Images.SetKeyName(54, "272005.png");
-            this.achievementIcons.Images.SetKeyName(55, "272005_lock.png");
-            this.achievementIcons.Images.SetKeyName(56, "272006.png");
-            this.achievementIcons.Images.SetKeyName(57, "272006_lock.png");
-            this.achievementIcons.Images.SetKeyName(58, "272007.png");
-            this.achievementIcons.Images.SetKeyName(59, "272007_lock.png");
-            this.achievementIcons.Images.SetKeyName(60, "272008.png");
-            this.achievementIcons.Images.SetKeyName(61, "272008_lock.png");
-            this.achievementIcons.Images.SetKeyName(62, "272009.png");
-            this.achievementIcons.Images.SetKeyName(63, "272009_lock.png");
-            this.achievementIcons.Images.SetKeyName(64, "272010.png");
-            this.achievementIcons.Images.SetKeyName(65, "272010_lock.png");
-            this.achievementIcons.Images.SetKeyName(66, "272011.png");
-            this.achievementIcons.Images.SetKeyName(67, "272011_lock.png");
-            this.achievementIcons.Images.SetKeyName(68, "272012.png");
-            this.achievementIcons.Images.SetKeyName(69, "272012_lock.png");
-            this.achievementIcons.Images.SetKeyName(70, "272013.png");
-            this.achievementIcons.Images.SetKeyName(71, "272013_lock.png");
-            this.achievementIcons.Images.SetKeyName(72, "272014.png");
-            this.achievementIcons.Images.SetKeyName(73, "272014_lock.png");
-            this.achievementIcons.Images.SetKeyName(74, "272015.png");
-            this.achievementIcons.Images.SetKeyName(75, "272015_lock.png");
-            this.achievementIcons.Images.SetKeyName(76, "272016.png");
-            this.achievementIcons.Images.SetKeyName(77, "272016_lock.png");
-            this.achievementIcons.Images.SetKeyName(78, "272017.png");
-            this.achievementIcons.Images.SetKeyName(79, "272017_lock.png");
-            this.achievementIcons.Images.SetKeyName(80, "272018.png");
-            this.achievementIcons.Images.SetKeyName(81, "272018_lock.png");
-            this.achievementIcons.Images.SetKeyName(82, "272019.png");
-            this.achievementIcons.Images.SetKeyName(83, "272019_lock.png");
-            this.achievementIcons.Images.SetKeyName(84, "272020.png");
-            this.achievementIcons.Images.SetKeyName(85, "272020_lock.png");
-            this.achievementIcons.Images.SetKeyName(86, "272021.png");
-            this.achievementIcons.Images.SetKeyName(87, "272021_lock.png");
-            this.achievementIcons.Images.SetKeyName(88, "272022.png");
-            this.achievementIcons.Images.SetKeyName(89, "272022_lock.png");
-            this.achievementIcons.Images.SetKeyName(90, "272023.png");
-            this.achievementIcons.Images.SetKeyName(91, "272023_lock.png");
-            this.achievementIcons.Images.SetKeyName(92, "272024.png");
-            this.achievementIcons.Images.SetKeyName(93, "272024_lock.png");
-            this.achievementIcons.Images.SetKeyName(94, "272025.png");
-            this.achievementIcons.Images.SetKeyName(95, "272025_lock.png");
-            this.achievementIcons.Images.SetKeyName(96, "272026.png");
-            this.achievementIcons.Images.SetKeyName(97, "272026_lock.png");
-            this.achievementIcons.Images.SetKeyName(98, "272027.png");
-            this.achievementIcons.Images.SetKeyName(99, "272027_lock.png");
-            this.achievementIcons.Images.SetKeyName(100, "272028.png");
-            this.achievementIcons.Images.SetKeyName(101, "272028_lock.png");
-            this.achievementIcons.Images.SetKeyName(102, "272029.png");
-            this.achievementIcons.Images.SetKeyName(103, "272029_lock.png");
-            this.achievementIcons.Images.SetKeyName(104, "272030.png");
-            this.achievementIcons.Images.SetKeyName(105, "272030_lock.png");
-            this.achievementIcons.Images.SetKeyName(106, "272031.png");
-            this.achievementIcons.Images.SetKeyName(107, "272031_lock.png");
-            this.achievementIcons.Images.SetKeyName(108, "272032.png");
-            this.achievementIcons.Images.SetKeyName(109, "272032_lock.png");
-            this.achievementIcons.Images.SetKeyName(110, "272033.png");
-            this.achievementIcons.Images.SetKeyName(111, "272033_lock.png");
-            this.achievementIcons.Images.SetKeyName(112, "272034.png");
-            this.achievementIcons.Images.SetKeyName(113, "272034_lock.png");
-            this.achievementIcons.Images.SetKeyName(114, "272035.png");
-            this.achievementIcons.Images.SetKeyName(115, "272035_lock.png");
-            this.achievementIcons.Images.SetKeyName(116, "272036.png");
-            this.achievementIcons.Images.SetKeyName(117, "272036_lock.png");
-            this.achievementIcons.Images.SetKeyName(118, "272037.png");
-            this.achievementIcons.Images.SetKeyName(119, "272037_lock.png");
-            this.achievementIcons.Images.SetKeyName(120, "272038.png");
-            this.achievementIcons.Images.SetKeyName(121, "272038_lock.png");
-            this.achievementIcons.Images.SetKeyName(122, "272039.png");
-            this.achievementIcons.Images.SetKeyName(123, "272039_lock.png");
-            this.achievementIcons.Images.SetKeyName(124, "272040.png");
-            this.achievementIcons.Images.SetKeyName(125, "272040_lock.png");
-            this.achievementIcons.Images.SetKeyName(126, "272041.png");
-            this.achievementIcons.Images.SetKeyName(127, "272041_lock.png");
-            this.achievementIcons.Images.SetKeyName(128, "272042.png");
-            this.achievementIcons.Images.SetKeyName(129, "272042_lock.png");
-            this.achievementIcons.Images.SetKeyName(130, "272043.png");
-            this.achievementIcons.Images.SetKeyName(131, "272043_lock.png");
-            this.achievementIcons.Images.SetKeyName(132, "272044.png");
-            this.achievementIcons.Images.SetKeyName(133, "272044_lock.png");
-            this.achievementIcons.Images.SetKeyName(134, "272045.png");
-            this.achievementIcons.Images.SetKeyName(135, "272045_lock.png");
-            this.achievementIcons.Images.SetKeyName(136, "272046.png");
-            this.achievementIcons.Images.SetKeyName(137, "272046_lock.png");
-            this.achievementIcons.Images.SetKeyName(138, "272047.png");
-            this.achievementIcons.Images.SetKeyName(139, "272047_lock.png");
-            this.achievementIcons.Images.SetKeyName(140, "272048.png");
-            this.achievementIcons.Images.SetKeyName(141, "272048_lock.png");
-            this.achievementIcons.Images.SetKeyName(142, "272049.png");
-            this.achievementIcons.Images.SetKeyName(143, "272049_lock.png");
-            this.achievementIcons.Images.SetKeyName(144, "272050.png");
-            this.achievementIcons.Images.SetKeyName(145, "272050_lock.png");
-            this.achievementIcons.Images.SetKeyName(146, "272051.png");
-            this.achievementIcons.Images.SetKeyName(147, "272051_lock.png");
-            this.achievementIcons.Images.SetKeyName(148, "272052.png");
-            this.achievementIcons.Images.SetKeyName(149, "272052_lock.png");
-            this.achievementIcons.Images.SetKeyName(150, "272053.png");
-            this.achievementIcons.Images.SetKeyName(151, "272053_lock.png");
-            this.achievementIcons.Images.SetKeyName(152, "272054.png");
-            this.achievementIcons.Images.SetKeyName(153, "272054_lock.png");
-            this.achievementIcons.Images.SetKeyName(154, "272055.png");
-            this.achievementIcons.Images.SetKeyName(155, "272055_lock.png");
-            this.achievementIcons.Images.SetKeyName(156, "272056.png");
-            this.achievementIcons.Images.SetKeyName(157, "272056_lock.png");
-            this.achievementIcons.Images.SetKeyName(158, "272057.png");
-            this.achievementIcons.Images.SetKeyName(159, "272057_lock.png");
-            this.achievementIcons.Images.SetKeyName(160, "272058.png");
-            this.achievementIcons.Images.SetKeyName(161, "272058_lock.png");
-            this.achievementIcons.Images.SetKeyName(162, "272059.png");
-            this.achievementIcons.Images.SetKeyName(163, "272059_lock.png");
-            this.achievementIcons.Images.SetKeyName(164, "272060.png");
-            this.achievementIcons.Images.SetKeyName(165, "272060_lock.png");
-            this.achievementIcons.Images.SetKeyName(166, "272061.png");
-            this.achievementIcons.Images.SetKeyName(167, "272061_lock.png");
-            this.achievementIcons.Images.SetKeyName(168, "272062.png");
-            this.achievementIcons.Images.SetKeyName(169, "272062_lock.png");
-            this.achievementIcons.Images.SetKeyName(170, "272063.png");
-            this.achievementIcons.Images.SetKeyName(171, "272063_lock.png");
-            this.achievementIcons.Images.SetKeyName(172, "272064.png");
-            this.achievementIcons.Images.SetKeyName(173, "272064_lock.png");
-            this.achievementIcons.Images.SetKeyName(174, "272065.png");
-            this.achievementIcons.Images.SetKeyName(175, "272065_lock.png");
-            this.achievementIcons.Images.SetKeyName(176, "272066.png");
-            this.achievementIcons.Images.SetKeyName(177, "272066_lock.png");
-            this.achievementIcons.Images.SetKeyName(178, "272067.png");
-            this.achievementIcons.Images.SetKeyName(179, "272067_lock.png");
-            this.achievementIcons.Images.SetKeyName(180, "272068.png");
-            this.achievementIcons.Images.SetKeyName(181, "272068_lock.png");
-            this.achievementIcons.Images.SetKeyName(182, "272069.png");
-            this.achievementIcons.Images.SetKeyName(183, "272069_lock.png");
-            this.achievementIcons.Images.SetKeyName(184, "272070.png");
-            this.achievementIcons.Images.SetKeyName(185, "272070_lock.png");
-            this.achievementIcons.Images.SetKeyName(186, "272071.png");
-            this.achievementIcons.Images.SetKeyName(187, "272071_lock.png");
-            this.achievementIcons.Images.SetKeyName(188, "272072.png");
-            this.achievementIcons.Images.SetKeyName(189, "272072_lock.png");
-            this.achievementIcons.Images.SetKeyName(190, "272073.png");
-            this.achievementIcons.Images.SetKeyName(191, "272073_lock.png");
-            this.achievementIcons.Images.SetKeyName(192, "272074.png");
-            this.achievementIcons.Images.SetKeyName(193, "272074_lock.png");
-            this.achievementIcons.Images.SetKeyName(194, "272075.png");
-            this.achievementIcons.Images.SetKeyName(195, "272075_lock.png");
-            this.achievementIcons.Images.SetKeyName(196, "272076.png");
-            this.achievementIcons.Images.SetKeyName(197, "272076_lock.png");
-            this.achievementIcons.Images.SetKeyName(198, "272077.png");
-            this.achievementIcons.Images.SetKeyName(199, "272077_lock.png");
-            this.achievementIcons.Images.SetKeyName(200, "272078.png");
-            this.achievementIcons.Images.SetKeyName(201, "272078_lock.png");
-            this.achievementIcons.Images.SetKeyName(202, "272079.png");
-            this.achievementIcons.Images.SetKeyName(203, "272079_lock.png");
-            this.achievementIcons.Images.SetKeyName(204, "272080.png");
-            this.achievementIcons.Images.SetKeyName(205, "272080_lock.png");
-            this.achievementIcons.Images.SetKeyName(206, "272081.png");
-            this.achievementIcons.Images.SetKeyName(207, "272081_lock.png");
-            this.achievementIcons.Images.SetKeyName(208, "272082.png");
-            this.achievementIcons.Images.SetKeyName(209, "272082_lock.png");
-            this.achievementIcons.Images.SetKeyName(210, "272083.png");
-            this.achievementIcons.Images.SetKeyName(211, "272083_lock.png");
-            this.achievementIcons.Images.SetKeyName(212, "272084.png");
-            this.achievementIcons.Images.SetKeyName(213, "272084_lock.png");
-            this.achievementIcons.Images.SetKeyName(214, "272085.png");
-            this.achievementIcons.Images.SetKeyName(215, "272085_lock.png");
-            this.achievementIcons.Images.SetKeyName(216, "272086.png");
-            this.achievementIcons.Images.SetKeyName(217, "272086_lock.png");
-            this.achievementIcons.Images.SetKeyName(218, "272087.png");
-            this.achievementIcons.Images.SetKeyName(219, "272087_lock.png");
-            this.achievementIcons.Images.SetKeyName(220, "272088.png");
-            this.achievementIcons.Images.SetKeyName(221, "272088_lock.png");
-            this.achievementIcons.Images.SetKeyName(222, "272089.png");
-            this.achievementIcons.Images.SetKeyName(223, "272089_lock.png");
-            this.achievementIcons.Images.SetKeyName(224, "272090.png");
-            this.achievementIcons.Images.SetKeyName(225, "272090_lock.png");
-            this.achievementIcons.Images.SetKeyName(226, "272091.png");
-            this.achievementIcons.Images.SetKeyName(227, "272091_lock.png");
-            this.achievementIcons.Images.SetKeyName(228, "272092.png");
-            this.achievementIcons.Images.SetKeyName(229, "272092_lock.png");
+            this.achievementIcons.Images.SetKeyName(1, "271979.png");
+            this.achievementIcons.Images.SetKeyName(2, "271980.png");
+            this.achievementIcons.Images.SetKeyName(3, "271981.png");
+            this.achievementIcons.Images.SetKeyName(4, "271982.png");
+            this.achievementIcons.Images.SetKeyName(5, "271983.png");
+            this.achievementIcons.Images.SetKeyName(6, "271984.png");
+            this.achievementIcons.Images.SetKeyName(7, "271985.png");
+            this.achievementIcons.Images.SetKeyName(8, "271986.png");
+            this.achievementIcons.Images.SetKeyName(9, "271987.png");
+            this.achievementIcons.Images.SetKeyName(10, "271988.png");
+            this.achievementIcons.Images.SetKeyName(11, "271989.png");
+            this.achievementIcons.Images.SetKeyName(12, "271990.png");
+            this.achievementIcons.Images.SetKeyName(13, "271991.png");
+            this.achievementIcons.Images.SetKeyName(14, "271992.png");
+            this.achievementIcons.Images.SetKeyName(15, "271993.png");
+            this.achievementIcons.Images.SetKeyName(16, "271994.png");
+            this.achievementIcons.Images.SetKeyName(17, "271995.png");
+            this.achievementIcons.Images.SetKeyName(18, "271996.png");
+            this.achievementIcons.Images.SetKeyName(19, "271997.png");
+            this.achievementIcons.Images.SetKeyName(20, "271998.png");
+            this.achievementIcons.Images.SetKeyName(21, "271999.png");
+            this.achievementIcons.Images.SetKeyName(22, "272000.png");
+            this.achievementIcons.Images.SetKeyName(23, "272001.png");
+            this.achievementIcons.Images.SetKeyName(24, "272002.png");
+            this.achievementIcons.Images.SetKeyName(25, "272003.png");
+            this.achievementIcons.Images.SetKeyName(26, "272004.png");
+            this.achievementIcons.Images.SetKeyName(27, "272005.png");
+            this.achievementIcons.Images.SetKeyName(28, "272006.png");
+            this.achievementIcons.Images.SetKeyName(29, "272007.png");
+            this.achievementIcons.Images.SetKeyName(30, "272008.png");
+            this.achievementIcons.Images.SetKeyName(31, "272009.png");
+            this.achievementIcons.Images.SetKeyName(32, "272010.png");
+            this.achievementIcons.Images.SetKeyName(33, "272011.png");
+            this.achievementIcons.Images.SetKeyName(34, "272012.png");
+            this.achievementIcons.Images.SetKeyName(35, "272013.png");
+            this.achievementIcons.Images.SetKeyName(36, "272014.png");
+            this.achievementIcons.Images.SetKeyName(37, "272015.png");
+            this.achievementIcons.Images.SetKeyName(38, "272016.png");
+            this.achievementIcons.Images.SetKeyName(39, "272017.png");
+            this.achievementIcons.Images.SetKeyName(40, "272018.png");
+            this.achievementIcons.Images.SetKeyName(41, "272019.png");
+            this.achievementIcons.Images.SetKeyName(42, "272020.png");
+            this.achievementIcons.Images.SetKeyName(43, "272021.png");
+            this.achievementIcons.Images.SetKeyName(44, "272022.png");
+            this.achievementIcons.Images.SetKeyName(45, "272023.png");
+            this.achievementIcons.Images.SetKeyName(46, "272024.png");
+            this.achievementIcons.Images.SetKeyName(47, "272025.png");
+            this.achievementIcons.Images.SetKeyName(48, "272026.png");
+            this.achievementIcons.Images.SetKeyName(49, "272027.png");
+            this.achievementIcons.Images.SetKeyName(50, "272028.png");
+            this.achievementIcons.Images.SetKeyName(51, "272029.png");
+            this.achievementIcons.Images.SetKeyName(52, "272030.png");
+            this.achievementIcons.Images.SetKeyName(53, "272031.png");
+            this.achievementIcons.Images.SetKeyName(54, "272032.png");
+            this.achievementIcons.Images.SetKeyName(55, "272033.png");
+            this.achievementIcons.Images.SetKeyName(56, "272034.png");
+            this.achievementIcons.Images.SetKeyName(57, "272035.png");
+            this.achievementIcons.Images.SetKeyName(58, "272036.png");
+            this.achievementIcons.Images.SetKeyName(59, "272037.png");
+            this.achievementIcons.Images.SetKeyName(60, "272038.png");
+            this.achievementIcons.Images.SetKeyName(61, "272039.png");
+            this.achievementIcons.Images.SetKeyName(62, "272040.png");
+            this.achievementIcons.Images.SetKeyName(63, "272041.png");
+            this.achievementIcons.Images.SetKeyName(64, "272042.png");
+            this.achievementIcons.Images.SetKeyName(65, "272043.png");
+            this.achievementIcons.Images.SetKeyName(66, "272044.png");
+            this.achievementIcons.Images.SetKeyName(67, "272045.png");
+            this.achievementIcons.Images.SetKeyName(68, "272046.png");
+            this.achievementIcons.Images.SetKeyName(69, "272047.png");
+            this.achievementIcons.Images.SetKeyName(70, "272048.png");
+            this.achievementIcons.Images.SetKeyName(71, "272049.png");
+            this.achievementIcons.Images.SetKeyName(72, "272050.png");
+            this.achievementIcons.Images.SetKeyName(73, "272051.png");
+            this.achievementIcons.Images.SetKeyName(74, "272052.png");
+            this.achievementIcons.Images.SetKeyName(75, "272053.png");
+            this.achievementIcons.Images.SetKeyName(76, "272054.png");
+            this.achievementIcons.Images.SetKeyName(77, "272055.png");
+            this.achievementIcons.Images.SetKeyName(78, "272056.png");
+            this.achievementIcons.Images.SetKeyName(79, "272057.png");
+            this.achievementIcons.Images.SetKeyName(80, "272058.png");
+            this.achievementIcons.Images.SetKeyName(81, "272059.png");
+            this.achievementIcons.Images.SetKeyName(82, "272060.png");
+            this.achievementIcons.Images.SetKeyName(83, "272061.png");
+            this.achievementIcons.Images.SetKeyName(84, "272062.png");
+            this.achievementIcons.Images.SetKeyName(85, "272063.png");
+            this.achievementIcons.Images.SetKeyName(86, "272064.png");
+            this.achievementIcons.Images.SetKeyName(87, "272065.png");
+            this.achievementIcons.Images.SetKeyName(88, "272066.png");
+            this.achievementIcons.Images.SetKeyName(89, "272067.png");
+            this.achievementIcons.Images.SetKeyName(90, "272068.png");
+            this.achievementIcons.Images.SetKeyName(91, "272069.png");
+            this.achievementIcons.Images.SetKeyName(92, "272070.png");
+            this.achievementIcons.Images.SetKeyName(93, "272071.png");
+            this.achievementIcons.Images.SetKeyName(94, "272072.png");
+            this.achievementIcons.Images.SetKeyName(95, "272073.png");
+            this.achievementIcons.Images.SetKeyName(96, "272074.png");
+            this.achievementIcons.Images.SetKeyName(97, "272075.png");
+            this.achievementIcons.Images.SetKeyName(98, "272076.png");
+            this.achievementIcons.Images.SetKeyName(99, "272077.png");
+            this.achievementIcons.Images.SetKeyName(100, "272078.png");
+            this.achievementIcons.Images.SetKeyName(101, "272079.png");
+            this.achievementIcons.Images.SetKeyName(102, "272080.png");
+            this.achievementIcons.Images.SetKeyName(103, "272081.png");
+            this.achievementIcons.Images.SetKeyName(104, "272082.png");
+            this.achievementIcons.Images.SetKeyName(105, "272083.png");
+            this.achievementIcons.Images.SetKeyName(106, "272084.png");
+            this.achievementIcons.Images.SetKeyName(107, "272085.png");
+            this.achievementIcons.Images.SetKeyName(108, "272086.png");
+            this.achievementIcons.Images.SetKeyName(109, "272087.png");
+            this.achievementIcons.Images.SetKeyName(110, "272088.png");
+            this.achievementIcons.Images.SetKeyName(111, "272089.png");
+            this.achievementIcons.Images.SetKeyName(112, "272090.png");
+            this.achievementIcons.Images.SetKeyName(113, "272091.png");
+            this.achievementIcons.Images.SetKeyName(114, "272092.png");
             // 
             // trainerTab
             // 
@@ -2831,121 +2679,121 @@
             this.listViewActors.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listViewActors.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listViewActors.GridLines = true;
-            listViewGroup1.Header = "ACME Costumes";
-            listViewGroup1.Name = "ListViewAcme";
-            listViewGroup2.Header = "Characters";
-            listViewGroup2.Name = "ListViewChar";
+            listViewGroup3.Header = "ACME Costumes";
+            listViewGroup3.Name = "ListViewAcme";
+            listViewGroup4.Header = "Characters";
+            listViewGroup4.Name = "ListViewChar";
             this.listViewActors.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2});
+            listViewGroup3,
+            listViewGroup4});
             this.listViewActors.HideSelection = false;
-            listViewItem1.Group = listViewGroup1;
-            listViewItem2.Group = listViewGroup1;
-            listViewItem3.Group = listViewGroup1;
-            listViewItem4.Group = listViewGroup1;
-            listViewItem5.Group = listViewGroup1;
-            listViewItem6.Group = listViewGroup1;
-            listViewItem7.Group = listViewGroup1;
-            listViewItem8.Group = listViewGroup1;
-            listViewItem9.Group = listViewGroup1;
-            listViewItem10.Group = listViewGroup1;
-            listViewItem11.Group = listViewGroup1;
-            listViewItem12.Group = listViewGroup1;
-            listViewItem13.Group = listViewGroup1;
-            listViewItem14.Group = listViewGroup1;
-            listViewItem15.Group = listViewGroup1;
-            listViewItem16.Group = listViewGroup1;
-            listViewItem17.Group = listViewGroup1;
-            listViewItem18.Group = listViewGroup2;
-            listViewItem19.Group = listViewGroup2;
-            listViewItem20.Group = listViewGroup2;
-            listViewItem21.Group = listViewGroup2;
-            listViewItem22.Group = listViewGroup2;
-            listViewItem23.Group = listViewGroup2;
-            listViewItem24.Group = listViewGroup2;
-            listViewItem25.Group = listViewGroup2;
-            listViewItem26.Group = listViewGroup2;
-            listViewItem27.Group = listViewGroup2;
-            listViewItem28.Group = listViewGroup2;
-            listViewItem29.Group = listViewGroup2;
-            listViewItem30.Group = listViewGroup2;
-            listViewItem31.Group = listViewGroup2;
-            listViewItem32.Group = listViewGroup2;
-            listViewItem33.Group = listViewGroup2;
-            listViewItem34.Group = listViewGroup2;
-            listViewItem35.Group = listViewGroup2;
-            listViewItem36.Group = listViewGroup2;
-            listViewItem37.Group = listViewGroup2;
-            listViewItem38.Group = listViewGroup2;
-            listViewItem39.Group = listViewGroup2;
-            listViewItem40.Group = listViewGroup2;
-            listViewItem41.Group = listViewGroup2;
-            listViewItem42.Group = listViewGroup2;
-            listViewItem43.Group = listViewGroup2;
-            listViewItem44.Group = listViewGroup2;
-            listViewItem45.Group = listViewGroup2;
-            listViewItem46.Group = listViewGroup2;
-            listViewItem47.Group = listViewGroup2;
-            listViewItem48.Group = listViewGroup2;
-            listViewItem49.Group = listViewGroup2;
-            listViewItem50.Group = listViewGroup2;
-            listViewItem51.Group = listViewGroup2;
-            listViewItem52.Group = listViewGroup2;
-            listViewItem53.Group = listViewGroup2;
+            listViewItem54.Group = listViewGroup3;
+            listViewItem55.Group = listViewGroup3;
+            listViewItem56.Group = listViewGroup3;
+            listViewItem57.Group = listViewGroup3;
+            listViewItem58.Group = listViewGroup3;
+            listViewItem59.Group = listViewGroup3;
+            listViewItem60.Group = listViewGroup3;
+            listViewItem61.Group = listViewGroup3;
+            listViewItem62.Group = listViewGroup3;
+            listViewItem63.Group = listViewGroup3;
+            listViewItem64.Group = listViewGroup3;
+            listViewItem65.Group = listViewGroup3;
+            listViewItem66.Group = listViewGroup3;
+            listViewItem67.Group = listViewGroup3;
+            listViewItem68.Group = listViewGroup3;
+            listViewItem69.Group = listViewGroup3;
+            listViewItem70.Group = listViewGroup3;
+            listViewItem71.Group = listViewGroup4;
+            listViewItem72.Group = listViewGroup4;
+            listViewItem73.Group = listViewGroup4;
+            listViewItem74.Group = listViewGroup4;
+            listViewItem75.Group = listViewGroup4;
+            listViewItem76.Group = listViewGroup4;
+            listViewItem77.Group = listViewGroup4;
+            listViewItem78.Group = listViewGroup4;
+            listViewItem79.Group = listViewGroup4;
+            listViewItem80.Group = listViewGroup4;
+            listViewItem81.Group = listViewGroup4;
+            listViewItem82.Group = listViewGroup4;
+            listViewItem83.Group = listViewGroup4;
+            listViewItem84.Group = listViewGroup4;
+            listViewItem85.Group = listViewGroup4;
+            listViewItem86.Group = listViewGroup4;
+            listViewItem87.Group = listViewGroup4;
+            listViewItem88.Group = listViewGroup4;
+            listViewItem89.Group = listViewGroup4;
+            listViewItem90.Group = listViewGroup4;
+            listViewItem91.Group = listViewGroup4;
+            listViewItem92.Group = listViewGroup4;
+            listViewItem93.Group = listViewGroup4;
+            listViewItem94.Group = listViewGroup4;
+            listViewItem95.Group = listViewGroup4;
+            listViewItem96.Group = listViewGroup4;
+            listViewItem97.Group = listViewGroup4;
+            listViewItem98.Group = listViewGroup4;
+            listViewItem99.Group = listViewGroup4;
+            listViewItem100.Group = listViewGroup4;
+            listViewItem101.Group = listViewGroup4;
+            listViewItem102.Group = listViewGroup4;
+            listViewItem103.Group = listViewGroup4;
+            listViewItem104.Group = listViewGroup4;
+            listViewItem105.Group = listViewGroup4;
+            listViewItem106.Group = listViewGroup4;
             this.listViewActors.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1,
-            listViewItem2,
-            listViewItem3,
-            listViewItem4,
-            listViewItem5,
-            listViewItem6,
-            listViewItem7,
-            listViewItem8,
-            listViewItem9,
-            listViewItem10,
-            listViewItem11,
-            listViewItem12,
-            listViewItem13,
-            listViewItem14,
-            listViewItem15,
-            listViewItem16,
-            listViewItem17,
-            listViewItem18,
-            listViewItem19,
-            listViewItem20,
-            listViewItem21,
-            listViewItem22,
-            listViewItem23,
-            listViewItem24,
-            listViewItem25,
-            listViewItem26,
-            listViewItem27,
-            listViewItem28,
-            listViewItem29,
-            listViewItem30,
-            listViewItem31,
-            listViewItem32,
-            listViewItem33,
-            listViewItem34,
-            listViewItem35,
-            listViewItem36,
-            listViewItem37,
-            listViewItem38,
-            listViewItem39,
-            listViewItem40,
-            listViewItem41,
-            listViewItem42,
-            listViewItem43,
-            listViewItem44,
-            listViewItem45,
-            listViewItem46,
-            listViewItem47,
-            listViewItem48,
-            listViewItem49,
-            listViewItem50,
-            listViewItem51,
-            listViewItem52,
-            listViewItem53});
+            listViewItem54,
+            listViewItem55,
+            listViewItem56,
+            listViewItem57,
+            listViewItem58,
+            listViewItem59,
+            listViewItem60,
+            listViewItem61,
+            listViewItem62,
+            listViewItem63,
+            listViewItem64,
+            listViewItem65,
+            listViewItem66,
+            listViewItem67,
+            listViewItem68,
+            listViewItem69,
+            listViewItem70,
+            listViewItem71,
+            listViewItem72,
+            listViewItem73,
+            listViewItem74,
+            listViewItem75,
+            listViewItem76,
+            listViewItem77,
+            listViewItem78,
+            listViewItem79,
+            listViewItem80,
+            listViewItem81,
+            listViewItem82,
+            listViewItem83,
+            listViewItem84,
+            listViewItem85,
+            listViewItem86,
+            listViewItem87,
+            listViewItem88,
+            listViewItem89,
+            listViewItem90,
+            listViewItem91,
+            listViewItem92,
+            listViewItem93,
+            listViewItem94,
+            listViewItem95,
+            listViewItem96,
+            listViewItem97,
+            listViewItem98,
+            listViewItem99,
+            listViewItem100,
+            listViewItem101,
+            listViewItem102,
+            listViewItem103,
+            listViewItem104,
+            listViewItem105,
+            listViewItem106});
             this.listViewActors.LargeImageList = this.actorIcons;
             this.listViewActors.Location = new System.Drawing.Point(3, 3);
             this.listViewActors.MultiSelect = false;
@@ -2977,44 +2825,42 @@
             this.actorIcons.Images.SetKeyName(14, "Catcher.png");
             this.actorIcons.Images.SetKeyName(15, "Construction Worker.png");
             this.actorIcons.Images.SetKeyName(16, "Daffy Duck.png");
-            this.actorIcons.Images.SetKeyName(17, "Digital Watch.png");
-            this.actorIcons.Images.SetKeyName(18, "Dog Monster.png");
-            this.actorIcons.Images.SetKeyName(19, "Dog Security.png");
-            this.actorIcons.Images.SetKeyName(20, "Elephant.png");
-            this.actorIcons.Images.SetKeyName(21, "Elmer Fudd.png");
-            this.actorIcons.Images.SetKeyName(22, "Explorer.png");
-            this.actorIcons.Images.SetKeyName(23, "Glover Ball.png");
-            this.actorIcons.Images.SetKeyName(24, "Gossamer.png");
-            this.actorIcons.Images.SetKeyName(25, "Guard Green.png");
-            this.actorIcons.Images.SetKeyName(26, "Guard Red.png");
-            this.actorIcons.Images.SetKeyName(27, "Indy.png");
-            this.actorIcons.Images.SetKeyName(28, "Miner.png");
-            this.actorIcons.Images.SetKeyName(29, "Monkey.png");
-            this.actorIcons.Images.SetKeyName(30, "Mouse.png");
-            this.actorIcons.Images.SetKeyName(31, "Nasty Canasta.png");
-            this.actorIcons.Images.SetKeyName(32, "Ninja.png");
-            this.actorIcons.Images.SetKeyName(33, "Rappa.png");
-            this.actorIcons.Images.SetKeyName(34, "Reindeer.png");
-            this.actorIcons.Images.SetKeyName(35, "Shark.png");
-            this.actorIcons.Images.SetKeyName(36, "Shedevil.png");
-            this.actorIcons.Images.SetKeyName(37, "Skater.png");
-            this.actorIcons.Images.SetKeyName(38, "Snowboard.png");
-            this.actorIcons.Images.SetKeyName(39, "Stuntman.png");
-            this.actorIcons.Images.SetKeyName(40, "Surfer.png");
-            this.actorIcons.Images.SetKeyName(41, "Swat.png");
-            this.actorIcons.Images.SetKeyName(42, "Sylvester the Cat.png");
-            this.actorIcons.Images.SetKeyName(43, "Tarzan.png");
-            this.actorIcons.Images.SetKeyName(44, "Taz.png");
-            this.actorIcons.Images.SetKeyName(45, "Tribal Chief.png");
-            this.actorIcons.Images.SetKeyName(46, "Trippy.png");
-            this.actorIcons.Images.SetKeyName(47, "Tweety Mecha.png");
-            this.actorIcons.Images.SetKeyName(48, "Tweety.png");
-            this.actorIcons.Images.SetKeyName(49, "Werewolf.png");
-            this.actorIcons.Images.SetKeyName(50, "Whack-in-a-Box.png");
-            this.actorIcons.Images.SetKeyName(51, "Wile E. Coyote.png");
-            this.actorIcons.Images.SetKeyName(52, "Wilson.png");
-            this.actorIcons.Images.SetKeyName(53, "Yosemite Sam Tycoon.png");
-            this.actorIcons.Images.SetKeyName(54, "Yosemite Sam.png");
+            this.actorIcons.Images.SetKeyName(17, "Dog Monster.png");
+            this.actorIcons.Images.SetKeyName(18, "Dog Security.png");
+            this.actorIcons.Images.SetKeyName(19, "Elephant.png");
+            this.actorIcons.Images.SetKeyName(20, "Elmer Fudd.png");
+            this.actorIcons.Images.SetKeyName(21, "Explorer.png");
+            this.actorIcons.Images.SetKeyName(22, "Glover Ball.png");
+            this.actorIcons.Images.SetKeyName(23, "Gossamer.png");
+            this.actorIcons.Images.SetKeyName(24, "Guard Green.png");
+            this.actorIcons.Images.SetKeyName(25, "Guard Red.png");
+            this.actorIcons.Images.SetKeyName(26, "Indy.png");
+            this.actorIcons.Images.SetKeyName(27, "Miner.png");
+            this.actorIcons.Images.SetKeyName(28, "Monkey.png");
+            this.actorIcons.Images.SetKeyName(29, "Mouse.png");
+            this.actorIcons.Images.SetKeyName(30, "Nasty Canasta.png");
+            this.actorIcons.Images.SetKeyName(31, "Ninja.png");
+            this.actorIcons.Images.SetKeyName(32, "Rappa.png");
+            this.actorIcons.Images.SetKeyName(33, "Reindeer.png");
+            this.actorIcons.Images.SetKeyName(34, "Shark.png");
+            this.actorIcons.Images.SetKeyName(35, "Shedevil.png");
+            this.actorIcons.Images.SetKeyName(36, "Skater.png");
+            this.actorIcons.Images.SetKeyName(37, "Snowboard.png");
+            this.actorIcons.Images.SetKeyName(38, "Stuntman.png");
+            this.actorIcons.Images.SetKeyName(39, "Surfer.png");
+            this.actorIcons.Images.SetKeyName(40, "Swat.png");
+            this.actorIcons.Images.SetKeyName(41, "Sylvester the Cat.png");
+            this.actorIcons.Images.SetKeyName(42, "Tarzan.png");
+            this.actorIcons.Images.SetKeyName(43, "Taz.png");
+            this.actorIcons.Images.SetKeyName(44, "Tribal Chief.png");
+            this.actorIcons.Images.SetKeyName(45, "Trippy.png");
+            this.actorIcons.Images.SetKeyName(46, "Tweety Mecha.png");
+            this.actorIcons.Images.SetKeyName(47, "Tweety.png");
+            this.actorIcons.Images.SetKeyName(48, "Werewolf.png");
+            this.actorIcons.Images.SetKeyName(49, "Whack-in-a-Box.png");
+            this.actorIcons.Images.SetKeyName(50, "Wile E. Coyote.png");
+            this.actorIcons.Images.SetKeyName(51, "Yosemite Sam Tycoon.png");
+            this.actorIcons.Images.SetKeyName(52, "Yosemite Sam.png");
             // 
             // tableLayoutPanel11Advanced
             // 

@@ -1,5 +1,5 @@
 // Сгенерировано с помощью DeepSeek LLM
-// Получение разрешения Windows без корректировок DPI
+// Получение разрешения экрана без корректировок DPI
 using System;
 using System.Drawing;
 using System.Windows.Forms;
