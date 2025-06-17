@@ -3207,8 +3207,6 @@
             // verticalSplit
             // 
             this.verticalSplit.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.verticalSplit.Checked = true;
-            this.verticalSplit.CheckState = System.Windows.Forms.CheckState.Checked;
             this.verticalSplit.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.verticalSplit.Location = new System.Drawing.Point(3, 261);
             this.verticalSplit.Name = "verticalSplit";
