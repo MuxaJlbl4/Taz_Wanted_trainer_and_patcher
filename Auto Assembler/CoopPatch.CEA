@@ -4,7 +4,7 @@ label(originalcode)
 //004A8140: // gladiatoons_fix (1)
 //db 0x01
 
-004D2553: // coop_hook (5)
+004D2558: // coop_hook (5)
 jmp 005F6E00
 ret_coop:
 
@@ -53,8 +53,11 @@ pop ecx
 pop eax
 
 originalcode:
-mov ecx,[esp+38]
-pop edi
+pop esi
+mov eax, ebp
+pop ebp
+pop ebx
+
 jmp ret_coop
 
 
