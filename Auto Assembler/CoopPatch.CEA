@@ -1,15 +1,13 @@
-label(single)
-label(originalcode)
-
-//004A8140: // gladiatoons_fix (1)
-//db 0x01
-
 004D2558: // coop_hook (5)
-jmp 005F6E00
+jmp coop_patch
 ret_coop:
 
-005F6E00: // coop_patch (512)
+00482AEC: // runon_hook (5)
+jmp runon_state_fix
+ret_runon:
 
+005F6E00: // coop_patch (256)
+coop_patch:
 // Store registers
 push eax
 push ecx
@@ -52,7 +50,7 @@ skip:
 pop ecx
 pop eax
 
-originalcode:
+originalcode1:
 pop esi
 mov eax, ebp
 pop ebp
@@ -60,4 +58,18 @@ pop ebx
 
 jmp ret_coop
 
+runon_state_fix:
+
+mov al, [esi+20F]
+test al, al
+jz originalcode2
+
+add esp, 0x08
+push 0x00
+push esi
+
+originalcode2:
+call 004D98B0 // ChangeState(actorInstance,STATE_RUNON);
+
+jmp ret_runon
 
