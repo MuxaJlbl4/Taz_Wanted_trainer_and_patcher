@@ -1,0 +1,21 @@
+0051E610: // fTime1 (4)
+dd 005F7EB8
+
+0051E8B3: // fTime2 (4)
+dd 005F7EB8
+
+0051E8CD: // fTime3 (4)
+dd 005F7EB8
+
+0051E90E: // fTime4 (4)
+dd 005F7EB8
+
+0051E986: // fTime5 (4)
+dd 005F7EB8
+
+0051E9E6: // fTime6 (4)
+dd 005F7EB8
+
+0051EA6D: // fTime7 (4)
+dd 005F7EB8
+

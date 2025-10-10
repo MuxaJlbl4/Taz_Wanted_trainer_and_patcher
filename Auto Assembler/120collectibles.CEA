@@ -1,0 +1,45 @@
+0047DC91: // update_collectible (1)
+db 78
+
+0047F6E8: // process_item (1)
+db 78
+
+00495C6B: // level_stats (1)
+db 78
+
+00498F61: // end_stats (1)
+db 78
+
+004992E5: // text_color (1)
+db 78
+
+004B66F9: // skip_daffyculty (12)
+mov dword ptr [ebp+0x100], 5
+jmp 004B674C
+
+00425F7B: // box_accessible1 (1)
+db 78
+
+00425FA1: // box_accessible2 (1)
+db 78
+
+00425FC7: // box_accessible3 (1)
+db 78
+
+00425FED: // box_accessible4 (1)
+db 78
+
+00426013: // box_accessible5 (1)
+db 78
+
+00426039: // box_accessible6 (1)
+db 78
+
+0042605B: // box_accessible7 (1)
+db 78
+
+0042607D: // box_accessible8 (1)
+db 78
+
+0042609F: // box_accessible9 (1)
+db 78

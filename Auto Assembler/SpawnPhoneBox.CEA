@@ -1,0 +1,141 @@
+00731380:
+pak:
+db 'resobjs', 0
+phonebox:
+db 'phonebox', 0
+phoneboxcoll:
+db 'phoneboxcoll', 0
+obe:
+db 'phonebox.obe', 0
+obe_coll:
+db 'phonebox_collision.obe', 0
+
+x:
+dd 0
+y:
+dd 0
+z:
+dd 0
+
+005F6900:
+// LoadWholePackage
+push 01
+push pak
+call 004A0700
+add esp, 08
+
+// LoadActor
+push 00
+push pak
+push obe
+call 004729B0
+add esp, 0C
+
+// LoadActor
+push 00
+push pak
+push obe_coll
+call 004729B0
+add esp, 0C
+
+// CreateActorInstance
+push    00
+push    00
+push    00
+push    00
+push    phonebox
+push    obe
+push    0070492C
+call    00472FB0
+add esp, 1C
+// Save result
+mov     esi, eax
+
+// CreateActorInstance
+push    00
+push    00
+push    00
+push    00
+push    phoneboxcoll
+push    obe_coll
+push    00703EB4
+call    00472FB0
+add esp, 1C
+// Save result
+push eax
+
+// Setup X Z coordinates
+mov     ecx, [006C8BC8]
+mov     eax, [006C8BCC]
+
+fld     dword ptr [ecx+C0]
+fsub    dword ptr [eax+00]
+fstp    [x]
+
+fld     dword ptr [ecx+C8]
+fsub    dword ptr [eax+08]
+fstp    [z]
+
+lea     eax, [x]
+lea     ecx, [x]
+push    43fa0000  // 500.0
+push    eax
+push    ecx
+call    0055AF80
+add     esp, 0C
+
+mov     eax, [006C8BC8]
+
+fld     [x]
+fadd    dword ptr [eax+C0]
+fstp    [x]
+
+fld     [z]
+fadd    dword ptr [eax+C8]
+fstp    [z]
+
+// Load Taz Y coordinate
+push eax
+push ecx
+mov     ecx, [006C8BC0]
+mov     eax, [ecx+C4]
+mov     [y], eax
+pop ecx
+pop eax
+
+// Set coordinates of instances
+mov     edx, [x]
+mov     [esi+C0], edx
+mov     ecx, [y]
+mov     [esi+C4], ecx
+mov     edx, [z]
+mov     [esi+C8], edx
+mov     ecx, 0
+mov     [esi+CC], ecx
+// Load result
+pop     eax
+mov     edx, [x]
+mov     [eax+C0], edx
+mov     ecx, [y]
+mov     [eax+C4], ecx
+mov     edx, [z]
+mov     [eax+C8], edx
+mov     ecx, 0
+mov     [eax+CC], ecx
+
+// CreateActorInstancePhoneBox
+push    0				// level=NULL
+push    0				// BOXTYPE_PHONE
+push    eax				// collisionInstance
+push    esi				// actorInstance
+call    004260D0
+add     esp, 10
+
+// ListAnimatingTextures
+//call 004DA2F0
+
+ret
+
+00655510:
+db 01
+

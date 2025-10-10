@@ -1,0 +1,48 @@
+00731380:
+pak:
+db 'alligator', 0
+007313A0:
+obe:
+db 'alligator.obe', 0
+
+005F6900:
+// LoadWholePackage("pak", 1);
+push 0x01
+push pak
+call 004A0700
+add esp, 0x08
+
+// LoadActor("obe", "pak", 0);
+push 0x00
+push pak
+push obe
+call 004729B0
+add esp, 0x0C
+
+// guiCreateEnemy
+push    00
+push    01
+push    00
+push    00
+push    00
+push    00
+push    00
+push    00
+push    obe
+push    00
+push    00642AB8
+call    004A5460
+add     esp, 2C
+
+// ListAnimatingTextures
+call 004DA2F0
+
+ret
+
+// Code patch: BOXTYPE_POLICE -> BOXTYPE_PHONE
+//004A55A6:
+//db 00
+
+00655510:
+db 01
+

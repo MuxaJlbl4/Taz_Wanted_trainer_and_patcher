@@ -1,0 +1,133 @@
+// dr = genericAI->deactivationRange
+// ar = genericAI->awarenessRange
+// mr = genericAI->movementRange
+
+// 0x459c4000 5000 (20) = 1
+// 0x456a6000 3750 (15) = 4
+// 0x453b8000 3000 (12) = 12
+
+004031F7: // dr_alligator (4)
+dd (float)100000.0
+//004031EA: // ar_mr_alligator (4)
+//dd (float)100000.0
+
+00403FD9: // dr_ar_anvilgang (4)
+dd (float)100000.0
+//00403F95: // mr_anvilgang (4) // skip MR patch to force distance attacks
+//dd (float)100000.0
+
+00405172: // dr_apes (4)
+dd (float)100000.0
+//00405179: // ar_apes (4)
+//dd (float)100000.0
+//00405180: // mr_apes (4)
+//dd (float)100000.0
+
+0040735D: // dr_bjshellac (4)
+dd (float)100000.0
+00407364: // ar_bjshellac (4)
+dd (float)100000.0
+//0040736B: // mr_bjshellac (4) // skip MR patch to force distance attacks
+//dd (float)100000.0
+
+004062EE: // dr_bears (4)
+dd (float)100000.0
+004062F6: // mr_bear1_swap (1)
+db 44
+004062F7: // mr_bear1 (4) // skip MR patch to force distance attacks
+dd (float)1500.0
+004062FF: // mr_bear2_swap (1)
+db 44
+00406300: // mr_bear2 (4)
+dd (float)100000.0
+0040631C: // ar_bears_swap (1)
+db 40
+0040631D: // ar_bears (4)
+dd (float)100000.0
+
+00408175: // dr_constructionworker (4)
+dd (float)100000.0
+0040817C: // ar_constructionworker (4)
+dd (float)100000.0
+00408183: // mr_constructionworker (4)
+dd (float)100000.0
+
+00408F8D: // dr_constructionbot (4)
+dd (float)100000.0
+00408F94: // ar_constructionbot (4)
+dd (float)100000.0
+00408F9B: // mr_constructionbot (4)
+dd (float)100000.0
+
+004098F6: // dr_doggy (4)
+dd (float)100000.0
+//004098FD: // ar_doggy (4)
+//dd (float)100000.0
+//0040991B: // mr_doggy (4)
+//dd (float)100000.0
+
+004108E0: // dr_minerbot (4)
+dd (float)100000.0
+004108E7: // ar_minerbot (4)
+dd (float)100000.0
+004108EE: // mr_minerbot (4)
+dd (float)100000.0
+
+00411417: // dr_museumguard (4)
+dd (float)100000.0
+0041141E: // ar_museumguard (4)
+dd (float)100000.0
+00411425: // mr_museumguard (4)
+dd (float)100000.0
+
+004121B5: // dr_nastycan (4)
+dd (float)100000.0
+004121BC: // ar_nastycan (4)
+dd (float)100000.0
+//004121C3: // mr_nastycan (4) // skip MR patch to force distance attacks
+//dd (float)100000.0
+
+004131F5: // dr_securitybot (4)
+dd (float)100000.0
+004131FC: // ar_securitybot (4)
+dd (float)100000.0
+00413203: // mr_securitybot (4)
+dd (float)100000.0
+
+00414638: // dr_shark (4)
+dd (float)100000.0
+//00414625: // ar_mr_shark (4)
+//dd (float)100000.0
+
+004150A5: // dr_taskforce (4)
+dd (float)100000.0
+004150AC: // ar_taskforce (4)
+dd (float)100000.0
+004150B3: // mr_taskforce (4)
+dd (float)100000.0
+
+00415A11: // dr_tazcatcher (4)
+dd (float)100000.0
+00415A18: // ar_tazcatcher (4)
+dd (float)100000.0
+00415A1F: // mr_tazcatcher (4)
+dd (float)100000.0
+
+00416339: // dr_tribalchief (4)
+dd (float)100000.0
+00416340: // ar_tribalchief (4)
+dd (float)100000.0
+00416347: // mr_tribalchief (4)
+dd (float)100000.0
+
+00419424: // dr_zookeeper (4)
+dd (float)100000.0
+0041942B: // ar_zookeeper (4)
+dd (float)100000.0
+00419432: // mr_zookeeper (4)
+dd (float)100000.0
+
+004B30C8: // ignore_box (5)
+jmp 004B30E7
+
+

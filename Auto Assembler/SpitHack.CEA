@@ -1,0 +1,27 @@
+00482F2C: // mounth_check (2)
+nop 2
+
+00482F7F: // snowball_obe (8)
+push 5B7A0A2E // obe CRC
+push esi
+jmp 00482F67
+
+00482F65: // snowball_inj (2)
+jmp 00482F7F
+
+004E1C61: // eyes_view (27)
+push 42FA0000
+push 0
+push 0
+push 0
+push 5B7A0A2E // obe CRC
+push ebx
+call 0047ACD0 // TazSpit()
+add esp, 18
+jmp 004E1C87
+
+// CRC:
+//cheeese.obe		05E43225
+//drumstickfull.obe	AB004F1E
+//snowball.obe	    5B7A0A2E
+

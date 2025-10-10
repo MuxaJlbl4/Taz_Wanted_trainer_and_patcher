@@ -1,0 +1,17 @@
+004EEB55: // time (4)
+dd 005F75DC
+
+004ECE49: // go_1 (4)
+dd 0064B7C4
+
+004F71CA: // go_2 (4)
+dd 0064B7C4
+
+00518CC1: // go_3 (4)
+dd 0064B760
+
+004D0740: // tutorial_skip (1)
+ret
+
+004167DB: // tweety_unlock (6)
+nop 6

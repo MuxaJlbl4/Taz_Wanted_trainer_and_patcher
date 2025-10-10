@@ -1,0 +1,36 @@
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+push eax
+mov eax, [007315C0]
+inc eax
+mov [007315C0], eax
+pop eax
+
+originalcode:
+sub esp,44
+push ebx
+mov ebx,[esp+4C]
+
+exit:
+jmp returnhere
+
+resetonscene:
+push eax
+xor eax, eax
+mov [007315C0], eax
+pop eax
+jmp Taz.exe+1F6E00
+
+
+"Taz.exe"+1A2B0:
+jmp newmem
+nop 3
+returnhere:
+
+"Taz.exe"+D2558:
+jmp resetonscene
