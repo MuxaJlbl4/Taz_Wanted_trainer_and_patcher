@@ -1,22 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.Diagnostics;
-using System.Runtime.InteropServices;
-using Utilities;
+﻿using FormSerialisation;
 using Microsoft.Win32;
-using System.IO;
-using FormSerialisation;
-using System.Net;
-using System.Text.RegularExpressions;
-using System.IO.Compression;
-using Taz_trainer.Properties;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
 using System.Globalization;
+using System.IO;
+using System.IO.Compression;
+using System.Linq;
+using System.Net;
 using System.Net.Http;
+using System.Net.Mime;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography;
+using System.Security.Policy;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using Taz_trainer.Properties;
+using Utilities;
 
 
 namespace Taz_trainer
@@ -261,6 +264,10 @@ namespace Taz_trainer
             gkh.HookedKeys.Add(Keys.PageDown);
             gkh.HookedKeys.Add(Keys.Back);
             gkh.HookedKeys.Add(Keys.Delete);
+            gkh.HookedKeys.Add(Keys.Oemcomma);
+            gkh.HookedKeys.Add(Keys.OemPeriod);
+            gkh.HookedKeys.Add(Keys.OemQuestion);
+            gkh.HookedKeys.Add(Keys.Oemtilde);
 
             gkh.KeyDown += new KeyEventHandler(gkh_KeyDown);
             gkh.KeyUp += new KeyEventHandler(gkh_KeyUp);
@@ -343,6 +350,7 @@ namespace Taz_trainer
             }
         }
 
+        // Init comboBoxes
         private void ProcessComboBox(ComboBox comboBox)
         {
             if (comboBox.SelectedIndex == -1 && comboBox.Items.Count > 0)
@@ -545,7 +553,7 @@ namespace Taz_trainer
             {
                 if (fpsCap.Enabled)
                     decFPScap(sender, e);
-                sendKey(Keys.Divide, "{/}");
+                sendKey(Keys.Divide, "{DIVIDE}");
             }
             if (e.KeyCode == Keys.Add)
             {
@@ -588,6 +596,30 @@ namespace Taz_trainer
                 if (resetLevel.Enabled)
                     this.resetLevel.Checked = !this.resetLevel.Checked;
                 sendKey(Keys.Delete, "{DEL}");
+            }
+            if (e.KeyCode == Keys.Oemcomma)
+            {
+                if (aggressiveAI.Enabled)
+                    this.aggressiveAI.Checked = !this.aggressiveAI.Checked;
+                sendKey(Keys.Oemcomma, "{,}");
+            }
+            if (e.KeyCode == Keys.OemPeriod)
+            {
+                if (spitHack.Enabled)
+                    this.spitHack.Checked = !this.spitHack.Checked;
+                sendKey(Keys.OemPeriod, "{.}");
+            }
+            if (e.KeyCode == Keys.OemQuestion)
+            {
+                if (gameInfo.Enabled)
+                    this.gameInfo.Checked = !this.gameInfo.Checked;
+                sendKey(Keys.OemQuestion, "{/}");
+            }
+            if (e.KeyCode == Keys.Oemtilde)
+            {
+                if (debris.Enabled)
+                    this.debris.Checked = !this.debris.Checked;
+                sendKey(Keys.Oemtilde, "{`}");
             }
             if (e.Modifiers == Keys.Alt && e.KeyCode == Keys.F4)
             {
@@ -826,36 +858,21 @@ namespace Taz_trainer
             if (this.drawDistance.Checked == true)
             {
                 //environment
-                byte[] bytes = { 0xFF, 0xFF }; // mov word ptr [esi+1E6h], 0FFFFh
-                checkAndWrite((IntPtr)0x00474FC4, bytes, bytes.Length, new IntPtr());
-                byte[] bytes2 = { 0xEB }; // jmp
-                checkAndWrite((IntPtr)0x00474FD0, bytes2, bytes2.Length, new IntPtr());
+                byte[] ret = { 0xC3 };
+                checkAndWrite((IntPtr)0x004D2650, ret, ret.Length, new IntPtr());
+                checkAndWrite((IntPtr)0x004D2690, ret, ret.Length, new IntPtr());
 
-                // CollectibleTwinkle
-                byte[] bytes3 = { 0x00, 0x00, 0x80, 0x7F }; // +Inf
-                checkAndWrite((IntPtr)0x005F66E8, bytes3, bytes3.Length, new IntPtr());
-                byte[] bytes4 = { 0xE8, 0x66, 0x5F, 0x00 }; // fcomp [+Inf]
-                checkAndWrite((IntPtr)0x0047E00B, bytes4, bytes4.Length, new IntPtr());
-                byte[] bytes5 = { 0xD9, 0xE8, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 }; // fld1; nops
-                checkAndWrite((IntPtr)0x0047E016, bytes5, bytes5.Length, new IntPtr());
-
-                message("Unlimited Draw Distance: On");
+                message("Wall Hack: On");
             }
             else
             {
                 //environment
-                byte[] bytes = { 0x00, 0x00 }; // mov word ptr [esi+1E6h], 0h
-                checkAndWrite((IntPtr)0x00474FC4, bytes, bytes.Length, new IntPtr());
-                byte[] bytes2 = { 0x75 }; // jnz
-                checkAndWrite((IntPtr)0x00474FD0, bytes2, bytes2.Length, new IntPtr());
+                byte[] bytes = { 0x68 };
+                byte[] bytes2 = { 0x6A };
+                checkAndWrite((IntPtr)0x004D2650, bytes, bytes.Length, new IntPtr());
+                checkAndWrite((IntPtr)0x004D2690, bytes2, bytes2.Length, new IntPtr());
 
-                // CollectibleTwinkle
-                byte[] bytes4 = { 0xF4, 0x75, 0x5F, 0x00 }; // fcomp [5000.0]
-                checkAndWrite((IntPtr)0x0047E00B, bytes4, bytes4.Length, new IntPtr());
-                byte[] bytes5 = { 0xD9, 0x46, 0x3C, 0xD8, 0x0D, 0xE4, 0x7E, 0x5F, 0x00, 0xD9, 0xFE }; // fld dword ptr [esi+3Ch]; fmul [0.00062831852]; fsin
-                checkAndWrite((IntPtr)0x0047E016, bytes5, bytes5.Length, new IntPtr());
-
-                message("Unlimited Draw Distance: Off");
+                message("Wall Hack: Off");
             }
         }
 
@@ -1394,6 +1411,34 @@ namespace Taz_trainer
             }
         }
 
+        private void spitHack_CheckedChanged(object sender, EventArgs e)
+        {
+            if (this.spitHack.Checked == true)
+            {
+                byte[] mounth_check = { 0x66, 0x90 };
+                checkAndWrite((IntPtr)0x00482F2C, mounth_check, mounth_check.Length, new IntPtr());
+                byte[] snowball_obe = { 0x68, 0x2E, 0x0A, 0x7A, 0x5B, 0x56, 0xEB, 0xE0 };
+                checkAndWrite((IntPtr)0x00482F7F, snowball_obe, snowball_obe.Length, new IntPtr());
+                byte[] snowball_inj = { 0xEB, 0x18 };
+                checkAndWrite((IntPtr)0x00482F65, snowball_inj, snowball_inj.Length, new IntPtr());
+                byte[] eyes_view = { 0x68, 0x00, 0x00, 0xFA, 0x42, 0x6A, 0x00, 0x6A, 0x00, 0x6A, 0x00, 0x68, 0x2E, 0x0A, 0x7A, 0x5B, 0x53, 0xE8, 0x59, 0x90, 0xF9, 0xFF, 0x83, 0xC4, 0x18, 0xEB, 0x0B };
+                checkAndWrite((IntPtr)0x004E1C61, eyes_view, eyes_view.Length, new IntPtr());
+                message("Snowball Hack: On");
+            }
+            else
+            {
+                byte[] mounth_check = { 0x74, 0x51 };
+                checkAndWrite((IntPtr)0x00482F2C, mounth_check, mounth_check.Length, new IntPtr());
+                byte[] snowball_obe = { 0x6A, 0x10, 0xE8, 0xBA, 0xD7, 0x04, 0x00, 0x53 };
+                checkAndWrite((IntPtr)0x00482F7F, snowball_obe, snowball_obe.Length, new IntPtr());
+                byte[] snowball_inj = { 0x53, 0x56 };
+                checkAndWrite((IntPtr)0x00482F65, snowball_inj, snowball_inj.Length, new IntPtr());
+                byte[] eyes_view = { 0x8B, 0x8B, 0xCC, 0x01, 0x00, 0x00, 0x8B, 0x81, 0x94, 0x01, 0x00, 0x00, 0x85, 0xC0, 0x74, 0x16, 0x68, 0x00, 0x00, 0xFA, 0x42, 0x6A, 0x00, 0x6A, 0x00, 0x6A, 0x00 };
+                checkAndWrite((IntPtr)0x004E1C61, eyes_view, eyes_view.Length, new IntPtr());
+                message("Snowball Hack: Off");
+            }
+        }
+
 
         private void unsinkabilityMode_CheckedChanged(object sender, EventArgs e)
         {
@@ -1516,7 +1561,7 @@ namespace Taz_trainer
             check = checkAndRead((IntPtr)0x005F6E00, check, check.Length, new IntPtr());
             if (check[0] == 0)
             {
-                message("Cooperative Fix patch required");
+                message("Coop Patch required");
                 return;
             }
 
@@ -1634,7 +1679,7 @@ namespace Taz_trainer
             {
                 // Check patches
                 byte[] check = { 0x00 };
-                check = checkAndRead((IntPtr)0x005F6A50, check, check.Length, new IntPtr());
+                check = checkAndRead((IntPtr)0x005F6B00, check, check.Length, new IntPtr());
                 if (check[0] == 0)
                 {
                     message("Advanced Cheats patch required");
@@ -1976,11 +2021,15 @@ namespace Taz_trainer
                 // Kill existing process
                 if (checkProcess())
                 {
+#if DEBUG
+                    killProcess();
+#else
                     var result = MessageBox.Show("Another game instance is already running. Terminate?", "Patch Game", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     if (result == DialogResult.Yes)
                         killProcess();
                     else
                         return;
+#endif
                 }
 
                 bool backuped = false;
@@ -2045,8 +2094,200 @@ namespace Taz_trainer
                         file.WriteByte(0x0F);
                     }
 
+                    // Chili Fix
+                    if (chiliFix.Checked && chiliFix.Enabled)
+                    {
+                        file.Position = 0x11E610;
+                        byte[] fTime1 = { 0xB8, 0x7E, 0x5F, 0x00 };
+                        file.Write(fTime1, 0, fTime1.Length);
+
+                        file.Position = 0x11E8B3;
+                        byte[] fTime2 = { 0xB8, 0x7E, 0x5F, 0x00 };
+                        file.Write(fTime2, 0, fTime2.Length);
+
+                        file.Position = 0x11E8CD;
+                        byte[] fTime3 = { 0xB8, 0x7E, 0x5F, 0x00 };
+                        file.Write(fTime3, 0, fTime3.Length);
+
+                        file.Position = 0x11E90E;
+                        byte[] fTime4 = { 0xB8, 0x7E, 0x5F, 0x00 };
+                        file.Write(fTime4, 0, fTime4.Length);
+
+                        file.Position = 0x11E986;
+                        byte[] fTime5 = { 0xB8, 0x7E, 0x5F, 0x00 };
+                        file.Write(fTime5, 0, fTime5.Length);
+
+                        file.Position = 0x11E9E6;
+                        byte[] fTime6 = { 0xB8, 0x7E, 0x5F, 0x00 };
+                        file.Write(fTime6, 0, fTime6.Length);
+
+                        file.Position = 0x11EA6D;
+                        byte[] fTime7 = { 0xB8, 0x7E, 0x5F, 0x00 };
+                        file.Write(fTime7, 0, fTime7.Length);
+                    }
+                    else
+                    {
+                        file.Position = 0x11E610;
+                        byte[] fTime1 = { 0x88, 0x4B, 0x6F, 0x00 };
+                        file.Write(fTime1, 0, fTime1.Length);
+
+                        file.Position = 0x11E8B3;
+                        byte[] fTime2 = { 0x88, 0x4B, 0x6F, 0x00 };
+                        file.Write(fTime2, 0, fTime2.Length);
+
+                        file.Position = 0x11E8CD;
+                        byte[] fTime3 = { 0x88, 0x4B, 0x6F, 0x00 };
+                        file.Write(fTime3, 0, fTime3.Length);
+
+                        file.Position = 0x11E90E;
+                        byte[] fTime4 = { 0x88, 0x4B, 0x6F, 0x00 };
+                        file.Write(fTime4, 0, fTime4.Length);
+
+                        file.Position = 0x11E986;
+                        byte[] fTime5 = { 0xD8, 0x0D, 0x88, 0x4B };
+                        file.Write(fTime5, 0, fTime5.Length);
+
+                        file.Position = 0x11E9E6;
+                        byte[] fTime6 = { 0x88, 0x4B, 0x6F, 0x00 };
+                        file.Write(fTime6, 0, fTime6.Length);
+
+                        file.Position = 0x11EA6D;
+                        byte[] fTime7 = { 0x88, 0x4B, 0x6F, 0x00 };
+                        file.Write(fTime7, 0, fTime7.Length);
+                    }
+
+                    // Playpen Fix
+                    if (playpenFix.Checked && playpenFix.Enabled)
+                    {
+                        file.Position = 0xD33B3;
+                        byte[] skip_duplicate = { 0x0F, 0x1F, 0x44, 0x00, 0x00 };
+                        file.Write(skip_duplicate, 0, skip_duplicate.Length);
+                    }
+                    else
+                    {
+                        file.Position = 0xD33B3;
+                        byte[] skip_duplicate = { 0xE8, 0x98, 0xD4, 0xFC, 0xFF };
+                        file.Write(skip_duplicate, 0, skip_duplicate.Length);
+                    }
+
+                    // Quick Start
+                    if (quickStart.Checked && quickStart.Enabled)
+                    {
+                        file.Position = 0xEEB55;
+                        byte[] time = { 0xDC, 0x75, 0x5F, 0x00 };
+                        file.Write(time, 0, time.Length);
+
+                        file.Position = 0xECE49;
+                        byte[] go_1 = { 0xC4, 0xB7, 0x64, 0x00 };
+                        file.Write(go_1, 0, go_1.Length);
+
+                        file.Position = 0xF71CA;
+                        byte[] go_2 = { 0xC4, 0xB7, 0x64, 0x00 };
+                        file.Write(go_2, 0, go_2.Length);
+
+                        file.Position = 0x118CC1;
+                        byte[] go_3 = { 0x60, 0xB7, 0x64, 0x00 };
+                        file.Write(go_3, 0, go_3.Length);
+
+                        /*file.Position = 0xD0740;
+                        byte[] tutorial_skip = { 0xC3 };
+                        file.Write(tutorial_skip, 0, tutorial_skip.Length);
+
+                        file.Position = 0x167DB;
+                        byte[] tweety_unlock = { 0x66, 0x0F, 0x1F, 0x44, 0x00, 0x00 };
+                        file.Write(tweety_unlock, 0, tweety_unlock.Length);*/
+                    }
+                    else
+                    {
+                        file.Position = 0xEEB55;
+                        byte[] time = { 0xCC, 0x75, 0x5F, 0x00 };
+                        file.Write(time, 0, time.Length);
+
+                        file.Position = 0xECE49;
+                        byte[] go_1 = { 0x20, 0xB6, 0x64, 0x00 };
+                        file.Write(go_1, 0, go_1.Length);
+
+                        file.Position = 0xF71CA;
+                        byte[] go_2 = { 0x20, 0xB6, 0x64, 0x00 };
+                        file.Write(go_2, 0, go_2.Length);
+
+                        file.Position = 0x118CC1;
+                        byte[] go_3 = { 0x18, 0xFC, 0x64, 0x00 };
+                        file.Write(go_3, 0, go_3.Length);
+
+                        /*file.Position = 0xD0740;
+                        byte[] tutorial_skip = { 0x53 };
+                        file.Write(tutorial_skip, 0, tutorial_skip.Length);
+
+                        file.Position = 0x167DB;
+                        byte[] tweety_unlock = { 0x88, 0x0D, 0x02, 0x8E, 0x6C, 0x00 };
+                        file.Write(tweety_unlock, 0, tweety_unlock.Length);*/
+                    }
+
+                    // BGM Mood (MusicMood.CEA)
+                    if (moodComboBox.SelectedIndex > 0 && moodComboBox.Enabled)
+                    {
+                        file.Position = 0xB9EC0;
+                        byte[] mood_code = { 0x8B, 0x44, 0x24, 0x08, 0xC7, 0x41, 0x78, 0x00, 0x00, 0x00, 0x00, 0xC7, 0x41, 0x7C, 0x00, 0x00, 0x00, 0x00, 0xC2, 0x08, 0x00 };
+                        if (moodComboBox.SelectedIndex > 1)
+                            mood_code[7] = (byte) (moodComboBox.SelectedIndex - 1);
+                        file.Write(mood_code, 0, mood_code.Length);
+                    }
+                    else
+                    {
+                        file.Position = 0xB9EC0;
+                        byte[] mood_code = { 0xA0, 0x30, 0x4C, 0x70, 0x00, 0x3C, 0x15, 0x7C, 0x15, 0x3C, 0x1D, 0x7F, 0x11, 0x8B, 0x44, 0x24, 0x08, 0xC7, 0x41, 0x78, 0x02 };
+                        file.Write(mood_code, 0, mood_code.Length);
+                    }
+
+                    // Loud Fix (LoudFix.CEA)
+                    if (noiseFix.Checked && noiseFix.Enabled)
+                    {
+                        file.Position = 0x9450;
+                        byte[] loudfix_code = { 0x50, 0x56, 0xE8, 0x99, 0xCB, 0x15, 0x00, 0x83, 0xC4, 0x04, 0x3B, 0x05, 0x34, 0x55, 0x65, 0x00, 0x89, 0x05, 0x34, 0x55, 0x65, 0x00, 0x58, 0x0F, 0x84, 0x11, 0xAE, 0x0C, 0x00, 0x6A, 0x00, 0x6A, 0x02, 0x56, 0xE9, 0x4C, 0xAD, 0x0C, 0x00, 0xFF, 0x74, 0x24, 0xF8, 0xE8, 0x70, 0xCB, 0x15, 0x00, 0x83, 0xC4, 0x04, 0x3B, 0x05, 0x34, 0x55, 0x65, 0x00, 0x89, 0x05, 0x34, 0x55, 0x65, 0x00, 0x0F, 0x84, 0x05, 0x00, 0x00, 0x00, 0xE8, 0x06, 0xFF, 0x16, 0x00, 0xE9, 0xC3, 0xEF, 0x0C, 0x00, 0xC7, 0x05, 0x34, 0x55, 0x65, 0x00, 0x00, 0x00, 0x00, 0x00, 0x55, 0x8B, 0xEC, 0x83, 0xEC, 0x08, 0xE9, 0x12, 0xEE, 0x09, 0x00 };
+                        file.Write(loudfix_code, 0, loudfix_code.Length);
+
+                        file.Position = 0xD41BE;
+                        byte[] playsample_inj = { 0xE9, 0x8D, 0x52, 0xF3, 0xFF };
+                        file.Write(playsample_inj, 0, playsample_inj.Length);
+
+                        file.Position = 0xD845D;
+                        byte[] bsplaysample_inj = { 0xE9, 0x15, 0x10, 0xF3, 0xFF };
+                        file.Write(bsplaysample_inj, 0, bsplaysample_inj.Length);
+
+                        file.Position = 0xA82C0;
+                        byte[] mainloop = { 0xE9, 0xDA, 0x11, 0xF6, 0xFF };
+                        file.Write(mainloop, 0, mainloop.Length);
+
+                        file.Position = 0x10195E;
+                        byte[] conveyor = { 0x7F };
+                        file.Write(conveyor, 0, conveyor.Length);
+                    }
+                    else
+                    {
+                        file.Position = 0x9450;
+                        byte[] loudfix_code = { 0x8B, 0x44, 0x24, 0x08, 0x83, 0xEC, 0x10, 0x48, 0xB8, 0xEC, 0x3E, 0x63, 0x00, 0x74, 0x04, 0x8B, 0x44, 0x24, 0x18, 0x56, 0x8B, 0x74, 0x24, 0x18, 0x50, 0x56, 0xE8, 0x61, 0x67, 0x00, 0x00, 0xD8, 0x1D, 0x98, 0x73, 0x5F, 0x00, 0x83, 0xC4, 0x08, 0xDF, 0xE0, 0xF6, 0xC4, 0x01, 0x0F, 0x84, 0x57, 0x01, 0x00, 0x00, 0xA1, 0xC0, 0x8B, 0x6C, 0x00, 0x6A, 0x16, 0x50, 0xE8, 0x70, 0xF9, 0x0C, 0x00, 0x83, 0xC4, 0x08, 0x84, 0xC0, 0x0F, 0x84, 0x3F, 0x01, 0x00, 0x00, 0x8B, 0x0D, 0xC0, 0x8B, 0x6C, 0x00, 0x68, 0xDB, 0x0F, 0x49, 0x40, 0x6A, 0x00, 0x81, 0xC6, 0xC0, 0x00, 0x00, 0x00, 0x56, 0x51, 0xE8, 0x3B, 0x47, 0x00 };
+                        file.Write(loudfix_code, 0, loudfix_code.Length);
+
+                        file.Position = 0xD41BE;
+                        byte[] playsample_inj = { 0x6A, 0x00, 0x6A, 0x02, 0x56 };
+                        file.Write(playsample_inj, 0, playsample_inj.Length);
+
+                        file.Position = 0xD845D;
+                        byte[] bsplaysample_inj = { 0xE8, 0x3E, 0x0F, 0x0A, 0x00 };
+                        file.Write(bsplaysample_inj, 0, bsplaysample_inj.Length);
+
+                        file.Position = 0xA82C0;
+                        byte[] mainloop = { 0x55, 0x8B, 0xEC, 0x83, 0xEC };
+                        file.Write(mainloop, 0, mainloop.Length);
+
+                        file.Position = 0x10195E;
+                        byte[] conveyor = { 0xFF };
+                        file.Write(conveyor, 0, conveyor.Length);
+                    }
+
                     // Subtitles
-                    if (cutsceneSubtitles.Checked && cutsceneSubtitles.Enabled)
+                    if (subsComboBox.SelectedIndex == 2 && subsComboBox.Enabled)
                     {
                         byte[] intro = new byte[] { 0xE8, 0x09, 0x6F, 0x00, 0x00 };
                         file.Position = 0xD2D92;
@@ -2091,9 +2332,9 @@ namespace Taz_trainer
 
 
                     // Draw distance
-                    if (disableDrawDistance.Checked && disableDrawDistance.Enabled)
+                    if (drawComboBox.SelectedIndex > 0 && drawComboBox.Enabled)
                     {
-
+                        // Draw distace hack
                         byte[] bytes = new byte[] { 0xFF, 0xFF, 0xEB }; // 00 00 75
                         file.Position = 0x74FC4;
                         file.WriteByte(bytes[0]);
@@ -2101,6 +2342,7 @@ namespace Taz_trainer
                         file.Position = 0x74FD0;
                         file.WriteByte(bytes[2]);
 
+                        // Effects draw distace
                         byte[] bytes0 = { 0x00, 0x00, 0x80, 0x7F };
                         byte[] bytes1 = { 0xE8, 0x66, 0x5F, 0x00 };
                         byte[] bytes2 = { 0xD9, 0xE8, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90, 0x90 };
@@ -2110,6 +2352,149 @@ namespace Taz_trainer
                         file.Write(bytes1, 0, bytes1.Length);
                         file.Position = 0x7E016;
                         file.Write(bytes2, 0, bytes2.Length);
+
+                        if (drawComboBox.SelectedIndex == 2)
+                        {
+                            // Actors
+                            file.Position = 0x31F7;
+                            byte[] dr_alligator = { 0x00, 0x50, 0xC3, 0x47 };
+                            file.Write(dr_alligator, 0, dr_alligator.Length);
+
+                            file.Position = 0x3FD9;
+                            byte[] dr_ar_anvilgang = { 0x00, 0x50, 0xC3, 0x47 };
+                            file.Write(dr_ar_anvilgang, 0, dr_ar_anvilgang.Length);
+
+                            file.Position = 0x5172;
+                            byte[] dr_apes = { 0x00, 0x50, 0xC3, 0x47 };
+                            file.Write(dr_apes, 0, dr_apes.Length);
+
+                            file.Position = 0x735D;
+                            byte[] dr_bjshellac = { 0x00, 0x50, 0xC3, 0x47 };
+                            file.Write(dr_bjshellac, 0, dr_bjshellac.Length);
+
+                            file.Position = 0x62EE;
+                            byte[] dr_bears = { 0x00, 0x50, 0xC3, 0x47 };
+                            file.Write(dr_bears, 0, dr_bears.Length);
+
+                            file.Position = 0x8175;
+                            byte[] dr_constructionworker = { 0x00, 0x50, 0xC3, 0x47 };
+                            file.Write(dr_constructionworker, 0, dr_constructionworker.Length);
+
+                            file.Position = 0x8F8D;
+                            byte[] dr_constructionbot = { 0x00, 0x50, 0xC3, 0x47 };
+                            file.Write(dr_constructionbot, 0, dr_constructionbot.Length);
+
+                            file.Position = 0x98F6;
+                            byte[] dr_doggy = { 0x00, 0x50, 0xC3, 0x47 };
+                            file.Write(dr_doggy, 0, dr_doggy.Length);
+
+                            file.Position = 0x108E0;
+                            byte[] dr_minerbot = { 0x00, 0x50, 0xC3, 0x47 };
+                            file.Write(dr_minerbot, 0, dr_minerbot.Length);
+
+                            file.Position = 0x11417;
+                            byte[] dr_museumguard = { 0x00, 0x50, 0xC3, 0x47 };
+                            file.Write(dr_museumguard, 0, dr_museumguard.Length);
+
+                            file.Position = 0x121B5;
+                            byte[] dr_nastycan = { 0x00, 0x50, 0xC3, 0x47 };
+                            file.Write(dr_nastycan, 0, dr_nastycan.Length);
+
+                            file.Position = 0x131F5;
+                            byte[] dr_securitybot = { 0x00, 0x50, 0xC3, 0x47 };
+                            file.Write(dr_securitybot, 0, dr_securitybot.Length);
+
+                            file.Position = 0x14638;
+                            byte[] dr_shark = { 0x00, 0x50, 0xC3, 0x47 };
+                            file.Write(dr_shark, 0, dr_shark.Length);
+
+                            file.Position = 0x150A5;
+                            byte[] dr_taskforce = { 0x00, 0x50, 0xC3, 0x47 };
+                            file.Write(dr_taskforce, 0, dr_taskforce.Length);
+
+                            file.Position = 0x15A11;
+                            byte[] dr_tazcatcher = { 0x00, 0x50, 0xC3, 0x47 };
+                            file.Write(dr_tazcatcher, 0, dr_tazcatcher.Length);
+
+                            file.Position = 0x16339;
+                            byte[] dr_tribalchief = { 0x00, 0x50, 0xC3, 0x47 };
+                            file.Write(dr_tribalchief, 0, dr_tribalchief.Length);
+
+                            file.Position = 0x19424;
+                            byte[] dr_zookeeper = { 0x00, 0x50, 0xC3, 0x47 };
+                            file.Write(dr_zookeeper, 0, dr_zookeeper.Length);
+                        }
+                        else
+                        {
+                            // Restore Actors
+                            file.Position = 0x31F7;
+                            byte[] dr_alligator = { 0x00, 0x80, 0x3B, 0x45 };
+                            file.Write(dr_alligator, 0, dr_alligator.Length);
+
+                            file.Position = 0x3FD9;
+                            byte[] dr_ar_anvilgang = { 0x00, 0x40, 0x9C, 0x45 };
+                            file.Write(dr_ar_anvilgang, 0, dr_ar_anvilgang.Length);
+
+                            file.Position = 0x5172;
+                            byte[] dr_apes = { 0x00, 0x80, 0x3B, 0x45 };
+                            file.Write(dr_apes, 0, dr_apes.Length);
+
+                            file.Position = 0x735D;
+                            byte[] dr_bjshellac = { 0x00, 0x60, 0x6A, 0x45 };
+                            file.Write(dr_bjshellac, 0, dr_bjshellac.Length);
+
+                            file.Position = 0x62EE;
+                            byte[] dr_bears = { 0x00, 0x80, 0x3B, 0x45 };
+                            file.Write(dr_bears, 0, dr_bears.Length);
+
+                            file.Position = 0x8175;
+                            byte[] dr_constructionworker = { 0x00, 0x80, 0x3B, 0x45 };
+                            file.Write(dr_constructionworker, 0, dr_constructionworker.Length);
+
+                            file.Position = 0x8F8D;
+                            byte[] dr_constructionbot = { 0x00, 0x80, 0x3B, 0x45 };
+                            file.Write(dr_constructionbot, 0, dr_constructionbot.Length);
+
+                            file.Position = 0x98F6;
+                            byte[] dr_doggy = { 0x00, 0x80, 0x3B, 0x45 };
+                            file.Write(dr_doggy, 0, dr_doggy.Length);
+
+                            file.Position = 0x108E0;
+                            byte[] dr_minerbot = { 0x00, 0x80, 0x3B, 0x45 };
+                            file.Write(dr_minerbot, 0, dr_minerbot.Length);
+
+                            file.Position = 0x11417;
+                            byte[] dr_museumguard = { 0x00, 0x60, 0x6A, 0x45 };
+                            file.Write(dr_museumguard, 0, dr_museumguard.Length);
+
+                            file.Position = 0x121B5;
+                            byte[] dr_nastycan = { 0x00, 0x60, 0x6A, 0x45 };
+                            file.Write(dr_nastycan, 0, dr_nastycan.Length);
+
+                            file.Position = 0x131F5;
+                            byte[] dr_securitybot = { 0x00, 0x80, 0x3B, 0x45 };
+                            file.Write(dr_securitybot, 0, dr_securitybot.Length);
+
+                            file.Position = 0x14638;
+                            byte[] dr_shark = { 0x00, 0x80, 0x3B, 0x45 };
+                            file.Write(dr_shark, 0, dr_shark.Length);
+
+                            file.Position = 0x150A5;
+                            byte[] dr_taskforce = { 0x00, 0x80, 0x3B, 0x45 };
+                            file.Write(dr_taskforce, 0, dr_taskforce.Length);
+
+                            file.Position = 0x15A11;
+                            byte[] dr_tazcatcher = { 0x00, 0x80, 0x3B, 0x45 };
+                            file.Write(dr_tazcatcher, 0, dr_tazcatcher.Length);
+
+                            file.Position = 0x16339;
+                            byte[] dr_tribalchief = { 0x00, 0x60, 0x6A, 0x45 };
+                            file.Write(dr_tribalchief, 0, dr_tribalchief.Length);
+
+                            file.Position = 0x19424;
+                            byte[] dr_zookeeper = { 0x00, 0x80, 0x3B, 0x45 };
+                            file.Write(dr_zookeeper, 0, dr_zookeeper.Length);
+                        }
                     }
                     else
                     {
@@ -2131,6 +2516,129 @@ namespace Taz_trainer
                         file.Write(bytes1, 0, bytes1.Length);
                         file.Position = 0x7E016;
                         file.Write(bytes2, 0, bytes2.Length);
+
+                        // Restore Actors
+                        file.Position = 0x31F7;
+                        byte[] dr_alligator = { 0x00, 0x80, 0x3B, 0x45 };
+                        file.Write(dr_alligator, 0, dr_alligator.Length);
+
+                        file.Position = 0x3FD9;
+                        byte[] dr_ar_anvilgang = { 0x00, 0x40, 0x9C, 0x45 };
+                        file.Write(dr_ar_anvilgang, 0, dr_ar_anvilgang.Length);
+
+                        file.Position = 0x5172;
+                        byte[] dr_apes = { 0x00, 0x80, 0x3B, 0x45 };
+                        file.Write(dr_apes, 0, dr_apes.Length);
+
+                        file.Position = 0x735D;
+                        byte[] dr_bjshellac = { 0x00, 0x60, 0x6A, 0x45 };
+                        file.Write(dr_bjshellac, 0, dr_bjshellac.Length);
+
+                        file.Position = 0x62EE;
+                        byte[] dr_bears = { 0x00, 0x80, 0x3B, 0x45 };
+                        file.Write(dr_bears, 0, dr_bears.Length);
+
+                        file.Position = 0x8175;
+                        byte[] dr_constructionworker = { 0x00, 0x80, 0x3B, 0x45 };
+                        file.Write(dr_constructionworker, 0, dr_constructionworker.Length);
+
+                        file.Position = 0x8F8D;
+                        byte[] dr_constructionbot = { 0x00, 0x80, 0x3B, 0x45 };
+                        file.Write(dr_constructionbot, 0, dr_constructionbot.Length);
+
+                        file.Position = 0x98F6;
+                        byte[] dr_doggy = { 0x00, 0x80, 0x3B, 0x45 };
+                        file.Write(dr_doggy, 0, dr_doggy.Length);
+
+                        file.Position = 0x108E0;
+                        byte[] dr_minerbot = { 0x00, 0x80, 0x3B, 0x45 };
+                        file.Write(dr_minerbot, 0, dr_minerbot.Length);
+
+                        file.Position = 0x11417;
+                        byte[] dr_museumguard = { 0x00, 0x60, 0x6A, 0x45 };
+                        file.Write(dr_museumguard, 0, dr_museumguard.Length);
+
+                        file.Position = 0x121B5;
+                        byte[] dr_nastycan = { 0x00, 0x60, 0x6A, 0x45 };
+                        file.Write(dr_nastycan, 0, dr_nastycan.Length);
+
+                        file.Position = 0x131F5;
+                        byte[] dr_securitybot = { 0x00, 0x80, 0x3B, 0x45 };
+                        file.Write(dr_securitybot, 0, dr_securitybot.Length);
+
+                        file.Position = 0x14638;
+                        byte[] dr_shark = { 0x00, 0x80, 0x3B, 0x45 };
+                        file.Write(dr_shark, 0, dr_shark.Length);
+
+                        file.Position = 0x150A5;
+                        byte[] dr_taskforce = { 0x00, 0x80, 0x3B, 0x45 };
+                        file.Write(dr_taskforce, 0, dr_taskforce.Length);
+
+                        file.Position = 0x15A11;
+                        byte[] dr_tazcatcher = { 0x00, 0x80, 0x3B, 0x45 };
+                        file.Write(dr_tazcatcher, 0, dr_tazcatcher.Length);
+
+                        file.Position = 0x16339;
+                        byte[] dr_tribalchief = { 0x00, 0x60, 0x6A, 0x45 };
+                        file.Write(dr_tribalchief, 0, dr_tribalchief.Length);
+
+                        file.Position = 0x19424;
+                        byte[] dr_zookeeper = { 0x00, 0x80, 0x3B, 0x45 };
+                        file.Write(dr_zookeeper, 0, dr_zookeeper.Length);
+                    }
+
+                    // Outline Fix
+                    if (outlineFix.Checked && outlineFix.Enabled)
+                    {
+                        file.Position = 0x7563F;
+                        byte[] cartoon1 = { 0xEB, 0x0F };
+                        file.Write(cartoon1, 0, cartoon1.Length);
+
+                        file.Position = 0x756BE;
+                        byte[] cartoon2 = { 0xEB, 0x0B };
+                        file.Write(cartoon2, 0, cartoon2.Length);
+
+                        file.Position = 0x7570E;
+                        byte[] cartoon3 = { 0xEB, 0x0B };
+                        file.Write(cartoon3, 0, cartoon3.Length);
+
+                        file.Position = 0x7576D;
+                        byte[] line = { 0xEB, 0x0B };
+                        file.Write(line, 0, line.Length);
+
+                        file.Position = 0x757CD;
+                        byte[] line_only = { 0xEB, 0x0B };
+                        file.Write(line_only, 0, line_only.Length);
+
+                        file.Position = 0x75BE0;
+                        byte[] change_actor = { 0xEB, 0x0B };
+                        file.Write(change_actor, 0, change_actor.Length);
+                    }
+                    else
+                    {
+                        file.Position = 0x7563F;
+                        byte[] cartoon1 = { 0x8B, 0x86 };
+                        file.Write(cartoon1, 0, cartoon1.Length);
+
+                        file.Position = 0x756BE;
+                        byte[] cartoon2 = { 0x8B, 0x8E };
+                        file.Write(cartoon2, 0, cartoon2.Length);
+
+                        file.Position = 0x7570E;
+                        byte[] cartoon3 = { 0x8B, 0x96 };
+                        file.Write(cartoon3, 0, cartoon3.Length);
+
+                        file.Position = 0x7576D;
+                        byte[] line = { 0x8B, 0x86 };
+                        file.Write(line, 0, line.Length);
+
+                        file.Position = 0x757CD;
+                        byte[] line_only = { 0x8B, 0x86 };
+                        file.Write(line_only, 0, line_only.Length);
+
+                        file.Position = 0x75BE0;
+                        byte[] change_actor = { 0x8B, 0x86 };
+                        file.Write(change_actor, 0, change_actor.Length);
                     }
 
                     // Fog
@@ -2420,7 +2928,7 @@ namespace Taz_trainer
                     }
 
                     // Coop fix
-                    if (coopFix.Checked && coopFix.Enabled) // unavailable with d3d8to9
+                    if (coopFix.Checked && coopFix.Enabled)
                     {
                         // CoopPatch.CEA
                         file.Position = 0xD2558;
@@ -2454,6 +2962,178 @@ namespace Taz_trainer
                         file.Position = 0x1F6E00;
                         byte[] coop_patch = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
                         file.Write(coop_patch, 0, coop_patch.Length);
+                    }
+
+                    // Nightmare Mode
+                    if (nightmare.Checked && nightmare.Enabled)
+                    {
+                        // Nightmare.CEA
+                        file.Position = 0x13710;
+                        byte[] inj_code = { 0x6A, 0x00, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x50, 0xE8, 0x92, 0x61, 0x0C, 0x00, 0x83, 0xC4, 0x08, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x50, 0xE8, 0x03, 0xD7, 0x01, 0x00, 0x83, 0xC4, 0x04, 0x68, 0x00, 0x96, 0x68, 0x00, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x50, 0xE8, 0x6F, 0x20, 0x06, 0x00, 0x83, 0xC4, 0x08, 0x8B, 0x88, 0xCC, 0x01, 0x00, 0x00, 0xC7, 0x81, 0x70, 0x01, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0xC7, 0x81, 0x48, 0x01, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0xC7, 0x81, 0x3C, 0x01, 0x00, 0x00, 0x00, 0x00, 0xA0, 0x41, 0xE9, 0x84, 0x26, 0x02, 0x00, 0x8B, 0x05, 0xFC, 0xA0, 0x6F, 0x00, 0x83, 0xF8, 0x04, 0x0F, 0x84, 0x57, 0x00, 0x00, 0x00, 0x83, 0xF8, 0x05, 0x0F, 0x84, 0x58, 0x00, 0x00, 0x00, 0x83, 0xF8, 0x06, 0x0F, 0x84, 0x3B, 0x00, 0x00, 0x00, 0x83, 0xF8, 0x09, 0x0F, 0x84, 0x5A, 0x00, 0x00, 0x00, 0x83, 0xF8, 0x0A, 0x0F, 0x84, 0x47, 0x00, 0x00, 0x00, 0x83, 0xF8, 0x0B, 0x0F, 0x84, 0x20, 0x00, 0x00, 0x00, 0x83, 0xF8, 0x0F, 0x0F, 0x84, 0x35, 0x00, 0x00, 0x00, 0x83, 0xF8, 0x10, 0x0F, 0x84, 0x0E, 0x00, 0x00, 0x00, 0x83, 0xF8, 0x12, 0x0F, 0x84, 0x2D, 0x00, 0x00, 0x00, 0xE9, 0x37, 0x9B, 0x09, 0x00, 0xBA, 0x09, 0x00, 0x00, 0x00, 0xE9, 0x28, 0x00, 0x00, 0x00, 0xBA, 0x0E, 0x00, 0x00, 0x00, 0xE9, 0x3E, 0x00, 0x00, 0x00, 0xBA, 0x0A, 0x00, 0x00, 0x00, 0xE9, 0x34, 0x00, 0x00, 0x00, 0xBA, 0x09, 0x00, 0x00, 0x00, 0xE9, 0x2A, 0x00, 0x00, 0x00, 0xBA, 0x0A, 0x00, 0x00, 0x00, 0xE9, 0x40, 0x00, 0x00, 0x00, 0x81, 0xC2, 0x88, 0x8D, 0x6F, 0x00, 0x52, 0xE8, 0x72, 0x7F, 0x1C, 0x00, 0x83, 0xC4, 0x04, 0x83, 0xE0, 0x03, 0x83, 0xF8, 0x03, 0x0F, 0x84, 0x70, 0xD9, 0x09, 0x00, 0xE9, 0xE5, 0x9A, 0x09, 0x00, 0x81, 0xC2, 0x88, 0x8D, 0x6F, 0x00, 0x52, 0xE8, 0x52, 0x7F, 0x1C, 0x00, 0x83, 0xC4, 0x04, 0x83, 0xE0, 0x01, 0x83, 0xF8, 0x01, 0x0F, 0x85, 0x50, 0xD9, 0x09, 0x00, 0xE9, 0xC5, 0x9A, 0x09, 0x00, 0x81, 0xC2, 0x88, 0x8D, 0x6F, 0x00, 0x52, 0xE8, 0x32, 0x7F, 0x1C, 0x00, 0x83, 0xC4, 0x04, 0x83, 0xE0, 0x03, 0x83, 0xF8, 0x03, 0x0F, 0x85, 0x30, 0xD9, 0x09, 0x00, 0xE9, 0xA5, 0x9A, 0x09, 0x00 };
+                        file.Write(inj_code, 0, inj_code.Length);
+
+                        file.Position = 0xAD250;
+                        byte[] spawn_enemy = { 0xE9, 0x18, 0x65, 0xF6, 0xFF };
+                        file.Write(spawn_enemy, 0, spawn_enemy.Length);
+
+                        file.Position = 0xAD338;
+                        byte[] keeper_type = { 0xE0, 0x23, 0x64, 0x00 };
+                        file.Write(keeper_type, 0, keeper_type.Length);
+
+                        file.Position = 0x35DDE;
+                        byte[] caught_jmp = { 0xE9, 0x2D, 0xD9, 0xFD, 0xFF };
+                        file.Write(caught_jmp, 0, caught_jmp.Length);
+
+                        file.Position = 0x183F2;
+                        byte[] lose_costume_skip = { 0x00 };
+                        file.Write(lose_costume_skip, 0, lose_costume_skip.Length);
+
+                        file.Position = 0x186EE;
+                        byte[] net_state_reset_skip = { 0x0F, 0x1F, 0x44, 0x00, 0x00 };
+                        file.Write(net_state_reset_skip, 0, net_state_reset_skip.Length);
+
+                        file.Position = 0xD916D;
+                        byte[] squish_skip = { 0xE9, 0x43, 0x01, 0x00, 0x00, 0x90 };
+                        file.Write(squish_skip, 0, squish_skip.Length);
+
+                        file.Position = 0x2B2AE;
+                        byte[] monkey_skip = { 0xE9, 0xDC, 0x02, 0x00, 0x00, 0x90 };
+                        file.Write(monkey_skip, 0, monkey_skip.Length);
+
+                        file.Position = 0x296CB;
+                        byte[] waterslide_skip = { 0xEB };
+                        file.Write(waterslide_skip, 0, waterslide_skip.Length);
+                    }
+                    else
+                    {
+                        // Original code
+                        file.Position = 0x13710;
+                        byte[] inj_code = { 0xA1, 0xC0, 0x8B, 0x6C, 0x00, 0x8B, 0x88, 0xC8, 0x01, 0x00, 0x00, 0x8B, 0x91, 0xB0, 0x00, 0x00, 0x00, 0x83, 0xEC, 0x10, 0x83, 0xFA, 0x1A, 0x74, 0x15, 0x05, 0xD0, 0x00, 0x00, 0x00, 0xB9, 0x00, 0x00, 0x80, 0x3F, 0x89, 0x08, 0x89, 0x48, 0x04, 0x89, 0x48, 0x08, 0x89, 0x48, 0x0C, 0x56, 0x8B, 0x74, 0x24, 0x18, 0x8B, 0x96, 0x34, 0x01, 0x00, 0x00, 0x68, 0x9C, 0x64, 0x63, 0x00, 0x52, 0xE8, 0x2C, 0xF7, 0x14, 0x00, 0x83, 0xC4, 0x08, 0x85, 0xC0, 0x74, 0x38, 0x6A, 0x00, 0x8D, 0x4C, 0x24, 0x08, 0x51, 0x50, 0x56, 0xE8, 0x17, 0xF9, 0x14, 0x00, 0x8B, 0x15, 0xC0, 0x8B, 0x6C, 0x00, 0x8B, 0x4C, 0x24, 0x14, 0x8D, 0x82, 0xC0, 0x00, 0x00, 0x00, 0x89, 0x08, 0x8B, 0x54, 0x24, 0x18, 0x89, 0x50, 0x04, 0x8B, 0x4C, 0x24, 0x1C, 0x89, 0x48, 0x08, 0x8B, 0x54, 0x24, 0x20, 0x83, 0xC4, 0x10, 0x89, 0x50, 0x0C, 0xB8, 0x01, 0x00, 0x00, 0x00, 0x5E, 0x83, 0xC4, 0x10, 0xC3, 0x90, 0x90, 0x90, 0x56, 0x8B, 0x74, 0x24, 0x08, 0x68, 0x9C, 0x64, 0x63, 0x00, 0x56, 0xE8, 0x20, 0xC4, 0xFF, 0xFF, 0xD8, 0x1D, 0xA0, 0x73, 0x5F, 0x00, 0x83, 0xC4, 0x08, 0xDF, 0xE0, 0xF6, 0xC4, 0x01, 0x0F, 0x84, 0xC4, 0x00, 0x00, 0x00, 0xA1, 0xC0, 0x8B, 0x6C, 0x00, 0x6A, 0x1A, 0x50, 0xE8, 0x8F, 0x51, 0x0C, 0x00, 0x83, 0xC4, 0x08, 0x85, 0xC0, 0x0F, 0x84, 0xAC, 0x00, 0x00, 0x00, 0x6A, 0x01, 0x68, 0xC8, 0x8B, 0x6C, 0x00, 0xE8, 0x48, 0xF0, 0x06, 0x00, 0x83, 0xC4, 0x08, 0x84, 0xC0, 0x6A, 0x00, 0x56, 0x75, 0x4D, 0xE8, 0x19, 0x3C, 0x06, 0x00, 0x6A, 0x02, 0x6A, 0x00, 0x6A, 0x00, 0x6A, 0x00, 0x68, 0x00, 0x00, 0x80, 0x3F, 0x68, 0xA8, 0x64, 0x63, 0x00, 0x56, 0xE8, 0x21, 0x30, 0x06, 0x00, 0x8B, 0x0D, 0xC0, 0x8B, 0x6C, 0x00, 0x8B, 0x91, 0xC8, 0x01, 0x00, 0x00, 0xC7, 0x82, 0x0C, 0x01, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xA1, 0xC0, 0x8B, 0x6C, 0x00, 0x8B, 0x88, 0xC8, 0x01, 0x00, 0x00, 0x83, 0xC4, 0x24, 0xC7, 0x81, 0x08, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x5E, 0xC3, 0xE8, 0xCC, 0x3B, 0x06, 0x00, 0x6A, 0x02, 0x6A, 0x00, 0x6A, 0x00, 0x6A, 0x00, 0x68, 0x00, 0x00, 0x80, 0x3F, 0x68, 0xA0, 0x64, 0x63, 0x00, 0x56, 0xE8, 0xD4, 0x2F, 0x06 };
+                        file.Write(inj_code, 0, inj_code.Length);
+
+                        file.Position = 0xAD250;
+                        byte[] spawn_enemy = { 0xE9, 0x31, 0x3F, 0x00, 0x00 };
+                        file.Write(spawn_enemy, 0, spawn_enemy.Length);
+
+                        file.Position = 0xAD338;
+                        byte[] keeper_type = { 0xF4, 0x8E, 0x6F, 0x00 };
+                        file.Write(keeper_type, 0, keeper_type.Length);
+
+                        file.Position = 0x35DDE;
+                        byte[] caught_jmp = { 0x74, 0x11, 0x8B, 0x0D, 0xC8 };
+                        file.Write(caught_jmp, 0, caught_jmp.Length);
+
+                        file.Position = 0x183F2;
+                        byte[] lose_costume_skip = { 0x01 };
+                        file.Write(lose_costume_skip, 0, lose_costume_skip.Length);
+
+                        file.Position = 0x186EE;
+                        byte[] net_state_reset_skip = { 0xE8, 0xFD, 0x11, 0x07, 0x00 };
+                        file.Write(net_state_reset_skip, 0, net_state_reset_skip.Length);
+
+                        file.Position = 0xD916D;
+                        byte[] squish_skip = { 0x0F, 0x84, 0x42, 0x01, 0x00, 0x00 };
+                        file.Write(squish_skip, 0, squish_skip.Length);
+
+                        file.Position = 0x2B2AE;
+                        byte[] monkey_skip = { 0x0F, 0x85, 0xDB, 0x02, 0x00, 0x00 };
+                        file.Write(monkey_skip, 0, monkey_skip.Length);
+
+                        file.Position = 0x296CB;
+                        byte[] waterslide_skip = { 0x75 };
+                        file.Write(waterslide_skip, 0, waterslide_skip.Length);
+                    }
+
+                    // Invert X Camera Axis (InvAxis.CEA)
+                    if (swapAxis.Checked && swapAxis.Enabled)
+                    {
+                        file.Position = 0xE0F5F;
+                        byte[] pi1 = { 0x2C, 0x8F };
+                        file.Write(pi1, 0, pi1.Length);
+
+                        file.Position = 0xE0FC4;
+                        byte[] pi2 = { 0x2C, 0x8F };
+                        file.Write(pi2, 0, pi2.Length);
+
+                        file.Position = 0xE1043;
+                        byte[] pi3 = { 0x2C, 0x8F };
+                        file.Write(pi3, 0, pi3.Length);
+
+                        file.Position = 0xE1116;
+                        byte[] pi4 = { 0x2C, 0x8F };
+                        file.Write(pi4, 0, pi4.Length);
+
+                        file.Position = 0xE119F;
+                        byte[] pi5 = { 0x2C, 0x8F };
+                        file.Write(pi5, 0, pi5.Length);
+                    }
+                    else
+                    {
+                        file.Position = 0xE0F5F;
+                        byte[] pi1 = { 0x64, 0x73 };
+                        file.Write(pi1, 0, pi1.Length);
+
+                        file.Position = 0xE0FC4;
+                        byte[] pi2 = { 0x64, 0x73 };
+                        file.Write(pi2, 0, pi2.Length);
+
+                        file.Position = 0xE1043;
+                        byte[] pi3 = { 0x64, 0x73 };
+                        file.Write(pi3, 0, pi3.Length);
+
+                        file.Position = 0xE1116;
+                        byte[] pi4 = { 0x64, 0x73 };
+                        file.Write(pi4, 0, pi4.Length);
+
+                        file.Position = 0xE119F;
+                        byte[] pi5 = { 0x64, 0x73 };
+                        file.Write(pi5, 0, pi5.Length);
+                    }
+
+                    // L3 Button Hold Simulation (L3sim.CEA)
+                    if (l3sim.Checked && l3sim.Enabled)
+                    {
+                        file.Position = 0x7C90E;
+                        byte[] watch1 = { 0x90, 0x90 };
+                        file.Write(watch1, 0, watch1.Length);
+
+                        file.Position = 0x7C930;
+                        byte[] watch2 = { 0x90, 0x90 };
+                        file.Write(watch2, 0, watch2.Length);
+
+                        file.Position = 0x81861;
+                        byte[] slide1 = { 0xE9, 0xC5, 0x01, 0x00, 0x00, 0x90 };
+                        file.Write(slide1, 0, slide1.Length);
+
+                        file.Position = 0x82DBC;
+                        byte[] slide2 = { 0xE9, 0xBD, 0x00, 0x00, 0x00, 0x90 };
+                        file.Write(slide2, 0, slide2.Length);
+
+                        file.Position = 0x891C8;
+                        byte[] slide3 = { 0xE9, 0xB0, 0x00, 0x00, 0x00, 0x90 };
+                        file.Write(slide3, 0, slide3.Length);
+                    }
+                    else
+                    {
+                        file.Position = 0x7C90E;
+                        byte[] watch1 = { 0x74, 0x26 };
+                        file.Write(watch1, 0, watch1.Length);
+
+                        file.Position = 0x7C930;
+                        byte[] watch2 = { 0x74, 0x04 };
+                        file.Write(watch2, 0, watch2.Length);
+
+                        file.Position = 0x81861;
+                        byte[] slide1 = { 0x0F, 0x84, 0xC4, 0x01, 0x00, 0x00 };
+                        file.Write(slide1, 0, slide1.Length);
+
+                        file.Position = 0x82DBC;
+                        byte[] slide2 = { 0x0F, 0x84, 0xBC, 0x00, 0x00, 0x00 };
+                        file.Write(slide2, 0, slide2.Length);
+
+                        file.Position = 0x891C8;
+                        byte[] slide3 = { 0x0F, 0x84, 0xAF, 0x00, 0x00, 0x00 };
+                        file.Write(slide3, 0, slide3.Length);
                     }
 
                     // Achievements
@@ -2682,27 +3362,29 @@ namespace Taz_trainer
                         {
                             // Get random playable level index
                             Random rnd = new Random();
-                            byte[] levels = { 3, 4, 5, 6, 8, 9, 10, 11, 13, 14, 15, 16, 18 };
+                            byte[] levels = { 4, 5, 6, 9, 10, 11, 14, 15, 16, 18 };
                             index = levels[rnd.Next(levels.Length)];
                         }
                         else if (index == this.levelComboBox.Items.Count - 2)
                         {
                             // Get random boss level index
                             Random rnd = new Random();
-                            byte[] levels = { 7, 12, 17, 19, 20 };
+                            byte[] levels = { 3, 8, 13 };
                             index = levels[rnd.Next(levels.Length)];
                         }
                         else if (index == this.levelComboBox.Items.Count - 3)
+                        {
+                            // Get random boss level index
+                            Random rnd = new Random();
+                            byte[] levels = { 7, 12, 17, 19, 20 };
+                            index = levels[rnd.Next(levels.Length)];
+                        }
+                        else if (index == this.levelComboBox.Items.Count - 4)
                         {
                             // Get random bonus level index
                             Random rnd = new Random();
                             byte[] levels = { 21, 22, 23, 24, 25, 26, 27, 28, 29 };
                             index = levels[rnd.Next(levels.Length)];
-                        }
-                        else if (index > 1)
-                        {
-                            // Increment index (skipped playpen)
-                            index++;
                         }
 
                         // Change start level
@@ -2821,20 +3503,22 @@ namespace Taz_trainer
                         file.Position = 0x7C29C;
                         file.Write(balldeact, 0, balldeact.Length);
 
-                        // Agent and helmet costumes data
-                        byte[] ahdata = Encoding.ASCII.GetBytes("cheats\0costume\\agenthat.obe\0costume\\agentshades.obe\0costume\\agentwatch.obe\0costume\\crashhelmet.obe\0costume\\elbowpadl.obe\0costume\\elbowpadr.obe\0");
-                        file.Position = 0x1F6A50;
-                        file.Write(ahdata, 0, ahdata.Length);
-
-                        // Agent and helmet costumes code (AgentHelmet.CEA)
-                        byte[] ahcode = new byte[] { 0x83, 0xF8, 0x0F, 0x0F, 0x85, 0x63, 0x00, 0x00, 0x00, 0x6A, 0x03, 0x6A, 0x00, 0x6A, 0x00, 0x6A, 0x00, 0x68, 0xE8, 0x0F, 0x63, 0x00, 0x68, 0x57, 0x6A, 0x5F, 0x00, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x50, 0xE8, 0x59, 0x0D, 0xE8, 0xFF, 0x83, 0xC4, 0x1C, 0x6A, 0x03, 0x6A, 0x00, 0x6A, 0x00, 0x6A, 0x00, 0x68, 0xE8, 0x0F, 0x63, 0x00, 0x68, 0x6C, 0x6A, 0x5F, 0x00, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x50, 0xE8, 0x38, 0x0D, 0xE8, 0xFF, 0x83, 0xC4, 0x1C, 0x6A, 0x07, 0x6A, 0x00, 0x6A, 0x00, 0x6A, 0x00, 0x68, 0x54, 0x9C, 0x63, 0x00, 0x68, 0x84, 0x6A, 0x5F, 0x00, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x50, 0xE8, 0x17, 0x0D, 0xE8, 0xFF, 0x83, 0xC4, 0x1C, 0x83, 0xF8, 0x10, 0x0F, 0x85, 0x63, 0x00, 0x00, 0x00, 0x6A, 0x03, 0x6A, 0x00, 0x6A, 0x00, 0x6A, 0x00, 0x68, 0xE8, 0x0F, 0x63, 0x00, 0x68, 0x9B, 0x6A, 0x5F, 0x00, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x50, 0xE8, 0xED, 0x0C, 0xE8, 0xFF, 0x83, 0xC4, 0x1C, 0x6A, 0x03, 0x6A, 0x00, 0x6A, 0x00, 0x6A, 0x00, 0x68, 0x54, 0x9C, 0x63, 0x00, 0x68, 0xB3, 0x6A, 0x5F, 0x00, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x50, 0xE8, 0xCC, 0x0C, 0xE8, 0xFF, 0x83, 0xC4, 0x1C, 0x6A, 0x03, 0x6A, 0x00, 0x6A, 0x00, 0x6A, 0x00, 0x68, 0x44, 0x9C, 0x63, 0x00, 0x68, 0xC9, 0x6A, 0x5F, 0x00, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x50, 0xE8, 0xAB, 0x0C, 0xE8, 0xFF, 0x83, 0xC4, 0x1C, 0xF6, 0x05, 0x28, 0x8E, 0x6C, 0x00, 0x08, 0xE9, 0xBB, 0xA1, 0xE3, 0xFF };
+                        // ExtraCostumes.CEA data
                         file.Position = 0x1F6B00;
-                        file.Write(ahcode, 0, ahcode.Length);
+                        byte[] extra_costumes_data = { 0x63, 0x6F, 0x73, 0x74, 0x75, 0x6D, 0x65, 0x5C, 0x61, 0x67, 0x65, 0x6E, 0x74, 0x68, 0x61, 0x74, 0x2E, 0x6F, 0x62, 0x65, 0x00, 0x63, 0x6F, 0x73, 0x74, 0x75, 0x6D, 0x65, 0x5C, 0x61, 0x67, 0x65, 0x6E, 0x74, 0x73, 0x68, 0x61, 0x64, 0x65, 0x73, 0x2E, 0x6F, 0x62, 0x65, 0x00, 0x63, 0x6F, 0x73, 0x74, 0x75, 0x6D, 0x65, 0x5C, 0x61, 0x67, 0x65, 0x6E, 0x74, 0x77, 0x61, 0x74, 0x63, 0x68, 0x2E, 0x6F, 0x62, 0x65, 0x00, 0x63, 0x6F, 0x73, 0x74, 0x75, 0x6D, 0x65, 0x5C, 0x63, 0x72, 0x61, 0x73, 0x68, 0x68, 0x65, 0x6C, 0x6D, 0x65, 0x74, 0x2E, 0x6F, 0x62, 0x65, 0x00, 0x63, 0x6F, 0x73, 0x74, 0x75, 0x6D, 0x65, 0x5C, 0x65, 0x6C, 0x62, 0x6F, 0x77, 0x70, 0x61, 0x64, 0x6C, 0x2E, 0x6F, 0x62, 0x65, 0x00, 0x63, 0x6F, 0x73, 0x74, 0x75, 0x6D, 0x65, 0x5C, 0x65, 0x6C, 0x62, 0x6F, 0x77, 0x70, 0x61, 0x64, 0x72, 0x2E, 0x6F, 0x62, 0x65, 0x00, 0x63, 0x6F, 0x73, 0x74, 0x75, 0x6D, 0x65, 0x5C, 0x73, 0x68, 0x65, 0x72, 0x69, 0x66, 0x66, 0x68, 0x61, 0x74, 0x2E, 0x6F, 0x62, 0x65, 0x00, 0x63, 0x6F, 0x73, 0x74, 0x75, 0x6D, 0x65, 0x5C, 0x78, 0x6D, 0x61, 0x73, 0x68, 0x61, 0x74, 0x2E, 0x6F, 0x62, 0x65, 0x00 };
+                        file.Write(extra_costumes_data, 0, extra_costumes_data.Length);
 
-                        // Agent and helmet costumes injection
-                        byte[] ahinj = new byte[] { 0xE9, 0x63, 0x5D, 0x1C, 0x00, 0x66, 0x90 };
+                        // ExtraCostumes.CEA code
+                        file.Position = 0x1F6EA0;
+                        byte[] extra_costumes_code = { 0x83, 0xF8, 0x0F, 0x0F, 0x85, 0x63, 0x00, 0x00, 0x00, 0x6A, 0x03, 0x6A, 0x00, 0x6A, 0x00, 0x6A, 0x00, 0x68, 0xE8, 0x0F, 0x63, 0x00, 0x68, 0x00, 0x6B, 0x5F, 0x00, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x50, 0xE8, 0xB9, 0x09, 0xE8, 0xFF, 0x83, 0xC4, 0x1C, 0x6A, 0x03, 0x6A, 0x00, 0x6A, 0x00, 0x6A, 0x00, 0x68, 0xE8, 0x0F, 0x63, 0x00, 0x68, 0x15, 0x6B, 0x5F, 0x00, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x50, 0xE8, 0x98, 0x09, 0xE8, 0xFF, 0x83, 0xC4, 0x1C, 0x6A, 0x07, 0x6A, 0x00, 0x6A, 0x00, 0x6A, 0x00, 0x68, 0x54, 0x9C, 0x63, 0x00, 0x68, 0x2D, 0x6B, 0x5F, 0x00, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x50, 0xE8, 0x77, 0x09, 0xE8, 0xFF, 0x83, 0xC4, 0x1C, 0x83, 0xF8, 0x10, 0x0F, 0x85, 0x63, 0x00, 0x00, 0x00, 0x6A, 0x03, 0x6A, 0x00, 0x6A, 0x00, 0x6A, 0x00, 0x68, 0xE8, 0x0F, 0x63, 0x00, 0x68, 0x44, 0x6B, 0x5F, 0x00, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x50, 0xE8, 0x4D, 0x09, 0xE8, 0xFF, 0x83, 0xC4, 0x1C, 0x6A, 0x03, 0x6A, 0x00, 0x6A, 0x00, 0x6A, 0x00, 0x68, 0x54, 0x9C, 0x63, 0x00, 0x68, 0x5C, 0x6B, 0x5F, 0x00, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x50, 0xE8, 0x2C, 0x09, 0xE8, 0xFF, 0x83, 0xC4, 0x1C, 0x6A, 0x03, 0x6A, 0x00, 0x6A, 0x00, 0x6A, 0x00, 0x68, 0x44, 0x9C, 0x63, 0x00, 0x68, 0x72, 0x6B, 0x5F, 0x00, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x50, 0xE8, 0x0B, 0x09, 0xE8, 0xFF, 0x83, 0xC4, 0x1C, 0x83, 0xF8, 0x11, 0x0F, 0x85, 0x42, 0x00, 0x00, 0x00, 0x6A, 0x07, 0x6A, 0x00, 0x6A, 0x00, 0x6A, 0x00, 0x68, 0xE8, 0x0F, 0x63, 0x00, 0x68, 0x88, 0x6B, 0x5F, 0x00, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x50, 0xE8, 0xE1, 0x08, 0xE8, 0xFF, 0x83, 0xC4, 0x1C, 0x6A, 0x07, 0x6A, 0x00, 0x6A, 0x00, 0x6A, 0x00, 0x68, 0x94, 0x23, 0x63, 0x00, 0x68, 0x3C, 0xA0, 0x63, 0x00, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x50, 0xE8, 0xC0, 0x08, 0xE8, 0xFF, 0x83, 0xC4, 0x1C, 0x83, 0xF8, 0x12, 0x0F, 0x85, 0x21, 0x00, 0x00, 0x00, 0x6A, 0x03, 0x6A, 0x00, 0x6A, 0x00, 0x6A, 0x00, 0x68, 0xE8, 0x0F, 0x63, 0x00, 0x68, 0x9F, 0x6B, 0x5F, 0x00, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x50, 0xE8, 0x96, 0x08, 0xE8, 0xFF, 0x83, 0xC4, 0x1C, 0xF6, 0x05, 0x28, 0x8E, 0x6C, 0x00, 0x08, 0xE9, 0xA6, 0x9D, 0xE3, 0xFF };
+                        file.Write(extra_costumes_code, 0, extra_costumes_code.Length);
+
+                        // ExtraCostumes.CEA injection
                         file.Position = 0x30D98;
-                        file.Write(ahinj, 0, ahinj.Length);
+                        byte[] extra_costumes_inj = { 0xE9, 0x03, 0x61, 0x1C, 0x00, 0x66, 0x90 };
+                        file.Write(extra_costumes_inj, 0, extra_costumes_inj.Length);
+
+
                     }
                     else
                     {
@@ -2904,23 +3588,106 @@ namespace Taz_trainer
                         file.Position = 0x7C29C;
                         file.Write(balldeact, 0, balldeact.Length);
 
-                        // Restore costumes data
-                        byte[] ahdata = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
-                        file.Position = 0x1F6A50;
-                        file.Write(ahdata, 0, ahdata.Length);
-
-                        // Restore costumes code
-                        byte[] ahcode = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+                        // ExtraCostumes.CEA data restore
                         file.Position = 0x1F6B00;
-                        file.Write(ahcode, 0, ahcode.Length);
+                        byte[] extra_costumes_data = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+                        file.Write(extra_costumes_data, 0, extra_costumes_data.Length);
 
-                        // Restore costumes injection
-                        byte[] ahinj = new byte[] { 0xF6, 0x05, 0x28, 0x8E, 0x6C, 0x00, 0x08 };
+                        // ExtraCostumes.CEA code restore
+                        file.Position = 0x1F6EA0;
+                        byte[] extra_costumes_code = { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+                        file.Write(extra_costumes_code, 0, extra_costumes_code.Length);
+
+                        // ExtraCostumes.CEA injection restore
                         file.Position = 0x30D98;
-                        file.Write(ahinj, 0, ahinj.Length);
+                        byte[] extra_costumes_inj = { 0xF6, 0x05, 0x28, 0x8E, 0x6C, 0x00, 0x08 };
+                        file.Write(extra_costumes_inj, 0, extra_costumes_inj.Length);
                     }
 
                     // Api
+                    switch (apiComboBox.SelectedIndex)
+                    {
+                        // d3d8to9
+                        case 1:
+                            string d3d8to9Folder = Path.Combine(TazFolderPath, "Wrappers", "d3d8to9");
+                            string d3d8to9File = Path.Combine(d3d8to9Folder, "d3d8.dll");
+                            // Check downloaded files
+                            if (File.Exists(d3d8to9File) == false)
+                                DownloadD3D8to9();
+                            // Replace dll
+                            File.Copy(d3d8to9File, Path.Combine(TazFolderPath, "d3d8.dll"), true);
+                            // Remove other wrappers
+                            if (File.Exists(Path.Combine(TazFolderPath, "d3d9.dll")))
+                                File.Delete(Path.Combine(TazFolderPath, "d3d9.dll"));
+                            if (File.Exists(Path.Combine(TazFolderPath, "wined3d.dll")))
+                                File.Delete(Path.Combine(TazFolderPath, "wined3d.dll"));
+                            break;
+
+                        // dgVoodoo2
+                        case 2:
+                            string dgvoodooFolder = Path.Combine(TazFolderPath, "Wrappers", "dgVoodoo2");
+                            string dgvoodooFile = Path.Combine(dgvoodooFolder, "d3d8.dll");
+                            // Check downloaded files
+                            if (File.Exists(dgvoodooFile) == false)
+                                DownloadDgVoodoo2();
+                            // Replace dll
+                            File.Copy(dgvoodooFile, Path.Combine(TazFolderPath, "d3d8.dll"), true);
+                            // Remove Vulkan's wrapper
+                            if (File.Exists(Path.Combine(TazFolderPath, "d3d9.dll")))
+                                File.Delete(Path.Combine(TazFolderPath, "d3d9.dll"));
+                            // Remove other wrappers
+                            if (File.Exists(Path.Combine(TazFolderPath, "d3d9.dll")))
+                                File.Delete(Path.Combine(TazFolderPath, "d3d9.dll"));
+                            if (File.Exists(Path.Combine(TazFolderPath, "wined3d.dll")))
+                                File.Delete(Path.Combine(TazFolderPath, "wined3d.dll"));
+                            break;
+
+                        // WineD3D4Win
+                        case 3:
+                            string wined3dFolder = Path.Combine(TazFolderPath, "Wrappers", "wined3d");
+                            string wined3dFile1 = Path.Combine(wined3dFolder, "d3d8.dll");
+                            string wined3dFile2 = Path.Combine(wined3dFolder, "wined3d.dll");
+                            // Check downloaded files
+                            if (File.Exists(wined3dFile1) == false || File.Exists(wined3dFile2) == false)
+                                DownloadWineD3D4Win();
+                            // Replace dll
+                            File.Copy(wined3dFile1, Path.Combine(TazFolderPath, "d3d8.dll"), true);
+                            File.Copy(wined3dFile2, Path.Combine(TazFolderPath, "wined3d.dll"), true);
+                            // Remove other wrappers
+                            if (File.Exists(Path.Combine(TazFolderPath, "d3d9.dll")))
+                                File.Delete(Path.Combine(TazFolderPath, "d3d9.dll"));
+                            break;
+
+                        // DxVk
+                        case 4:
+                            string vulkanFolder = Path.Combine(TazFolderPath, "Wrappers", "dxvk");
+                            string vulkanFile1 = Path.Combine(vulkanFolder, "d3d8.dll");
+                            string vulkanFile2 = Path.Combine(vulkanFolder, "d3d9.dll");
+                            // Check downloaded files
+                            if (File.Exists(vulkanFile1) == false || File.Exists(vulkanFile2) == false)
+                                DownloadDxVk();
+                            // Replace dll
+                            File.Copy(vulkanFile1, Path.Combine(TazFolderPath, "d3d8.dll"), true);
+                            File.Copy(vulkanFile2, Path.Combine(TazFolderPath, "d3d9.dll"), true);
+                            // Remove other wrappers
+                            if (File.Exists(Path.Combine(TazFolderPath, "wined3d.dll")))
+                                File.Delete(Path.Combine(TazFolderPath, "wined3d.dll"));
+                            break;
+
+                        // d3d8 - default
+                        default:
+                            // Remove all wrappers
+                            if (File.Exists(Path.Combine(TazFolderPath, "d3d8.dll")))
+                                File.Delete(Path.Combine(TazFolderPath, "d3d8.dll"));
+                            if (File.Exists(Path.Combine(TazFolderPath, "d3d9.dll")))
+                                File.Delete(Path.Combine(TazFolderPath, "d3d9.dll"));
+                            if (File.Exists(Path.Combine(TazFolderPath, "wined3d.dll")))
+                                File.Delete(Path.Combine(TazFolderPath, "wined3d.dll"));
+                            break;
+                    }
+
+                    /*
+                    
                     // d3d8to9
                     if (apiComboBox.SelectedIndex == 1 || apiComboBox.SelectedIndex == 3)
                     {
@@ -2979,7 +3746,7 @@ namespace Taz_trainer
                         // Replace dll
                         File.Copy(VulkanFile, Path.Combine(TazFolderPath, "d3d9.dll"), true);
                     }
-
+                    */
                     // Exe patches end
                     file.Close();
                 }
@@ -3086,7 +3853,7 @@ namespace Taz_trainer
                     }
 
                     // Draw distance
-                    if (disableDrawDistance.Checked && disableDrawDistance.Enabled)
+                    if (drawComboBox.SelectedIndex > 0 && drawComboBox.Enabled)
                     {
                         // Max distance
                         filedat.Position = 0x44;
@@ -3137,8 +3904,40 @@ namespace Taz_trainer
                     filedat.Close();
                 }
 
+                // TazWanted.sav patches
+                using (var filesav = new FileStream(TazFolderPath + "\\TazWanted.sav", FileMode.Open, FileAccess.ReadWrite))
+                {
+                    // Volume
+                    filesav.Position = 0x04;
+                    filesav.WriteByte((byte)trackBarBGM.Value);
+                    filesav.Position = 0x05;
+                    filesav.WriteByte((byte)trackBarSFX.Value);
 
+                    // Subs
+                    if (subsComboBox.SelectedIndex > 0 && subsComboBox.Enabled)
+                    {
+                        filesav.Position = 0x10;
+                        filesav.WriteByte(0x01);
+                    }
+                    else
+                    {
+                        filesav.Position = 0x10;
+                        filesav.WriteByte(0x00);
+                    }
 
+                    // Update CRC
+                    int SavSize = 179196;
+                    byte[] SavBytes = new byte[SavSize];
+                    filesav.Position = 0x04;
+                    filesav.Read(SavBytes, 0x0, SavSize);
+                    filesav.Position = 0x0;
+                    byte[] test = { 0x00, 0x00, 0x00, 0x00 };
+                    test = BitConverter.GetBytes(CRC32.Crc32(SavBytes));
+                    filesav.Write(BitConverter.GetBytes(CRC32.Crc32(SavBytes)), 0, sizeof(uint));
+
+                    // Sav patches end
+                    filesav.Close();
+                }
 
                 // Patches end
                 this.toolStripStatusLabel.Text = "Patched successfully (" + TazFolderPath + ")";
@@ -3206,6 +4005,9 @@ namespace Taz_trainer
                     // Remove d3d8 wrapper
                     if (File.Exists(Path.Combine(TazFolderPath, "d3d8.dll")))
                         File.Delete(Path.Combine(TazFolderPath, "d3d8.dll"));
+                    // Remove WineD3D wrapper
+                    if (File.Exists(Path.Combine(TazFolderPath, "wined3d.dll")))
+                        File.Delete(Path.Combine(TazFolderPath, "wined3d.dll"));
                     // Remove Vulkan's wrapper
                     if (File.Exists(Path.Combine(TazFolderPath, "d3d9.dll")))
                         File.Delete(Path.Combine(TazFolderPath, "d3d9.dll"));
@@ -4085,16 +4887,18 @@ namespace Taz_trainer
             {
                 string d3d9ver = "???";
                 string d3d11ver = "???";
+                string OpenGlVer = "???";
                 string VulkanVer = "???";
-
+                
                 this.toolStripStatusLabel.Text = "Downloading Wrappers - Please Wait";
                 this.toolStripStatusLabel.ForeColor = System.Drawing.Color.DarkGreen;
 
                 d3d9ver = DownloadD3D8to9();
                 d3d11ver = DownloadDgVoodoo2();
+                OpenGlVer = DownloadWineD3D4Win();
                 VulkanVer = DownloadDxVk();
 
-                this.toolStripStatusLabel.Text = "Wrappers Downloaded.    d3d8to9: " + d3d9ver + "    dgVoodoo: " + d3d11ver + "    dxvk: " + VulkanVer;
+                this.toolStripStatusLabel.Text = "Wrappers Downloaded.    d3d8to9: " + d3d9ver + "    dgVoodoo: " + d3d11ver + "    wined3d4win: " + OpenGlVer + "    dxvk: " + VulkanVer;
                 this.toolStripStatusLabel.ForeColor = System.Drawing.Color.DarkGreen;
             }
             catch (Exception ex)
@@ -4202,13 +5006,58 @@ namespace Taz_trainer
                 return "???";
             }
         }
+        private String DownloadWineD3D4Win()
+        {
+            try
+            {
+                string OpenGLFolder = Path.Combine(TazFolderPath, "Wrappers", "wined3d");
+                string OpenGLZip = Path.Combine(OpenGLFolder, "wined3d.zip");
+                string wined3dver = "???";
+                // Create folders
+                if (!Directory.Exists(OpenGLFolder))
+                    Directory.CreateDirectory(OpenGLFolder);
+
+                // Download WineD3D4Win
+                using (MyWebClient web1 = new MyWebClient())
+                {
+                    string fileUrl = "https://downloads.fdossena.com/geth.php?r=wined3d-latest";
+                    // Get real name
+                    HttpWebRequest request = (HttpWebRequest)WebRequest.Create(fileUrl);
+                    request.AllowAutoRedirect = false;
+                    HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                    response.Close();
+                    // Downloading
+                    web1.DownloadFile(fileUrl, OpenGLZip);
+                    string fileName = response.Headers["Location"];
+                    wined3dver = 'v' + Regex.Match(fileName, "(?<=_).*(?=\\.zip)").ToString();
+                }
+                // Unpack
+                using (ZipArchive archive = ZipFile.OpenRead(OpenGLZip))
+                {
+                    foreach (ZipArchiveEntry entry in archive.Entries)
+                    {
+                        if (entry.FullName == "wined3d/d3d8.dll" || entry.FullName == "wined3d/wined3d.dll")
+                            entry.ExtractToFile(Path.Combine(OpenGLFolder, entry.Name), true);
+                    }
+                }
+                File.Delete(OpenGLZip);
+                return wined3dver;
+            }
+            catch (Exception ex)
+            {
+                this.toolStripStatusLabel.Text = ex.Message.ToString();
+                this.toolStripStatusLabel.ForeColor = System.Drawing.Color.DarkRed;
+                return "???";
+            }
+        }
 
         private String DownloadDxVk()
         {
             try
             {
                 string VulkanFolder = Path.Combine(TazFolderPath, "Wrappers", "dxvk");
-                string VulkanFile = Path.Combine(VulkanFolder, "d3d9.dll");
+                string VulkanFile1 = Path.Combine(VulkanFolder, "d3d8.dll");
+                string VulkanFile2 = Path.Combine(VulkanFolder, "d3d9.dll");
                 string VulkanTar = Path.Combine(VulkanFolder, "dxvk.tar.gz");
                 string VulkanVer = "???";
                 // Create folders
@@ -4233,8 +5082,10 @@ namespace Taz_trainer
                 TarExample.Tar.ExtractTarGz(Path.Combine(VulkanFolder, "dxvk.tar.gz"), Path.Combine(VulkanFolder, "dxvk"));
                 foreach (string file in Directory.GetFiles(Path.Combine(VulkanFolder, "dxvk"), "*.dll*", SearchOption.AllDirectories))
                 {
-                    if (file.Contains("x32\\d3d9.dll"))
-                        File.Copy(file, VulkanFile, true);
+                    if (file.Contains("x32\\d3d8.dll"))
+                        File.Copy(file, VulkanFile1, true);
+                    else if (file.Contains("x32\\d3d9.dll"))
+                        File.Copy(file, VulkanFile2, true);
                 }
                 Directory.Delete(Path.Combine(VulkanFolder, "dxvk"), true);
                 File.Delete(Path.Combine(VulkanFolder, "dxvk.tar.gz"));
@@ -4368,7 +5219,7 @@ namespace Taz_trainer
         {
             // Check patches
             byte[] check = { 0x00 };
-            check = checkAndRead((IntPtr)0x005F6A50, check, check.Length, new IntPtr());
+            check = checkAndRead((IntPtr)0x005F6B00, check, check.Length, new IntPtr());
             if (check[0] == 0)
             {
                 message("Advanced Cheats patch required");
@@ -4422,7 +5273,7 @@ namespace Taz_trainer
                 // CostumeExplorer.CEA
                 byte[] data = { 0x63, 0x68, 0x65, 0x61, 0x74, 0x73, 0x00, 0x63, 0x6F, 0x73, 0x74, 0x75, 0x6D, 0x65, 0x5C, 0x65, 0x78, 0x70, 0x6C, 0x6F, 0x72, 0x65, 0x72, 0x68, 0x61, 0x74, 0x2E, 0x6F, 0x62, 0x65, 0x00, 0x63, 0x6F, 0x73, 0x74, 0x75, 0x6D, 0x65, 0x5C, 0x65, 0x78, 0x70, 0x6C, 0x6F, 0x72, 0x65, 0x72, 0x6D, 0x6F, 0x6E, 0x61, 0x63, 0x6C, 0x65, 0x2E, 0x6F, 0x62, 0x65, 0x00, 0x63, 0x6F, 0x73, 0x74, 0x75, 0x6D, 0x65, 0x5C, 0x65, 0x78, 0x70, 0x6C, 0x6F, 0x72, 0x65, 0x72, 0x74, 0x61, 0x7A, 0x2E, 0x6F, 0x62, 0x65, 0x00, 0x63, 0x6F, 0x73, 0x74, 0x75, 0x6D, 0x65, 0x5C, 0x65, 0x78, 0x70, 0x6C, 0x6F, 0x72, 0x65, 0x72, 0x6D, 0x61, 0x63, 0x68, 0x65, 0x74, 0x65, 0x2E, 0x6F, 0x62, 0x65, 0x00, 0x63, 0x6F, 0x73, 0x74, 0x75, 0x6D, 0x65, 0x5C, 0x65, 0x78, 0x70, 0x6C, 0x6F, 0x72, 0x65, 0x72, 0x62, 0x61, 0x63, 0x6B, 0x70, 0x61, 0x63, 0x6B, 0x2E, 0x6F, 0x62, 0x65, 0x00, 0x63, 0x6F, 0x73, 0x74, 0x75, 0x6D, 0x65, 0x5C, 0x65, 0x78, 0x70, 0x6C, 0x6F, 0x72, 0x65, 0x72, 0x62, 0x65, 0x6C, 0x74, 0x2E, 0x6F, 0x62, 0x65, 0x00 };
                 checkAndWrite((IntPtr)0x00731380, data, data.Length, new IntPtr());
-                byte[] code = { 0x6A, 0x01, 0x68, 0x80, 0x13, 0x73, 0x00, 0xE8, 0xF4, 0x9D, 0xEA, 0xFF, 0x83, 0xC4, 0x08, 0x6A, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0x68, 0x87, 0x13, 0x73, 0x00, 0xE8, 0x90, 0xC0, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x6A, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0x68, 0x9F, 0x13, 0x73, 0x00, 0xE8, 0x7C, 0xC0, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x6A, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0x68, 0xBB, 0x13, 0x73, 0x00, 0xE8, 0x68, 0xC0, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x6A, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0x68, 0xD3, 0x13, 0x73, 0x00, 0xE8, 0x54, 0xC0, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x6A, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0x68, 0x0C, 0x14, 0x73, 0x00, 0xE8, 0x40, 0xC0, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x8B, 0x88, 0xCC, 0x01, 0x00, 0x00, 0x31, 0xD2, 0x8A, 0x91, 0x0C, 0x01, 0x00, 0x00, 0x6A, 0x04, 0x50, 0xE8, 0x71, 0x99, 0xE3, 0xFF, 0x83, 0xC4, 0x08, 0xE8, 0x59, 0x39, 0xEE, 0xFF, 0xC3 };
+                byte[] code = { 0x6A, 0x01, 0x68, 0x80, 0x13, 0x73, 0x00, 0xE8, 0xF4, 0x9D, 0xEA, 0xFF, 0x83, 0xC4, 0x08, 0x6A, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0x68, 0x87, 0x13, 0x73, 0x00, 0xE8, 0x90, 0xC0, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x6A, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0x68, 0x9F, 0x13, 0x73, 0x00, 0xE8, 0x7C, 0xC0, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x6A, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0x68, 0xBB, 0x13, 0x73, 0x00, 0xE8, 0x68, 0xC0, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x6A, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0x68, 0xD3, 0x13, 0x73, 0x00, 0xE8, 0x54, 0xC0, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x6A, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0x68, 0xEF, 0x13, 0x73, 0x00, 0xE8, 0x40, 0xC0, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x6A, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0x68, 0x0C, 0x14, 0x73, 0x00, 0xE8, 0x2C, 0xC0, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x8B, 0x88, 0xCC, 0x01, 0x00, 0x00, 0x31, 0xD2, 0x8A, 0x91, 0x0C, 0x01, 0x00, 0x00, 0x6A, 0x04, 0x50, 0xE8, 0x5D, 0x99, 0xE3, 0xFF, 0x83, 0xC4, 0x08, 0xE8, 0x45, 0x39, 0xEE, 0xFF, 0xC3 };
                 checkAndWrite((IntPtr)0x005F6900, code, code.Length, new IntPtr());
             }
             else if (actor == "Indy")
@@ -4463,6 +5314,14 @@ namespace Taz_trainer
                 byte[] data = { 0x63, 0x68, 0x65, 0x61, 0x74, 0x73, 0x00, 0x63, 0x6F, 0x73, 0x74, 0x75, 0x6D, 0x65, 0x5C, 0x69, 0x63, 0x65, 0x61, 0x6E, 0x74, 0x6C, 0x65, 0x72, 0x73, 0x2E, 0x6F, 0x62, 0x65, 0x00, 0x63, 0x6F, 0x73, 0x74, 0x75, 0x6D, 0x65, 0x5C, 0x69, 0x63, 0x65, 0x72, 0x65, 0x64, 0x6E, 0x6F, 0x73, 0x65, 0x2E, 0x6F, 0x62, 0x65, 0x00 };
                 checkAndWrite((IntPtr)0x00731380, data, data.Length, new IntPtr());
                 byte[] code = { 0x6A, 0x01, 0x68, 0x80, 0x13, 0x73, 0x00, 0xE8, 0xF4, 0x9D, 0xEA, 0xFF, 0x83, 0xC4, 0x08, 0x6A, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0x68, 0x87, 0x13, 0x73, 0x00, 0xE8, 0x90, 0xC0, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x6A, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0x68, 0x9E, 0x13, 0x73, 0x00, 0xE8, 0x7C, 0xC0, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x8B, 0x88, 0xCC, 0x01, 0x00, 0x00, 0x31, 0xD2, 0x8A, 0x91, 0x0C, 0x01, 0x00, 0x00, 0x6A, 0x03, 0x50, 0xE8, 0xAD, 0x99, 0xE3, 0xFF, 0x83, 0xC4, 0x08, 0xC3 };
+                checkAndWrite((IntPtr)0x005F6900, code, code.Length, new IntPtr());
+            }
+            else if (actor == "Sheriff")
+            {
+                // CostumeSheriff.CEA
+                byte[] data = { 0x63, 0x68, 0x65, 0x61, 0x74, 0x73, 0x00, 0x63, 0x6F, 0x73, 0x74, 0x75, 0x6D, 0x65, 0x5C, 0x63, 0x6F, 0x77, 0x62, 0x6F, 0x79, 0x62, 0x65, 0x6C, 0x74, 0x2E, 0x6F, 0x62, 0x65, 0x00, 0x63, 0x6F, 0x73, 0x74, 0x75, 0x6D, 0x65, 0x5C, 0x73, 0x68, 0x65, 0x72, 0x69, 0x66, 0x66, 0x68, 0x61, 0x74, 0x2E, 0x6F, 0x62, 0x65, 0x00 };
+                checkAndWrite((IntPtr)0x00731380, data, data.Length, new IntPtr());
+                byte[] code = { 0x6A, 0x01, 0x68, 0x80, 0x13, 0x73, 0x00, 0xE8, 0xF4, 0x9D, 0xEA, 0xFF, 0x83, 0xC4, 0x08, 0x6A, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0x68, 0x87, 0x13, 0x73, 0x00, 0xE8, 0x90, 0xC0, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x6A, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0x68, 0x9E, 0x13, 0x73, 0x00, 0xE8, 0x7C, 0xC0, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x8B, 0x88, 0xCC, 0x01, 0x00, 0x00, 0x31, 0xD2, 0x8A, 0x91, 0x0C, 0x01, 0x00, 0x00, 0x6A, 0x11, 0x50, 0xE8, 0xAD, 0x99, 0xE3, 0xFF, 0x83, 0xC4, 0x08, 0xE8, 0x95, 0x39, 0xEE, 0xFF, 0xC3 };
                 checkAndWrite((IntPtr)0x005F6900, code, code.Length, new IntPtr());
             }
             else if (actor == "Skater")
@@ -4527,6 +5386,14 @@ namespace Taz_trainer
                 byte[] data = { 0x63, 0x68, 0x65, 0x61, 0x74, 0x73, 0x00, 0x63, 0x68, 0x65, 0x61, 0x74, 0x73, 0x73, 0x6F, 0x75, 0x6E, 0x64, 0x73, 0x00, 0x63, 0x6F, 0x73, 0x74, 0x75, 0x6D, 0x65, 0x5C, 0x74, 0x61, 0x7A, 0x77, 0x65, 0x72, 0x65, 0x77, 0x6F, 0x6C, 0x66, 0x2E, 0x6F, 0x62, 0x65, 0x00 };
                 checkAndWrite((IntPtr)0x00731380, data, data.Length, new IntPtr());
                 byte[] code = { 0x6A, 0x01, 0x68, 0x87, 0x13, 0x73, 0x00, 0xE8, 0xF4, 0x9D, 0xEA, 0xFF, 0x83, 0xC4, 0x08, 0x6A, 0x00, 0x68, 0x87, 0x13, 0x73, 0x00, 0xE8, 0xB5, 0xD7, 0xED, 0xFF, 0x83, 0xC4, 0x08, 0x6A, 0x01, 0x68, 0x80, 0x13, 0x73, 0x00, 0xE8, 0xD6, 0x9D, 0xEA, 0xFF, 0x83, 0xC4, 0x08, 0x6A, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0x68, 0x94, 0x13, 0x73, 0x00, 0xE8, 0x72, 0xC0, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x8B, 0x88, 0xCC, 0x01, 0x00, 0x00, 0x31, 0xD2, 0x8A, 0x91, 0x0C, 0x01, 0x00, 0x00, 0x6A, 0x07, 0x50, 0xE8, 0xA3, 0x99, 0xE3, 0xFF, 0x83, 0xC4, 0x08, 0xE8, 0x8B, 0x39, 0xEE, 0xFF, 0xC3 };
+                checkAndWrite((IntPtr)0x005F6900, code, code.Length, new IntPtr());
+            }
+            else if (actor == "Xmas")
+            {
+                // CostumeXmas.CEA
+                byte[] data = { 0x63, 0x68, 0x65, 0x61, 0x74, 0x73, 0x00, 0x63, 0x6F, 0x73, 0x74, 0x75, 0x6D, 0x65, 0x5C, 0x78, 0x6D, 0x61, 0x73, 0x68, 0x61, 0x74, 0x2E, 0x6F, 0x62, 0x65, 0x00 };
+                checkAndWrite((IntPtr)0x00731380, data, data.Length, new IntPtr());
+                byte[] code = { 0x6A, 0x01, 0x68, 0x80, 0x13, 0x73, 0x00, 0xE8, 0xF4, 0x9D, 0xEA, 0xFF, 0x83, 0xC4, 0x08, 0x6A, 0x00, 0x68, 0x80, 0x13, 0x73, 0x00, 0x68, 0x87, 0x13, 0x73, 0x00, 0xE8, 0x90, 0xC0, 0xE7, 0xFF, 0x83, 0xC4, 0x0C, 0x8B, 0x05, 0xC0, 0x8B, 0x6C, 0x00, 0x8B, 0x88, 0xCC, 0x01, 0x00, 0x00, 0x31, 0xD2, 0x8A, 0x91, 0x0C, 0x01, 0x00, 0x00, 0x6A, 0x12, 0x50, 0xE8, 0xC1, 0x99, 0xE3, 0xFF, 0x83, 0xC4, 0x08, 0xC3 };
                 checkAndWrite((IntPtr)0x005F6900, code, code.Length, new IntPtr());
             }
             else if (actor == "Alligator")
@@ -4938,18 +5805,17 @@ namespace Taz_trainer
             if (radioAchievements.Checked)
                 AchLockOptions();
             else if (radioSpeedrun.Checked)
-                SpdLockOptions();
+                SpdLockOptions(true);
             else if (radioTrainer.Checked)
             {
                 SpdUnlockOptions(true);
                 AchUnlockOptions();
             }
         }
-        private void SpdLockOptions()
+        private void SpdLockOptions(bool init)
         {
             // Locking options
             mods.Enabled = false;
-            cutsceneSubtitles.Enabled = false;
             extraDebug.Enabled = false;
             coopFix.Enabled = false;
             injections.Enabled = false;
@@ -4958,6 +5824,11 @@ namespace Taz_trainer
             levelComboBox.Enabled = false;
             daffyculty.Enabled = false;
             daffycultyComboBox.Enabled = false;
+            chiliFix.Enabled = false;
+            playpenFix.Enabled = false;
+            quickStart.Enabled = false;
+            nightmare.Enabled = false;
+            l3sim.Enabled = false;
 
             windowed.Enabled = false;
             aspectRatio.Enabled = false;
@@ -4968,23 +5839,46 @@ namespace Taz_trainer
             numericFpsCap.Enabled = false;
             checkBoxFoV.Enabled = false;
             numericFoV.Enabled = false;
-            disableDrawDistance.Enabled = false;
+            draw.Enabled = false;
+            drawComboBox.Enabled = false;
             fog.Enabled = false;
             fogComboBox.Enabled = false;
+
+            mood.Enabled = false;
+            moodComboBox.Enabled = false;
 
             trainerTab.Enabled = false;
 
             advancedTab.Enabled = false;
 
             // API
-            int ind = apiComboBox.SelectedIndex;
+            int ind;
+            ind = apiComboBox.SelectedIndex;
+            if (ind < 0)
+                ind = 0;
+            if (apiComboBox.Items.Count != 2 && !init)
+                numericUpDownTempAPI.Value = ind;
             apiComboBox.Items.Clear();
-            apiComboBox.Items.Add("d3d8 · vanilla");
-            apiComboBox.Items.Add("d3d9 · d3d8to9");
+            apiComboBox.Items.Add("Direct3D8 · default");
+            apiComboBox.Items.Add("Direct3D9 · d3d8to9");
             if (ind >= 1)
                 apiComboBox.SelectedIndex = 1;
             else
                 apiComboBox.SelectedIndex = 0;
+
+            // Subs
+            ind = subsComboBox.SelectedIndex;
+            if (ind < 0)
+                ind = 0;
+            if (subsComboBox.Items.Count != 2 && !init)
+                numericUpDownTempSubs.Value = ind;
+            subsComboBox.Items.Clear();
+            subsComboBox.Items.Add("Off");
+            subsComboBox.Items.Add("On (Default)");
+            if (ind >= 1)
+                subsComboBox.SelectedIndex = 1;
+            else
+                subsComboBox.SelectedIndex = 0;
 
             // Aspect
             aspectRatio.Checked = true;
@@ -4996,29 +5890,12 @@ namespace Taz_trainer
                 aspect2.Text = "3";
             }
 
-
-            // Change options
-            /*
-            mods.Checked = false;
-            cutsceneSubtitles.Checked = false;
-            extraDebug.Checked = false;
-            coopFix.Checked = false;
-            injections.Checked = false;
-            levelComboBox.SelectedIndex = 0;
-            daffycultyComboBox.SelectedIndex = 0;
-            windowed.Checked = false;
-            limitFPS.Checked = false;
-            checkBoxFoV.Checked = false;
-            disableDrawDistance.Checked = false;
-            fogComboBox.SelectedIndex = 0;
-            */
             this.Text = "Taz Wanted · Speedrun Mode";
         }
         private void SpdUnlockOptions(bool init)
         {
             // Unlocking options
             mods.Enabled = true;
-            cutsceneSubtitles.Enabled = true;
             extraDebug.Enabled = true;
             coopFix.Enabled = true;
             injections.Enabled = true;
@@ -5027,7 +5904,11 @@ namespace Taz_trainer
             levelComboBox.Enabled = true;
             daffyculty.Enabled = true;
             daffycultyComboBox.Enabled = true;
-
+            chiliFix.Enabled = true;
+            playpenFix.Enabled = true;
+            quickStart.Enabled = true;
+            nightmare.Enabled = true;
+            l3sim.Enabled = true;
 
             windowed.Enabled = true;
             aspectRatio.Enabled = true;
@@ -5037,44 +5918,56 @@ namespace Taz_trainer
             numericFpsCap.Enabled = true;
             checkBoxFoV.Enabled = true;
             numericFoV.Enabled = true;
-            disableDrawDistance.Enabled = true;
+            draw.Enabled = true;
+            drawComboBox.Enabled = true;
             fog.Enabled = true;
             fogComboBox.Enabled = true;
+
+            mood.Enabled = true;
+            moodComboBox.Enabled = true;
 
             trainerTab.Enabled = true;
 
             advancedTab.Enabled = true;
 
-            // API
             if (!init)
             {
-                int ind = apiComboBox.SelectedIndex;
+                // API
+                int ind;
+                ind = apiComboBox.SelectedIndex;
+                if (ind < 0)
+                    ind = 0;
                 apiComboBox.Items.Clear();
-                apiComboBox.Items.Add("d3d8 · vanilla");
-                apiComboBox.Items.Add("d3d9 · d3d8to9");
-                apiComboBox.Items.Add("d3d12 · dgVoodoo2");
-                apiComboBox.Items.Add("vulkan · dxvk");
-                if (ind == 1)
-                    apiComboBox.SelectedIndex = 1;
+                apiComboBox.Items.Add("Direct3D8 · default");
+                apiComboBox.Items.Add("Direct3D9 · d3d8to9");
+                apiComboBox.Items.Add("Direct3D11-12 · dgVoodoo2");
+                apiComboBox.Items.Add("OpenGL · wined3d4win");
+                apiComboBox.Items.Add("Vulkan · dxvk");
+                if (numericUpDownTempAPI.Value > ind)
+                    apiComboBox.SelectedIndex = (int) numericUpDownTempAPI.Value;
                 else
-                    apiComboBox.SelectedIndex = 0;
+                    apiComboBox.SelectedIndex = ind;
+
+                // Subs
+                ind = subsComboBox.SelectedIndex;
+                if (ind < 0)
+                    ind = 0;
+                subsComboBox.Items.Clear();
+                subsComboBox.Items.Add("Off");
+                subsComboBox.Items.Add("On (Default)");
+                subsComboBox.Items.Add("On+Cutscenes");
+                if (numericUpDownTempSubs.Value > ind)
+                    subsComboBox.SelectedIndex = (int)numericUpDownTempSubs.Value;
+                else
+                    subsComboBox.SelectedIndex = ind;
             }
+
             // Aspect
             if (width.Text == "" || height.Text == "")
                 autoFillVideo();
             autoAspect(Int32.Parse(width.Text), Int32.Parse(height.Text));
             aspect1.ReadOnly = false;
             aspect2.ReadOnly = false;
-
-            // Change options
-            /*
-            mods.Checked = true;
-            cutsceneSubtitles.Checked = true;
-            extraDebug.Checked = true;
-            coopFix.Checked = true;
-            //catComboBox.SelectedIndex = 0;
-            disableDrawDistance.Checked = true;
-            */
 
             this.Text = "Taz Wanted · Trainer & Patcher";
         }
@@ -5087,18 +5980,19 @@ namespace Taz_trainer
             freezeLevelTimer.Enabled = false;
             gameSpeed.Enabled = false;
             speedHack.Enabled = false;
+            spitHack.Enabled = false;
 
             debugMenu.Enabled = false;
             flyCamera.Enabled = false;
             savePos.Enabled = false;
             flyMode.Enabled = false;
-            debugInfo.Enabled = false;
 
             coopMode.Enabled = false;
             ballMode.Enabled = false;
             undestructibleWorld.Enabled = false;
             bulldozerMode.Enabled = false;
             unsinkabilityMode.Enabled = false;
+            aggressiveAI.Enabled = false;
 
             // Unlock achievements
             achievements.Enabled = true;
@@ -5115,18 +6009,19 @@ namespace Taz_trainer
             freezeLevelTimer.Enabled = true;
             gameSpeed.Enabled = true;
             speedHack.Enabled = true;
+            spitHack.Enabled = true;
 
             debugMenu.Enabled = true;
             flyCamera.Enabled = true;
             savePos.Enabled = true;
             flyMode.Enabled = true;
-            debugInfo.Enabled = true;
 
             coopMode.Enabled = true;
             ballMode.Enabled = true;
             undestructibleWorld.Enabled = true;
             bulldozerMode.Enabled = true;
             unsinkabilityMode.Enabled = true;
+            aggressiveAI.Enabled = true;
 
             // Unlock achievements
             achievements.Enabled = false;
@@ -5146,6 +6041,13 @@ namespace Taz_trainer
                 aspect1.Text = "4";
                 aspect2.Text = "3";
             }
+        }
+
+        private void debugWindow_Click(object sender, EventArgs e)
+        {
+            windowed.Checked = true;
+            width.Text = "960";
+            height.Text = "540";
         }
 
         private void resetLevel_CheckedChanged(object sender, EventArgs e)
@@ -5200,28 +6102,6 @@ namespace Taz_trainer
         {
             this.toolStripStatusLabel.Text = "Restart game with Cooperative Fix to change split screen orientation";
             this.toolStripStatusLabel.ForeColor = System.Drawing.Color.Green;
-        }
-
-        private void apiComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (radioSpeedrun.Checked == false)
-            {
-                // Lock coop fix for d3d8to9 (for some reason game crashes on startup)
-                if (apiComboBox.SelectedIndex == 1)
-                {
-                    this.toolStripStatusLabel.Text = "Cooperative Fix unavailable with d3d8to9";
-                    this.toolStripStatusLabel.ForeColor = System.Drawing.Color.DarkOrange;
-                    coopFix.Text = "Coop locked with d3d8to9";
-                    coopFix.Enabled = false;
-                }
-                else
-                {
-                    this.toolStripStatusLabel.Text = "";
-                    this.toolStripStatusLabel.ForeColor = System.Drawing.Color.DarkOrange;
-                    coopFix.Text = "Cooperative Fix";
-                    coopFix.Enabled = true;
-                }
-            }
         }
 
         private void DrawAchievementsTable()
@@ -5467,7 +6347,7 @@ namespace Taz_trainer
             }
 
             // Lock options
-            SpdLockOptions();
+            SpdLockOptions(false);
         }
 
         private void radioTrainer_Click(object sender, EventArgs e)
@@ -5493,6 +6373,12 @@ namespace Taz_trainer
             if (trainerTab.Enabled == false)
                 SpdUnlockOptions(false);
             AchUnlockOptions();
+        }
+
+        private void levelComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (levelComboBox.SelectedIndex == 2)
+                playpenFix.Checked = true;
         }
     }
 }

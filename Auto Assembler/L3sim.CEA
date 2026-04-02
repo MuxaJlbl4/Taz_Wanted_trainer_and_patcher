@@ -1,0 +1,20 @@
+0047C90E: // watch1 (2)
+nop
+nop
+
+0047C930: // watch2 (2)
+nop
+nop
+
+00481861: // slide1 (6)
+jmp 00481A2B
+nop
+
+00482DBC: // slide2 (6)
+jmp 00482E7E
+nop
+
+004891C8: // slide3 (6)
+jmp 0048927D
+nop
+

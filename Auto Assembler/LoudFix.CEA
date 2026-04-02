@@ -1,0 +1,58 @@
+00409450: // loudfix_code (100)
+inj1:
+push eax // store
+// bkStringCRC
+push esi
+call 00565FF0
+add esp, 4
+
+cmp eax, [00655534]
+mov [00655534], eax
+pop eax // restore
+je 004D427E // skip
+
+// original code
+push 00
+push 02
+push esi
+jmp return1
+
+inj2:
+// bkStringCRC
+push [esp-8]
+call 00565FF0
+add esp, 4
+
+cmp eax, [00655534]
+mov [00655534], eax
+je skip2
+// original code
+call 005793A0
+skip2:
+jmp return2
+
+inj3:
+mov [00655534], 00000000
+// original code
+push ebp
+mov ebp,esp
+sub esp,08
+jmp return3
+
+
+004D41BE: // playsample_inj (5)
+jmp inj1
+return1:
+
+004D845D: // bsplaysample_inj (5)
+jmp inj2
+return2:
+
+004A82C0: // mainloop (5)
+jmp inj3
+nop
+return3:
+
+0050195E: // conveyor (1)
+db 7F
+

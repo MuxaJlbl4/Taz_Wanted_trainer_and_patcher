@@ -1,0 +1,5 @@
+004B9EC0: // mood_code (21)
+mov eax,[esp+08]
+mov [ecx+78],00000000
+mov [ecx+7C],00000000
+ret 0008

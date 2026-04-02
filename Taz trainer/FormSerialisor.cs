@@ -116,6 +116,10 @@ namespace FormSerialisation
                     {
                         xmlSerialisedForm.WriteElementString("Value", ((NumericUpDown)childCtrl).Value.ToString());
                     }
+                    else if (childCtrl is TrackBar)
+                    {
+                        xmlSerialisedForm.WriteElementString("Value", ((TrackBar)childCtrl).Value.ToString());
+                    }
 
                     else if (childCtrl is DateTimePicker)
                     {
@@ -235,6 +239,9 @@ namespace FormSerialisation
                                 break;
                             case "System.Windows.Forms.NumericUpDown":
                                 ((System.Windows.Forms.NumericUpDown)ctrlToSet).Value = Convert.ToDecimal(n["Value"].InnerText);
+                                break;
+                            case "System.Windows.Forms.TrackBar":
+                                ((System.Windows.Forms.TrackBar)ctrlToSet).Value = Convert.ToInt32(n["Value"].InnerText);
                                 break;
 
                             case "System.Windows.Forms.DateTimePicker":

@@ -1,0 +1,141 @@
+00413710: // inj_code (331)
+inj:
+// ChangeState(actorInstance,STATE_MOVE);
+push	0
+mov		eax, [006C8BC0]
+push	eax
+call    004D98B0
+add		esp, 0x08
+
+// RemoveCostume(actorInstance);
+mov		eax, [006C8BC0]
+push	eax
+call    00430E30
+add		esp, 0x04
+
+// EnableActorLineOnlyRenderMode(&actorInstance->actorInstance, &invisLineParms);
+push	00689600
+mov		eax, [006C8BC0]
+push	eax
+call	004757B0
+add		esp, 0x08
+mov		ecx, [eax+0x1CC]
+// actorInstance->characterInfo->powerUpInfo.invisible = TRUE;
+mov		dword ptr [ecx+0x170], 1
+// actorInstance->characterInfo->powerUpInfo.state = RENDERSTATE_LINEONLY;
+mov		dword ptr [ecx+0x148], 2
+// actorInstance->characterInfo->powerUpInfo.randomClock = 20.0f;
+mov		dword ptr [ecx+0x13C], (float)20.0
+
+jmp 00435DF1 // return
+
+check_mappoint:
+mov eax, [006FA0FC] // current scene
+cmp eax, 0x4
+je ice
+cmp eax, 0x5
+je saf
+cmp eax, 0x6
+je aqa
+cmp eax, 0x9
+je dep
+cmp eax, 0xA
+je mus
+cmp eax, 0xB
+je con
+cmp eax, 0xF
+je gld
+cmp eax, 0x10
+je can
+cmp eax, 0x12
+je taz
+jmp 004AD300 // spawn (ghost 100%)
+
+aqa:
+con:
+can:
+mov edx, 9 // atoi index
+jmp limit75 // 75%
+
+ice:
+mov edx, E // atoi index
+jmp limit50 // 50%
+
+saf:
+mov edx, A // atoi index
+jmp limit50 // 50%
+
+mus:
+gld:
+mov edx, 9 // atoi index
+jmp limit50 // 50%
+
+dep:
+taz:
+mov edx, A // atoi index
+jmp limit25 // 25%
+
+
+limit75:
+add edx, 006F8D88
+push edx
+call 005DB779 // atoi
+add esp, 4
+and eax, 3
+cmp eax, 3
+je 004B1186 // skip
+jmp 004AD300 // spawn
+
+limit50:
+add edx, 006F8D88
+push edx
+call 005DB779 // atoi
+add esp, 4
+and eax, 1
+cmp eax, 1
+jne 004B1186 // skip
+jmp 004AD300 // spawn
+
+limit25:
+add edx, 006F8D88
+push edx
+call 005DB779 // atoi
+add esp, 4
+and eax, 3
+cmp eax, 3
+jne 004B1186 // skip
+jmp 004AD300 // spawn
+
+// Map points:
+
+004AD250: // spawn_enemy (5)
+jmp check_mappoint
+//dd 000000AB
+
+004AD338: // keeper_type (4)
+dd 006423E0
+
+// Extras:
+
+00435DDE: // caught_jmp (5)
+jmp inj
+
+004183F2: // lose_costume_skip (1)
+db 00
+
+004186EE: // net_state_reset_skip (5)
+nop 5
+
+// Prevent crushes and bugs:
+
+004D916D: // squish_skip (6)
+jmp 004D92B5
+nop
+
+0042B2AE: // monkey_skip (6)
+jmp 0042B58F
+nop
+
+004296CB: // waterslide_skip (1)
+db EB
+

@@ -1,0 +1,132 @@
+alloc(newmem,2048)
+label(returnhere)
+label(originalcode)
+label(exit)
+/*
+get_stats_addr:
+mov ecx, [006C8E2C] // Save slot
+mov eax, [006C8BA8] // Current level
+imul ecx, 13D4
+imul eax, A8
+add eax, ecx
+add eax, 6C9700 // Stats for current level
+ret
+*/
+00655548:
+dd 00689520
+
+newmem: //this is allocated memory, you have read,write,execute access
+//place your code here
+
+// i
+mov eax, 0
+mov [00655534], eax
+// closedDistance
+mov eax,(float)10000
+mov [00655538], eax
+// vector
+mov eax, [esp+48]
+mov [0065553C], eax
+
+push eax
+push ecx
+
+
+push (float)-1 // float centerOffy =-1.0f
+push (float)1 // float centerOffx =1.0f
+push 0 // float zBias =0.0f
+push 0 // float* destVerts =NULL
+push 0 // bool vFlip =false
+push 0 // bool uFlip =false
+push 00739AC8 // COLOUR& col =COLOUR(128,128,128,128)
+push 0 // float ang =0.0f
+push (float)30 // float height
+push (float)30 // float width
+
+//push 006FA0A0 // TBVector2D pos cursor
+///////////////////////////////////////////////////////////////
+
+push ebp
+push edx
+push edi
+
+// ptr = pointer + 280; // ptr = &pointList[i];
+// lea edi, [esi+118] // already done
+
+findclosestpoint:
+// dist = bmVectorDistance((float *)colour, (float *)ptr);
+mov eax, [00655548]//[0065553C] // target vector
+push edi // mappoint vector
+push eax
+call 0055AD90 // bmVectorDistance
+// if ( dist < closestDist )
+fld st(0)
+fcomp [00655538] // closestDist
+add esp, 8
+fnstsw ax
+test ah, 1
+jz store
+
+// closestDist = dist;
+fstp [00655538] // closestDist
+// point = ptr;
+mov ebp, edi
+jmp iter
+
+store:
+fstp st(0)
+
+iter:
+// numPoints = *(_DWORD *)(pointer + 19564);
+mov eax, [00655534] // i
+mov ecx, [esi+4C6C]
+// result = i + 1;
+inc eax
+// ptr += 24;
+add edi, 18
+cmp eax, ecx
+mov [00655534], eax // i
+jl findclosestpoint
+
+fild word ptr [ebp+10]
+fsub [005F7FFC]
+fstp [00655540]
+fild word ptr [ebp+12]
+fsubr [005F7FF8]
+fstp [00655544]
+
+pop edi
+pop edx
+pop ebp
+
+///////////////////////////////////////////////////////////////
+push 00655540 // TBVector2D pos
+
+push 0
+push 0
+push 3323C2C4 // samface.bmp
+push 0
+call 00567DC0 // bkLoadTextureByCRC
+add esp, 10
+push eax // TBTexture* texture
+
+call 004DD8F0 // utilDraw2DSprite
+add esp, 30
+
+pop ecx
+pop eax
+
+originalcode:
+test byte ptr [edi+14],0A
+jne 004AAA27
+
+exit:
+jmp returnhere
+
+"Taz.exe"+AA9E2:
+jmp newmem
+nop
+returnhere:
+
+
+

@@ -3,10 +3,10 @@ dd (float)1000.0
 
 00731380:
 pak:
-db 'tribalchief', 0
+db 'chars', 0
 007313A0:
 obe:
-db 'tribalchief.obe', 0
+db 'anvilgang.obe', 0
 
 005F6900:
 // LoadWholePackage("pak", 1);

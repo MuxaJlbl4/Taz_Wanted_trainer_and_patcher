@@ -1,5 +1,6 @@
 # pip3 install psutil
-# py -3.12 _convert_to_patch.py Achievements.CEA > _patch.cs
+# py -3.12 _convert_to_patch.py .CEA > _orig.cs
+# py -3.12 _convert_to_patch.py .CEA > _patch.cs
 import re
 import psutil
 from ctypes import *

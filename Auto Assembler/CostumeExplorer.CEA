@@ -59,14 +59,14 @@ push cheats
 push explorermachete
 call 004729B0
 add esp, 0C
-/*
+
 // LoadActor
 push 00
 push cheats
 push explorerbackpack
 call 004729B0
 add esp, 0C
-*/
+
 // LoadActor
 push 00
 push cheats

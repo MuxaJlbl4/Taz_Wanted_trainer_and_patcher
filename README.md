@@ -54,4 +54,14 @@ Custom launcher, trainer and resource repacker for **Taz: Wanted**
 
 ## 🔖 Links
 - 💾 [Download](https://github.com/MuxaJlbl4/Taz_Wanted_trainer_and_patcher/releases/download/v4.0/Taz.Wanted.Trainer.Patcher.exe) - Taz: Wanted · Trainer & Patcher 4.0
+- 🍌 [GameBanana](https://gamebanana.com/mods/games/21253) - Mods for Taz: Wanted
 - 📜 [Wiki](https://github.com/MuxaJlbl4/Taz_Wanted_trainer_and_patcher/wiki) - Description, usage, troubleshooting, etc.
+
+## ❤️ Special Thanks
+- [Team Phoenix](https://www.mobygames.com/game/8574/taz-wanted/credits/windows)
+- [CycloneFN](https://www.youtube.com/@CycloneFN)
+- [MilkGames](https://www.youtube.com/@M1lkGames)
+- [MrPinball64](https://hiddenpalace.org/MrPinball64)
+- [Timenoe](https://retroachievements.org/user/timenoe)
+- [Preservation Community](https://discord.gg/m4PUvmpFWv)
+- [Speedrunning Community](https://discord.gg/YJAVRbB8PK)

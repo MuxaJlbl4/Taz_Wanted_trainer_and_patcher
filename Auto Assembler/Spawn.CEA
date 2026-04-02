@@ -1,10 +1,22 @@
+004A5612: // skip_guard_replace (5)
+jmp 004A564D
+
 00731380:
 pak:
-db 'alligator', 0
+db 'anvilgang', 0
+//db 'taskforce', 0
+//db 'catcher', 0
+//db 'tribalguy', 0
+//db 'bot', 0
+//db 'ape', 0
 007313A0:
 obe:
-db 'alligator.obe', 0
-
+db 'anvilgang.obe', 0
+//db 'taskforce.obe', 0
+//db 'catcher.obe', 0
+//db 'tribalguy.obe', 0
+//db 'bot.obe', 0
+//db 'ape.obe', 0
 005F6900:
 // LoadWholePackage("pak", 1);
 push 0x01
@@ -38,10 +50,6 @@ add     esp, 2C
 call 004DA2F0
 
 ret
-
-// Code patch: BOXTYPE_POLICE -> BOXTYPE_PHONE
-//004A55A6:
-//db 00
 
 00655510:
 db 01

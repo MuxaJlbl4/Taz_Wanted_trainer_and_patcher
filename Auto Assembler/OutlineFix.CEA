@@ -1,0 +1,30 @@
+/*
+#if(BPLATFORM==PC)
+		&& ((TAG_ACTORINSTANCE *)actorInstance->actor->softSkin.bonesPerVertex)
+#endif
+*/
+
+// ?? ?? 30 01 00 00 ?? ?? 30
+
+// EnableActorCartoonRenderMode
+0047563F: // cartoon1 (2)
+jmp +0F
+
+004756BE: // cartoon2 (2)
+jmp +0B
+
+0047570E: // cartoon3 (2)
+jmp +0B
+
+// EnableActorLineRenderMode
+0047576D: // line (2)
+jmp +0B
+
+// EnableActorLineOnlyRenderMode
+004757CD: // line_only (2)
+jmp +0B
+
+// ChangeActorInstance
+00475BE0: // change_actor (2)
+jmp +0B
+

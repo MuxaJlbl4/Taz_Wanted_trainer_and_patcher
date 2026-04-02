@@ -1,0 +1,157 @@
+005F6B00: // extra_costumes_data (179)
+
+// obes
+agenthat:
+db 'costume\agenthat.obe', 0
+agentshades:
+db 'costume\agentshades.obe', 0
+agentwatch:
+db 'costume\agentwatch.obe', 0
+crashhelmet:
+db 'costume\crashhelmet.obe', 0
+elbowpadl:
+db 'costume\elbowpadl.obe', 0
+elbowpadr:
+db 'costume\elbowpadr.obe', 0
+sheriffhat:
+db 'costume\sheriffhat.obe', 0
+xmashat:
+db 'costume\xmashat.obe', 0
+
+005F6EA0: // extra_costumes_code (345)
+extracostumes:
+cmp eax, 0F
+jnz nextcheck1
+// AttachObjectToCharacter
+push 03
+push 00
+push 00
+push 00
+push 00630FE8	// spinetop
+push agenthat
+mov eax, [006C8BC0]
+push eax
+call 00477880
+add esp, 1C
+
+// AttachObjectToCharacter
+push 03
+push 00
+push 00
+push 00
+push 00630FE8	// spinetop
+push agentshades
+mov eax, [006C8BC0]
+push eax
+call 00477880
+add esp, 1C
+
+// AttachObjectToCharacter
+push 07
+push 00
+push 00
+push 00
+push 00639C54	// armforeleft
+push agentwatch
+mov eax, [006C8BC0]
+push eax
+call 00477880
+add esp, 1C
+
+nextcheck1:
+
+cmp eax, 10
+jnz nextcheck2
+
+// AttachObjectToCharacter
+push 03
+push 00
+push 00
+push 00
+push 00630FE8	// spinetop
+push crashhelmet
+mov eax, [006C8BC0]
+push eax
+call 00477880
+add esp, 1C
+
+// AttachObjectToCharacter
+push 03
+push 00
+push 00
+push 00
+push 00639C54	// armforeleft
+push elbowpadl
+mov eax, [006C8BC0]
+push eax
+call 00477880
+add esp, 1C
+
+// AttachObjectToCharacter
+push 03
+push 00
+push 00
+push 00
+push 00639C44	// armforeright
+push elbowpadr
+mov eax, [006C8BC0]
+push eax
+call 00477880
+add esp, 1C
+
+nextcheck2:
+
+cmp eax, 11
+jnz nextcheck3
+
+// AttachObjectToCharacter
+push 07
+push 00
+push 00
+push 00
+push 00630FE8	// spinetop
+push sheriffhat
+mov eax, [006C8BC0]
+push eax
+call 00477880
+add esp, 1C
+
+// AttachObjectToCharacter
+push 07
+push 00
+push 00
+push 00
+push 00632394	// root
+push 0063A03C	// costume\cowboybelt.obe
+mov eax, [006C8BC0]
+push eax
+call 00477880
+add esp, 1C
+
+nextcheck3:
+
+cmp eax, 12
+jnz originalcode
+
+// AttachObjectToCharacter
+push 03
+push 00
+push 00
+push 00
+push 00630FE8	// spinetop
+push xmashat
+mov eax, [006C8BC0]
+push eax
+call 00477880
+add esp, 1C
+
+originalcode:
+test byte ptr [Taz.exe+2C8E28],08
+
+jmp returnhere
+
+00430D98: // extra_costumes_inj (7)
+jmp extracostumes
+nop 2
+returnhere:
+
