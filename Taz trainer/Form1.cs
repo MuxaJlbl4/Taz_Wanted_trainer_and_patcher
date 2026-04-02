@@ -40,6 +40,12 @@ namespace Taz_trainer
         [DllImport("kernel32.dll", SetLastError = true)]
         static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, [Out] byte[] lpBuffer, int dwSize, out IntPtr lpNumberOfBytesRead);
 
+        [DllImport("user32.dll")]
+        private static extern IntPtr GetForegroundWindow();
+
+        [DllImport("user32.dll")]
+        private static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint processId);
+
         static string version = "4.0";
         static string xmlfile = "Taz.Wanted." + version + ".xml";
 
@@ -365,13 +371,18 @@ namespace Taz_trainer
 
         void gkh_KeyUp(object sender, KeyEventArgs e)
         {
-
-            e.Handled = true;
+            e.Handled = IsGameWindowActive();
         }
 
 
         void gkh_KeyDown(object sender, KeyEventArgs e)
         {
+            if (!IsGameWindowActive())
+            {
+                e.Handled = false;
+                return;
+            }
+
             //Disable trainer cheats with speedrun mode
             if (e.KeyCode == Keys.F1)
             {
@@ -642,6 +653,28 @@ namespace Taz_trainer
         //Process functions
 
         public string procName = "Taz";
+
+
+        private bool IsGameWindowActive()
+        {
+            IntPtr foregroundWindow = GetForegroundWindow();
+            if (foregroundWindow == IntPtr.Zero)
+                return false;
+
+            GetWindowThreadProcessId(foregroundWindow, out uint processId);
+            if (processId == 0)
+                return false;
+
+            try
+            {
+                Process activeProcess = Process.GetProcessById((int)processId);
+                return string.Equals(activeProcess.ProcessName, procName, StringComparison.OrdinalIgnoreCase);
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
 
         //Searching process
